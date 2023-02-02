@@ -30,7 +30,9 @@
      	<input type="password" name="password" placeholder="Password"><br>
 
      	<button type="submit">SIGN UP</button>
-        <button type="submit">BACK TO LOGIN</button>
+        <p>
+			Already have an account? <a href="index.php">LOGIN</a>
+		</p>
      </form>
 </body>
 </html>
