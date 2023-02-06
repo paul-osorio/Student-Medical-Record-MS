@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>REGISTRATION | ADMIN PANEL</title>
-	<link rel="stylesheet" type="text/css" href="./css/login.css">
+	<link rel="stylesheet" type="text/css" href="./css/adminRegistration.css">
 </head>
 <body>
      <form action="login.php" method="post">
@@ -10,7 +10,7 @@
      	<?php if (isset($_GET['error'])) { ?>
      		<p class="error"><?php echo $_GET['error']; ?></p>
      	<?php } ?>
-
+		
         <label>First Name:</label>
      	<input type="text" name="fname" placeholder="First Name"><br>
         
