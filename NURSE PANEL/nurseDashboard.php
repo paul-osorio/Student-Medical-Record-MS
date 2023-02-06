@@ -30,7 +30,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NURSE | CLINIC MS</title>
+    <title>NURSE | STUDENT MEDICAL RECORD MS</title>
     <link rel="stylesheet" href="./style.css" />
     <link rel="stylesheet" href="./css/NurseTab.css" />
     <link rel="stylesheet" href="./css/medicine.css" />
