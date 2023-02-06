@@ -31,7 +31,7 @@
 
      	<button type="submit">SIGN UP</button>
         <p>
-			Already have an account? <a href="index.php">LOGIN</a>
+			Already have an account? <a href="index.php">Back to Login</a>
 		</p>
      </form>
 </body>

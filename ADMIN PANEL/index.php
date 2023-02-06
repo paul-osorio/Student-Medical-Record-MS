@@ -18,7 +18,7 @@
 
      	<button type="submit">LOGIN</button>
 		<p>
-			Not yet registered? <a href="registration.php">Sign Up</a>
+			Not yet registered? <a href="registration.php">Create an account</a>
 		</p>
      </form>
 </body>
