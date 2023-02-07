@@ -66,16 +66,16 @@
                       placeholder="Student ID"><br>
           <?php }?>
 
-     	<label>Email:</label>
+     	<label>School Registered Email:</label>
 		 <?php if (isset($_GET['uname'])) { ?>
                <input type="text" 
                       name="uname" 
-                      placeholder="Email"
+                      placeholder="School Registered Email"
                       value="<?php echo $_GET['uname']; ?>"><br>
           <?php }else{ ?>
                <input type="text" 
                       name="uname" 
-                      placeholder="Email"><br>
+                      placeholder="School Registered Email"><br>
           <?php }?>
 
      	<label>Password:</label>
