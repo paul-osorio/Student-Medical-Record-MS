@@ -6,7 +6,7 @@
 </head>
 <body>
      <form action="registrationValidation.php" method="post">
-     	<h2>ADMIN SIGN UP</h2>
+     	<h2>HR ADMIN SIGN UP</h2>
      	<?php if (isset($_GET['error'])) { ?>
      		<p class="error"><?php echo $_GET['error']; ?></p>
      	<?php } ?>
