@@ -8,34 +8,84 @@
     <div class="header">
     <br><br>
     <div> 
-     <form action="login.php" method="post">
+     <form action="studRegistrationValidation.php" method="post">
      	<h2>STUDENT SIGN UP</h2>
      	<?php if (isset($_GET['error'])) { ?>
      		<p class="error"><?php echo $_GET['error']; ?></p>
      	<?php } ?>
 
+		<?php if (isset($_GET['success'])) { ?>
+               <p class="success"><?php echo $_GET['success']; ?></p>
+        <?php } ?>
+
         <label>First Name:</label>
-     	<input type="text" name="fname" placeholder="First Name"><br>
+		<?php if (isset($_GET['fname'])) { ?>
+               <input type="text" 
+                      name="fname" 
+                      placeholder="First Name"
+                      value="<?php echo $_GET['fname']; ?>"><br>
+          <?php }else{ ?>
+               <input type="text" 
+                      name="fname" 
+                      placeholder="First Name"><br>
+          <?php }?>
         
         <label>Middle Name:</label>
-     	<input type="text" name="mname" placeholder="Middle Name"><br>
+		<?php if (isset($_GET['mname'])) { ?>
+               <input type="text" 
+                      name="mname" 
+                      placeholder="Middle Name"
+                      value="<?php echo $_GET['mname']; ?>"><br>
+          <?php }else{ ?>
+               <input type="text" 
+                      name="mname" 
+                      placeholder="Middle Name"><br>
+          <?php }?>
         
         <label>Last Name:</label>
-     	<input type="text" name="lname" placeholder="Last Name"><br>
+		<?php if (isset($_GET['lname'])) { ?>
+               <input type="text" 
+                      name="lname" 
+                      placeholder=" Name"
+                      value="<?php echo $_GET['lname']; ?>"><br>
+          <?php }else{ ?>
+               <input type="text" 
+                      name="lname" 
+                      placeholder="Last Name"><br>
+          <?php }?>
         
         <label>Student ID:</label>
-     	<input type="text" name="student_id" placeholder="Student ID"><br>
+		<?php if (isset($_GET['student_id'])) { ?>
+               <input type="text" 
+                      name="student_id" 
+                      placeholder="Student ID"
+                      value="<?php echo $_GET['student_id']; ?>"><br>
+          <?php }else{ ?>
+               <input type="text" 
+                      name="student_id" 
+                      placeholder="Student ID"><br>
+          <?php }?>
 
      	<label>Email:</label>
-     	<input type="text" name="uname" placeholder="Email"><br>
+		 <?php if (isset($_GET['uname'])) { ?>
+               <input type="text" 
+                      name="uname" 
+                      placeholder="Email"
+                      value="<?php echo $_GET['uname']; ?>"><br>
+          <?php }else{ ?>
+               <input type="text" 
+                      name="uname" 
+                      placeholder="Email"><br>
+          <?php }?>
 
      	<label>Password:</label>
-     	<input type="password" name="password" placeholder="Password"><br>
+     	<input type="password" name="password" placeholder="Password" required><br>
+
+		<label>Confirm Password:</label>
+     	<input type="password" name="re_password" placeholder="Confirm Password" required><br>
 
      	<button type="submit">SIGN UP</button>
-        <p>
-			Already have an account? <a href="index.php">LOGIN</a>
-		</p>
+          <a href="index.php" class="ca">Already have an account?</a>
      </form>
 
      <div class="footer">
