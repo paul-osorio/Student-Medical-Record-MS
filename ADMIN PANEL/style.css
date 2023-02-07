@@ -136,15 +136,16 @@ background: #F2F2F2;
 #sidebarCollapse{
     display: none;
 }
-@media screen and (max-width: 788px){
+@media screen and (max-width: 872px){
     #sidebarCollapse{
         display: block;
     }
     #sidebar {
-        position: fixed;
+        position: fixed !important;
         height: 100%;
         left: 0;
         top: 0;
+        /* margin-left: -280px; */
     }
     .content_wrapper{
         grid-column: 1/3;
