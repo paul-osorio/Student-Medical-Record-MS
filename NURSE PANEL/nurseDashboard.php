@@ -238,10 +238,11 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                 <span>Active Logs</span>
               </div>
               <div class="content">
-                <span> Add New Patient Student 160123 </span>
+                <span>Date: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                  Time in: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Time out: </span>
               </div>
             </div>
-            <div class="messages"> 
+            <!-- <div class="messages"> 
               <div class="row1">
                 <div class="column1">
                   <span>Messages</span>
@@ -258,7 +259,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                   </div>
                  </div>
               </div>
-            </div>
+            </div> -->
           </div>
 
           <div class="chart_container">
@@ -274,7 +275,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
             </div>
           </div>
 
-          <div class="action_details">
+          <!-- <div class="action_details">
              <div class="row1">
                 <div class="column1">
                   <span class="title">Quick Action</span>
@@ -290,7 +291,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                     </div>
                   </div>
              </div>
-          </div>
+          </div> -->
         </section>
 
 
