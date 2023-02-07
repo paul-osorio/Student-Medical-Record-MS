@@ -17,9 +17,7 @@
      	<input type="password" name="password" placeholder="Password"><br>
 
      	<button type="submit">LOGIN</button>
-		<p>
-			Not yet registered? <a href="registration.php">Create an account</a>
-		</p>
+          <a href="registration.php" class="ca">Create an account</a>
      </form>
 </body>
 </html>
