@@ -61,7 +61,7 @@ if (isset($_POST['uname']) && isset($_POST['password'])
 	}
 
 	else if($pass !== $re_pass){
-        header("Location: registration.php?error=The confirmation password  does not match.&$user_data");
+        header("Location: registration.php?error=The confirmation password does not match.&$user_data");
 	    exit();
 	}
 

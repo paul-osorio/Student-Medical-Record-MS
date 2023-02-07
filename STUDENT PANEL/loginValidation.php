@@ -15,7 +15,7 @@ if (isset($_POST['uname']) && isset($_POST['password'])) {
 	$pass = validate($_POST['password']);
 
 	if (empty($uname)) {
-		header("Location: index.php?error=Username is required!");
+		header("Location: index.php?error=Email is required!");
 	    exit();
 	}else if(empty($pass)){
         header("Location: index.php?error=Password is required!");
@@ -25,25 +25,25 @@ if (isset($_POST['uname']) && isset($_POST['password'])) {
 		// hashing the password
         $pass = md5($pass);
 
-		$sql = "SELECT * FROM admins WHERE email='$uname' AND password='$pass'";
+		$sql = "SELECT * FROM students WHERE Email='$uname' AND password='$pass'";
 
 		$result = mysqli_query($conn, $sql);
 
 		if (mysqli_num_rows($result) === 1) {
 			$row = mysqli_fetch_assoc($result);
-            if ($row['email'] === $uname && $row['password'] === $pass) {
-            	$_SESSION['email'] = $row['email'];
-            	$_SESSION['fname'] = $row['fname'];
-				$_SESSION['lname'] = $row['lname'];
-            	$_SESSION['user_id'] = $row['user_id'];
-            	header("Location: adminDashboard.php");
+            if ($row['Email'] === $uname && $row['password'] === $pass) {
+            	$_SESSION['email'] = $row['Email'];
+            	$_SESSION['fname'] = $row['firstname'];
+				$_SESSION['lname'] = $row['lastname'];
+            	$_SESSION['student_id'] = $row['student_id'];
+            	header("Location: studDashboard.php");
 		        exit();
             }else{
-				header("Location: index.php?error=Incorect username or password!");
+				header("Location: index.php?error=Incorect email or password!");
 		        exit();
 			}
 		}else{
-			header("Location: index.php?error=Incorect username or password!");
+			header("Location: index.php?error=Incorect email or password!");
 	        exit();
 		}
 	}

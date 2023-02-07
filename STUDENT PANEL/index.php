@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>LOGIN | STUDENT PANEL</title>
-	<link rel="stylesheet" type="text/css" href="./css/login.css">
+	<link rel="stylesheet" type="text/css" href="./css/studLogin.css">
 </head>
 <body>
      <form action="loginValidation.php" method="post">
@@ -10,6 +10,7 @@
      	<?php if (isset($_GET['error'])) { ?>
      		<p class="error"><?php echo $_GET['error']; ?></p>
      	<?php } ?>
+		
      	<label>School Registered Email:</label>
      	<input type="text" name="uname" placeholder="School Registered Email"><br>
 
