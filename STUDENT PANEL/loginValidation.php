@@ -2,7 +2,7 @@
 session_start(); 
 include "db_conn.php";
 
-if (isset($_POST['uname']) && isset($_POST['password'])) {
+if (isset($_POST['Email']) && isset($_POST['password'])) {
 
 	function validate($data){
        $data = trim($data);
@@ -11,10 +11,10 @@ if (isset($_POST['uname']) && isset($_POST['password'])) {
 	   return $data;
 	}
 
-	$uname = validate($_POST['uname']);
+	$Email = validate($_POST['Email']);
 	$pass = validate($_POST['password']);
 
-	if (empty($uname)) {
+	if (empty($Email)) {
 		header("Location: index.php?error=Email is required!");
 	    exit();
 	}else if(empty($pass)){
@@ -25,16 +25,17 @@ if (isset($_POST['uname']) && isset($_POST['password'])) {
 		// hashing the password
         $pass = md5($pass);
 
-		$sql = "SELECT * FROM students WHERE Email='$uname' AND password='$pass'";
+		$sql = "SELECT * FROM students WHERE Email='$Email' AND password='$pass'";
 
 		$result = mysqli_query($conn, $sql);
 
 		if (mysqli_num_rows($result) === 1) {
 			$row = mysqli_fetch_assoc($result);
-            if ($row['Email'] === $uname && $row['password'] === $pass) {
-            	$_SESSION['email'] = $row['Email'];
-            	$_SESSION['fname'] = $row['firstname'];
-				$_SESSION['lname'] = $row['lastname'];
+            if ($row['Email'] === $Email && $row['password'] === $pass) {
+            	$_SESSION['Email'] = $row['Email'];
+            	$_SESSION['firstname'] = $row['firstname'];
+				$_SESSION['middlename'] = $row['middlename'];
+				$_SESSION['lastname'] = $row['lastname'];
             	$_SESSION['student_id'] = $row['student_id'];
             	header("Location: studDashboard.php");
 		        exit();

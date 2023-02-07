@@ -12,7 +12,7 @@
      	<?php } ?>
 		
      	<label>School Registered Email:</label>
-     	<input type="text" name="uname" placeholder="School Registered Email"><br>
+     	<input type="text" name="Email" placeholder="School Registered Email"><br>
 
      	<label>Password:</label>
      	<input type="password" name="password" placeholder="Password"><br>

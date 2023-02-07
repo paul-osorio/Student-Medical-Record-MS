@@ -19,38 +19,38 @@
         <?php } ?>
 
         <label>First Name:</label>
-		<?php if (isset($_GET['fname'])) { ?>
+		<?php if (isset($_GET['firstname'])) { ?>
                <input type="text" 
-                      name="fname" 
+                      name="firstname" 
                       placeholder="First Name"
-                      value="<?php echo $_GET['fname']; ?>"><br>
+                      value="<?php echo $_GET['firstname']; ?>"><br>
           <?php }else{ ?>
                <input type="text" 
-                      name="fname" 
+                      name="firstname" 
                       placeholder="First Name"><br>
           <?php }?>
         
         <label>Middle Name:</label>
-		<?php if (isset($_GET['mname'])) { ?>
+		<?php if (isset($_GET['middlename'])) { ?>
                <input type="text" 
-                      name="mname" 
+                      name="middlename" 
                       placeholder="Middle Name"
-                      value="<?php echo $_GET['mname']; ?>"><br>
+                      value="<?php echo $_GET['middlename']; ?>"><br>
           <?php }else{ ?>
                <input type="text" 
-                      name="mname" 
+                      name="middlename" 
                       placeholder="Middle Name"><br>
           <?php }?>
         
         <label>Last Name:</label>
-		<?php if (isset($_GET['lname'])) { ?>
+		<?php if (isset($_GET['lastname'])) { ?>
                <input type="text" 
-                      name="lname" 
-                      placeholder=" Name"
-                      value="<?php echo $_GET['lname']; ?>"><br>
+                      name="lastname" 
+                      placeholder="Last Name"
+                      value="<?php echo $_GET['lastname']; ?>"><br>
           <?php }else{ ?>
                <input type="text" 
-                      name="lname" 
+                      name="lastname" 
                       placeholder="Last Name"><br>
           <?php }?>
         
@@ -67,14 +67,14 @@
           <?php }?>
 
      	<label>School Registered Email:</label>
-		 <?php if (isset($_GET['uname'])) { ?>
+		 <?php if (isset($_GET['Email'])) { ?>
                <input type="text" 
-                      name="uname" 
+                      name="Email" 
                       placeholder="School Registered Email"
-                      value="<?php echo $_GET['uname']; ?>"><br>
+                      value="<?php echo $_GET['Email']; ?>"><br>
           <?php }else{ ?>
                <input type="text" 
-                      name="uname" 
+                      name="Email" 
                       placeholder="School Registered Email"><br>
           <?php }?>
 
