@@ -298,14 +298,22 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
         <!-- PATIENTS -->
            
-             <section id="patient" class="patient so_content" data-tab-content>
+          <section id="patient" class="patient so_content" data-tab-content>
           <div class="fright">
             <div class="container mt-5">
-              <button class="btn btn-primary" type="button" data-bs-target="#myModal" data-bs-toggle="modal">Add New Patient</button>
+            <button class="custom_btn" style=" background: #163666;
+    color: #fff;
+    border: none;
+    outline: none;
+    width: 190px;
+    margin-bottom: 10px;
+    border-radius: 10px;">
+              <a style="color: #fff;" href="#addPatientModal" class="custom_btn" data-toggle="modal"><i class="fa fa-users"></i> Add New Patient</a>
+            </button>
               <div class="modal" id="myModal">
                   <div class="modal-dialog">
                       <div class="modal-content">
-                          <div class="modal-header text-white">
+                          <!-- <div class="modal-header text-white">
                             <input class="srch-bar" placeholder="Search Patient">
                               <button class="btn-close" type="button" data-bs-dismiss="modal"></button>
                           </div>
@@ -314,12 +322,12 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                           </div>
                           <div class="modal-footer">
                               <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#secondModal" data-bs-dismiss="modal">Scan QR</button>
-                          </div>
+                          </div> -->
                       </div>
                     </div>
                   </div>
                   <div class="modal" id="secondModal">
-                      <div class="modal-dialog">
+                      <!-- <div class="modal-dialog">
                           <div class="modal-content">
                               <div class="modal-header alert alert-success" style="background-color: white;">
                             <table class="ndmodal-table">
@@ -339,7 +347,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
                               </div>
                           </div>
-                      </div>
+                      </div> -->
                   </div>
               </div>
 </div>
