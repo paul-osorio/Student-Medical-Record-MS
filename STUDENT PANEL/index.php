@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>LOGIN | ADMIN PANEL</title>
-	<link rel="stylesheet" type="text/css" href="./css/login.css">
+	<title>LOGIN | STUDENT PANEL</title>
+	<link rel="stylesheet" type="text/css" href="./css/studLogin.css">
 </head>
 <body>
-     <form action="login.php" method="post">
-     	<h2>HR ADMIN LOGIN</h2>
+     <form action="loginValidation.php" method="post">
+     	<h2>STUDENT LOGIN</h2>
      	<?php if (isset($_GET['error'])) { ?>
      		<p class="error"><?php echo $_GET['error']; ?></p>
      	<?php } ?>
-     	<label>Email:</label>
-     	<input type="text" name="uname" placeholder="Email"><br>
+		
+     	<label>School Registered Email:</label>
+     	<input type="text" name="Email" placeholder="School Registered Email"><br>
 
      	<label>Password:</label>
      	<input type="password" name="password" placeholder="Password"><br>

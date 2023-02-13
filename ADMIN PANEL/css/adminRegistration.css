@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
 body {
-	background: #233667;
+	background: #5D8FD9;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -48,7 +48,7 @@ label {
 
 button {
 	float: right;
-	background: #233667;
+	background: #5D8FD9;
 	padding: 10px 15px;
 	color: #fff;
 	border-radius: 5px;
@@ -88,13 +88,13 @@ p{
 }
 
 
-.ca {
+a {
 	display: inline-block;
 	color: #444;
 	text-decoration: none;
 	font-size: 14px;
 }
-.ca:hover{
+a:hover{
 	text-decoration: underline;
 }
 

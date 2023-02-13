@@ -7,11 +7,12 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 ?>
 
 <?php
-     include_once 'insert_data.php';
+      include_once 'insert_data.php';
+      include_once 'insert_new_patient.php';
       include('db_conn.php');
      
       // SELECT ALL NURSES 
-      $fetchAllNurses = mysqli_query($conn, "SELECT * FROM `nurses`");
+      $fetchAllNurses = mysqli_query($conn, "SELECT * FROM `students`");
 
       // SELECT ALL MEDICINE 
       $fetchAllMedicine = mysqli_query($conn, "SELECT * FROM `medicine`");
@@ -30,7 +31,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NURSE | CLINIC MS</title>
+    <title>NURSE | STUDENT MEDICAL RECORD MS</title>
     <link rel="stylesheet" href="./style.css" />
     <link rel="stylesheet" href="./css/NurseTab.css" />
     <link rel="stylesheet" href="./css/medicine.css" />
@@ -86,15 +87,15 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
               Patients
             </div>
           </li>
-          <li data-tab-target="#messages" class="px-4 w-100 mb-1 nav-item tab">
-            <i class="fa fa-commenting-o" aria-hidden="true"></i>
+          <li data-tab-target="#appointment" class="px-4 w-100 mb-1 nav-item tab">
+            <i class="fa fa-calendar" aria-hidden="true"></i>
             <div
               class="nav-link align-items-center"
               data-bs-toggle="collapse"
               data-bs-target="#home-collapse"
               aria-expanded="true"
             >
-              Messages
+              Appointment
             </div>
           </li>
           <li data-tab-target="#medicine" class="px-4 w-100 mb-1 nav-item tab">
@@ -238,10 +239,11 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                 <span>Active Logs</span>
               </div>
               <div class="content">
-                <span> Add New Patient Student 160123 </span>
+                <span>Date: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                  Time in: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Time out: </span>
               </div>
             </div>
-            <div class="messages"> 
+            <!-- <div class="messages"> 
               <div class="row1">
                 <div class="column1">
                   <span>Messages</span>
@@ -258,7 +260,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                   </div>
                  </div>
               </div>
-            </div>
+            </div> -->
           </div>
 
           <div class="chart_container">
@@ -274,7 +276,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
             </div>
           </div>
 
-          <div class="action_details">
+          <!-- <div class="action_details">
              <div class="row1">
                 <div class="column1">
                   <span class="title">Quick Action</span>
@@ -290,21 +292,29 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                     </div>
                   </div>
              </div>
-          </div>
+          </div> -->
         </section>
 
 
 
         <!-- PATIENTS -->
            
-             <section id="patient" class="patient so_content" data-tab-content>
+          <section id="patient" class="patient so_content" data-tab-content>
           <div class="fright">
             <div class="container mt-5">
-              <button class="btn btn-primary" type="button" data-bs-target="#myModal" data-bs-toggle="modal">Add New Patient</button>
+            <button class="custom_btn" style=" background: #163666;
+    color: #fff;
+    border: none;
+    outline: none;
+    width: 190px;
+    margin-bottom: 10px;
+    border-radius: 10px;">
+              <a style="color: #fff;" href="#addPatientModal" class="custom_btn" data-toggle="modal"><i class="fa fa-users"></i> Add New Patient</a>
+            </button>
               <div class="modal" id="myModal">
                   <div class="modal-dialog">
                       <div class="modal-content">
-                          <div class="modal-header text-white">
+                          <!-- <div class="modal-header text-white">
                             <input class="srch-bar" placeholder="Search Patient">
                               <button class="btn-close" type="button" data-bs-dismiss="modal"></button>
                           </div>
@@ -313,12 +323,12 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                           </div>
                           <div class="modal-footer">
                               <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#secondModal" data-bs-dismiss="modal">Scan QR</button>
-                          </div>
+                          </div> -->
                       </div>
                     </div>
                   </div>
                   <div class="modal" id="secondModal">
-                      <div class="modal-dialog">
+                      <!-- <div class="modal-dialog">
                           <div class="modal-content">
                               <div class="modal-header alert alert-success" style="background-color: white;">
                             <table class="ndmodal-table">
@@ -338,10 +348,85 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
                               </div>
                           </div>
-                      </div>
+                      </div> -->
                   </div>
               </div>
 </div>
+
+<!-- Add New Nurse Modal -->
+<div id="addPatientModal" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form method="post" action="nurseDashboard.php">
+					<div class="modal-header">						
+						<h4 class="modal-title">ADD NEW PATIENT</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					</div>
+					<div class="modal-body">	
+          <label><b>Basic Information</b></label> <br>
+            <div class="form-group">
+							<label>Student ID</label> 
+							<input type="text" class="form-control" name="student_id" required>
+            </div>	
+            <div class="form-group">
+							<label>Email/Username</label> 
+							<input type="text" class="form-control" name="Email" required>
+            </div>	
+            <div class="form-group">
+							<label>Password</label> 
+							<input type="text" class="form-control" name="password" required>
+            </div>	
+            <div class="form-group">
+							<label>Firstname</label> 
+							<input type="text" class="form-control" name="firstname" required>
+            </div>				
+						<div class="form-group">
+							<label>Middlename (Optional)</label> 
+							<input type="text" class="form-control" name="middlename">
+            </div>
+						<div class="form-group">
+							<label>Surname</label>
+							<input type="text" class="form-control" name="lastname" required>
+						</div>
+						<div class="form-group">
+							<label>Birthdate</label>
+							<input type="date" class="form-control" name="Birthday" required>
+						</div>
+								
+            <div class="form-group">
+							<label>Gender</label>
+							<input type="text" class="form-control" name="Gender" required>
+						</div>	
+            <div class="form-group">
+							<label>Course</label>
+							<input type="text" class="form-control" name="course" required>
+						</div>	
+            <div class="form-group">
+							<label>Year Level</label>
+							<input type="text" class="form-control" name="year_level" required>
+						</div>	
+          
+    
+            <div class="form-group">
+							<label>Contact Number</label>
+							<input type="text" class="form-control" name="Contact_number" required>
+						</div>
+
+            <div class="form-group">
+              <center><label>Upload Image</label>
+							<input type="file" class="form-control" name="image" required></center>
+						</div>	
+            
+					</div>
+					<div class="modal-footer">
+						<input type="button" class="btn btn-danger" data-dismiss="modal" value="Cancel">
+						<input type="submit" class="btn btn-success" name="addnew" value="Add">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+  
   
 
 
@@ -628,8 +713,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
       
 
-         <!-- MESSAGES -->
-         <section id="messages" class="messages so_content" data-tab-content>
+         <!-- APPOINTMENT -->
+         <section id="appointment" class="appointment so_content" data-tab-content>
           <div class="row1">
             <div class="column1">
 

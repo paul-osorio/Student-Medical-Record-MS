@@ -65,7 +65,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ADMIN | CLINIC MS</title>
+    <title>ADMIN | STUDENT MEDICAL RECORD MS</title>
 
     <!-- Fontfaces CSS-->
     <link rel="stylesheet" href="./style.css?v=<?php echo time(); ?>">
@@ -162,15 +162,15 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
             </div>
           </li>
 
-          <li data-tab-target="#messages" class="px-4 w-100 mb-1 nav-item tab">
-            <i class="fa fa-commenting-o" aria-hidden="true"></i>
+          <li data-tab-target="#appointment" class="px-4 w-100 mb-1 nav-item tab">
+            <i class="fa fa-calendar" aria-hidden="true"></i>
             <div
               class="nav-link align-items-center"
               data-bs-toggle="collapse"
               data-bs-target="#home-collapse"
               aria-expanded="true"
             >
-              Messages
+              Appointment
             </div>
           </li>
 
@@ -672,8 +672,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
 
 
-        <!-- MESSAGES PAGE -->
-        <section id="messages" class="messages so_content" data-tab-content>
+        <!-- APPOINTMENT PAGE -->
+        <section id="appointment" class="appointment so_content" data-tab-content>
           <div class="row1">
             <div class="column1">
 
