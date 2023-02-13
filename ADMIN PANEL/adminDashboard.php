@@ -68,14 +68,16 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
     <title>ADMIN | STUDENT MEDICAL RECORD MS</title>
 
     <!-- Fontfaces CSS-->
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./style.css?v=<?php echo time(); ?>">
+    <!-- <link rel="stylesheet" href="./style.css" /> -->
     <link rel="stylesheet" href="./css/addAdmin.css"/>
     <link rel="stylesheet" href="./css/NurseTab.css" />
     <link rel="stylesheet" href="./css/StudentTab.css" />
-    <link rel="stylesheet" href="./css/DashboardTab.css"/>
+    <!-- <link rel="stylesheet" href="./css/DashboardTab.css"/> -->
+    <link rel="stylesheet" href="./css/DashboardTab.css?v=<?php echo time(); ?>"
     <link rel="stylesheet" href="./css/medicine.css"/>
     <link rel="stylesheet" href="./css/messagetab.css"/>
-    <link rel="stylesheet" href="./css/reportchart.css"/>
+    <link rel="stylesheet" href="./css/reportchart.css?v=<?php echo time(); ?>"
     <link rel="stylesheet" href="./css/archivesTab.css"/>
     
 
@@ -385,7 +387,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
               </div>
             </div>
           </div>
-          <div class="admins_table_details" >
+          <div class="admins_table_details table-responsive">
             <table>
               <tr>
                 <th>Image </th>
@@ -730,7 +732,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
               </div>
         </div>
       
-        <div class="tbl_report">
+        <div class="tbl_report table-responsive">
           <table class="report-tbl">
 
             <tr>
@@ -763,8 +765,10 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
           
           </table>
       </div>
-          
-          <button onClick="window.print()" class="reportbtn">Print</button>
+          <div class="button_container">
+            <button onClick="window.print()" class="reportbtn">Print</button>
+
+          </div>
           <br><br>
       </section>
 
@@ -795,7 +799,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
           </div>
 
           <h3 class="hh">Recent</h3>  
-          <div class="archives-content">
+          <div class="archives-content table-responsive">
             <table class="archives-table">
                 <tr>
                   <th>Image</th>

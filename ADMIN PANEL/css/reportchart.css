@@ -3,9 +3,11 @@ h3{
 }
 
 .headerpatients{
-    margin-left:120px;
+    /* margin-left:120px; */
     padding: 20px;
-    width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    max-width: 800px;
     background-color: white;
     box-shadow: 0 4px 2px 2px #d9d9d9;
   
@@ -23,13 +25,15 @@ h3{
     background-color: #d9d9d9;
 }
 .report-tbl{
-  margin-top: 20px;
- margin-left: 120px;
- width: 800px;   
- border: 2px;
- border-bottom-width: 10px;
- border-collapse: separate;
- margin-bottom: 10px;
+  /* margin-top: 20px; */
+  margin: 20px auto;
+/* margin-left: 120px; */
+max-width: 800px;
+width: 100%;   
+border: 2px;
+border-bottom-width: 10px;
+border-collapse: separate;
+margin-bottom: 10px;
 }
 
 
@@ -52,8 +56,11 @@ h3{
 .inc{
     color:#ff4646;
 }
+.button_container{
+    display: flex;
+}
 .reportbtn{
-    margin-left:850px;
+    margin-left: auto;
     color:white;
     background-color: #5D8FD9;
     border: none;
@@ -61,4 +68,9 @@ h3{
 }
 .colsp{
     background-color: transparent;
+}
+@media screen and (max-width: 878px){
+    .report-tbl{
+        width: 700px;
+    }
 }
