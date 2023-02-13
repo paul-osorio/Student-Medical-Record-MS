@@ -7,11 +7,12 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 ?>
 
 <?php
-     include_once 'insert_data.php';
+      include_once 'insert_data.php';
+      include_once 'insert_new_patient.php';
       include('db_conn.php');
      
       // SELECT ALL NURSES 
-      $fetchAllNurses = mysqli_query($conn, "SELECT * FROM `nurses`");
+      $fetchAllNurses = mysqli_query($conn, "SELECT * FROM `students`");
 
       // SELECT ALL MEDICINE 
       $fetchAllMedicine = mysqli_query($conn, "SELECT * FROM `medicine`");
@@ -351,6 +352,81 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                   </div>
               </div>
 </div>
+
+<!-- Add New Nurse Modal -->
+<div id="addPatientModal" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form method="post" action="nurseDashboard.php">
+					<div class="modal-header">						
+						<h4 class="modal-title">ADD NEW PATIENT</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					</div>
+					<div class="modal-body">	
+          <label><b>Basic Information</b></label> <br>
+            <div class="form-group">
+							<label>Student ID</label> 
+							<input type="text" class="form-control" name="student_id" required>
+            </div>	
+            <div class="form-group">
+							<label>Email/Username</label> 
+							<input type="text" class="form-control" name="Email" required>
+            </div>	
+            <div class="form-group">
+							<label>Password</label> 
+							<input type="text" class="form-control" name="password" required>
+            </div>	
+            <div class="form-group">
+							<label>Firstname</label> 
+							<input type="text" class="form-control" name="firstname" required>
+            </div>				
+						<div class="form-group">
+							<label>Middlename (Optional)</label> 
+							<input type="text" class="form-control" name="middlename">
+            </div>
+						<div class="form-group">
+							<label>Surname</label>
+							<input type="text" class="form-control" name="lastname" required>
+						</div>
+						<div class="form-group">
+							<label>Birthdate</label>
+							<input type="date" class="form-control" name="Birthday" required>
+						</div>
+								
+            <div class="form-group">
+							<label>Gender</label>
+							<input type="text" class="form-control" name="Gender" required>
+						</div>	
+            <div class="form-group">
+							<label>Course</label>
+							<input type="text" class="form-control" name="course" required>
+						</div>	
+            <div class="form-group">
+							<label>Year Level</label>
+							<input type="text" class="form-control" name="year_level" required>
+						</div>	
+          
+    
+            <div class="form-group">
+							<label>Contact Number</label>
+							<input type="text" class="form-control" name="Contact_number" required>
+						</div>
+
+            <div class="form-group">
+              <center><label>Upload Image</label>
+							<input type="file" class="form-control" name="image" required></center>
+						</div>	
+            
+					</div>
+					<div class="modal-footer">
+						<input type="button" class="btn btn-danger" data-dismiss="modal" value="Cancel">
+						<input type="submit" class="btn btn-success" name="addnew" value="Add">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+  
   
 
 
