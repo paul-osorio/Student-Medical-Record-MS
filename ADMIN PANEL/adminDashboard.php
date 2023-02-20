@@ -5,10 +5,15 @@ session_start();
 if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
 ?>
+
+
 <?php
     include_once 'insert_new_nurse.php';
     include_once 'insert_admin.php';
     include('db_conn.php');
+
+    include_once 'edit_admin.php';
+    include_once 'delete_admin.php';
 ?>
 
 
@@ -59,6 +64,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
 ?>
 
+<!--########################################################################################################################################################################-->
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -68,31 +76,31 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
     <title>ADMIN | STUDENT MEDICAL RECORD MS</title>
 
     <!-- Fontfaces CSS-->
-    <link rel="stylesheet" href="./style.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="./style.css?v=<?php echo time(); ?>"/>
     <!-- <link rel="stylesheet" href="./style.css" /> -->
     <link rel="stylesheet" href="./css/addAdmin.css"/>
     <link rel="stylesheet" href="./css/NurseTab.css" />
     <link rel="stylesheet" href="./css/StudentTab.css" />
     <!-- <link rel="stylesheet" href="./css/DashboardTab.css"/> -->
-    <link rel="stylesheet" href="./css/DashboardTab.css?v=<?php echo time(); ?>"
+    <link rel="stylesheet" href="./css/DashboardTab.css?v=<?php echo time(); ?>"/>
     <link rel="stylesheet" href="./css/medicine.css"/>
     <link rel="stylesheet" href="./css/messagetab.css"/>
-    <link rel="stylesheet" href="./css/reportchart.css?v=<?php echo time(); ?>"
+    <link rel="stylesheet" href="./css/reportchart.css?v=<?php echo time(); ?>"/>
     <link rel="stylesheet" href="./css/archivesTab.css"/>
+
     
 
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-      crossorigin="anonymous"
-    />
+      crossorigin="anonymous"/>
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-      crossorigin="anonymous"
-    ></script>
+      crossorigin="anonymous">
+    </script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
@@ -100,169 +108,197 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+
   </head>
+
   <body>
+
     <div class="main">
       <nav
         id="sidebar"
         class="sidebar navbar-dark active"
-        style="
-          width: 225px;
-          box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-        "
-      >
+        style="width: 225px; box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;">
+
         <div class="logo navbar-brand px-3 m-0" href="#">
           <img src="./assets/QCUClinicLogo.png" alt="" />
           QCU Clinic
         </div>
+        
+        
         <ul class="list-unstyled navbar-nav ps-0">
+          
           <li
-            data-tab-target="#dashboard"
-            class="mt-3 px-4 w-100 mb-1 nav-item so_active tab"
-          >
-            <i class="fa fa-area-chart"></i>
-            <a class="nav-link align-items-center"> Dashboard </a>
+              data-tab-target="#dashboard"
+              class="mt-3 px-4 w-100 mb-1 nav-item so_active tab">
+              
+              <i class="fa fa-area-chart"></i>
+              
+              <a class="nav-link align-items-center"> Dashboard </a>
+
           </li>
 
           <li data-tab-target="#admins" class="px-4 w-100 mb-1 nav-item tab">
-            <i class="fa fa-users" aria-hidden="true"></i>
-            <div
-              class="nav-link align-items-center"
-              data-bs-toggle="collapse"
-              data-bs-target="#home-collapse"
-              aria-expanded="true"
-            >
-              Admins
-            </div>
+              
+              <i class="fa fa-users" aria-hidden="true"></i>
+              
+              <div
+                class="nav-link align-items-center"
+                data-bs-toggle="collapse"
+                data-bs-target="#home-collapse"
+                aria-expanded="true">
+
+                Admins
+
+              </div>
+
           </li>
 
           <li data-tab-target="#students" class="px-4 w-100 mb-1 nav-item tab">
-            <i class="fa fa-users"></i>
-            <div
-              class="nav-link align-items-center"
-              data-bs-toggle="collapse"
-              data-bs-target="#home-collapse"
-              aria-expanded="true"
-            >
-              Students
-            </div>
+              
+              <i class="fa fa-users"></i>
+              <div
+                class="nav-link align-items-center"
+                data-bs-toggle="collapse"
+                data-bs-target="#home-collapse"
+                aria-expanded="true">
+
+                Students
+
+              </div>
+          
           </li>
 
           <li data-tab-target="#nurses" class="px-4 w-100 mb-1 nav-item tab">
-            <i class="fa fa-user-md" aria-hidden="true"></i>
-            <div
-              class="nav-link align-items-center"
-              data-bs-toggle="collapse"
-              data-bs-target="#home-collapse"
-              aria-expanded="true"
-            >
-              Nurses
-            </div>
+              
+              <i class="fa fa-user-md" aria-hidden="true"></i>
+              <div
+                class="nav-link align-items-center"
+                data-bs-toggle="collapse"
+                data-bs-target="#home-collapse"
+                aria-expanded="true">
+
+                Nurses
+
+              </div>
+
           </li>
 
           <li data-tab-target="#appointment" class="px-4 w-100 mb-1 nav-item tab">
-            <i class="fa fa-calendar" aria-hidden="true"></i>
-            <div
-              class="nav-link align-items-center"
-              data-bs-toggle="collapse"
-              data-bs-target="#home-collapse"
-              aria-expanded="true"
-            >
-              Appointment
-            </div>
+              
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <div
+                class="nav-link align-items-center"
+                data-bs-toggle="collapse"
+                data-bs-target="#home-collapse"
+                aria-expanded="true">
+
+                Appointment
+                
+              </div>
           </li>
 
           <li data-tab-target="#reports" class="px-4 w-100 mb-1 nav-item tab">
-            <i class="fa fa-book"></i>
-            <div
-              class="nav-link align-items-center"
-              data-bs-toggle="collapse"
-              data-bs-target="#home-collapse"
-              aria-expanded="true"
-            >
-              Reports
-            </div>
+              
+              <i class="fa fa-book"></i>
+              <div
+                class="nav-link align-items-center"
+                data-bs-toggle="collapse"
+                data-bs-target="#home-collapse"
+                aria-expanded="true">
+
+                Reports
+                
+              </div>
+
           </li>
 
           <li data-tab-target="#archives" class="px-4 w-100 mb-1 nav-item tab">
-            <i class="fa fa-folder-open-o" aria-hidden="true"></i>
-            <div
-              class="nav-link align-items-center"
-              data-bs-toggle="collapse"
-              data-bs-target="#home-collapse"
-              aria-expanded="true"
-            >
-              Archives
+            
+              <i class="fa fa-folder-open-o" aria-hidden="true"></i>
+              <div
+                class="nav-link align-items-center"
+                data-bs-toggle="collapse"
+                data-bs-target="#home-collapse"
+                aria-expanded="true">
+
+                Archives
+
             </div>
+
           </li>
 
           <li data-tab-target="#medicine" class="px-4 w-100 mb-1 nav-item tab">
-            <i class="fa fa-medkit"></i>
-            <div
-              class="nav-link align-items-center"
-              data-bs-toggle="collapse"
-              data-bs-target="#home-collapse"
-              aria-expanded="true"
-            >
-              Medicine
+              
+              <i class="fa fa-medkit"></i>
+              <div
+                class="nav-link align-items-center"
+                data-bs-toggle="collapse"
+                data-bs-target="#home-collapse"
+                aria-expanded="true">
+
+                Medicine
+                
             </div>
+            
           </li>
 
         </ul>
       </nav>
+
+
       <nav
         id="navigation"
         class="mynav px-3 navbar navbar-expand navbar-dark"
-        style="z-index: 1"
-      >
+        style="z-index: 1">
+
         <div class="container-fluid d-flex justify-content-start">
           <button
             id="sidebarCollapse"
-            class="navbar-toggle border-0 bg-dark ms-0 ms-md-2 ms-lg-0 order-1 order-md-1"
-          >
+            class="navbar-toggle border-0 bg-dark ms-0 ms-md-2 ms-lg-0 order-1 order-md-1">
             <span class="navbar-toggler-icon"></span>
           </button>
+
+
           <div class="ms-auto order-sm-0" id="navbarNav">
             <ul
-              class="navbar-nav ms-auto text-white d-flex align-items-left align-items-lg-center"
-            >
+              class="navbar-nav ms-auto text-white d-flex align-items-left align-items-lg-center">
               <span></span>
+
               <li class="nav-item px-0 d-flex align-items-center">
                 <a
                   class="nav-link modal-trigger text-dark"
                   data-toggle="modal"
                   data-target="#loginmodal"
-                  href="#"
-                  ><?=$admins['fname']?></a
-                >
+                  href="#"><?=$admins['fname']?></a>
               </li>
+
               <div class="dropdown nav-item">
+
                 <div
                   class="account background-none nav-link dropdown-toggle dropdown-toggle d-flex justify-content-center align-items-center"
                   type="button"
                   id="dropdownMenuButton1"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
-                  style="background: none"
-                >
-                  <img src="./assets/<?=$admins['img']?>" alt="" />
+                  style="background: none">
+                  <img src="./assets/<?=$admins['img']?>" alt=""/>
                 </div>
 
                 <ul
                   class="dropdown-menu dropdown-menu-end dropdown-menu-dark"
-                  aria-labelledby="dropdownMenuButton1"
-                >
+                  aria-labelledby="dropdownMenuButton1">
+
                   <li>
-                    <a class="dropdown-item" href="#"
-                      >Login As: <span id="email_span"></span
-                    ></a>
+                    <a class="dropdown-item" href="#">Login As: <span id="email_span"></span></a>
                   </li>
+
                   <li><a class="dropdown-item" href="#">My Account</a></li>
+
                   <li id="logout">
                     <a class="dropdown-item" href="logout.php">Logout</a>
                   </li>
+
                 </ul>
               </div>
             </ul>
@@ -270,9 +306,10 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
         </div>
       </nav>
       
+
       <div class="content_wrapper">
 
-
+<!--########################################################################################################################################################################-->
       
       <!-- DASHBOARD PAGE -->
         <section id="dashboard" class="dashboard so_content so_active" data-tab-content>
@@ -281,266 +318,455 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
           </div>
 
           <div class="card_container">
+
             <div class="card" style="background-color:#7BAD89;">
+
               <div class="card_content">
                 <span class="number"> <?=$countAdmins['totalAd']?> </span>
                 <span class="name">Admins</span>
               </div>
+
               <div class="icon">
                 <i class="fa solid fa-user" aria-hidden="true"></i>
               </div>
+
             </div>
+
             <div class="card" style="background-color:#7B89AD;">
+
               <div class="card_content">
                 <span class="number"> <?=$countNurses['totalNur']?> </span>
                 <span class="name">Nurses</span>
               </div>
+
               <div class="icon">
                 <i class="fa solid fa-user" aria-hidden="true"></i>
               </div>
+
             </div>
+
             <div class="card" style="background-color:#AD7B7B;">
+
               <div class="card_content" >
                 <span class="number"> <?=$countStudents['totalStud']?> </span>
                 <span class="name">Students</span>
               </div>
+
               <div class="icon">
                 <i class="fa solid fa-user" aria-hidden="true"></i>
               </div>
+
             </div>
+
           </div>
+
+<!--########################################################################################################################################################################-->
+
+        <!-- SUMMARY REPORT AT DASHBOARD PAGE -->
+
           <div class="chart_container">
             <div class="card_content">
               <div class="chart1">
-              <span>NUMBER OF PATIENTS</span>
-                <select name="filter" id="filter">
-                  <option value="Monthly">Monthly</option>
-                  <option value="Yearly">Yearly</option>
-                </select>
-              <canvas id="myChart" style="width:80%; max-width:550px; height: 130px; padding-top: 15px;"></canvas>
+                <span>NUMBER OF PATIENTS</span>
+                  <select name="filter" id="filter">
+                    <option value="Monthly">Monthly</option>
+                    <option value="Yearly">Yearly</option>
+                  </select>
+                <canvas id="myChart" style="width:80%; max-width:550px; height: 130px; padding-top: 15px;"></canvas>
+              </div>
             </div>
-            </div>
+
+
             <div class="card_content">
               <div class="chart2">
-              <select name="filter" id="filter">
-                  <option value="Year Level">Year Level</option>
-                  <option value="1st Year">1st Year</option>
-                  <option value="2nd Year">2nd Year</option>
-                  <option value="3rd Year">3rd Year</option>
-                  <option value="4th Year">4th Year</option>
-              </select>
-              <canvas id="myChart2" style="width:70%; max-width:500px; height: 110px; padding-left: 5px; padding-top: 15px"></canvas>
-            </div>
+                  <select name="filter" id="filter">
+                    <option value="Year Level">Year Level</option>
+                    <option value="1st Year">1st Year</option>
+                    <option value="2nd Year">2nd Year</option>
+                    <option value="3rd Year">3rd Year</option>
+                    <option value="4th Year">4th Year</option>
+                  </select>
+                  <canvas id="myChart2" style="width:70%; max-width:500px; height: 110px; padding-left: 5px; padding-top: 15px"></canvas>
+              </div>
             </div>
           </div>
+
+<!--########################################################################################################################################################################-->
+          
+        <!-- NURSES TODAY AT DASHBOARD PAGE -->
+
           <div class="nurses_details">
             <span class="title">NURSES TODAY</span>
-            <table>
 
-            <?php if(mysqli_num_rows($fetchAllNursesToday) > 0) { 
+            <table>
+            
+                <?php if(mysqli_num_rows($fetchAllNursesToday) > 0) { 
                 while ($todayNurses = mysqli_fetch_assoc($fetchAllNursesToday)) {  ?>
 
-            <tr class="container">
-              <td class="number"><span><?=$todayNurses['emp_id']?></span></td>
-              <td class="name"><img src="./assets/<?=$todayNurses['profile_pic']?>"/><span class="name"><?=$todayNurses['firstname']?> <?=$todayNurses['lastname']?></span></td>
-              <td><span class="type"><?=$todayNurses['position']?></span></td>
-              <td><span class="date"><?=$todayNurses['schedule']?></span></td>
-                <td class="class">
-                  <span>Chat Now</span>
-                  <i class="fa fa-commenting" aria-hidden="true"></i>
-                </td>
-            </tr>
+              <tr class="container">
+                  <td class="number"><span><?=$todayNurses['emp_id']?></span></td>
+                  <td class="name"><img src="./assets/<?=$todayNurses['profile_pic']?>"/><span class="name"><?=$todayNurses['firstname']?> <?=$todayNurses['lastname']?></span></td>
+                  <td><span class="type"><?=$todayNurses['position']?></span></td>
+                  <td><span class="date"><?=$todayNurses['schedule']?></span></td>
+                    <td class="class">
+                      <span>Chat Now</span>
+                      <i class="fa fa-commenting" aria-hidden="true"></i>
+                    </td>
+              </tr>
 
-            <?php } } ?>
+                <?php } } ?>
 
             </table>
           </div>
         </section>
 
 
+<!--########################################################################################################################################################################-->
 
         <!-- ADMINS PAGE -->
         <section id="admins" class="admins so_content" data-tab-content>
+
           <div class="admins_header d-flex justify-content-between">
             <h3 class="m-0">ADMINS</h3>
-            <button class="custom_btn">
-              <a href="#addAdminModal" class="custom_btn" data-toggle="modal"><i class="fa fa-user-md"></i>Add Admin</a>
-            </button>
+              <button class="custom_btn">
+                <a href="#addAdminModal" class="custom_btn" data-toggle="modal"><i class="fa fa-user-md"></i>Add Admin</a>
+              </button>
           </div>
+
           <div class="filter_wrapper">
             <div class="sort flex-grow-1">
               <span>Sort by</span>
-              <select name="filter" id="filter">
-                <option value="Surname">Surname</option>
-                <option value="Firstname">Firstname</option>
-              </select>
+                <select name="filter" id="filter">
+                  <option value="Surname">Surname</option>
+                  <option value="Firstname">Firstname</option>
+                </select>
             </div>
+
             <div class="r">
               <div class="search">
                 <input type="text" placeholder="Search" />
               </div>
+
               <div class="grid">
                 <i class="fa fa-th-large" aria-hidden="true"></i>
               </div>
+
               <div class="bars">
                 <i class="fa fa-bars" aria-hidden="true"></i>
               </div>
             </div>
           </div>
+          
           <div class="admins_table_details table-responsive">
             <table>
+              
               <tr>
-                <th>Image </th>
-                <th> Admin ID</th>
-                <th> Name<sub>Firstname Surname</th>
-                <th> Email Address</th>
-                <th> Status</th>
-                <th><span>Action</span></th>
+                  <th> Image </th>
+                  <th> Admin ID</th>
+                  <th> First Name</th>
+                  <th> Last Name</th>
+                  <th> Email Address</th>
+                  <th> Contact Number</th>
+                  <th><span>Actions</span></th>
               </tr>
               
 
-              <?php if(mysqli_num_rows($fetchAddAdmins) > 0) { 
-                while ($addAdmins = mysqli_fetch_assoc($fetchAddAdmins)) {  ?>
+                  <?php if(mysqli_num_rows($fetchAddAdmins) > 0) { 
+                  while ($addAdmins = mysqli_fetch_assoc($fetchAddAdmins)) {  ?>
 
 
               <tr class="container">
-                <td><img src="./assets/<?=$addAdmins['img']?>"/></td>
-                <td><span class="unique_id"><?=$addAdmins['unique_id']?></span></td>
-                <td><span class="name"><?=$addAdmins['fname']?> <?=$addAdmins['lname']?></span></td>
-                <td><span class="email"><?=$addAdmins['email']?></span></td>
-                <td><span class="status"><?=$addAdmins['status']?></span></td>
-                <td>
-                  <i class="fa fa-info-circle" aria-hidden="true"></i>
-                </td>
+                  <td><img src="./assets/<?=$addAdmins['img']?>"/></td>
+                  <td><span class="unique_id"><?=$addAdmins['unique_id']?></span></td>
+                  <td><span class="fname"><?=$addAdmins['fname']?></span></td>
+                  <td><span class="lname"><?=$addAdmins['lname']?></span></td>
+                  <td><span class="email"><?=$addAdmins['email']?></span></td>
+                  <td><span class="contact_num"><?=$addAdmins['contact_num']?></span></td>
+                  <td>
+                      <a href="#viewAdminInfo" class="custom_btn" data-toggle="modal"><i class="fa fa-info-circle" aria-hidden="true" style="color: #5D8FD9;"></i></a>
+                      <a href="#editAdminInfo" class="custom_btn editbtn" data-toggle="modal"><i class="fa fa-edit" aria-hidden="true" style="color: #5D8FD9;"></i></a>
+                      <a href="#delAdminInfo" class="custom_btn deletebtn" data-toggle="modal"><i class="fa fa-trash" aria-hidden="true" style="color: #5D8FD9;"></i></a>
+                  </td>
               </tr>
-              <?php } } ?>
+              
+                  <?php } } ?>
 
               
             </table>
           </div>
-          <div></div>
+        <div>
 
-
-<!-- Add New Admin Modal -->
-<div id="addAdminModal" class="modal fade">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<form method="post" action="adminDashboard.php">
-					<div class="modal-header">						
-						<h4 class="modal-title">ADD NEW ADMIN</h4>
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					</div>
-					<div class="modal-body">	
-          <label><b>Basic Information</b></label> <br>
-            <div class="form-group">
-							<label>Admin ID</label> 
-							<input type="text" class="form-control" name="unique_id" required>
-            </div>	
-            <div class="form-group">
-							<label>Email Address</label> 
-							<input type="text" class="form-control" name="email" required>
-            </div>	
-            <div class="form-group">
-							<label>Password</label> 
-							<input type="text" class="form-control" name="password" required>
-            </div>	
-            <div class="form-group">
-							<label>Firstname</label> 
-							<input type="text" class="form-control" name="fname" required>
-            </div>				
-						<div class="form-group">
-							<label>Lastname</label>
-							<input type="text" class="form-control" name="lname" required>
-						</div>
-            <div class="form-group">
-							<label>Status</label>
-							<input type="text" class="form-control" name="status" required>
-						</div>	
-  
-
-            <div class="form-group">
-              <center><label>Upload Image</label>
-							<input type="file" class="form-control" name="img" required></center>
-						</div>	
-            
-					</div>
-					<div class="modal-footer">
-						<input type="button" class="btn btn-danger" data-dismiss="modal" value="Cancel">
-						<input type="submit" class="btn btn-success" name="addAdmin" value="Add">
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-</section>
+      </div>
 
 
 
+<!--########################################################################################################################################################################-->
 
-        <!-- STUDENTS PAGE -->
-        <section id="students" class="students so_content" data-tab-content>
-          <div class="student_header d-flex justify-content-between">
-            <h3 class="m-0">STUDENTS</h3>
-          </div>
-          <div class="filter_wrapper">
-            <div class="sort flex-grow-1">
-              <span>Sort by</span>
-              <select name="filter" id="filter">
-                <option value="Surname">Surname</option>
-                <option value="Firstname">Firstname</option>
-              </select>
-            </div>
-            <div class="r">
-              <div class="search">
-                <input type="text" placeholder="Search" />
+      <!-- ADD NEW ADMIN MODAL AT ADMINS PAGE-->
+
+        <div id="addAdminModal" class="modal fade">
+            <div class="modal-dialog">
+
+              <div class="modal-content">
+                <form method="post" action="adminDashboard.php">
+
+                  <div class="modal-header">						
+                    <h4 class="modal-title">ADD NEW ADMIN</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                  </div>
+
+                  <div class="modal-body">	
+                    <label><b>Basic Information</b></label> <br>
+                      <div class="form-group">
+                        <label>Admin ID</label> 
+                        <input type="text" class="form-control" name="unique_id" required>
+                      </div>	
+
+                      <div class="form-group">
+                        <label>Email Address</label> 
+                        <input type="text" class="form-control" name="email" required>
+                      </div>	
+
+                      <!-- <div class="form-group">
+                        <label>Password</label> 
+                        <input type="text" class="form-control" name="password" required>
+                      </div>	 -->
+
+                      <div class="form-group">
+                        <label>First Name</label> 
+                        <input type="text" class="form-control" name="fname" required>
+                      </div>		
+
+                      <div class="form-group">
+                        <label>Last Name</label>
+                        <input type="text" class="form-control" name="lname" required>
+                      </div>
+
+                      <div class="form-group">
+                        <label>Contact Number</label>
+                        <input type="text" class="form-control" name="contact_num" required>
+                      </div>	
+          
+
+                    <!-- <div class="form-group">
+                      <center><label>Upload Image</label>
+                      <input type="file" class="form-control" name="img" required></center>
+                    </div>	 -->
+                    
+                  </div>
+                  
+                  <div class="modal-footer">
+                    <input type="button" class="btn btn-danger" data-dismiss="modal" value="Cancel">
+                    <input type="submit" class="btn btn-success" name="addAdmin" value="Add">
+                  </div>
+
+                </form>
               </div>
-              <div class="grid">
-                <i class="fa fa-th-large" aria-hidden="true"></i>
-              </div>
-              <div class="bars">
-                <i class="fa fa-bars" aria-hidden="true"></i>
-              </div>
+
             </div>
           </div>
-          <div class="stud_table_details" >
-            <table>
-              <tr>
-                <th>1×1</th>
-                <th>Student ID</th>
-                <th>Fullname<sub>Surname, Firstname Middlename</th>
-                <th>Course</th>
-                <th>Year Level</th>
-                <th>Status</th>
-                <th><span>Action</span></th>
-              </tr>
-              
-
-              <?php if(mysqli_num_rows($fetchAllStudents) > 0) { 
-                while ($students = mysqli_fetch_assoc($fetchAllStudents)) {  ?>
-
-
-              <tr class="container">
-                <td><img src="./assets/<?=$students['image']?>"/></td>
-                <td><span class="stud_id"><?=$students['student_id']?></span></td>
-                <td><span class="name"><?=$students['lastname']?>, <?=$students['firstname']?> <?=$students['middlename']?></span></td>
-                <td><span class="course"><?=$students['course']?></span></td>
-                <td><span class="year"><?=$students['year_level']?></span></td>
-                <td><span class="status"><?=$students['Remarks']?></span></td>
-                <td>
-                  <i class="fa fa-info-circle" aria-hidden="true"></i>
-                  <i class="fa fa-commenting" aria-hidden="true"></i>
-                </td>
-              </tr>
-              <?php } } ?>
-
-              
-            </table>
-          </div>
-          <div></div>
+          
         </section>
 
 
-        <!-- NURSES PAGE -->
+<!--#################################################################################################################################################################################################################################-->
+
+      <!-- EDIT DATA ADMIN MODAL AT ADMINS PAGE-->
+        <div class="modal fade" id="editAdminInfo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel"> EDIT ADMIN DATA </h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+
+                  <form action="edit_admin.php" method="POST">
+
+                      <div class="modal-body">
+
+                          <input type="hidden" name="update_id" id="update_id">
+
+                          <div class="form-group">
+                              <label> Admin ID </label>
+                              <input type="text" name="unique_id" id="unique_id" class="form-control" placeholder="Admin ID" readonly>
+                          </div>
+
+                          <div class="form-group">
+                              <label> Email Address </label>
+                              <input type="text" name="email" id="email" class="form-control" placeholder="Email Address">
+                          </div>
+
+                          <div class="form-group">
+                              <label> First Name </label>
+                              <input type="text" name="fname" id="fname" class="form-control" placeholder="First Name">
+                          </div>
+
+                          <div class="form-group">
+                              <label> Last Name </label>
+                              <input type="text" name="lname" id="lname" class="form-control" placeholder="Last Name">
+                          </div>
+
+                          <!-- <div class="form-group">
+                              <label> Upload Image </label>
+                              <input type="file" name="img" id="img" class="form-control" placeholder="Enter Course">
+                          </div> -->
+
+                          <div class="form-group">
+                              <label> Contact Number </label>
+                              <input type="text" name="contact_num" id="contact_num" class="form-control" placeholder="Contact Number">
+                          </div>
+
+                      </div>
+                      <div class="modal-footer">
+                          <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          <button type="submit" name="updatedata" class="btn btn-primary">Update Data</button> -->
+                          <input type="button" class="btn btn-danger" data-dismiss="modal" value="Cancel">
+                          <input type="submit" class="btn btn-success" name="updateAdmin" value="Update Data">
+                      
+                      </div>
+                  </form>
+
+              </div>
+            </div>
+        </div>
+
+
+<!--#################################################################################################################################################################################################################################-->
+        
+
+      <!-- DELETE DATA ADMIN MODAL AT ADMINS PAGE-->
+
+        <div class="modal fade" id="delAdminInfo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel"> Delete Student Data </h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+
+                  <form action="delete_admin.php" method="POST">
+
+                      <div class="modal-body">
+
+                          <input type="hidden" name="delete_id" id="delete_id">
+
+                          <h4>Do you want to delete this data?</h4>
+                      </div>
+                      <div class="modal-footer">
+                          <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal"> NO </button>
+                          <button type="submit" name="deletedata" class="btn btn-primary"> Yes, delete it. </button> -->
+                          <input type="button" class="btn btn-danger" data-dismiss="modal" value="No">
+                          <input type="submit" class="btn btn-success" name="delAdmin" value="Yes, delete it.">
+                      </div>
+                  </form>
+
+              </div>
+          </div>
+      </div>
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--#################################################################################################################################################################################################################################-->
+
+        <!-- STUDENTS PAGE -->
+        <section id="students" class="students so_content" data-tab-content>
+
+              <div class="student_header d-flex justify-content-between">
+                <h3 class="m-0">STUDENTS</h3>
+              </div>
+
+              <div class="filter_wrapper">
+                <div class="sort flex-grow-1">
+                  <span>Sort by</span>
+                  <select name="filter" id="filter">
+                    <option value="Surname">Surname</option>
+                    <option value="Firstname">Firstname</option>
+                  </select>
+                </div>
+
+                <div class="r">
+                  <div class="search">
+                    <input type="text" placeholder="Search" />
+                  </div>
+
+                  <div class="grid">
+                    <i class="fa fa-th-large" aria-hidden="true"></i>
+                  </div>
+
+                  <div class="bars">
+                    <i class="fa fa-bars" aria-hidden="true"></i>
+                  </div>
+                </div>
+              </div>
+
+              <div class="stud_table_details" >
+                <table>
+
+                  <tr>
+                      <th>1×1</th>
+                      <th>Student ID</th>
+                      <th>Fullname<sub>Surname, Firstname Middlename</th>
+                      <th>Course</th>
+                      <th>Year Level</th>
+                      <th>Status</th>
+                      <th><span>Action</span></th>
+                  </tr>
+                  
+
+                      <?php if(mysqli_num_rows($fetchAllStudents) > 0) { 
+                      while ($students = mysqli_fetch_assoc($fetchAllStudents)) {  ?>
+
+
+                  <tr class="container">
+                      <td><img src="./assets/<?=$students['image']?>"/></td>
+                      <td><span class="stud_id"><?=$students['student_id']?></span></td>
+                      <td><span class="name"><?=$students['lastname']?>, <?=$students['firstname']?> <?=$students['middlename']?></span></td>
+                      <td><span class="course"><?=$students['course']?></span></td>
+                      <td><span class="year"><?=$students['year_level']?></span></td>
+                      <td><span class="status"><?=$students['Remarks']?></span></td>
+                      <td>
+                        <i class="fa fa-info-circle" aria-hidden="true"></i>
+                        <i class="fa fa-commenting" aria-hidden="true"></i>
+                      </td>
+                  </tr>
+                  
+                      <?php } } ?>
+
+                </table>
+              </div>
+            <div>
+          </div>
+        </section>
+
+
+<!--#################################################################################################################################################################################################################################-->
+
+      <!-- NURSES PAGE -->
         <section id="nurses" class="nurses so_content" data-tab-content>
           <div class="nurse_header d-flex justify-content-between">
             <h3 class="m-0">NURSES</h3>
@@ -570,7 +796,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
           </div>
           <div class="card_container">
 
-          <?php if(mysqli_num_rows($fetchAllNurses) > 0) { 
+                <?php if(mysqli_num_rows($fetchAllNurses) > 0) { 
                 while ($nurses = mysqli_fetch_assoc($fetchAllNurses)) {  ?>
 
             <div class="card">
@@ -581,16 +807,19 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                 <span class="nurse"><?=$nurses['position']?></span>
                 <div class="card_footer">
                   <span class="date"><?=$nurses['schedule']?></span>
-                  <i class="fa fa-info-circle" aria-hidden="true"></i>
-                  <i class="fa fa-commenting" aria-hidden="true"></i>
+                    <a href="#viewNurseInfo" class="custom_btn" data-toggle="modal"><i class="fa fa-info-circle" aria-hidden="true" style="color: #5D8FD9;"></i></a>
+                    <a href="#editNurseInfo" class="custom_btn" data-toggle="modal"><i class="fa fa-edit" aria-hidden="true" style="color: #5D8FD9;"></i></a>
+                    <a href="#delNurse" class="custom_btn" data-toggle="modal"><i class="fa fa-trash" aria-hidden="true" style="color: #5D8FD9;"></i></a>
                 </div>
               </div>
             </div>
 
-            <?php } } ?>
+                <?php } } ?>
 
           </div>
 
+
+<!--#################################################################################################################################################################################################################################-->
 
 <!-- Add New Nurse Modal -->
 <div id="addNurseModal" class="modal fade">
@@ -671,6 +900,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 </section>
 
 
+<!--#################################################################################################################################################################################################################################-->
 
         <!-- APPOINTMENT PAGE -->
         <section id="appointment" class="appointment so_content" data-tab-content>
@@ -717,6 +947,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
           </div>
       </section>
 
+
+<!--#################################################################################################################################################################################################################################-->
 
       <!-- REPORTS PAGE -->
       <section id="reports" class="reports so_content" data-tab-content>
@@ -773,6 +1005,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
       </section>
 
 
+<!--#################################################################################################################################################################################################################################-->
 
       <!-- ARCHIVES PAGE -->
       <section id="archives" class="archives so_content" data-tab-content>  
@@ -915,6 +1148,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 <!-- E N D  A R C H I V E -->
 
 
+<!--#################################################################################################################################################################################################################################-->
 
       <!-- MEDICINE PAGE -->
 
@@ -949,6 +1183,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
         </div>
       </div>
 
+
+<!--#################################################################################################################################################################################################################################-->
 
 <!-- Add New Medicine Modal -->
 <div id="addMedicineModal" class="modal fade">
@@ -1032,6 +1268,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 		</div>
 	</div>
 
+
+<!--#################################################################################################################################################################################################################################-->
+
 <!-- Medicine list  -->
 <div>
   <ul class="accordion">
@@ -1107,6 +1346,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 <!-- E N D  M E D I C I N E -->
 
 
+
+<!--#################################################################################################################################################################################################################################-->
+
       </div>
     </div>
     <!-- custom js -->
@@ -1123,6 +1365,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
     <script src="./js/reportchart.js"></script>
     <script src="./js/modalSample.js"></script>
 
+
+<!--#################################################################################################################################################################################################################################-->
+
     <script>
         $(document).ready(function()
         {
@@ -1130,6 +1375,58 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
             {
                 $('#message').hide();
             },3000);
+        });
+    </script>
+
+
+<!--#################################################################################################################################################################################################################################-->
+
+  <script>
+        $(document).ready(function () {
+
+            $('.deletebtn').on('click', function () {
+
+                $('#delAdminInfo').modal('show');
+
+                $tr = $(this).closest('tr');
+
+                var data = $tr.children("td").map(function () {
+                    return $(this).text();
+                }).get();
+
+                console.log(data);
+
+                $('#delete_id').val(data[0]);
+
+            });
+        });
+    </script>
+
+
+<!--#################################################################################################################################################################################################################################-->
+
+    <script>
+        $(document).ready(function () {
+
+            $('.editbtn').on('click', function () {
+
+                $('#editAdminInfo').modal('show');
+
+                $tr = $(this).closest('tr');
+
+                var data = $tr.children("td").map(function () {
+                    return $(this).text();
+                }).get();
+
+                console.log(data);
+
+                $('#update_id').val(data[0]);
+                $('#unique_id').val(data[1]);
+                $('#email').val(data[4]);
+                $('#fname').val(data[2]);
+                $('#lname').val(data[3]);
+                $('#contact_num').val(data[5]);
+            });
         });
     </script>
     

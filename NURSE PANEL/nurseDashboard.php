@@ -11,14 +11,18 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
       include_once 'insert_new_patient.php';
       include('db_conn.php');
      
-      // SELECT ALL NURSES 
-      $fetchAllNurses = mysqli_query($conn, "SELECT * FROM `students`");
+    
 
       // SELECT ALL MEDICINE 
       $fetchAllMedicine = mysqli_query($conn, "SELECT * FROM `medicine`");
 
       // SELECT ALL REPORTS 
       $fetchAllReports = mysqli_query($conn, "SELECT * FROM `reports`");
+
+
+      // SELECT ADD PATIENTS
+      $fetchAddPatients = mysqli_query($conn, "SELECT * FROM `students`");
+      
 
 
 ?>
@@ -412,13 +416,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 							<input type="text" class="form-control" name="Contact_number" required>
 						</div>
 
-            <div class="form-group">
-              <center><label>Upload Image</label>
-							<input type="file" class="form-control" name="image" required></center>
-						</div>	
             
 					</div>
-					<div class="modal-footer">
+					<div class="modal-footer" style="width:100%;">
 						<input type="button" class="btn btn-danger" data-dismiss="modal" value="Cancel">
 						<input type="submit" class="btn btn-success" name="addnew" value="Add">
 					</div>
@@ -445,6 +445,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                 <div class="content">
                   <div class="closebtn" onclick="togglePopup()">&times;
                   </div>
+
+
+
 <!--View patient Details-->
 <div class="patients-head">
 <img src="./assets/nurse3.jpg">
@@ -511,101 +514,29 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
 
             <table>
+
+            <?php if(mysqli_num_rows($fetchAddPatients) > 0) { 
+                while ($addPatient = mysqli_fetch_assoc($fetchAddPatients)) {  ?>
              
               <tr class="container">
                 <!--Patient info-->
-                <td style="background-color: #5d8df9;"><span class="patient_id">17-1499</span></td>
-                <td><img src="./assets/badang.jpg"/></td>
-                <td><span class="name">Bulleque, Jessica Ombao</span></td>
-                <td><span class="course">BSIT</span></td>
-                <td><span class="year">4th Year</span></td>
-                <td><span class="email">randomemailgenerator@gmail.com</span></td>
-                <td><span class="status">Status</span></td>
-                <td><button class="addpatient-btn" onclick="togglePopup()">View</button>  </td>
+                <td style="background-color: #163666;"><span class="patient_id">17-1499</span></td>
+                <td><img src="./assets/<?=$addPatient['image']?>"/></td>
+                <td><span class="name"><?=$addPatient['lastname']?>, <?=$addPatient['firstname']?> <?=$addPatient['middlename']?></span></td>
+                <td><span class="course"><?=$addPatient['course']?></span></td>
+                <td><span class="year"><?=$addPatient['year_level']?></span></td>
+                <td><span class="email"><?=$addPatient['Email']?></span></td>
+                <td><span class="status"><?=$addPatient['Remarks']?></span></td>
+                <td><button class="addpatient-btn" style="background-color: #163666;" onclick="togglePopup()">View</button>  </td>
+                
+                <td><a href="#addAdminModal" class="custom_btn" data-toggle="modal"><i class="fa fa-edit" aria-hidden="true" style="color: #163666"></i></a>
+                    <a href="#addAdminModal" class="custom_btn" data-toggle="modal"><i class="fa fa-trash" aria-hidden="true" style="color: #163666"></i></a>
+                </td>
 
                 
               </tr>
-              <tr class="container">
-                <!--Patient info-->
-                <td style="background-color: #5d8df9;"><span class="patient_id">17-1499</span></td>
-                <td><img src="./assets/badang.jpg"/></td>
-                <td><span class="name">Bulleque, Jessica Ombao</span></td>
-                <td><span class="course">BSIT</span></td>
-                <td><span class="year">4th Year</span></td>
-                <td><span class="email">randomemailgenerator@gmail.com</span></td>
-                <td><span class="status">Status</span></td>
-                <td><button class="addpatient-btn" onclick="togglePopup()">View</button>  </td>
-
-                
-              </tr>
-              <tr class="container">
-                <!--Patient info-->
-                <td style="background-color: #5d8df9;"><span class="patient_id">17-1499</span></td>
-                <td><img src="./assets/badang.jpg"/></td>
-                <td><span class="name">Bulleque, Jessica Ombao</span></td>
-                <td><span class="course">BSIT</span></td>
-                <td><span class="year">4th Year</span></td>
-                <td><span class="email">randomemailgenerator@gmail.com</span></td>
-                <td><span class="status">Status</span></td>
-                <td><button class="addpatient-btn" onclick="togglePopup()">View</button>  </td>
-
-                
-              </tr>
-              <tr class="container">
-                <!--Patient info-->
-                <td style="background-color: #5d8df9;"><span class="patient_id">17-1499</span></td>
-                <td><img src="./assets/badang.jpg"/></td>
-                <td><span class="name">Bulleque, Jessica Ombao</span></td>
-                <td><span class="course">BSIT</span></td>
-                <td><span class="year">4th Year</span></td>
-                <td><span class="email">randomemailgenerator@gmail.com</span></td>
-                <td><span class="status">Status</span></td>
-                <td><button class="addpatient-btn" onclick="togglePopup()">View</button>  </td>
-
-                
-              </tr>
-              <tr class="container">
-                <!--Patient info-->
-                <td style="background-color: #5d8df9;"><span class="patient_id">17-1499</span></td>
-                <td><img src="./assets/badang.jpg"/></td>
-                <td><span class="name">Bulleque, Jessica Ombao</span></td>
-                <td><span class="course">BSIT</span></td>
-                <td><span class="year">4th Year</span></td>
-                <td><span class="email">randomemailgenerator@gmail.com</span></td>
-                <td><span class="status">Status</span></td>
-                <td><button class="addpatient-btn" onclick="togglePopup()">View</button>  </td>
-
-                
-              </tr>
-              <tr class="container">
-                <!--Patient info-->
-                <td style="background-color: #5d8df9;"><span class="patient_id">17-1499</span></td>
-                <td><img src="./assets/badang.jpg"/></td>
-                <td><span class="name">Bulleque, Jessica Ombao</span></td>
-                <td><span class="course">BSIT</span></td>
-                <td><span class="year">4th Year</span></td>
-                <td><span class="email">randomemailgenerator@gmail.com</span></td>
-                <td><span class="status">Status</span></td>
-                <td><button class="addpatient-btn" onclick="togglePopup()">View</button>  </td>
-
-                
-              </tr>
-              <tr class="container">
-                <!--Patient info-->
-                <td style="background-color: #5d8df9;"><span class="patient_id">17-1499</span></td>
-                <td><img src="./assets/badang.jpg"/></td>
-                <td><span class="name">Bulleque, Jessica Ombao</span></td>
-                <td><span class="course">BSIT</span></td>
-                <td><span class="year">4th Year</span></td>
-                <td><span class="email">randomemailgenerator@gmail.com</span></td>
-                <td><span class="status">Status</span></td>
-                <td><button class="addpatient-btn" onclick="togglePopup()">View</button>  </td>
-
-                
-              </tr>
-            
-
-
+              <?php } } ?>
+              
             </table>
             
            
