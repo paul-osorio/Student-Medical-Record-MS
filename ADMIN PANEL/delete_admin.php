@@ -1,12 +1,12 @@
 <?php
-$conn = mysqli_connect("localhost","root","");
-$db = mysqli_select_db($conn, 'clinicms_db');
+include_once 'db_conn.php';
+$success  = "";
 
 if(isset($_POST['delAdmin']))
 {
     $id = $_POST['delete_id'];
 
-    $query = "DELETE FROM admins WHERE user_id='$id'";
+    $query = "DELETE FROM admins WHERE email='$id'";
     $query_run = mysqli_query($conn, $query);
 
     if($query_run)

@@ -1,6 +1,6 @@
 <?php
-$conn = mysqli_connect("localhost","root","");
-$db = mysqli_select_db($conn, 'clinicms_db');
+    include_once 'db_conn.php';
+    $success  = "";
 
     if(isset($_POST['updateAdmin']))
     {   
@@ -11,7 +11,7 @@ $db = mysqli_select_db($conn, 'clinicms_db');
         $lname = $_POST['lname'];
         $contact_num = $_POST['contact_num'];
 
-        $query = "UPDATE admins SET email='$email', fname='$fname', lname='$lname', contact_num='$contact_num' WHERE user_id='$id'  ";
+        $query = "UPDATE admins SET email='$email', fname='$fname', lname='$lname', contact_num='$contact_num' WHERE email='$id'  ";
         $query_run = mysqli_query($conn, $query);
 
         if($query_run)
