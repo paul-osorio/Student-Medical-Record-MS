@@ -99,7 +99,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
               data-bs-target="#home-collapse"
               aria-expanded="true"
             >
-              Appointment
+              Appointments
             </div>
           </li>
           <li data-tab-target="#medicine" class="px-4 w-100 mb-1 nav-item tab">
