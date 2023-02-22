@@ -748,7 +748,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                       <td><span class="name"><?=$students['lastname']?>, <?=$students['firstname']?> <?=$students['middlename']?></span></td>
                       <td><span class="course"><?=$students['course']?></span></td>
                       <td><span class="year"><?=$students['year_level']?></span></td>
-                      <td><span class="status"><?=$students['Remarks']?></span></td>
+                      <td><span class="status"><?=$students['remarks']?></span></td>
                       <td>
                         <i class="fa fa-info-circle" aria-hidden="true"></i>
                         <i class="fa fa-commenting" aria-hidden="true"></i>

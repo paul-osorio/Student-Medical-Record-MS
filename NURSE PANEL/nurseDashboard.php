@@ -525,8 +525,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                 <td><span class="name"><?=$addPatient['lastname']?>, <?=$addPatient['firstname']?> <?=$addPatient['middlename']?></span></td>
                 <td><span class="course"><?=$addPatient['course']?></span></td>
                 <td><span class="year"><?=$addPatient['year_level']?></span></td>
-                <td><span class="email"><?=$addPatient['Email']?></span></td>
-                <td><span class="status"><?=$addPatient['Remarks']?></span></td>
+                <td><span class="email"><?=$addPatient['email']?></span></td>
+                <td><span class="status"><?=$addPatient['remarks']?></span></td>
                 <td><button class="addpatient-btn" style="background-color: #163666;" onclick="togglePopup()">View</button>  </td>
                 
                 <td><a href="#addAdminModal" class="custom_btn" data-toggle="modal"><i class="fa fa-edit" aria-hidden="true" style="color: #163666"></i></a>
