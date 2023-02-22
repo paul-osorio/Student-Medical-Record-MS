@@ -955,7 +955,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 <?php 
 // LOGOUT
 }else{
-     header("Location: indexNurse.php");
+     header("Location: index.php");
      exit();
 }
  ?> 

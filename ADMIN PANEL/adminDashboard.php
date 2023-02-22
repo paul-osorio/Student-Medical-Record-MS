@@ -156,7 +156,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
           <li data-tab-target="#students" class="px-4 w-100 mb-1 nav-item tab">
               
-              <i class="fa fa-users"></i>
+              <i class="fa fa-building-o"></i>
               <div
                 class="nav-link align-items-center"
                 data-bs-toggle="collapse"
@@ -169,7 +169,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
           
           </li>
 
-          <li data-tab-target="#nurses" class="px-4 w-100 mb-1 nav-item tab">
+          <!-- <li data-tab-target="#nurses" class="px-4 w-100 mb-1 nav-item tab">
               
               <i class="fa fa-user-md" aria-hidden="true"></i>
               <div
@@ -182,9 +182,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
               </div>
 
-          </li>
+          </li> -->
 
-          <li data-tab-target="#appointment" class="px-4 w-100 mb-1 nav-item tab">
+          <!-- <li data-tab-target="#appointment" class="px-4 w-100 mb-1 nav-item tab">
               
               <i class="fa fa-calendar" aria-hidden="true"></i>
               <div
@@ -196,7 +196,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                 Appointment
                 
               </div>
-          </li>
+          </li> -->
 
           <li data-tab-target="#reports" class="px-4 w-100 mb-1 nav-item tab">
               
@@ -230,7 +230,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
           <li data-tab-target="#medicine" class="px-4 w-100 mb-1 nav-item tab">
               
-              <i class="fa fa-medkit"></i>
+              <i class="fa fa-address-book"></i>
               <div
                 class="nav-link align-items-center"
                 data-bs-toggle="collapse"
