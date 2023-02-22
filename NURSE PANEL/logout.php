@@ -1,7 +1,6 @@
 <?php 
 session_start();
 
-session_unset();
-session_destroy();
+unset($_SESSION['emp_id']);
 
-header("Location: indexNurse.php");
+header("Location: index.php");

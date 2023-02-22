@@ -1,15 +1,17 @@
-<?php 
-// LOGIN
-session_start();
-
-if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
-
-?>
-
 <?php
+      session_start();
       include_once 'insert_data.php';
       include_once 'insert_new_patient.php';
       include('db_conn.php');
+
+
+      $emp_id = $_SESSION['emp_id'];
+
+      if(empty($emp_id)) {
+
+        header("location: ./index.php");
+        
+      }
      
     
 
@@ -948,14 +950,3 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
     
   </body>
 </html>
-
-
-
-
-<?php 
-// LOGOUT
-}else{
-     header("Location: indexNurse.php");
-     exit();
-}
- ?> 
