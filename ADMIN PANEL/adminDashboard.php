@@ -222,7 +222,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                 data-bs-target="#home-collapse"
                 aria-expanded="true">
 
-                Archives
+                Archive
 
             </div>
 
