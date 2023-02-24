@@ -483,7 +483,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                   <td><span class="email"><?=$addAdmins['email']?></span></td>
                   <td><span class="contact_num"><?=$addAdmins['contact_num']?></span></td>
                   <td>
-                      <a href="#viewAdminInfo" class="custom_btn" data-toggle="modal"><i class="fa fa-info-circle" aria-hidden="true" style="color: #5D8FD9;"></i></a>
+                      <!-- <a href="#viewAdminInfo" class="custom_btn" data-toggle="modal"><i class="fa fa-info-circle" aria-hidden="true" style="color: #5D8FD9;"></i></a> -->
                       <a href="#editAdminInfo" class="custom_btn editbtn" data-toggle="modal"><i class="fa fa-edit" aria-hidden="true" style="color: #5D8FD9;"></i></a>
                       <a href="#delAdminInfo" class="custom_btn deletebtn" data-toggle="modal"><i class="fa fa-trash" aria-hidden="true" style="color: #5D8FD9;"></i></a>
                   </td>
