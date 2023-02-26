@@ -177,7 +177,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
           <li data-tab-target="#nurses" class="px-4 w-100 mb-1 nav-item tab">
               
-              <i class="fa fa-user-md" aria-hidden="true"></i>
+              <i class="fa fa-building-o" aria-hidden="true"></i>
               <div
                 class="nav-link align-items-center"
                 data-bs-toggle="collapse"
