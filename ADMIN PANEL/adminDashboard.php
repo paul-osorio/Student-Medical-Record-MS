@@ -785,8 +785,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
             <div class="sort flex-grow-1">
               <span>Sort by</span>
               <select name="filter" id="filter">
-                <option value="Surname">Surname</option>
-                <option value="Firstname">Firstname</option>
+                <option value="departments">Type of Departments</option>
               </select>
             </div>
             <div class="r">
