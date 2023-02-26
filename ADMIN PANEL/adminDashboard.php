@@ -1,6 +1,12 @@
 <?php 
-// LOGIN
 session_start();
+
+
+$id = $_SESSION['user_id'];
+
+if(empty($id)) {
+  header("location: ./index.php");
+}
 
 if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
@@ -436,15 +442,15 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
           <div class="filter_wrapper">
             <div class="sort flex-grow-1">
               <span>Sort by</span>
-                <select name="filter" id="filter">
-                  <option value="Surname">Surname</option>
-                  <option value="Firstname">Firstname</option>
+                <select name="filter" id="filter_admin">
+                  <option value="lname">Surname</option>
+                  <option value="fname">Firstname</option>
                 </select>
             </div>
 
             <div class="r">
               <div class="search">
-                <input type="text" placeholder="Search" />
+                <input type="text" placeholder="Search" id="search_admin"/>
               </div>
 
               <div class="grid">
@@ -476,15 +482,17 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
 
               <tr class="container">
-                  <td><img src="./assets/<?=$addAdmins['img']?>"/></td>
+                  <td> <img src="./assets/<?=$addAdmins['img']?>"/></td>
                   <td><span class="unique_id"><?=$addAdmins['unique_id']?></span></td>
                   <td><span class="fname"><?=$addAdmins['fname']?></span></td>
                   <td><span class="lname"><?=$addAdmins['lname']?></span></td>
                   <td><span class="email"><?=$addAdmins['email']?></span></td>
                   <td><span class="contact_num"><?=$addAdmins['contact_num']?></span></td>
                   <td>
-                      <!-- <a href="#viewAdminInfo" class="custom_btn" data-toggle="modal"><i class="fa fa-info-circle" aria-hidden="true" style="color: #5D8FD9;"></i></a> -->
+                      <a href="#viewAdminInfo" class="custom_btn" data-toggle="modal"><i class="fa fa-info-circle" aria-hidden="true" style="color: #5D8FD9;"></i></a>
+
                       <a href="#editAdminInfo" class="custom_btn editbtn" data-toggle="modal"><i class="fa fa-edit" aria-hidden="true" style="color: #5D8FD9;"></i></a>
+
                       <a href="#delAdminInfo" class="custom_btn deletebtn" data-toggle="modal"><i class="fa fa-trash" aria-hidden="true" style="color: #5D8FD9;"></i></a>
                   </td>
               </tr>
@@ -585,44 +593,49 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                   <form action="edit_admin.php" method="POST">
 
                       <div class="modal-body">
+                        
+                        <input type="hidden" name="update_id" id="update_id">
+                        
+                        
+                        <div class="form-group">
+                            <label> Admin ID </label>
+                            <input type="text" name="unique_id" id="unique_id" class="form-control" placeholder="Admin ID" readonly>
+                        </div>
 
-                          <input type="hidden" name="update_id" id="update_id">
+                        <div class="form-group">
+                            <label> Email Address </label>
+                            <input type="text" name="email" id="email" class="form-control" placeholder="Email Address">
+                        </div>
 
-                          <div class="form-group">
-                              <label> Admin ID </label>
-                              <input type="text" name="unique_id" id="unique_id" class="form-control" placeholder="Admin ID" readonly>
-                          </div>
+                        <div class="form-group">
+                            <label> First Name </label>
+                            <input type="text" name="fname" id="fname" class="form-control" placeholder="First Name">
+                        </div>
 
-                          <div class="form-group">
-                              <label> Email Address </label>
-                              <input type="text" name="email" id="email" class="form-control" placeholder="Email Address">
-                          </div>
+                        <div class="form-group">
+                            <label> Last Name </label>
+                            <input type="text" name="lname" id="lname" class="form-control" placeholder="Last Name">
+                        </div>
 
-                          <div class="form-group">
-                              <label> First Name </label>
-                              <input type="text" name="fname" id="fname" class="form-control" placeholder="First Name">
-                          </div>
+                        <!-- <div class="form-group">
+                            <label> Upload Image </label>
+                            <input type="file" name="img" id="img" class="form-control" placeholder="Enter Course">
+                        </div> -->
 
-                          <div class="form-group">
-                              <label> Last Name </label>
-                              <input type="text" name="lname" id="lname" class="form-control" placeholder="Last Name">
-                          </div>
-
-                          <!-- <div class="form-group">
-                              <label> Upload Image </label>
-                              <input type="file" name="img" id="img" class="form-control" placeholder="Enter Course">
-                          </div> -->
-
-                          <div class="form-group">
-                              <label> Contact Number </label>
-                              <input type="text" name="contact_num" id="contact_num" class="form-control" placeholder="Contact Number">
-                          </div>
+                        <div class="form-group">
+                            <label> Contact Number </label>
+                            <input type="text" name="contact_num" id="contact_num" class="form-control" placeholder="Contact Number">
+                        </div>
 
                       </div>
+
                       <div class="modal-footer">
+
                           <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                           <button type="submit" name="updatedata" class="btn btn-primary">Update Data</button> -->
+                          
                           <input type="button" class="btn btn-danger" data-dismiss="modal" value="Cancel">
+
                           <input type="submit" class="btn btn-success" name="updateAdmin" value="Update Data">
                       
                       </div>
@@ -640,6 +653,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
         <div class="modal fade" id="delAdminInfo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
           aria-hidden="true">
+
           <div class="modal-dialog" role="document">
               <div class="modal-content">
                   <div class="modal-header">
@@ -655,12 +669,12 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
                           <input type="hidden" name="delete_id" id="delete_id">
 
-                          <h4>Do you want to delete this data?</h4>
+                          <h4> Do you want to delete this data? </h4>
                       </div>
                       <div class="modal-footer">
                           <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal"> NO </button>
                           <button type="submit" name="deletedata" class="btn btn-primary"> Yes, delete it. </button> -->
-                          <input type="button" class="btn btn-danger" data-dismiss="modal" value="No">
+                          <input type="button" class="btn btn-danger" id="cancel-admin-modal" data-dismiss="modal" value="No">
                           <input type="submit" class="btn btn-success" name="delAdmin" value="Yes, delete it.">
                       </div>
                   </form>
@@ -945,7 +959,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
       <!-- REPORTS PAGE -->
       <section id="reports" class="reports so_content" data-tab-content>
-      <h3 class="m-0">REPORTS</h3>
+        <h3 class="m-0">REPORTS</h3>
         <div class="headerpatients">
           <span class="headerpatients1">NUMBER OF PATIENTS</span>
                 <select name="filter" class="reportfilter">
@@ -1374,22 +1388,26 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
 <!--#################################################################################################################################################################################################################################-->
 
-  <script>
+    <script>
         $(document).ready(function () {
 
             $('.deletebtn').on('click', function () {
 
                 $('#delAdminInfo').modal('show');
 
-                $tr = $(this).closest('tr');
+                var tr = $(this).closest('tr');
 
-                var data = $tr.children("td").map(function () {
+                console.log(tr);
+
+                var data = tr.children("td").map(function () {
+
                     return $(this).text();
+
                 }).get();
 
                 console.log(data);
 
-                $('#delete_id').val(data[0]);
+                $('#delete_id').val(data[1]);
 
             });
         });
@@ -1421,9 +1439,13 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                 $('#contact_num').val(data[5]);
             });
         });
+
     </script>
     
   </body>
+
+<!-- CUSTOM AJAX FILE -->
+<script src="./ajax/search_admin.js"> </script>
 
 </html>
 

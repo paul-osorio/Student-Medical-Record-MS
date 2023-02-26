@@ -6,7 +6,9 @@ if(isset($_POST['delAdmin']))
 {
     $id = $_POST['delete_id'];
 
-    $query = "DELETE FROM admins WHERE email='$id'";
+    echo $id;
+
+    $query = "DELETE FROM admins WHERE `unique_id` = '$id'";
     $query_run = mysqli_query($conn, $query);
 
     if($query_run)

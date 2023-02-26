@@ -1,3 +1,16 @@
+<?php
+	error_reporting(0);
+	session_start();
+
+
+	$id = $_SESSION['user_id'];
+	
+	if(!empty($id)) {
+	  header("location: ./adminDashboard.php");
+	}
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
