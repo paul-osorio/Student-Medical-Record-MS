@@ -160,20 +160,20 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
           </li>
 
-          <li data-tab-target="#students" class="px-4 w-100 mb-1 nav-item tab">
+          <!-- <li data-tab-target="#students" class="px-4 w-100 mb-1 nav-item tab">
               
-              <i class="fa fa-users"></i>
+              <i class="fa fa-building-o"></i>
               <div
                 class="nav-link align-items-center"
                 data-bs-toggle="collapse"
                 data-bs-target="#home-collapse"
                 aria-expanded="true">
 
-                Departments
+               
 
               </div>
           
-          </li>
+          </li> -->
 
           <li data-tab-target="#nurses" class="px-4 w-100 mb-1 nav-item tab">
               
@@ -184,13 +184,13 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                 data-bs-target="#home-collapse"
                 aria-expanded="true">
 
-                Nurses
+                Departments
 
               </div>
 
           </li>
 
-          <li data-tab-target="#appointment" class="px-4 w-100 mb-1 nav-item tab">
+          <!-- <li data-tab-target="#appointment" class="px-4 w-100 mb-1 nav-item tab">
               
               <i class="fa fa-calendar" aria-hidden="true"></i>
               <div
@@ -202,7 +202,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                 Appointment
                 
               </div>
-          </li>
+          </li> -->
 
           <li data-tab-target="#reports" class="px-4 w-100 mb-1 nav-item tab">
               
@@ -228,7 +228,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                 data-bs-target="#home-collapse"
                 aria-expanded="true">
 
-                Archives
+                Archive
 
             </div>
 
@@ -236,7 +236,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
           <li data-tab-target="#medicine" class="px-4 w-100 mb-1 nav-item tab">
               
-              <i class="fa fa-medkit"></i>
+              <i class="fa fa-address-book"></i>
               <div
                 class="nav-link align-items-center"
                 data-bs-toggle="collapse"
@@ -692,23 +692,10 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!--#################################################################################################################################################################################################################################-->
 
         <!-- STUDENTS PAGE -->
-        <section id="students" class="students so_content" data-tab-content>
+        <!-- <section id="students" class="students so_content" data-tab-content>
 
               <div class="student_header d-flex justify-content-between">
                 <h3 class="m-0">STUDENTS</h3>
@@ -762,7 +749,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                       <td><span class="name"><?=$students['lastname']?>, <?=$students['firstname']?> <?=$students['middlename']?></span></td>
                       <td><span class="course"><?=$students['course']?></span></td>
                       <td><span class="year"><?=$students['year_level']?></span></td>
-                      <td><span class="status"><?=$students['Remarks']?></span></td>
+                      <td><span class="status"><?=$students['remarks']?></span></td>
                       <td>
                         <i class="fa fa-info-circle" aria-hidden="true"></i>
                         <i class="fa fa-commenting" aria-hidden="true"></i>
@@ -775,15 +762,21 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
               </div>
             <div>
           </div>
-        </section>
+        </section> -->
+
+
+
+
+
+
 
 
 <!--#################################################################################################################################################################################################################################-->
 
-      <!-- NURSES PAGE -->
+      <!-- DEPARTMENTS PAGE -->
         <section id="nurses" class="nurses so_content" data-tab-content>
           <div class="nurse_header d-flex justify-content-between">
-            <h3 class="m-0">NURSES</h3>
+            <h3 class="m-0">DEPARTMENTS</h3>
             <button class="custom_btn">
               <a href="#addNurseModal" class="custom_btn" data-toggle="modal"><i class="fa fa-user-md"></i>Add Nurses</a>
             </button>
@@ -1021,7 +1014,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
 <!--#################################################################################################################################################################################################################################-->
 
-      <!-- ARCHIVES PAGE -->
+      <!-- ARCHIVE PAGE -->
       <section id="archives" class="archives so_content" data-tab-content>  
         <div class="archives_header d-flex justify-content-between">
           <h3 class="m-0">Archive</h3>

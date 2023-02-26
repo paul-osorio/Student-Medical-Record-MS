@@ -67,14 +67,14 @@
           <?php }?>
 
      	<label>School Registered Email:</label>
-		 <?php if (isset($_GET['Email'])) { ?>
+		 <?php if (isset($_GET['email'])) { ?>
                <input type="text" 
-                      name="Email" 
+                      name="email" 
                       placeholder="School Registered Email"
-                      value="<?php echo $_GET['Email']; ?>"><br>
+                      value="<?php echo $_GET['email']; ?>"><br>
           <?php }else{ ?>
                <input type="text" 
-                      name="Email" 
+                      name="email" 
                       placeholder="School Registered Email"><br>
           <?php }?>
 
