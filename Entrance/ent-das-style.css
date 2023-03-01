@@ -1,0 +1,94 @@
+.main-container{
+    /* background-color: red; */
+    margin: 30px 60px;
+    display: flex;
+    justify-content: center;
+}
+.subcontainer{
+    /* background-color: blue; */
+    width: 100%;
+    margin: 0 3em;
+}
+.numerical{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.numerical ul{
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.numerical ul li{
+    font-size: 15px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: center;
+}
+.numerical ul #total{
+    background-color: skyblue;
+}
+.numerical ul #verified{
+    background-color: #92e000;
+}
+.numerical ul #problem{
+    background-color: #e1ff00;
+}
+.numerical ul #visitor{
+    background-color: #f58800;
+}
+.numerical ul #invalid{
+    background-color: #de3700;
+}
+.video{
+    display: flex;
+    justify-content: center;
+}
+.video video{
+    
+    width: 480px;
+    /* height: 320px; */
+    border-radius: 10px;
+    margin: 20px 0;
+}
+.form-scan{
+    display: flex;
+    justify-content: center;
+}
+.subcontainer .form-control{
+    margin: 0 0 20px;
+    width: 480px;
+}
+.notification{
+    width: 100%;
+}
+.notification table{
+    width: 100%;
+}
+.notification table tbody tr td{
+    padding: 10px 0;
+    text-align: center;
+    border: 1px solid #000000;
+    background-color: #e1ff00;
+}
+.table{
+    /* background-color: yellowgreen; */
+    margin: 70px 20px 0;
+    width: 100%;
+}
+.table table{
+    width: 100%;
+}
+.table table thead tr td{
+    padding: 10px 0;
+    text-align: center;
+    border: 1px solid #000000;
+    background-color: white;
+}
+.table table tbody tr td{
+    padding: 10px 0;
+    text-align: center;
+    border: 1px solid #000000;
+    background-color: #dedede;
+}
