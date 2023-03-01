@@ -47,9 +47,6 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
      // SELECT ALL NURSES TODAY
      $fetchAllNursesToday = mysqli_query($conn, "SELECT * FROM `nurses`");
-     
-     // SELECT ALL MESSAGES 
-     $fetchAllMessages = mysqli_query($conn, "SELECT * FROM `messages`");
 
      // SELECT ALL MEDICINE 
      $fetchAllMedicine = mysqli_query($conn, "SELECT * FROM `medicine`");
