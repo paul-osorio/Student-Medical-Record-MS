@@ -1,6 +1,6 @@
 <?php
 
-include '../database/connection.php';
+include './connection.php';
 $uname = $_POST['text'];
 
 if(isset($_POST['text'])){

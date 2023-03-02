@@ -1,7 +1,8 @@
 <?php
-include '../database/connection.php';
+include './connection.php';
 
 if(isset($_POST['toverify'])){
+    
     // $uname = $_POST['student_number'];
     $query = "SELECT * FROM sample_stud_data WHERE student_id='$uname'";
     $result = mysqli_query($conn,$query);
