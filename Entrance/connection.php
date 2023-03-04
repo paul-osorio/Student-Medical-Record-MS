@@ -1,6 +1,6 @@
 <?php
 
 
-$conn = mysqli_connect("localhost", "root", "", "smrms")
+$conn = mysqli_connect("localhost", "root", "", "smrms updated")
 
 ?>
