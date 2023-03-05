@@ -46,7 +46,7 @@
               <div class="card-body">
                 <h5 class="card-title">Enter your School Email</h5>
 
-                <form  action="send-email.php" method="post">
+                <!-- <form  action="" method="post"> -->
 
                   <div class="form-floating mb-3">
                       <input type="email" name="email" id="email" class="form-control" required>
@@ -54,7 +54,7 @@
                     </div>
                     <button name="submit" id="send_otp" class="btn w-100 fw-bold text-light" style="background: var(--primary-bg);">SEND OTP</button>
 
-                </form>
+                <!-- </form> -->
                 
               </div>
           </div>
