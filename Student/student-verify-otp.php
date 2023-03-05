@@ -10,7 +10,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
 
   <link rel="stylesheet" href="custom-properties.css">
-  <title>Document</title>
+  <title>STUDENT | VERIFY OTP</title>
 </head>
 <body>
   
@@ -31,7 +31,7 @@
         <div class="container-fluid">
           <a class="navbar-brand d-flex align-items-center" href="#">
             <img src="./clinic-logo.png" alt="" width="50" height="50" class="d-inline-block align-text-top mx-2">
-            <h3 class="fw-bold text-light w-100 text-wrap" style="font-size: var(--step-2);">Welcome to Student Medical Record MS</h3>
+            <h3 class="fw-bold text-light w-100 text-wrap" style="font-size: 25px;">Welcome to Student Medical Record MS</h3>
           </a>
         </div>
       </nav>

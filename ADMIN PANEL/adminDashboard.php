@@ -381,7 +381,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
             </div>
 
 
-            <!-- <div class="card_content">
+            <div class="card_content">
               <div class="chart2">
                   <select name="filter" id="filter">
                     <option value="Year Level">Year Level</option>
@@ -393,7 +393,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                   <canvas id="myChart2" style="width:70%; max-width:500px; height: 110px; padding-left: 5px; padding-top: 15px"></canvas>
               </div>
             </div>
-          </div> -->
+          </div>
 
 <!--########################################################################################################################################################################-->
           
