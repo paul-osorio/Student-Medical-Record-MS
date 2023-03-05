@@ -30,7 +30,7 @@ $mail->Username = "studmed.recordms.2023@gmail.com";
 $mail->Password = "btzftzujzzqnxyka";
 
 
-$mail->setFrom("studmed.recordms.2023@gmail.com", "Admin");
+$mail->setFrom("studmed.recordms.2023@gmail.com", "Student Medical Record MS");
 // $mail->addAddress("arnejovincent03@gmail.com", "MGP INQUERIES");
 $mail->addAddress($email, "");//RECEPIENTS
 
@@ -39,7 +39,7 @@ $mail->addAddress($email, "");//RECEPIENTS
 $mail->Subject = $otp_code . " is your verification code";
 $mail->Body = "Verification Code
 
-To verify your account, enter this code in your Student Medical Record MS Account:
+To verify your account and complete the sign in, enter this code in your Student Medical Record MS Account:
 
 
 " 
@@ -52,7 +52,8 @@ Verification codes expire after 30 minutes.
 If you didn't request this code, you can ignore this message.
 
 
-Student Medical Record MS Team";
+Thanks,
+The Student Medical Record MS Team";
 
 $mail-> send();
 

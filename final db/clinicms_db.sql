@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 05, 2023 at 04:52 AM
+-- Generation Time: Mar 05, 2023 at 05:48 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.6
 
@@ -160,7 +160,11 @@ CREATE TABLE `entrance_log` (
 INSERT INTO `entrance_log` (`id`, `student_number`, `timein`, `logdate`) VALUES
 (78, '20-1444', '16:02:54', '2023-03-02'),
 (79, '20-1444', '11:51:54', '2023-03-05'),
-(80, '19-1405', '11:52:23', '2023-03-05');
+(80, '19-1405', '11:52:23', '2023-03-05'),
+(81, '19-1405', '12:02:06', '2023-03-05'),
+(82, '19-1375', '12:03:56', '2023-03-05'),
+(83, '19-1376', '12:04:12', '2023-03-05'),
+(84, '19-1735', '12:04:15', '2023-03-05');
 
 -- --------------------------------------------------------
 
@@ -507,6 +511,83 @@ INSERT INTO `students` (`id`, `student_id`, `lastname`, `firstname`, `middlename
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `student_health_history`
+--
+
+CREATE TABLE `student_health_history` (
+  `id` int(20) NOT NULL,
+  `student_id` varchar(50) NOT NULL,
+  `med-ques1` varchar(100) NOT NULL,
+  `med-ques2` varchar(100) NOT NULL,
+  `med-ques2-1` varchar(100) NOT NULL,
+  `med-ques3` varchar(100) NOT NULL,
+  `med-ques4` varchar(100) NOT NULL,
+  `med-ques4-1` varchar(100) NOT NULL,
+  `med-ques4-2` varchar(100) NOT NULL,
+  `med-ques5` varchar(100) NOT NULL,
+  `med-ques5-1` varchar(100) NOT NULL,
+  `med-ques6` varchar(100) NOT NULL,
+  `med-ques6-1` date NOT NULL,
+  `med-ques6-2` date NOT NULL,
+  `med-ques7` varchar(100) NOT NULL,
+  `med-ques7-1` varchar(100) NOT NULL,
+  `med-ques7-2` varchar(100) NOT NULL,
+  `med-ques8` varchar(100) NOT NULL,
+  `med-ques8-1` varchar(100) NOT NULL,
+  `med-ques8-2` varchar(100) NOT NULL,
+  `med-ques9` varchar(100) NOT NULL,
+  `med-ques9-1` varchar(100) NOT NULL,
+  `med-ques10` varchar(100) NOT NULL,
+  `med-ques11` varchar(100) NOT NULL,
+  `med-ques12` varchar(100) NOT NULL,
+  `med-ques13` varchar(100) NOT NULL,
+  `med-ques13-1` varchar(100) NOT NULL,
+  `med-ques-father-1` varchar(100) NOT NULL,
+  `med-ques-father-2` varchar(100) NOT NULL,
+  `med-ques-father-3` varchar(100) NOT NULL,
+  `med-ques-mother-1` varchar(100) NOT NULL,
+  `med-ques-mother-2` varchar(100) NOT NULL,
+  `med-ques-mother-3` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `student_medical_requirements`
+--
+
+CREATE TABLE `student_medical_requirements` (
+  `id` int(20) NOT NULL,
+  `student_id` varchar(50) NOT NULL,
+  `cbc` varchar(50) NOT NULL,
+  `urinalysis` varchar(50) NOT NULL,
+  `x-ray` varchar(50) NOT NULL,
+  `med-cert` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `student_vaccination`
+--
+
+CREATE TABLE `student_vaccination` (
+  `id` int(20) NOT NULL,
+  `student_id` varchar(50) NOT NULL,
+  `vaccinated` varchar(20) NOT NULL,
+  `first_dose_type` varchar(50) NOT NULL,
+  `first_dose_date` date NOT NULL,
+  `second_dose_type` varchar(50) NOT NULL,
+  `second_dose_date` date NOT NULL,
+  `first_booster_type` varchar(50) NOT NULL,
+  `first_booster_date` date NOT NULL,
+  `second_booster_type` varchar(50) NOT NULL,
+  `second_booster_date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `stud_appointment`
 --
 
@@ -554,7 +635,13 @@ INSERT INTO `stud_archive` (`id`, `student_id`, `role`, `date_archive`, `time`) 
 (30, 'hotdog', 'outsider', '2023-03-02', '16:34:37'),
 (31, 'https://ww', 'outsider', '2023-03-02', '16:35:17'),
 (32, 'https://ww', 'outsider', '2023-03-02', '16:36:58'),
-(33, '19-1269', 'student', '2023-03-05', '11:52:08');
+(33, '19-1269', 'student', '2023-03-05', '11:52:08'),
+(34, '19-1269', 'student', '2023-03-05', '12:01:59'),
+(35, '19-1396', 'outsider', '2023-03-05', '12:02:12'),
+(36, '19-1276', 'outsider', '2023-03-05', '12:04:02'),
+(37, '19-1234', 'student', '2023-03-05', '12:04:08'),
+(38, 'WIFI:T:WPA', 'outsider', '2023-03-05', '12:05:36'),
+(39, 'WIFI:T:WPA', 'outsider', '2023-03-05', '12:06:33');
 
 -- --------------------------------------------------------
 
@@ -803,6 +890,24 @@ ALTER TABLE `students`
   ADD PRIMARY KEY (`id`,`student_id`);
 
 --
+-- Indexes for table `student_health_history`
+--
+ALTER TABLE `student_health_history`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `student_medical_requirements`
+--
+ALTER TABLE `student_medical_requirements`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `student_vaccination`
+--
+ALTER TABLE `student_vaccination`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `stud_appointment`
 --
 ALTER TABLE `stud_appointment`
@@ -852,7 +957,7 @@ ALTER TABLE `consultations`
 -- AUTO_INCREMENT for table `entrance_log`
 --
 ALTER TABLE `entrance_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
 
 --
 -- AUTO_INCREMENT for table `generate`
@@ -933,6 +1038,24 @@ ALTER TABLE `students`
   MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
+-- AUTO_INCREMENT for table `student_health_history`
+--
+ALTER TABLE `student_health_history`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `student_medical_requirements`
+--
+ALTER TABLE `student_medical_requirements`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `student_vaccination`
+--
+ALTER TABLE `student_vaccination`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `stud_appointment`
 --
 ALTER TABLE `stud_appointment`
@@ -942,7 +1065,7 @@ ALTER TABLE `stud_appointment`
 -- AUTO_INCREMENT for table `stud_archive`
 --
 ALTER TABLE `stud_archive`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
