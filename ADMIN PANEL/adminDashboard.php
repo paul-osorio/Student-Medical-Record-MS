@@ -371,7 +371,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
           <div class="chart_container">
             <div class="card_content">
               <div class="chart1">
-                <span>NUMBER OF PATIENTS</span>
+                <span>STUDENT COVID-19 CASES</span>
                   <select name="filter" id="filter">
                     <option value="Monthly">Monthly</option>
                     <option value="Yearly">Yearly</option>
@@ -383,13 +383,14 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
             <div class="card_content">
               <div class="chart2">
-                  <select name="filter" id="filter">
+                <span>ENTRANCE LOGS</span>
+                  <!-- <select name="filter" id="filter">
                     <option value="Year Level">Year Level</option>
                     <option value="1st Year">1st Year</option>
                     <option value="2nd Year">2nd Year</option>
                     <option value="3rd Year">3rd Year</option>
                     <option value="4th Year">4th Year</option>
-                  </select>
+                  </select> -->
                   <canvas id="myChart2" style="width:70%; max-width:500px; height: 110px; padding-left: 5px; padding-top: 15px"></canvas>
               </div>
             </div>

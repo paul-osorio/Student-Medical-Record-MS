@@ -1,10 +1,10 @@
-var xValues = ["1st Year", "2nd Year", "3rd Year", "4th Year"];
-var yValues = [55, 49, 44, 24];
+var xValues = ["Verified", "Unverified", "Visitor", "Invalid"];
+var yValues = [300, 100, 70, 30];
 var barColors = [
-  "#FF4646",
-  "#2D7538",
-  "#5180C7",
-  "#f5c71a",
+  "#43B50E",
+  "#E7BB23",
+  "#0047FF",
+  "#FF0000",
 ];
 
 new Chart("myChart2", {
