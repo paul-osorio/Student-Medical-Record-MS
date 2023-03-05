@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 05, 2023 at 05:48 AM
+-- Generation Time: Mar 05, 2023 at 07:19 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.6
 
@@ -200,6 +200,20 @@ CREATE TABLE `guard_accs` (
   `email` varchar(70) NOT NULL,
   `password` varchar(20) NOT NULL,
   `status` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `incase_of_emergency`
+--
+
+CREATE TABLE `incase_of_emergency` (
+  `id` int(20) NOT NULL,
+  `fullname` varchar(100) NOT NULL,
+  `relationship` varchar(50) NOT NULL,
+  `contact_num` varchar(13) NOT NULL,
+  `address` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -823,6 +837,12 @@ ALTER TABLE `guard_accs`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `incase_of_emergency`
+--
+ALTER TABLE `incase_of_emergency`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `medicine`
 --
 ALTER TABLE `medicine`
@@ -969,6 +989,12 @@ ALTER TABLE `generate`
 -- AUTO_INCREMENT for table `guard_accs`
 --
 ALTER TABLE `guard_accs`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `incase_of_emergency`
+--
+ALTER TABLE `incase_of_emergency`
   MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
 
 --
