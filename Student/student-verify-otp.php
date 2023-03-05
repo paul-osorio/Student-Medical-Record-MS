@@ -41,7 +41,7 @@
               <h6 class="card-title py-4">Enter the 6-digit code sent to john.nicole.abihay@gmail.com. Don’t see the email? Send a new code.</h6>
               <form>
                 <div class="mb-3 ">
-                    <input type="text" class="form-control" id="otp_input" placeholder="Enter OTP.." maxlength="6" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))">
+                    <input type="text" class="form-control" id="otp_input" placeholder="Enter OTP..." maxlength="6" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))">
                     <p class="float-end p-2"><span id="count" data-count="0">0</span>/6</p>
                   </div>
                 <button type="submit" class="btn w-100 fw-bold text-light" style="background: var(--primary-bg);">VERIFY OTP</button>
