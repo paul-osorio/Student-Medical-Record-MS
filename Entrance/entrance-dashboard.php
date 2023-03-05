@@ -8,8 +8,9 @@ include './queries.php';
 <html>
     <head>
         <title>Entrance Page</title>
-        <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="ent-das-style.css">
+        <link rel="stylesheet" href="./style.css" />
+        <link rel="stylesheet" href="./ent-das-style.css" />
+      
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
 

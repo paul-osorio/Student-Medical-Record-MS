@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="custom-properties.css">
 
   <script src="javascript/action.js" defer></script>
-  <title>Document</title>
+  <title>STUDENT | SEND OTP</title>
 </head>
 <body>
   
@@ -28,7 +28,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=.8">
-  <title>Document</title>
+  <title>STUDENT | SEND OTP</title>
 
   <body>
     <nav class="navbar"
@@ -36,7 +36,7 @@
         <div class="container-fluid">
           <a class="navbar-brand d-flex align-items-center" href="#">
             <img src="./clinic-logo.png" alt="" width="50" height="50" class="d-inline-block align-text-top mx-2">
-            <h3 class="fw-bold text-light w-100 text-wrap" style="font-size: var(--step-2);">Welcome to Quezon City University Clinic</h3>
+            <h5 class="fw-bold text-light w-100 text-wrap" style="font-size: 25px;">Welcome to Student Medical Record MS</h5>
           </a>
         </div>
       </nav>
@@ -50,7 +50,7 @@
 
                   <div class="form-floating mb-3">
                       <input type="email" name="email" id="email" class="form-control" required>
-                      <label for="floatingInput">Email address...</label>
+                      <label for="floatingInput">Email address</label>
                     </div>
                     <button name="submit" id="send_otp" class="btn w-100 fw-bold text-light" style="background: var(--primary-bg);">SEND OTP</button>
 
