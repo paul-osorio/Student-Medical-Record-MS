@@ -3,7 +3,7 @@
     margin: 0;
     font-family: sans-serif; 
 }
-body{
+/* body{
     background-color: #dedede;
 }
 .header{
@@ -19,7 +19,7 @@ body{
     place-self: center;
     color: #fff;
     margin: 0 20px;
-}
+} */
 .container{
     /* background-color: aqua; */
     height: 100%;
