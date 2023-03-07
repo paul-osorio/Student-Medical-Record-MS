@@ -865,11 +865,11 @@
                 <div class="edit_icon"></div>
               </div>
 
-              <div class="border">
+              <!-- <div class="border">
                 <span></span>
-              </div>
+              </div> -->
 
-              <form action="" class="l_form form">
+              <!-- <form action="" class="l_form form">
                   <h4>Change Email</h4>
                   <div class="input_wrap">
                     <span>Old Email</span>
@@ -885,7 +885,7 @@
                   </div>
                   <button id="changeEmail" class="change">Change</button>
                   <span class="note"><span class="note_color">Note:</span>  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Amet</span>
-              </form>
+              </form> -->
 
               <form action="" class="l_form form">
                   <h4>Change Password</h4>
