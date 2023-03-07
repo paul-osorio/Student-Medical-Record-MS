@@ -1,6 +1,3 @@
 <?php
-
-
-$conn = mysqli_connect("localhost", "root", "", "smrms updated")
-
+$conn = mysqli_connect("localhost", "root", "", "clinicms_db")
 ?>

@@ -8,8 +8,9 @@ include './queries.php';
 <html>
     <head>
         <title>Entrance Page</title>
-        <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="ent-das-style.css">
+        <link rel="stylesheet" href="./style.css" />
+        <link rel="stylesheet" href="./ent-das-style.css" />
+      
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
@@ -129,9 +130,7 @@ include './queries.php';
 
         $(document).ready(function(){
 
-          let scanner = new Instascan.Scanner({ video:document.getElementById('preview'), scanPeriod: 5});
-
-
+          let scanner = new Instascan.Scanner({ video:document.getElementById('preview')});
           Instascan.Camera.getCameras().then(function(cameras){
 
             if(cameras.length > 0) {
