@@ -94,7 +94,7 @@
 /* card */
 #nurses .card_container {
   display: grid;
-  grid-template-columns: auto auto auto auto auto;
+  grid-template-columns: 19% 19% 19% 19% 19%;
   gap: 20px;
 }
 #nurses .card_container .card {
@@ -112,7 +112,7 @@
     rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
 }
 #nurses .card_container .card img {
-  width: 300px;
+  width: 100%;
   height: 200px;
   border-radius: 8px;
   margin-bottom: 6px;
@@ -303,7 +303,7 @@ input[type="checkbox"]:checked {
 }
 
 /* remove nurse success modal */
-#nurses #removesuccessModal .modal-body {
+#nurses #removesuccessModalNurse .modal-body {
   background-color: white;
   color: #000;
 }
@@ -452,5 +452,11 @@ hr.divider {
   #nurses .filter_wrapper .sort {
     display: flex;
     align-items: center;
+  }
+}
+
+@media screen and (max-width: 1366px) {
+  #nurses .card_container {
+    grid-template-columns: 18.5% 18.5% 18.5% 18.5% 18.5%;
   }
 }
