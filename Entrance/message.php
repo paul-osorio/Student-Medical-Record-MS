@@ -19,7 +19,7 @@
          <div class="modal-message">
 
             <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
-            <p> this qr code <b> <?=$qr_val?>  </b> didn't exist in student table </p>
+            <p> This qr code <b> <?=$qr_val?>  </b> didn't exist in student table </p>
    
             <div class="form-button">
                <button id="close"> close </button>
@@ -33,7 +33,7 @@
 
          <div class="modal-message">
             <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
-            <p> this student <b> <?=$stud_id?> <?=$fullname?> <b> has an issue in clinic. <?=$total?></p>
+            <p> This student <b> <?=$stud_id?> <?=$fullname?> <b> has an issue in clinic. <?=$total?></p>
    
             <div class="message-appointment">
                
@@ -70,7 +70,7 @@
    
             <!-- <p>  <?=$total?> </p> -->
             <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
-            <p> this student <b> <?=$stud_id?> <?=$fullname?> <b> has an issue in clinic. </p>
+            <p> This student <b> <?=$stud_id?> <?=$fullname?> <b> has an issue in clinic. </p>
    
             <div class="message-appointment">
    
@@ -88,7 +88,7 @@
       
       <?php } else { ?>
    
-         <p style="background-color: #5cd391;"> this student <b> <?=$fullname?> </b> is <?=$message?></p>
+         <p id="notification" style="background-color: #4EC745; padding:10px; position:absolute;"> This student <b> <?=$fullname?> </b> is <?=$message?></p>
    
       <?php }
 
@@ -100,6 +100,11 @@
 ?>
 
 <script>
+
+setTimeout(function(){
+  var notification = document.getElementById('notification');
+  notification.style.display = 'none';
+}, 2000);
 
    $(document).ready(function(){
 

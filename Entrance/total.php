@@ -10,5 +10,5 @@
    <li id="verified"> Verified <br> <?php echo $verified_total;?> </li>
    <li id="problem"> Pending <br> <?php echo $notverified_total?></li>
    <li id="visitor">Visitor <br> 0</li>
-   <li id="invalid">Invalid <br> <?=$archive_total?> </li>
+   <li id="invalid">Archive <br> <?=$archive_total?> </li>
 </ul>

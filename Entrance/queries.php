@@ -49,7 +49,7 @@ JOIN `stud_data` b
 ON a.student_number = b.student_id
 JOIN `sample_stud_data` c
 ON a.student_number = c.student_id
-WHERE (c.Status = 'Verified' OR c.Status = 'Pending') AND a.logdate = CURRENT_DATE() ORDER BY a.id DESC LIMIT 6;";
+WHERE (c.Status = 'Verified' OR c.Status = 'Pending') AND a.logdate = CURRENT_DATE() ORDER BY a.id DESC LIMIT 5;";
 
 $res_entrance_log = mysqli_query($conn, $sel_entrance_log_query);
 
