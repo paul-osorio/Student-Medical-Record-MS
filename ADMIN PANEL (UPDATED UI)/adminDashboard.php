@@ -43,7 +43,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
      $fetchAllReports = mysqli_query($conn, "SELECT * FROM `reports`");
 
      // SELECT ALL DEPARTMENTS
-     $fetchAllDepartments = mysqli_query($conn, "SELECT * FROM `nurses`");
+     $fetchAllDepartments = mysqli_query($conn, "SELECT * FROM `departments`");
 
      // SELECT ALL NURSES 
      $fetchAllNurses = mysqli_query($conn, "SELECT * FROM `nurses`");
@@ -652,9 +652,11 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
               <div class="modal-content">
                   <div class="modal-header">
                       <h5 class="modal-title" id="exampleModalLabel"> EDIT ADMIN DATA </h5>
+
                       <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
                       </button> -->
+                      
                   </div>
 
                   <form action="edit_admin.php" method="POST">
@@ -789,6 +791,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
               <a href="#addDepartmentModal" class="custom_btn" data-toggle="modal"><i class="fa fa-user-md"></i>Add Department</a>
             </button>
           </div>
+
           <!-- <div class="filter_wrapper">
             <div class="sort flex-grow-1">
               <span>Sort by</span>
@@ -808,6 +811,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
               </div>
             </div>
           </div> -->
+
           <div class="card_container">
 
                 <?php if(mysqli_num_rows($fetchAllDepartments) > 0) { 
@@ -815,7 +819,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
             <div class="card">
               <div class="card_header">
-                <span class="department_name"><?=$departments['Department']?></span>
+                <span class="department_name"><?=$departments['dept_name']?></span>
                 <div class="actions">
                     <a href="#editDepartmentInfo" class="custom_btn" data-toggle="modal"><i class="fa fa-edit" aria-hidden="true" style="color: #37954B; font-size: 25px"></i></a>
                     <a href="#delDepartment" class="custom_btn" data-toggle="modal"><i class="fa fa-trash" aria-hidden="true" style="color: #ED1C24; font-size: 25px"></i></a>
@@ -824,15 +828,15 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
               <div class="room_info">
                 <div>
                   <span style="font-weight: bold;">Building Name: </span>
-                  <span>Bautista Building </span>
+                  <span><?=$departments['building_name']?></span>
                 </div>
                 <div>
                   <span style="font-weight: bold;">Room No.: </span>
-                  <span>IC103a </span>
+                  <span><?=$departments['room_num']?></span>
                 </div>
               </div>
               <div class="profile_img">
-              <img src="./assets/<?=$departments['profile_pic']?>" alt="" />
+              <img src="./assets/<?=$departments['image']?>" alt="" />
               </div>
               <div class="card_content">
                 <div>
@@ -859,19 +863,28 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 <div class="modal fade" id="addDepartmentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
               <div class="modal-content">
+                  
+
+                  <form action="addDepartments.php" method="POST">
+
                   <div class="modal-header">
                       <div class="imgupload">
                         <input type="file" id="selectedFile" style="display: none;" />
-                        <input type="button" id="imgbox" value="Upload Image" onclick="document.getElementById('selectedFile').click();" />
+                        <input type="button" name="image" id="imgbox" value="Upload Image" onclick="document.getElementById('selectedFile').click();" />
                       </div>
-                      <h5 class="modal-title" id="exampleModalLabel"> 23-0001</h5>
-                      <h5 class="modal-title" id="exampleModalLabel"> Department Head</h5>
+
+                      <label> Employe ID </label>
+                            <input type="text" name="emp_id" id="emp_id" class="form-control" placeholder="Employe ID">
+                      <label> Position </label>
+                            <input type="text" name="position" id="position" class="form-control" placeholder="Position">
+                      
+                            <!-- <h5 class="modal-title" id="exampleModalLabel"> 23-0001</h5>
+                      <h5 class="modal-title" id="exampleModalLabel"> Department Head</h5> -->
+
                       <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
                       </button> -->
                   </div>
-
-                  <form action="edit_admin.php" method="POST">
 
                       <div class="modal-body">
                         
@@ -881,26 +894,42 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                           <div>
                             <label>Department</label>
                             <select>
-                                <option>BSENT</option>
+                                <option>BSIT Department</option>
+                                <option>BSIE Department</option>
+                                <option>BSENT Department</option>
+                                <option>BSA Department</option>
+                                <option>BSECE Department</option>
                             </select>
                           </div>
                           <div>
                           <label>Building Name</label>
                             <select>
-                                <option>Bautista</option>
+                                <option>Bautista Building</option>
+                                <option>TechVoc Building</option>
+                                <option>Belmonte Building</option>
                             </select>
                           </div>
                           <div>
                           <label>Room No</label>
                             <select>
                                 <option>IC301a</option>
+                                <option>IC302a</option>
+                                <option>IC304a</option>
+                                <option>IC304a</option>
+                                <option>IC305a</option>
+                                <option>IC306a</option>
                             </select>
                           </div>
                         </div>
                         
                         <div class="form-group">
-                            <label> Name </label>
-                            <input type="text" name="unique_id" id="unique_id" class="form-control" placeholder="Name" readonly>
+                            <label> First Name </label>
+                            <input type="text" name="firtname" id="firtname" class="form-control" placeholder="First Name" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label> Last Name </label>
+                            <input type="text" name="lastname" id="lastname" class="form-control" placeholder="Last Name" readonly>
                         </div>
 
                         <div class="form-group">
@@ -927,7 +956,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                           
                           <input type="button" class="btn btn-danger" data-dismiss="modal" value="Cancel">
 
-                          <input type="submit" class="btn btn-success" name="updateAdmin" value="Add">
+                          <input type="submit" class="btn btn-success" name="addDept  " value="Add">
                       
                       </div>
                   </form>
@@ -1073,7 +1102,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
               <div class="sort flex-grow-1">
                 <span>Sort by</span>
                 <select name="filter" id="filter">
-                  <option value="departments">Type of Departments</option>
+                  <option value="departments">Campus</option>
+                  <!-- <option value="departments">Campus</option>
+                  <option value="departments">Campus</option> -->
                 </select>
               </div>
               <div>
