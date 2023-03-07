@@ -123,7 +123,7 @@ include './queries.php';
 
         $(document).ready(function(){
 
-          let scanner = new Instascan.Scanner({ video:document.getElementById('preview'), scanPeriod: 10});
+          let scanner = new Instascan.Scanner({ video:document.getElementById('preview')});
 
 
           Instascan.Camera.getCameras().then(function(cameras){
