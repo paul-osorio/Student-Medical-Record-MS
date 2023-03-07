@@ -259,15 +259,15 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
           <div class="web_info">
 
-          <div class="admin_info">
+          <div class="admin_info"><br><br>
             <img src="./assets/<?=$admins['img']?>" alt=""/>
             <span><?=$admins['email']?></span>
             <span><?=$admins['fname']?>&nbsp<?=$admins['lname']?></span>
           </div>
 
-          <div class="web_copyright">
+          <!-- <div class="web_copyright">
             <span>Quezon City University Clinic 2022</span>
-          </div>
+          </div> -->
 
           </div>
 
@@ -317,10 +317,10 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                   aria-labelledby="dropdownMenuButton1">
 
                   <li>
-                    <a class="dropdown-item" href="#">Login As: <span id="email_span"></span></a>
+                    <a class="dropdown-item" href="#">Login As: <?=$admins['fname']?><span id="email_span"></span></a>
                   </li>
 
-                  <li><a class="dropdown-item" href="#">My Account</a></li>
+                  <li><a class="dropdown-item" href="#">Manage Account</a></li>
 
                   <li id="logout">
                     <a class="dropdown-item" href="logout.php">Logout</a>
@@ -817,7 +817,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
               <div class="card_header">
                 <span class="department_name"><?=$departments['Department']?></span>
                 <div class="actions">
-                    <a href="#editDepartmentInfo" class="custom_btn" data-toggle="modal"><i class="fa fa-edit" aria-hidden="true" style="color: #37954B; font-size: 25px"></i></a>&nbsp&nbsp
+                    <a href="#editDepartmentInfo" class="custom_btn" data-toggle="modal"><i class="fa fa-edit" aria-hidden="true" style="color: #37954B; font-size: 25px"></i></a>
                     <a href="#delDepartment" class="custom_btn" data-toggle="modal"><i class="fa fa-trash" aria-hidden="true" style="color: #ED1C24; font-size: 25px"></i></a>
                 </div>
               </div>
@@ -1106,22 +1106,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                 <div class="card_footer">
                   <span class="date"><?=$nurses['schedule']?></span>
                     <a href="#viewNurseInfo" class="custom_btn nurseinfobtn" ><i class="fa fa-info-circle" aria-hidden="true" style="color: gray;"></i></a>
-                    <a href="#viewNurseInfo" class="custom_btn nurseinfobtn" data-toggle="modal"><i class="fa fa-edit" aria-hidden="true" style="color: #37954B;"></i></a>
-                    <a href="#delNurse" class="custom_btn" data-toggle="modal"><i class="fa fa-trash" aria-hidden="true" style="color: #ED1C24;"></i></a>
-                </div>
-              </div>
-            </div>
-
-            <div class="card">
-              <img src="./assets/<?=$nurses['profile_pic']?>" alt="" />
-              <div class="card_content">
-                <span class="stud_id"><?=$nurses['emp_id']?></span>
-                <span class="name"><?=$nurses['firstname']?> <?=$nurses['lastname']?></span>
-                <span class="nurse"><?=$nurses['position']?></span>
-                <div class="card_footer">
-                  <span class="date"><?=$nurses['schedule']?></span>
-                    <a href="#viewNurseInfo" class="custom_btn nurseinfobtn" ><i class="fa fa-info-circle" aria-hidden="true" style="color: gray;"></i></a>
-                    <a href="#viewNurseInfo" class="custom_btn nurseinfobtn" data-toggle="modal"><i class="fa fa-edit" aria-hidden="true" style="color: #37954B;"></i></a>
+                    <a href="#viewNurseInfo" class="custom_btn nurseinfobtn"><i class="fa fa-edit" aria-hidden="true" style="color: #37954B;"></i></a>
                     <a href="#delNurse" class="custom_btn" data-toggle="modal"><i class="fa fa-trash" aria-hidden="true" style="color: #ED1C24;"></i></a>
                 </div>
               </div>
@@ -1320,7 +1305,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
       <!--NURSE DELETED SUCCESSFULLY MODAL-->
 
-      <div class="modal fade" id="removesuccessModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      <div class="modal fade" id="removesuccessModalNurse" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
           aria-hidden="true">
 
           <div class="modal-dialog" role="document">
@@ -1496,8 +1481,6 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
              </div>
             </div>
 
-
-            
             <div class="column2">
              <h5 class="stdname">Juan Dela Cruz (Student-4th year)</h5>
              <div class="stdchat">
@@ -2118,7 +2101,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
   
             $("#delNurse_btn").on('click', function () {
               
-                $("#removesuccessModal").modal("show");
+                $("#removesuccessModalNurse").modal("show");
                 $("#viewNurseInfo").hide();
                 $("#nurse_list").show();
 

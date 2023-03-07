@@ -65,34 +65,21 @@
   </head>
   <body>
     <div class="main">
-      <nav
-        id="sidebar"
-        class="sidebar navbar-dark active"
-        style="
-          width: 225px;
-          box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-        "
-      >
+      <nav id="sidebar" class="sidebar navbar-dark active" style="width: 225px; box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;">
 
         <ul class="mt-2 list-unstyled navbar-nav ps-0">
-          <li
-            data-tab-target="#dashboard"
-            class="mt-3 px-4 w-100 mb-1 nav-item so_active tab"
-          >
+          <li data-tab-target="#dashboard" class="mt-3 px-4 w-100 mb-1 nav-item so_active tab">
             <i class="fa fa-area-chart"></i>
             <a class="nav-link align-items-center"> Home </a>
           </li>
+          
           <li data-tab-target="#patient" class="px-4 w-100 mb-1 nav-item tab">
             <i class="fa fa-users"></i>
-            <div
-              class="nav-link align-items-center"
-              data-bs-toggle="collapse"
-              data-bs-target="#home-collapse"
-              aria-expanded="true"
-            >
+            <div class="nav-link align-items-center" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
               Patients
             </div>
           </li>
+          
           <li data-tab-target="#appointment" class="px-4 w-100 mb-1 nav-item tab">
             <i class="fa fa-calendar" aria-hidden="true"></i>
             <div
