@@ -8,6 +8,7 @@
 
 :root{
     --primary-bg: #577CDC;
+    --bg-success-status: #3BCD64;
 
   --step--2: clamp(0.69rem, calc(0.58rem + 0.60vw), 1.00rem);
   --step--1: clamp(0.83rem, calc(0.67rem + 0.81vw), 1.25rem);
@@ -17,4 +18,10 @@
   --step-3: clamp(1.73rem, calc(1.21rem + 2.58vw), 3.05rem);
   --step-4: clamp(2.07rem, calc(1.39rem + 3.40vw), 3.82rem);
   --step-5: clamp(2.49rem, calc(1.60rem + 4.45vw), 4.77rem);
+}
+.status{
+  width: max-content;
+}
+.success-status{
+  background: var(--bg-success-status);
 }
