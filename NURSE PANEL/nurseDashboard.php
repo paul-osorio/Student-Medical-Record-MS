@@ -37,7 +37,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NURSE | STUDENT MEDICAL RECORD MS</title>
+    <title>NURSE | SMRMS</title>
     <link rel="stylesheet" href="./style.css" />
     <link rel="stylesheet" href="./css/NurseTab.css" />
     <link rel="stylesheet" href="./css/medicine.css" />
@@ -76,7 +76,7 @@
           <li data-tab-target="#patient" class="px-4 w-100 mb-1 nav-item tab">
             <i class="fa fa-users"></i>
             <div class="nav-link align-items-center" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
-              Patients
+              Students
             </div>
           </li>
 
@@ -130,7 +130,7 @@
       >
       <div class="logo navbar-brand m-0" href="#">
         <img src="./assets/QCUClinicLogo.png" alt="" />
-        QCU Clinic
+        Student Medical Record
       </div>
         <div class="container-fluid d-flex justify-content-start">
           <button
@@ -293,8 +293,9 @@
                       <section id="patient" class="patient so_content" data-tab-content>
                       <div class="fright">
                         <div class="container mt-5">
+                          
                         <button class="custom_btn" style=" background: #163666; color: #fff; border: none; outline: none; width: 190px; margin-bottom: 10px; border-radius: 10px;">
-                          <a style="color: #fff;" href="#addPatientModal" class="custom_btn" data-toggle="modal"><i class="fa fa-users"></i> Add New Patient</a>
+                          <a style="color: #fff;" href="#addPatientModal" class="custom_btn" data-toggle="modal"><i class="fa fa-users"></i> Add New Student</a>
                         </button>
                           <div class="modal" id="myModal">
                               <div class="modal-dialog">
@@ -416,7 +417,7 @@
 
 
               <div class="filter_wrapper">
-                <h3>Patients</h3>
+                <h3>STUDENTS</h3>
                 <div class="sort flex-grow-1">
                   <span>Sort by</span>
                   <input type="button" value="Recent"> 
@@ -543,7 +544,7 @@
           
         </section>
 
-        <section id="nurses" class="nurses so_content" data-tab-content>
+        <!-- <section id="nurses" class="nurses so_content" data-tab-content>
           <div class="nurse_header d-flex justify-content-between">
             <h3 class="m-0">NURSES</h3>
             <button class="custom_btn">
@@ -625,7 +626,7 @@
               </div>
             </div>
           </div>
-        </section>
+        </section> -->
 
       
 
@@ -634,7 +635,7 @@
           <div class="row1">
             <div class="column1">
 
-            <h3 class="m-0">MESSAGES</h3>
+            <h3 class="m-0">APPOINTMENTS</h3>
              <input type="text" class="msgsearch" placeholder="Search">
              
              <div class="stdmsg">
@@ -681,6 +682,9 @@
           <div class="medicine_landing">
             <div class="medicine_header d-flex justify-content-between">
               <h3 class="m-0">MEDICINES</h3>
+                <button class="custom_btn">
+                  <a href="#addDepartmentModal" class="custom_btn" data-toggle="modal"><i class="fa fa-medkit"></i>Add Medicine</a>
+                </button>
             </div>
           </div>
           <div class="filter_wrapper">
