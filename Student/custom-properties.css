@@ -9,6 +9,7 @@
 :root{
     --primary-bg: #577CDC;
     --bg-success-status: #3BCD64;
+    --bg-back-button: var(--bg-success-status);
 
   --step--2: clamp(0.69rem, calc(0.58rem + 0.60vw), 1.00rem);
   --step--1: clamp(0.83rem, calc(0.67rem + 0.81vw), 1.25rem);
