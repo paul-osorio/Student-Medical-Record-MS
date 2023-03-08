@@ -37,7 +37,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NURSE | STUDENT MEDICAL RECORD MS</title>
+    <title>NURSE | SMRMS</title>
     <link rel="stylesheet" href="./style.css" />
     <link rel="stylesheet" href="./css/NurseTab.css" />
     <link rel="stylesheet" href="./css/medicine.css" />
@@ -65,75 +65,59 @@
   </head>
   <body>
     <div class="main">
-      <nav
-        id="sidebar"
-        class="sidebar navbar-dark active"
-        style="
-          width: 225px;
-          box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-        "
-      >
+      <nav id="sidebar" class="sidebar navbar-dark active" style="width: 225px; box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;">
 
         <ul class="mt-2 list-unstyled navbar-nav ps-0">
-          <li
-            data-tab-target="#dashboard"
-            class="mt-3 px-4 w-100 mb-1 nav-item so_active tab"
-          >
+          <li data-tab-target="#dashboard" class="mt-3 px-4 w-100 mb-1 nav-item so_active tab">
             <i class="fa fa-area-chart"></i>
             <a class="nav-link align-items-center"> Home </a>
           </li>
+          
           <li data-tab-target="#patient" class="px-4 w-100 mb-1 nav-item tab">
             <i class="fa fa-users"></i>
-            <div
-              class="nav-link align-items-center"
-              data-bs-toggle="collapse"
-              data-bs-target="#home-collapse"
-              aria-expanded="true"
-            >
-              Patients
+            <div class="nav-link align-items-center" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
+              Students
             </div>
           </li>
+
+          <li data-tab-target="#medreports" class="px-4 w-100 mb-1 nav-item tab">
+            <i class="fa fa-plus-square"></i>
+            <div class="nav-link align-items-center" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
+              Medical Reports
+            </div>
+          </li>
+
+          <li data-tab-target="#departments" class="px-4 w-100 mb-1 nav-item tab">
+            <i class="fa fa-building-o"></i>
+            <div class="nav-link align-items-center" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
+              Departments
+            </div>
+          </li>
+
           <li data-tab-target="#appointment" class="px-4 w-100 mb-1 nav-item tab">
             <i class="fa fa-calendar" aria-hidden="true"></i>
-            <div
-              class="nav-link align-items-center"
-              data-bs-toggle="collapse"
-              data-bs-target="#home-collapse"
-              aria-expanded="true"
-            >
+            <div class="nav-link align-items-center" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
               Appointments
             </div>
           </li>
+
           <li data-tab-target="#medicine" class="px-4 w-100 mb-1 nav-item tab">
             <i class="fa fa-medkit" aria-hidden="true"></i>
-            <div
-              class="nav-link align-items-center"
-              data-bs-toggle="collapse"
-              data-bs-target="#home-collapse"
-              aria-expanded="true"
-            >
+            <div class="nav-link align-items-center" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
               Medicines
             </div>
           </li>
+
           <li data-tab-target="#reports" class="px-4 w-100 mb-1 nav-item tab">
             <i class="fa fa-book"></i>
-            <div
-              class="nav-link align-items-center"
-              data-bs-toggle="collapse"
-              data-bs-target="#home-collapse"
-              aria-expanded="true"
-            >
+            <div class="nav-link align-items-center" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
               Reports
             </div>
           </li>
+
           <li data-tab-target="#account" id="account_btn" class="px-4 w-100 mb-1 nav-item tab">
             <i class="fa fa-user-o" aria-hidden="true"></i>
-            <div
-              class="nav-link align-items-center"
-              data-bs-toggle="collapse"
-              data-bs-target="#home-collapse"
-              aria-expanded="true"
-            >
+            <div class="nav-link align-items-center" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
               Account
             </div>
           </li>
@@ -146,7 +130,7 @@
       >
       <div class="logo navbar-brand m-0" href="#">
         <img src="./assets/QCUClinicLogo.png" alt="" />
-        QCU Clinic
+        Student Medical Record
       </div>
         <div class="container-fluid d-flex justify-content-start">
           <button
@@ -299,219 +283,219 @@
                   </div>
              </div>
           </div> -->
+
         </section>
 
 
 
         <!-- PATIENTS -->
-           
-          <section id="patient" class="patient so_content" data-tab-content>
-          <div class="fright">
-            <div class="container mt-5">
-            <button class="custom_btn" style=" background: #163666;
-    color: #fff;
-    border: none;
-    outline: none;
-    width: 190px;
-    margin-bottom: 10px;
-    border-radius: 10px;">
-              <a style="color: #fff;" href="#addPatientModal" class="custom_btn" data-toggle="modal"><i class="fa fa-users"></i> Add New Patient</a>
-            </button>
-              <div class="modal" id="myModal">
-                  <div class="modal-dialog">
-                      <div class="modal-content">
-                          <!-- <div class="modal-header text-white">
-                            <input class="srch-bar" placeholder="Search Patient">
-                              <button class="btn-close" type="button" data-bs-dismiss="modal"></button>
+                      
+                      <section id="patient" class="patient so_content" data-tab-content>
+                      <div class="fright">
+                        <div class="container mt-5">
+                          
+                        <button class="custom_btn" style=" background: #163666; color: #fff; border: none; outline: none; width: 190px; margin-bottom: 10px; border-radius: 10px;">
+                          <a style="color: #fff;" href="#addPatientModal" class="custom_btn" data-toggle="modal"><i class="fa fa-users"></i> Add New Student</a>
+                        </button>
+                          <div class="modal" id="myModal">
+                              <div class="modal-dialog">
+                                  <div class="modal-content">
+
+                                      <!-- <div class="modal-header text-white">
+                                        <input class="srch-bar" placeholder="Search Patient">
+                                          <button class="btn-close" type="button" data-bs-dismiss="modal"></button>
+                                      </div>
+                                      <div class="modal-body">
+                                        <hr>
+                                      </div>
+                                      <div class="modal-footer">
+                                          <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#secondModal" data-bs-dismiss="modal">Scan QR</button>
+                                      </div> -->
+
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="modal" id="secondModal">
+                                
+                                  <!-- <div class="modal-dialog">
+                                      <div class="modal-content">
+                                          <div class="modal-header alert alert-success" style="background-color: white;">
+                                        <table class="ndmodal-table">
+                                            <tr>
+                                              <th>Upload Image</th>
+                                              <th>Capture Image</th>
+                                              </tr>
+                                            </table>
+                                              <button class="btn-close" type="button" data-bs-dismiss="modal"></button>
+                                          </div>
+                                          <div class="modal-body">
+                                            <p>LOGONGQR</p>
+                                            Scan your QR Here
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur placeat odio officiis at dolorem nam ut in modi quos voluptas quod alias, tenetur fuga veniam ducimus delectus est. Impedit, totam.
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam deserunt enim delectus dignissimos accusamus, ab nostrum veritatis esse illo a quisquam. Beatae, est nihil architecto dicta et eos repellat ad.
+
+
+                                          </div>
+                                      </div>
+                                  </div> -->
+
+                              </div>
                           </div>
-                          <div class="modal-body">
-                            <hr>
-                          </div>
-                          <div class="modal-footer">
-                              <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#secondModal" data-bs-dismiss="modal">Scan QR</button>
-                          </div> -->
+            </div>
+
+            <!-- Add New Nurse Modal -->
+            <div id="addPatientModal" class="modal fade">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <form method="post" action="nurseDashboard.php">
+                      <div class="modal-header">						
+                        <h4 class="modal-title">ADD NEW PATIENT</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                       </div>
-                    </div>
-                  </div>
-                  <div class="modal" id="secondModal">
-                      <!-- <div class="modal-dialog">
-                          <div class="modal-content">
-                              <div class="modal-header alert alert-success" style="background-color: white;">
-                            <table class="ndmodal-table">
-                                <tr>
-                                  <th>Upload Image</th>
-                                  <th>Capture Image</th>
-                                  </tr>
-                                </table>
-                                  <button class="btn-close" type="button" data-bs-dismiss="modal"></button>
-                              </div>
-                              <div class="modal-body">
-                                <p>LOGONGQR</p>
-                                Scan your QR Here
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur placeat odio officiis at dolorem nam ut in modi quos voluptas quod alias, tenetur fuga veniam ducimus delectus est. Impedit, totam.
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam deserunt enim delectus dignissimos accusamus, ab nostrum veritatis esse illo a quisquam. Beatae, est nihil architecto dicta et eos repellat ad.
-
-
-                              </div>
-                          </div>
-                      </div> -->
-                  </div>
-              </div>
-</div>
-
-<!-- Add New Nurse Modal -->
-<div id="addPatientModal" class="modal fade">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<form method="post" action="nurseDashboard.php">
-					<div class="modal-header">						
-						<h4 class="modal-title">ADD NEW PATIENT</h4>
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					</div>
-					<div class="modal-body">	
-          <label><b>Basic Information</b></label> <br>
-            <div class="form-group">
-							<label>Student ID</label> 
-							<input type="text" class="form-control" name="student_id" required>
-            </div>	
-            <div class="form-group">
-							<label>Email/Username</label> 
-							<input type="text" class="form-control" name="Email" required>
-            </div>	
-            <div class="form-group">
-							<label>Password</label> 
-							<input type="text" class="form-control" name="password" required>
-            </div>	
-            <div class="form-group">
-							<label>Firstname</label> 
-							<input type="text" class="form-control" name="firstname" required>
-            </div>				
-						<div class="form-group">
-							<label>Middlename (Optional)</label> 
-							<input type="text" class="form-control" name="middlename">
-            </div>
-						<div class="form-group">
-							<label>Surname</label>
-							<input type="text" class="form-control" name="lastname" required>
-						</div>
-						<div class="form-group">
-							<label>Birthdate</label>
-							<input type="date" class="form-control" name="Birthday" required>
-						</div>
-								
-            <div class="form-group">
-							<label>Gender</label>
-							<input type="text" class="form-control" name="Gender" required>
-						</div>	
-            <div class="form-group">
-							<label>Course</label>
-							<input type="text" class="form-control" name="course" required>
-						</div>	
-            <div class="form-group">
-							<label>Year Level</label>
-							<input type="text" class="form-control" name="year_level" required>
-						</div>	
-          
-    
-            <div class="form-group">
-							<label>Contact Number</label>
-							<input type="text" class="form-control" name="Contact_number" required>
-						</div>
-
-            
-					</div>
-					<div class="modal-footer" style="width:100%;">
-						<input type="button" class="btn btn-danger" data-dismiss="modal" value="Cancel">
-						<input type="submit" class="btn btn-success" name="addnew" value="Add">
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-  
-  
-
-
-          <div class="filter_wrapper">
-            <h3>Patients</h3>
-            <div class="sort flex-grow-1">
-              <span>Sort by</span>
-              <input type="button" value="Recent"> 
-            </div>
-            
-          </div>
-          <div class="patient_table_details" >
-
-            <div class="popup" id="popup-1">
-              <div class="overlay"></div>
-                <div class="content">
-                  <div class="closebtn" onclick="togglePopup()">&times;
-                  </div>
-
-
-
-<!--View patient Details-->
-<div class="patients-head">
-<img src="./assets/nurse3.jpg">
-                     <h4>22-001</h4>
-                     <h6>Jessica O Bulleque</h6>
-                     <p>Bachelor of Science in Information and Technology (BSIT)</p>
-                     <p>jessice.ombao.bulleque@gmail.com</p>
-                  <hr>
-                  <h5>Emergency Contact</h5>
-                  <div class="emergency-cont">
-                    <br><br><br><br><br>
-                    <hr>
-                </div>
+                      <div class="modal-body">	
+                      <label><b>Basic Information</b></label> <br>
+                        <div class="form-group">
+                          <label>Student ID</label> 
+                          <input type="text" class="form-control" name="student_id" required>
+                        </div>	
+                        <div class="form-group">
+                          <label>Email/Username</label> 
+                          <input type="text" class="form-control" name="Email" required>
+                        </div>	
+                        <div class="form-group">
+                          <label>Password</label> 
+                          <input type="text" class="form-control" name="password" required>
+                        </div>	
+                        <div class="form-group">
+                          <label>Firstname</label> 
+                          <input type="text" class="form-control" name="firstname" required>
+                        </div>				
+                        <div class="form-group">
+                          <label>Middlename (Optional)</label> 
+                          <input type="text" class="form-control" name="middlename">
+                        </div>
+                        <div class="form-group">
+                          <label>Surname</label>
+                          <input type="text" class="form-control" name="lastname" required>
+                        </div>
+                        <div class="form-group">
+                          <label>Birthdate</label>
+                          <input type="date" class="form-control" name="Birthday" required>
+                        </div>
+                            
+                        <div class="form-group">
+                          <label>Gender</label>
+                          <input type="text" class="form-control" name="Gender" required>
+                        </div>	
+                        <div class="form-group">
+                          <label>Course</label>
+                          <input type="text" class="form-control" name="course" required>
+                        </div>	
+                        <div class="form-group">
+                          <label>Year Level</label>
+                          <input type="text" class="form-control" name="year_level" required>
+                        </div>	
+                      
                 
-                <button class="consult-btn">New Consultation</button>
+                        <div class="form-group">
+                          <label>Contact Number</label>
+                          <input type="text" class="form-control" name="Contact_number" required>
+                        </div>
 
-                
-                <h5>Recent Consultation</h5>
-                <div class="consul-patient">
-                  <br><br>
-<p class="no-rec">No Records</p>
-<br><br>
-<hr>
-<h5>Medical History</h5>
-<div class="consul-patient">
-  <br><br>
-<p class="no-rec">No Records</p>
-<br><br>
-<hr>
-<h5>Medical Requirements</h5>
-<table class="medreq-tbl">
-  <tr>
-  <td>Complete Blood Count (CBC)</td>
-  <td class="patient-passed">Passed</td>
-  <td>img</td>
-  </tr>
-  <tr>
-    <td>Urinalysis</td>
-    <td class="patient-passed">Passed</td>
-    <td>img</td>
-  </tr>
-  <tr>
-    <td>Chess X-Ray</td>
-    <td class="patient-passed">passed</td>
-    <td>img</td>
-  </tr>
-  <tr>
-    <td>Medical Certificate</td>
-    <td class="patient-inc">Incomplete</td>
-    <td>Attach Image</td>
-  </tr>
-</table>
-
-              </div>
-
-
-
-              </div>
-
-
+                        
+                      </div>
+                      <div class="modal-footer" style="width:100%;">
+                        <input type="button" class="btn btn-danger" data-dismiss="modal" value="Cancel">
+                        <input type="submit" class="btn btn-success" name="addnew" value="Add">
+                      </div>
+                    </form>
+                  </div>
                 </div>
               </div>
+              
+              
+
+
+              <div class="filter_wrapper">
+                <h3>STUDENTS</h3>
+                <div class="sort flex-grow-1">
+                  <span>Sort by</span>
+                  <input type="button" value="Recent"> 
+                </div>
+                
+              </div>
+              <div class="patient_table_details" >
+
+                <div class="popup" id="popup-1">
+                  <div class="overlay"></div>
+                    <div class="content">
+                      <div class="closebtn" onclick="togglePopup()">&times;
+                      </div>
+
+
+
+              <!--View patient Details-->
+              <div class="patients-head">
+              <img src="./assets/nurse3.jpg">
+                                  <h4>22-001</h4>
+                                  <h6>Jessica O Bulleque</h6>
+                                  <p>Bachelor of Science in Information and Technology (BSIT)</p>
+                                  <p>jessice.ombao.bulleque@gmail.com</p>
+                                <hr>
+                                <h5>Emergency Contact</h5>
+                                <div class="emergency-cont">
+                                  <br><br><br><br><br>
+                                  <hr>
+                              </div>
+                              
+                              <button class="consult-btn">New Consultation</button>
+
+                              
+                              <h5>Recent Consultation</h5>
+                              <div class="consul-patient">
+                                <br><br>
+              <p class="no-rec">No Records</p>
+              <br><br>
+              <hr>
+              <h5>Medical History</h5>
+              <div class="consul-patient">
+                <br><br>
+              <p class="no-rec">No Records</p>
+              <br><br>
+              <hr>
+              <h5>Medical Requirements</h5>
+              <table class="medreq-tbl">
+                <tr>
+                <td>Complete Blood Count (CBC)</td>
+                <td class="patient-passed">Passed</td>
+                <td>img</td>
+                </tr>
+                <tr>
+                  <td>Urinalysis</td>
+                  <td class="patient-passed">Passed</td>
+                  <td>img</td>
+                </tr>
+                <tr>
+                  <td>Chess X-Ray</td>
+                  <td class="patient-passed">passed</td>
+                  <td>img</td>
+                </tr>
+                <tr>
+                  <td>Medical Certificate</td>
+                  <td class="patient-inc">Incomplete</td>
+                  <td>Attach Image</td>
+                </tr>
+              </table>
+
+                            </div>
+
+
+
+                            </div>
+
+
+                              </div>
+                            </div>
 
 
 
@@ -560,7 +544,7 @@
           
         </section>
 
-        <section id="nurses" class="nurses so_content" data-tab-content>
+        <!-- <section id="nurses" class="nurses so_content" data-tab-content>
           <div class="nurse_header d-flex justify-content-between">
             <h3 class="m-0">NURSES</h3>
             <button class="custom_btn">
@@ -642,7 +626,7 @@
               </div>
             </div>
           </div>
-        </section>
+        </section> -->
 
       
 
@@ -651,7 +635,7 @@
           <div class="row1">
             <div class="column1">
 
-            <h3 class="m-0">MESSAGES</h3>
+            <h3 class="m-0">APPOINTMENTS</h3>
              <input type="text" class="msgsearch" placeholder="Search">
              
              <div class="stdmsg">
@@ -698,6 +682,9 @@
           <div class="medicine_landing">
             <div class="medicine_header d-flex justify-content-between">
               <h3 class="m-0">MEDICINES</h3>
+                <button class="custom_btn">
+                  <a href="#addDepartmentModal" class="custom_btn" data-toggle="modal"><i class="fa fa-medkit"></i>Add Medicine</a>
+                </button>
             </div>
           </div>
           <div class="filter_wrapper">

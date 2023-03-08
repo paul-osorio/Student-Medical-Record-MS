@@ -20,12 +20,32 @@ body{
     padding: 10px 20px;
     top: 0;
 }
+.header-name{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .header img{
-    width: 60px;
+    width: 45px;
+    margin: 0 10px 0 0;
 }
 .header h3{
-    color: white;
+    font-size: 24px;
+    color: #ffffff;
+    font-weight: 600;
 }
+#date{
+    font-size: 20px;
+    color: #ffffff;
+    font-weight: 600;
+}
+/* #time, #date, #day{
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    display: contents;
+} */
+
 /* L O G I N */
 .logo{
     display: flex;

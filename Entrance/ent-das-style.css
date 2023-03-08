@@ -14,7 +14,7 @@
 .subcontainer{
     /* background-color: blue; */
     width: 100%;
-    margin: 0 3em;
+    margin: 0 2em;
 }
 .numerical{
     width: 100%;
@@ -34,19 +34,29 @@
     text-align: center;
 }
 .numerical ul #total{
-    background-color: skyblue;
+    background-color: #4C9BF5;
+    color: #fff;
+    font-weight: 600;
 }
 .numerical ul #verified{
-    background-color: #92e000;
+    background-color: #4EC745;
+    color: #fff;
+    font-weight: 600;
 }
 .numerical ul #problem{
-    background-color: #e1ff00;
+    background-color: #F0A202;
+    color: #fff;
+    font-weight: 600;
 }
 .numerical ul #visitor{
     background-color: #f58800;
+    color: #fff;
+    font-weight: 600;
 }
 .numerical ul #invalid{
-    background-color: #de3700;
+    background-color: #FF0022;
+    color: #fff;
+    font-weight: 600;
 }
 .video{
     display: flex;
@@ -54,17 +64,18 @@
 }
 .video video{
     
-    width: 480px;
+    width: 380px;
     /* height: 320px; */
     border-radius: 10px;
-    margin: 20px 0;
+    margin: 20px 0 0 0;
 }
 .form-scan{
     display: flex;
     justify-content: center;
+    /* background-color: red; */
+    margin: 0;
 }
 .subcontainer .form-control{
-    margin: 0 0 20px;
     width: 480px;
 }
 .notification{
@@ -90,18 +101,45 @@
     padding: 3px 10px;
     border-radius: 3px;
 }
-
-
-
-.notification table tbody tr td{
+/* .visitor-form{
+    position: relative;
+    top: 100px;
+} */
+.visitor-form h4{
+    text-align: center;
+}
+.visitor-form form{
+    padding: 10px 10px 0 10px;
+    display: grid;
+    border-radius: 5px;
+    /* border: 1px solid #666666; */
+    background-color: #ebebeb;
+}
+.visitor-form form input[type=text]{
+    margin:  0 0 5px;
+    font-size: 12px;
+    padding: 5px;
+    border: none;
+    
+}
+.visitor-form form input[type=submit]{
+    margin: .7em 0;
+    background-color: #4EC745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 0;
+    font-weight: 600;
+}
+/* .notification table tbody tr td{
     padding: 10px 0;
     text-align: center;
     border: 1px solid #000000;
     background-color: #e1ff00;
-}
+} */
 .table{
     /* background-color: yellowgreen; */
-    margin: 70px 20px 0;
+    /* margin: 70px 20px 0; */
     width: 100%;
     border-collapse: collapse;
 }
@@ -161,9 +199,9 @@
     text-transform:uppercase;
 }
 
-.pop-up-modal .modal-message p b{
-    /* text-transform: lowercase; */
-}
+/* .pop-up-modal .modal-message p b{
+    text-transform: lowercase;
+} */
 
 .pop-up-modal .modal-message button{
     align-self: center;
@@ -175,3 +213,32 @@
     border-radius: 4px;
     border: none;
 } 
+/* ENTRANCE STUDENT INFORMATION */
+.stud-info{
+
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    border: 1px solid #666666;
+}
+.stud-img{
+    width: 25%;
+    /* background-color: #666666; */
+    display: flex;
+    justify-content: center;
+}
+.stud-img img{
+    width: 100px;
+    height: 100px;
+    /* place-self: center; */
+    margin: 20px 0 0 0 ;
+}
+.stud-ent-info{
+    width: 100%;
+    padding: 0 10px;
+}
+.stud-ent-info h2{
+    margin: 20px 0;
+    font-weight: 600;
+}
+/* END OF ENTRANCE STUDENT INFORMATION */
