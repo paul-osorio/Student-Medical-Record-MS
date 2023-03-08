@@ -8,8 +8,9 @@ include './queries.php';
 <html>
     <head>
         <title>Entrance Page</title>
-        <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="ent-das-style.css">
+        <link rel="stylesheet" href="./style.css" />
+        <link rel="stylesheet" href="./ent-das-style.css" />
+      
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
@@ -31,12 +32,13 @@ include './queries.php';
       
       <div class="header">
           <div class="header-name">
-              <!-- <img src="/Admin/assets/QCU_Logo.png" alt=""> -->
+              <img src="../Assets/QCU_Logo.png" alt="">
               <h3>Welcome to Quezon City University</h3>
           </div>
-          <div class="time">
-             <h3>Jan 1, 2023 Sunday | 0:00</h3>
+          <div id="date">
+
           </div>
+          
       </div>
 
       <div class="main-container">
@@ -57,7 +59,13 @@ include './queries.php';
            </div>
 
            <div class="visitor-form">
-              <input type="text" name="" id="">
+             <h4>Visitors Form</h4>
+           <form action="">
+              <input type="text" name="" id="" placeholder="Name">
+              <input type="text" name="" id="" placeholder="Contact Number">
+              <input type="text" name="" id="" placeholder="Purpose">
+              <input type="submit" name="" id="" value="Capture and Submit">
+            </form>
            </div>
 
            <div class="notification">
@@ -122,9 +130,7 @@ include './queries.php';
 
         $(document).ready(function(){
 
-          let scanner = new Instascan.Scanner({ video:document.getElementById('preview'), scanPeriod: 10});
-
-
+          let scanner = new Instascan.Scanner({ video:document.getElementById('preview')});
           Instascan.Camera.getCameras().then(function(cameras){
 
             if(cameras.length > 0) {
@@ -157,8 +163,65 @@ include './queries.php';
 
         });
 
+        function updateClock() {
+  var now = new Date();
+  var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  var month = months[now.getMonth()];
+  var day = days[now.getDay()];
+  var date = now.getDate();
+  var hours = now.getHours();
+  var minutes = now.getMinutes();
+  var seconds = now.getSeconds();
+  var amOrPm = hours < 12 ? 'AM' : 'PM';
 
-      
+  // Convert to 12-hour time
+  if (hours > 12) {
+    hours -= 12;
+  } else if (hours === 0) {
+    hours = 12;
+  }
+
+  // Add leading zeros to minutes and seconds
+  if (minutes < 10) {
+    minutes = '0' + minutes;
+  }
+  if (seconds < 10) {
+    seconds = '0' + seconds;
+  }
+
+  // Build the clock string
+  var clockStr = month + ' ' + date + ', ' + day + ' ' + hours + ':' + minutes + ':' + seconds + ' ' + amOrPm;
+
+  // Update the clock element
+  document.getElementById('date').textContent = clockStr;
+}
+
+// Call updateClock() every second
+setInterval(updateClock, 1000);
+
+
+//         function updateTime() {
+//   const now = new Date();
+//   const clock = document.getElementById("time");
+//   const date = document.getElementById("date");
+//   const day = document.getElementById("day");
+
+//   // Update clock
+//   clock.textContent = now.toLocaleTimeString();
+
+//   // Update date
+//   date.textContent = now.toLocaleDateString();
+
+//   // Update day
+//   const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+//   day.textContent = days[now.getDay()];
+// }
+
+// updateTime();
+// setInterval(updateTime, 1000); // Update every second
+
+
       </script>
     </body>
 </html>

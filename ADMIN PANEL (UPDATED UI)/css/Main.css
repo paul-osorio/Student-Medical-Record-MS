@@ -1,0 +1,51 @@
+#body {
+  background-color: #182039;
+}
+
+#sidebar p {
+  margin-top: 15px;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+#sidebar .admin_info {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  color: white;
+}
+
+#sidebar .web_copyright {
+  color: gray;
+  font-size: 10px;
+  text-align: center;
+}
+
+#sidebar .web_info {
+  display: flex;
+  height: 58vh;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.content_wrapper {
+  background-color: #182039;
+}
+
+#navigation {
+  background-color: #182039;
+}
+
+.main {
+  background-color: #182039;
+}
+
+#sidebar {
+  background-color: #13192d;
+  overflow: hidden;
+}
+
+#sidebar .logo {
+  background-color: #13192d;
+}
