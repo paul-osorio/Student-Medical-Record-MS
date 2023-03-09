@@ -901,31 +901,34 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                         <!-- <div class="dropdown_list">
                           <div name="dept_name">
                             <label>Department</label>
-                            <select>
-                                <option name="dept_name">BSIT Department</option>
-                                <option name="dept_name">BSIE Department</option>
-                                <option name="dept_name">BSENT Department</option>
-                                <option name="dept_name">BSA Department</option>
-                                <option name="dept_name">BSECE Department</option>
+                            <select name="department" id="department">
+                                <option value="">---Select Department---</option>
+                                <option value="BSIT">BSIT Department</option>
+                                <option value="BSIE">BSIE Department</option>
+                                <option value="BSENT">BSENT Department</option>
+                                <option value="BSA">BSA Department</option>
+                                <option value="BSECE">BSECE Department</option>
                             </select>
                           </div>
                           <div name="building_name">
                           <label>Building Name</label>
-                            <select>
-                                <option name="building_name">Bautista Building</option>
-                                <option name="building_name">TechVoc Building</option>
-                                <option name="building_name">Belmonte Building</option>
+                            <select name="building" id="building">
+                                <option value="">---Select Building Name---</option>
+                                <option value="bautista">Bautista Building</option>
+                                <option name="techvoc">TechVoc Building</option>
+                                <option name="belmonte">Belmonte Building</option>
                             </select>
                           </div>
                           <div name="room_num">
                           <label>Room No.</label>
-                            <select>
-                                <option name="room_num">IC301a</option>
-                                <option name="room_num">IC302a</option>
-                                <option name="room_num">IC304a</option>
-                                <option name="room_num">IC304a</option>
-                                <option name="room_num">IC305a</option>
-                                <option name="room_num">IC306a</option>
+                            <select name="room" id="room">
+                                <option value="">---Select Room No.---</option>
+                                <option name="room1">IC301a</option>
+                                <option name="room2">IC302a</option>
+                                <option name="room3">IC304a</option>
+                                <option name="room4">IC304a</option>
+                                <option name="room5">IC305a</option>
+                                <option name="room6">IC306a</option>
                             </select>
                           </div>
                         </div> -->
@@ -996,7 +999,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
           <div class="modal-dialog" role="document">
               <div class="modal-content">
                   <div class="modal-header">
-                      <img src="./assets/nurse.jpg"
+                      <img src="./assets/nurse.jpg">
                       <h5 class="modal-title" id="exampleModalLabel"> 23-0001</h5>
                       <h5 class="modal-title" id="exampleModalLabel"> Department Head</h5>
                       <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -1125,10 +1128,13 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
               <div class="sort flex-grow-1">
                 <span>Sort by</span>
                 <select name="filter" id="filter_nurse">
+                  <option value="">---Select---</option>
                   <option value="departments">Campus</option>
                   <!-- <option value="departments">Campus</option>
                   <option value="departments">Campus</option> -->
                 </select>
+
+              
               </div>
               <div>
                   <div class="search">
@@ -1206,14 +1212,20 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
             </div>
             <div class="nurse_details">
               <span>Position: </span>
-              <select class="form-select">
-                <option>Sample</option>
+              <select class="form-select" name="position" id="position">
+                <option value="">---Select Position---</option>
+                <option value="head">Head Nurse</option>
+                <option value="nurse">Nurse</option>
               </select>
+          
             </div>
-            <div class="nurse_details">
+            <div class="nurse_details" name="campus" id="campus">
               <span>Campus Assinged: </span>
               <select class="form-select">
-                <option>Sample</option>
+                <option value="">---Select Campus---</option>
+                <option value="sb">San Bartolome</option>
+                <option value="b">Batasan</option>
+                <option value="sf">San Francisco</option>
               </select>
             </div>
             <span>Schedule</span>
@@ -1267,8 +1279,10 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
               </div>
               <div>
                 <span>Sex</span>
-                <select class="form-select">
-                  <option>Sample</option>
+                <select class="form-select" name="sex" id="sex">
+                  <option value="">---Select Sex---</option>
+                  <option value="female">Female</option>
+                  <option value="male">Male</option>
                 </select>
               </div>
             </div>
@@ -1620,6 +1634,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
             <div class="sort flex-grow-1">
               <span>Sort by</span>
               <select name="filter" id="filter">
+                <option value="">---Select---</option>
                 <option value="Type of User">Type of User</option>
                 <option value="Date of Archive">Date of Archive</option>
               </select>
@@ -1768,6 +1783,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
           <div class="sort flex-grow-1">
             <span>Sort by</span>
             <select name="filter" id="filter">  
+              <option value="">---Select---</option>
               <option value="Section">Section</option>
               <option value="Course">Course</option>
               <option value="Year Level">Year Level</option>
