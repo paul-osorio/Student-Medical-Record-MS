@@ -426,7 +426,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
             <span class="title">NURSES TODAY</span>
 
             <table>
-            
+            f
                 <?php if(mysqli_num_rows($fetchAllNursesToday) > 0) { 
                 while ($todayNurses = mysqli_fetch_assoc($fetchAllNursesToday)) {  ?>
 
@@ -546,6 +546,12 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                   </div>
 
                   <div class="modal-body">	
+
+                      <div class="form-group">
+                        <center><label>Upload Image</label>
+                        <input type="file" class="form-control" name="img" required></center>
+                      </div>	
+
                       <div class="form-group">
                         <label>Admin ID: </label>
                         <input type="text" class="form-control" name="unique_id" required>
@@ -580,10 +586,12 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                         <input type="text" class="form-control" name="email" required>
                       </div>	
 
-                    <!-- <div class="form-group">
-                      <center><label>Upload Image</label>
-                      <input type="file" class="form-control" name="img" required></center>
-                    </div>	 -->
+                      <div class="form-group">
+                        <label>Password</label> 
+                        <input type="password" class="form-control" name="password" required>
+                      </div>	
+
+                  
                     
                   </div>
                   
@@ -2063,6 +2071,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
 <!--#################################################################################################################################################################################################################################-->
 
+<!-- ADD NURSE -->
 <script>
         $(document).ready(function () {
 
@@ -2080,6 +2089,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
 <!--#################################################################################################################################################################################################################################-->
 
+<!-- ADD NURSE -->
 <script>
         $(document).ready(function () {
 
@@ -2097,6 +2107,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
 <!--#################################################################################################################################################################################################################################-->
 
+<!-- ADD NURSE -->
 <script>
         $(document).ready(function () {
 
@@ -2114,6 +2125,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
 <!--#################################################################################################################################################################################################################################-->
 
+<!-- ADD SUCCESS -->
 <script>
         $(document).ready(function() {
   
@@ -2129,6 +2141,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
 <!--#################################################################################################################################################################################################################################-->
 
+<!-- DELETE NURSE -->
 <script>
         $(document).ready(function() {
   
@@ -2146,6 +2159,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
 <!--#################################################################################################################################################################################################################################-->
 
+<!-- DELETE ADMIN -->
 <script>
         $(document).ready(function() {
   

@@ -1,7 +1,7 @@
 <?php
     include_once 'db_conn.php';
     $success  = "";
-    if(isset($_POST['addAdmin']))
+    if(isset($_POST['addDept']))
     {	 
         $unique_id  = $_POST['unique_id'];
         $email  = $_POST['email'];
@@ -12,11 +12,8 @@
         // $status  = $_POST['status'];
        
         
-        $sql = "INSERT INTO admins (unique_id,email,fname,lname,img)
+        $sql = "INSERT INTO admins (unique_id,email,password,fname,lname,img)
         VALUES ('$unique_id','$email','$password','$fname','$lname','$img')";
-        // VALUES ('$unique_id','$email','$password','$fname','$lname','$img','$status')";
-
-        
         if (mysqli_query($conn, $sql))
         {
             $success    =   "New record created successfully !";
