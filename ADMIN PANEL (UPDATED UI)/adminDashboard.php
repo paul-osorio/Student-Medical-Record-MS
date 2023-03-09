@@ -83,7 +83,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ADMIN | STUDENT MEDICAL RECORD MS</title>
+    <title>ADMIN | SMRMS</title>
 
     <!-- Fontfaces CSS-->
     <link rel="stylesheet" href="./style.css?v=<?php echo time(); ?>"/>
@@ -547,8 +547,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
                   <div class="modal-body">	
                       <div class="form-group">
-                        <label>Employee ID: </label>
-                        <span>23-0003</span>
+                        <label>Admin ID: </label>
+                        <input type="text" class="form-control" name="unique_id" required>
                       </div><br>
                       <!-- <div class="form-group">
                         <label>Admin ID</label> 
@@ -1101,16 +1101,18 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
             <div class="filter_wrapper">
               <div class="sort flex-grow-1">
                 <span>Sort by</span>
-                <select name="filter" id="filter">
+                <select name="filter" id="filter_nurse">
                   <option value="departments">Campus</option>
                   <!-- <option value="departments">Campus</option>
                   <option value="departments">Campus</option> -->
                 </select>
               </div>
               <div>
-                <div class="search">
-                  <input type="text" placeholder="Search" />
+                  <div class="search">
+                    <input type="text" placeholder="Search" id="search_nurse"/>
                 </div>
+
+                
                 <!-- <div class="grid">
                   <i class="fa fa-th-large" aria-hidden="true"></i>
                 </div>
@@ -1171,7 +1173,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
               <div class="nurse_info">
                 <div>
                   <span>EMP ID: </span>
-                  <span>23-0003</span>
+                  <input type="text" class="form-control" name="emp_id" required>
                 </div>
                 <div>
                   <span>Email</span>
@@ -2161,6 +2163,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
 <!-- CUSTOM AJAX FILE -->
 <script src="./ajax/search_admin.js"> </script>
+<script src="./ajax/search_nurse.js"> </script>
 
 </html>
 
