@@ -3,20 +3,25 @@
     $success  = "";
     if(isset($_POST['addDept']))
     {	 
-        $unique_id  = $_POST['unique_id'];
+        $emp_id  = $_POST['emp_id'];
+        $dept_name  = $_POST['dept_name'];
+        $building_name = $_POST['building_name'];
+        $room_num   = $_POST['room_num'];
+        $image  = $_POST['image'];
+        $firstname  = $_POST['firstname'];
+        $lastname  = $_POST['lastname'];
         $email  = $_POST['email'];
-        $password = $_POST['password'];
-        $fname   = $_POST['fname'];
-        $lname  = $_POST['lname'];
-        $img  = $_POST['img'];
-        // $status  = $_POST['status'];
+        $contact_num  = $_POST['contact_num'];
+        $position  = $_POST['position'];
        
         
-        $sql = "INSERT INTO admins (unique_id,email,password,fname,lname,img)
-        VALUES ('$unique_id','$email','$password','$fname','$lname','$img')";
+        $sql = "INSERT INTO `departments` (emp_id,dept_name,building_name,room_num,image,firstname,lastname,email,contact_num,position)
+        VALUES ('$emp_id','$dept_name','$building_name','$room_num','$image','$firstname','$lastname','$email','$contact_num','$position')";
         if (mysqli_query($conn, $sql))
         {
             $success    =   "New record created successfully !";
+
+            header("Location:adminDashboard.php?mess=update success");
         }
         else
         {

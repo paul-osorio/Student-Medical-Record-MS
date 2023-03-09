@@ -873,11 +873,11 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
               <div class="modal-content">
                   
 
-                  <form action="addDepartments.php" method="POST">
+                  <form action="insert_department.php" method="POST">
 
                   <div class="modal-header">
                       <div class="imgupload">
-                        <input type="file" id="selectedFile" style="display: none;" />
+                        <input type="file" class="form-control" name="image" id="selectedFile" style="display: none;" />
                         <input type="button" name="image" id="imgbox" value="Upload Image" onclick="document.getElementById('selectedFile').click();" />
                       </div>
 
@@ -898,46 +898,61 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                         
                         <input type="hidden" name="update_id" id="update_id">
                         
-                        <div class="dropdown_list">
-                          <div>
+                        <!-- <div class="dropdown_list">
+                          <div name="dept_name">
                             <label>Department</label>
                             <select>
-                                <option>BSIT Department</option>
-                                <option>BSIE Department</option>
-                                <option>BSENT Department</option>
-                                <option>BSA Department</option>
-                                <option>BSECE Department</option>
+                                <option name="dept_name">BSIT Department</option>
+                                <option name="dept_name">BSIE Department</option>
+                                <option name="dept_name">BSENT Department</option>
+                                <option name="dept_name">BSA Department</option>
+                                <option name="dept_name">BSECE Department</option>
                             </select>
                           </div>
-                          <div>
+                          <div name="building_name">
                           <label>Building Name</label>
                             <select>
-                                <option>Bautista Building</option>
-                                <option>TechVoc Building</option>
-                                <option>Belmonte Building</option>
+                                <option name="building_name">Bautista Building</option>
+                                <option name="building_name">TechVoc Building</option>
+                                <option name="building_name">Belmonte Building</option>
                             </select>
                           </div>
-                          <div>
-                          <label>Room No</label>
+                          <div name="room_num">
+                          <label>Room No.</label>
                             <select>
-                                <option>IC301a</option>
-                                <option>IC302a</option>
-                                <option>IC304a</option>
-                                <option>IC304a</option>
-                                <option>IC305a</option>
-                                <option>IC306a</option>
+                                <option name="room_num">IC301a</option>
+                                <option name="room_num">IC302a</option>
+                                <option name="room_num">IC304a</option>
+                                <option name="room_num">IC304a</option>
+                                <option name="room_num">IC305a</option>
+                                <option name="room_num">IC306a</option>
                             </select>
                           </div>
+                        </div> -->
+
+                        <div class="form-group">
+                            <label> Department Name </label>
+                            <input type="text" name="dept_name" id="dept_name" class="form-control" placeholder="First Name">
+                        </div>
+
+                        <div class="form-group">
+                            <label> Building Name </label>
+                            <input type="text" name="building_name" id="building_name" class="form-control" placeholder="First Name">
+                        </div>
+
+                        <div class="form-group">
+                            <label> Room No. </label>
+                            <input type="text" name="room_num" id="room_num" class="form-control" placeholder="First Name">
                         </div>
                         
                         <div class="form-group">
                             <label> First Name </label>
-                            <input type="text" name="firtname" id="firtname" class="form-control" placeholder="First Name" readonly>
+                            <input type="text" name="firstname" id="firstname" class="form-control" placeholder="First Name">
                         </div>
 
                         <div class="form-group">
                             <label> Last Name </label>
-                            <input type="text" name="lastname" id="lastname" class="form-control" placeholder="Last Name" readonly>
+                            <input type="text" name="lastname" id="lastname" class="form-control" placeholder="Last Name">
                         </div>
 
                         <div class="form-group">
@@ -964,7 +979,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                           
                           <input type="button" class="btn btn-danger" data-dismiss="modal" value="Cancel">
 
-                          <input type="submit" class="btn btn-success" name="addDept  " value="Add">
+                          <input type="submit" class="btn btn-success" name="addDept" value="Add">
                       
                       </div>
                   </form>
