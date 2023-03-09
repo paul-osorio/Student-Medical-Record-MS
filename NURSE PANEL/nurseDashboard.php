@@ -70,7 +70,7 @@
         <ul class="mt-2 list-unstyled navbar-nav ps-0">
           <li data-tab-target="#dashboard" class="mt-3 px-4 w-100 mb-1 nav-item so_active tab">
             <i class="fa fa-area-chart"></i>
-            <a class="nav-link align-items-center"> Home </a>
+            <a class="nav-link align-items-center"> Dashboard </a>
           </li>
           
           <li data-tab-target="#patient" class="px-4 w-100 mb-1 nav-item tab">
@@ -421,6 +421,10 @@
                 <div class="sort flex-grow-1">
                   <span>Sort by</span>
                   <input type="button" value="Recent"> 
+                </div>
+
+                <div class="search">
+                  <input type="text" placeholder="Search" id="search_admin"/>
                 </div>
                 
               </div>
