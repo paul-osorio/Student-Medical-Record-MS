@@ -1528,7 +1528,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                           </div>
                           <div class="actionbtn">
                               <!-- <a href="#Nurse" class="custom_btn" data-toggle="modal"><button onclick="history.back()">BACK</button></a> -->
-                              <button style="background-color:green;">EDIT</button>
+                              <a href="#editNurseInfo" class="custom_btn" data-toggle="modal"><button style="background-color:green;">EDIT</button>
                               <a href="#delNurse" class="custom_btn" data-toggle="modal"><button style="background-color:#ED1C24;">REMOVE</button></a>
                           </div>
                       </div>
