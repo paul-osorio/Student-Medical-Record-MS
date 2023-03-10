@@ -834,7 +834,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                 <span class="department_name"><?=$departments['dept_name']?></span>
                 <div class="actions">
                     <a href="#editDepartmentInfo" class="custom_btn editbtndepts" data-toggle="modal"><i class="fa fa-edit" aria-hidden="true" style="color: #37954B; font-size: 25px"></i></a>
-                    <a href="#delDepartment" class="custom_btn" data-toggle="modal"><i class="fa fa-trash" aria-hidden="true" style="color: #ED1C24; font-size: 25px"></i></a>
+                    <a href="#delDepartment" class="custom_btn deletebtndepts" data-toggle="modal"><i class="fa fa-trash" aria-hidden="true" style="color: #ED1C24; font-size: 25px"></i></a>
                 </div>
               </div>
               <div class="room_info">
@@ -2415,6 +2415,33 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
             });
         });
 
+    </script>
+
+
+<!-- DELETE DEPARTMENT RECORD JS -->
+<script>
+        $(document).ready(function () {
+
+            $('.deletebtndepts').on('click', function () {
+
+                $('#delAdmin').modal('show');
+
+                var tr = $(this).closest('tr');
+
+                console.log(tr);
+
+                var data = tr.children("td").map(function () {
+
+                    return $(this).text();
+
+                }).get();
+
+                console.log(data);
+
+                $('#delete_id').val(data[1]);
+
+            });
+        });
     </script>
 
     
