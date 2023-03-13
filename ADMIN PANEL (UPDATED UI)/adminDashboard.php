@@ -197,6 +197,21 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
           
           </li>
 
+          <li data-tab-target="#hospital" class="px-4 w-100 mb-1 nav-item tab">
+              
+              <i class="fa fa-hospital-o" aria-hidden="true"></i>
+              <div
+                class="nav-link align-items-center"
+                data-bs-toggle="collapse"
+                data-bs-target="#home-collapse"
+                aria-expanded="true">
+
+                Hospital
+
+              </div>
+          
+          </li>
+
 
           <!-- <li data-tab-target="#appointment" class="px-4 w-100 mb-1 nav-item tab">
               
