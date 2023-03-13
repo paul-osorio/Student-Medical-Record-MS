@@ -288,7 +288,7 @@
 
 
 
-        <!-- PATIENTS -->
+        <!-- STUDENTS/PATIENTS -->
                       
                       <section id="patient" class="patient so_content" data-tab-content>
                       <div class="fright">
@@ -452,7 +452,8 @@
                                   <hr>
                               </div>
                               
-                              <button class="consult-btn">New Consultation</button>
+                              <!-- <button class="consult-btn">New Consultation</button> -->
+                              <a href="#newConsultation" class="consult-btn" style="text-decoration: none;" data-toggle="modal">New Consultation</a>
 
                               
                               <h5>Recent Consultation</h5>
@@ -631,6 +632,169 @@
             </div>
           </div>
         </section> -->
+
+
+
+        <!-- NEW CONSULTATION MODAL -->
+        <div id="newConsultation" class="modal fade">
+            <div class="modal-dialog">
+
+              <div class="modal-content">
+              <div class="modal-header">						
+                    <h4 class="modal-title">CONSULTATION</h4>
+                    <!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button> -->
+                  </div>
+
+                 
+
+                <form method="post" action="adminDashboard.php">
+
+
+                  <div class="modal-body">	
+                    
+                      <div class="form-group">
+                        <label> <b>Name: </b>Juan Two T. Dela Cruz </label>
+                        <label> <b> Section & Year Level:</b> SBIT-1A</label> <label>March 6, 2023 - 1:00 PM</label>
+                      
+                      </div>
+                      <br>
+                      
+                      <div class="form-group">
+                        <label> <b>Symptoms</b></label>
+                      </div>
+
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" name="symptoms[]" value="Difficulty breathing"> Difficulty breathing
+                        </label>
+                      </div>
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" name="symptoms[]" value="Nausea or vomitting"> Nausea or vomitting
+                        </label>
+                      </div>
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" name="symptoms[]" value="Fever or chills"> Fever or chills
+                        </label>
+                      </div>
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" name="symptoms[]" value="Cough"> Cough
+                        </label>
+                      </div>
+
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" name="symptoms[]" value="Headache"> Headache
+                        </label>
+                      </div>
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" name="symptoms[]" value="Congestion or runny nose"> Congestion or runny nose
+                        </label>
+                      </div>
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" name="symptoms[]" value="Sore throat"> Sore throat
+                        </label>
+                      </div>
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" name="symptoms[]" value="New loss of taste or smell"> New loss of taste or smell
+                        </label>
+                      </div>
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" name="symptoms[]" value="Stomach Ache"> Stomach Ache
+                        </label>
+                      </div>
+
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" name="symptoms[]" value="Fatigue"> Fatigue
+                        </label>
+                      </div>
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" name="symptoms[]" value="Diarrhea"> Diarrhea
+                        </label>
+                      </div>
+
+                      <div class="form-group">
+                        <label> <b>Body Temperature</b></label>
+                        <input type="text" class="form-control" name="body_temp" required>
+                      </div>
+
+                      <div class="covid">
+                          <label> <b>Have you been in close contact to suspected or confirmed covid case for the past 14 days?</b></label>
+                          <label><input type="radio" name="yesno" value="Yes">Yes</label>
+                          <label><input type="radio" name="yesno" value="no">No</label>
+                      </div>
+                      
+
+                      
+                      <!-- <div class="form-group">
+                        <center><label>Upload Image</label>
+                        <input type="file" class="form-control" name="img" required></center>
+                      </div>	
+
+                      <div class="form-group">
+                        <label>Admin ID: </label>
+                        <input type="text" class="form-control" name="unique_id" required>
+                      </div><br> -->
+
+
+                      <!-- <div class="form-group">
+                        <label>Admin ID</label> 
+                        <input type="text" class="form-control" name="unique_id" required>
+                      </div>	 -->
+
+                      <!-- <div class="form-group">
+                        <label>Password</label> 
+                        <input type="text" class="form-control" name="password" required>
+                      </div>	 -->
+
+                      <!-- <div class="form-group">
+                        <label>First Name</label> 
+                        <input type="text" class="form-control" name="fname" required>
+                      </div>		
+
+                      <div class="form-group">
+                        <label>Last Name</label>
+                        <input type="text" class="form-control" name="lname" required>
+                      </div>
+
+                      <div class="form-group">
+                        <label>Contact Number</label>
+                        <input type="text" class="form-control" name="contact_num" required>
+                      </div>	
+          
+                      <div class="form-group">
+                        <label>Email Address</label> 
+                        <input type="text" class="form-control" name="email" required>
+                      </div>	
+
+                      <div class="form-group">
+                        <label>Password</label> 
+                        <input type="password" class="form-control" name="password" required>
+                      </div>	 -->
+
+                  
+                    
+                  </div>
+                  
+                  <div class="modal-footer">
+                    <input type="button" class="btn btn-danger" data-dismiss="modal" value="Cancel">
+                    <input type="button" class="btn btn-success" data-dismiss="modal" id="addsuccess_btn" name="addAdmin" value="Add">
+                  </div>
+
+                </form>
+              </div>
+
+            </div>
+          </div>
+          
 
       
 
@@ -940,4 +1104,14 @@
 
     
   </body>
+<style>
+  .checkbox {
+	margin-bottom: 10px;
+}
+
+.checkbox input[type="checkbox"] {
+	margin-right: 10px;
+}
+</style>
+
 </html>

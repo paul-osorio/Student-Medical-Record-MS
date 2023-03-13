@@ -197,6 +197,21 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
           
           </li>
 
+          <li data-tab-target="#hospital" class="px-4 w-100 mb-1 nav-item tab">
+              
+              <i class="fa fa-hospital-o" aria-hidden="true"></i>
+              <div
+                class="nav-link align-items-center"
+                data-bs-toggle="collapse"
+                data-bs-target="#home-collapse"
+                aria-expanded="true">
+
+                Hospital
+
+              </div>
+          
+          </li>
+
 
           <!-- <li data-tab-target="#appointment" class="px-4 w-100 mb-1 nav-item tab">
               
@@ -426,7 +441,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
             <span class="title">NURSES TODAY</span>
 
             <table>
-            
+            f
                 <?php if(mysqli_num_rows($fetchAllNursesToday) > 0) { 
                 while ($todayNurses = mysqli_fetch_assoc($fetchAllNursesToday)) {  ?>
 
@@ -546,6 +561,12 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                   </div>
 
                   <div class="modal-body">	
+
+                      <div class="form-group">
+                        <center><label>Upload Image</label>
+                        <input type="file" class="form-control" name="img" required></center>
+                      </div>	
+
                       <div class="form-group">
                         <label>Admin ID: </label>
                         <input type="text" class="form-control" name="unique_id" required>
@@ -580,10 +601,12 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                         <input type="text" class="form-control" name="email" required>
                       </div>	
 
-                    <!-- <div class="form-group">
-                      <center><label>Upload Image</label>
-                      <input type="file" class="form-control" name="img" required></center>
-                    </div>	 -->
+                      <div class="form-group">
+                        <label>Password</label> 
+                        <input type="password" class="form-control" name="password" required>
+                      </div>	
+
+                  
                     
                   </div>
                   
@@ -665,6 +688,10 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                         
                         <input type="hidden" name="update_id" id="update_id">
                         
+                        <div class="form-group">
+                            <center><label>Upload Image</label>
+                            <input type="file" class="form-control" name="img" id="img" required></center>
+                        </div>	
                         
                         <div class="form-group">
                             <label> Admin ID </label>
@@ -821,8 +848,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
               <div class="card_header">
                 <span class="department_name"><?=$departments['dept_name']?></span>
                 <div class="actions">
-                    <a href="#editDepartmentInfo" class="custom_btn" data-toggle="modal"><i class="fa fa-edit" aria-hidden="true" style="color: #37954B; font-size: 25px"></i></a>
-                    <a href="#delDepartment" class="custom_btn" data-toggle="modal"><i class="fa fa-trash" aria-hidden="true" style="color: #ED1C24; font-size: 25px"></i></a>
+                    <a href="#editDepartmentInfo" class="custom_btn editbtndepts" data-toggle="modal"><i class="fa fa-edit" aria-hidden="true" style="color: #37954B; font-size: 25px"></i></a>
+                    <a href="#delDepartment" class="custom_btn deletebtndepts" data-toggle="modal"><i class="fa fa-trash" aria-hidden="true" style="color: #ED1C24; font-size: 25px"></i></a>
                 </div>
               </div>
               <div class="room_info">
@@ -865,11 +892,11 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
               <div class="modal-content">
                   
 
-                  <form action="addDepartments.php" method="POST">
+                  <form action="insert_department.php" method="POST">
 
                   <div class="modal-header">
                       <div class="imgupload">
-                        <input type="file" id="selectedFile" style="display: none;" />
+                        <input type="file" class="form-control" name="image" id="selectedFile" style="display: none;" />
                         <input type="button" name="image" id="imgbox" value="Upload Image" onclick="document.getElementById('selectedFile').click();" />
                       </div>
 
@@ -891,45 +918,63 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                         <input type="hidden" name="update_id" id="update_id">
                         
                         <div class="dropdown_list">
-                          <div>
+                          <div name="dept_name">
                             <label>Department</label>
-                            <select>
-                                <option>BSIT Department</option>
-                                <option>BSIE Department</option>
-                                <option>BSENT Department</option>
-                                <option>BSA Department</option>
-                                <option>BSECE Department</option>
+                            <select name="dept_name" id="dept_name" class="form-control">
+                                <option value="">---Select Department---</option>
+                                <option value="BSIT Department">BSIT Department</option>
+                                <option value="BSIE Department">BSIE Department</option>
+                                <option value="BSENT Department">BSENT Department</option>
+                                <option value="BSA Department">BSA Department</option>
+                                <option value="BSECE Department">BSECE Department</option>
                             </select>
                           </div>
-                          <div>
+                          <div name="building_name">
                           <label>Building Name</label>
-                            <select>
-                                <option>Bautista Building</option>
-                                <option>TechVoc Building</option>
-                                <option>Belmonte Building</option>
+                            <select name="building_name" id="building_name" class="form-control">
+                                <option value="">---Select Building Name---</option>
+                                <option value="bautista">Bautista Building</option>
+                                <option name="techvoc">TechVoc Building</option>
+                                <option name="belmonte">Belmonte Building</option>
                             </select>
                           </div>
-                          <div>
-                          <label>Room No</label>
-                            <select>
-                                <option>IC301a</option>
-                                <option>IC302a</option>
-                                <option>IC304a</option>
-                                <option>IC304a</option>
-                                <option>IC305a</option>
-                                <option>IC306a</option>
+                          <div name="room_num">
+                          <label>Room No.</label>
+                            <select name="room_num" id="room_num" class="form-control">
+                                <option value="">---Select Room No.---</option>
+                                <option name="room1">IC301a</option>
+                                <option name="room2">IC302a</option>
+                                <option name="room3">IC304a</option>
+                                <option name="room4">IC304a</option>
+                                <option name="room5">IC305a</option>
+                                <option name="room6">IC306a</option>
                             </select>
                           </div>
                         </div>
-                        
+
+                        <!-- <div class="form-group">
+                            <label> Department Name </label>
+                            <input type="text" name="dept_name" id="dept_name" class="form-control" placeholder="First Name">
+                        </div>
+
+                        <div class="form-group">
+                            <label> Building Name </label>
+                            <input type="text" name="building_name" id="building_name" class="form-control" placeholder="First Name">
+                        </div>
+
+                        <div class="form-group">
+                            <label> Room No. </label>
+                            <input type="text" name="room_num" id="room_num" class="form-control" placeholder="First Name">
+                        </div>
+                         -->
                         <div class="form-group">
                             <label> First Name </label>
-                            <input type="text" name="firtname" id="firtname" class="form-control" placeholder="First Name" readonly>
+                            <input type="text" name="firstname" id="firstname" class="form-control" placeholder="First Name">
                         </div>
 
                         <div class="form-group">
                             <label> Last Name </label>
-                            <input type="text" name="lastname" id="lastname" class="form-control" placeholder="Last Name" readonly>
+                            <input type="text" name="lastname" id="lastname" class="form-control" placeholder="Last Name">
                         </div>
 
                         <div class="form-group">
@@ -956,7 +1001,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                           
                           <input type="button" class="btn btn-danger" data-dismiss="modal" value="Cancel">
 
-                          <input type="submit" class="btn btn-success" name="addDept  " value="Add">
+                          <input type="submit" class="btn btn-success" name="addDept" value="Add">
                       
                       </div>
                   </form>
@@ -972,45 +1017,65 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
       <div class="modal fade" id="editDepartmentInfo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
               <div class="modal-content">
-                  <div class="modal-header">
-                      <img src="./assets/nurse.jpg"
-                      <h5 class="modal-title" id="exampleModalLabel"> 23-0001</h5>
-                      <h5 class="modal-title" id="exampleModalLabel"> Department Head</h5>
-                      <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                      </button> -->
-                  </div>
 
-                  <form action="edit_admin.php" method="POST">
+                  <form action="edit_depts.php" method="POST">
 
+                      <input type="hidden" name="update_id" id="update_id">
+
+                      <div class="modal-header">
+                          <center><label>Upload Image</label>
+                            <input type="file" class="form-control" name="image" id="image" required></center>
+                            <input type="text" name="emp_id" id="emp_id" class="form-control" placeholder="Employee ID" readonly>
+                            <input type="text" name="position" id="position" class="form-control" placeholder="Position" readonly>
+                      </div>
+
+                  
                       <div class="modal-body">
                         
-                        <input type="hidden" name="update_id" id="update_id">
-                        
                         <div class="dropdown_list">
-                          <div>
+                          <div name="dept_name">
                             <label>Department</label>
-                            <select>
-                                <option>BSENT</option>
+                            <select name="dept_name" id="dept_name" class="form-control">
+                                <option value="">---Select Department---</option>
+                                <option value="BSIT Department">BSIT Department</option>
+                                <option value="BSIE Department">BSIE Department</option>
+                                <option value="BSENT Department">BSENT Department</option>
+                                <option value="BSA Department">BSA Department</option>
+                                <option value="BSECE Department">BSECE Department</option>
                             </select>
                           </div>
-                          <div>
+                          <div name="building_name">
                           <label>Building Name</label>
-                            <select>
-                                <option>Bautista</option>
+                            <select name="building_name" id="building_name" class="form-control">
+                                <option value="">---Select Building Name---</option>
+                                <option value="bautista">Bautista Building</option>
+                                <option name="techvoc">TechVoc Building</option>
+                                <option name="belmonte">Belmonte Building</option>
                             </select>
                           </div>
-                          <div>
-                          <label>Room No</label>
-                            <select>
-                                <option>IC301a</option>
+                          <div name="room_num">
+                          <label>Room No.</label>
+                            <select name="room_num" id="room_num" class="form-control">
+                                <option value="">---Select Room No.---</option>
+                                <option name="room1">IC301a</option>
+                                <option name="room2">IC302a</option>
+                                <option name="room3">IC304a</option>
+                                <option name="room4">IC304a</option>
+                                <option name="room5">IC305a</option>
+                                <option name="room6">IC306a</option>
                             </select>
                           </div>
                         </div>
+
                         
                         <div class="form-group">
-                            <label> Name </label>
-                            <input type="text" name="unique_id" id="unique_id" class="form-control" placeholder="Name" readonly>
+                            <label> First Name </label>
+                            <input type="text" name="firstname" id="firstname" class="form-control" placeholder="First Name">
+                        </div>
+
+                        <div class="form-group">
+                            <label> Last Name </label>
+                            <input type="text" name="lastname" id="lastname" class="form-control" placeholder="Last Name">
                         </div>
 
                         <div class="form-group">
@@ -1037,7 +1102,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                           
                           <input type="button" class="btn btn-danger" data-dismiss="modal" value="Cancel">
 
-                          <input type="submit" class="btn btn-success" name="updateAdmin" value="Save">
+                          <input type="submit" class="btn btn-success" name="updateDepts" value="Save">
                       
                       </div>
                   </form>
@@ -1102,10 +1167,13 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
               <div class="sort flex-grow-1">
                 <span>Sort by</span>
                 <select name="filter" id="filter_nurse">
+                  <option value="">---Select---</option>
                   <option value="departments">Campus</option>
                   <!-- <option value="departments">Campus</option>
                   <option value="departments">Campus</option> -->
                 </select>
+
+              
               </div>
               <div>
                   <div class="search">
@@ -1139,7 +1207,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                 <div class="card_footer">
                   <span class="date"><?=$nurses['schedule']?></span>
                     <a href="#viewNurseInfo" class="custom_btn nurseinfobtn" ><i class="fa fa-info-circle" aria-hidden="true" style="color: gray;"></i></a>
-                    <a href="#viewNurseInfo" class="custom_btn nurseinfobtn"><i class="fa fa-edit" aria-hidden="true" style="color: #37954B;"></i></a>
+                    <a href="#editNurseInfo" class="custom_btn nurseeditbtn"><i class="fa fa-edit" aria-hidden="true" style="color: #37954B;"></i></a>
                     <a href="#delNurse" class="custom_btn" data-toggle="modal"><i class="fa fa-trash" aria-hidden="true" style="color: #ED1C24;"></i></a>
                 </div>
               </div>
@@ -1183,14 +1251,20 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
             </div>
             <div class="nurse_details">
               <span>Position: </span>
-              <select class="form-select">
-                <option>Sample</option>
+              <select class="form-select" name="position" id="position">
+                <option value="">---Select Position---</option>
+                <option value="head">Head Nurse</option>
+                <option value="nurse">Nurse</option>
               </select>
+          
             </div>
-            <div class="nurse_details">
+            <div class="nurse_details" name="campus" id="campus">
               <span>Campus Assinged: </span>
               <select class="form-select">
-                <option>Sample</option>
+                <option value="">---Select Campus---</option>
+                <option value="sb">San Bartolome</option>
+                <option value="b">Batasan</option>
+                <option value="sf">San Francisco</option>
               </select>
             </div>
             <span>Schedule</span>
@@ -1244,8 +1318,10 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
               </div>
               <div>
                 <span>Sex</span>
-                <select class="form-select">
-                  <option>Sample</option>
+                <select class="form-select" name="sex" id="sex">
+                  <option value="">---Select Sex---</option>
+                  <option value="female">Female</option>
+                  <option value="male">Male</option>
                 </select>
               </div>
             </div>
@@ -1358,11 +1434,127 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
 <!--#################################################################################################################################################################################################################################-->
 
-        <!-- NURSES INFORMATION -->
+
+   <!-- VIEW NURSES INFORMATION -->
         
-        <div id="viewNurseInfo" style="display:none;">
+                        <div id="viewNurseInfo" style="display:none;">
+                        <div class="nurse_header">
+                            <h3 class="m-0">VIEW NURSE INFORMATION</h3>
+                          </div>
+                          <hr class="divider">
+                          <div class="nurse_info">
+                            <div class="nurseimg">
+                                <img src="./assets/nurse.jpg">
+                                <button>upload image</button>
+                            </div>
+                            <div class="infolist">
+                                <div class="infodetails">
+                                  <span>EMP ID: </span>
+                                  <span>23-0003</span>
+                                </div>
+                                <div class="infodetails">
+                                  <span>Email: </span>
+                                  <input type="text" class="form-control" value="Sample.email@gmail.com">
+                                </div>
+                                <div class="infodetails">
+                                  <span>Position: </span>
+                                  <select class="form-select">
+                                    <option>sample position</option>
+                                  </select>
+                                </div>
+                                <div class="infodetails">
+                                  <span>Campus Assigned: </span>
+                                  <select class="form-select">
+                                    <option>San Bartolome</option>
+                                  </select>
+                                </div>
+                                <div class="infodetails">
+                                  <span>Schedule </span>
+                                  <div class="sched_day">
+                                  <span class="day">Tuesday</span>
+                                  <span class="day">Thursday</span>
+                                  </div>
+                                </div>
+                            </div>
+                          </div>
+                          <hr class="divider">
+                          <span>Basic Information</span>
+                          <div class="nurse_basicinfo">
+                            <div class="row_4">
+                              <div class="basic_details">
+                                <input type="text" class="form-control" value="Sample.email@gmail.com">
+                                <span>Firstname</span>
+                              </div>
+                              <div class="basic_details">
+                                <input type="text" class="form-control" value="Sample.email@gmail.com">
+                                <span>Lastname</span>
+                              </div>
+                              <div class="basic_details">
+                                <input type="text" class="form-control" value="Sample.email@gmail.com">
+                                <span>Birthdate</span>
+                              </div>
+                              <div class="basic_details">
+                                <input type="text" class="form-control" value="Sample.email@gmail.com">
+                                <span>Age</span>
+                              </div>
+                            </div>
+                            <div class="row_3">
+                              <div class="basic_details">
+                                <select class="form-select">
+                                    <option>Sample</option>
+                                  </select>
+                                <span>Sex</span>
+                              </div>
+                              <div class="basic_details">
+                                <input type="text" class="form-control" value="Sample.email@gmail.com">
+                                <span>Phone Number</span>
+                              </div>
+                              <div class="basic_details">
+                                <input type="text" class="form-control" value="Sample.email@gmail.com">
+                                <span>Telephone No. (Optional)</span>
+                              </div>
+                            </div>
+                            <div class="row_1">
+                              <div class="basic_details">
+                                <input type="text" class="form-control" value="Sample.email@gmail.com">
+                                <span>Complete Address</span>
+                              </div>
+                            </div>
+                          </div>
+                          <hr class="divider">
+                          <span>In Case of Emergency</span>
+                          <div class="row_4">
+                              <div class="basic_details">
+                                <input type="text" class="form-control" value="Sample.email@gmail.com">
+                                <span>Fullname</span>
+                              </div>
+                              <div class="basic_details">
+                                <input type="text" class="form-control" value="Sample.email@gmail.com">
+                                <span>Contact Number</span>
+                              </div>
+                              <div class="basic_details">
+                                <input type="text" class="form-control" value="Sample.email@gmail.com">
+                                <span>Complete Address</span>
+                              </div>
+                              <div class="basic_details">
+                                <input type="text" class="form-control" value="Sample.email@gmail.com">
+                                <span>Relationship</span>
+                              </div>
+                          </div>
+                          <div class="actionbtn">
+                              <!-- <a href="#Nurse" class="custom_btn" data-toggle="modal"><button onclick="history.back()">BACK</button></a> -->
+                              <a href="#editNurseInfo" class="custom_btn" data-toggle="modal"><button style="background-color:green;">EDIT</button>
+                              <a href="#delNurse" class="custom_btn" data-toggle="modal"><button style="background-color:#ED1C24;">REMOVE</button></a>
+                          </div>
+                      </div>
+
+
+
+        <!-- EDIT NURSES INFORMATION -->
+        
+        <div id="editNurseInfo" style="display:none;">
         <div class="nurse_header">
-            <h3 class="m-0">NURSE INFORMATION</h3>
+            <h3 class="m-0">EDIT NURSE INFORMATION</h3>
           </div>
           <hr class="divider">
           <div class="nurse_info">
@@ -1465,14 +1657,15 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
               </div>
           </div>
           <div class="actionbtn">
-              <button>EDIT</button>
+              <!-- <button onclick="history.back()">CANCEL</button> -->
+              <button style="background-color:green;">EDIT</button>
               <a href="#delNurse" class="custom_btn" data-toggle="modal"><button style="background-color:#ED1C24;">REMOVE</button></a>
           </div>
       </div>
 
 
 
-                </section>
+    </section>
 
 
 
@@ -1597,6 +1790,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
             <div class="sort flex-grow-1">
               <span>Sort by</span>
               <select name="filter" id="filter">
+                <option value="">---Select---</option>
                 <option value="Type of User">Type of User</option>
                 <option value="Date of Archive">Date of Archive</option>
               </select>
@@ -1745,6 +1939,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
           <div class="sort flex-grow-1">
             <span>Sort by</span>
             <select name="filter" id="filter">  
+              <option value="">---Select---</option>
               <option value="Section">Section</option>
               <option value="Course">Course</option>
               <option value="Year Level">Year Level</option>
@@ -1962,6 +2157,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
 <!--#################################################################################################################################################################################################################################-->
 
+<!-- DELETE ADMIN RECORD JS -->
     <script>
         $(document).ready(function () {
 
@@ -1990,6 +2186,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
 <!--#################################################################################################################################################################################################################################-->
 
+  <!-- EDIT ADMIN INFO JS -->
     <script>
         $(document).ready(function () {
 
@@ -2005,12 +2202,14 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
                 console.log(data);
 
+
                 $('#update_id').val(data[0]);
                 $('#unique_id').val(data[1]);
                 $('#email').val(data[4]);
                 $('#fname').val(data[2]);
                 $('#lname').val(data[3]);
                 $('#contact_num').val(data[5]);
+                $('#img').val(data[6]);
             });
         });
 
@@ -2018,6 +2217,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
 <!--#################################################################################################################################################################################################################################-->
 
+<!-- VIEW NURSE JS -->
 <script>
         $(document).ready(function () {
 
@@ -2033,6 +2233,35 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
                 $('#nurse_list').hide();
                 $('#viewNurseInfo').show();
+                $('#update_id').val(data[0]);
+                $('#unique_id').val(data[1]);
+                $('#email').val(data[4]);
+                $('#fname').val(data[2]);
+                $('#lname').val(data[3]);
+                $('#contact_num').val(data[5]);
+            });
+        });
+
+    </script>
+
+
+<!-- EDIT NURSE JS -->
+
+<script>
+        $(document).ready(function () {
+
+            $('.nurseeditbtn').on('click', function () {
+
+                $tr = $(this).closest('tr');
+
+                var data = $tr.children("td").map(function () {
+                    return $(this).text();
+                }).get();
+
+                console.log(data);
+
+                $('#nurse_list').hide();
+                $('#editNurseInfo').show();
                 $('#update_id').val(data[0]);
                 $('#unique_id').val(data[1]);
                 $('#email').val(data[4]);
@@ -2063,6 +2292,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
 <!--#################################################################################################################################################################################################################################-->
 
+<!-- ADD NURSE -->
 <script>
         $(document).ready(function () {
 
@@ -2080,6 +2310,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
 <!--#################################################################################################################################################################################################################################-->
 
+<!-- ADD NURSE -->
 <script>
         $(document).ready(function () {
 
@@ -2097,6 +2328,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
 <!--#################################################################################################################################################################################################################################-->
 
+<!-- ADD NURSE -->
 <script>
         $(document).ready(function () {
 
@@ -2114,6 +2346,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
 <!--#################################################################################################################################################################################################################################-->
 
+<!-- ADD SUCCESS -->
 <script>
         $(document).ready(function() {
   
@@ -2129,6 +2362,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
 <!--#################################################################################################################################################################################################################################-->
 
+<!-- DELETE NURSE -->
 <script>
         $(document).ready(function() {
   
@@ -2146,6 +2380,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
 <!--#################################################################################################################################################################################################################################-->
 
+<!-- DELETE ADMIN -->
 <script>
         $(document).ready(function() {
   
@@ -2158,6 +2393,72 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
 
 </script>
+
+
+
+<!--#################################################################################################################################################################################################################################-->
+
+<!-- DRAFT -->
+  <!-- EDIT DEPARTMENT INFO JS -->
+    <script>
+        $(document).ready(function () {
+
+            $('.editbtndepts').on('click', function () {
+
+                $('#editDepartmentInfo').modal('show');
+
+                $tr = $(this).closest('tr');
+
+                var data = $tr.children("td").map(function () {
+                    return $(this).text();
+                }).get();
+
+                console.log(data);
+
+
+                $('#update_id').val(data[0]);
+                $('#emp_id').val(data[1]);
+                $('#dept_name').val(data[3]);
+                $('#building_name').val(data[4]);
+                $('#room_num').val(data[5]);
+                $('#firstname').val(data[6]);
+                $('#lastname').val(data[7]);
+                $('#email').val(data[8]);
+                $('#contact_num').val(data[9]);
+                $('#position').val(data[2]);
+                $('#image').val(data[10]);
+            });
+        });
+
+    </script>
+
+
+<!-- DELETE DEPARTMENT RECORD JS -->
+<script>
+        $(document).ready(function () {
+
+            $('.deletebtndepts').on('click', function () {
+
+                $('#delAdmin').modal('show');
+
+                var tr = $(this).closest('tr');
+
+                console.log(tr);
+
+                var data = tr.children("td").map(function () {
+
+                    return $(this).text();
+
+                }).get();
+
+                console.log(data);
+
+                $('#delete_id').val(data[1]);
+
+            });
+        });
+    </script>
+
     
   </body>
 

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 05, 2023 at 07:19 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.6
+-- Generation Time: Mar 13, 2023 at 10:06 AM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 8.0.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -65,7 +65,8 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`user_id`, `unique_id`, `email`, `password`, `fname`, `lname`, `img`, `contact_num`, `birthdate`, `birthplace`, `gender`, `address`, `status`) VALUES
-(19, '19-1290', 'hradmin@gmail.com', '0192023a7bbd73250516f069df18b500', 'HR', 'Admin', 'prof.jpg', '09987654321', '1988-12-07', 'Quezon City ', 'Female', 'Lot 1 Block 1, Payapa Street, Barangay Holy Spirit, Quezon City', '');
+(28, '19-1234', 'hradmin@gmail.com', '0192023a7bbd73250516f069df18b500', 'HR', 'Admin', 'prof.jpg', '09123456789', '1999-03-09', 'Quezon City ', 'Female', 'QC, Metro Manila', ''),
+(29, '19-1290', 'sample@gmail.com', '4e91b1cbe42b5c884de47d4c7fda0555', 'Sample', 'Admin', 'profile1.jfif', '09987654322', '0000-00-00', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -75,11 +76,7 @@ INSERT INTO `admins` (`user_id`, `unique_id`, `email`, `password`, `fname`, `lna
 
 CREATE TABLE `appointments` (
   `id` int(10) NOT NULL,
-  `user_id` varchar(20) NOT NULL,
-  `firstname` varchar(50) NOT NULL,
-  `middlename` varchar(50) NOT NULL,
-  `lastname` varchar(50) NOT NULL,
-  `sec_yrlvl` varchar(50) NOT NULL,
+  `student_id` varchar(20) NOT NULL,
   `type_of_concerned` varchar(100) NOT NULL,
   `date_of_admission` date NOT NULL,
   `time_of_admission` time NOT NULL,
@@ -111,15 +108,61 @@ CREATE TABLE `archive` (
 
 CREATE TABLE `consultations` (
   `id` int(20) NOT NULL,
+  `student_id` varchar(20) NOT NULL,
   `fullname` varchar(100) NOT NULL,
   `date_of_consultation` date NOT NULL,
-  `symptoms` varchar(150) NOT NULL,
-  `assessment` varchar(150) NOT NULL,
-  `type_of_concerned` varchar(150) NOT NULL,
-  `medicine_intake` varchar(100) NOT NULL,
-  `remarks` varchar(100) NOT NULL,
+  `symptoms` varchar(255) NOT NULL,
+  `othersymptoms` varchar(150) NOT NULL,
+  `body_temp` varchar(20) NOT NULL,
+  `suspected_covid` varchar(20) NOT NULL,
+  `tested_covid` varchar(20) NOT NULL,
+  `confined` varchar(10) NOT NULL,
+  `how_long` int(20) NOT NULL,
+  `medicine` varchar(50) NOT NULL,
+  `referred` varchar(10) NOT NULL,
+  `hospital` varchar(150) NOT NULL,
+  `hospital_add` varchar(150) NOT NULL,
+  `reason` varchar(150) NOT NULL,
   `status` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `consultations`
+--
+
+INSERT INTO `consultations` (`id`, `student_id`, `fullname`, `date_of_consultation`, `symptoms`, `othersymptoms`, `body_temp`, `suspected_covid`, `tested_covid`, `confined`, `how_long`, `medicine`, `referred`, `hospital`, `hospital_add`, `reason`, `status`) VALUES
+(5, '19-1234', '', '0000-00-00', 'Difficulty breathing<br> - Nausea or vomitting<br> - Fever or chills<br> - Cough<br> - Headache<br> - Congestion or runny nose<br> - Sore throat<br> - New loss of taste or smell<br> - Stomach Ache<br> - Fatigue<br> - Diarrhea', 'Difficulty breathing<br> - Nausea or vomitting', '45.9', 'Yes', 'Antigen Test', 'Yes', 2, 'Diatabs', 'Yes', 'Hope General Hospital', 'Novaliches, QC', 'Shows covid-19 symptoms', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `departments`
+--
+
+CREATE TABLE `departments` (
+  `id` int(20) NOT NULL,
+  `emp_id` varchar(50) NOT NULL,
+  `dept_name` varchar(100) NOT NULL,
+  `building_name` varchar(100) NOT NULL,
+  `room_num` varchar(20) NOT NULL,
+  `image` varchar(100) NOT NULL,
+  `firstname` varchar(50) NOT NULL,
+  `lastname` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `contact_num` varchar(13) NOT NULL,
+  `position` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `departments`
+--
+
+INSERT INTO `departments` (`id`, `emp_id`, `dept_name`, `building_name`, `room_num`, `image`, `firstname`, `lastname`, `email`, `contact_num`, `position`) VALUES
+(1, '19-1234', 'BSIT Department', 'Bautista Building', 'IC103a', 'badang.jpg', 'Juan ', 'Dela Cruz', 'juandelacruz@gmail.com', '09123456789', 'Head'),
+(2, '19-1235', 'BSIE Department', 'Belmonte Building', 'IC104a', 'nurse5.jpg', 'Maria', 'Reyes', 'mariareyes@gmail.com', '09123456788', 'Head'),
+(9, '22-1902', 'BSENT Department', 'TechVoc Building', 'IC123a', 'nurse7.jpg', 'Juan', 'Sample1', 'juansample1@gmail.com', '09987654322', 'Nurse'),
+(11, '23-1234', 'BSIE Department', 'TechVoc Building', 'IC304a', 'nurse3.jpg', 'Sample', 'Nurse', 'samplenurse@gmail.com', '091234568790', 'Nurse'),
+(12, '22-1906', 'BSA Department', 'Belmonte Building', 'IC305a', 'nurse6.jpg', 'Kiara Raye', 'Carganillo', 'kiaracarganillo@gmail.com', '09123456798', 'Head Nurse');
 
 -- --------------------------------------------------------
 
@@ -164,7 +207,30 @@ INSERT INTO `entrance_log` (`id`, `student_number`, `timein`, `logdate`) VALUES
 (81, '19-1405', '12:02:06', '2023-03-05'),
 (82, '19-1375', '12:03:56', '2023-03-05'),
 (83, '19-1376', '12:04:12', '2023-03-05'),
-(84, '19-1735', '12:04:15', '2023-03-05');
+(84, '19-1735', '12:04:15', '2023-03-05'),
+(85, '19-1735', '14:34:33', '2023-03-05'),
+(86, '19-1376', '14:34:39', '2023-03-05'),
+(87, '19-1376', '14:34:47', '2023-03-05'),
+(88, '19-1405', '14:35:20', '2023-03-05'),
+(89, '20-1444', '15:04:57', '2023-03-05'),
+(90, '20-1444', '15:05:02', '2023-03-05'),
+(91, '20-1444', '15:10:23', '2023-03-05'),
+(92, '20-1444', '15:10:28', '2023-03-05'),
+(93, '20-1444', '15:10:33', '2023-03-05'),
+(94, '20-1444', '15:11:14', '2023-03-05'),
+(95, '19-1375', '15:11:49', '2023-03-05'),
+(96, '19-1376', '15:28:01', '2023-03-06'),
+(97, '19-1376', '15:28:10', '2023-03-06'),
+(98, '19-1735', '15:42:08', '2023-03-06'),
+(99, '19-1376', '15:42:11', '2023-03-06'),
+(100, '', '15:23:37', '2023-03-07'),
+(101, '19-1375', '20:52:00', '2023-03-07'),
+(102, '19-1405', '20:52:09', '2023-03-07'),
+(103, '20-1444', '20:52:18', '2023-03-07'),
+(104, '19-1376', '20:52:33', '2023-03-07'),
+(105, '19-1735', '20:52:37', '2023-03-07'),
+(106, '19-1735', '21:00:05', '2023-03-07'),
+(107, '19-1376', '21:00:08', '2023-03-07');
 
 -- --------------------------------------------------------
 
@@ -276,6 +342,7 @@ CREATE TABLE `nurses` (
   `middlename` varchar(255) NOT NULL,
   `gender` varchar(255) NOT NULL,
   `position` varchar(255) NOT NULL,
+  `campus` varchar(50) NOT NULL,
   `Department` varchar(255) NOT NULL,
   `schedule` varchar(50) NOT NULL,
   `contact_num` int(15) NOT NULL,
@@ -289,11 +356,11 @@ CREATE TABLE `nurses` (
 -- Dumping data for table `nurses`
 --
 
-INSERT INTO `nurses` (`id`, `emp_id`, `username`, `password`, `profile_pic`, `lastname`, `firstname`, `middlename`, `gender`, `position`, `Department`, `schedule`, `contact_num`, `email`, `yrs_of_service`, `qr_code`, `birthdate`) VALUES
-(1, '22-1234', 'juliana', 'juliana123', 'nurse.jpg', 'Balingasa', 'Juliana', 'Young', 'Female', 'Certified Nurse-Midwife', 'Nursing Department', 'M/T/W', 639123456, 'juliana@gmail.com', 5, '22-1234', '1996-07-11'),
-(2, '22-1245', 'jessica', 'jessica123', 'nurse2.jpg', 'Bulleque', 'Jessica', 'Ombao', 'Female', 'Clinical Nurse Specialist', 'Nursing Department', 'M/T/W', 12345647, 'jessica@gmail.com', 4, '22-1245', '1995-06-08'),
-(3, '22-1256', 'nicole', 'nicole123', 'nurse3.jpg', 'Abihay', 'John Nicole', '', 'Male', 'Nurse Practitioner', 'Nursing Department', 'M/W/F', 32458668, 'nicole@gmai.com', 3, '22-1256', '1993-11-24'),
-(4, '22-8435', 'zarnaih_11', 'zarnaih123', 'student1.jpg', 'Marchessa', 'Zarnaih', '', 'Female', 'Nurse', 'Nursing Department', 'M/W/F', 2147483647, 'zarnaihmarchessa@gmail.com', 5, '22-8435', '1994-02-02');
+INSERT INTO `nurses` (`id`, `emp_id`, `username`, `password`, `profile_pic`, `lastname`, `firstname`, `middlename`, `gender`, `position`, `campus`, `Department`, `schedule`, `contact_num`, `email`, `yrs_of_service`, `qr_code`, `birthdate`) VALUES
+(1, '22-1234', 'juliana', 'juliana123', 'nurse.jpg', 'Balingasa', 'Juliana', 'Young', 'Female', 'Head Nurse', 'San Bartolome', 'Nursing Department', 'M/T/W', 639123456, 'juliana@gmail.com', 5, '22-1234', '1996-07-11'),
+(2, '22-1245', 'jessica', 'jessica123', 'nurse2.jpg', 'Bulleque', 'Jessica', 'Ombao', 'Female', 'Nurse', 'San Bartolome', 'Nursing Department', 'M/T/W', 12345647, 'jessica@gmail.com', 4, '22-1245', '1995-06-08'),
+(3, '22-1256', 'nicole', 'nicole123', 'nurse3.jpg', 'Abihay', 'John Nicole', '', 'Male', 'Nurse', 'Batasan', 'Nursing Department', 'M/W/F', 32458668, 'nicole@gmai.com', 3, '22-1256', '1993-11-24'),
+(4, '22-8435', 'zarnaih_11', 'zarnaih123', 'nurse4.jpg', 'Marchessa', 'Zarnaih', '', 'Female', 'Nurse', 'San Francisco', 'Nursing Department', 'M/W/F', 2147483647, 'zarnaihmarchessa@gmail.com', 5, '22-8435', '1994-02-02');
 
 -- --------------------------------------------------------
 
@@ -655,7 +722,47 @@ INSERT INTO `stud_archive` (`id`, `student_id`, `role`, `date_archive`, `time`) 
 (36, '19-1276', 'outsider', '2023-03-05', '12:04:02'),
 (37, '19-1234', 'student', '2023-03-05', '12:04:08'),
 (38, 'WIFI:T:WPA', 'outsider', '2023-03-05', '12:05:36'),
-(39, 'WIFI:T:WPA', 'outsider', '2023-03-05', '12:06:33');
+(39, 'WIFI:T:WPA', 'outsider', '2023-03-05', '12:06:33'),
+(40, '19-1396', 'outsider', '2023-03-05', '14:35:04'),
+(41, '19-1234', 'student', '2023-03-05', '02:36:02'),
+(42, '19-1269', 'student', '2023-03-05', '03:11:04'),
+(43, '19-1206', 'outsider', '2023-03-05', '15:11:19'),
+(44, '0002010102', 'outsider', '2023-03-06', '15:28:27'),
+(45, 'WIFI:T:WPA', 'outsider', '2023-03-06', '15:29:17'),
+(46, 'https://ww', 'outsider', '2023-03-06', '15:30:09'),
+(47, 'https://ww', 'outsider', '2023-03-06', '15:30:26'),
+(48, '0002010102', 'outsider', '2023-03-06', '15:32:22'),
+(49, '17-1499', 'outsider', '2023-03-06', '15:35:38'),
+(50, '19-1206', 'outsider', '2023-03-06', '15:35:41'),
+(51, '19-1206', 'outsider', '2023-03-06', '15:35:47'),
+(52, '17-1499', 'outsider', '2023-03-06', '15:41:55'),
+(53, '19-1206', 'outsider', '2023-03-06', '15:42:00'),
+(54, 'WIFI:T:WPA', 'outsider', '2023-03-06', '15:42:06'),
+(55, '19-1234', 'student', '2023-03-06', '03:42:14'),
+(56, '2810100288', 'outsider', '2023-03-06', '15:43:18'),
+(57, '2810100288', 'outsider', '2023-03-06', '15:43:23'),
+(58, '2810100288', 'outsider', '2023-03-06', '15:43:28'),
+(59, '0002010102', 'outsider', '2023-03-06', '15:45:41'),
+(60, '17-1499', 'outsider', '2023-03-06', '15:46:32'),
+(61, '17-1499', 'outsider', '2023-03-06', '15:48:15'),
+(62, '0002010102', 'outsider', '2023-03-06', '15:49:36'),
+(63, '0002010102', 'outsider', '2023-03-06', '15:49:44'),
+(64, '0002010102', 'outsider', '2023-03-06', '15:49:52'),
+(65, '0002010102', 'outsider', '2023-03-06', '15:49:58'),
+(66, '0002010102', 'outsider', '2023-03-06', '15:50:03'),
+(67, '0002010102', 'outsider', '2023-03-06', '15:50:13'),
+(68, '0002010102', 'outsider', '2023-03-06', '15:50:18'),
+(69, '0002010102', 'outsider', '2023-03-06', '15:50:23'),
+(70, '0002010102', 'outsider', '2023-03-06', '15:50:28'),
+(71, '0002010102', 'outsider', '2023-03-06', '15:50:34'),
+(72, '0002010102', 'outsider', '2023-03-06', '15:51:22'),
+(73, '19-1396', 'outsider', '2023-03-07', '20:52:04'),
+(74, '19-1269', 'student', '2023-03-07', '08:52:12'),
+(75, '19-1276', 'outsider', '2023-03-07', '20:52:23'),
+(76, '19-1234', 'student', '2023-03-07', '08:52:28'),
+(77, 'WIFI:T:WPA', 'outsider', '2023-03-07', '20:52:40'),
+(78, '19-1206', 'outsider', '2023-03-07', '20:52:46'),
+(79, '19-1234', 'student', '2023-03-07', '09:00:13');
 
 -- --------------------------------------------------------
 
@@ -819,6 +926,12 @@ ALTER TABLE `consultations`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `departments`
+--
+ALTER TABLE `departments`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `entrance_log`
 --
 ALTER TABLE `entrance_log`
@@ -953,7 +1066,7 @@ ALTER TABLE `activity_log`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `appointments`
@@ -971,13 +1084,19 @@ ALTER TABLE `archive`
 -- AUTO_INCREMENT for table `consultations`
 --
 ALTER TABLE `consultations`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `departments`
+--
+ALTER TABLE `departments`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `entrance_log`
 --
 ALTER TABLE `entrance_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
 
 --
 -- AUTO_INCREMENT for table `generate`
@@ -1091,7 +1210,7 @@ ALTER TABLE `stud_appointment`
 -- AUTO_INCREMENT for table `stud_archive`
 --
 ALTER TABLE `stud_archive`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

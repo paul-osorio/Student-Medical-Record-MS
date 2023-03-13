@@ -9,11 +9,14 @@
         $fname   = $_POST['fname'];
         $lname  = $_POST['lname'];
         $img  = $_POST['img'];
-        $status  = $_POST['status'];
+        // $status  = $_POST['status'];
        
         
-        $sql = "INSERT INTO admins (unique_id,email,password,fname,lname,img,status)
-        VALUES ('$unique_id','$email','$password','$fname','$lname','$img','$status')";
+        $sql = "INSERT INTO admins (unique_id,email,fname,lname,img)
+        VALUES ('$unique_id','$email','$password','$fname','$lname','$img')";
+        // VALUES ('$unique_id','$email','$password','$fname','$lname','$img','$status')";
+
+        
         if (mysqli_query($conn, $sql))
         {
             $success    =   "New record created successfully !";

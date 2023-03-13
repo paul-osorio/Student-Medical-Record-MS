@@ -158,11 +158,11 @@ background: #163666;
 
 /* MODAL CSS */
 .modal .modal-dialog {
-    max-width: 500px;
+    max-width: 700px;
     font-size: 14px;
 }
 .modal .modal-dialog input[type=text]{
-    max-width: 500px;
+    max-width: 700px;
     font-size: 14px;
     border-radius: 5px;
     max-height: 30px;
@@ -170,7 +170,7 @@ background: #163666;
 }
 
 .modal .modal-dialog input[type=date]{
-    max-width: 500px;
+    max-width: 700px;
     font-size: 14px;
     border-radius: 5px;
     max-height: 30px;
@@ -234,4 +234,15 @@ background: #163666;
 .custom_btn a{
     text-decoration: none;
  
+}
+
+
+
+/* Checkbox Style */
+.checkbox {
+	margin-bottom: 10px;
+}
+
+.checkbox input[type="checkbox"] {
+	margin-right: 10px;
 }

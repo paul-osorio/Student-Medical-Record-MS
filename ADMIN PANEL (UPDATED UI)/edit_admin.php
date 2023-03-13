@@ -13,9 +13,10 @@
         $email = $_POST['email'];
         $fname = $_POST['fname'];
         $lname = $_POST['lname'];
+        $img = $_POST['img'];
         $contact_num = $_POST['contact_num'];
 
-        $query = "UPDATE admins SET email='$email', fname='$fname', lname='$lname', contact_num='$contact_num' WHERE `unique_id` = '$unique_id'";
+        $query = "UPDATE admins SET email='$email', fname='$fname', lname='$lname', img='$img', contact_num='$contact_num' WHERE `unique_id` = '$unique_id'";
         $query_run = mysqli_query($conn, $query);
 
         if($query_run)
