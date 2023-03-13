@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 09, 2023 at 08:11 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.6
+-- Generation Time: Mar 13, 2023 at 10:06 AM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 8.0.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -65,7 +65,8 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`user_id`, `unique_id`, `email`, `password`, `fname`, `lname`, `img`, `contact_num`, `birthdate`, `birthplace`, `gender`, `address`, `status`) VALUES
-(28, '19-1234', 'hradmin@gmail.com', '0192023a7bbd73250516f069df18b500', 'HR', 'Admin', 'prof.jpg', '09123456789', '1999-03-09', 'Quezon City ', 'Female', 'QC, Metro Manila', '');
+(28, '19-1234', 'hradmin@gmail.com', '0192023a7bbd73250516f069df18b500', 'HR', 'Admin', 'prof.jpg', '09123456789', '1999-03-09', 'Quezon City ', 'Female', 'QC, Metro Manila', ''),
+(29, '19-1290', 'sample@gmail.com', '4e91b1cbe42b5c884de47d4c7fda0555', 'Sample', 'Admin', 'profile1.jfif', '09987654322', '0000-00-00', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -107,15 +108,30 @@ CREATE TABLE `archive` (
 
 CREATE TABLE `consultations` (
   `id` int(20) NOT NULL,
+  `student_id` varchar(20) NOT NULL,
   `fullname` varchar(100) NOT NULL,
   `date_of_consultation` date NOT NULL,
-  `symptoms` varchar(150) NOT NULL,
-  `assessment` varchar(150) NOT NULL,
-  `type_of_concerned` varchar(150) NOT NULL,
-  `medicine_intake` varchar(100) NOT NULL,
-  `remarks` varchar(100) NOT NULL,
+  `symptoms` varchar(255) NOT NULL,
+  `othersymptoms` varchar(150) NOT NULL,
+  `body_temp` varchar(20) NOT NULL,
+  `suspected_covid` varchar(20) NOT NULL,
+  `tested_covid` varchar(20) NOT NULL,
+  `confined` varchar(10) NOT NULL,
+  `how_long` int(20) NOT NULL,
+  `medicine` varchar(50) NOT NULL,
+  `referred` varchar(10) NOT NULL,
+  `hospital` varchar(150) NOT NULL,
+  `hospital_add` varchar(150) NOT NULL,
+  `reason` varchar(150) NOT NULL,
   `status` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `consultations`
+--
+
+INSERT INTO `consultations` (`id`, `student_id`, `fullname`, `date_of_consultation`, `symptoms`, `othersymptoms`, `body_temp`, `suspected_covid`, `tested_covid`, `confined`, `how_long`, `medicine`, `referred`, `hospital`, `hospital_add`, `reason`, `status`) VALUES
+(5, '19-1234', '', '0000-00-00', 'Difficulty breathing<br> - Nausea or vomitting<br> - Fever or chills<br> - Cough<br> - Headache<br> - Congestion or runny nose<br> - Sore throat<br> - New loss of taste or smell<br> - Stomach Ache<br> - Fatigue<br> - Diarrhea', 'Difficulty breathing<br> - Nausea or vomitting', '45.9', 'Yes', 'Antigen Test', 'Yes', 2, 'Diatabs', 'Yes', 'Hope General Hospital', 'Novaliches, QC', 'Shows covid-19 symptoms', '');
 
 -- --------------------------------------------------------
 
@@ -143,7 +159,10 @@ CREATE TABLE `departments` (
 
 INSERT INTO `departments` (`id`, `emp_id`, `dept_name`, `building_name`, `room_num`, `image`, `firstname`, `lastname`, `email`, `contact_num`, `position`) VALUES
 (1, '19-1234', 'BSIT Department', 'Bautista Building', 'IC103a', 'badang.jpg', 'Juan ', 'Dela Cruz', 'juandelacruz@gmail.com', '09123456789', 'Head'),
-(2, '19-1235', 'BSIE Department', 'Belmonte Building', 'IC104a', 'nurse5.jpg', 'Maria', 'Reyes', 'mariareyes@gmail.com', '09123456788', 'Head');
+(2, '19-1235', 'BSIE Department', 'Belmonte Building', 'IC104a', 'nurse5.jpg', 'Maria', 'Reyes', 'mariareyes@gmail.com', '09123456788', 'Head'),
+(9, '22-1902', 'BSENT Department', 'TechVoc Building', 'IC123a', 'nurse7.jpg', 'Juan', 'Sample1', 'juansample1@gmail.com', '09987654322', 'Nurse'),
+(11, '23-1234', 'BSIE Department', 'TechVoc Building', 'IC304a', 'nurse3.jpg', 'Sample', 'Nurse', 'samplenurse@gmail.com', '091234568790', 'Nurse'),
+(12, '22-1906', 'BSA Department', 'Belmonte Building', 'IC305a', 'nurse6.jpg', 'Kiara Raye', 'Carganillo', 'kiaracarganillo@gmail.com', '09123456798', 'Head Nurse');
 
 -- --------------------------------------------------------
 
@@ -1047,7 +1066,7 @@ ALTER TABLE `activity_log`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `appointments`
@@ -1065,13 +1084,13 @@ ALTER TABLE `archive`
 -- AUTO_INCREMENT for table `consultations`
 --
 ALTER TABLE `consultations`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `departments`
 --
 ALTER TABLE `departments`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `entrance_log`
