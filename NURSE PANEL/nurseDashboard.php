@@ -635,14 +635,15 @@
 
 
 
-        <!-- NEW CONSULTATION MODAL -->
-        <div id="newConsultation" class="modal fade">
+        <!-- NEW CONSULTATION MODAL --->
+
+        <!-- <div id="newConsultation" class="modal fade">
             <div class="modal-dialog">
 
               <div class="modal-content">
               <div class="modal-header">						
                     <h4 class="modal-title">CONSULTATION</h4>
-                    <!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button> -->
+                    
                   </div>
 
                  
@@ -731,55 +732,6 @@
                           <label><input type="radio" name="yesno" value="Yes">Yes</label>
                           <label><input type="radio" name="yesno" value="no">No</label>
                       </div>
-                      
-
-                      
-                      <!-- <div class="form-group">
-                        <center><label>Upload Image</label>
-                        <input type="file" class="form-control" name="img" required></center>
-                      </div>	
-
-                      <div class="form-group">
-                        <label>Admin ID: </label>
-                        <input type="text" class="form-control" name="unique_id" required>
-                      </div><br> -->
-
-
-                      <!-- <div class="form-group">
-                        <label>Admin ID</label> 
-                        <input type="text" class="form-control" name="unique_id" required>
-                      </div>	 -->
-
-                      <!-- <div class="form-group">
-                        <label>Password</label> 
-                        <input type="text" class="form-control" name="password" required>
-                      </div>	 -->
-
-                      <!-- <div class="form-group">
-                        <label>First Name</label> 
-                        <input type="text" class="form-control" name="fname" required>
-                      </div>		
-
-                      <div class="form-group">
-                        <label>Last Name</label>
-                        <input type="text" class="form-control" name="lname" required>
-                      </div>
-
-                      <div class="form-group">
-                        <label>Contact Number</label>
-                        <input type="text" class="form-control" name="contact_num" required>
-                      </div>	
-          
-                      <div class="form-group">
-                        <label>Email Address</label> 
-                        <input type="text" class="form-control" name="email" required>
-                      </div>	
-
-                      <div class="form-group">
-                        <label>Password</label> 
-                        <input type="password" class="form-control" name="password" required>
-                      </div>	 -->
-
                   
                     
                   </div>
@@ -793,10 +745,11 @@
               </div>
 
             </div>
-          </div>
+          </div> -->
           
 
       
+          
 
          <!-- APPOINTMENT -->
          <section id="appointment" class="appointment so_content" data-tab-content>
