@@ -17,6 +17,7 @@
 
       // SELECT ALL MEDICINE 
       $fetchAllMedicine = mysqli_query($conn, "SELECT * FROM `medicine`");
+      
 
       // SELECT ALL REPORTS 
       $fetchAllReports = mysqli_query($conn, "SELECT * FROM `reports`");
@@ -87,12 +88,12 @@
             </div>
           </li>
 
-          <li data-tab-target="#departments" class="px-4 w-100 mb-1 nav-item tab">
+          <!-- <li data-tab-target="#departments" class="px-4 w-100 mb-1 nav-item tab">
             <i class="fa fa-building-o"></i>
             <div class="nav-link align-items-center" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
               Departments
             </div>
-          </li>
+          </li> -->
 
           <li data-tab-target="#appointment" class="px-4 w-100 mb-1 nav-item tab">
             <i class="fa fa-calendar" aria-hidden="true"></i>
@@ -756,55 +757,23 @@
           <div class="row1">
             <div class="column1">
 
-            <h3 class="m-0">APPOINTMENTS</h3>
-             <input type="text" class="msgsearch" placeholder="Search">
-             
-             <div class="stdmsg">
-              <img src="./assets/nurse.jpg" alt="" id="stdimage">
-              <p class="datetime">11/10/2022 - 5:06PM</p>
-              <p class="std-name">Clarissa Calubaquib (Student - 4th year)</p>
-              <p class="message-content">Good morning po, hindi po ako makakapasok.</p>
-             </div>
-
-             <div class="stdmsg">
-              <img src="./assets/nurse.jpg" alt="" id="stdimage">
-              <p class="datetime">11/10/2022 - 5:06PM</p>
-              <p class="std-name">Jessica Bulleque (Student - 4th year)</p>
-              <p class="message-content">Good morning po, hindi po ako makakapasok.</p>
-             </div>
-
-             <div class="stdmsg">
-              <img src="./assets/nurse.jpg" alt="" id="stdimage">
-              <p class="datetime">11/10/2022 - 5:06PM</p>
-              <p class="std-name">Kenneth Nunag (Student - 4th year)</p>
-              <p class="message-content">Di po ako papasok masama po kasi ako.</p>
-             </div>
-            </div>
-
-
-            
-            <div class="column2">
-             <h5 class="stdname">Juan Dela Cruz (Student-4th year)</h5>
-             <div class="stdchat">
-              <img src="./assets/nurse.jpg" alt="" id="stdimg"> 
-              <input type="text" class="chatbg" value="Hi" readonly>
+                <h3 class="m-0">APPOINTMENTS</h3>
+                  <input type="text" class="msgsearch" placeholder="Search">
              
             </div>
-            <input type="text" class="msgreply" placeholder="Type Here">
-            </div>
-            
           </div>
-      </section>
+        </section>
 
 
-
-        <!-- MEDICINES -->
+<!-- ############################################################################################################################################################################################################################ -->
+       
+      <!-- MEDICINES -->
         <section id="medicine" class="medicine so_content" data-tab-content>
           <div class="medicine_landing">
             <div class="medicine_header d-flex justify-content-between">
               <h3 class="m-0">MEDICINES</h3>
                 <button class="custom_btn">
-                  <a href="#addDepartmentModal" class="custom_btn" data-toggle="modal"><i class="fa fa-medkit"></i>Add Medicine</a>
+                  <a href="#addMedicineModal" class="custom_btn" data-toggle="modal"><i class="fa fa-medkit"></i>Add Medicine</a>
                 </button>
             </div>
           </div>
@@ -832,76 +801,161 @@
 
 
           <div>
-  <ul class="accordion">
+            <ul class="accordion">
 
-    <?php if(mysqli_num_rows($fetchAllMedicine) > 0) { 
-                while ($med = mysqli_fetch_assoc($fetchAllMedicine)) {  ?>
+                      <?php if(mysqli_num_rows($fetchAllMedicine) > 0) { 
+                        while ($med = mysqli_fetch_assoc($fetchAllMedicine)) {  ?>
 
 
-    <li>
-        <input type="radio" name="accordion" id="first" checked>
-        <label for="first">
-          <div class="medicine-table">
-            <table class="table-mdc">
-              <tbody>
-                <tr class="mdc-header">
-                  <td style="width:120px;"><img src="./assets/<?=$med['image']?>" width="150px" height="130px"> </td>
-                  <td style="width:200px;" >
-                    <table>
-                      <td class="b1"><?=$med['name']?></td>
-                      <tr>
-                      <td class="mdc-brand">Brand: <?=$med['brand']?></td>
-                      <tr>
-                      <td><?=$med['prod_id']?></td>
-                    </table>
-                  </td>
-            
-                  <td>
-                    <span class="mdc-stock">In stock: </span>
-                    <span class="mdc-qty"><?=$med['num_stocks']?></span>
-                  </td>
-                    
-          
-                  
-                  <td style="width:280px;"><b>Expiration Date:</b> <?=$med['expirationDate']?></td>
-                  <td><img src="./assets/<?=$med['prod_qrcode']?>" class="mdc-qrcode"></td>
-                  <td><img src="./assets/caret-down-solid.svg" class="mdc-dropdown-icon"></td>
-                  
-                </tr>
-                </tbody>
-                </table>
-                </div>
-        </label>
-        <div class="content">
-            <h5>Description</h5>
-            <p style="font-size: 13px;" class="mdc-description"><?=$med['description']?></p>
-            <div>
-              <table class="medicine-table">
-              <tbody class="collapse-content">
-              <tr>
-                <td><h5>Generic name:</h5><p style="font-size: 14px;"> <?=$med['genericName']?></p></td>
-                <td><h5>Date Manufactured:</h5><p style="font-size: 14px;"> <?=$med['date_manufactured']?></p></td>
-                <td><h5>Product Condition</h5><p style="font-size: 14px;"><?=$med['prodCondition']?></p></td>
-              </tr>
-              <tr>
-                <td><h5>Storage: </h4><?=$med['storage']?></td>
-                <td><h5>Box ID: </h4><?=$med['box_id']?></td>
-                <td><h5>Manufacturer's Name: </h5><p style="font-size: 14px;"> <?=$med['manufacturerName']?></p></td>
-                <td><h5>Contact Information: </h5><p style="font-size: 14px;"> <?=$med['contact_info']?></p></td>
-              </tr>
-            </tbody>
-            </table>
-          </div>
-        </div>
-    </li>
+                <li>
+                    <input type="radio" name="accordion" id="first" checked>
+                    <label for="first">
+                      <div class="medicine-table">
+                        <table class="table-mdc">
+                          <tbody>
+                            <tr class="mdc-header">
+                              <td style="width:120px;"><img src="./assets/<?=$med['image']?>" width="150px" height="130px"> </td>
+                              <td style="width:200px;" >
+                                <table>
+                                  <td class="b1"><?=$med['name']?></td>
+                                  <tr>
+                                  <td class="mdc-brand">Brand: <?=$med['brand']?></td>
+                                  <tr>
+                                  <td><?=$med['prod_id']?></td>
+                                </table>
+                              </td>
+                        
+                              <td>
+                                <span class="mdc-stock">In stock: </span>
+                                <span class="mdc-qty"><?=$med['num_stocks']?></span>
+                              </td>
+                                
+                      
+                              
+                              <td style="width:280px;"><b>Expiration Date:</b> <?=$med['expirationDate']?></td>
+                              <td><img src="./assets/<?=$med['prod_qrcode']?>" class="mdc-qrcode"></td>
+                              <td><img src="./assets/caret-down-solid.svg" class="mdc-dropdown-icon"></td>
+                              
+                            </tr>
+                            </tbody>
+                            </table>
+                            </div>
+                    </label>
+                    <div class="content">
+                        <h5>Description</h5>
+                        <p style="font-size: 13px;" class="mdc-description"><?=$med['description']?></p>
+                        <div>
+                          <table class="medicine-table">
+                          <tbody class="collapse-content">
+                          <tr>
+                            <td><h5>Generic name:</h5><p style="font-size: 14px;"> <?=$med['genericName']?></p></td>
+                            <td><h5>Date Manufactured:</h5><p style="font-size: 14px;"> <?=$med['date_manufactured']?></p></td>
+                            <td><h5>Product Condition</h5><p style="font-size: 14px;"><?=$med['prodCondition']?></p></td>
+                          </tr>
+                          <tr>
+                            <td><h5>Storage: </h4><?=$med['storage']?></td>
+                            <td><h5>Box ID: </h4><?=$med['box_id']?></td>
+                            <td><h5>Manufacturer's Name: </h5><p style="font-size: 14px;"> <?=$med['manufacturerName']?></p></td>
+                            <td><h5>Contact Information: </h5><p style="font-size: 14px;"> <?=$med['contact_info']?></p></td>
+                          </tr>
+                        </tbody>
+                        </table>
+                      </div>
+                    </div>
+                </li>
 
-    <?php } } ?>
-  </ul>
-</div>
+                <?php } } ?>
+              </ul>
+            </div>
 
         </section>
 
-        
+<!-- ############################################################################################################################################################################################################## -->
+
+        <!-- Add New Medicine Modal -->
+          <div id="addMedicineModal" class="modal fade">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <form method="post" action="adminDashboard.php">
+                    <div class="modal-header">						
+                      <h4 class="modal-title">ADD MEDICINE TO INVENTORY</h4>
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">	
+                    <div class="form-group">
+                        <label>Product ID</label> 
+                        <input type="text" class="form-control" name="prod_id" required>
+                      </div>				
+                      <div class="form-group">
+                        <label>Medicine Name</label> 
+                        <input type="text" class="form-control" name="name" required>
+                      </div>
+                      <div class="form-group">
+                        <label>Brand</label>
+                        <input type="text" class="form-control" name="brand" required>
+                      </div>
+                      <div class="form-group">
+                        <label>Stocks</label>
+                        <input type="text" class="form-control" name="num_stocks" required></input>
+                      </div>
+                      <div class="form-group">
+                        <label>Expiration Date</label>
+                        <input type="date" class="form-control" name="expirationDate" required>
+                      </div>		
+                      <div class="form-group">
+                        <label>Generic Name</label>
+                        <input type="text" class="form-control" name="genericName" required>
+                      </div>	
+                      <div class="form-group">
+                        <label>Date Manufactured</label>
+                        <input type="date" class="form-control" name="date_manufactured" required>
+                      </div>	
+                      <div class="form-group">
+                        <label>Product Condition</label>
+                        <input type="text" class="form-control" name="prodCondition" required>
+                      </div>	
+                      <div class="form-group">
+                        <label>Storage</label>
+                        <input type="text" class="form-control" name="storage" required>
+                      </div>	
+                      <div class="form-group">
+                        <label>Box ID</label>
+                        <input type="text" class="form-control" name="box_id" required>
+                      </div>	
+                      <div class="form-group">
+                        <label>Manufacturer's Company</label>
+                        <input type="text" class="form-control" name="manufacturerName" required>
+                      </div>	
+                      <!-- <div class="form-group"> -->
+                        <!-- <label>Email Address</label> -->
+                        <!-- <input type="text" class="form-control" name="phone" required> -->
+                      <!-- </div>	 -->
+                      <div class="form-group">
+                        <label>Contact Number</label>
+                        <input type="text" class="form-control" name="contact_info" required>
+                      </div>	
+                      <div class="form-group">
+                        <label>Description</label>
+                        <textarea class="form-control" name="description" required></textarea>
+                      </div>	
+
+                      <div class="form-group">
+                        <center><label>Upload Product Image</label>
+                        <input type="file" class="form-control" name="image" required></center>
+                      </div>	
+                      
+                    </div>
+                    <div class="modal-footer" style="width: 498px;">
+                      <input type="button" class="btn btn-danger" data-dismiss="modal" value="Cancel">
+                      <input type="submit" class="btn btn-success" name="addmed" value="Add">
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+<!-- ############################################################################################################################################################################################################## -->
+
 
   <!-- REPORTS -->
   <section id="reports" class="reports so_content" data-tab-content>
@@ -962,7 +1016,7 @@
           <div class="account_landing">
             <div class="account_header d-flex justify-content-between">
              
-               <!-- nurse account section clicking my account  -->
+        <!-- nurse account section clicking my account  -->
           <div class="nurse_account_section">
             <h3>MANAGE MY ACCOUNT</h3>
 
