@@ -3,16 +3,23 @@
       include_once 'insert_data.php';
       include_once 'insert_new_patient.php';
       include('db_conn.php');
+      
 
 
       $emp_id = $_SESSION['emp_id'];
+      
 
       if(empty($emp_id)) {
 
         header("location: ./index.php");
         
       }
-     
+   
+      
+      
+      // SELECT SPECIFIC ACCOUNT OF NURSE
+      // $fetchNurseAccount = mysqli_query($conn, "SELECT * FROM `nurses` WHERE email = '$email'");
+      // $nurse = mysqli_fetch_assoc($fetchNurseAccount);
     
 
       // SELECT ALL MEDICINE 
@@ -876,7 +883,7 @@
           <div id="addMedicineModal" class="modal fade">
               <div class="modal-dialog">
                 <div class="modal-content">
-                  <form method="post" action="adminDashboard.php">
+                  <form method="post" action="insert_medicine.php">
                     <div class="modal-header">						
                       <h4 class="modal-title">ADD MEDICINE TO INVENTORY</h4>
                       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -942,6 +949,11 @@
                       <div class="form-group">
                         <center><label>Upload Product Image</label>
                         <input type="file" class="form-control" name="image" required></center>
+                      </div>	
+
+                      <div class="form-group">
+                        <center><label>Upload Product QR Code</label>
+                        <input type="file" class="form-control" name="prod_qrcode" required></center>
                       </div>	
                       
                     </div>
@@ -1023,7 +1035,7 @@
             <div class="form_wrapper">
 
               <div class="profile_picture">
-                <img src="./assets/badang.JPG" alt="">
+                <img src="./assets/<?$_SESSION['img'];?>" alt="">
                 <div class="edit_icon"></div>
               </div>
 
