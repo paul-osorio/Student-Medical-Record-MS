@@ -90,6 +90,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
     <!-- <link rel="stylesheet" href="./style.css" /> -->
     <link rel="stylesheet" href="./css/addAdmin.css"/>
     <link rel="stylesheet" href="./css/DepartmentTab.css" />
+    <link rel="stylesheet" href="./css/HospitalTab.css"/> 
     <link rel="stylesheet" href="./css/NurseTab.css" />
     <!-- <link rel="stylesheet" href="./css/DashboardTab.css"/> -->
     <link rel="stylesheet" href="./css/DashboardTab.css?v=<?php echo time(); ?>"/>
@@ -1671,6 +1672,258 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
 
 
+<!--#################################################################################################################################################################################################################################-->
+
+        <!-- HOSPITAL PAGE -->
+        <section id="hospital" class="hospital so_content" data-tab-content>
+
+        <div class="hospital_header d-flex justify-content-between">
+            <h3 class="m-0">HOSPITAL</h3>
+          </div>
+          <div class="action_header">   
+             <input type="text" name="search" placeholder="&#xF002; Search hospitals..." style="font-family:Arial, FontAwesome">
+            <button class="custom_btn">
+              <a href="#addHospitalModal" class="custom_btn" data-toggle="modal"><i class="fa fa-plus"></i>Add Hospital</a>
+            </button>
+          </div>
+
+          <div class="hospital_table_details table-responsive">
+            <table>
+              
+              <tr id="table_header">
+                  <th>Hospital Name</th>
+                  <th>Address</th>
+                  <th>Email Address</th>
+                  <th>Contact No</th>
+                  <th><span>Action</span></th>
+              </tr>
+              
+
+                  <!-- <?php if(mysqli_num_rows($fetchAddAdmins) > 0) { 
+                  while ($addAdmins = mysqli_fetch_assoc($fetchAddAdmins)) {  ?> -->
+
+                  <tr class="container">
+                      <td><span class="hospitalname"><?=$addAdmins['unique_id']?></span></td>
+                      <td><span class="address"><?=$addAdmins['fname']?></span></td>
+                      <td><span class="email"><?=$addAdmins['lname']?></span></td>
+                      <td><span class="contact_num"><?=$addAdmins['contact_num']?></span></td>
+                      <td>
+                          <!-- <a href="#viewAdminInfo" class="custom_btn" data-toggle="modal"><i class="fa fa-info-circle" aria-hidden="true" style="color: #5D8FD9;"></i></a> -->
+
+                          <a href="#editHospitalInfo" class="custom_btn editbtn" data-toggle="modal"><i class="fa fa-edit" aria-hidden="true" style="color: #3e64ff;"></i></a>
+
+                          <a href="#delHospital" class="custom_btn deletebtn" data-toggle="modal"><i class="fa fa-trash" aria-hidden="true" style="color: #ED1C24;"></i></a>
+                      </td>
+                  </tr>
+
+                  <!-- <?php } } ?> -->
+
+              <tr class="container">
+                  <td style="text-align:center;" ><span class="hospitalname">Metro North Medical Center & Hospital</span></td>
+                  <td><span class="address">1001 Mindanao Avenue, Quezon City, 1106 Metro Manila</span></td>
+                  <td><span class="email">spcustorel@mnmch.com</span></td>
+                  <td><span class="contact_num">(02)8426-7000</span></td>
+                  <td>
+
+                      <a href="#editHospitalInfo" class="custom_btn editbtn" data-toggle="modal"><i class="fa fa-edit" aria-hidden="true" style="color: #3e64ff;"></i></a>
+
+                      <a href="#delHospital" class="custom_btn deletebtn" data-toggle="modal"><i class="fa fa-trash" aria-hidden="true" style="color: #ED1C24;"></i></a>
+                  </td>
+              </tr>
+              
+                  
+
+              
+            </table>
+          </div>
+          <div>
+
+          </div>
+
+<!--########################################################################################################################################################################-->
+
+      <!-- ADD NEW HOSPITAL MODAL AT HOSPITAL PAGE-->
+
+        <div id="addHospitalModal" class="modal fade">
+            <div class="modal-dialog">
+
+              <div class="modal-content">
+                <form method="post" action="adminDashboard.php">
+
+                  <div class="modal-header">						
+                    <h4 class="modal-title">ADD HOSPITAL</h4>
+                  </div>
+
+                  <div class="modal-body">	
+
+                      <div class="form-group">
+                        <label>Hospital Name</label> 
+                        <input type="text" class="form-control" name="hospitalname" required>
+                      </div>	
+
+                      <div class="form-group">
+                        <label>Address</label> 
+                        <input type="text" class="form-control" name="address" required>
+                      </div>		
+
+                      <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="text" class="form-control" name="email" required>
+                      </div>
+
+                      <div class="form-group">
+                        <label>Contact No.</label>
+                        <input type="text" class="form-control" name="contact_num" required>
+                      </div>	
+          
+                  </div>
+                  
+                  <div class="modal-footer">
+                    <input type="button" class="btn btn-danger" data-dismiss="modal" value="Cancel">
+                    <input type="button" class="btn btn-success" data-dismiss="modal" id="addsuccess_hospital" name="addAdmin" value="Add">
+                  </div>
+
+                </form>
+              </div>
+
+            </div>
+          </div>
+
+<!--########################################################################################################################################################################-->
+
+      <!-- EDIT DATA HOSPITAL MODAL AT HOSPITAL PAGE-->
+
+      <div id="editHospitalInfo" class="modal fade">
+            <div class="modal-dialog">
+
+              <div class="modal-content">
+                <form method="post" action="adminDashboard.php">
+
+                  <div class="modal-header">						
+                    <h4 class="modal-title">EDIT HOSPITAL</h4>
+                  </div>
+
+                  <div class="modal-body">	
+
+                      <div class="form-group">
+                        <label>Hospital Name</label> 
+                        <input type="text" class="form-control" name="hospitalname" value="Metro North Medical Center & Hospital" required>
+                      </div>	
+
+                      <div class="form-group">
+                        <label>Address</label> 
+                        <input type="text" class="form-control" name="address" value="1001 Mindanao Avenue, Quezon City, 1106 Metro Manila" required>
+                      </div>		
+
+                      <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="text" class="form-control" name="email" value="spcustorel@mnmch.com" required>
+                      </div>
+
+                      <div class="form-group">
+                        <label>Contact No.</label>
+                        <input type="text" class="form-control" name="contact_num" value="(02)8426-7000" required>
+                      </div>	
+          
+                  </div>
+                  
+                  <div class="modal-footer">
+                    <input type="button" class="btn btn-danger" data-dismiss="modal" value="Cancel">
+                    <input type="button" class="btn btn-success" data-dismiss="modal" id="addsuccess_hospital" name="addAdmin" value="Save">
+                  </div>
+
+                </form>
+              </div>
+
+            </div>
+          </div>          
+
+<!--#################################################################################################################################################################################################################################-->
+        
+
+      <!--HOSPITAL ADDED SUCCESSFULLY MODAL-->
+
+      <div class="modal fade" id="addsuccessModalHospital" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+
+          <div class="modal-dialog" role="document">
+              <div class="modal-content">
+
+                      <div class="modal-body addsuccessmodal">
+
+                          <h4 style=" font-weight:bold; padding-top:50px;"> Added Successfully! </h4>
+                          <div class="check_icon"><i class="fa fa-check"></i></div>
+                          <p style="color:blue; font-weight:bold;">Redirecting...</p>
+
+                      </div>
+
+              </div>
+          </div>
+      </div>
+
+<!--#################################################################################################################################################################################################################################-->
+        
+
+      <!-- DELETE DATA HOSPITAL MODAL AT HOSPITAL PAGE-->
+
+      <div class="modal fade" id="delHospital" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+
+          <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                  
+
+                  <form action="delete_admin.php" method="POST">
+
+                      <div class="modal-body delmodal">
+
+                          <div class="del_icon"><i class="fa fa-trash"></i></div>
+
+                          <input type="hidden" name="delete_id" id="delete_id">
+
+                          <h4 style=" font-weight:bold; padding-top:50px;"> Are you sure you want to remove this hospital? </h4>
+                          <h4 style="color:blue; font-weight:bold; font-size:20px;">Metro North Medical Center & Hospital</h4>
+                          <div class="modal_btn">
+                            <input type="button" class="btn" style="background-color:lightgrey; color:black; font-weight:700;" id="cancel-hospital-modal" data-dismiss="modal" value="No">
+                            <input type="button" class="btn btn-danger" style="font-weight:700;" data-dismiss="modal" id="delHospital_btn" name="delHospital" value="Yes">
+                          </div>
+
+                      </div>
+                  </form>
+
+              </div>
+          </div>
+      </div>
+
+<!--#################################################################################################################################################################################################################################-->
+        
+
+      <!--HOSPITAL DELETED SUCCESSFULLY MODAL-->
+
+      <div class="modal fade" id="removesuccess_hospital" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+
+          <div class="modal-dialog" role="document">
+              <div class="modal-content">
+
+                      <div class="modal-body removesuccessmodal">
+
+                          <h4 style=" font-weight:bold; padding-top:50px;"> <span class="hospitalname">METRO NORTH MEDICAL CENTER & HOSPITAL</span> REMOVED SUCCESSFULLY </h4>
+                          <div class="check_icon"><i class="fa fa-check"></i></div>
+                          <p style="color:#3e64ff; font-weight:bold;">Redirecting...</p>
+
+                      </div>
+
+              </div>
+          </div>
+      </div>
+
+        </section>
+
+
+
+
+<!--#################################################################################################################################################################################################################################-->
 
 
 

@@ -1,0 +1,315 @@
+/* header */
+#hospital .hospital_header {
+  margin-bottom: 10px;
+}
+#hospital .hospital_header h3 {
+  font-size: 26px;
+  color: white;
+}
+
+#hospital .action_header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+#hospital .action_header .custom_btn {
+  background: #3e64ff;
+  color: #fff;
+  border: none;
+  outline: none;
+  width: 15%;
+  border-radius: 10px;
+}
+#hospital .action_header .custom_btn i {
+  margin-right: 10px;
+}
+
+/* filter */
+#hospital .action_header input {
+  width: 55%;
+  padding: 10px 20px;
+  border-radius: 30px;
+  border: none;
+  color: gray;
+  background: white;
+}
+
+/*table*/
+#hospital table {
+  background-color: white;
+}
+
+td,
+th {
+  padding: 10px;
+}
+
+#hospital .hospital_table_details table {
+  width: 100%;
+  border-spacing: 10px;
+  border-collapse: collapse;
+}
+
+#hospital .hospital_table_details th {
+  font-weight: 500;
+  font-size: 15px;
+  padding: 5px 15px 5px 10px;
+  color: gray;
+  font-weight: 600;
+}
+
+#hospital .hospital_table_details th sub {
+  display: flex;
+  font-size: 10px;
+  font-weight: 500;
+  color: #999;
+}
+
+/* info */
+#hospital .hospital_table_details .container {
+  padding: 3px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+/* #hospital .hospital_table_details .container:hover {
+    box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.5em,
+      rgba(90, 125, 188, 0.05) 0px 0.25em 1em, inset 0 0 0 2px #999, 2px 2px #999;
+  } */
+
+#hospital .hospital_table_details td img {
+  width: 50px;
+  height: 50px;
+}
+
+#hospital tr.container td {
+  border-top: 1pt solid gray;
+}
+
+#hospital td span {
+  float: left;
+  padding-left: 10px;
+}
+
+#hospital td .unique_id {
+  color: #5180c7;
+  font-weight: 500;
+}
+
+#hospital td .status {
+  padding-right: 10px;
+  font-weight: 500;
+}
+
+#hospital td i {
+  font-size: 20px;
+}
+
+#hospital td i:nth-child(1) {
+  color: gray;
+  padding-left: 10px;
+  padding-right: 5px;
+}
+
+#hospital td i:nth-child(2) {
+  color: #5180c7;
+  transform: translate(0, -1px);
+}
+
+/* add hospital modal */
+
+#hospital .modal {
+  padding-top: 50px;
+}
+
+#hospital .modal .modal-header {
+  display: flex;
+  justify-content: center;
+  color: white;
+  background-color: #13192d;
+  border: none;
+}
+
+#hospital .modal .modal-body {
+  color: white;
+  background-color: #13192d;
+}
+
+#hospital .modal .modal-footer {
+  color: white;
+  background-color: #13192d;
+  border: none;
+}
+
+#hospital .btn-danger {
+  background-color: #ed1c24;
+  border: none;
+}
+
+#hospital .btn-success {
+  background-color: #37954b;
+  border: none;
+}
+
+#hospital input {
+  background-color: #13192d;
+  color: white;
+  outline: white;
+}
+
+/* add hospital success modal */
+#hospital #addsuccess_admin .modal-body {
+  background-color: white;
+  color: #000;
+}
+
+#hospital .addsuccessmodal {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  border-radius: 5px;
+}
+
+#hospital .check_icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  color: white;
+  width: 70px;
+  height: 70px;
+  border-radius: 100px;
+  background-color: #198754;
+}
+
+/* delete hospital modal */
+
+#hospital #delHospital .modal-body {
+  background-color: white;
+  color: #000;
+}
+
+#hospital .delmodal {
+  text-align: center;
+  border-radius: 5px;
+}
+
+#hospital .delmodal .btn {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+#hospital .delmodal .modal_btn {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding-top: 50px;
+}
+
+#hospital .del_icon {
+  position: absolute;
+  margin-top: -55px;
+  margin-left: 180px;
+  font-size: 40px;
+  color: #ed1c24;
+  width: 70px;
+  height: 70px;
+  border-radius: 100px;
+  border: 5px solid grey;
+  background-color: white;
+}
+
+/* remove hospital success modal */
+#hospital #removesuccess_hospital .modal-body {
+  background-color: white;
+  color: #000;
+}
+
+#hospital #removesuccess_hospital .hospitalname {
+  color: #3e64ff;
+}
+
+#hospital .removesuccessmodal {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  border-radius: 5px;
+}
+
+#hospital .check_icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  color: white;
+  width: 70px;
+  height: 70px;
+  border-radius: 100px;
+  background-color: #198754;
+}
+
+@media screen and (min-width: 520px) {
+  .nav {
+    width: 30%;
+  }
+
+  .content_wrapper {
+    background: #f2f2f2;
+    padding: 20px 20px 0 20px;
+  }
+
+  #hospital .hospital_table_details th sub {
+    overflow: break-word;
+    white-space: nowrap;
+  }
+
+  #hospital .hospital_table_details {
+    overflow-x: auto;
+  }
+}
+
+@media screen and (max-width: 788px) {
+  /* section padding  */
+  .content_wrapper {
+    padding: 20px;
+  }
+
+  #hospital .filter_wrapper {
+    padding: 10px 20px;
+    /* height:50px; */
+    border-radius: 5px;
+    background: #d9d9d9;
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    align-items: center;
+    row-gap: 15px;
+  }
+  #hospital .filter_wrapper .sort {
+    display: flex;
+    align-items: center;
+  }
+
+  #hospital .hospital_table_details th sub {
+    overflow: break-word;
+    white-space: nowrap;
+  }
+
+  #hospital .hospital_table_details td img {
+    width: 75px;
+    height: 75px;
+  }
+
+  #hospital .hospital_table_details {
+    overflow-x: auto;
+  }
+}
