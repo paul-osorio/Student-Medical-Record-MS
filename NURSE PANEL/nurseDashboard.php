@@ -511,7 +511,7 @@
              
               <tr class="container">
                 <!--Patient info-->
-                <td style="background-color: #163666;"><span class="patient_id">17-1499</span></td>
+                <td style="background-color: #163666;"><span class="patient_id"><?=$addPatient['student_id']?></span></td>
                 <td><img src="./assets/<?=$addPatient['image']?>"/></td>
                 <td><span class="name"><?=$addPatient['lastname']?>, <?=$addPatient['firstname']?> <?=$addPatient['middlename']?></span></td>
                 <td><span class="course"><?=$addPatient['course']?></span></td>
@@ -749,7 +749,7 @@
           
 
       
-          
+
 
          <!-- APPOINTMENT -->
          <section id="appointment" class="appointment so_content" data-tab-content>
