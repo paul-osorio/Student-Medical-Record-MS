@@ -1,4 +1,12 @@
-    <!DOCTYPE html>
+<?php
+    session_start();
+
+    $stud_id = $_SESSION['student_id'];
+
+ 
+?>
+ 
+ <!DOCTYPE html>
     <html lang="en">
         <head>
             <meta charset="UTF-8">
@@ -27,17 +35,17 @@
             <div class="d-flex flex-column justify-content-center align-items-center mt-4 p-2">
                 <i class="fa-solid fa-user"  style="font-size: var(--step-5);"></i>
                 <p class="text-white my-3" style="font-size: var(--step--1);">Student Name</p>
-                <p class="text-white" style="font-size: var(--step--0)">School Email Address</p>
+                <p class="text-white" style="font-size: var(--step--0)"> <?=$stud_id?> </p>
             </div>
 
             </div>
             <ul class="sidebar-menu p-3 m-0 mb-0">
-                <li class="sidebar-menu-item active">
-                    <a href="#">
+                <!-- <li class="sidebar-menu-item active">
+                    <a href="#" id="stud_personal_info">
                         <i class="ri-dashboard-line sidebar-menu-item-icon"></i>
-                        <span class="text-light fs-6 ">Dashboard</span>
+                        <span class="text-light fs-6 "> Personal Information </span>
                     </a>
-                </li>
+                </li> -->
                 <li class="sidebar-menu-divider mt-3 mb-1 text-uppercase text-light">Main</li>
                 <li class="sidebar-menu-item has-dropdown">
                     <a href="#">
@@ -47,25 +55,31 @@
                     </a>
                     <ul class="sidebar-dropdown-menu">
                         <li class="sidebar-dropdown-menu-item has-dropdown">
-                            <a href="#">
+                            <a href="#" id="stud_personal_info">
                             Personal Information
                                 <i class="ri-arrow-down-s-line sidebar-menu-item-accordion ms-auto"></i>
                             </a>
                         </li>
                         <li class="sidebar-dropdown-menu-item has-dropdown">
-                            <a href="#">
+                            <a href="#" id="med_reqs">
                             Medical Requirements
                                 <i class="ri-arrow-down-s-line sidebar-menu-item-accordion ms-auto"></i>
                             </a>
                         </li>
                         <li class="sidebar-dropdown-menu-item has-dropdown">
-                            <a href="#">
-                                Medical Information
+                            <a href="#" id="med_history">
+                                Medical History
                                 <i class="ri-arrow-down-s-line sidebar-menu-item-accordion ms-auto"></i>
                             </a>
                         </li>
                         <li class="sidebar-dropdown-menu-item has-dropdown">
-                            <a href="#">
+                            <a href="#" id="health_history">
+                                Health History
+                                <i class="ri-arrow-down-s-line sidebar-menu-item-accordion ms-auto"></i>
+                            </a>
+                        </li>
+                        <li class="sidebar-dropdown-menu-item has-dropdown">
+                            <a href="#" id="appointment">
                             Appointment
                                 <i class="ri-arrow-down-s-line sidebar-menu-item-accordion ms-auto"></i>
                             </a>
@@ -75,7 +89,7 @@
                 </li>
                 <li class="sidebar-menu-divider mt-3 mb-1 text-uppercase text-white">Settings</li>
                 <li class="sidebar-menu-item has-dropdown">
-                    <a href="#">
+                    <a href="#" id="manage_account">
                         <i class="ri-shopping-cart-2-line sidebar-menu-item-icon"></i>
                         <span class="text-light fs-6">Manage Account</span>
 
@@ -113,8 +127,10 @@
                 <!-- end: Navbar -->
 
                 <!-- start: Content -->
-                <div class="p-5">
+                <div class="p-5" class="main-content-container" id="main-content-container">
 
+                   
+                    
                 </div>
 
             
@@ -127,4 +143,71 @@
         <!-- <script src="../assets/js/bootstrap.bundle.min.js"></script> -->
         <script src="javascript/script.js"></script>
     </body>
+
+
+    <script>
+        $(document).ready(function(){
+
+            const stud_id = "<?=$stud_id?>";
+
+            $('#main-content-container').load('./student-personal-info.php', {
+                stud_id: stud_id
+            });
+
+            $('#appointment').click(function(){
+                
+                // alert(stud_id);
+
+                $('#main-content-container').load('./student-appointment-list.php', {
+
+                    stud_id: stud_id,
+
+                });
+                    
+            });
+
+
+            $('#med_info').click(function(){
+
+                $('#main-content-container').load('./student-medical-history.php', {
+                    
+                    stud_id: stud_id
+                });
+
+            });
+
+            $('#stud_personal_info').click(function(){
+
+                $('#main-content-container').load('./student-personal-info.php', {
+                    
+                    stud_id: stud_id
+                });
+
+            });
+
+            $('#manage_account').click(function(){
+
+                $('#main-content-container').load('./student-manage-account.php', {
+                    
+                    stud_id: stud_id
+                });
+
+            });
+
+            $('#health_history').click(function(){
+
+                $('#main-content-container').load('./student-health-history.php', {
+                    
+                    stud_id: stud_id
+                });
+
+            });
+
+
+
+          
+
+        });
+
+    </script>
     </html>
