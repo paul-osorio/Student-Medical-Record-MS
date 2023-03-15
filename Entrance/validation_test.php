@@ -144,7 +144,6 @@
                   
                      var mess = 'verified';
                      var fullname = "<?=$fullname?>";
-                     var stud_id = "<?=$student_id?>";
 
                      // $('.message p').css("background-color", 'red');
 
@@ -156,12 +155,6 @@
                      });
 
                      $('.numerical').load('./total.php');
-
-                     $('.student-id').load('./student_info.php',{
-
-                        stud_id:stud_id
-                        
-                     });
 
 
                   });
