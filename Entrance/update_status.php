@@ -16,7 +16,9 @@
       include "./entrance_log.php"; ?>
 
       <script> 
+
          $('.numerical').load('./total.php');
+         
       </script>
    
    <?php }

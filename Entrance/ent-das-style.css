@@ -7,91 +7,172 @@
 
 .main-container{
     /* background-color: red; */
-    margin: 30px 60px;
+    /* margin: 30px 60px; */
     display: flex;
+    align-items: center;
     justify-content: center;
+    width: 100%;
+    height: 90vh;
+    padding: 2%;
 }
-.subcontainer{
+
+.main-container .container{
+    width: 100%;
+    height: 100%;
+    /* background-color: #dedede; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+
+.main-container .container .subcontainer{
     /* background-color: blue; */
-    width: 100%;
-    margin: 0 2em;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* margin: 0 2em; */
+    padding: 2%;
 }
-.numerical{
+
+.main-container .container .subcontainer .numerical{
     width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
-.numerical ul{
+
+.main-container .container .subcontainer .numerical ul{
     list-style: none;
     display: flex;
     justify-content: space-between;
     width: 100%;
 }
-.numerical ul li{
+
+.main-container .container .subcontainer .numerical ul li{
     font-size: 15px;
     padding: 10px 20px;
     border-radius: 5px;
     text-align: center;
 }
-.numerical ul #total{
+.main-container .container .subcontainer .numerical ul #total{
     background-color: #4C9BF5;
     color: #fff;
     font-weight: 600;
 }
-.numerical ul #verified{
+
+.main-container .container .subcontainer .numerical ul #verified{
     background-color: #4EC745;
     color: #fff;
     font-weight: 600;
 }
-.numerical ul #problem{
+.main-container .container .subcontainer .numerical ul #problem{
     background-color: #F0A202;
     color: #fff;
     font-weight: 600;
 }
-.numerical ul #visitor{
+.main-container .container .subcontainer .numerical ul #visitor{
     background-color: #f58800;
     color: #fff;
     font-weight: 600;
 }
-.numerical ul #invalid{
+.main-container .container .subcontainer .numerical ul #invalid{
     background-color: #FF0022;
     color: #fff;
     font-weight: 600;
 }
-.video{
+
+
+
+
+
+.main-container .container .subcontainer .video{
+    /* background-color: #4EC745; */
     display: flex;
     justify-content: center;
+    width: 100%;
+    height: 50%;
 }
-.video video{
-    
-    width: 380px;
-    /* height: 320px; */
-    border-radius: 10px;
-    margin: 20px 0 0 0;
+
+
+.main-container .container .subcontainer .video #canvas{
+    /* display: none; */
+
 }
-.form-scan{
-    display: flex;
+
+.main-container .container .subcontainer .video video{
+  /* background-color: #3f633c; */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.main-container .container .subcontainer .form-scan{
+    display: none;
     justify-content: center;
     /* background-color: red; */
-    margin: 0;
 }
-.subcontainer .form-control{
-    width: 480px;
+
+.main-container .container .subcontainer .visitor-form{
+    /* background-color: #4EC745; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
-.notification{
+
+
+.main-container .container .subcontainer .visitor-form h4{
+    text-align: left;
     width: 100%;
+    margin: 5px 5px;
+    color: #666666;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    justify-content: space-between;
 }
 
-.notification table{
-    width: 100%;
-    border-collapse: collapse;
-    /* background-color: #5cd391; */
+.main-container .container .subcontainer .visitor-form h4 span{
+    font-size: .9em;
+    color: #d45757;
+    font-weight: 400;
+    margin-left: 10px;
+}
+
+.main-container .container .subcontainer .visitor-form form{
+    padding: 10px 10px 0 10px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    /* border: 1px solid #666666; */
+    background-color: #ebebeb;
+}
+
+.main-container .container .subcontainer .visitor-form form input[type=text]{
+    margin:  0 0 5px;
+    font-size: 12px;
+    padding: 5px;
+    border: none;
+    
+}
+.main-container .container .subcontainer .visitor-form form input[type=button]{
+    margin: .7em 0;
+    background-color: #4EC745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 0;
+    font-weight: 600;
 }
 
 
+/* 
 .table .message{
     display: flex;
-    /* background-color: #5cd391; */
     align-content: center;
     justify-content: flex-end;
 }
@@ -101,64 +182,116 @@
     padding: 3px 10px;
     border-radius: 3px;
 }
-/* .visitor-form{
-    position: relative;
-    top: 100px;
+
+
+
+
+.table{
+    background-color: yellowgreen;
+
+    width: 100%;
+    
 } */
-.visitor-form h4{
-    text-align: center;
+
+
+
+
+
+
+.main-container .container .table-container{
+    width: 50%;
+    height: 100%;
+    /* background-color: #4C9BF5; */
+    padding: 2%;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    position: relative;
 }
-.visitor-form form{
-    padding: 10px 10px 0 10px;
-    display: grid;
-    border-radius: 5px;
-    /* border: 1px solid #666666; */
-    background-color: #ebebeb;
-}
-.visitor-form form input[type=text]{
-    margin:  0 0 5px;
-    font-size: 12px;
-    padding: 5px;
-    border: none;
+
+.main-container .container .table-container .form-button{
+    display: flex;
+    /* background-color: #4EC745; */
+    height: max-content;
+    margin-bottom: 5px;
     
 }
-.visitor-form form input[type=submit]{
-    margin: .7em 0;
+
+.main-container .container .table-container .form-button button.selected.students{
     background-color: #4EC745;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 0;
-    font-weight: 600;
 }
-/* .notification table tbody tr td{
-    padding: 10px 0;
-    text-align: center;
-    border: 1px solid #000000;
-    background-color: #e1ff00;
-} */
-.table{
-    /* background-color: yellowgreen; */
-    /* margin: 70px 20px 0; */
+
+.main-container .container .table-container .form-button button{
+    font-size: 1em;
+    padding: 10px 15px;
+    background: none;
+    color: #000;
+    border: 1px solid black;
+    margin-right: 2px;
+    width: 25%;
+    transition: background ease-in .2s;
+}
+
+
+
+.main-container .container .table-container .form-button button#students-btn:hover{
+    background-color: #4EC745;
+}
+
+.main-container .container .table-container .form-button button#pending-btn:hover{
+    background-color: #DCED31;
+}
+
+
+.main-container .container .table-container .form-button button#visitor-btn:hover{
+    background-color: #f58800;
+}
+
+
+.main-container .container .table-container .form-button button#archive-btn:hover{
+    background-color: #FF0022;
+}
+
+
+.main-container .container .table-container .form-button button:hover{
+    background-color: #949494;
+}
+
+
+
+.main-container .container .table-container .table-contents table{
     width: 100%;
     border-collapse: collapse;
+    /* background-color: #4EC745; */
+    
 }
-.table table{
-    width: 100%;
-}
-.table table thead tr td{
+
+
+.main-container .container .table-container .table-contents table thead tr td{
     padding: 10px 0;
     text-align: center;
     border: 1px solid #000000;
     background-color: white;
     
 }
-.table table tbody tr td{
+.main-container .container .table-container .table-contents table tbody tr td{
+    
     padding: 10px 0;
     text-align: center;
     border: 1px solid #000000;
     background-color: #dedede;
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 .pop-up-modal{
@@ -213,32 +346,79 @@
     border-radius: 4px;
     border: none;
 } 
-/* ENTRANCE STUDENT INFORMATION */
-.stud-info{
 
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    border: 1px solid #666666;
-}
-.stud-img{
-    width: 25%;
+
+
+
+
+
+
+
+
+/* ENTRANCE STUDENT INFORMATION */
+
+.main-container .container .table-container .student-id{
     /* background-color: #666666; */
+    margin-top: 10px;
+}
+
+
+.main-container .container .table-container .student-id .stud-info{
+    display: flex;
+    width: 100%;
+    background-color: #dedede;
+    border-radius: 6px;
+    padding: 2%;
+}
+
+.main-container .container .table-container .student-id .stud-info .stud-img{
+    width: 35%;
+    height: 100%;
+    background-color: #8c8c8c;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
-.stud-img img{
-    width: 100px;
-    height: 100px;
-    /* place-self: center; */
-    margin: 20px 0 0 0 ;
-}
-.stud-ent-info{
+
+.main-container .container .table-container .student-id .stud-info .stud-img .image{
     width: 100%;
-    padding: 0 10px;
+    height: 100%;
+    padding: 2%;
 }
-.stud-ent-info h2{
-    margin: 20px 0;
+
+
+.main-container .container .table-container .student-id .stud-info .stud-img .image img{
+    width: 100%;
+    height: 100%;
+    /* object-fit: cover; */
+}
+
+
+
+.main-container .container .table-container .student-id .stud-info .stud-ent-info{
+    /* background-color: #4C9BF5; */
+    width: 100%;
+    height: 100%;
+    padding: 1% 2%;
+    font-size: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    /* padding: 0 10px; */
+}
+
+.main-container .container .table-container .student-id .stud-info .stud-ent-info h4, .stud-ent-info h2{
+    font-size: 1.2em;
+    padding: 0;
+    margin: 5px;
+    font-weight: 400;
+}
+
+
+.main-container .container .table-container .student-id .stud-info .stud-ent-info h2{
+    font-size: 1.5em;
     font-weight: 600;
 }
+
+
 /* END OF ENTRANCE STUDENT INFORMATION */
