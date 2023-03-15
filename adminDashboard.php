@@ -90,14 +90,15 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
     <!-- <link rel="stylesheet" href="./style.css" /> -->
     <link rel="stylesheet" href="./css/addAdmin.css"/>
     <link rel="stylesheet" href="./css/DepartmentTab.css" />
-    <link rel="stylesheet" href="./css/HospitalTab.css"/> 
     <link rel="stylesheet" href="./css/NurseTab.css" />
+    <link rel="stylesheet" href="./css/HospitalTab.css"/>
     <!-- <link rel="stylesheet" href="./css/DashboardTab.css"/> -->
     <link rel="stylesheet" href="./css/DashboardTab.css?v=<?php echo time(); ?>"/>
     <link rel="stylesheet" href="./css/medicine.css"/>
     <link rel="stylesheet" href="./css/messagetab.css"/>
     <link rel="stylesheet" href="./css/reportchart.css?v=<?php echo time(); ?>"/>
     <link rel="stylesheet" href="./css/archivesTab.css"/>
+    
 
     <link rel="stylesheet" href="./css/Main.css" />
     <link rel="stylesheet" href="./css/adminPage.css" />
@@ -1669,9 +1670,6 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
     </section>
 
 
-
-
-
 <!--#################################################################################################################################################################################################################################-->
 
         <!-- HOSPITAL PAGE -->
@@ -1919,11 +1917,6 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
       </div>
 
         </section>
-
-
-
-
-<!--#################################################################################################################################################################################################################################-->
 
 
 
@@ -2599,13 +2592,29 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
 <!--#################################################################################################################################################################################################################################-->
 
-<!-- ADD SUCCESS -->
+<!-- ADD SUCCESS-->
 <script>
         $(document).ready(function() {
   
             $("#addsuccess_btn").on('click', function () {
               
                 $("#addsuccessModal").modal("show");
+
+            });
+        });
+
+
+</script>
+
+<!--#################################################################################################################################################################################################################################-->
+
+<!-- ADD SUCCESS HOSPITAL-->
+<script>
+        $(document).ready(function() {
+  
+            $("#addsuccess_hospital").on('click', function () {
+              
+                $("#addsuccessModalHospital").modal("show");
 
             });
         });
@@ -2647,6 +2656,21 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
 </script>
 
+<!--#################################################################################################################################################################################################################################-->
+
+<!-- DELETE ADMIN -->
+<script>
+        $(document).ready(function() {
+  
+            $("#delHospital_btn").on('click', function () {
+              
+                $("#removesuccess_hospital").modal("show");
+
+            });
+        });
+
+
+</script>
 
 
 <!--#################################################################################################################################################################################################################################-->

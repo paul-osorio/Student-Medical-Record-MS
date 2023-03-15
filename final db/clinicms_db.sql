@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 13, 2023 at 10:06 AM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.11
+-- Generation Time: Mar 14, 2023 at 04:42 AM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -579,15 +579,16 @@ CREATE TABLE `students` (
 --
 
 INSERT INTO `students` (`id`, `student_id`, `lastname`, `firstname`, `middlename`, `age`, `birthdate`, `birthplace`, `address`, `gender`, `contact_num`, `image`, `course`, `year_level`, `section`, `email`, `password`, `qr_code`, `remarks`, `status`) VALUES
-(1, '22-2222', 'Dela Cruz', 'Juan', 'Samson', 22, '2000-05-02', '', 'Taga-dyan City', 'Male', '78994566', 'student2.jpg', 'BSIT', '3rd Year', 'SBIT-3G', 'juandelacruz@gmail.com', '12345', '22-2222', 'Complete', ''),
-(2, '22-2345', 'Del Valle', 'Maxpein Zin', 'Moon', 21, '2001-02-10', '', 'Far far away', 'Female', '23154891', 'student1.jpg', 'BSA', '2nd Year', 'BAAC-2B', 'maxpeindelvalle@gmail.com', '123456', '22-2345', 'Incomplete', ''),
-(3, '20-1298', 'Reyes', 'Hazel', 'Cruz', 0, '0000-00-00', '', '', '', '0', '', '', '', '', 'hazel.reyes@gmail.com', 'c5a4563b1753', '', '', ''),
-(4, '19-1206', 'Balingasa', 'Juls', 'Young', 0, '0000-00-00', '', '', '', '0', '', '', '', '', 'julsbalingasa@gmail.com', 'b89a26094606', '', '', ''),
-(5, '20-1984', 'Buglats', 'Dagul', 'Oglats', 0, '0000-00-00', '', '', '', '0', '', '', '', '', 'dagul.buglats@gmail.com', 'dagul123', '', '', ''),
-(6, '19-9999', 'Patient', 'Sample', '', 0, '1997-03-10', '', '', 'Male', '2147483647', 'student2.jpg', 'BSIT', '2nd Year', '', '', 'sample123', '', '', ''),
-(7, '23-9839', 'Patient1', 'Sample1', '', 0, '1908-10-10', '', '', 'Male', '2147483647', 'student2.jpg', 'BSIT', '2nd Year', '', '', 'sample1234', '', '', ''),
-(8, '23-9839', 'Patient1', 'Sample1', '', 0, '1908-10-10', '', '', 'Male', '2147483647', 'student2.jpg', 'BSIT', '2nd Year', '', '', 'sample1234', '', '', ''),
-(9, '19-0000', 'Carganillo', 'Kiara Raye', 'Ponce', 0, '0000-00-00', '', '', '', '', '', '', '', '', 'kiaracarganillo@gmail.com', 'kiara123', '', '', '');
+(1, '22-2222', 'Dela Cruz', 'Juan', 'Samson', 22, '2000-05-02', 'Novaliches, QC', 'Novaliches, QC', 'Male', '78994566', 'id7.jpg', 'BSIT', '3rd Year', 'SBIT-3G', 'juandelacruz@gmail.com', '12345', '22-2222', 'Complete', ''),
+(2, '22-2345', 'Del Valle', 'Maxpein Zin', 'Moon', 21, '2001-02-10', 'Novaliches, QC', 'Novaliches, QC', 'Female', '23154891', 'id1.jpg', 'BSA', '2nd Year', 'BAAC-2B', 'maxpeindelvalle@gmail.com', '123456', '22-2345', 'Incomplete', ''),
+(3, '20-1298', 'Reyes', 'Hazel', 'Cruz', 19, '2023-03-02', 'QC', 'QC', 'Female', '09123456789', 'id2.jpg', 'BSIE', '2nd Year', 'BSIE-2D', 'hazel.reyes@gmail.com', 'c5a4563b1753', '', 'Complete', ''),
+(4, '19-1206', 'Solomon', 'Jennica', 'Santos', 18, '2004-03-31', 'QC', 'QC', 'Female', '09123456788', 'id3.jpg', 'BSIE', '1st Year', 'SBIE-1A', 'jennicasolomon@gmail.com', 'b89a26094606', '', 'Pending', ''),
+(5, '20-1984', 'Dela Cruz', 'Maria', 'Reyes', 20, '2002-03-07', 'QC', 'QC', 'Female', '09123456789', 'id4.jpg', 'BSIT', '3rd Year', '', 'maria.delacruz@gmail.com', 'dagul123', '', 'Complete', ''),
+(6, '19-9999', 'Student', 'Sample', 'Account', 23, '2000-02-19', 'QC', 'QC', 'Male', '2147483647', 'id8.jpg', 'BSIT', '4th Year', 'SBIT-4G', 'sample.acc.patient@gmail.com', 'sample123', '', 'Complete', ''),
+(7, '23-9839', 'Student1', 'Sample1', 'Account1', 23, '2000-10-01', 'QC', 'QC', 'Male', '2147483647', 'id9.jpg', 'BSA', '4th Year', 'SBA-4K', 'sample1.account1@gmail.com', 'sample1234', '', 'Pending', ''),
+(8, '23-9839', 'Sanchez', 'Jerry Boy', 'Ordona', 21, '2002-09-03', 'QC', 'QC', 'Male', '2147483647', 'id10.jpg', 'BSECE', '3rd Year', 'SBECE-3H', 'jerry.sanchez@gmail.com', 'sample1234', '', 'Complete', ''),
+(9, '19-0000', 'Carganillo', 'Kiara Raye', 'Ponce', 22, '2000-06-15', 'QC', 'QC', 'Female', '13892839333', 'id5.jpg', 'BSENT', '4th Year', 'SBENT-4L', 'kiaracarganillo@gmail.com', 'kiara123', '', 'Complete', ''),
+(10, '20-1233', 'Dela Pena', 'Jose', 'Torres', 22, '2002-05-31', 'Novaliches, QC', 'Novaliches, QC', 'Male', '093978994566', 'id11.jpg', 'BSENT', '3rd Year', 'SBENT-3B', 'jose.delapena@gmail.com', 'jose12345', '', 'Complete', '');
 
 -- --------------------------------------------------------
 
@@ -891,6 +892,20 @@ INSERT INTO `stud_data` (`student_id`, `firstname`, `middlename`, `lastname`, `A
 ('21-1195', 'Irish Jane', 'Bigcas', 'Ramos', 23, '1999-09-10', '84 Solomon Kamias Road, East Kamias, Quezon City', 'Female', 639761985623, 'Bachelor of Science in Information Technology', '2nd year', 'SBIT-2K', 'irish.jane.ramos@gmail.com'),
 ('21-1645', 'Alexander', 'Teves', 'Calandria', 23, '1999-05-30', '1295 Gen Araneta Ave. Dona Imelda, Quezon City', 'Male', 639372983792, 'Bachelor of Science in Accountancy', '2nd year', 'SBA-2C', 'alexander.calandria@gmail.com');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `visitors`
+--
+
+CREATE TABLE `visitors` (
+  `id` int(20) NOT NULL,
+  `fullname` varchar(100) NOT NULL,
+  `contact_num` varchar(12) NOT NULL,
+  `purpose` varchar(100) NOT NULL,
+  `captured_image` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 --
 -- Indexes for dumped tables
 --
@@ -1053,6 +1068,12 @@ ALTER TABLE `stud_archive`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `visitors`
+--
+ALTER TABLE `visitors`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -1180,7 +1201,7 @@ ALTER TABLE `sent_document`
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `student_health_history`
@@ -1211,6 +1232,12 @@ ALTER TABLE `stud_appointment`
 --
 ALTER TABLE `stud_archive`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
+
+--
+-- AUTO_INCREMENT for table `visitors`
+--
+ALTER TABLE `visitors`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
