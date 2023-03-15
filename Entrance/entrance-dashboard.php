@@ -268,18 +268,18 @@ include './queries.php';
         });
 
 
-        $('.student-id').load('./student_info.php',{
+        // $('.student-id').load('./student_info.php',{
 
-          stud_id:stud_id
+        //   stud_id:stud_id
           
-        });
+        // });
 
     });
     
 
   });
 
-  
+
   
   function updateClock() {
     var now = new Date();
