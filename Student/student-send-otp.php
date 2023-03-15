@@ -1,106 +1,5 @@
 
-<?php
 
-  include "../includes/db_conn.php";
-  include "./function/send_email.php";
-  include "./function/random.php";
-  include "../includes/date.php";
-
-
-  if(isset($_POST['submit'])){
-
-    $email = $_POST['email'];
-
-    // check if email exist in stud_data
-    $check_email = "SELECT * FROM `stud_data` WHERE `Email` = '$email'";
-    $res_email = mysqli_query($conn, $check_email);
-
-    if(mysqli_num_rows($res_email) === 1){
-
-      $stud_exist = mysqli_fetch_assoc($res_email);
-
-      $otp_code = generate_otp(6); 
-
-      $student_id = $stud_exist['student_id'];
-
-      $insert_otp = "INSERT INTO `stud_otp` (`stud_id`, `otp`, `date_created`) 
-      VALUES 
-      ('$student_id','$otp_code','$date_today')";
-
-      $update_otp = "UPDATE `stud_otp` SET `otp` = '$otp_code', `date_created` = '$date_today'
-      WHERE `stud_id` = '$student_id'";
-
-      $send = send_otp($email, $otp_code);
-
-
-      $stud_exist_otp = "SELECT * FROM `stud_otp` WHERE `stud_id` = '$student_id'";
-      $res_exist_otp = mysqli_query($conn, $stud_exist_otp);
-
-
-      
-      if(mysqli_num_rows($res_exist_otp) === 1){      // if student has 1 row in stud_otp 
-
-        if($send){
-
-          if(!mysqli_query($conn, $update_otp)){     // update
-
-            echo mysqli_error($conn);
-  
-          }
-  
-          else {                                      
-  
-            session_start();
-  
-            $_SESSION['student_id'] = $student_id;
-            $_SESSION['email'] = $email;
-  
-            header("location: ./student-verify-otp.php");
-  
-          }
-        
-        }
-
-      } else {                                            // if not
-
-        if($send){
-
-          if(!mysqli_query($conn, $insert_otp)){          // insert
-  
-            echo mysqli_error($conn);
-  
-          }
-  
-          else {
-  
-            session_start();
-  
-            $_SESSION['student_id'] = $student_id;
-  
-            header("location: ./student-verify-otp.php");
-  
-          }
-        
-        }
-        
-      }
-
-      
-
-    
-
-    } else {
-
-      echo "this $email didn't exist.";
-
-    }
-  }
-
-
-  
-
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -115,7 +14,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
   <link rel="stylesheet" href="custom-properties.css">
 
-  <!-- <script src="javascript/action.js" defer></script> -->
+  <script src="javascript/action.js" defer></script>
   <title>STUDENT | SEND OTP</title>
 </head>
 <body>
@@ -147,7 +46,7 @@
               <div class="card-body">
                 <h5 class="card-title">Enter your School Email</h5>
 
-                <form action="./student-send-otp.php" method="post">
+                <!-- <form  action="" method="post"> -->
 
                   <div class="form-floating mb-3">
                       <input type="email" name="email" id="email" class="form-control" required>
@@ -155,7 +54,7 @@
                     </div>
                     <button name="submit" id="send_otp" class="btn w-100 fw-bold text-light" style="background: var(--primary-bg);">SEND OTP</button>
 
-                </form>
+                <!-- </form> -->
                 
               </div>
           </div>
