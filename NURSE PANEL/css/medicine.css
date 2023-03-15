@@ -221,3 +221,23 @@ input[type="radio"]{
 /* .accordion input[type="radio"]:checked + label::before{
     content: '-';
 } */
+@media (max-width:500px){
+    #medicine .medicine-table{
+        overflow: scroll;
+        display: inline-block;
+        height: 200px;
+        width: 100%;
+    }
+    #medicine .content{
+        position: relative;
+        display:block   ;
+        overflow-y: scroll;
+       
+    }
+    #medicine .mdc-qty{
+        overflow: hidden;
+    }
+    :-webkit-scrollbar{
+        width: 1px;
+    }
+}

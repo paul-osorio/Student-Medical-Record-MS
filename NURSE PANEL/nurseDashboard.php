@@ -184,115 +184,210 @@
             </div>
           </div>
 
-          <div class="left_container">
-            <div class="calendar_card">
-              <div class="month">
-                <span class="time">3:33 AM</span><br>
-                <span class="cal_month">August 2022</span>
-              </div>
-              <ul class="weekdays">
-                <li>Sun</li>
-                <li>Mon</li>
-                <li>Tue</li>
-                <li>Wed</li>
-                <li>Thu</li>
-                <li>Fri</li>
-                <li>Sat</li>
-              </ul>
-              <ul class="days">
-                <li>1</li>
-                <li>2</li>
-                <li>3</li>
-                <li>4</li>
-                <li>5</li>
-                <li>6</li>
-                <li>7</li>
-                <li>8</li>
-                <li>9</li>
-                <li>10</li>
-                <li>11</li>
-                <li>12</li>
-                <li>13</li>
-                <li>14</li>
-                <li>15</li>
-                <li>16</li>
-                <li>17</li>
-                <li>18</li>
-                <li>19</li>
-                <li>20</li>
-                <li>21</li>
-                <li>22</li>
-                <li>23</li>
-                <li>24</li>
-                <li>25</li>
-                <li>26</li>
-                <li>27</li>
-                <li>28</li>
-                <li>29</li>
-                <li>30</li>
-              </ul>
-            </div>
-            <div class="logs_card">
-              <div class="title">
-                <span>Active Logs</span>
-              </div>
-              <div class="content">
-                <span>Date: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-                  Time in: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Time out: </span>
-              </div>
-            </div>
-            <!-- <div class="messages"> 
-              <div class="row1">
-                <div class="column1">
-                  <span>Messages</span>
-             
-                  <div class="stdmsg">
-                    <img src="./assets/nurse.jpg" alt="" id="stdimage">
-                    <p class="message-content">Hi.</p>
-                  </div>
-                  <div class="stdmsg">
-                    
-                  </div>
-                  <div class="stdmsg">
-                    
-                  </div>
-                 </div>
-              </div>
-            </div> -->
-          </div>
-
-          <div class="chart_container">
-            <div class="card_content">
-              <div class="chart1">
-              <span>NUMBER OF PATIENTS</span>
-                <select name="filter" id="filter">
-                  <option value="Monthly">Monthly</option>
-                  <option value="Yearly">Yearly</option>
-                </select>
-              <canvas id="myChart" style="width:80%; max-width:550px; height: 130px; padding-top: 15px;"></canvas>
-            </div>
-            </div>
-          </div>
-
-          <!-- <div class="action_details">
-             <div class="row1">
-                <div class="column1">
-                  <span class="title">Quick Action</span>
-                    <div class="container">
-                      <span class="name">Fullname</span>
-                      <span class="type">Appointment</span>
-                      <span class="view">View</span>
-                    </div>
-                    <div class="container">
-                      <span class="name">Fullname</span>
-                      <span class="type">Enroll</span>
-                      <span class="view">View</span>
+          <!--Calendar-->
+            <div class="col">
+            <div class="container" style="background-color:#134E8E; border-radius:10px; width:400px; position:relative; margin-right:15px;">
+            <div class="row">
+                    <div class="col">
+                      <div class="card mb-1" style="border:none;">
+                        <div class="card-header" style="background-color:#134E8E; color:white;">
+                        <h2 id="time-display" style="text-align:center;">Loading...</h2>
+                          <h4 class="card-title text-center" id="month-year" style="background-color:#134E8E;"></h4>
+                        </div>
+                        <div class="card-body p-0">
+                          <table class="table table-bordered table-hover mb-0" style="border:transparent; text-align:center;">
+                            <thead>
+                              <tr style="background-color:white;">
+                                <th class="text-center">Sun</th>
+                                <th class="text-center">Mon</th>
+                                <th class="text-center">Tue</th>
+                                <th class="text-center">Wed</th>
+                                <th class="text-center">Thu</th>
+                                <th class="text-center">Fri</th>
+                                <th class="text-center">Sat</th>
+                              </tr>
+                            </thead>
+                            <tbody id="calendar-body">
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
                     </div>
                   </div>
-             </div>
-          </div> -->
+            </div>
+            </div>
+            </div>
+
+
+        <!--Recent Appointment-->
+            <div class="row">
+              <div class="col">
+            <div class="container" style="margin-top:-170px;">
+            <div style=" position:relative; display:flex; gap:380px;">
+            <input type="button" value="RECENT APPOINTMENTS" style="border:none; cursor:default;">
+            <input type="button" style="color:#0066FF; background:none; border:transparent;" value="View All">
+            </div>
+
+              <table class="appointment-header" style="width:630px;  position:absolute; text-align:center; padding-left:-100px;">
+                <thead style="background-color:#2D6DB2; color:white; font-size:18px;">
+                  <th>Student No.</th>
+                  <th>Name</th>
+                  <th>Course</th>
+                  <th>Year</th>
+                  <th>Status</th>
+            </thead>
+            <tbody>
+            <tr style="border-bottom: 1px solid #B3BBCC;">
+            <td>17-1324</td>
+            <td>Kenneth Nunag</td>
+            <td>BSIT</td>
+            <td>4th</td>
+            <td style="color:#FF7A00;">Pending</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #B3BBCC;">
+            <td>17-1324</td>
+            <td>Kenneth Nunag</td>
+            <td>BSIT</td>
+            <td>4th</td>
+            <td style="color:#FF7A00;">Pending</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #B3BBCC;">
+            <td>17-1324</td>
+            <td>Kenneth Nunag</td>
+            <td>BSIT</td>
+            <td>4th</td>
+            <td style="color:#FF7A00;">Pending</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #B3BBCC;">
+            <td>17-1324</td>
+            <td>Kenneth Nunag</td>
+            <td>BSIT</td>
+            <td>4th</td>
+            <td style="color:#FF7A00;">Pending</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #B3BBCC;">
+            <td>17-1324</td>
+            <td>Kenneth Nunag</td>
+            <td>BSIT</td>
+            <td>4th</td>
+            <td style="color:#FF7A00;">Pending</td>
+            </tr>
+              </tbody>
+              </table>
+            </div>
+              </div>
+
+
+            <!--Activity Log-->
+              <div class="col">
+                <div class="container">
+                <h5  style="margin:0px 5px 100px -40px; position:relative; padding-top:15px;">ACTIVITY LOG</h5>
+            <table class="header" style="margin:-90px 0px 0px -40px; width:370px; border-spacing:100px; text-align:center; position:absolute;">
+              <thead style="background-color:#B3BBCC; width:300px;">
+                <th>Date</th>
+                <th>Time in</th>
+                <th>Time out</th>
+            </thead>
+              <tbody style="background-color:#E8E8ED;">
+                <tr>
+                  <td>03/3/2023</td>
+                  <td style="color:#42BB56;">6:49</td>
+                  <td style="color:#EB1717;">4:51</td>
+                </tr>
+                <tr>
+                  <td>03/3/2023</td>
+                  <td style="color:#42BB56;">6:49</td>
+                  <td style="color:#EB1717;">4:51</td>
+                </tr>
+                <tr>
+                  <td>03/3/2023</td>
+                  <td style="color:#42BB56;">6:49</td>
+                  <td style="color:#EB1717;">4:51</td>
+                </tr>
+                <tr>
+                  <td>03/3/2023</td>
+                  <td style="color:#42BB56;">6:49</td>
+                  <td style="color:#EB1717;">4:51</td>
+                </tr>
+            </tbody>
+            </table>
+            </div>
+              </div>
+            </div>
+
+
+<!-- Consult Student -->
+              <div class="row">
+                <div class="col">
+                  <div class="container" style="margin-top:-100px;">
+                  <div style=" position:relative; display:flex; gap:330px;">
+              <input type="button" value="LIST OF CONSULTED STUDENTS" style="border:none; cursor:default;">
+              <input type="button" style="color:#0066FF; background:none; border:transparent;" value="View All">
+              </div>
+
+                  <table class="table table-striped" style="width:630px; position:absolute;">
+                <thead style="background-color:#2D6DB2; color:white;">
+                  <tr>
+                    <th>Student No</th>
+                    <th>Name</th>
+                    <th>Course</th>
+                    <th>Year</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>17-1234</td>
+                    <td>Kenneth Nunag</td>
+                    <td>BSIT</td>
+                    <td>4th</td>
+                    <td>03/03/23</td>
+                    <td style="color:#42BB56;">Cleared</td>
+                  </tr>
+                  <tr>
+                    <td>17-1234</td>
+                    <td>Kenneth Nunag</td>
+                    <td>BSIT</td>
+                    <td>4th</td>
+                    <td>03/03/23</td>
+                    <td style="color:#42BB56;">Cleared</td>
+                  </tr>
+                  <tr>
+                    <td>17-1234</td>
+                    <td>Kenneth Nunag</td>
+                    <td>BSIT</td>
+                    <td>4th</td>
+                    <td>03/03/23</td>
+                    <td style="color:#42BB56;">Cleared</td>
+                  </tr>
+                  <tr>
+                    <td>17-1234</td>
+                    <td>Kenneth Nunag</td>
+                    <td>BSIT</td>
+                    <td>4th</td>
+                    <td>03/03/23</td>
+                    <td style="color:#42BB56;">Cleared</td>
+                  </tr>
+                  <tr>
+                    <td>17-1234</td>
+                    <td>Kenneth Nunag</td>
+                    <td>BSIT</td>
+                    <td>4th</td>
+                    <td>03/03/23</td>
+                    <td style="color:#42BB56;">Cleared</td>
+                  </tr>
+                
+                </tbody>
+              </table>
+              </div>
+                </div>
+              </div>
+
 
         </section>
+
+
 
 
 
@@ -302,9 +397,9 @@
                       <div class="fright">
                         <div class="container mt-5">
                           
-                        <button class="custom_btn" style=" background: #163666; color: #fff; border: none; outline: none; width: 190px; margin-bottom: 10px; border-radius: 10px;">
+                        <!-- <button class="custom_btn" style=" background: #163666; color: #fff; border: none; outline: none; width: 190px; margin-bottom: 10px; border-radius: 10px;">
                           <a style="color: #fff;" href="#addPatientModal" class="custom_btn" data-toggle="modal"><i class="fa fa-users"></i> Add New Student</a>
-                        </button>
+                        </button> -->
                           <div class="modal" id="myModal">
                               <div class="modal-dialog">
                                   <div class="modal-content">
@@ -779,9 +874,9 @@
           <div class="medicine_landing">
             <div class="medicine_header d-flex justify-content-between">
               <h3 class="m-0">MEDICINES</h3>
-                <button class="custom_btn">
+                <!-- <button class="custom_btn">
                   <a href="#addMedicineModal" class="custom_btn" data-toggle="modal"><i class="fa fa-medkit"></i>Add Medicine</a>
-                </button>
+                </button> -->
             </div>
           </div>
           <div class="filter_wrapper">
@@ -808,72 +903,147 @@
 
 
           <div>
-            <ul class="accordion">
+  <ul class="accordion">
 
-                      <?php if(mysqli_num_rows($fetchAllMedicine) > 0) { 
-                        while ($med = mysqli_fetch_assoc($fetchAllMedicine)) {  ?>
+    <?php if(mysqli_num_rows($fetchAllMedicine) > 0) { 
+                while ($med = mysqli_fetch_assoc($fetchAllMedicine)) {  ?>
 
 
-                <li>
-                    <input type="radio" name="accordion" id="first" checked>
-                    <label for="first">
-                      <div class="medicine-table">
-                        <table class="table-mdc">
-                          <tbody>
-                            <tr class="mdc-header">
-                              <td style="width:120px;"><img src="./assets/<?=$med['image']?>" width="150px" height="130px"> </td>
-                              <td style="width:200px;" >
-                                <table>
-                                  <td class="b1"><?=$med['name']?></td>
-                                  <tr>
-                                  <td class="mdc-brand">Brand: <?=$med['brand']?></td>
-                                  <tr>
-                                  <td><?=$med['prod_id']?></td>
-                                </table>
-                              </td>
-                        
-                              <td>
-                                <span class="mdc-stock">In stock: </span>
-                                <span class="mdc-qty"><?=$med['num_stocks']?></span>
-                              </td>
-                                
-                      
-                              
-                              <td style="width:280px;"><b>Expiration Date:</b> <?=$med['expirationDate']?></td>
-                              <td><img src="./assets/<?=$med['prod_qrcode']?>" class="mdc-qrcode"></td>
-                              <td><img src="./assets/caret-down-solid.svg" class="mdc-dropdown-icon"></td>
-                              
-                            </tr>
-                            </tbody>
-                            </table>
-                            </div>
-                    </label>
-                    <div class="content">
-                        <h5>Description</h5>
-                        <p style="font-size: 13px;" class="mdc-description"><?=$med['description']?></p>
-                        <div>
-                          <table class="medicine-table">
-                          <tbody class="collapse-content">
-                          <tr>
-                            <td><h5>Generic name:</h5><p style="font-size: 14px;"> <?=$med['genericName']?></p></td>
-                            <td><h5>Date Manufactured:</h5><p style="font-size: 14px;"> <?=$med['date_manufactured']?></p></td>
-                            <td><h5>Product Condition</h5><p style="font-size: 14px;"><?=$med['prodCondition']?></p></td>
-                          </tr>
-                          <tr>
-                            <td><h5>Storage: </h4><?=$med['storage']?></td>
-                            <td><h5>Box ID: </h4><?=$med['box_id']?></td>
-                            <td><h5>Manufacturer's Name: </h5><p style="font-size: 14px;"> <?=$med['manufacturerName']?></p></td>
-                            <td><h5>Contact Information: </h5><p style="font-size: 14px;"> <?=$med['contact_info']?></p></td>
-                          </tr>
-                        </tbody>
-                        </table>
-                      </div>
-                    </div>
-                </li>
+    <li>
+        <input type="radio" name="accordion" id="first" checked>
+        <label for="first">
+          <div class="medicine-table">
+            <table class="table-mdc">
+              <tbody>
+                <tr class="mdc-header">
+                  <td style="width:120px;"><img src="./assets/<?=$med['image']?>" width="150px" height="130px"> </td>
+                  <td style="width:200px;" >
+                    <table>
+                      <td class="b1"><?=$med['name']?></td>
+                      <tr>
+                      <td class="mdc-brand">Brand: <?=$med['brand']?></td>
+                      <tr>
+                      <td><?=$med['prod_id']?></td>
+                    </table>
+                  </td>
+            
+                  <td>
+                    <span class="mdc-stock">Desctiption: </span>
+                    <span class="mdc-qty"><?=$med['description']?></span>
+                  </td>
+                    
+          
+                  
+                  <td style="width:280px;"><b>Expiration Date:</b> <?=$med['expirationDate']?></td>
+                  <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#medModal">
+                    View
+                  </button>
+                  </td>
+       
+                </tr>
+                </tbody>
+                </table>
+                </div>
+        </label>
+      
+    </li>
 
-                <?php } } ?>
-              </ul>
-            </div>
+
+    <div class="modal fade" id="medModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 1000px; margin-right:2.5rem;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">MEDICINE INFORMATION</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form>
+        <div class="modal-body">
+<div class="row">
+  <div class="col">
+            <label for="medname" class="form-label">Medicine Name</label>
+            <input type="text" class="form-control" id="medname" style="width:200px;"readonly placeholder="<?=$med['name']?>">
+  </div>
+
+  <div class="col">
+  <label for="brand" class="form-label">Brand</label>
+            <input type="text" class="form-control" id="brand" readonly placeholder="<?=$med['brand']?>">
+    </div>
+
+    <div class="col">
+  <label for="stocks" class="form-label">Stocks</label>
+            <input type="text" class="form-control" id="stocks" readonly placeholder="<?=$med['num_stocks']?>">
+    </div>
+
+    <div class="col">
+    <label for="expdate" class="form-label">Expiration Date</label>
+            <input type="date" class="form-control" id="expirationDate" readonly value="<?=$med['expirationDate']?>">
+    </div>
+    <!---->
+<div class="row">
+<div class="col">
+<label for="genname" class="form-label">Generic Name</label>
+            <input type="text" class="form-control" id="genname" style="width:200px;"readonly value="<?=$med['genericName']?>">
+</div>
+<div class="col">
+<label for="gendatemanu" class="form-label">Date Manufactured</label>
+            <input type="date" class="form-control" id="datemanu" style="width:200px;"readonly value="<?=$med['date_manufactured']?>">
+</div>
+<div class="col">
+<label for="prod_con" class="form-label">Product Condition</label>
+            <input type="text" class="form-control" id="prod_con" style="width:200px;"readonly value="<?=$med['prodCondition']?>">
+</div>
+<div class="col">
+<label for="storage" class="form-label">Storage</label>
+            <input type="text" class="form-control" id="storage" style="width:100px;"readonly value="<?=$med['storage']?>">
+</div>
+<div class="col">
+<label for="box_id" class="form-label">Box ID</label>
+            <input type="text" class="form-control" id="box_id" style="width:100px;"readonly value="<?=$med['box_id']?>">
+</div>
+
+<div class="row">
+<div class="col">
+<label for="manu_comp" class="form-label">Manufacturer's Company</label>
+            <input type="text" class="form-control" id="manu_comp" style="width:210px;"readonly value="<?=$med['manufacturerName']?>">
+</div>
+<div class="col">
+<label for="email" class="form-label">Email Address</label>
+            <input type="text" class="form-control" id="email" style="width:100px;"readonly value="<?=$med['prodCondition']?>">
+</div>
+<div class="col">
+<label for="contact_num" class="form-label">Contact Number</label>
+            <input type="text" class="form-control" id="contact_num" style="width:100px;"readonly value="<?=$med['contact_info']?>">
+</div>
+</div>
+<div class="row">
+  <div class="col"></div>
+</div>
+
+</div>
+
+</div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          
+        </div>
+        <style>
+          .modal-footer{
+            width:100%;
+          }
+        </style>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+    
+
+    <?php } } ?>
+  </ul>
+</div>
 
         </section>
 
@@ -1035,7 +1205,7 @@
             <div class="form_wrapper">
 
               <div class="profile_picture">
-                <img src="./assets/<?$_SESSION['img'];?>" alt="">
+                <img src="./assets/badang.JPG" alt="">
                 <div class="edit_icon"></div>
               </div>
 
@@ -1109,6 +1279,8 @@
     <script src="./js/reportchart.js"></script>
     <script src="./js/line_graph.js"></script>
     <script src="./js/popup.js"></script>
+    <script src="./js/calendar.js"></script>
+    
     
 
     <script>
