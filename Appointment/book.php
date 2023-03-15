@@ -1,5 +1,5 @@
 <?php
- $mysqli = new mysqli('localhost', 'root', '', 'bookingcalendar');
+ $mysqli = new mysqli('localhost', 'root', '', 'clinicms_db');
 if(isset($_GET['date'])){
     $date = $_GET['date'];
     $stmt = $mysqli->prepare("select * from bookings where date = ?");
