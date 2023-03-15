@@ -1,28 +1,3 @@
-<?php
-
-  session_start();
-  include "../includes/db_conn.php";
-  include "../includes/date.php";
-
-
-  // $stud_id = $_SESSION['student_id'];
-
-  // $sel_stud_otp = "SELECT * FROM `stud_otp` a
-  // JOIN `stud_data` b
-  // ON a.stud_id = b.student_id
-  // WHERE a.`stud_id` = '$stud_id'";
-
-  // $res_stud_otp = mysqli_query($conn, $sel_stud_otp);
-
-  // $stud_otp = mysqli_fetch_assoc($res_stud_otp);
-
-
-
-
-
-  
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,7 +10,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
 
   <link rel="stylesheet" href="custom-properties.css">
-  <title> STUDENT | VERIFY OTP </title>
+  <title>STUDENT | VERIFY OTP</title>
 </head>
 <body>
   
@@ -63,14 +38,13 @@
     <div class="container-fluid d-flex align-items-center justify-content-center m-auto" style="min-height:80vh">
         <div class="card" style="width: 30rem;">
             <div class="card-body">
-              <h6 class="card-title py-4"><center>Enter the 6-digit code sent to <?=$_SESSION['email']?>. Don’t see the email? Send a new code.</center></h6>
-
-              <form action="./process/verify_otp.php" method="POST">
+              <h6 class="card-title py-4"><center>Enter the 6-digit code sent to john.nicole.abihay@gmail.com. Don’t see the email? Send a new code.</center></h6>
+              <form>
                 <div class="mb-3 ">
-                    <input type="text" name="otp" class="form-control" id="otp_input" placeholder="Enter your OTP" maxlength="6" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))">
+                    <input type="text" class="form-control" id="otp_input" placeholder="Enter your OTP" maxlength="6" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))">
                     <p class="float-end p-2"><span id="count" data-count="0">0</span>/6</p>
                   </div>
-                <button type="submit" name="verify_otp-btn" class="btn w-100 fw-bold text-light" style="background: var(--primary-bg);">VERIFY OTP</button>
+                <button type="submit" class="btn w-100 fw-bold text-light" style="background: var(--primary-bg);">VERIFY OTP</button>
               </form>
             </div>
           </div>
