@@ -111,9 +111,9 @@ setTimeout(function(){
       $('#validated-btn').click(function(){
 
          var stud_id = $(this).data('stud_id');
-         alert('change status to pending ' + stud_id );
+         // alert('change status to pending ' + stud_id );
 
-         $('.table').load('./update_status.php',{
+         $('.table-contents').load('./update_status.php',{
 
             stud_id: stud_id, 
 
