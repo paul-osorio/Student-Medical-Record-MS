@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.7.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 14, 2023 at 04:42 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.6
+-- Generation Time: Mar 15, 2023 at 02:11 PM
+-- Server version: 10.1.24-MariaDB
+-- PHP Version: 7.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -99,6 +100,34 @@ CREATE TABLE `archive` (
   `type_of_user` varchar(100) NOT NULL,
   `date_of_archive` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bookings`
+--
+
+CREATE TABLE `bookings` (
+  `id` int(100) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `date` date NOT NULL,
+  `timeslots` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `bookings`
+--
+
+INSERT INTO `bookings` (`id`, `name`, `email`, `date`, `timeslots`) VALUES
+(1, 'Nico Abihay', 'john@gmail.com', '2023-03-14', '13:00PM-14:00PM'),
+(2, 'Fire', 'Myhart@gmail.com', '2023-03-14', '12:00PM-13:00PM'),
+(3, 'csd', 'hradmin@gmail.com', '2023-03-16', '16:00PM-17:00PM'),
+(4, 'Marites Abihay', 'jn.abihay@gmail.com', '2023-03-16', '09:00AM-10:00AM'),
+(6, 'clinicms_db', 'ffds@fsfdf.com', '2023-03-21', '16:00PM-17:00PM'),
+(7, 'Chase', 'Chase@gmail.com', '2023-03-21', '10:00AM-11:00AM'),
+(8, 'sds', 'dsds@gmail.com', '2023-03-15', '12:00PM-13:00PM'),
+(9, 'dsd', 'dsds@dasdad.com', '2023-03-17', '10:00AM-11:00AM');
 
 -- --------------------------------------------------------
 
@@ -318,6 +347,7 @@ CREATE TABLE `medicine` (
 --
 
 INSERT INTO `medicine` (`id`, `box_id`, `prod_id`, `name`, `brand`, `genericName`, `image`, `prescribed_for`, `num_stocks`, `date_manufactured`, `expirationDate`, `prodCondition`, `manufacturerName`, `storage`, `establishment_of_procurement`, `source`, `contact_info`, `description`, `prod_barcode`, `prod_qrcode`, `remarks`, `status`) VALUES
+(0, 'ZFG-9876', 'M-010', 'Kremil S', 'Unilab', 'Aluminum Hydroxide', 'pills.jpg', '', 100, '2023-02-26', '2023-05-06', 'Good', 'UNILAB, Inc.', 'Box #19', '', '', '+639836473673', 'LOREM IPSUM', '', 'Sample-qr-code.png', '', ''),
 (1, 'ZKY-1048', 'M-001', '	\r\nBiogesic', 'Unilab', 'Paracetamol/Acetaminophen', 'biogesic.jpg', '', 100, '2022-11-12', '2023-01-01', 'Goods', 'Jose Manuel David Santos Jr.', 'Box #3', '', '', '+639728917462', 'Biogesic is used and trusted for headache and fever relief. It can be consumed on an empty stomach, and can be taken by pregnant women, breastfeeding moms and the elderly.', '', 'M-001.png', '', ''),
 (2, 'YHD-2542', 'M-002', 'Neozep', 'Neozep Forte', 'Paracetamol/Phenylephrine HCl', 'neozep.png', '', 90, '2022-11-07', '2024-09-10', 'Goods Naman', 'Jose Manuel David Santos Sr.', 'Box #4', '', '', '+639122343412', 'Neozep® Non-Drowsy is for the relief of colds, without the drowse. It is used for the relief of clogged nose, post nasal drip, headache, body aches, and fever associated with the common cold, sinusitis, flu and other minor respiratory tract infections.', '', 'M-002.png', '', ''),
 (3, 'GQW-1234', 'M-003', 'Bioflu', 'Unilab', 'Chlorphenamine Maleate', 'bioflu.png', '', 80, '2022-09-05', '2024-06-13', 'Good', 'Juan Dela Cruz', 'Box #2', '', '', '+639123456789', 'Bioflu is used for the relief of clogged nose, runny nose, postnasal drip, itchy and watery eyes, sneezing, headache, body aches and fever associated with the common cold, allergic rhinitis, sinusitis, flu and other minor respiratory tract infections.', '', 'M-003.png', '', ''),
@@ -935,6 +965,12 @@ ALTER TABLE `archive`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `bookings`
+--
+ALTER TABLE `bookings`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `consultations`
 --
 ALTER TABLE `consultations`
@@ -977,100 +1013,9 @@ ALTER TABLE `medicine`
   ADD PRIMARY KEY (`id`,`box_id`);
 
 --
--- Indexes for table `nurses`
---
-ALTER TABLE `nurses`
-  ADD PRIMARY KEY (`id`,`emp_id`);
-
---
 -- Indexes for table `nurses_schedules`
 --
 ALTER TABLE `nurses_schedules`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `nurse_entrace_log`
---
-ALTER TABLE `nurse_entrace_log`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `otp`
---
-ALTER TABLE `otp`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `professors`
---
-ALTER TABLE `professors`
-  ADD PRIMARY KEY (`id`,`prof_id`);
-
---
--- Indexes for table `received_document`
---
-ALTER TABLE `received_document`
-  ADD PRIMARY KEY (`document_id`),
-  ADD UNIQUE KEY `Id` (`id`);
-
---
--- Indexes for table `reports`
---
-ALTER TABLE `reports`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `sample_stud_data`
---
-ALTER TABLE `sample_stud_data`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `sent_document`
---
-ALTER TABLE `sent_document`
-  ADD PRIMARY KEY (`id`,`document_id`);
-
---
--- Indexes for table `students`
---
-ALTER TABLE `students`
-  ADD PRIMARY KEY (`id`,`student_id`);
-
---
--- Indexes for table `student_health_history`
---
-ALTER TABLE `student_health_history`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `student_medical_requirements`
---
-ALTER TABLE `student_medical_requirements`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `student_vaccination`
---
-ALTER TABLE `student_vaccination`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `stud_appointment`
---
-ALTER TABLE `stud_appointment`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `stud_archive`
---
-ALTER TABLE `stud_archive`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `visitors`
---
-ALTER TABLE `visitors`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1078,167 +1023,10 @@ ALTER TABLE `visitors`
 --
 
 --
--- AUTO_INCREMENT for table `activity_log`
+-- AUTO_INCREMENT for table `bookings`
 --
-ALTER TABLE `activity_log`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `admins`
---
-ALTER TABLE `admins`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
-
---
--- AUTO_INCREMENT for table `appointments`
---
-ALTER TABLE `appointments`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `archive`
---
-ALTER TABLE `archive`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `consultations`
---
-ALTER TABLE `consultations`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `departments`
---
-ALTER TABLE `departments`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
-
---
--- AUTO_INCREMENT for table `entrance_log`
---
-ALTER TABLE `entrance_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
-
---
--- AUTO_INCREMENT for table `generate`
---
-ALTER TABLE `generate`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `guard_accs`
---
-ALTER TABLE `guard_accs`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `incase_of_emergency`
---
-ALTER TABLE `incase_of_emergency`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `medicine`
---
-ALTER TABLE `medicine`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT for table `nurses`
---
-ALTER TABLE `nurses`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT for table `nurses_schedules`
---
-ALTER TABLE `nurses_schedules`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `nurse_entrace_log`
---
-ALTER TABLE `nurse_entrace_log`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `otp`
---
-ALTER TABLE `otp`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `professors`
---
-ALTER TABLE `professors`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `received_document`
---
-ALTER TABLE `received_document`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `reports`
---
-ALTER TABLE `reports`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `sample_stud_data`
---
-ALTER TABLE `sample_stud_data`
-  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
---
--- AUTO_INCREMENT for table `sent_document`
---
-ALTER TABLE `sent_document`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `students`
---
-ALTER TABLE `students`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- AUTO_INCREMENT for table `student_health_history`
---
-ALTER TABLE `student_health_history`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `student_medical_requirements`
---
-ALTER TABLE `student_medical_requirements`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `student_vaccination`
---
-ALTER TABLE `student_vaccination`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `stud_appointment`
---
-ALTER TABLE `stud_appointment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `stud_archive`
---
-ALTER TABLE `stud_archive`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
-
---
--- AUTO_INCREMENT for table `visitors`
---
-ALTER TABLE `visitors`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
-COMMIT;
+ALTER TABLE `bookings`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
