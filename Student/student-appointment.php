@@ -99,7 +99,18 @@
     <div class="sidebar-overlay"></div>
 
     <!-- end: Sidebar -->
+    <style>
+        .title{
+            margin: 10px 0 0 10px;
+        }
+        .content{
 
+        }
+        .content iframe{
+            width: 100%;
+            height: 80vh;
+        }
+    </style>
     <!-- start: Main -->
     <main class="bg-light">
         <div class="">
@@ -107,12 +118,20 @@
             <nav class="px-3 py-2 d-flex justify-content-center" style="background: var(--primary-bg);">
                 <!-- <i class="ri-menu-line sidebar-toggle me-3 d-block d-md-none"></i> -->
                 <img src="./clinic-logo.png" class="img-thumbnail bg-transparent border-0" style="pointer-events: none;" width="50" height="50" alt="...">
-                <h5 class="fw-bold mb-0 text-light" style="pointer-events: none;" > Quezon City University Clinics</h5>
+                <h5 class="fw-bold mb-0 text-light" style="pointer-events: none;" > Quezon City University Clinic</h5>
             </nav>
             <!-- end: Navbar -->
 
             <!-- start: Content -->
-            <div class="p-5 ">
+            <div class="container">
+                <div class="title">
+                    <h3>Appointment</h3>
+                </div>
+                <div class="content">
+                    <iframe src="../Appointment/index.php" frameborder="0"></iframe>
+                </div>
+            </div>
+            <!-- <div class="p-5 ">
                 <div class="row bg-white p-3 shadow">
                   
                     <div class="col-md-6">
@@ -201,7 +220,7 @@
             </div>
 
         
-            </div>
+            </div> -->
             <!-- end: Content -->
     </main>
     <div class="sidenav-toggle px-3 py-2 rounded-circle fs-4 bg-primary fw-bold text-white" id="sidenav-toggle"><i class="fa-solid fa-bars"></i></div>
