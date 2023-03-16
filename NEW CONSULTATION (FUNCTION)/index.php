@@ -297,7 +297,7 @@
 
                   
                     <button data-dismiss="modal" value="Cancel">Cancel</button>
-                    <button data-dismiss="modal" value="Cancel" id="addnewconsult" name="addnewconsult" value="Add">Add</button>
+                    <input type=submit data-dismiss="modal" id="addnewconsult" name="addnewconsult" value="Add">
                     
                    
             

@@ -49,7 +49,7 @@ if (isset($_POST['login_btn'])) {
 					$_SESSION['lastname'] = $row['lastname'];
             	$_SESSION['emp_id'] = $row['emp_id'];
 					
-            	header("Location: nurseDashboard.php");
+            	header("Location: dashboard.php");
 		       	exit();
             }else{
 				header("Location: index.php?error=Incorect username or password!");
