@@ -89,11 +89,21 @@ background: #163666;
     background: #ecebeb;
 
 }
+
 .nav-item:hover span > *,
-.nav-item:hover span > a
+.nav-item:hover .nav-item > a
 {
     color: #05285c !important;
 }
+.nav-item.active span > *,
+.nav-item.active
+{
+    background: #ecebeb;
+    color: #05285c !important;
+}
+
+
+
 /*.account{
      border-radius: 100px; 
 } */

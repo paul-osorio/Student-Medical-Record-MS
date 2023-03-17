@@ -51,57 +51,76 @@
             </div>
         </nav>
         <div class="row">
-            <div class="col-md-2 p-0 position-relative" style="min-height:100vh;box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;background: #05285c;">
-               <div class="w-100">
-                <ul class="mt-4 list-unstyled navbar-nav ps-0 ">
+          <div class="col-md-2 p-0 position-relative" style="min-height:100vh;box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;background: #05285c;">
+             <div class="w-100">
+              <ul class="mt-4 list-unstyled navbar-nav ps-0 ">
 
-                    <li  class="px-4 w-100 mb-1 nav-item tab py-2">
-                     <span class="fx-5 fw-800 text-light"><i class="fa fa-area-chart mx-2"></i><a href="dashboard.php">Home</a></span>
-                    </li>
-                    <li  class="px-4 w-100 mb-1 nav-item tab py-2">
-                     <span class="fx-5 fw-800 text-light"><i class="fa fa-users mx-2"></i><span><a href="student.php">Students</a></span></span>
-                    </li>
-                    <li  class="px-4 w-100 mb-1 nav-item tab py-2">
-                     <span class="fx-5 fw-800 text-light"><i class="fa fa-plus-square mx-2"></i><span>Medical Reports</span></span> 
-                    </li>
-                    <li  class="px-4 w-100 mb-1 nav-item tab py-2">
-                        <span class="fx-5 fw-800 text-light"><i class="fa fa-building-o mx-2"></i><span>Departments</span></span>
-                    </li>
-                    <li  class="px-4 w-100 mb-1 nav-item tab py-2">
-                      <span class="fx-5 fw-800 text-light"><i class="fa fa-calendar mx-2" aria-hidden="true"></i><span>Appointments</span></span>
-                    </li>
-                    <li  class="px-4 w-100 mb-1 nav-item tab py-2">
-                     <span class="fx-5 fw-800 text-light"> <i class="fa fa-medkit mx-2" aria-hidden="true"></i><span><a href="medicines.php">Medicines</a></span></span>
-                    </li>
-                    <li  class="px-4 w-100 mb-1 nav-item tab py-2">
-                      <span class="fx-5 fw-800 text-light"><i class="fa fa-book mx-2"></i><span>Reports</span></span>
-                    </li>
-                    <li  id="account_btn" class="px-4 w-100 mb-1 nav-item tab py-2">
-                      <span class="fx-5 fw-800 text-light"><i class="fa fa-user-o mx-2" aria-hidden="true"></i><span> <a href="account.php">Account</a></span></span>
-                    </li>
-                  </ul>
-               </div>
-            </div>
+                  <li  class="px-4 w-100 mb-1 nav-item active tab py-2">
+                    <a href="dashboard.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-area-chart mx-2"></i><span>Home</span></span></a>
+                  </li>
+                  <li  class="px-4 w-100 mb-1 nav-item tab py-2">
+                  <a href="student.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-users mx-2"></i><span>Students</span></span></a>
+                  </li>
+                  <li  class="px-4 w-100 mb-1 nav-item tab py-2">
+                  <a href="Mreport.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-plus-square mx-2"></i><span>Medical Reports</span></span></a>
+                  </li>
+                  <li  class="px-4 w-100 mb-1 nav-item tab py-2">
+                  <a href="department.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-building-o mx-2"></i><span>Departments</span></span></a>
+                  </li>
+                  <li  class="px-4 w-100 mb-1 nav-item tab py-2">
+                  <a href="appointment.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-calendar mx-2" aria-hidden="true"></i><span>Appointments</span></span></a>
+                  </li>
+                  <li  class="px-4 w-100 mb-1 nav-item tab py-2">
+                   <a href="medicines.php" class="nav-link"><span class="fx-5 fw-800 text-light"> <i class="fa fa-medkit mx-2" aria-hidden="true"></i><span>Medicines</span></span></a>
+                  </li>
+                  <li  class="px-4 w-100 mb-1 nav-item tab py-2">
+                    <a href="report.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-book mx-2"></i><span>Reports</span></span></a>
+                  </li>
+                  <li  id="account_btn" class="px-4 w-100 mb-1 nav-item tab py-2">
+                  <a href="account.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-user-o mx-2" aria-hidden="true"></i><span>Account</span></span></a>
+                  </li>
+                </ul>
+             </div>
+          </div>
             <div class="col-sm-10 p-3" >    
               <div class="container-fluid py-3">
                 <div class="row d-flex">
                   <div class="col-md-8">
-                    <div class="p-3 rounded-3" style="background:#0C4079";>
-                     <div class="d-flex position-relative">
-                      <img src="./assets/badang.jpg" class="" width="100" height="100" >
+
+                    <!-- <div class="d-flex ">
+
+                     
                       <div class="mx-2 fw-bold text-light d-flex justify-content-between w-100">
-                        <div>
-                          <p>22001</p>
-                          <p>Jessica O. Bulleque</p>
-                          <p>Position</p>
-                        </div>
+                        
+                        
                         <div class="d-grid  justify-content-center text-center">
                           <p class="fs-2 p-0 m-0">20</p>
                           <p class="p-0 m-0">Consult Today</p>
                         </div>
+  
                       </div>
-                     </div>
+                       </div> -->
+
+                    <div class="px-3 rounded-3 d-flex align-items-center mt-3" style="background:#0C4079";>
+
+                      <div class="position-relative" style="width:180px;height:150px;">
+                        <img src="./assets/nurse4.png" class="position-absolute w-100 h-100" style="top:-25%">
+                      </div>
+                      <div class="d-flex justify-content-between align-items-center w-100 mx-3">
+
+                        <div class="text-light">
+                          <p >22001</p>
+                          <p class="fw-bold">Jessica O. Bulleque</p>
+                          <p>Position</p>
+                        </div>
+                        <div class="text-light text-center">
+                          <p class="fw-bold fs-2">20</p>
+                          <p class="p-0">Consult Today</p>
+                        </div>
+                      </div>
+
                     </div>
+
                     <div class="d-flex justify-content-between mt-3">
                       <p class="fw-bold">RECENT APPOINTMENTS</p>
                       <a href="#"> View All</a>
@@ -218,7 +237,7 @@
                       <p class="fw-bold">RECENT APPOINTMENTS</p>
 
                     </div>
-                    <table class="table table-borderless text-center">
+                    <table class="table table-borderless">
                       <thead>
                         <tr class="text-light" style="background: #2D6DB2;">
                           <th scope="col">Date</th>

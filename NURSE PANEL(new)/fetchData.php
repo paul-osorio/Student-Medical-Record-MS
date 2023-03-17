@@ -137,16 +137,16 @@
                   <li class="breadcrumb-item active" aria-current="page">New Consultation</li>
                 </ol>
               </nav>
-                <div class="container-fluid py-3 shadow bg-light">
+                <div class="container-fluid py-3 shadow bg-light overflow-y-scroll" style="height:75vh">
                 <div class="d-flex  justify-content-evenly align-items-center mb-3">
                 <div><span class="fw-semibold">Name: </span><span class="mx-2">'.$firstname.', '.$lastname.' '.$middlename.'</span></div>
                   <div><span class="fw-semibold">Section & Year Level:</span><span class="mx-2">'.$section.'</span></div>
                   <div><span class="fw-semibold">March 6, 2023 - 1:00 PM</span></div> 
                 </div>
                 <form action="" method="">
-                <div class="row px-5 py-4">
+                <div class="row px-5 py-4 ">
                   
-                  <div class="col-md-6">
+                  <div class="col-md-6" >
                     <h6 class="fw-bold mb-3">Symptoms</h6>
                     <div>
                       <div class="input-group input-group-sm mb-3 d-flex align-items-center">
