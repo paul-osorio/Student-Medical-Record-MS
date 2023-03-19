@@ -83,7 +83,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ADMIN | SMRMS</title>
+    <link rel="icon" type="image/png" href="./assets/favcon.png"/>
+    <title>SMRMS | ADMIN</title>
 
     <!-- Fontfaces CSS-->
     <link rel="stylesheet" href="./style.css?v=<?php echo time(); ?>"/>
@@ -1167,8 +1168,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
             <div class="filter_wrapper">
               <div class="sort flex-grow-1">
                 <span>Sort by</span>
-                <select name="filter" id="filter_nurse">
-                  <option value="">---Select---</option>
+                <select name="filter" id="filter" style="width: 50%;">
+                  <option value="">Select</option>
                   <option value="departments">Campus</option>
                   <!-- <option value="departments">Campus</option>
                   <option value="departments">Campus</option> -->
@@ -1178,7 +1179,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
               </div>
               <div>
                   <div class="search">
-                    <input type="text" placeholder="Search" id="search_nurse"/>
+                    <input type="text" name="search" id="search_nurse" placeholder="&#xF002; Search Nurse" style="font-family:Arial, FontAwesome">
                 </div>
 
                 
@@ -1681,7 +1682,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
             <h3 class="m-0">HOSPITAL</h3>
           </div>
           <div class="action_header">   
-             <input type="text" name="search" placeholder="&#xF002; Search hospitals..." style="font-family:Arial, FontAwesome">
+             <input type="text" name="search" placeholder="&#xF002; Search Hospital" style="font-family:Arial, FontAwesome">
             <button class="custom_btn">
               <a href="#addHospitalModal" class="custom_btn" data-toggle="modal"><i class="fa fa-plus"></i>Add Hospital</a>
             </button>
@@ -1929,24 +1930,25 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 <section id="medicine" class="medicine so_content" data-tab-content>
           <div class="medicine_landing">
             <div class="medicine_header d-flex justify-content-between">
-              <h3 class="m-0">MEDICINES</h3>
-                <!-- <button class="custom_btn">
+              <h3 class="m-0" style="color: white;">MEDICINES</h3>
+                <button class="custom_btn">
                   <a href="#addMedicineModal" class="custom_btn" data-toggle="modal"><i class="fa fa-medkit"></i>Add Medicine</a>
-                </button> -->
+                </button>
             </div>
           </div>
           <div class="filter_wrapper">
           <div class="sort flex-grow-1">
             <span>Sort by</span>
-            <select name="filter" id="filter">  
-              <option value="Date Manufactured">Date Manufactured</option>
-              <option value="Date Expiration">Date Expiration</option>
-              <option value="Quantity">Quantity</option>
+            <select name="filter" id="filter"> 
+              <option value="">Select</option> 
+              <option name="filter" value="Date Manufactured">Date Manufactured</option>
+              <option name="filter" value="Date Expiration">Date Expiration</option>
+              <option name="filter" value="Quantity">Quantity</option>
             </select>
           </div>
           <div class="r">
             <div class="search">
-              <input type="text" placeholder="Search" />
+              <input type="text" name="search" placeholder="&#xF002; Search Medicine" style="font-family:Arial, FontAwesome">
             </div>
             <div class="grid">
               <i class="fa fa-th-large" aria-hidden="true"></i>
@@ -1994,6 +1996,12 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                   <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#medModal">
                     View
                   </button>
+                  <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#medModal">
+                    Edit
+                  </button>
+                  <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#medModal">
+                    Delete
+                  </button>
                   </td>
        
                 </tr>
@@ -2021,8 +2029,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
               </div>
 
               <div class="col">
-              <label for="brand" class="form-label">Brand</label>
-                        <input type="text" class="form-control" id="brand" readonly placeholder="<?=$med['brand']?>">
+              <label style="color: white;" for="brand" class="form-label">Brand</label>
+                        <input type="text" style="color: white;" class="form-control" id="brand" readonly placeholder="<?=$med['brand']?>">
                 </div>
 
                 <div class="col">
@@ -2111,7 +2119,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                 <div class="modal-content">
                   <form method="post" action="insert_medicine.php">
                     <div class="modal-header">						
-                      <h4 class="modal-title">ADD MEDICINE TO INVENTORY</h4>
+                      <h4 class="modal-title" style="color: black;">ADD MEDICINE TO INVENTORY</h4>
                       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
                     <div class="modal-body">	
@@ -2199,55 +2207,10 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
 <!--#################################################################################################################################################################################################################################-->
 
-        <!-- APPOINTMENT PAGE -->
-        <section id="appointment" class="appointment so_content" data-tab-content>
-          <div class="row1">
-            <div class="column1">
-
-            <h3 class="m-0">MESSAGES</h3>
-             <input type="text" class="msgsearch" placeholder="Search">
-             
-             <div class="stdmsg">
-              <img src="./assets/nurse.jpg" alt="" id="stdimage">
-              <p class="datetime">11/10/2022 - 5:06PM</p>
-              <p class="std-name">Clarissa Calubaquib (Student - 4th year)</p>
-              <p class="message-content">Good morning po, hindi po ako makakapasok.</p>
-             </div>
-
-             <div class="stdmsg">
-              <img src="./assets/nurse.jpg" alt="" id="stdimage">
-              <p class="datetime">11/10/2022 - 5:06PM</p>
-              <p class="std-name">Jessica Bulleque (Student - 4th year)</p>
-              <p class="message-content">Good morning po, hindi po ako makakapasok.</p>
-             </div>
-
-             <div class="stdmsg">
-              <img src="./assets/nurse.jpg" alt="" id="stdimage">
-              <p class="datetime">11/10/2022 - 5:06PM</p>
-              <p class="std-name">Kenneth Nunag (Student - 4th year)</p>
-              <p class="message-content">Di po ako papasok masama po kasi ako.</p>
-             </div>
-            </div>
-
-            <div class="column2">
-             <h5 class="stdname">Juan Dela Cruz (Student-4th year)</h5>
-             <div class="stdchat">
-              <img src="./assets/nurse.jpg" alt="" id="stdimg"> 
-              <input type="text" class="chatbg" value="Hi" readonly>
-             
-            </div>
-            <input type="text" class="msgreply" placeholder="Type Here">
-            </div>
-            
-          </div>
-      </section>
-
-
-<!--#################################################################################################################################################################################################################################-->
-
+      
       <!-- REPORTS PAGE -->
       <section id="reports" class="reports so_content" data-tab-content>
-        <h3 class="m-0">REPORTS</h3>
+        <h3 class="m-0" style="color: white;">REPORTS</h3>
         <div class="headerpatients">
           <span class="headerpatients1">NUMBER OF PATIENTS</span>
                 <select name="filter" class="reportfilter">
@@ -2305,21 +2268,21 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
       <!-- ARCHIVE PAGE -->
       <section id="archives" class="archives so_content" data-tab-content>  
         <div class="archives_header d-flex justify-content-between">
-          <h3 class="m-0">ARCHIVE</h3>
+          <h3 class="m-0" style="color: white;">ARCHIVE</h3>
         </div>
-        <div class="container">
+        <div class="container" style="color: white;">
           <div class="filter_wrapper">
             <div class="sort flex-grow-1">
               <span>Sort by</span>
               <select name="filter" id="filter">
-                <option value="">---Select---</option>
-                <option value="Type of User">Type of User</option>
-                <option value="Date of Archive">Date of Archive</option>
+                <option value="">Select</option>
+                <option name="filter" value="Type of User">Type of User</option>
+                <option name="filter" value="Date of Archive">Date of Archive</option>
               </select>
             </div>
             <div class="r">
               <div class="search">
-                <input type="text" placeholder="Search" />
+              <input type="text" name="search" placeholder="&#xF002; Search Archive" style="font-family:Arial, FontAwesome">
               </div>
               <div class="scan">
                 <button>Scan QR</button>

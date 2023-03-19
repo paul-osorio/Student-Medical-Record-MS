@@ -5,9 +5,11 @@
 }
 #medicine .medicine_header h3{
     font-size: 26px;
+    color: white;
 }
+
 #medicine .medicine_header .custom_btn{
-    background-color: #5D8FD9;
+    background-color: #3e64ff;
     color: #fff;
     border: none;
     outline: none;
@@ -30,21 +32,25 @@
     padding: 10px 20px;
     /* height:50px; */
     border-radius: 5px;
-    background: #D9D9D9;
+    background: #202444;
     display: grid;
     grid-auto-flow: column;
     grid-template-columns: 1fr 1fr;
     align-items: center;
+
 }
+
 #medicine .filter_wrapper .sort{
     display: flex;
     align-items: center;
 }
+
 #medicine .filter_wrapper .sort span{
     font-weight: 500;
-     color: rgb(26, 26, 26);
-     margin-right: 10px;
+    color: white;
+    margin-right: 10px;
 }
+
 #medicine .filter_wrapper .sort #filter{
     width: 50%;
     border-radius: 3px;
@@ -178,15 +184,16 @@ padding-right:10px;
     width: 100%;
     margin: 0;
     padding: 0;
+    color: white;
 }
 .accordion li{
     list-style: none;
     width: 100%;
     padding: 0;
     border-radius: 8px;
-    background: white;
-    box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.15),
-                -6px -6px 10px -1px rgba(255,255,255,0.7);
+    background: #202444;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 
+                0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .accordion li label{
     display: flex;

@@ -36,7 +36,7 @@
      margin-right: 10px;
 }
 #archives .filter_wrapper .sort #filter{
-    width: 110px;
+    width: 50%;
     border-radius: 3px;
     padding: 5px 5px;
     background: #F2F2F2;
