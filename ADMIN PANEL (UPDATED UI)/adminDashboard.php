@@ -51,8 +51,11 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
      // SELECT ALL NURSES TODAY
      $fetchAllNursesToday = mysqli_query($conn, "SELECT * FROM `nurses`");
 
-     // SELECT ALL MEDICINE 
+     // SELECT ALL MEDICINES 
      $fetchAllMedicine = mysqli_query($conn, "SELECT * FROM `medicine`");
+
+     // SELECT ALL HOSPITALS 
+     $fetchAllHospitals = mysqli_query($conn, "SELECT * FROM `hospitals`");
 
 
      // COUNT ALL ADMINS
@@ -443,7 +446,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
             <span class="title">NURSES TODAY</span>
 
             <table>
-            f
+            
                 <?php if(mysqli_num_rows($fetchAllNursesToday) > 0) { 
                 while ($todayNurses = mysqli_fetch_assoc($fetchAllNursesToday)) {  ?>
 
@@ -1696,7 +1699,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                   <th>Hospital Name</th>
                   <th>Address</th>
                   <th>Email Address</th>
-                  <th>Contact No</th>
+                  <th>Contact No.</th>
                   <th><span>Action</span></th>
               </tr>
               
@@ -1720,19 +1723,24 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
                   <!-- <?php } } ?> -->
 
+
+                <?php if(mysqli_num_rows($fetchAllHospitals) > 0) { 
+                  while ($hospital = mysqli_fetch_assoc($fetchAllHospitals)) {  ?>
+              
               <tr class="container">
-                  <td style="text-align:center;" ><span class="hospitalname">Metro North Medical Center & Hospital</span></td>
-                  <td><span class="address">1001 Mindanao Avenue, Quezon City, 1106 Metro Manila</span></td>
-                  <td><span class="email">spcustorel@mnmch.com</span></td>
-                  <td><span class="contact_num">(02)8426-7000</span></td>
+                  <td style="width:250px;" ><span class="hospitalname"><?=$hospital['hospital']?></span></td>
+                  <td><span class="address"><?=$hospital['hospital_add']?></span></td>
+                  <td><span class="email"><?=$hospital['email']?></span></td>
+                  <td style="width:180px;"><span class="contact_num"><?=$hospital['contact_num']?></span></td>
                   <td>
 
-                      <a href="#editHospitalInfo" class="custom_btn editbtn" data-toggle="modal"><i class="fa fa-edit" aria-hidden="true" style="color: #3e64ff;"></i></a>
+                  <td><a href="#editHospitalInfo" class="custom_btn editbtn" data-toggle="modal"><i class="fa fa-edit" aria-hidden="true" style="color: #3e64ff; font-size: 30px; margin-left: -95px;"></i></a></td>
 
-                      <a href="#delHospital" class="custom_btn deletebtn" data-toggle="modal"><i class="fa fa-trash" aria-hidden="true" style="color: #ED1C24;"></i></a>
-                  </td>
+                  <td><a href="#delHospital" class="custom_btn deletebtn" data-toggle="modal"><i class="fa fa-trash" aria-hidden="true" style="color: #ED1C24; font-size: 30px; margin-left: -75px;"></i></a></td>
+                  
               </tr>
-              
+
+                <?php } } ?>
                   
 
               
@@ -1986,24 +1994,24 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                     </table>
                   </td>
             
-                  <td>
+                  <td style="text-align:justify;text-justify:inter-word;">
                     <span class="mdc-stock">Desctiption: </span>
                     <span class="mdc-qty"><?=$med['description']?></span>
                   </td>
                     
           
                   
-                  <td style="width:280px;"><b>Expiration Date:</b> <?=$med['expirationDate']?></td>
+                  <td style="width:300px;"><b>Expiration Date:</b> <?=$med['expirationDate']?></td>
                   <!-- <td>
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#medModal">
                     View
                     </button> 
                   </td> -->
-                  <td><a href="#medModal" class="custom_btn" data-bs-toggle="modal"><i class="fa fa-info-circle" id="view" aria-hidden="true" style="color: gray;"></i></a></td>
+                  <td><a href="#medModal" class="custom_btn" data-bs-toggle="modal"><i class="fa fa-info-circle" id="view" aria-hidden="true" style="color: gray; font-size: 30px"></i></a></td>
 
-                  <td><a href="#editMedInfo" class="custom_btn editmedbtn" data-bs-toggle="modal"><i class="fa fa-edit" id="edit" aria-hidden="true" style="color: #3e64ff;"></i></a></td>
+                  <td><a href="#editMedInfo" class="custom_btn editmedbtn" data-bs-toggle="modal"><i class="fa fa-edit" id="edit" aria-hidden="true" style="color: #3e64ff; font-size: 30px"></i></a></td>
 
-                  <td><a href="#delMed" class="custom_btn deletemedbtn" data-bs-toggle="modal"><i class="fa fa-trash" id="delete" aria-hidden="true" style="color: #ED1C24;"></i></a></td>
+                  <td><a href="#delMed" class="custom_btn deletemedbtn" data-bs-toggle="modal"><i class="fa fa-trash" id="delete" aria-hidden="true" style="color: #ED1C24; font-size: 30px"></i></a></td>
                   
        
                 </tr>
