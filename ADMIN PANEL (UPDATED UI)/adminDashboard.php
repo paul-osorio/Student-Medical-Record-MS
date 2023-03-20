@@ -1729,7 +1729,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
               
               <tr class="container">
                   <td style="width:250px;" ><span class="hospitalname"><?=$hospital['hospital']?></span></td>
-                  <td><span class="address"><?=$hospital['hospital_add']?></span></td>
+                  <td style="width:400px;"><span class="address"><?=$hospital['hospital_add']?></span></td>
                   <td><span class="email"><?=$hospital['email']?></span></td>
                   <td style="width:180px;"><span class="contact_num"><?=$hospital['contact_num']?></span></td>
                   <td>
@@ -1994,14 +1994,14 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                     </table>
                   </td>
             
-                  <td style="text-align:justify;text-justify:inter-word;">
+                  <td style="text-align:justify;text-justify:inter-word;width:400px;">
                     <span class="mdc-stock">Desctiption: </span>
                     <span class="mdc-qty"><?=$med['description']?></span>
                   </td>
                     
           
                   
-                  <td style="width:300px;"><b>Expiration Date:</b> <?=$med['expirationDate']?></td>
+                  <td style="width:390px;"><b>Expiration Date:</b> <?=$med['expirationDate']?></td>
                   <!-- <td>
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#medModal">
                     View
