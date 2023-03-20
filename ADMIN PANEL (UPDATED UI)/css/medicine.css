@@ -19,7 +19,23 @@
 }
 #medicine .medicine_header .custom_btn i{
     margin-right: 10px;
+
 }
+#medicine .medicine_header .custom_btn i #view{ 
+    height: 300px; 
+    width: 300px;
+}
+
+#medicine .medicine_header .custom_btn i #edit{ 
+    height: 300px; 
+    width: 300px;
+}
+
+#medicine .medicine_header .custom_btn i #delete{ 
+    height: 300px; 
+    width: 300px;
+}
+
 #medicine .medicine_header .custom_btn:hover{
     scale:1.1;
     box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.15);
@@ -104,9 +120,13 @@
     /* box-shadow: 0 4px 2px -2px gray; */
     cursor: pointer;
     transition: .3s;
+    
+   
 }
 .table-mdc td{
 padding-right:10px;
+
+
 }
 .btn-mdcdetails{
     background-color:#5d8fd9;
@@ -143,9 +163,10 @@ padding-right:10px;
 } */
 .medicine-table{
     width: 100%;
+    
 }
 .mdc-brand{
-    color: rgb(43, 35, 35);
+    color: white;
     /* font-style: italic; */
     font-size: .7em;
 }
@@ -154,6 +175,8 @@ padding-right:10px;
 }
 .mdc-qty{
     font-weight: 300;
+    text-align:justify; 
+    text-justify:inter-word;
 }
 .mdc-qrcode{
     width: 100px;

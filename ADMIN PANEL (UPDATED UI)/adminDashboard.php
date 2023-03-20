@@ -850,7 +850,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
               <div class="card_header">
                 <span class="department_name"><?=$departments['dept_name']?></span>
                 <div class="actions">
-                    <a href="#editDepartmentInfo" class="custom_btn editbtndepts" data-toggle="modal"><i class="fa fa-edit" aria-hidden="true" style="color: #37954B; font-size: 25px"></i></a>
+                    <a href="#editDepartmentInfo" class="custom_btn editbtndepts" data-toggle="modal"><i class="fa fa-edit" aria-hidden="true" style="color: #3e64ff; font-size: 25px"></i></a>
+                    <!-- style="color: #37954B;" -->
                     <a href="#delDepartment" class="custom_btn deletebtndepts" data-toggle="modal"><i class="fa fa-trash" aria-hidden="true" style="color: #ED1C24; font-size: 25px"></i></a>
                 </div>
               </div>
@@ -1993,16 +1994,17 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
           
                   
                   <td style="width:280px;"><b>Expiration Date:</b> <?=$med['expirationDate']?></td>
-                  <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#medModal">
+                  <!-- <td>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#medModal">
                     View
-                  </button>
-                  <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#medModal">
-                    Edit
-                  </button>
-                  <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#medModal">
-                    Delete
-                  </button>
-                  </td>
+                    </button> 
+                  </td> -->
+                  <td><a href="#medModal" class="custom_btn" data-bs-toggle="modal"><i class="fa fa-info-circle" id="view" aria-hidden="true" style="color: gray;"></i></a></td>
+
+                  <td><a href="#editMedInfo" class="custom_btn editmedbtn" data-bs-toggle="modal"><i class="fa fa-edit" id="edit" aria-hidden="true" style="color: #3e64ff;"></i></a></td>
+
+                  <td><a href="#delMed" class="custom_btn deletemedbtn" data-bs-toggle="modal"><i class="fa fa-trash" id="delete" aria-hidden="true" style="color: #ED1C24;"></i></a></td>
+                  
        
                 </tr>
                 </tbody>
@@ -2076,7 +2078,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
             </div>
             <div class="col">
             <label for="contact_num" class="form-label">Contact Number</label>
-                        <input type="text" class="form-control" id="contact_num" style="width:100px;"readonly value="<?=$med['contact_info']?>">
+                        <input type="text" class="form-control" id="contact_num" style="width:170px;"readonly value="<?=$med['contact_info']?>">
             </div>
             </div>
             <div class="row">
@@ -2093,7 +2095,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
         </div>
         <style>
           .modal-footer{
-            width:100%;
+            max-width:100%;
           }
         </style>
       </form>
