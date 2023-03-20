@@ -3,24 +3,20 @@
     $success  = "";
     if(isset($_POST['addHospi']))
     {	 
-        $emp_id  = $_POST['emp_id'];
-        $dept_name = $_POST['dept_name'];
-        $building_name = $_POST['building_name'];
-        $room_num = $_POST['room_num'];
-        $image  = $_POST['image'];
-        $firstname   = $_POST['firstname'];
-        $lastname  = $_POST['lastname'];
+
+        $hospital = $_POST['hospital'];
+        $hospital_add = $_POST['hospital_add'];
         $email  = $_POST['email'];
         $contact_num  = $_POST['contact_num'];
-        $position  = $_POST['position'];
         
        
         
-        $sql = "INSERT INTO admins (emp_id,dept_name,building_name,room_num,image,firstname,lastname,email,contact_num,position)
-        VALUES ('$emp_id','$dept_name','$building_name','$room_num','$image','$firstname','$lastname','$email','$contact_num','$position')";
+        $sql = "INSERT INTO hospitals (hospital,hospital_add,email,contact_num)
+        VALUES ('$hospital','$hospital_add','$email','$contact_num')";
         if (mysqli_query($conn, $sql))
         {
             $success    =   "New record created successfully !";
+            header("Location:adminDashboard.php?mess=add success");
         }
         else
         {

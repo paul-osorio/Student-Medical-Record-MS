@@ -20,7 +20,7 @@
 </head>
 <body>
      <form action="login.php" method="post">
-     	<h2>HR ADMIN LOGIN</h2>
+     	<h2>ADMIN LOGIN</h2>
      	<?php if (isset($_GET['error'])) { ?>
      		<p class="error"><?php echo $_GET['error']; ?></p>
      	<?php } ?>

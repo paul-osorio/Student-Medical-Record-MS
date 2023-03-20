@@ -1758,7 +1758,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
             <div class="modal-dialog">
 
               <div class="modal-content">
-                <form method="post" action="adminDashboard.php">
+                <form method="post" action="addHospital.php">
 
                   <div class="modal-header">						
                     <h4 class="modal-title">ADD HOSPITAL</h4>
@@ -1768,12 +1768,12 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
                       <div class="form-group">
                         <label>Hospital Name</label> 
-                        <input type="text" class="form-control" name="hospitalname" required>
+                        <input type="text" class="form-control" name="hospital" required>
                       </div>	
 
                       <div class="form-group">
                         <label>Address</label> 
-                        <input type="text" class="form-control" name="address" required>
+                        <input type="text" class="form-control" name="hospital_add" required>
                       </div>		
 
                       <div class="form-group">
@@ -1790,7 +1790,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                   
                   <div class="modal-footer">
                     <input type="button" class="btn btn-danger" data-dismiss="modal" value="Cancel">
-                    <input type="button" class="btn btn-success" data-dismiss="modal" id="addsuccess_hospital" name="addAdmin" value="Add">
+                    <!-- <input type="button" class="btn btn-success" data-dismiss="modal" id="addsuccess_hospital" name="addHospi" value="Add"> -->
+                    <input type="submit" class="btn btn-success" name="addHospi" value="Add">
                   </div>
 
                 </form>
@@ -1817,12 +1818,12 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
                       <div class="form-group">
                         <label>Hospital Name</label> 
-                        <input type="text" class="form-control" name="hospitalname" value="Metro North Medical Center & Hospital" required>
+                        <input type="text" class="form-control" name="hospital" value="Metro North Medical Center & Hospital" required>
                       </div>	
 
                       <div class="form-group">
                         <label>Address</label> 
-                        <input type="text" class="form-control" name="address" value="1001 Mindanao Avenue, Quezon City, 1106 Metro Manila" required>
+                        <input type="text" class="form-control" name="hospital_add" value="1001 Mindanao Avenue, Quezon City, 1106 Metro Manila" required>
                       </div>		
 
                       <div class="form-group">
