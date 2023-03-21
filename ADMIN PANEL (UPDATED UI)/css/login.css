@@ -15,6 +15,7 @@ body {
 }
 
 form {
+	color: white;
 	width: 350px;
 	background: #1E2745;
 	display: flex;
@@ -24,7 +25,7 @@ form {
 form .header_login{
 	background: #13182C;
 	padding: 10px 20px;
-	color: #dddddd;
+	color: white;
 	font-size: 22px;
 	display: flex;
 	align-items: center;
@@ -34,6 +35,11 @@ form .header_login img{
 	width: auto;
 	margin-right: 53px;
 }
+
+/* form label{
+	color: white;
+} */
+
 h2 {
 	padding: 0 20px;
 	text-align: center;
