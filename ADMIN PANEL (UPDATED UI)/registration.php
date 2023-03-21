@@ -13,12 +13,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>REGISTRATION | ADMIN PANEL</title>
+     <link rel="icon" type="image/png" href="./assets/favcon.png"/>
+	<title>REGISTRATION | SMRMS | ADMIN</title>
 	<link rel="stylesheet" type="text/css" href="./css/adminRegistration.css">
 </head>
 <body>
      <form action="registrationValidation.php" method="post">
-     	<h2>HR ADMIN SIGN UP</h2>
+     	<h2>ADMIN SIGN UP</h2>
      	<?php if (isset($_GET['error'])) { ?>
      		<p class="error"><?php echo $_GET['error']; ?></p>
      	<?php } ?>

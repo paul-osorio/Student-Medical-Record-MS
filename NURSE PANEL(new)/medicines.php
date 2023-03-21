@@ -137,7 +137,7 @@
                                         </table>
                                       </td>
                                 
-                                      <td>
+                                      <td style="text-align:justify;text-justify:inter-word;">
                                         <span class="mdc-stock">Desctiption: </span>
                                         <span class="mdc-qty"><?=$med['description']?></span>
                                       </td>
