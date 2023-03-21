@@ -51,8 +51,11 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
      // SELECT ALL NURSES TODAY
      $fetchAllNursesToday = mysqli_query($conn, "SELECT * FROM `nurses`");
 
-     // SELECT ALL MEDICINE 
+     // SELECT ALL MEDICINES 
      $fetchAllMedicine = mysqli_query($conn, "SELECT * FROM `medicine`");
+
+     // SELECT ALL HOSPITALS 
+     $fetchAllHospitals = mysqli_query($conn, "SELECT * FROM `hospitals`");
 
 
      // COUNT ALL ADMINS
@@ -83,22 +86,22 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ADMIN | SMRMS</title>
+    <link rel="icon" type="image/png" href="./assets/favcon.png"/>
+    <title>SMRMS | ADMIN</title>
 
     <!-- Fontfaces CSS-->
     <link rel="stylesheet" href="./style.css?v=<?php echo time(); ?>"/>
     <!-- <link rel="stylesheet" href="./style.css" /> -->
     <link rel="stylesheet" href="./css/addAdmin.css"/>
     <link rel="stylesheet" href="./css/DepartmentTab.css" />
+    <link rel="stylesheet" href="./css/HospitalTab.css"/> 
     <link rel="stylesheet" href="./css/NurseTab.css" />
-    <link rel="stylesheet" href="./css/HospitalTab.css"/>
     <!-- <link rel="stylesheet" href="./css/DashboardTab.css"/> -->
     <link rel="stylesheet" href="./css/DashboardTab.css?v=<?php echo time(); ?>"/>
     <link rel="stylesheet" href="./css/medicine.css"/>
     <link rel="stylesheet" href="./css/messagetab.css"/>
     <link rel="stylesheet" href="./css/reportchart.css?v=<?php echo time(); ?>"/>
     <link rel="stylesheet" href="./css/archivesTab.css"/>
-    
 
     <link rel="stylesheet" href="./css/Main.css" />
     <link rel="stylesheet" href="./css/adminPage.css" />
@@ -215,19 +218,19 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
           </li>
 
 
-          <!-- <li data-tab-target="#appointment" class="px-4 w-100 mb-1 nav-item tab">
+          <li data-tab-target="#medicine" class="px-4 w-100 mb-1 nav-item tab">
               
-              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <i class="fa fa-medkit"></i>
               <div
                 class="nav-link align-items-center"
                 data-bs-toggle="collapse"
                 data-bs-target="#home-collapse"
                 aria-expanded="true">
 
-                Appointment
+                Medicine
                 
-              </div>
-          </li> -->
+            </div>
+          </li>
 
           <li data-tab-target="#reports" class="px-4 w-100 mb-1 nav-item tab">
               
@@ -259,7 +262,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
           </li>
 
-          <li data-tab-target="#medicine" class="px-4 w-100 mb-1 nav-item tab">
+          <li data-tab-target="#entrancelog" class="px-4 w-100 mb-1 nav-item tab">
               
               <i class="fa fa-address-book"></i>
               <div
@@ -443,7 +446,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
             <span class="title">NURSES TODAY</span>
 
             <table>
-            f
+            
                 <?php if(mysqli_num_rows($fetchAllNursesToday) > 0) { 
                 while ($todayNurses = mysqli_fetch_assoc($fetchAllNursesToday)) {  ?>
 
@@ -850,7 +853,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
               <div class="card_header">
                 <span class="department_name"><?=$departments['dept_name']?></span>
                 <div class="actions">
-                    <a href="#editDepartmentInfo" class="custom_btn editbtndepts" data-toggle="modal"><i class="fa fa-edit" aria-hidden="true" style="color: #37954B; font-size: 25px"></i></a>
+                    <a href="#editDepartmentInfo" class="custom_btn editbtndepts" data-toggle="modal"><i class="fa fa-edit" aria-hidden="true" style="color: #3e64ff; font-size: 25px"></i></a>
+                    <!-- style="color: #37954B;" -->
                     <a href="#delDepartment" class="custom_btn deletebtndepts" data-toggle="modal"><i class="fa fa-trash" aria-hidden="true" style="color: #ED1C24; font-size: 25px"></i></a>
                 </div>
               </div>
@@ -1168,8 +1172,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
             <div class="filter_wrapper">
               <div class="sort flex-grow-1">
                 <span>Sort by</span>
-                <select name="filter" id="filter_nurse">
-                  <option value="">---Select---</option>
+                <select name="filter" id="filter" style="width: 50%;">
+                  <option value="">Select</option>
                   <option value="departments">Campus</option>
                   <!-- <option value="departments">Campus</option>
                   <option value="departments">Campus</option> -->
@@ -1179,7 +1183,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
               </div>
               <div>
                   <div class="search">
-                    <input type="text" placeholder="Search" id="search_nurse"/>
+                    <input type="text" name="search" id="search_nurse" placeholder="&#xF002; Search Nurse" style="font-family:Arial, FontAwesome">
                 </div>
 
                 
@@ -1670,6 +1674,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
     </section>
 
 
+
+
+
 <!--#################################################################################################################################################################################################################################-->
 
         <!-- HOSPITAL PAGE -->
@@ -1679,7 +1686,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
             <h3 class="m-0">HOSPITAL</h3>
           </div>
           <div class="action_header">   
-             <input type="text" name="search" placeholder="&#xF002; Search hospitals..." style="font-family:Arial, FontAwesome">
+             <input type="text" name="search" placeholder="&#xF002; Search Hospital" style="font-family:Arial, FontAwesome">
             <button class="custom_btn">
               <a href="#addHospitalModal" class="custom_btn" data-toggle="modal"><i class="fa fa-plus"></i>Add Hospital</a>
             </button>
@@ -1692,7 +1699,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                   <th>Hospital Name</th>
                   <th>Address</th>
                   <th>Email Address</th>
-                  <th>Contact No</th>
+                  <th>Contact No.</th>
                   <th><span>Action</span></th>
               </tr>
               
@@ -1716,19 +1723,24 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
                   <!-- <?php } } ?> -->
 
+
+                <?php if(mysqli_num_rows($fetchAllHospitals) > 0) { 
+                  while ($hospital = mysqli_fetch_assoc($fetchAllHospitals)) {  ?>
+              
               <tr class="container">
-                  <td style="text-align:center;" ><span class="hospitalname">Metro North Medical Center & Hospital</span></td>
-                  <td><span class="address">1001 Mindanao Avenue, Quezon City, 1106 Metro Manila</span></td>
-                  <td><span class="email">spcustorel@mnmch.com</span></td>
-                  <td><span class="contact_num">(02)8426-7000</span></td>
+                  <td style="width:250px;" ><span class="hospitalname"><?=$hospital['hospital']?></span></td>
+                  <td style="width:400px;"><span class="address"><?=$hospital['hospital_add']?></span></td>
+                  <td><span class="email"><?=$hospital['email']?></span></td>
+                  <td style="width:180px;"><span class="contact_num"><?=$hospital['contact_num']?></span></td>
                   <td>
 
-                      <a href="#editHospitalInfo" class="custom_btn editbtn" data-toggle="modal"><i class="fa fa-edit" aria-hidden="true" style="color: #3e64ff;"></i></a>
+                  <td><a href="#editHospitalInfo" class="custom_btn editbtn" data-toggle="modal"><i class="fa fa-edit" aria-hidden="true" style="color: #3e64ff; font-size: 30px; margin-left: -95px;"></i></a></td>
 
-                      <a href="#delHospital" class="custom_btn deletebtn" data-toggle="modal"><i class="fa fa-trash" aria-hidden="true" style="color: #ED1C24;"></i></a>
-                  </td>
+                  <td><a href="#delHospital" class="custom_btn deletebtn" data-toggle="modal"><i class="fa fa-trash" aria-hidden="true" style="color: #ED1C24; font-size: 30px; margin-left: -75px;"></i></a></td>
+                  
               </tr>
-              
+
+                <?php } } ?>
                   
 
               
@@ -1746,7 +1758,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
             <div class="modal-dialog">
 
               <div class="modal-content">
-                <form method="post" action="adminDashboard.php">
+                <form method="post" action="addHospital.php">
 
                   <div class="modal-header">						
                     <h4 class="modal-title">ADD HOSPITAL</h4>
@@ -1756,12 +1768,12 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
                       <div class="form-group">
                         <label>Hospital Name</label> 
-                        <input type="text" class="form-control" name="hospitalname" required>
+                        <input type="text" class="form-control" name="hospital" required>
                       </div>	
 
                       <div class="form-group">
                         <label>Address</label> 
-                        <input type="text" class="form-control" name="address" required>
+                        <input type="text" class="form-control" name="hospital_add" required>
                       </div>		
 
                       <div class="form-group">
@@ -1778,7 +1790,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                   
                   <div class="modal-footer">
                     <input type="button" class="btn btn-danger" data-dismiss="modal" value="Cancel">
-                    <input type="button" class="btn btn-success" data-dismiss="modal" id="addsuccess_hospital" name="addAdmin" value="Add">
+                    <!-- <input type="button" class="btn btn-success" data-dismiss="modal" id="addsuccess_hospital" name="addHospi" value="Add"> -->
+                    <input type="submit" class="btn btn-success" name="addHospi" value="Add">
                   </div>
 
                 </form>
@@ -1805,12 +1818,12 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
                       <div class="form-group">
                         <label>Hospital Name</label> 
-                        <input type="text" class="form-control" name="hospitalname" value="Metro North Medical Center & Hospital" required>
+                        <input type="text" class="form-control" name="hospital" value="Metro North Medical Center & Hospital" required>
                       </div>	
 
                       <div class="form-group">
                         <label>Address</label> 
-                        <input type="text" class="form-control" name="address" value="1001 Mindanao Avenue, Quezon City, 1106 Metro Manila" required>
+                        <input type="text" class="form-control" name="hospital_add" value="1001 Mindanao Avenue, Quezon City, 1106 Metro Manila" required>
                       </div>		
 
                       <div class="form-group">
@@ -1923,55 +1936,292 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
 <!--#################################################################################################################################################################################################################################-->
 
-        <!-- APPOINTMENT PAGE -->
-        <section id="appointment" class="appointment so_content" data-tab-content>
-          <div class="row1">
-            <div class="column1">
-
-            <h3 class="m-0">MESSAGES</h3>
-             <input type="text" class="msgsearch" placeholder="Search">
-             
-             <div class="stdmsg">
-              <img src="./assets/nurse.jpg" alt="" id="stdimage">
-              <p class="datetime">11/10/2022 - 5:06PM</p>
-              <p class="std-name">Clarissa Calubaquib (Student - 4th year)</p>
-              <p class="message-content">Good morning po, hindi po ako makakapasok.</p>
-             </div>
-
-             <div class="stdmsg">
-              <img src="./assets/nurse.jpg" alt="" id="stdimage">
-              <p class="datetime">11/10/2022 - 5:06PM</p>
-              <p class="std-name">Jessica Bulleque (Student - 4th year)</p>
-              <p class="message-content">Good morning po, hindi po ako makakapasok.</p>
-             </div>
-
-             <div class="stdmsg">
-              <img src="./assets/nurse.jpg" alt="" id="stdimage">
-              <p class="datetime">11/10/2022 - 5:06PM</p>
-              <p class="std-name">Kenneth Nunag (Student - 4th year)</p>
-              <p class="message-content">Di po ako papasok masama po kasi ako.</p>
-             </div>
+<!-- MEDICINES -->
+<section id="medicine" class="medicine so_content" data-tab-content>
+          <div class="medicine_landing">
+            <div class="medicine_header d-flex justify-content-between">
+              <h3 class="m-0" style="color: white;">MEDICINES</h3>
+                <button class="custom_btn">
+                  <a href="#addMedicineModal" class="custom_btn" data-toggle="modal"><i class="fa fa-medkit"></i>Add Medicine</a>
+                </button>
             </div>
-
-            <div class="column2">
-             <h5 class="stdname">Juan Dela Cruz (Student-4th year)</h5>
-             <div class="stdchat">
-              <img src="./assets/nurse.jpg" alt="" id="stdimg"> 
-              <input type="text" class="chatbg" value="Hi" readonly>
-             
-            </div>
-            <input type="text" class="msgreply" placeholder="Type Here">
-            </div>
-            
           </div>
-      </section>
+          <div class="filter_wrapper">
+          <div class="sort flex-grow-1">
+            <span>Sort by</span>
+            <select name="filter" id="filter"> 
+              <option value="">Select</option> 
+              <option name="filter" value="Date Manufactured">Date Manufactured</option>
+              <option name="filter" value="Date Expiration">Date Expiration</option>
+              <option name="filter" value="Quantity">Quantity</option>
+            </select>
+          </div>
+          <div class="r">
+            <div class="search">
+              <input type="text" name="search" placeholder="&#xF002; Search Medicine" style="font-family:Arial, FontAwesome">
+            </div>
+            <div class="grid">
+              <i class="fa fa-th-large" aria-hidden="true"></i>
+            </div>
+            <div class="bars">
+              <i class="fa fa-bars" aria-hidden="true"></i>
+            </div>
+          </div>
+          </div>
+
+
+          <div>
+  <ul class="accordion">
+
+    <?php if(mysqli_num_rows($fetchAllMedicine) > 0) { 
+                while ($med = mysqli_fetch_assoc($fetchAllMedicine)) {  ?>
+
+
+    <li>
+        <input type="radio" name="accordion" id="first" checked>
+        <label for="first">
+          <div class="medicine-table">
+            <table class="table-mdc">
+              <tbody>
+                <tr class="mdc-header">
+                  <td style="width:120px;"><img src="./assets/<?=$med['image']?>" width="150px" height="130px"> </td>
+                  <td style="width:200px;" >
+                    <table>
+                      <td class="b1"><?=$med['name']?></td>
+                      <tr>
+                      <td class="mdc-brand">Brand: <?=$med['brand']?></td>
+                      <tr>
+                      <td><?=$med['prod_id']?></td>
+                    </table>
+                  </td>
+            
+                  <td style="text-align:justify;text-justify:inter-word;width:400px;">
+                    <span class="mdc-stock">Desctiption: </span>
+                    <span class="mdc-qty"><?=$med['description']?></span>
+                  </td>
+                    
+          
+                  
+                  <td style="width:390px;"><b>Expiration Date:</b> <?=$med['expirationDate']?></td>
+                  <!-- <td>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#medModal">
+                    View
+                    </button> 
+                  </td> -->
+                  <td><a href="#medModal" class="custom_btn" data-bs-toggle="modal"><i class="fa fa-info-circle" id="view" aria-hidden="true" style="color: gray; font-size: 30px"></i></a></td>
+
+                  <td><a href="#editMedInfo" class="custom_btn editmedbtn" data-bs-toggle="modal"><i class="fa fa-edit" id="edit" aria-hidden="true" style="color: #3e64ff; font-size: 30px"></i></a></td>
+
+                  <td><a href="#delMed" class="custom_btn deletemedbtn" data-bs-toggle="modal"><i class="fa fa-trash" id="delete" aria-hidden="true" style="color: #ED1C24; font-size: 30px"></i></a></td>
+                  
+       
+                </tr>
+                </tbody>
+                </table>
+                </div>
+        </label>
+      
+    </li>
+
+
+    <div class="modal fade" id="medModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 1000px; margin-right:2.5rem;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">MEDICINE INFORMATION</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form>
+        <div class="modal-body">
+            <div class="row">
+              <div class="col">
+                        <label for="medname" class="form-label">Medicine Name</label>
+                        <input type="text" class="form-control" id="medname" style="width:200px;"readonly placeholder="<?=$med['name']?>">
+              </div>
+
+              <div class="col">
+              <label style="color: white;" for="brand" class="form-label">Brand</label>
+                        <input type="text" style="color: white;" class="form-control" id="brand" readonly placeholder="<?=$med['brand']?>">
+                </div>
+
+                <div class="col">
+              <label for="stocks" class="form-label">Stocks</label>
+                        <input type="text" class="form-control" id="stocks" readonly placeholder="<?=$med['num_stocks']?>">
+                </div>
+
+                <div class="col">
+                <label for="expdate" class="form-label">Expiration Date</label>
+                        <input type="date" class="form-control" id="expirationDate" readonly value="<?=$med['expirationDate']?>">
+                </div>
+                <!---->
+            <div class="row">
+            <div class="col">
+            <label for="genname" class="form-label">Generic Name</label>
+                        <input type="text" class="form-control" id="genname" style="width:200px;"readonly value="<?=$med['genericName']?>">
+            </div>
+            <div class="col">
+            <label for="gendatemanu" class="form-label">Date Manufactured</label>
+                        <input type="date" class="form-control" id="datemanu" style="width:200px;"readonly value="<?=$med['date_manufactured']?>">
+            </div>
+            <div class="col">
+            <label for="prod_con" class="form-label">Product Condition</label>
+                        <input type="text" class="form-control" id="prod_con" style="width:200px;"readonly value="<?=$med['prodCondition']?>">
+            </div>
+            <div class="col">
+            <label for="storage" class="form-label">Storage</label>
+                        <input type="text" class="form-control" id="storage" style="width:100px;"readonly value="<?=$med['storage']?>">
+            </div>
+            <div class="col">
+            <label for="box_id" class="form-label">Box ID</label>
+                        <input type="text" class="form-control" id="box_id" style="width:100px;"readonly value="<?=$med['box_id']?>">
+            </div>
+
+            <div class="row">
+            <div class="col">
+            <label for="manu_comp" class="form-label">Manufacturer's Company</label>
+                        <input type="text" class="form-control" id="manu_comp" style="width:210px;"readonly value="<?=$med['manufacturerName']?>">
+            </div>
+            <div class="col">
+            <label for="email" class="form-label">Email Address</label>
+                        <input type="text" class="form-control" id="email" style="width:100px;"readonly value="<?=$med['prodCondition']?>">
+            </div>
+            <div class="col">
+            <label for="contact_num" class="form-label">Contact Number</label>
+                        <input type="text" class="form-control" id="contact_num" style="width:170px;"readonly value="<?=$med['contact_info']?>">
+            </div>
+            </div>
+            <div class="row">
+              <div class="col"></div>
+            </div>
+
+            </div>
+
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          
+        </div>
+        <style>
+          .modal-footer{
+            max-width:100%;
+          }
+        </style>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+    
+
+    <?php } } ?>
+  </ul>
+</div>
+
+        </section>
+
+<!-- ############################################################################################################################################################################################################## -->
+
+        <!-- Add New Medicine Modal -->
+          <div id="addMedicineModal" class="modal fade">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <form method="post" action="insert_medicine.php">
+                    <div class="modal-header">						
+                      <h4 class="modal-title" style="color: black;">ADD MEDICINE TO INVENTORY</h4>
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">	
+                    <div class="form-group">
+                        <label>Product ID</label> 
+                        <input type="text" class="form-control" name="prod_id" required>
+                      </div>				
+                      <div class="form-group">
+                        <label>Medicine Name</label> 
+                        <input type="text" class="form-control" name="name" required>
+                      </div>
+                      <div class="form-group">
+                        <label>Brand</label>
+                        <input type="text" class="form-control" name="brand" required>
+                      </div>
+                      <div class="form-group">
+                        <label>Stocks</label>
+                        <input type="text" class="form-control" name="num_stocks" required></input>
+                      </div>
+                      <div class="form-group">
+                        <label>Expiration Date</label>
+                        <input type="date" class="form-control" name="expirationDate" required>
+                      </div>		
+                      <div class="form-group">
+                        <label>Generic Name</label>
+                        <input type="text" class="form-control" name="genericName" required>
+                      </div>	
+                      <div class="form-group">
+                        <label>Date Manufactured</label>
+                        <input type="date" class="form-control" name="date_manufactured" required>
+                      </div>	
+                      <div class="form-group">
+                        <label>Product Condition</label>
+                        <input type="text" class="form-control" name="prodCondition" required>
+                      </div>	
+                      <div class="form-group">
+                        <label>Storage</label>
+                        <input type="text" class="form-control" name="storage" required>
+                      </div>	
+                      <div class="form-group">
+                        <label>Box ID</label>
+                        <input type="text" class="form-control" name="box_id" required>
+                      </div>	
+                      <div class="form-group">
+                        <label>Manufacturer's Company</label>
+                        <input type="text" class="form-control" name="manufacturerName" required>
+                      </div>	
+                      <!-- <div class="form-group"> -->
+                        <!-- <label>Email Address</label> -->
+                        <!-- <input type="text" class="form-control" name="phone" required> -->
+                      <!-- </div>	 -->
+                      <div class="form-group">
+                        <label>Contact Number</label>
+                        <input type="text" class="form-control" name="contact_info" required>
+                      </div>	
+                      <div class="form-group">
+                        <label>Description</label>
+                        <textarea class="form-control" name="description" required></textarea>
+                      </div>	
+
+                      <div class="form-group">
+                        <center><label>Upload Product Image</label>
+                        <input type="file" class="form-control" name="image" required></center>
+                      </div>	
+
+                      <div class="form-group">
+                        <center><label>Upload Product QR Code</label>
+                        <input type="file" class="form-control" name="prod_qrcode" required></center>
+                      </div>	
+                      
+                    </div>
+                    <div class="modal-footer" style="width: 498px;">
+                      <input type="button" class="btn btn-danger" data-dismiss="modal" value="Cancel">
+                      <input type="submit" class="btn btn-success" name="addmed" value="Add">
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+<!-- ############################################################################################################################################################################################################## -->
+
+
 
 
 <!--#################################################################################################################################################################################################################################-->
 
+      
       <!-- REPORTS PAGE -->
       <section id="reports" class="reports so_content" data-tab-content>
-        <h3 class="m-0">REPORTS</h3>
+        <h3 class="m-0" style="color: white;">REPORTS</h3>
         <div class="headerpatients">
           <span class="headerpatients1">NUMBER OF PATIENTS</span>
                 <select name="filter" class="reportfilter">
@@ -2029,21 +2279,21 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
       <!-- ARCHIVE PAGE -->
       <section id="archives" class="archives so_content" data-tab-content>  
         <div class="archives_header d-flex justify-content-between">
-          <h3 class="m-0">ARCHIVE</h3>
+          <h3 class="m-0" style="color: white;">ARCHIVE</h3>
         </div>
-        <div class="container">
+        <div class="container" style="color: white;">
           <div class="filter_wrapper">
             <div class="sort flex-grow-1">
               <span>Sort by</span>
               <select name="filter" id="filter">
-                <option value="">---Select---</option>
-                <option value="Type of User">Type of User</option>
-                <option value="Date of Archive">Date of Archive</option>
+                <option value="">Select</option>
+                <option name="filter" value="Type of User">Type of User</option>
+                <option name="filter" value="Date of Archive">Date of Archive</option>
               </select>
             </div>
             <div class="r">
               <div class="search">
-                <input type="text" placeholder="Search" />
+              <input type="text" name="search" placeholder="&#xF002; Search Archive" style="font-family:Arial, FontAwesome">
               </div>
               <div class="scan">
                 <button>Scan QR</button>
@@ -2061,15 +2311,6 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                   <th>Date of Archive</th>
                   <!-- <th>Reason</th>
                   <th>Date</th> -->
-                </tr>
-
-                <tr class="archives-info">
-                  <!-- <td><img src="./assets/biogesic.jpg"></td> -->
-                  <td>15-2323</td>
-                  <!-- <td>Analos, Miguel Santos</td> -->
-                  <td>Student</td>
-                  <!-- <td>Graudated</td> -->
-                  <td>July 29,2019</td>
                 </tr>
 
                 <tr class="archives-info">
@@ -2168,206 +2409,21 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 <!-- E N D  A R C H I V E -->
 
 
-<!--#################################################################################################################################################################################################################################-->
+<!-- #################################################################################################################################################################################################################################-->
 
       <!-- ENTRANCE LOG PAGE -->
 
 
-      <section id="medicine" class="medicine so_content" data-tab-content>
-          <div class="medicine_header d-flex justify-content-between">
+      <section id="entrancelog" class="entrancelog so_content" data-tab-content>
+          <div class="entrancelog_header d-flex justify-content-between">
             <h3 class="m-0">ENTRANCE LOG</h3>
-              <button class="custom_btn">
+              <!-- <button class="custom_btn">
 						    <a href="#addMedicineModal" class="custom_btn" data-toggle="modal"><i class="fa fa-user-md"></i>Add Medicine</a>
-              </button>
+              </button> -->
           </div>
 
-        <div class="filter_wrapper">
-          <div class="sort flex-grow-1">
-            <span>Sort by</span>
-            <select name="filter" id="filter">  
-              <option value="">---Select---</option>
-              <option value="Section">Section</option>
-              <option value="Course">Course</option>
-              <option value="Year Level">Year Level</option>
-              <option value="Date">Date</option>
-            </select>
-          </div>
-        <div class="r">
-            <div class="search">
-              <input type="text" placeholder="Search" />
-            </div>
-            <div class="grid">
-              <i class="fa fa-th-large" aria-hidden="true"></i>
-            </div>
-            <div class="bars">
-              <i class="fa fa-bars" aria-hidden="true"></i>
-            </div>
-        </div>
-      </div>
-
-
-<!--#################################################################################################################################################################################################################################-->
-
-<!-- Add New Medicine Modal -->
-<div id="addMedicineModal" class="modal fade">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<form method="post" action="adminDashboard.php">
-					<div class="modal-header">						
-						<h4 class="modal-title">ADD MEDICINE TO INVENTORY</h4>
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					</div>
-					<div class="modal-body">	
-          <div class="form-group">
-							<label>Product ID</label> 
-							<input type="text" class="form-control" name="prod_id" required>
-            </div>				
-						<div class="form-group">
-							<label>Medicine Name</label> 
-							<input type="text" class="form-control" name="name" required>
-            </div>
-						<div class="form-group">
-							<label>Brand</label>
-							<input type="text" class="form-control" name="brand" required>
-						</div>
-						<div class="form-group">
-							<label>Stocks</label>
-							<input type="text" class="form-control" name="num_stocks" required></input>
-						</div>
-						<div class="form-group">
-							<label>Expiration Date</label>
-							<input type="date" class="form-control" name="expirationDate" required>
-						</div>		
-            <div class="form-group">
-							<label>Generic Name</label>
-							<input type="text" class="form-control" name="genericName" required>
-						</div>	
-            <div class="form-group">
-							<label>Date Manufactured</label>
-							<input type="date" class="form-control" name="date_manufactured" required>
-						</div>	
-            <div class="form-group">
-							<label>Product Condition</label>
-							<input type="text" class="form-control" name="prodCondition" required>
-						</div>	
-            <div class="form-group">
-							<label>Storage</label>
-							<input type="text" class="form-control" name="storage" required>
-						</div>	
-            <div class="form-group">
-							<label>Box ID</label>
-							<input type="text" class="form-control" name="box_id" required>
-						</div>	
-            <div class="form-group">
-							<label>Manufacturer's Company</label>
-							<input type="text" class="form-control" name="manufacturerName" required>
-						</div>	
-            <!-- <div class="form-group"> -->
-							<!-- <label>Email Address</label> -->
-							<!-- <input type="text" class="form-control" name="phone" required> -->
-						<!-- </div>	 -->
-            <div class="form-group">
-							<label>Contact Number</label>
-							<input type="text" class="form-control" name="contact_info" required>
-						</div>	
-            <div class="form-group">
-							<label>Description</label>
-							<textarea class="form-control" name="description" required></textarea>
-						</div>	
-
-            <div class="form-group">
-              <center><label>Upload Product Image</label>
-							<input type="file" class="form-control" name="image" required></center>
-						</div>	
-            
-					</div>
-					<div class="modal-footer">
-						<input type="button" class="btn btn-danger" data-dismiss="modal" value="Cancel">
-						<input type="submit" class="btn btn-success" name="add" value="Add">
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-
-
-<!--#################################################################################################################################################################################################################################-->
-
-<!-- Medicine list  -->
-<div>
-  <ul class="accordion">
-
-    <?php if(mysqli_num_rows($fetchAllMedicine) > 0) { 
-                while ($med = mysqli_fetch_assoc($fetchAllMedicine)) {  ?>
-
-
-    <li>
-        <input type="radio" name="accordion" id="first" checked>
-        <label for="first">
-          <div class="medicine-table">
-            <table class="table-mdc">
-              <tbody>
-                <tr class="mdc-header">
-                  <td style="width:120px;"><img src="./assets/<?=$med['image']?>" width="150px" height="130px"> </td>
-                  <td style="width:200px;" >
-                    <table>
-                      <td class="b1"><?=$med['name']?></td>
-                      <tr>
-                      <td class="mdc-brand">Brand: <?=$med['brand']?></td>
-                      <tr>
-                      <td><?=$med['prod_id']?></td>
-                    </table>
-                  </td>
-            
-                  <td>
-                    <span class="mdc-stock">In stock: </span>
-                    <span class="mdc-qty"><?=$med['num_stocks']?></span>
-                  </td>
-                    
-          
-                  
-                  <td style="width:280px;"><b>Expiration Date:</b> <?=$med['expirationDate']?></td>
-                  <td><img src="./assets/<?=$med['prod_qrcode']?>" class="mdc-qrcode"></td>
-                  <td><img src="./assets/caret-down-solid.svg" class="mdc-dropdown-icon"></td>
-                  
-                </tr>
-                </tbody>
-                </table>
-                </div>
-        </label>
-        <div class="content">
-            <h5>Description</h5>
-            <p style="font-size: 13px;" class="mdc-description"><?=$med['description']?></p>
-            <div>
-              <table class="medicine-table">
-              <tbody class="collapse-content">
-              <tr>
-                <td><h5>Generic name:</h5><p style="font-size: 14px;"> <?=$med['genericName']?></p></td>
-                <td><h5>Date Manufactured:</h5><p style="font-size: 14px;"> <?=$med['date_manufactured']?></p></td>
-                <td><h5>Product Condition</h5><p style="font-size: 14px;"><?=$med['prodCondition']?></p></td>
-              </tr>
-              <tr>
-                <td><h5>Storage: </h4><?=$med['storage']?></td>
-                <td><h5>Box ID: </h4><?=$med['box_id']?></td>
-                <td><h5>Manufacturer's Name: </h5><p style="font-size: 14px;"> <?=$med['manufacturerName']?></p></td>
-                <td><h5>Contact Information: </h5><p style="font-size: 14px;"> <?=$med['contact_info']?></p></td>
-              </tr>
-            </tbody>
-            </table>
-          </div>
-        </div>
-    </li>
-
-    <?php } } ?>
-
-
-    
-</ul>
-</div>
+        
       </section>
-<!-- E N D  M E D I C I N E -->
-
-
 
 <!--#################################################################################################################################################################################################################################-->
 
@@ -2592,29 +2648,13 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
 <!--#################################################################################################################################################################################################################################-->
 
-<!-- ADD SUCCESS-->
+<!-- ADD SUCCESS -->
 <script>
         $(document).ready(function() {
   
             $("#addsuccess_btn").on('click', function () {
               
                 $("#addsuccessModal").modal("show");
-
-            });
-        });
-
-
-</script>
-
-<!--#################################################################################################################################################################################################################################-->
-
-<!-- ADD SUCCESS HOSPITAL-->
-<script>
-        $(document).ready(function() {
-  
-            $("#addsuccess_hospital").on('click', function () {
-              
-                $("#addsuccessModalHospital").modal("show");
 
             });
         });
@@ -2656,21 +2696,6 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
 </script>
 
-<!--#################################################################################################################################################################################################################################-->
-
-<!-- DELETE ADMIN -->
-<script>
-        $(document).ready(function() {
-  
-            $("#delHospital_btn").on('click', function () {
-              
-                $("#removesuccess_hospital").modal("show");
-
-            });
-        });
-
-
-</script>
 
 
 <!--#################################################################################################################################################################################################################################-->
