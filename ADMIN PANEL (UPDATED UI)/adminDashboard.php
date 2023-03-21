@@ -1952,7 +1952,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
             <select name="filter" id="filter"> 
               <option value="">Select</option> 
               <option name="filter" value="Date Manufactured">Date Manufactured</option>
-              <option name="filter" value="Date Expiration">Date Expiration</option>
+              <option name="filter" value="Date Expiration">Expiration Date</option>
               <option name="filter" value="Quantity">Quantity</option>
             </select>
           </div>
