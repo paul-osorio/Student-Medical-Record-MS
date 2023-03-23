@@ -15,7 +15,7 @@
 <html>
 <head>
 	<link rel="icon" type="image/png" href="./assets/favcon.png"/>
-	<title>LOGIN | ADMIN PANEL</title>
+	<title>LOGIN | SMRMS | ADMIN</title>
 	<link rel="stylesheet" type="text/css" href="./css/login.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
@@ -42,7 +42,7 @@
 		</div>
 
      	<button type="submit">LOGIN</button>
-          <a href="registration.php" class="ca">Create an account</a>
+          <center><a href="registration.php" class="ca">Create an account</a> </center>
      </form>
 </body>
 </html>

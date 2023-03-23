@@ -48,7 +48,7 @@ input {
 	width: 100%;
 	padding: 5px;
 	margin: 5px auto;
-    font-size: 13px;
+    font-size: 15px;
 	background: none;
 	color: #ffffff;
     
@@ -59,7 +59,7 @@ input::placeholder {
   }
 label {
 	color: black;
-	font-size: 15px;
+	font-size: 18px;
 	/* padding: 10px; */
 }
 .button_wrapper{
@@ -75,15 +75,18 @@ label {
 }
 button {
 	float: right;
-	background: #5D8FD9;
+	background: #13182C;
 	padding: 10px 15px;
 	color: #fff;
 	border-radius: 5px;
 	margin-right: 10px;
 	border: none;
+	font-size: 19px;
+	width: 150px;
 }
 a{
 	color: rgb(203 203 255);
+	font-size: 14px;
 }
 button:hover{
 	opacity: .7;

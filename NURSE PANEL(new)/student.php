@@ -88,11 +88,13 @@
                       <div class="container-fluid bg-body-secondary d-flex justify-content-between align-items-center py-2 rounded-1">
                           <!-- <h3 class="fw-semibold m-0 p-0">STUDENTS</h3> -->
                           <span class="fw-bold fs-5 text-uppercase">Students</span>
-                          <div class="d-flex align-items-center">
-                              <span>Sort by</span>
-                              <input type="button" class="px-2 mx-2" value="Recent"> 
-                            </div>
-                            <div>
+                          <div class="d-flex gap-2 ">
+                                <div class="d-flex align-items-center" style="flex-basis:300px">
+                                  <span for="#sort" class="px-2 text-nowrap">Sort By</span>
+                                  <select class="form-select shadow-none" aria-label="Default select example" name="sort" id="sort">
+                                    <option name="sort" value="Recent">Recent</option>
+                                  </select>
+                                </div>
                               <div class="input-group form-input-sma">
                                   <input type="text" class="form-control" placeholder="Search..." aria-label="Search..." aria-describedby="button-addon2">
                                   <button class="btn bg-secondary fw-bold text-light" type="button" id="button-addon2"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
