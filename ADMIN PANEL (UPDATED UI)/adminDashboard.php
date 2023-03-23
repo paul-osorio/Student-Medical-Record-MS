@@ -293,7 +293,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                 data-bs-target="#home-collapse"
                 aria-expanded="true">
 
-                Entrance Log
+                Entrance Logs
                 
             </div>
             
@@ -1253,7 +1253,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
               <div>
                   <div class="search">
-                    <input type="text" name="search" id="search_nurse" placeholder="&#xF002; Search Nurse" style="font-family:Arial, FontAwesome">
+                    <input type="text" name="search" id="search_nurse" placeholder="&#xF002; Search Nurse" style="font-family:Poppins, FontAwesome">
                 </div>
 
                 
@@ -1756,7 +1756,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
             <h3 class="m-0">HOSPITAL</h3>
           </div>
           <div class="action_header">   
-             <input type="text" name="search" placeholder="&#xF002; Search Hospital" style="font-family:Arial, FontAwesome">
+             <input type="text" name="search" placeholder="&#xF002; Search Hospital" style="font-family:Poppins, FontAwesome">
             <button class="custom_btn">
               <a href="#addHospitalModal" class="custom_btn" data-toggle="modal"><i class="fa fa-plus"></i>Add Hospital</a>
             </button>
@@ -2039,7 +2039,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
           </div>
           <div class="r">
             <div class="search">
-              <input type="text" name="search" placeholder="&#xF002; Search Medicine" style="font-family:Arial, FontAwesome">
+              <input type="text" name="search" placeholder="&#xF002; Search Medicine" style="font-family:Poppins, FontAwesome">
             </div>
             <div class="grid">
               <i class="fa fa-th-large" aria-hidden="true"></i>
@@ -2374,7 +2374,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
             </div>
             <div class="r">
               <div class="search">
-              <input type="text" name="search" placeholder="&#xF002; Search Archive" style="font-family:Arial, FontAwesome">
+              <input type="text" name="search" placeholder="&#xF002; Search Archive" style="font-family:Poppins, FontAwesome">
               </div>
               <div class="scan">
                 <button>Scan QR</button>

@@ -96,7 +96,6 @@
                 <div class="container-fluid bg-secondary-subtle py-2 rounded-1">
                    
                     <div class="d-flex align-items-center gap-2 bg-body-secondary p-2 rounded-2">
-                       
                          
                         <div class="d-flex align-items-center">
                         <span for="#sort" class="px-2 text-nowrap">Sort By</span>
@@ -107,7 +106,7 @@
                           </select>
                         </div>
                         <div class="input-group form-input-sm d-flex align-items-center gap-2 ">
-                            <input type="text" class="form-control w-50 shadow-none" placeholder="Search..." aria-label="Search..." aria-describedby="button-addon2">
+                            <input type="text" class="form-control w-50 shadow-none" placeholder="&#xF002; Search..." aria-label="Search..." aria-describedby="button-addon2" style="font-family:Poppins, FontAwesome">
                             <a href="#" class="text-secondary"> <i class="fa fa-th-large mx-1 fs-3" aria-hidden="true"></i></a>
                             <a href="#" class="text-secondary"><i class="fa fa-bars mx-1 fs-3" aria-hidden="true"></i></a>
                         </div>
