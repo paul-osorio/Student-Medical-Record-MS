@@ -1215,9 +1215,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
             <div class="filter_wrapper">
               <div class="sort flex-grow-1">
                 <span>Sort by</span>
-                <select name="filter" id="filter" style="width: 50%;">
+                <select name="filter" id="filter_nurse" style="width: 50%; border-radius: 3px; padding: 5px 5px; background: #f2f2f2; border: none; outline: none; height: 100%;">
                   <option value="">Select</option>
-                  <option name="filter" value="departments">Campus</option>
+                  <option value="Department">Department</option>
                   <!-- <option value="departments">Campus</option>
                   <option value="departments">Campus</option> -->
                 </select>
@@ -1756,7 +1756,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
             <h3 class="m-0">HOSPITAL</h3>
           </div>
           <div class="action_header">   
-             <input type="text" name="search" placeholder="&#xF002; Search Hospital" style="font-family:Poppins, FontAwesome">
+              <!-- <div class="search" style="width: 55%; border-radius: 30px; border: none; color: gray; background: white;"> -->
+                <input type="text" name="search" id="search_hospital" placeholder="&#xF002; Search Hospital" style="font-family:Poppins, FontAwesome">
+              <!-- </div>  -->
             <button class="custom_btn">
               <a href="#addHospitalModal" class="custom_btn" data-toggle="modal"><i class="fa fa-plus"></i>Add Hospital</a>
             </button>
