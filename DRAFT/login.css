@@ -49,7 +49,7 @@ form .input_wrapper span{
 	background: #b9b9b9;
 }
 input::placeholder {
-	color: #ffffff;
+	color: #b9b9b9;
 	opacity: 1; /* Firefox */
   }
   form .input{
@@ -61,7 +61,7 @@ input::placeholder {
 	align-items: center;
 	justify-content: center;
 	margin-right: 15px;
-	color: #ffffff;
+	color: #b9b9b9;
    }
 input {
 	display: block;
@@ -69,7 +69,7 @@ input {
 	outline: none;
 	background: none !important;
 	/* border-bottom: 1px solid #b9b9b9; */
-	color: #ffffff !important;
+	color: #b9b9b9 !important;
 	font-size: 17px;
 	font-weight: 400;
 	padding: 10px 0;
@@ -81,11 +81,11 @@ input {
 }
 input:-webkit-autofill {
     -webkit-box-shadow:0 0 0 50px white inset; /* Change the color to your own background color */
-    -webkit-text-fill-color: #afabab;
+    -webkit-text-fill-color: #999;
 }
 input:-webkit-autofill:focus {
     -webkit-box-shadow: /*your box-shadow*/0 0 0 50px white inset;
-    -webkit-text-fill-color: #afabab;
+    -webkit-text-fill-color: #999;
 }
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 

@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
 body {
-	background: #182039;
+	background: #5D8FD9;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -16,63 +16,36 @@ body {
 
 form {
 	width: 500px;
-	padding: 0px;
-	background: #1E2745;
-	
+	border: 2px solid #ccc;
+	padding: 30px;
+	background: #fff;
+	border-radius: 15px;
 }
-form h2{
-	color: #dddddd;
+
+h2 {
+	text-align: center;
+	margin-bottom: 20px;
+    margin-top: -5px;
 }
-form .header_login{
-	background: #13182C;
-	display: flex;
-	align-items: center;
-	padding: 0 20px;
-}
-form .header_login img{
-	height: 50px;
-	width: auto;
-	margin-right: 73px;
-}
-form .input_wrapper{
-	padding: 20px;
-}
-/* h2 {
-} */
 
 input {
 	display: block;
-	border: none;
-	outline: none;
-	border-bottom: 2px solid #b9b9b9;
+	border: 2px solid #ccc;
 	width: 100%;
 	padding: 5px;
 	margin: 5px auto;
+	border-radius: 5px;
+    margin-bottom: -10px;
     font-size: 13px;
-	background: none;
-	color: #ffffff;
+
     
 }
-input::placeholder {
-	color: #ffffff;
-	opacity: 1; /* Firefox */
-  }
 label {
 	color: black;
 	font-size: 15px;
 	/* padding: 10px; */
 }
-.button_wrapper{
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding-bottom: 25px;
-	padding-left: 20px;
-	padding-right: 20px;
-}
-.button_wrapper a{
-	color: rgb(203 203 255);	
-}
+
 button {
 	float: right;
 	background: #5D8FD9;
@@ -81,9 +54,6 @@ button {
 	border-radius: 5px;
 	margin-right: 10px;
 	border: none;
-}
-a{
-	color: rgb(203 203 255);
 }
 button:hover{
 	opacity: .7;

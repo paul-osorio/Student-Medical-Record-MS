@@ -73,14 +73,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
      // COUNT ALL STUDENTS
      $fetchStudents = mysqli_query($conn, "SELECT COUNT(*) as totalStud FROM `students`");
      $countStudents = mysqli_fetch_assoc($fetchStudents);
-     
-     // COUNT ALL DEPARTMENTS
-     $fetchDepartments = mysqli_query($conn, "SELECT COUNT(*) as totalDepts FROM `departments`");
-     $countDepartments = mysqli_fetch_assoc($fetchDepartments);
 
-     // COUNT ALL ENTRANCE LOGS
-     $fetchEntrance = mysqli_query($conn, "SELECT COUNT(*) as totalEnt FROM `entrance_log`");
-     $countEntrance = mysqli_fetch_assoc($fetchEntrance);
 
 ?>
 
@@ -239,21 +232,6 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
             </div>
           </li>
 
-          <li data-tab-target="#appointments" class="px-4 w-100 mb-1 nav-item tab">
-              
-              <i class="fa fa-calendar"></i>
-              <div
-                class="nav-link align-items-center"
-                data-bs-toggle="collapse"
-                data-bs-target="#home-collapse"
-                aria-expanded="true">
-
-                Appointments
-                
-              </div>
-
-          </li>
-
           <li data-tab-target="#reports" class="px-4 w-100 mb-1 nav-item tab">
               
               <i class="fa fa-book"></i>
@@ -301,7 +279,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
           <div class="web_info">
 
-          <div class="admin_info"><br>
+          <div class="admin_info"><br><br>
             <img src="./assets/<?=$admins['img']?>" alt=""/>
             <span><?=$admins['email']?></span>
             <span><?=$admins['fname']?>&nbsp<?=$admins['lname']?></span>
@@ -381,69 +359,48 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 <!--########################################################################################################################################################################-->
       
       <!-- DASHBOARD PAGE -->
-      <section id="dashboard" class="dashboard so_content so_active" data-tab-content>
+        <section id="dashboard" class="dashboard so_content so_active" data-tab-content>
           <div class="dashboard_header d-flex justify-content-between">
             <h3 class="m-0">ANALYTICS</h3>
           </div>
 
           <div class="card_container">
 
-            <div class="card" style="background-color: #E74C3C;">
-              <span class="name" style="background: #D42311;">
-                <i class="fa fa-users" aria-hidden="true"></i>  
-                ADMINS
-              </span>
+            <div class="card" style="background-color:#7BAD89;">
 
               <div class="card_content">
                 <span class="number"> <?=$countAdmins['totalAd']?> </span>
+                <span class="name">Admins</span>
+              </div>
+
+              <div class="icon">
+                <i class="fa solid fa-user" aria-hidden="true"></i>
               </div>
 
             </div>
 
-            <div class="card" style="background-color:#F3AF43;">
-              <span class="name" style="background:#E49F30;">
-                <i class="fa fa-user-md" aria-hidden="true"></i>
-                NURSES
-              </span>
+            <div class="card" style="background-color:#7B89AD;">
 
               <div class="card_content">
                 <span class="number"> <?=$countNurses['totalNur']?> </span>
+                <span class="name">Nurses</span>
               </div>
 
+              <div class="icon">
+                <i class="fa solid fa-user" aria-hidden="true"></i>
+              </div>
 
             </div>
-            <div class="card" style="background-color:#84BF46;">
-              <span class="name" style="background-color:#72AE32;">
-                <i class="fa fa-users" aria-hidden="true"></i>
-                STUDENTS
-              </span>
+
+            <div class="card" style="background-color:#AD7B7B;">
 
               <div class="card_content" >
                 <span class="number"> <?=$countStudents['totalStud']?> </span>
+                <span class="name">Students</span>
               </div>
 
-            </div>
-
-            <div class="card" style="background-color: #2C6AC8;">
-              <span class="name" style="background: #0C52BB;">
-                <i class="fa fa-hospital-o" aria-hidden="true"></i>  
-                DEPARTMENTS
-              </span>
-
-              <div class="card_content">
-                <span class="number"> <?=$countDepartments['totalDepts']?> </span>
-              </div>
-
-            </div>
-
-            <div class="card" style="background-color: #999999;">
-              <span class="name" style="background: #7C7C7C;">
-                <i class="fa fa-address-book" aria-hidden="true"></i>  
-                ENTRANCE LOGS
-              </span>
-
-              <div class="card_content">
-                <span class="number"> <?=$countEntrance['totalEnt']?> </span>
+              <div class="icon">
+                <i class="fa solid fa-user" aria-hidden="true"></i>
               </div>
 
             </div>
@@ -970,7 +927,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                           <div name="dept_name">
                             <label>Department</label>
                             <select name="dept_name" id="dept_name" class="form-control">
-                                <option value="">Select Department</option>
+                                <option value="">---Select Department---</option>
                                 <option value="BSIT Department">BSIT Department</option>
                                 <option value="BSIE Department">BSIE Department</option>
                                 <option value="BSENT Department">BSENT Department</option>
@@ -981,7 +938,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                           <div name="building_name">
                           <label>Building Name</label>
                             <select name="building_name" id="building_name" class="form-control">
-                                <option value="">Select Building Name</option>
+                                <option value="">---Select Building Name---</option>
                                 <option value="bautista">Bautista Building</option>
                                 <option name="techvoc">TechVoc Building</option>
                                 <option name="belmonte">Belmonte Building</option>
@@ -990,7 +947,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                           <div name="room_num">
                           <label>Room No.</label>
                             <select name="room_num" id="room_num" class="form-control">
-                                <option value="">Select Room No.</option>
+                                <option value="">---Select Room No.---</option>
                                 <option name="room1">IC301a</option>
                                 <option name="room2">IC302a</option>
                                 <option name="room3">IC304a</option>
@@ -1085,7 +1042,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                           <div name="dept_name">
                             <label>Department</label>
                             <select name="dept_name" id="dept_name" class="form-control">
-                                <option value="">Select Department</option>
+                                <option value="">---Select Department---</option>
                                 <option value="BSIT Department">BSIT Department</option>
                                 <option value="BSIE Department">BSIE Department</option>
                                 <option value="BSENT Department">BSENT Department</option>
@@ -1096,7 +1053,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                           <div name="building_name">
                           <label>Building Name</label>
                             <select name="building_name" id="building_name" class="form-control">
-                                <option value="">Select Building Name</option>
+                                <option value="">---Select Building Name---</option>
                                 <option value="bautista">Bautista Building</option>
                                 <option name="techvoc">TechVoc Building</option>
                                 <option name="belmonte">Belmonte Building</option>
@@ -1105,7 +1062,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                           <div name="room_num">
                           <label>Room No.</label>
                             <select name="room_num" id="room_num" class="form-control">
-                                <option value="">Select Room No.</option>
+                                <option value="">---Select Room No.---</option>
                                 <option name="room1">IC301a</option>
                                 <option name="room2">IC302a</option>
                                 <option name="room3">IC304a</option>
@@ -1217,40 +1174,13 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                 <span>Sort by</span>
                 <select name="filter" id="filter" style="width: 50%;">
                   <option value="">Select</option>
-                  <option name="filter" value="departments">Campus</option>
+                  <option value="departments">Campus</option>
                   <!-- <option value="departments">Campus</option>
                   <option value="departments">Campus</option> -->
                 </select>
 
               
               </div>
-
-
- <!-- old filter -->
-          <!-- <div class="filter_wrapper">
-            <div class="sort flex-grow-1">
-              <span>Sort by</span>
-                <select name="filter" id="filter_admin">
-                  <option value="lname">Surname</option>
-                  <option value="fname">Firstname</option>
-                </select>
-            </div>
-
-            <div class="r">
-              <div class="search">
-                <input type="text" placeholder="Search" id="search_admin"/>
-              </div>
-
-              <div class="grid">
-                <i class="fa fa-th-large" aria-hidden="true"></i>
-              </div>
-
-              <div class="bars">
-                <i class="fa fa-bars" aria-hidden="true"></i>
-              </div>
-            </div>
-          </div> -->
-
               <div>
                   <div class="search">
                     <input type="text" name="search" id="search_nurse" placeholder="&#xF002; Search Nurse" style="font-family:Arial, FontAwesome">
@@ -1785,9 +1715,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                       <td>
                           <!-- <a href="#viewAdminInfo" class="custom_btn" data-toggle="modal"><i class="fa fa-info-circle" aria-hidden="true" style="color: #5D8FD9;"></i></a> -->
 
-                          <a href="#editHospitalInfo" class="custom_btn edithosbtn" data-toggle="modal"><i class="fa fa-edit" aria-hidden="true" style="color: #3e64ff;"></i></a>
+                          <a href="#editHospitalInfo" class="custom_btn editbtn" data-toggle="modal"><i class="fa fa-edit" aria-hidden="true" style="color: #3e64ff;"></i></a>
 
-                          <a href="#delHospital" class="custom_btn deletehosbtn" data-toggle="modal"><i class="fa fa-trash" aria-hidden="true" style="color: #ED1C24;"></i></a>
+                          <a href="#delHospital" class="custom_btn deletebtn" data-toggle="modal"><i class="fa fa-trash" aria-hidden="true" style="color: #ED1C24;"></i></a>
                       </td>
                   </tr>
 
@@ -1872,63 +1802,52 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
 <!--########################################################################################################################################################################-->
 
-    <!-- EDIT DATA ADMIN MODAL AT ADMINS PAGE-->
-        <div class="modal fade" id="editHospitalInfo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                  <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel"> EDIT HOSPITAL DATA </h5>
+      <!-- EDIT DATA HOSPITAL MODAL AT HOSPITAL PAGE-->
 
-                      <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                      </button> -->
-                      
+      <div id="editHospitalInfo" class="modal fade">
+            <div class="modal-dialog">
+
+              <div class="modal-content">
+                <form method="post" action="adminDashboard.php">
+
+                  <div class="modal-header">						
+                    <h4 class="modal-title">EDIT HOSPITAL</h4>
                   </div>
 
-                  <form action="edit_hospital.php" method="POST">
+                  <div class="modal-body">	
 
-                      <div class="modal-body">
-                        
-                        <input type="hidden" name="update_id" id="update_id">
-                        
-                            <div class="form-group">
-                              <label>Hospital Name</label> 
-                              <input type="text" name="hospital" id="hospital" class="form-control" placeholder="Hospital Name">
-                            </div>	
+                      <div class="form-group">
+                        <label>Hospital Name</label> 
+                        <input type="text" class="form-control" name="hospital" value="Metro North Medical Center & Hospital" required>
+                      </div>	
 
-                            <div class="form-group">
-                              <label>Address</label> 
-                              <input type="text" name="hospital_add" id="hospital_add" class="form-control" placeholder="Address">
-                            </div>		
+                      <div class="form-group">
+                        <label>Address</label> 
+                        <input type="text" class="form-control" name="hospital_add" value="1001 Mindanao Avenue, Quezon City, 1106 Metro Manila" required>
+                      </div>		
 
-                            <div class="form-group">
-                              <label> Email Address </label>
-                              <input type="text" name="email" id="email" class="form-control" placeholder="Email Address">
-                            </div>
-
-                            <div class="form-group">
-                              <label>Contact Number</label>
-                              <input type="text" name="contact_num" id="contact_num" class="form-control" placeholder="Contact Number">
-                            </div>
-
-                     </div>
-
-                      <div class="modal-footer">
-
-                          <input type="button" class="btn btn-danger" data-dismiss="modal" value="Cancel">
-
-                          <input type="submit" class="btn btn-success" name="editHospi" value="Update Data">
-
-                          <!-- <input type="button" class="btn btn-danger" data-dismiss="modal" value="Cancel">
-                          <input type="button" class="btn btn-success" data-dismiss="modal" id="addsuccess_hospital" name="editHospi" value="Save">
-                          -->
+                      <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="text" class="form-control" name="email" value="spcustorel@mnmch.com" required>
                       </div>
-                  </form>
 
+                      <div class="form-group">
+                        <label>Contact No.</label>
+                        <input type="text" class="form-control" name="contact_num" value="(02)8426-7000" required>
+                      </div>	
+          
+                  </div>
+                  
+                  <div class="modal-footer">
+                    <input type="button" class="btn btn-danger" data-dismiss="modal" value="Cancel">
+                    <input type="button" class="btn btn-success" data-dismiss="modal" id="addsuccess_hospital" name="addAdmin" value="Save">
+                  </div>
+
+                </form>
               </div>
-            </div>
-        </div>
 
+            </div>
+          </div>          
 
 <!--#################################################################################################################################################################################################################################-->
         
@@ -2033,7 +1952,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
             <select name="filter" id="filter"> 
               <option value="">Select</option> 
               <option name="filter" value="Date Manufactured">Date Manufactured</option>
-              <option name="filter" value="Date Expiration">Expiration Date</option>
+              <option name="filter" value="Date Expiration">Date Expiration</option>
               <option name="filter" value="Quantity">Quantity</option>
             </select>
           </div>
@@ -2593,36 +2512,6 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                 $('#lname').val(data[3]);
                 $('#contact_num').val(data[5]);
                 $('#img').val(data[6]);
-            });
-        });
-
-    </script>
-
-<!--#################################################################################################################################################################################################################################-->
-
-  <!-- EDIT HOSPITAL INFO JS -->
-  <script>
-        $(document).ready(function () {
-
-            $('.edithosbtn').on('click', function () {
-
-                $('#editHospitalInfo').modal('show');
-
-                $tr = $(this).closest('tr');
-
-                var data = $tr.children("td").map(function () {
-                    return $(this).text();
-                }).get();
-
-                console.log(data);
-
-
-                $('#update_id').val(data[0]);
-                $('#hospital').val(data[1]);
-                $('#hospital_add').val(data[2]);
-                $('#email').val(data[3]);
-                $('#contact_num').val(data[4]);
-                
             });
         });
 
