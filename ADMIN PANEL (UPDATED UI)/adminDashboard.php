@@ -109,6 +109,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
     <link rel="stylesheet" href="./css/messagetab.css"/>
     <link rel="stylesheet" href="./css/reportchart.css?v=<?php echo time(); ?>"/>
     <link rel="stylesheet" href="./css/archivesTab.css"/>
+    <link rel="stylesheet" href="./css/entrancelog.css"/>
 
     <link rel="stylesheet" href="./css/Main.css" />
     <link rel="stylesheet" href="./css/adminPage.css" />
@@ -293,7 +294,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                 data-bs-target="#home-collapse"
                 aria-expanded="true">
 
-                Entrance Logs
+                Entrance Log
                 
             </div>
             
@@ -379,107 +380,165 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
       <div class="content_wrapper">
 
 <!--########################################################################################################################################################################-->
-      
+
+
       <!-- DASHBOARD PAGE -->
-      <section id="dashboard" class="dashboard so_content so_active" data-tab-content>
+        <section id="dashboard" class="dashboard so_content so_active" data-tab-content>
           <div class="dashboard_header d-flex justify-content-between">
             <h3 class="m-0">ANALYTICS</h3>
           </div>
+          <div class="dashboard_container">
+            <div class="card_container">
 
-          <div class="card_container">
+              <div class="card" style="background-color:#E74C3C;">
 
-            <div class="card" style="background-color: #E74C3C;">
-              <span class="name" style="background: #D42311;">
-                <i class="fa fa-users" aria-hidden="true"></i>  
-                ADMINS
-              </span>
+                <div class="card_content">
+                  <i class="fa fa-users" aria-hidden="true"></i>
+                  <span class="name">ADMINS</span>
+                </div>
 
-              <div class="card_content">
-                <span class="number"> <?=$countAdmins['totalAd']?> </span>
+                <div class="count">
+                  <span class="number"> <?=$countAdmins['totalAd']?> </span>
+                </div>
+
               </div>
+
+              <div class="card" style="background-color:#F3AF43;">
+
+                <div class="card_content">
+                  <i class="fa fa-user-md" aria-hidden="true"></i>
+                  <span class="name">NURSES</span>
+                </div>
+
+                <div class="count">
+                  <span class="number"> <?=$countNurses['totalNur']?> </span>
+                </div>
+
+              </div>
+
+              <div class="card" style="background-color:#84BF46;">
+
+                  <div class="card_content">
+                    <i class="fa fa-users" aria-hidden="true"></i>
+                    <span class="name">STUDENTS</span>
+                  </div>
+
+                  <div class="count">
+                    <span class="number"> <?=$countStudents['totalStud']?> </span>
+                  </div>
+
+              </div>
+                
+              <div class="card" style="background-color:#2C6AC8;">
+
+                <div class="card_content">
+                  <i class="fa fa-hospital-o" aria-hidden="true"></i>
+                  <span class="name">DEPARTMENTS</span>
+                </div>
+
+                <div class="count">
+                  <span class="number"> <?=$countDepartments['totalDepts']?> </span>
+                </div>
+
+                </div>
+
+                <div class="card" style="background-color:#999999;">
+
+                  <div class="card_content">
+                    <i class="fa fa-address-book" aria-hidden="true"></i>
+                    <span class="name">ENTRANCE LOG</span>
+                  </div>
+
+                  <div class="count">
+                    <span class="number"> <?=$countEntrance['totalEnt']?> </span>
+                  </div>
+
+                </div>
+             
 
             </div>
 
-            <div class="card" style="background-color:#F3AF43;">
-              <span class="name" style="background:#E49F30;">
-                <i class="fa fa-user-md" aria-hidden="true"></i>
-                NURSES
-              </span>
-
-              <div class="card_content">
-                <span class="number"> <?=$countNurses['totalNur']?> </span>
-              </div>
-
-
-            </div>
-            <div class="card" style="background-color:#84BF46;">
-              <span class="name" style="background-color:#72AE32;">
-                <i class="fa fa-users" aria-hidden="true"></i>
-                STUDENTS
-              </span>
-
-              <div class="card_content" >
-                <span class="number"> <?=$countStudents['totalStud']?> </span>
-              </div>
-
-            </div>
-
-            <div class="card" style="background-color: #2C6AC8;">
-              <span class="name" style="background: #0C52BB;">
-                <i class="fa fa-hospital-o" aria-hidden="true"></i>  
-                DEPARTMENTS
-              </span>
-
-              <div class="card_content">
-                <span class="number"> <?=$countDepartments['totalDepts']?> </span>
-              </div>
-
-            </div>
-
-            <div class="card" style="background-color: #999999;">
-              <span class="name" style="background: #7C7C7C;">
-                <i class="fa fa-address-book" aria-hidden="true"></i>  
-                ENTRANCE LOGS
-              </span>
-
-              <div class="card_content">
-                <span class="number"> <?=$countEntrance['totalEnt']?> </span>
-              </div>
-
-            </div>
-
-          </div>
 
 <!--########################################################################################################################################################################-->
 
-        <!-- SUMMARY REPORT AT DASHBOARD PAGE -->
+       
+          <!-- SUMMARY REPORT AT DASHBOARD PAGE -->
 
           <div class="chart_container">
-            <div class="card_content">
-              <div class="chart1">
-                <span>NUMBER OF PATIENTS</span>
-                  <select name="filter" id="filter">
-                    <option value="Monthly">Monthly</option>
-                    <option value="Yearly">Yearly</option>
-                  </select>
-                <canvas id="myChart" style="width:80%; max-width:550px; height: 130px; padding-top: 15px;"></canvas>
-              </div>
-            </div>
 
-
-            <!-- <div class="card_content">
-              <div class="chart2">
-                  <select name="filter" id="filter">
-                    <option value="Year Level">Year Level</option>
-                    <option value="1st Year">1st Year</option>
-                    <option value="2nd Year">2nd Year</option>
-                    <option value="3rd Year">3rd Year</option>
-                    <option value="4th Year">4th Year</option>
-                  </select>
-                  <canvas id="myChart2" style="width:70%; max-width:500px; height: 110px; padding-left: 5px; padding-top: 15px"></canvas>
+              <div class="card_content">
+                <div class="chart_header">
+                  <span>STUDENT COVID-19 CASES</span>
+                  <div class="chart_filter">
+                    <select name="filter" id="filter">
+                      <option value="Campus">Campus</option>
+                    </select>
+                    <select name="filter" id="filter">
+                      <option value="Monthly">Monthly</option>
+                      <option value="Yearly">Yearly</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="chart1">
+                  <canvas id="myChart" class="chart"></canvas>
+                </div>
               </div>
-            </div>
-          </div> -->
+
+              <div class="card_content">
+                <div class="chart_header">
+                  <span>Entrance Logs</span>
+                </div>
+                <div class="chart1" style="display:flex; justify-content:center; align-items:center;">
+                  <canvas id="myChart2" class="circle_chart"></canvas>
+                </div>
+              </div>
+
+              </div>
+
+              <div class="chart_container">
+
+              <div class="card_content">
+                <div class="chart_header">
+                  <span>Appointments</span>
+                  <div class="chart_filter">
+                    <select name="filter" id="filter">
+                      <option value="Medical">Medical</option>
+                    </select>
+                    <select name="filter" id="filter">
+                      <option value="Monthly">Monthly</option>
+                      <option value="Yearly">Yearly</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="chart1">
+                  <canvas id="myChart3" class="chart"></canvas>
+                </div>
+              </div>
+
+              <div class="card_content table_card">
+                <div class="chart_header">
+                  <span>Active Nurses Today</span>
+                </div>
+                <table>
+                  <tr>
+                    <th>Image</th>
+                    <th>Emp ID</th>
+                    <th>Fullname</th>
+                    <th>Campus</th>
+                  </tr>
+                  <?php for($i=0; $i<10; $i++){ ?>
+                  <tr>
+                    <td><img src="./assets/nurse.jpg"></td>
+                    <td>23-0003</td>
+                    <td>Juan Two T. Dela Cruz</td>
+                    <td>San Francisco</td>
+                  </tr>
+                  <?php } ?>
+                </table>
+              </div>
+              </div>
+
+              </div>
 
 <!--########################################################################################################################################################################-->
           
@@ -2359,24 +2418,24 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
 <!--#################################################################################################################################################################################################################################-->
 
-      <!-- ARCHIVE PAGE -->
-      <section id="archives" class="archives so_content" data-tab-content>  
+       <!-- ARCHIVE PAGE -->
+       <section id="archives" class="archives so_content" data-tab-content>  
         <div class="archives_header d-flex justify-content-between">
-          <h3 class="m-0" style="color: white;">ARCHIVE</h3>
+          <h3 class="m-0">ARCHIVE</h3>
         </div>
-        <div class="container" style="color: white;">
+        <div class="container">
           <div class="filter_wrapper">
             <div class="sort flex-grow-1">
               <span>Sort by</span>
               <select name="filter" id="filter">
-                <option value="">Select</option>
-                <option name="filter" value="Type of User">Type of User</option>
-                <option name="filter" value="Date of Archive">Date of Archive</option>
+                <option value="">All</option>
+                <option value="Type of User">Type of User</option>
+                <option value="Date of Archive">Date of Archive</option>
               </select>
             </div>
             <div class="r">
               <div class="search">
-              <input type="text" name="search" placeholder="&#xF002; Search Archive" style="font-family:Poppins, FontAwesome">
+                <input type="text" placeholder="&#xF002; Search Patients" class="searchicon" style="font-family:Poppins, FontAwesome">
               </div>
               <div class="scan">
                 <button>Scan QR</button>
@@ -2384,16 +2443,26 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
             </div>
           </div>
 
-          <h3 class="hh">Recent</h3>  
           <div class="archives-content table-responsive">
             <table class="archives-table">
                 <tr>
-                  <!--   -->
-                  <th>Unique ID</th>
-                  <th>Type of User</th>
+                  <th>Image</th>
+                  <th>ID No.</th>
+                  <th>Name</th>
+                  <th>Type</th>
                   <th>Date of Archive</th>
-                  <!-- <th>Reason</th>
-                  <th>Date</th> -->
+                  <th>Time</th>
+                  <th>Action</th>
+                </tr>
+
+                <tr class="archives-info">
+                  <td><img src="./assets/biogesic.jpg"></td>
+                  <td>15-2323</td>
+                  <td>Analos, Miguel Santos</td>
+                  <td>Student</td>
+                  <td>Graduated</td>
+                  <td>July 29, 2019</td>
+                  <td><i class="fa fa-rotate-right"></i></td>
                 </tr>
 
                 <tr class="archives-info">
@@ -2401,8 +2470,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                   <td>15-2323</td>
                   <td>Analos, Miguel Santos</td>
                   <td>Student</td>
-                  <td>Graudated</td>
-                  <td>July 29,2019</td>
+                  <td>Graduated</td>
+                  <td>July 29, 2019</td>
+                  <td><i class="fa fa-rotate-right"></i></td>
                 </tr>
 
                 <tr class="archives-info">
@@ -2410,8 +2480,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                   <td>15-2323</td>
                   <td>Analos, Miguel Santos</td>
                   <td>Student</td>
-                  <td>Graudated</td>
-                  <td>July 29,2019</td>
+                  <td>Graduated</td>
+                  <td>July 29, 2019</td>
+                  <td><i class="fa fa-rotate-right"></i></td>
                 </tr>
 
                 <tr class="archives-info">
@@ -2419,8 +2490,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                   <td>15-2323</td>
                   <td>Analos, Miguel Santos</td>
                   <td>Student</td>
-                  <td>Graudated</td>
-                  <td>July 29,2019</td>
+                  <td>Graduated</td>
+                  <td>July 29, 2019</td>
+                  <td><i class="fa fa-rotate-right"></i></td>
                 </tr>
 
                 <tr class="archives-info">
@@ -2428,8 +2500,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                   <td>15-2323</td>
                   <td>Analos, Miguel Santos</td>
                   <td>Student</td>
-                  <td>Graudated</td>
-                  <td>July 29,2019</td>
+                  <td>Graduated</td>
+                  <td>July 29, 2019</td>
+                  <td><i class="fa fa-rotate-right"></i></td>
                 </tr>
 
                 <tr class="archives-info">
@@ -2437,8 +2510,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                   <td>15-2323</td>
                   <td>Analos, Miguel Santos</td>
                   <td>Student</td>
-                  <td>Graudated</td>
-                  <td>July 29,2019</td>
+                  <td>Graduated</td>
+                  <td>July 29, 2019</td>
+                  <td><i class="fa fa-rotate-right"></i></td>
                 </tr>
 
                 <tr class="archives-info">
@@ -2446,8 +2520,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                   <td>15-2323</td>
                   <td>Analos, Miguel Santos</td>
                   <td>Student</td>
-                  <td>Graudated</td>
-                  <td>July 29,2019</td>
+                  <td>Graduated</td>
+                  <td>July 29, 2019</td>
+                  <td><i class="fa fa-rotate-right"></i></td>
                 </tr>
 
                 <tr class="archives-info">
@@ -2455,8 +2530,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                   <td>15-2323</td>
                   <td>Analos, Miguel Santos</td>
                   <td>Student</td>
-                  <td>Graudated</td>
-                  <td>July 29,2019</td>
+                  <td>Graduated</td>
+                  <td>July 29, 2019</td>
+                  <td><i class="fa fa-rotate-right"></i></td>
                 </tr>
                 
                 <tr class="archives-info">
@@ -2464,8 +2540,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                   <td>15-2323</td>
                   <td>Analos, Miguel Santos</td>
                   <td>Student</td>
-                  <td>Graudated</td>
-                  <td>July 29,2019</td>
+                  <td>Graduated</td>
+                  <td>July 29, 2019</td>
+                  <td><i class="fa fa-rotate-right"></i></td>
                 </tr>
 
                 <tr class="archives-info">
@@ -2473,8 +2550,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                   <td>15-2323</td>
                   <td>Analos, Miguel Santos</td>
                   <td>Student</td>
-                  <td>Graudated</td>
-                  <td>July 29,2019</td>
+                  <td>Graduated</td>
+                  <td>July 29, 2019</td>
+                  <td><i class="fa fa-rotate-right"></i></td>
                 </tr>
 
                 <tr class="archives-info">
@@ -2482,8 +2560,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                   <td>15-2323</td>
                   <td>Analos, Miguel Santos</td>
                   <td>Student</td>
-                  <td>Graudated</td>
-                  <td>July 29,2019</td>
+                  <td>Graduated</td>
+                  <td>July 29, 2019</td>
+                  <td><i class="fa fa-rotate-right"></i></td>
                 </tr>
             </table>
           </div>
@@ -2492,21 +2571,152 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 <!-- E N D  A R C H I V E -->
 
 
-<!-- #################################################################################################################################################################################################################################-->
+<!--#################################################################################################################################################################################################################################-->
 
       <!-- ENTRANCE LOG PAGE -->
 
-
-      <section id="entrancelog" class="entrancelog so_content" data-tab-content>
-          <div class="entrancelog_header d-flex justify-content-between">
-            <h3 class="m-0">ENTRANCE LOG</h3>
-              <!-- <button class="custom_btn">
-						    <a href="#addMedicineModal" class="custom_btn" data-toggle="modal"><i class="fa fa-user-md"></i>Add Medicine</a>
-              </button> -->
+      <section id="entrancelog" class="entrancelog so_content" data-tab-content>  
+        <div class="entrancelog_header d-flex justify-content-between">
+          <h3 class="m-0">ENTRANCE LOG</h3>
+        </div>
+        <div class="container">
+        <div class="filter_wrapper">
+            <div class="sort flex-grow-1">
+              <div class="sortspan">
+              <span style="padding-right: 5px">Sort by</span>
+              <select name="filter" id="filter">
+                <option value="">All</option>
+                <option value="Time">Time</option>
+                <option value="Type of User">Type of User</option>
+              </select>
+              </div>
+            </div>
+            <div class="dateselect">
+              <div class="date">
+              <input type="date" placeholder="Select a date" onchange="this.className=(this.value!=''?'has-value':'')">
+              </div>
+            </div>
           </div>
-
-        
+          <div class="filter_wrapper">
+            <div class="sort flex-grow-1">
+            <div class="sortspan">
+              <div class="span1">
+              <span class="show">Showing 25 out of 1000</span>
+              <span><i class="fa fa-print"></i>Print</span>
+              <span><i class="fa fa-download" aria-hidden="true"></i>Download</span>
+              </div>
+            </div>
+            </div>
+          </div>
+          
+          <div class="col-xs-8 col-xs-offset-2 well">
+            <table class="table table-scroll table-striped">
+              <thead>
+                  <tr>
+                      <th>User ID</th>
+                      <th>Image</th>
+                      <th>Status</th>
+                      <th>Name</th>
+                      <th>Section</th>
+                      <th>Yr Level</th>
+                      <th>Purpose</th>
+                      <th>Contact No.</th>
+                      <th>Time In</th>
+                      <th>Time Out</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td>15-2323</td>
+                      <td><img src="./assets/biogesic.jpg"></td>
+                      <td class="status">Verified</td>
+                      <td>Analos, Miguel Santos</td>
+                      <td>SBIT-4D</td>
+                      <td>4th</td>
+                      <td>-</td>
+                      <td>09123456789</td>
+                      <td>10:00am</td>
+                      <td>1:00pm</td>
+                  </tr>
+                  <tr>
+                      <td>15-2323</td>
+                      <td><img src="./assets/biogesic.jpg"></td>
+                      <td class="status">Verified</td>
+                      <td>Analos, Miguel Santos</td>
+                      <td>SBIT-4D</td>
+                      <td>4th</td>
+                      <td>-</td>
+                      <td>09123456789</td>
+                      <td>10:00am</td>
+                      <td>1:00pm</td>
+                  </tr>
+                  <tr>
+                      <td>15-2323</td>
+                      <td><img src="./assets/biogesic.jpg"></td>
+                      <td class="status">Visitor</td>
+                      <td>Analos, Miguel Santos</td>
+                      <td>SBIT-4D</td>
+                      <td>4th</td>
+                      <td>-</td>
+                      <td>09123456789</td>
+                      <td>10:00am</td>
+                      <td>1:00pm</td>
+                  </tr>
+                  <tr>
+                      <td>15-2323</td>
+                      <td><img src="./assets/biogesic.jpg"></td>
+                      <td class="status">Verified</td>
+                      <td>Analos, Miguel Santos</td>
+                      <td>SBIT-4D</td>
+                      <td>4th</td>
+                      <td>-</td>
+                      <td>09123456789</td>
+                      <td>10:00am</td>
+                      <td>1:00pm</td>
+                  </tr>
+                  <tr>
+                      <td>15-2323</td>
+                      <td><img src="./assets/biogesic.jpg"></td>
+                      <td class="status">Unverified</td>
+                      <td>Analos, Miguel Santos</td>
+                      <td>SBIT-4D</td>
+                      <td>4th</td>
+                      <td>-</td>
+                      <td>09123456789</td>
+                      <td>10:00am</td>
+                      <td>1:00pm</td>
+                  </tr>
+                  <tr>
+                      <td>15-2323</td>
+                      <td><img src="./assets/biogesic.jpg"></td>
+                      <td class="status">Invalid</td>
+                      <td>Analos, Miguel Santos</td>
+                      <td>SBIT-4D</td>
+                      <td>4th</td>
+                      <td>-</td>
+                      <td>09123456789</td>
+                      <td>10:00am</td>
+                      <td>1:00pm</td>
+                  </tr>
+                  <tr>
+                      <td>15-2323</td>
+                      <td><img src="./assets/biogesic.jpg"></td>
+                      <td class="status">Visitor</td>
+                      <td>Analos, Miguel Santos</td>
+                      <td>SBIT-4D</td>
+                      <td>4th</td>
+                      <td>-</td>
+                      <td>09123456789</td>
+                      <td>10:00am</td>
+                      <td>1:00pm</td>
+                  </tr>
+            </tbody>
+          </table>
+        </div> 
       </section>
+
+     
+<!-- E N D  E N T R A N C E L O G -->
 
 <!--#################################################################################################################################################################################################################################-->
 
@@ -2517,6 +2727,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
     <script src="./js/status_color.js"></script>
     <script src="./js/line_graph.js"></script>
     <script src="./js/circle_graph.js"></script>
+    <script src="./js/bar_graph.js"></script>
 
     <!-- bootstrap js -->
     <script src="./js/jquery.min.js"></script>

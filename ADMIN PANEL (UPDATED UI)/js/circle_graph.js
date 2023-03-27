@@ -1,10 +1,10 @@
-var xValues = ["1st Year", "2nd Year", "3rd Year", "4th Year"];
+var xValues = ["Verified", "Unverified", "Visitor", "Invalid"];
 var yValues = [55, 49, 44, 24];
 var barColors = [
-  "#FF4646",
   "#2D7538",
-  "#5180C7",
   "#f5c71a",
+  "#5180C7",
+  "#FF4646",
 ];
 
 new Chart("myChart2", {
@@ -17,10 +17,13 @@ new Chart("myChart2", {
     }]
   },
    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      aspectRatio: 2,
       legend: {
         display: true,
         position: 'left',
-        maxWidth: 70,
+        maxWidth: 60,
       }
    }
 });

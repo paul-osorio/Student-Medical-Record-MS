@@ -1,258 +1,139 @@
-/*header*/
-#dashboard .dashboard_header{
-    margin-bottom: 10px;
+#dashboard .dashboard_container {
+  display: grid;
+  grid-template-rows: 20% 37% 37%;
+  gap: 20px;
+  height: 85vh;
 }
-#dashboard .dashboard_header h3{
-    font-size: 24px;
-    color: #fff !important;
+
+/*header*/
+#dashboard .dashboard_header {
+  margin-bottom: 10px;
+}
+#dashboard .dashboard_header h3 {
+  font-size: 24px;
+  color: #fff !important;
 }
 
 /*analytics layout*/
-#dashboard .card_container{
-    display: flex;
-    flex-wrap: wrap;
-    padding-inline-start: 0;
-    grid-gap: 15px;
+#dashboard .card_container {
+  display: grid;
+  grid-template-columns: 19% 19% 19% 19% 19%;
+  gap: 13px;
 }
 
-#dashboard .card_container .card{
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+#dashboard .card {
+  display: grid;
+  grid-template-rows: 30% auto;
+  border-radius: 10px;
+  overflow: hidden;
+  color: white;
 }
 
-#dashboard .card_container .card {
-	color: white;
-    width: 200px;
-    margin-bottom:6px;
+#dashboard .card .card_content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.3rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  gap: 10px;
 }
 
-#dashboard .card_container .card .card_content{
-    /* padding: 0px 0px 10px 20px; */
-    display: grid;
-    padding: 15px 0;
+#dashboard .card .count {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 4rem;
+  font-weight: 600;
 }
 
-#dashboard .card_container .card .card_content .number{
-    font-weight: bold;
-    font-size: 28px;
-}
-
-#dashboard .card_container .card .name{
-    font-weight: 400;
-    padding: 10px;
-    width:100%;
-    /* background-color: rgb(255, 40, 40); */
-    text-align: center;
-}
-
-#dashboard .card_container .card .icon{
-   display: fixed;
-   font-size: 60px;
-   position: absolute;
-   right: 30px;
-   top: -10px;
-} 
-
+/*charts layout*/
 #dashboard .chart_container {
-	display: flex;
-    flex-wrap: wrap;
-    padding-inline-start: 0;
-    grid-gap: 15px;
-    padding-bottom: 12px;
+  display: grid;
+  grid-template-columns: 74% auto;
+  gap: 20px;
+}
+
+#dashboard .chart {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+#dashboard .circle_chart {
+  width: 100% !important;
+  height: 100% !important;
 }
 
 #dashboard .chart_container .card_content {
-	background-color: #fff;
-	border: 1px solid #999;
-	box-shadow: 2px 2px #999;
-	padding: 20px 30px 10px 30px;
-	margin-top: 10px; 
+  background-color: white;
+  border-radius: 10px;
 }
 
-#dashboard .chart_container .card_content .chart1 {
-   width:520px;
-    /* width: 100%; */
-	height: 200px;
-
-}
-/* #dashboard .chart_container .card_content .chart1 canvas{
-    width:100%; max-width:550px; height: 100%; padding-top: 15px;
-} */
-
-#dashboard .chart_container .card_content #filter {
-    width: 100px;
-    float: right;
-    border-radius: 3px;
-    padding: 5px 5px;
-    background: #F2F2F2;
-    border: none;
-    outline: none;
-    height: 30px;
+#dashboard .chart_container .chart_header {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  font-weight: 700;
+  font-size: 1.3rem;
 }
 
-#dashboard .chart_container .card_content .chart1 span {
-	font-size: 15px;
-	font-weight: bold;
-	padding: 7px 0 5px 0;
+#dashboard .chart_container .chart_header select {
+  background-color: lightgray;
+  border: none;
+  border-radius: 5px;
 }
 
-#dashboard .chart_container .card_content .chart2 {
-    width: 270px;
-	height: 200px;
+#dashboard .chart_container #myChart {
+  width: 50%;
 }
 
-
-/*Nurses Today*/
-#dashboard .nurses_details .title {
-	font-weight: bold;
+/* table */
+#dashboard .table_card {
+  overflow: auto;
 }
 
-#dashboard .nurses_details span {
-	font-size: 15px;
-	padding: 10px 0 5px 5px;
+#dashboard .chart_container table {
+  height: 100%;
+  padding-bottom: 10px;
 }
 
-#dashboard .nurses_details table {
-	width: 100%;
-    border-spacing: 10px;
-    border-collapse: separate;
+#dashboard .chart_container table th {
+  font-size: 0.9rem;
+  font-weight: 600;
 }
 
-#dashboard .nurses_details table .container {
-	border: solid transparent;
-    box-shadow: inset 0 0 0 1px #999, 2px 2px #999;
-    padding: 5px;
-    cursor: pointer;
-    transition: 0.3s ease;
+#dashboard .chart_container table td {
+  font-size: 0.7rem;
 }
 
-#dashboard .nurses_details table .container:hover {
-    box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.50em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em, inset 0 0 0 2px #999, 2px 2px #999;
+#dashboard .chart_container table td img {
+  height: 50px;
+  width: 50px;
 }
 
-#dashboard .nurses_details table td {
-    padding: 5px;
+@media screen and (max-width: 1280px) {
+  #dashboard .dashboard_container {
+    display: grid;
+    grid-template-rows: 20% 35% 35%;
+    gap: 15px;
+    height: 80vh;
+  }
+
+  /*analytics layout*/
+  #dashboard .card_container {
+    grid-template-columns: 18.8% 18.8% 18.8% 18.8% 18.8%;
+    gap: 15px;
+  }
+  #dashboard .card .card_content {
+    font-size: 1rem;
+  }
+
+  /*charts layout*/
+  #dashboard .chart_container {
+    grid-template-columns: 70% auto;
+    gap: 15px;
+  }
 }
 
-#dashboard .nurses_details table .container .number{
-	background-color: #5180c7;
-	color: #fff;
-	width: 8%;
-	font-weight: bold;
-}
-
-#dashboard .nurses_details table .container .name{
-	width: 25%;
-	padding-left: 15px;
-	font-weight: 500;
-}
-
-#dashboard .nurses_details table .container img {
-	width: 25px;
-	height: 25px;
-	border-radius: 50%;
-	border: 2px solid #5180c7;
-}
-
-#dashboard .nurses_details table .container .class{
-	float: right;
-}
-
-#dashboard .nurses_details table .container .class span{
-	font-weight: 500;
-	color: #2D7538;
-	padding-right: 5px;
-    cursor: pointer;
-    transition: 0.3s ease;
-}
-
-#dashboard .nurses_details table .container .class span:hover{
-    font-style: underline;
-}
-
-#dashboard .nurses_details table .container i{
-    color: #2D7538;
-    padding-right: 15px;
-    font-size: 20px;
-}
-
-@media screen and (max-width: 788px){
-    /* section padding  */
-    .content_wrapper{
-        padding: 20px;
-    }
-
-    #dashboard .card_container .card {
-        width: 143px;
-        height: 90px;
-        border-radius: 8px;
-        margin-bottom:6px;
-    }
-
-    #dashboard .card_container .card .card_content{
-        padding: 3px 0px 0px 10px;
-    }
-
-    #dashboard .card_container .card .card_content .number{
-        font-size: 25px;
-    }
-
-    #dashboard .card_container .card .card_content .name{
-        font-size: 13px;
-    }
-
-    #dashboard .card_container .card .icon{
-       font-size: 55px;
-       right: 22px;
-       top: 0px;
-    } 
-}
-@media screen and (max-width: 978px){
-    #admins .admins_table_details {
-        max-width: 1200px;
-        width: 100%;
-    }  
-}
-@media screen and (max-width: 646px){
-    
-    #dashboard .chart_container {
-        display: flex;
-        flex-direction: column;
-        flex-wrap: nowrap;
-        padding-inline-start: 0;
-        grid-gap: 15px;
-        padding-bottom: 12px;
-    }
-    #dashboard .chart_container .card_content {
-        background-color: #fff;
-        border: 1px solid #999;
-        box-shadow: 2px 2px #999;
-        padding: 20px 20px 10px 20px;
-        margin-top: 10px;
-    }
-    #dashboard .chart_container .card_content .chart1 {
-        width: 100% !important;
-        height: 100%;
-        display: grid;
-    
-    }
-    #dashboard .chart_container .card_content .chart1 canvas{
-        width:100%; max-width:550px; height: 150px; padding-top: 15px;
-    }    
-
-    #dashboard .nurses_details table .container {
-        display: grid;
-    }
-    #dashboard .nurses_details table .container .number {
-        width: 100%;
-    }
-    #dashboard .nurses_details table .container .name {
-        width: 100%;
-        display: flex;
-        align-items: center;
-    }
-
-}

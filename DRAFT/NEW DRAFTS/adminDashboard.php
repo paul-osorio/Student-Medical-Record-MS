@@ -376,7 +376,79 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
       </section>
 <!--########################################################################################################################################################################-->
-      
+            
+      <!-- DASHBOARD PAGE -->
+      <!-- <section id="dashboard" class="dashboard so_content so_active" data-tab-content>
+          <div class="dashboard_header d-flex justify-content-between">
+            <h3 class="m-0">ANALYTICS</h3>
+          </div>
+          <div class="dashboard_container">
+            <div class="card_container">
+
+                <div class="card" style="background-color: #E74C3C;">
+                  <span class="name" style="background: #D42311;">
+                    <i class="fa fa-users" aria-hidden="true"></i>  
+                    ADMINS
+                  </span>
+
+                  <div class="card_content">
+                    <span class="number"> <?=$countAdmins['totalAd']?> </span>
+                  </div>
+
+                </div>
+
+                <div class="card" style="background-color:#F3AF43;">
+                  <span class="name" style="background:#E49F30;">
+                    <i class="fa fa-user-md" aria-hidden="true"></i>
+                    NURSES
+                  </span>
+
+                  <div class="card_content">
+                    <span class="number"> <?=$countNurses['totalNur']?> </span>
+                  </div>
+
+
+                </div>
+                <div class="card" style="background-color:#84BF46;">
+                  <span class="name" style="background-color:#72AE32;">
+                    <i class="fa fa-users" aria-hidden="true"></i>
+                    STUDENTS
+                  </span>
+
+                  <div class="card_content" >
+                    <span class="number"> <?=$countStudents['totalStud']?> </span>
+                  </div>
+
+                </div>
+
+                <div class="card" style="background-color: #2C6AC8;">
+                  <span class="name" style="background: #0C52BB;">
+                    <i class="fa fa-hospital-o" aria-hidden="true"></i>  
+                    DEPARTMENTS
+                  </span>
+
+                  <div class="card_content">
+                    <span class="number"> <?=$countDepartments['totalDepts']?> </span>
+                  </div>
+
+                </div>
+
+                <div class="card" style="background-color: #999999;">
+                  <span class="name" style="background: #7C7C7C;">
+                    <i class="fa fa-address-book" aria-hidden="true"></i>  
+                    ENTRANCE LOGS
+                  </span>
+
+                  <div class="card_content">
+                    <span class="number"> <?=$countEntrance['totalEnt']?> </span>
+                  </div>
+
+                </div>
+
+              </div>
+          </div> -->
+
+          
       <!-- DASHBOARD PAGE -->
         <section id="dashboard" class="dashboard so_content so_active" data-tab-content>
           <div class="dashboard_header d-flex justify-content-between">
