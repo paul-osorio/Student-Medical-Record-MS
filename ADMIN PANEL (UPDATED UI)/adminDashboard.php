@@ -517,18 +517,18 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
               <div class="card_content table_card">
                 <div class="chart_header">
-                  <span>Active Nurses Today</span>
+                  <span style="font-size: 18px;">Active Nurses Today</span>
                 </div>
                 <table>
                   <tr>
-                    <th>Image</th>
+                    <!-- <th>Image</th> -->
                     <th>Emp ID</th>
                     <th>Fullname</th>
                     <th>Campus</th>
                   </tr>
                   <?php for($i=0; $i<10; $i++){ ?>
                   <tr>
-                    <td><img src="./assets/nurse.jpg"></td>
+                    <!-- <td><img src="./assets/nurse.jpg"></td> -->
                     <td>23-0003</td>
                     <td>Juan Two T. Dela Cruz</td>
                     <td>San Francisco</td>
