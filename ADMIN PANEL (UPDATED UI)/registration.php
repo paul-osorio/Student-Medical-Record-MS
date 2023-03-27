@@ -14,7 +14,7 @@
 <html>
 <head>
      <link rel="icon" type="image/png" href="./assets/favcon.png"/>
-	<title>REGISTRATION | SMRMS | ADMIN</title>
+	<title>SMRMS | ADMIN | REGISTRATION</title>
 	<link rel="stylesheet" type="text/css" href="./css/adminRegistration.css">
 </head>
 <body>

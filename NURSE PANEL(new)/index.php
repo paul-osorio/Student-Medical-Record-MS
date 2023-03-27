@@ -21,7 +21,7 @@
 <html>
 <head>
 	<link rel="icon" type="image/png" href="./assets/favcon.png"/>
-	<title>LOGIN | NURSE PANEL</title>
+	<title>SMRMS | NURSE | LOGIN</title>
 	<link rel="stylesheet" type="text/css" href="./css/login.css">
 </head>
 <body>
