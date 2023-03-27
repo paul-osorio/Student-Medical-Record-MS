@@ -22,24 +22,6 @@
                   <th><span>Action</span></th>
               </tr>
               
-                  <!-- <?php if(mysqli_num_rows($fetchAddAdmins) > 0) { 
-                  while ($addAdmins = mysqli_fetch_assoc($fetchAddAdmins)) {  ?> -->
-
-                        <tr class="container">
-                            <td><span class="hospitalname"><?=$addAdmins['unique_id']?></span></td>
-                            <td><span class="address"><?=$addAdmins['fname']?></span></td>
-                            <td><span class="email"><?=$addAdmins['lname']?></span></td>
-                            <td><span class="contact_num"><?=$addAdmins['contact_num']?></span></td>
-                            <td>
-                                <!-- <a href="#viewAdminInfo" class="custom_btn" data-toggle="modal"><i class="fa fa-info-circle" aria-hidden="true" style="color: #5D8FD9;"></i></a> -->
-      
-                                <a href="#editHospitalInfo" class="custom_btn edithosbtn" data-toggle="modal"><i class="fa fa-edit" aria-hidden="true" style="color: #3e64ff;"></i></a>
-      
-                                <a href="#delHospital" class="custom_btn deletehosbtn" data-toggle="modal"><i class="fa fa-trash" aria-hidden="true" style="color: #ED1C24;"></i></a>
-                            </td>
-                        </tr>
-      
-                        <!-- <?php } } ?> -->
 
                 <?php if(mysqli_num_rows($fetchAllHospitals) > 0) { 
                   while ($hospital = mysqli_fetch_assoc($fetchAllHospitals)) {  ?>

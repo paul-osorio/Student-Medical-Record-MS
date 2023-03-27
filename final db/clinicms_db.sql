@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 4.7.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 20, 2023 at 02:43 PM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.11
+-- Generation Time: Mar 26, 2023 at 12:58 PM
+-- Server version: 10.1.24-MariaDB
+-- PHP Version: 7.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -20,23 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `clinicms_db`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `activity_log`
---
-
-CREATE TABLE `activity_log` (
-  `id` int(20) NOT NULL,
-  `firstname` varchar(50) NOT NULL,
-  `middlename` varchar(50) NOT NULL,
-  `lastname` varchar(50) NOT NULL,
-  `time_in` time NOT NULL,
-  `time_out` time NOT NULL,
-  `activity` varchar(150) NOT NULL,
-  `status` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -66,7 +50,21 @@ CREATE TABLE `admins` (
 
 INSERT INTO `admins` (`user_id`, `unique_id`, `email`, `password`, `fname`, `lname`, `img`, `contact_num`, `birthdate`, `birthplace`, `gender`, `address`, `status`) VALUES
 (28, '19-1234', 'hradmin@gmail.com', '0192023a7bbd73250516f069df18b500', 'HR', 'Admin', 'prof.jpg', '09123456789', '1999-03-09', 'Quezon City ', 'Female', 'QC, Metro Manila', ''),
-(29, '19-1290', 'sample@gmail.com', '4e91b1cbe42b5c884de47d4c7fda0555', 'Sample', 'Admin', 'profile1.jfif', '09987654322', '0000-00-00', '', '', '', '');
+(29, '19-1290', 'sample@gmail.com', '4e91b1cbe42b5c884de47d4c7fda0555', 'Sample', 'Admin', 'profile1.jfif', '09987654322', '0000-00-00', '', '', '', ''),
+(30, '19-0987', 'julianabalingasa@gmail.com', 'f007cd375b13bfa1c03652eabcf1f7cf', 'Juliana', 'Balingasa', 'id5.jpg', '09123456798', '0000-00-00', '', '', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin_archive`
+--
+
+CREATE TABLE `admin_archive` (
+  `id` int(20) NOT NULL,
+  `unique_id` varchar(50) NOT NULL,
+  `type_of_user` varchar(100) NOT NULL,
+  `date_of_archive` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -85,19 +83,6 @@ CREATE TABLE `appointments` (
   `attached_files` varchar(100) NOT NULL,
   `remarks` varchar(255) NOT NULL,
   `status` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `archive`
---
-
-CREATE TABLE `archive` (
-  `id` int(20) NOT NULL,
-  `unique_id` varchar(50) NOT NULL,
-  `type_of_user` varchar(100) NOT NULL,
-  `date_of_archive` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -196,25 +181,6 @@ INSERT INTO `departments` (`id`, `emp_id`, `dept_name`, `building_name`, `room_n
 -- --------------------------------------------------------
 
 --
--- Table structure for table `entrancelog`
---
-
-CREATE TABLE `entrancelog` (
-  `id` int(20) NOT NULL,
-  `user_id` varchar(50) NOT NULL,
-  `firstname` varchar(50) NOT NULL,
-  `middlename` varchar(50) NOT NULL,
-  `lastname` varchar(50) NOT NULL,
-  `date_entrance_log` date NOT NULL,
-  `time_entrance_log` time NOT NULL,
-  `capture_image` varchar(100) NOT NULL,
-  `remarks` varchar(100) NOT NULL,
-  `status` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `entrance_log`
 --
 
@@ -230,7 +196,7 @@ CREATE TABLE `entrance_log` (
 --
 
 INSERT INTO `entrance_log` (`id`, `student_number`, `timein`, `logdate`) VALUES
-(0, '19-1375', '08:28:08', '2023-03-16');
+(1, '19-1375', '08:28:08', '2023-03-16');
 
 -- --------------------------------------------------------
 
@@ -400,6 +366,23 @@ CREATE TABLE `nurses_schedules` (
   `thursday` varchar(150) NOT NULL,
   `friday` varchar(150) NOT NULL,
   `saturday` varchar(150) NOT NULL,
+  `status` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `nurse_activity_logs`
+--
+
+CREATE TABLE `nurse_activity_logs` (
+  `id` int(20) NOT NULL,
+  `firstname` varchar(50) NOT NULL,
+  `middlename` varchar(50) NOT NULL,
+  `lastname` varchar(50) NOT NULL,
+  `time_in` time NOT NULL,
+  `time_out` time NOT NULL,
+  `activity` varchar(150) NOT NULL,
   `status` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -594,25 +577,51 @@ CREATE TABLE `students` (
   `email` varchar(100) NOT NULL,
   `password` varchar(20) NOT NULL,
   `qr_code` varchar(150) NOT NULL,
-  `remarks` varchar(255) NOT NULL,
-  `status` varchar(20) NOT NULL
+  `remarks` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `students`
 --
 
-INSERT INTO `students` (`id`, `student_id`, `lastname`, `firstname`, `middlename`, `age`, `birthdate`, `birthplace`, `address`, `gender`, `contact_num`, `image`, `course`, `year_level`, `section`, `email`, `password`, `qr_code`, `remarks`, `status`) VALUES
-(1, '22-2222', 'Dela Cruz', 'Juan', 'Samson', 22, '2000-05-02', 'Novaliches, QC', 'Novaliches, QC', 'Male', '78994566', 'id7.jpg', 'BSIT', '3rd Year', 'SBIT-3G', 'juandelacruz@gmail.com', '12345', '22-2222', 'Complete', ''),
-(2, '22-2345', 'Del Valle', 'Maxpein Zin', 'Moon', 21, '2001-02-10', 'Novaliches, QC', 'Novaliches, QC', 'Female', '23154891', 'id1.jpg', 'BSA', '2nd Year', 'BAAC-2B', 'maxpeindelvalle@gmail.com', '123456', '22-2345', 'Incomplete', ''),
-(3, '20-1298', 'Reyes', 'Hazel', 'Cruz', 19, '2023-03-02', 'QC', 'QC', 'Female', '09123456789', 'id2.jpg', 'BSIE', '2nd Year', 'BSIE-2D', 'hazel.reyes@gmail.com', 'c5a4563b1753', '', 'Complete', ''),
-(4, '19-1206', 'Solomon', 'Jennica', 'Santos', 18, '2004-03-31', 'QC', 'QC', 'Female', '09123456788', 'id3.jpg', 'BSIE', '1st Year', 'SBIE-1A', 'jennicasolomon@gmail.com', 'b89a26094606', '', 'Pending', ''),
-(5, '20-1984', 'Dela Cruz', 'Maria', 'Reyes', 20, '2002-03-07', 'QC', 'QC', 'Female', '09123456789', 'id4.jpg', 'BSIT', '3rd Year', '', 'maria.delacruz@gmail.com', 'dagul123', '', 'Complete', ''),
-(6, '19-9999', 'Student', 'Sample', 'Account', 23, '2000-02-19', 'QC', 'QC', 'Male', '2147483647', 'id8.jpg', 'BSIT', '4th Year', 'SBIT-4G', 'sample.acc.patient@gmail.com', 'sample123', '', 'Complete', ''),
-(7, '23-9839', 'Student1', 'Sample1', 'Account1', 23, '2000-10-01', 'QC', 'QC', 'Male', '2147483647', 'id9.jpg', 'BSA', '4th Year', 'SBA-4K', 'sample1.account1@gmail.com', 'sample1234', '', 'Pending', ''),
-(8, '23-9839', 'Sanchez', 'Jerry Boy', 'Ordona', 21, '2002-09-03', 'QC', 'QC', 'Male', '2147483647', 'id10.jpg', 'BSECE', '3rd Year', 'SBECE-3H', 'jerry.sanchez@gmail.com', 'sample1234', '', 'Complete', ''),
-(9, '19-0000', 'Carganillo', 'Kiara Raye', 'Ponce', 22, '2000-06-15', 'QC', 'QC', 'Female', '13892839333', 'id5.jpg', 'BSENT', '4th Year', 'SBENT-4L', 'kiaracarganillo@gmail.com', 'kiara123', '', 'Complete', ''),
-(10, '20-1233', 'Dela Pena', 'Jose', 'Torres', 22, '2002-05-31', 'Novaliches, QC', 'Novaliches, QC', 'Male', '093978994566', 'id11.jpg', 'BSENT', '3rd Year', 'SBENT-3B', 'jose.delapena@gmail.com', 'jose12345', '', 'Complete', '');
+INSERT INTO `students` (`id`, `student_id`, `lastname`, `firstname`, `middlename`, `age`, `birthdate`, `birthplace`, `address`, `gender`, `contact_num`, `image`, `course`, `year_level`, `section`, `email`, `password`, `qr_code`, `remarks`) VALUES
+(1, '22-2222', 'Dela Cruz', 'Juan', 'Samson', 22, '2000-05-02', 'Novaliches, QC', 'Novaliches, QC', 'Male', '78994566', 'id7.jpg', 'BSIT', '3rd Year', 'SBIT-3G', 'juandelacruz@gmail.com', '12345', '22-2222', 'Complete'),
+(2, '22-2345', 'Del Valle', 'Maxpein Zin', 'Moon', 21, '2001-02-10', 'Novaliches, QC', 'Novaliches, QC', 'Female', '23154891', 'id1.jpg', 'BSA', '2nd Year', 'BAAC-2B', 'maxpeindelvalle@gmail.com', '123456', '22-2345', 'Incomplete'),
+(3, '20-1298', 'Reyes', 'Hazel', 'Cruz', 19, '2023-03-02', 'QC', 'QC', 'Female', '09123456789', 'id2.jpg', 'BSIE', '2nd Year', 'BSIE-2D', 'hazel.reyes@gmail.com', 'c5a4563b1753', '', 'Complete'),
+(4, '19-1206', 'Solomon', 'Jennica', 'Santos', 18, '2004-03-31', 'QC', 'QC', 'Female', '09123456788', 'id3.jpg', 'BSIE', '1st Year', 'SBIE-1A', 'jennicasolomon@gmail.com', 'b89a26094606', '', 'Pending'),
+(5, '20-1984', 'Dela Cruz', 'Maria', 'Reyes', 20, '2002-03-07', 'QC', 'QC', 'Female', '09123456789', 'id4.jpg', 'BSIT', '3rd Year', '', 'maria.delacruz@gmail.com', 'dagul123', '', 'Complete'),
+(6, '19-9999', 'Student', 'Sample', 'Account', 23, '2000-02-19', 'QC', 'QC', 'Male', '2147483647', 'id8.jpg', 'BSIT', '4th Year', 'SBIT-4G', 'sample.acc.patient@gmail.com', 'sample123', '', 'Complete'),
+(7, '23-9839', 'Student1', 'Sample1', 'Account1', 23, '2000-10-01', 'QC', 'QC', 'Male', '2147483647', 'id9.jpg', 'BSA', '4th Year', 'SBA-4K', 'sample1.account1@gmail.com', 'sample1234', '', 'Pending'),
+(8, '23-9839', 'Sanchez', 'Jerry Boy', 'Ordona', 21, '2002-09-03', 'QC', 'QC', 'Male', '2147483647', 'id10.jpg', 'BSECE', '3rd Year', 'SBECE-3H', 'jerry.sanchez@gmail.com', 'sample1234', '', 'Complete'),
+(9, '19-0000', 'Carganillo', 'Kiara Raye', 'Ponce', 22, '2000-06-15', 'QC', 'QC', 'Female', '13892839333', 'id5.jpg', 'BSENT', '4th Year', 'SBENT-4L', 'kiaracarganillo@gmail.com', 'kiara123', '', 'Complete'),
+(10, '20-1233', 'Dela Pena', 'Jose', 'Torres', 22, '2002-05-31', 'Novaliches, QC', 'Novaliches, QC', 'Male', '093978994566', 'id11.jpg', 'BSENT', '3rd Year', 'SBENT-3B', 'jose.delapena@gmail.com', 'jose12345', '', 'Complete');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `student_activity_logs`
+--
+
+CREATE TABLE `student_activity_logs` (
+  `id` int(20) NOT NULL,
+  `student_id` varchar(50) NOT NULL,
+  `activity_type` varchar(150) NOT NULL,
+  `activity_date` date NOT NULL,
+  `activity_time` time NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `student_appointment_status`
+--
+
+CREATE TABLE `student_appointment_status` (
+  `id` int(20) NOT NULL,
+  `student_id` varchar(50) NOT NULL,
+  `reference_num` varchar(150) NOT NULL,
+  `status` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -674,6 +683,18 @@ CREATE TABLE `student_medical_requirements` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `student_status`
+--
+
+CREATE TABLE `student_status` (
+  `id` int(20) NOT NULL,
+  `student_id` varchar(50) NOT NULL,
+  `status` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `student_vaccination`
 --
 
@@ -700,18 +721,23 @@ CREATE TABLE `student_vaccination` (
 CREATE TABLE `stud_appointment` (
   `id` int(11) NOT NULL,
   `student_id` varchar(10) NOT NULL,
+  `type_of_concern` varchar(150) NOT NULL,
+  `reason` varchar(255) NOT NULL,
   `appointment_date` date NOT NULL,
-  `appointment_time` time NOT NULL
+  `appointment_time` time NOT NULL,
+  `attached_files` varchar(255) NOT NULL,
+  `reference_num` varchar(150) NOT NULL,
+  `qrcode` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `stud_appointment`
 --
 
-INSERT INTO `stud_appointment` (`id`, `student_id`, `appointment_date`, `appointment_time`) VALUES
-(1, '19-1234', '2023-03-02', '15:30:00'),
-(2, '19-1396', '2023-03-16', '12:00:00'),
-(3, '19-1234', '2023-03-16', '11:00:00');
+INSERT INTO `stud_appointment` (`id`, `student_id`, `type_of_concern`, `reason`, `appointment_date`, `appointment_time`, `attached_files`, `reference_num`, `qrcode`) VALUES
+(1, '19-1234', '', '', '2023-03-02', '15:30:00', '', '', ''),
+(2, '19-1396', '', '', '2023-03-16', '12:00:00', '', '', ''),
+(3, '19-1234', '', '', '2023-03-16', '11:00:00', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -968,27 +994,21 @@ INSERT INTO `visitors` (`id`, `fullname`, `contact_num`, `purpose`, `captured_im
 --
 
 --
--- Indexes for table `activity_log`
---
-ALTER TABLE `activity_log`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `admins`
 --
 ALTER TABLE `admins`
   ADD PRIMARY KEY (`user_id`);
 
 --
--- Indexes for table `appointments`
+-- Indexes for table `admin_archive`
 --
-ALTER TABLE `appointments`
+ALTER TABLE `admin_archive`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `archive`
+-- Indexes for table `appointments`
 --
-ALTER TABLE `archive`
+ALTER TABLE `appointments`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1052,6 +1072,30 @@ ALTER TABLE `nurses_schedules`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `nurse_activity_logs`
+--
+ALTER TABLE `nurse_activity_logs`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `student_activity_logs`
+--
+ALTER TABLE `student_activity_logs`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `student_appointment_status`
+--
+ALTER TABLE `student_appointment_status`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `student_status`
+--
+ALTER TABLE `student_status`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -1060,13 +1104,26 @@ ALTER TABLE `nurses_schedules`
 --
 ALTER TABLE `bookings`
   MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
 --
 -- AUTO_INCREMENT for table `hospitals`
 --
 ALTER TABLE `hospitals`
   MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-COMMIT;
+--
+-- AUTO_INCREMENT for table `student_activity_logs`
+--
+ALTER TABLE `student_activity_logs`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `student_appointment_status`
+--
+ALTER TABLE `student_appointment_status`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `student_status`
+--
+ALTER TABLE `student_status`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

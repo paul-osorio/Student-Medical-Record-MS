@@ -1834,26 +1834,6 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                   <th>Contact No.</th>
                   <th><span>Action</span></th>
               </tr>
-              
-
-                  <!-- <?php if(mysqli_num_rows($fetchAddAdmins) > 0) { 
-                  while ($addAdmins = mysqli_fetch_assoc($fetchAddAdmins)) {  ?> -->
-
-                  <tr class="container">
-                      <td><span class="hospitalname"><?=$addAdmins['unique_id']?></span></td>
-                      <td><span class="address"><?=$addAdmins['fname']?></span></td>
-                      <td><span class="email"><?=$addAdmins['lname']?></span></td>
-                      <td><span class="contact_num"><?=$addAdmins['contact_num']?></span></td>
-                      <td>
-                          <!-- <a href="#viewAdminInfo" class="custom_btn" data-toggle="modal"><i class="fa fa-info-circle" aria-hidden="true" style="color: #5D8FD9;"></i></a> -->
-
-                          <a href="#editHospitalInfo" class="custom_btn edithosbtn" data-toggle="modal"><i class="fa fa-edit" aria-hidden="true" style="color: #3e64ff;"></i></a>
-
-                          <a href="#delHospital" class="custom_btn deletehosbtn" data-toggle="modal"><i class="fa fa-trash" aria-hidden="true" style="color: #ED1C24;"></i></a>
-                      </td>
-                  </tr>
-
-                  <!-- <?php } } ?> -->
 
 
                 <?php if(mysqli_num_rows($fetchAllHospitals) > 0) { 
@@ -2094,14 +2074,14 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
             <span>Sort by</span>
             <select name="filter" id="filter"> 
               <option value="">Select</option> 
-              <option name="filter" value="Date Manufactured">Date Manufactured</option>
-              <option name="filter" value="Date Expiration">Expiration Date</option>
-              <option name="filter" value="Quantity">Quantity</option>
+              <option value="date_manufactured">Date Manufactured</option>
+              <option value="expirationDate">Expiration Date</option>
+              <option value="num_stocks">Stocks</option>
             </select>
           </div>
           <div class="r">
             <div class="search">
-              <input type="text" name="search" placeholder="&#xF002; Search Medicine" style="font-family:Poppins, FontAwesome">
+              <input type="text" name="search" id="search_meds" placeholder="&#xF002; Search Medicine" style="font-family:Poppins, FontAwesome">
             </div>
             <div class="grid">
               <i class="fa fa-th-large" aria-hidden="true"></i>
@@ -2178,59 +2158,59 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
         <div class="modal-body">
             <div class="row">
               <div class="col">
-                        <label for="medname" class="form-label">Medicine Name</label>
-                        <input type="text" class="form-control" id="medname" style="width:200px;"readonly placeholder="<?=$med['name']?>">
+                        <label for="name" class="form-label">Medicine Name</label>
+                        <input type="text" class="form-control" name="name" id="name" style="width:200px;"readonly value="<?=$med['name']?>">
               </div>
 
               <div class="col">
-              <label style="color: white;" for="brand" class="form-label">Brand</label>
-                        <input type="text" style="color: white;" class="form-control" id="brand" readonly placeholder="<?=$med['brand']?>">
+              <label for="brand" class="form-label">Brand</label>
+                        <input type="text"  class="form-control" name="brand" id="brand" readonly value="<?=$med['brand']?>">
                 </div>
 
                 <div class="col">
-              <label for="stocks" class="form-label">Stocks</label>
-                        <input type="text" class="form-control" id="stocks" readonly placeholder="<?=$med['num_stocks']?>">
+              <label for="num_stocks" class="form-label">Stocks</label>
+                        <input type="text" class="form-control" name="num_stocks" id="num_stocks" readonly value="<?=$med['num_stocks']?>">
                 </div>
 
                 <div class="col">
-                <label for="expdate" class="form-label">Expiration Date</label>
-                        <input type="date" class="form-control" id="expirationDate" readonly value="<?=$med['expirationDate']?>">
+                <label for="expirationDate" class="form-label">Expiration Date</label>
+                        <input type="date" class="form-control" name="expirationDate" id="expirationDate" readonly value="<?=$med['expirationDate']?>">
                 </div>
                 <!---->
             <div class="row">
             <div class="col">
-            <label for="genname" class="form-label">Generic Name</label>
-                        <input type="text" class="form-control" id="genname" style="width:200px;"readonly value="<?=$med['genericName']?>">
+            <label for="genericName" class="form-label">Generic Name</label>
+                        <input type="text" class="form-control" name="genericName" id="genericName" style="width:200px;"readonly value="<?=$med['genericName']?>">
             </div>
             <div class="col">
-            <label for="gendatemanu" class="form-label">Date Manufactured</label>
-                        <input type="date" class="form-control" id="datemanu" style="width:200px;"readonly value="<?=$med['date_manufactured']?>">
+            <label for="date_manufactured" class="form-label">Date Manufactured</label>
+                        <input type="date" class="form-control" name="date_manufactured" id="date_manufactured" style="width:200px;"readonly value="<?=$med['date_manufactured']?>">
             </div>
             <div class="col">
-            <label for="prod_con" class="form-label">Product Condition</label>
-                        <input type="text" class="form-control" id="prod_con" style="width:200px;"readonly value="<?=$med['prodCondition']?>">
+            <label for="prodCondition" class="form-label">Product Condition</label>
+                        <input type="text" class="form-control" name="prodCondition" id="prodCondition" style="width:200px;"readonly value="<?=$med['prodCondition']?>">
             </div>
             <div class="col">
             <label for="storage" class="form-label">Storage</label>
-                        <input type="text" class="form-control" id="storage" style="width:100px;"readonly value="<?=$med['storage']?>">
+                        <input type="text" class="form-control" name="storage" id="storage" style="width:100px;"readonly value="<?=$med['storage']?>">
             </div>
             <div class="col">
             <label for="box_id" class="form-label">Box ID</label>
-                        <input type="text" class="form-control" id="box_id" style="width:100px;"readonly value="<?=$med['box_id']?>">
+                        <input type="text" class="form-control" name="box_id" id="box_id" style="width:100px;"readonly value="<?=$med['box_id']?>">
             </div>
 
             <div class="row">
             <div class="col">
-            <label for="manu_comp" class="form-label">Manufacturer's Company</label>
-                        <input type="text" class="form-control" id="manu_comp" style="width:210px;"readonly value="<?=$med['manufacturerName']?>">
+            <label for="manufacturerName" class="form-label">Manufacturer Name</label>
+                        <input type="text" class="form-control" name="manufacturerName" id="manufacturerName" style="width:210px;"readonly value="<?=$med['manufacturerName']?>">
             </div>
             <div class="col">
-            <label for="email" class="form-label">Email Address</label>
-                        <input type="text" class="form-control" id="email" style="width:100px;"readonly value="<?=$med['prodCondition']?>">
+            <label for="contact_info" class="form-label">Contact Number</label>
+                        <input type="text" class="form-control" name="contact_info" id="contact_info" style="width:170px;"readonly value="<?=$med['contact_info']?>">
             </div>
             <div class="col">
-            <label for="contact_num" class="form-label">Contact Number</label>
-                        <input type="text" class="form-control" id="contact_num" style="width:170px;"readonly value="<?=$med['contact_info']?>">
+            <label for="prod_qrcode" class="form-label">Product QR Code</label>
+            <img class="form-control" name="prod_qrcode" id="prod_qrcode" style="width:100px;" src="./assets/<?=$med['prod_qrcode']?>">
             </div>
             </div>
             <div class="row">
@@ -2255,9 +2235,6 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
   </div>
 </div>
 
-
-
-    
 
     <?php } } ?>
   </ul>
@@ -3092,6 +3069,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 <!-- CUSTOM AJAX FILE -->
 <script src="./ajax/search_admin.js"> </script>
 <script src="./ajax/search_nurse.js"> </script>
+<script src="./ajax/search_hospital.js"> </script>
+<script src="./ajax/search_medicine.js"> </script>
 
 </html>
 
