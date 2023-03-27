@@ -33,7 +33,7 @@
 }
 #archives .filter_wrapper .sort{
     display: flex;
-    align-items: left;
+    align-items: center;
     margin-left: 450px;
 }
 #archives .filter_wrapper .sort span{
