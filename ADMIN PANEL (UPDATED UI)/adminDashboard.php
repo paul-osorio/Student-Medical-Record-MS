@@ -467,7 +467,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
           <div class="chart_container">
 
               <div class="card_content">
-                <div class="chart_header">
+              <br><div class="chart_header">
                   <span>STUDENT COVID-19 CASES</span>
                   <div class="chart_filter">
                     <select name="filter" id="filter">
@@ -485,9 +485,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
               </div>
 
               <div class="card_content">
-                <div class="chart_header">
-                  <span>Entrance Logs</span>
-                </div>
+              <br><div class="chart_header">
+                  <span>ENTRANCE LOG</span>
+                </div><br>
                 <div class="chart1" style="display:flex; justify-content:center; align-items:center;">
                   <canvas id="myChart2" class="circle_chart"></canvas>
                 </div>
@@ -498,11 +498,12 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
               <div class="chart_container">
 
               <div class="card_content">
-                <div class="chart_header">
-                  <span>Appointments</span>
+              <br><div class="chart_header">
+                  <span>APPOINTMENTS</span>
                   <div class="chart_filter">
                     <select name="filter" id="filter">
                       <option value="Medical">Medical</option>
+                      <option value="Dental">Dental</option>
                     </select>
                     <select name="filter" id="filter">
                       <option value="Monthly">Monthly</option>
@@ -517,7 +518,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
               <div class="card_content table_card">
                 <div class="chart_header">
-                  <span style="font-size: 18px;">Active Nurses Today</span>
+                  <span style="font-size: 17px;">ACTIVE NURSES TODAY</span>
                 </div>
                 <table>
                   <tr>
