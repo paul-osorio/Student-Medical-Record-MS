@@ -1,10 +1,6 @@
 $(document).ready(function(){
 
- 
-
-})
-
-$('#send_otp').on('click',function(){
+  $('#send_otp').on('click',function(){
     
     let email = $('#email').val();
     let otp_code = ""
@@ -23,6 +19,12 @@ $('#send_otp').on('click',function(){
           location.href = "student-verify-otp.php"
         }
     })
+  })
+  
 })
+ 
+
+
+
 
 console.log('working properly');

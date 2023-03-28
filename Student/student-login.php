@@ -45,25 +45,29 @@
         <div class="row border mt-5 border-3 text-center align-self-center justify-content-center">
           <div class="col-sm-5">
               <div class="container rounded py-5 px-4 bg-secondary-subtle shadow">
-                  <form action="">
-                      <div class="form-floating mb-3">
-                          <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                          <label for="floatingInput">Email address</label>
-                        </div>
-                        <div class="form-floating">
-                          <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                          <label for="floatingPassword">Password</label>
-                        </div>
-                       <div class="text-end mt-3 py-3">
-                          <a href="#">Forget Password</a>
-                       </div>
 
-                        <div class="mb-3">
-                          <button class="btn btn-primary fw-semibold px-5 rounded-pill shadow"> LOG IN</button>
-                        </div>
-                        <div >
-                          <button class="btn btn-light fw-semibold px-5 rounded-pill"> register</button>
-                        </div>
+                  <form action="./process/login_auth.php" method="POST">
+                    
+                    <div class="form-floating mb-3">
+                      <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                      <label for="floatingInput">Email address</label>
+                    </div>
+                    
+                    <div class="form-floating">
+                      <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
+                      <label for="floatingPassword">Password</label>
+                    </div>
+                   <div class="text-end mt-3 py-3">
+                      <a href="#">Forget Password</a>
+                   </div>
+
+                    <div class="mb-3">
+                      <button type="submit" name="submit_btn" class="btn btn-primary fw-semibold px-5 rounded-pill shadow"> LOG IN</button>
+                    </div>
+                    <div >
+                      <button class="btn btn-light fw-semibold px-5 rounded-pill"> register</button>
+                    </div>
+
                   </form>
               </div>
           </div>
