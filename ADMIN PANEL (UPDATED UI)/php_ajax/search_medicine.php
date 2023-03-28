@@ -4,7 +4,7 @@
    if(isset($_POST['search'])){
       $search = $_POST['search'];
 
-      $search_medicine_query = "SELECT * FROM `medicine` WHERE  `box_id` LIKE '%$search%' OR `brand` LIKE '%$search%' OR `genericName` LIKE '%$search%' OR `manufacturerName` LIKE '%$search%' OR `contact_info` LIKE '%$search%';"; 
+      $search_medicine_query = "SELECT * FROM `medicine` WHERE  `box_id` LIKE '%$search%' OR `name` LIKE '%$search%' OR `brand` LIKE '%$search%' OR `genericName` LIKE '%$search%' OR `manufacturerName` LIKE '%$search%' OR `contact_info` LIKE '%$search%';"; 
       
       $fetchAllMedicine = mysqli_query($conn, $search_medicine_query);
       
