@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+if (isset($_SESSION['emp_id']) && isset($_SESSION['username'])) {
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +13,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="./assets/favcon.png"/>
-    <title>SMRMS | NURSE | Account</title>
+    <title>Account | SMRMS | NURSE</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
@@ -90,22 +98,30 @@
                       </div> 
                       <div class="px-5 text-center">
                         <p class="fw-semibold mb-3 text-start">Change Password</p>
+
+                        <form method="post" action="update_password.php">
+    
+
+
+
+
                         <div class="form-floating mb-3">
-                          <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                          <input type="password" class="form-control" id="floatingInput" name="old_password" placeholder="Password">
                           <label for="floatingInput">Old Password</label>
                         </div>
                         <div class="form-floating mb-3">
-                          <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                          <input type="password" class="form-control" id="floatingPassword" name="new_password" placeholder="Password">
                           <label for="floatingPassword">New Password</label>
                         </div>
                         <div class="form-floating mb-3">
-                          <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                          <input type="password" class="form-control" id="floatingPassword" name="confirm_password" placeholder="Password">
                           <label for="floatingPassword">Confirm Password</label>
                         </div>
                         <div class="d-flex justify-content-end">
                           <button class="btn btn-primary rounded-0 fw-semibold">CHANGE</button>
                         </div>
                         <span class="text-danger">Note: </span><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+                        </form>
                       </div>
                     </div>
                   </div> 
@@ -115,3 +131,6 @@
     </div>
 </body>
 </html>
+<?php 
+}
+?>

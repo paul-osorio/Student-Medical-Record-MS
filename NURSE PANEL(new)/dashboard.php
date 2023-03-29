@@ -1,3 +1,12 @@
+<?php 
+session_start();
+
+if (isset($_SESSION['emp_id']) && isset($_SESSION['username'])) {
+
+ ?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +14,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="./assets/favcon.png"/>
-    <title>SMRMS | NURSE | Dashboard</title>
+    <title>Dashboard | SMRMS | NURSE</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
@@ -20,6 +29,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
   <script src="action.js" defer></script>
   <script src="./js/calendar.js"></script>
+  <script src="./js/time.js"></script>
 
 </head>
 <body>
@@ -109,16 +119,21 @@
                       </div>
                       <div class="d-flex justify-content-between align-items-center w-100 mx-3">
 
+
+            
                         <div class="text-light">
-                          <p >22001</p>
-                          <p class="fw-bold">Jessica O. Bulleque</p>
-                          <p>Position</p>
+                          <p><?php echo $_SESSION['emp_id'] ?></p>
+                          <p class="fw-bold"> <?php echo $_SESSION['firstname'].' '.$_SESSION['lastname']; ?></p>
+                          <p><?php echo $_SESSION['position'] ?></p>
                         </div>
                         <div class="text-light text-center">
                           <p class="fw-bold fs-2">20</p>
                           <p class="p-0">Consult Today</p>
                         </div>
                       </div>
+                      
+    
+
 
                     </div>
 
@@ -155,22 +170,18 @@
                           <td>BSIT</td>
                           <td>4th</td>
                           <td class="text-warning">Pending</td>
-                        <tr class="border-bottom">
-                          <td>17-1234</td>
-                          <td>Juan T. Dela Cruz</td>
-                          <td>BSIT</td>
-                          <td>4th</td>
-                          <td class="text-warning">Pending</td>
-                        </tr>
+                        
                        
                       </tbody>
                     </table>
+
+                    
                     <div class="d-flex justify-content-between mt-3">
                       <p class="fw-bold">LIST OF CONSULTED STUDENTS</p>
                       <a href="#"> View All</a>
                     </div>
                     <table class="table table-borderless">
-                      <thead>
+                    <thead>
                         <tr class="text-light" style="background: #2D6DB2;">
                           <th scope="col">Student No.</th>
                           <th scope="col">Name</th>
@@ -179,43 +190,38 @@
                           <th scope="col">status</th>
                         </tr>
                       </thead>
+
                       <tbody class="table-group-divider">
-                        <tr class="border-bottom">
-                          <td>17-1234</td>
-                          <td>Juan T. Dela Cruz</td>
-                          <td>BSIT</td>
-                          <td>4th</td>
-                          <td class="text-success">Complete</td>
+                        <?php
+                        include "db_conn.php";
+                        $sql = "SELECT * FROM students LIMIT 4";
+                        $run_sql = mysqli_query($conn,$sql) or die(mysqli_error($conn));
+                        if(mysqli_num_rows($run_sql) > 0){
+                          while ($row = mysqli_fetch_array($run_sql)) {
+  ?>
+     <tr class="border-bottom">
+                          <td><?php echo $row['student_id'] ?></td>
+                          <td><?php echo $row['firstname'] ." ". $row['lastname'] ?></td>
+                          <td><?php echo $row['course'] ?></td>
+                          <td><?php echo $row['year_level'] ?></td>
+                          <td><?php echo $row['remarks'] ?></td>
                         </tr>
-                        <tr class="border-bottom">
-                          <td>17-1234</td>
-                          <td>Juan T. Dela Cruz</td>
-                          <td>BSIT</td>
-                          <td>4th</td>
-                          <td class="text-success">Complete</td>
-                        </tr>
-                        <tr class="border-bottom">
-                          <td>17-1234</td>
-                          <td>Juan T. Dela Cruz</td>
-                          <td>BSIT</td>
-                          <td>4th</td>
-                          <td class="text-success">Complete</td>
-                        </tr>
-                        <tr class="border-bottom">
-                          <td>17-1234</td>
-                          <td>Juan T. Dela Cruz</td>
-                          <td>BSIT</td>
-                          <td>4th</td>
-                          <td class="text-success">Complete</td>
-                        </tr>
-                       
+ <?php }
+                        }
+                        
+                        ?>
+                      
+                      
+                   
                       </tbody>
                     </table>
                   </div>
+
+                  
                   <div class="col-md-3 flex-grow-1">
                     <div class="card mb-1" style="border:none;">
                       <div class="card-header text-light" style="background-color:#134E8E;">
-                        <!-- <h2 id="time-display" style="text-align:center;">Loading...</h2> -->
+                        <h2 id="time-display" style="text-align:center;">Loading...</h2>
                         <h4 class="card-title text-center" id="month-year" style="background-color:#134E8E;"></h4>
                       </div>
                         <table class="table table-bordered table-hover mb-0" style="border:transparent; text-align:center;min-height: 20rem;">
@@ -274,3 +280,6 @@
     </div>
 </body>
 </html>
+<?php 
+}
+?>
