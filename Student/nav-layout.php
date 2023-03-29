@@ -64,14 +64,20 @@
                 </ul>
             </li>
             <li class="sidebar-menu-divider mt-3 mb-1 text-uppercase text-white">Settings</li>
-            <li class="sidebar-menu-item has-dropdown">
+            <li class="sidebar-menu-item">
+                <a href="#">
+                    <i class="ri-calendar-line sidebar-menu-item-icon"></i>
+                    <span class="text-light fs-6">Log out</span>
+                </a>
+            </li>
+            <!-- <li class="sidebar-menu-item has-dropdown">
                 <a href="./student-manage-account.php">
                     <i class="ri-shopping-cart-2-line sidebar-menu-item-icon"></i>
                     <span class="text-light fs-6">Manage Account</span>
 
                     <i class="ri-arrow-down-s-line sidebar-menu-item-accordion ms-auto"></i>
                 </a>
-            </li>
+            </li> -->
             <li class="sidebar-menu-item">
                 <a href="#">
                     <i class="ri-calendar-line sidebar-menu-item-icon"></i>
