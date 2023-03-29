@@ -55,7 +55,7 @@
                 <div class="container bg-secondary-subtle p-4">
                     <div class="container text-start">
                         <!-- form -->
-                    </form> 
+                    <form> 
                         <div class="row">
                         <div class="col-md-6 p-2">
                             <div class="d-flex mb-3 my-2">

@@ -22,7 +22,7 @@
 
          $_SESSION['student_id'] = $stud['student_id'];
          
-         header("location: ../student-personal-info.php?loggedin");
+         header("location: ../student-personal-info.php");
 
       } else {
 
