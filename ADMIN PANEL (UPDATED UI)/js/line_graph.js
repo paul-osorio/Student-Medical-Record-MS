@@ -1,5 +1,5 @@
-var xValues = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov"];
-    var yValues = [0,100,170,270,250,290,240,210,280,320,450];
+var xValues = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+    var yValues = [200,100,170,270,250,290,240,210,280,320,450,200];
 
     new Chart("myChart", {
         type: "line",
@@ -14,6 +14,9 @@ var xValues = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov"
         }]
     },
         options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            aspectRatio: 5,
             legend: {display: false},
             scales: {
             yAxes: [{ticks: {min: 0, max:700}}],

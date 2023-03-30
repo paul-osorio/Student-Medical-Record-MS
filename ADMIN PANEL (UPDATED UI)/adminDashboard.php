@@ -32,6 +32,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
      $fetchAllAdmins = mysqli_query($conn, "SELECT * FROM `admins` WHERE email = '$email'");
      $admins = mysqli_fetch_assoc($fetchAllAdmins);
 
+
      // SELECT ADD ADMINS
      $fetchAddAdmins = mysqli_query($conn, "SELECT * FROM `admins`");
      
@@ -51,8 +52,11 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
      // SELECT ALL NURSES TODAY
      $fetchAllNursesToday = mysqli_query($conn, "SELECT * FROM `nurses`");
 
-     // SELECT ALL MEDICINE 
+     // SELECT ALL MEDICINES 
      $fetchAllMedicine = mysqli_query($conn, "SELECT * FROM `medicine`");
+
+     // SELECT ALL HOSPITALS 
+     $fetchAllHospitals = mysqli_query($conn, "SELECT * FROM `hospitals`");
 
 
      // COUNT ALL ADMINS
@@ -70,7 +74,14 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
      // COUNT ALL STUDENTS
      $fetchStudents = mysqli_query($conn, "SELECT COUNT(*) as totalStud FROM `students`");
      $countStudents = mysqli_fetch_assoc($fetchStudents);
+     
+     // COUNT ALL DEPARTMENTS
+     $fetchDepartments = mysqli_query($conn, "SELECT COUNT(*) as totalDepts FROM `departments`");
+     $countDepartments = mysqli_fetch_assoc($fetchDepartments);
 
+     // COUNT ALL ENTRANCE LOGS
+     $fetchEntrance = mysqli_query($conn, "SELECT COUNT(*) as totalEnt FROM `entrance_log`");
+     $countEntrance = mysqli_fetch_assoc($fetchEntrance);
 
 ?>
 
@@ -83,7 +94,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ADMIN | SMRMS</title>
+    <link rel="icon" type="image/png" href="./assets/favcon.png"/>
+    <title>SMRMS | ADMIN</title>
 
     <!-- Fontfaces CSS-->
     <link rel="stylesheet" href="./style.css?v=<?php echo time(); ?>"/>
@@ -98,6 +110,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
     <link rel="stylesheet" href="./css/messagetab.css"/>
     <link rel="stylesheet" href="./css/reportchart.css?v=<?php echo time(); ?>"/>
     <link rel="stylesheet" href="./css/archivesTab.css"/>
+    <link rel="stylesheet" href="./css/entrancelog.css"/>
 
     <link rel="stylesheet" href="./css/Main.css" />
     <link rel="stylesheet" href="./css/adminPage.css" />
@@ -136,7 +149,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
         <div class="logo navbar-brand px-3 m-0" href="#">
           <img src="./assets/QCUClinicLogo.png" alt="" />
-          <p>Student Medical <br> Record</p>
+          <center><p>Student Medical <br> Record</p></center>
         </div>
         
         
@@ -228,6 +241,21 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
             </div>
           </li>
 
+          <li data-tab-target="#appointments" class="px-4 w-100 mb-1 nav-item tab">
+              
+              <i class="fa fa-calendar"></i>
+              <div
+                class="nav-link align-items-center"
+                data-bs-toggle="collapse"
+                data-bs-target="#home-collapse"
+                aria-expanded="true">
+
+                Appointments
+                
+              </div>
+
+          </li>
+
           <li data-tab-target="#reports" class="px-4 w-100 mb-1 nav-item tab">
               
               <i class="fa fa-book"></i>
@@ -275,7 +303,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
           <div class="web_info">
 
-          <div class="admin_info"><br><br>
+          <div class="admin_info"><br>
             <img src="./assets/<?=$admins['img']?>" alt=""/>
             <span><?=$admins['email']?></span>
             <span><?=$admins['fname']?>&nbsp<?=$admins['lname']?></span>
@@ -353,86 +381,166 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
       <div class="content_wrapper">
 
 <!--########################################################################################################################################################################-->
-      
+
+
       <!-- DASHBOARD PAGE -->
         <section id="dashboard" class="dashboard so_content so_active" data-tab-content>
           <div class="dashboard_header d-flex justify-content-between">
             <h3 class="m-0">ANALYTICS</h3>
           </div>
+          <div class="dashboard_container">
+            <div class="card_container">
 
-          <div class="card_container">
+              <div class="card" style="background-color:#E74C3C;">
 
-            <div class="card" style="background-color:#7BAD89;">
+                <div class="card_content">
+                  <i class="fa fa-users" aria-hidden="true"></i>
+                  <span class="name">ADMINS</span>
+                </div>
 
-              <div class="card_content">
-                <span class="number"> <?=$countAdmins['totalAd']?> </span>
-                <span class="name">Admins</span>
+                <div class="count">
+                  <span class="number"> <?=$countAdmins['totalAd']?> </span>
+                </div>
+
               </div>
 
-              <div class="icon">
-                <i class="fa solid fa-user" aria-hidden="true"></i>
+              <div class="card" style="background-color:#F3AF43;">
+
+                <div class="card_content">
+                  <i class="fa fa-user-md" aria-hidden="true"></i>
+                  <span class="name">NURSES</span>
+                </div>
+
+                <div class="count">
+                  <span class="number"> <?=$countNurses['totalNur']?> </span>
+                </div>
+
               </div>
+
+              <div class="card" style="background-color:#84BF46;">
+
+                  <div class="card_content">
+                    <i class="fa fa-users" aria-hidden="true"></i>
+                    <span class="name">STUDENTS</span>
+                  </div>
+
+                  <div class="count">
+                    <span class="number"> <?=$countStudents['totalStud']?> </span>
+                  </div>
+
+              </div>
+                
+              <div class="card" style="background-color:#2C6AC8;">
+
+                <div class="card_content">
+                  <i class="fa fa-hospital-o" aria-hidden="true"></i>
+                  <span class="name">DEPARTMENTS</span>
+                </div>
+
+                <div class="count">
+                  <span class="number"> <?=$countDepartments['totalDepts']?> </span>
+                </div>
+
+                </div>
+
+                <div class="card" style="background-color:#999999;">
+
+                  <div class="card_content">
+                    <i class="fa fa-address-book" aria-hidden="true"></i>
+                    <span class="name">ENTRANCE LOG</span>
+                  </div>
+
+                  <div class="count">
+                    <span class="number"> <?=$countEntrance['totalEnt']?> </span>
+                  </div>
+
+                </div>
+             
 
             </div>
 
-            <div class="card" style="background-color:#7B89AD;">
-
-              <div class="card_content">
-                <span class="number"> <?=$countNurses['totalNur']?> </span>
-                <span class="name">Nurses</span>
-              </div>
-
-              <div class="icon">
-                <i class="fa solid fa-user" aria-hidden="true"></i>
-              </div>
-
-            </div>
-
-            <div class="card" style="background-color:#AD7B7B;">
-
-              <div class="card_content" >
-                <span class="number"> <?=$countStudents['totalStud']?> </span>
-                <span class="name">Students</span>
-              </div>
-
-              <div class="icon">
-                <i class="fa solid fa-user" aria-hidden="true"></i>
-              </div>
-
-            </div>
-
-          </div>
 
 <!--########################################################################################################################################################################-->
 
-        <!-- SUMMARY REPORT AT DASHBOARD PAGE -->
+       
+          <!-- SUMMARY REPORT AT DASHBOARD PAGE -->
 
           <div class="chart_container">
-            <div class="card_content">
-              <div class="chart1">
-                <span>NUMBER OF PATIENTS</span>
-                  <select name="filter" id="filter">
-                    <option value="Monthly">Monthly</option>
-                    <option value="Yearly">Yearly</option>
-                  </select>
-                <canvas id="myChart" style="width:80%; max-width:550px; height: 130px; padding-top: 15px;"></canvas>
-              </div>
-            </div>
 
-
-            <!-- <div class="card_content">
-              <div class="chart2">
-                  <select name="filter" id="filter">
-                    <option value="Year Level">Year Level</option>
-                    <option value="1st Year">1st Year</option>
-                    <option value="2nd Year">2nd Year</option>
-                    <option value="3rd Year">3rd Year</option>
-                    <option value="4th Year">4th Year</option>
-                  </select>
-                  <canvas id="myChart2" style="width:70%; max-width:500px; height: 110px; padding-left: 5px; padding-top: 15px"></canvas>
+              <div class="card_content">
+              <br><div class="chart_header">
+                  <span>STUDENT COVID-19 CASES</span>
+                  <div class="chart_filter">
+                    <select name="filter" id="filter">
+                      <option value="Campus">Campus</option>
+                    </select>
+                    <select name="filter" id="filter">
+                      <option value="Monthly">Monthly</option>
+                      <option value="Yearly">Yearly</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="chart1">
+                  <canvas id="myChart" class="chart"></canvas>
+                </div>
               </div>
-            </div>
-          </div> -->
+
+              <div class="card_content">
+              <br><div class="chart_header">
+                  <span>ENTRANCE LOG</span>
+                </div><br>
+                <div class="chart1" style="display:flex; justify-content:center; align-items:center;">
+                  <canvas id="myChart2" class="circle_chart"></canvas>
+                </div>
+              </div>
+
+              </div>
+
+              <div class="chart_container">
+
+              <div class="card_content">
+              <br><div class="chart_header">
+                  <span>APPOINTMENTS</span>
+                  <div class="chart_filter">
+                    <select name="filter" id="filter">
+                      <option value="Medical">Medical</option>
+                      <option value="Dental">Dental</option>
+                    </select>
+                    <select name="filter" id="filter">
+                      <option value="Monthly">Monthly</option>
+                      <option value="Yearly">Yearly</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="chart1">
+                  <canvas id="myChart3" class="chart"></canvas>
+                </div>
+              </div>
+
+              <div class="card_content table_card">
+                <div class="chart_header">
+                  <span style="font-size: 17px;">ACTIVE NURSES TODAY</span>
+                </div>
+                <table>
+                  <tr>
+                    <!-- <th>Image</th> -->
+                    <th>Emp ID</th>
+                    <th>Fullname</th>
+                    <th>Campus</th>
+                  </tr>
+                  <?php for($i=0; $i<10; $i++){ ?>
+                  <tr>
+                    <!-- <td><img src="./assets/nurse.jpg"></td> -->
+                    <td>23-0003</td>
+                    <td>Juan Two T. Dela Cruz</td>
+                    <td>San Francisco</td>
+                  </tr>
+                  <?php } ?>
+                </table>
+              </div>
+              </div>
+
+              </div>
 
 <!--########################################################################################################################################################################-->
           
@@ -442,7 +550,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
             <span class="title">NURSES TODAY</span>
 
             <table>
-            f
+            
                 <?php if(mysqli_num_rows($fetchAllNursesToday) > 0) { 
                 while ($todayNurses = mysqli_fetch_assoc($fetchAllNursesToday)) {  ?>
 
@@ -476,30 +584,6 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
               </button>
           </div>
 
-          <!-- old filter -->
-          <!-- <div class="filter_wrapper">
-            <div class="sort flex-grow-1">
-              <span>Sort by</span>
-                <select name="filter" id="filter_admin">
-                  <option value="lname">Surname</option>
-                  <option value="fname">Firstname</option>
-                </select>
-            </div>
-
-            <div class="r">
-              <div class="search">
-                <input type="text" placeholder="Search" id="search_admin"/>
-              </div>
-
-              <div class="grid">
-                <i class="fa fa-th-large" aria-hidden="true"></i>
-              </div>
-
-              <div class="bars">
-                <i class="fa fa-bars" aria-hidden="true"></i>
-              </div>
-            </div>
-          </div> -->
           
           <div class="admins_table_details table-dark table-responsive">
             <table>
@@ -727,9 +811,6 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                       </div>
 
                       <div class="modal-footer">
-
-                          <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                          <button type="submit" name="updatedata" class="btn btn-primary">Update Data</button> -->
                           
                           <input type="button" class="btn btn-danger" data-dismiss="modal" value="Cancel">
 
@@ -820,25 +901,6 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
             </button>
           </div>
 
-          <!-- <div class="filter_wrapper">
-            <div class="sort flex-grow-1">
-              <span>Sort by</span>
-              <select name="filter" id="filter">
-                <option value="departments">Type of Departments</option>
-              </select>
-            </div>
-            <div class="r">
-              <div class="search">
-                <input type="text" placeholder="Search" />
-              </div>
-              <div class="grid">
-                <i class="fa fa-th-large" aria-hidden="true"></i>
-              </div>
-              <div class="bars">
-                <i class="fa fa-bars" aria-hidden="true"></i>
-              </div>
-            </div>
-          </div> -->
 
           <div class="card_container">
 
@@ -849,7 +911,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
               <div class="card_header">
                 <span class="department_name"><?=$departments['dept_name']?></span>
                 <div class="actions">
-                    <a href="#editDepartmentInfo" class="custom_btn editbtndepts" data-toggle="modal"><i class="fa fa-edit" aria-hidden="true" style="color: #37954B; font-size: 25px"></i></a>
+                    <a href="#editDepartmentInfo" class="custom_btn editbtndepts" data-toggle="modal"><i class="fa fa-edit" aria-hidden="true" style="color: #3e64ff; font-size: 25px"></i></a>
+                    <!-- style="color: #37954B;" -->
                     <a href="#delDepartment" class="custom_btn deletebtndepts" data-toggle="modal"><i class="fa fa-trash" aria-hidden="true" style="color: #ED1C24; font-size: 25px"></i></a>
                 </div>
               </div>
@@ -922,7 +985,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                           <div name="dept_name">
                             <label>Department</label>
                             <select name="dept_name" id="dept_name" class="form-control">
-                                <option value="">---Select Department---</option>
+                                <option value="">Select Department</option>
                                 <option value="BSIT Department">BSIT Department</option>
                                 <option value="BSIE Department">BSIE Department</option>
                                 <option value="BSENT Department">BSENT Department</option>
@@ -933,7 +996,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                           <div name="building_name">
                           <label>Building Name</label>
                             <select name="building_name" id="building_name" class="form-control">
-                                <option value="">---Select Building Name---</option>
+                                <option value="">Select Building Name</option>
                                 <option value="bautista">Bautista Building</option>
                                 <option name="techvoc">TechVoc Building</option>
                                 <option name="belmonte">Belmonte Building</option>
@@ -942,7 +1005,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                           <div name="room_num">
                           <label>Room No.</label>
                             <select name="room_num" id="room_num" class="form-control">
-                                <option value="">---Select Room No.---</option>
+                                <option value="">Select Room No.</option>
                                 <option name="room1">IC301a</option>
                                 <option name="room2">IC302a</option>
                                 <option name="room3">IC304a</option>
@@ -1037,7 +1100,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                           <div name="dept_name">
                             <label>Department</label>
                             <select name="dept_name" id="dept_name" class="form-control">
-                                <option value="">---Select Department---</option>
+                                <option value="">Select Department</option>
                                 <option value="BSIT Department">BSIT Department</option>
                                 <option value="BSIE Department">BSIE Department</option>
                                 <option value="BSENT Department">BSENT Department</option>
@@ -1048,7 +1111,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                           <div name="building_name">
                           <label>Building Name</label>
                             <select name="building_name" id="building_name" class="form-control">
-                                <option value="">---Select Building Name---</option>
+                                <option value="">Select Building Name</option>
                                 <option value="bautista">Bautista Building</option>
                                 <option name="techvoc">TechVoc Building</option>
                                 <option name="belmonte">Belmonte Building</option>
@@ -1057,7 +1120,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                           <div name="room_num">
                           <label>Room No.</label>
                             <select name="room_num" id="room_num" class="form-control">
-                                <option value="">---Select Room No.---</option>
+                                <option value="">Select Room No.</option>
                                 <option name="room1">IC301a</option>
                                 <option name="room2">IC302a</option>
                                 <option name="room3">IC304a</option>
@@ -1125,7 +1188,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
               <div class="modal-content">
                   
 
-                  <form action="delete_admin.php" method="POST">
+                  <form action="delete_department.php" method="POST">
 
                       <div class="modal-body delmodal">
 
@@ -1134,10 +1197,10 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                           <input type="hidden" name="delete_id" id="delete_id">
 
                           <h4 style=" font-weight:bold; padding-top:50px;"> Are you sure you want to remove this department? </h4>
-                          <h4 style="color:blue; font-weight:bold; font-size:20px;">BSIT Department</h4>
+                          <h4 style="color:blue; font-weight:bold; font-size:20px;">Name of Department</h4>
                           <div class="modal_btn">
                             <input type="button" class="btn" style="background-color:lightgrey; color:black; font-weight:700;" id="cancel-admin-modal" data-dismiss="modal" value="No">
-                            <input type="submit" class="btn btn-danger" style="font-weight:700;" name="delAdmin" value="Yes">
+                            <input type="submit" class="btn btn-danger" style="font-weight:700;" name="delDept" value="Yes">
                           </div>
 
                       </div>
@@ -1167,18 +1230,45 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
             <div class="filter_wrapper">
               <div class="sort flex-grow-1">
                 <span>Sort by</span>
-                <select name="filter" id="filter_nurse">
-                  <option value="">---Select---</option>
-                  <option value="departments">Campus</option>
+                <select name="filter" id="filter_nurse" style="width: 50%; border-radius: 3px; padding: 5px 5px; background: #f2f2f2; border: none; outline: none; height: 100%;">
+                  <option value="">Select</option>
+                  <option value="Department">Department</option>
                   <!-- <option value="departments">Campus</option>
                   <option value="departments">Campus</option> -->
                 </select>
 
               
               </div>
+
+
+ <!-- old filter -->
+          <!-- <div class="filter_wrapper">
+            <div class="sort flex-grow-1">
+              <span>Sort by</span>
+                <select name="filter" id="filter_admin">
+                  <option value="lname">Surname</option>
+                  <option value="fname">Firstname</option>
+                </select>
+            </div>
+
+            <div class="r">
+              <div class="search">
+                <input type="text" placeholder="Search" id="search_admin"/>
+              </div>
+
+              <div class="grid">
+                <i class="fa fa-th-large" aria-hidden="true"></i>
+              </div>
+
+              <div class="bars">
+                <i class="fa fa-bars" aria-hidden="true"></i>
+              </div>
+            </div>
+          </div> -->
+
               <div>
                   <div class="search">
-                    <input type="text" placeholder="Search" id="search_nurse"/>
+                    <input type="text" name="search" id="search_nurse" placeholder="&#xF002; Search Nurse" style="font-family:Poppins, FontAwesome">
                 </div>
 
                 
@@ -1681,7 +1771,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
             <h3 class="m-0">HOSPITAL</h3>
           </div>
           <div class="action_header">   
-             <input type="text" name="search" placeholder="&#xF002; Search hospitals..." style="font-family:Arial, FontAwesome">
+              <!-- <div class="search" style="width: 55%; border-radius: 30px; border: none; color: gray; background: white;"> -->
+                <input type="text" name="search" id="search_hospital" placeholder="&#xF002; Search Hospital" style="font-family:Poppins, FontAwesome">
+              <!-- </div>  -->
             <button class="custom_btn">
               <a href="#addHospitalModal" class="custom_btn" data-toggle="modal"><i class="fa fa-plus"></i>Add Hospital</a>
             </button>
@@ -1691,46 +1783,33 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
             <table>
               
               <tr id="table_header">
+                  <th>Hospital ID</th>
                   <th>Hospital Name</th>
                   <th>Address</th>
                   <th>Email Address</th>
-                  <th>Contact No</th>
+                  <th>Contact No.</th>
                   <th><span>Action</span></th>
               </tr>
+
+
+                <?php if(mysqli_num_rows($fetchAllHospitals) > 0) { 
+                  while ($hospital = mysqli_fetch_assoc($fetchAllHospitals)) {  ?>
               
-
-                  <!-- <?php if(mysqli_num_rows($fetchAddAdmins) > 0) { 
-                  while ($addAdmins = mysqli_fetch_assoc($fetchAddAdmins)) {  ?> -->
-
-                  <tr class="container">
-                      <td><span class="hospitalname"><?=$addAdmins['unique_id']?></span></td>
-                      <td><span class="address"><?=$addAdmins['fname']?></span></td>
-                      <td><span class="email"><?=$addAdmins['lname']?></span></td>
-                      <td><span class="contact_num"><?=$addAdmins['contact_num']?></span></td>
-                      <td>
-                          <!-- <a href="#viewAdminInfo" class="custom_btn" data-toggle="modal"><i class="fa fa-info-circle" aria-hidden="true" style="color: #5D8FD9;"></i></a> -->
-
-                          <a href="#editHospitalInfo" class="custom_btn editbtn" data-toggle="modal"><i class="fa fa-edit" aria-hidden="true" style="color: #3e64ff;"></i></a>
-
-                          <a href="#delHospital" class="custom_btn deletebtn" data-toggle="modal"><i class="fa fa-trash" aria-hidden="true" style="color: #ED1C24;"></i></a>
-                      </td>
-                  </tr>
-
-                  <!-- <?php } } ?> -->
-
               <tr class="container">
-                  <td style="text-align:center;" ><span class="hospitalname">Metro North Medical Center & Hospital</span></td>
-                  <td><span class="address">1001 Mindanao Avenue, Quezon City, 1106 Metro Manila</span></td>
-                  <td><span class="email">spcustorel@mnmch.com</span></td>
-                  <td><span class="contact_num">(02)8426-7000</span></td>
+                  <td style="width:140px;" ><span class="hospitalname"><?=$hospital['hospi_id']?></span></td>
+                  <td style="width:250px;" ><span class="hospitalname"><?=$hospital['hospital']?></span></td>
+                  <td style="width:400px;"><span class="address"><?=$hospital['hospital_add']?></span></td>
+                  <td><span class="email"><?=$hospital['email']?></span></td>
+                  <td style="width:180px;"><span class="contact_num"><?=$hospital['contact_num']?></span></td>
                   <td>
 
-                      <a href="#editHospitalInfo" class="custom_btn editbtn" data-toggle="modal"><i class="fa fa-edit" aria-hidden="true" style="color: #3e64ff;"></i></a>
+                  <td><a href="#editHospitalInfo" class="custom_btn edithosbtn" data-toggle="modal"><i class="fa fa-edit" aria-hidden="true" style="color: #3e64ff; font-size: 30px; margin-left: -95px;"></i></a></td>
 
-                      <a href="#delHospital" class="custom_btn deletebtn" data-toggle="modal"><i class="fa fa-trash" aria-hidden="true" style="color: #ED1C24;"></i></a>
-                  </td>
+                  <td><a href="#delHospital" class="custom_btn deletebtn" data-toggle="modal"><i class="fa fa-trash" aria-hidden="true" style="color: #ED1C24; font-size: 30px; margin-left: -75px;"></i></a></td>
+                  
               </tr>
-              
+
+                <?php } } ?>
                   
 
               
@@ -1748,7 +1827,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
             <div class="modal-dialog">
 
               <div class="modal-content">
-                <form method="post" action="adminDashboard.php">
+                <form method="post" action="addHospital.php">
 
                   <div class="modal-header">						
                     <h4 class="modal-title">ADD HOSPITAL</h4>
@@ -1757,13 +1836,18 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                   <div class="modal-body">	
 
                       <div class="form-group">
+                        <label>Hospital ID</label> 
+                        <input type="text" class="form-control" name="hospi_id" id="hospi_id" required>
+                      </div>	
+
+                      <div class="form-group">
                         <label>Hospital Name</label> 
-                        <input type="text" class="form-control" name="hospitalname" required>
+                        <input type="text" class="form-control" name="hospital" id="hospital" required>
                       </div>	
 
                       <div class="form-group">
                         <label>Address</label> 
-                        <input type="text" class="form-control" name="address" required>
+                        <input type="text" class="form-control" name="hospital_add" required>
                       </div>		
 
                       <div class="form-group">
@@ -1780,7 +1864,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                   
                   <div class="modal-footer">
                     <input type="button" class="btn btn-danger" data-dismiss="modal" value="Cancel">
-                    <input type="button" class="btn btn-success" data-dismiss="modal" id="addsuccess_hospital" name="addAdmin" value="Add">
+                    <!-- <input type="button" class="btn btn-success" data-dismiss="modal" id="addsuccess_hospital" name="addHospi" value="Add"> -->
+                    <input type="submit" class="btn btn-success" name="addHospi" value="Add">
                   </div>
 
                 </form>
@@ -1791,52 +1876,64 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
 <!--########################################################################################################################################################################-->
 
-      <!-- EDIT DATA HOSPITAL MODAL AT HOSPITAL PAGE-->
-
-      <div id="editHospitalInfo" class="modal fade">
-            <div class="modal-dialog">
-
+    <!-- EDIT DATA HOSPITAL MODAL AT ADMINS PAGE-->
+        <div class="modal fade" id="editHospitalInfo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
               <div class="modal-content">
-                <form method="post" action="adminDashboard.php">
-
-                  <div class="modal-header">						
-                    <h4 class="modal-title">EDIT HOSPITAL</h4>
+                  <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel"> EDIT HOSPITAL DATA </h5>
+                      
                   </div>
 
-                  <div class="modal-body">	
+                  <form action="edit_hospital.php" method="POST">
 
-                      <div class="form-group">
-                        <label>Hospital Name</label> 
-                        <input type="text" class="form-control" name="hospitalname" value="Metro North Medical Center & Hospital" required>
-                      </div>	
+                      <div class="modal-body">
+                        
+                        <input type="hidden" name="update_id" id="update_id">
 
-                      <div class="form-group">
-                        <label>Address</label> 
-                        <input type="text" class="form-control" name="address" value="1001 Mindanao Avenue, Quezon City, 1106 Metro Manila" required>
-                      </div>		
+                            <div class="form-group">
+                              <label>Hospital ID</label> 
+                              <input type="text" name="hospi_id" id="hospi_id" class="form-control" placeholder="Hospital ID" readonly>
+                            </div>	
 
-                      <div class="form-group">
-                        <label>Email Address</label>
-                        <input type="text" class="form-control" name="email" value="spcustorel@mnmch.com" required>
+                            <div class="form-group">
+                              <label>Hospital Name</label> 
+                              <input type="text" name="hospital" id="hospital" class="form-control" placeholder="Hospital Name">
+                            </div>	
+
+                            <div class="form-group">
+                              <label>Address</label> 
+                              <input type="text" name="hospital_add" id="hospital_add" class="form-control" placeholder="Address">
+                            </div>		
+
+                            <div class="form-group">
+                              <label> Email Address </label>
+                              <input type="text" name="email" id="email" class="form-control" placeholder="Email Address">
+                            </div>
+
+                            <div class="form-group">
+                              <label>Contact Number</label>
+                              <input type="text" name="contact_num" id="contact_num" class="form-control" placeholder="Contact Number">
+                            </div>
+
+                     </div>
+
+                      <div class="modal-footer">
+
+                          <input type="button" class="btn btn-danger" data-dismiss="modal" value="Cancel">
+
+                          <input type="submit" class="btn btn-success" name="editHospi" value="Update Data">
+
+                          <!-- <input type="button" class="btn btn-danger" data-dismiss="modal" value="Cancel">
+                          <input type="button" class="btn btn-success" data-dismiss="modal" id="addsuccess_hospital" name="editHospi" value="Save">
+                          -->
                       </div>
+                  </form>
 
-                      <div class="form-group">
-                        <label>Contact No.</label>
-                        <input type="text" class="form-control" name="contact_num" value="(02)8426-7000" required>
-                      </div>	
-          
-                  </div>
-                  
-                  <div class="modal-footer">
-                    <input type="button" class="btn btn-danger" data-dismiss="modal" value="Cancel">
-                    <input type="button" class="btn btn-success" data-dismiss="modal" id="addsuccess_hospital" name="addAdmin" value="Save">
-                  </div>
-
-                </form>
               </div>
-
             </div>
-          </div>          
+        </div>
+
 
 <!--#################################################################################################################################################################################################################################-->
         
@@ -1929,24 +2026,25 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 <section id="medicine" class="medicine so_content" data-tab-content>
           <div class="medicine_landing">
             <div class="medicine_header d-flex justify-content-between">
-              <h3 class="m-0">MEDICINES</h3>
-                <!-- <button class="custom_btn">
+              <h3 class="m-0" style="color: white;">MEDICINES</h3>
+                <button class="custom_btn">
                   <a href="#addMedicineModal" class="custom_btn" data-toggle="modal"><i class="fa fa-medkit"></i>Add Medicine</a>
-                </button> -->
+                </button>
             </div>
           </div>
           <div class="filter_wrapper">
           <div class="sort flex-grow-1">
             <span>Sort by</span>
-            <select name="filter" id="filter">  
-              <option value="Date Manufactured">Date Manufactured</option>
-              <option value="Date Expiration">Date Expiration</option>
-              <option value="Quantity">Quantity</option>
+            <select name="filter" id="filter"> 
+              <option value="">Select</option> 
+              <option value="date_manufactured">Date Manufactured</option>
+              <option value="expirationDate">Expiration Date</option>
+              <option value="num_stocks">Stocks</option>
             </select>
           </div>
           <div class="r">
             <div class="search">
-              <input type="text" placeholder="Search" />
+              <input type="text" name="search" id="search_meds" placeholder="&#xF002; Search Medicine" style="font-family:Poppins, FontAwesome">
             </div>
             <div class="grid">
               <i class="fa fa-th-large" aria-hidden="true"></i>
@@ -1983,18 +2081,25 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                     </table>
                   </td>
             
-                  <td>
+                  <td style="text-align:justify;text-justify:inter-word;width:400px;">
                     <span class="mdc-stock">Desctiption: </span>
                     <span class="mdc-qty"><?=$med['description']?></span>
                   </td>
                     
           
                   
-                  <td style="width:280px;"><b>Expiration Date:</b> <?=$med['expirationDate']?></td>
-                  <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#medModal">
+                  <td style="width:390px;"><b>Expiration Date:</b> <?=$med['expirationDate']?></td>
+                  <!-- <td>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#medModal">
                     View
-                  </button>
-                  </td>
+                    </button> 
+                  </td> -->
+                  <td><a href="#medModal" class="custom_btn" data-bs-toggle="modal"><i class="fa fa-info-circle" id="view" aria-hidden="true" style="color: gray; font-size: 30px"></i></a></td>
+
+                  <td><a href="#editMedInfo" class="custom_btn editmedbtn" data-bs-toggle="modal"><i class="fa fa-edit" id="edit" aria-hidden="true" style="color: #3e64ff; font-size: 30px"></i></a></td>
+
+                  <td><a href="#delMed" class="custom_btn deletemedbtn" data-bs-toggle="modal"><i class="fa fa-trash" id="delete" aria-hidden="true" style="color: #ED1C24; font-size: 30px"></i></a></td>
+                  
        
                 </tr>
                 </tbody>
@@ -2016,59 +2121,59 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
         <div class="modal-body">
             <div class="row">
               <div class="col">
-                        <label for="medname" class="form-label">Medicine Name</label>
-                        <input type="text" class="form-control" id="medname" style="width:200px;"readonly placeholder="<?=$med['name']?>">
+                        <label for="name" class="form-label">Medicine Name</label>
+                        <input type="text" class="form-control" name="name" id="name" style="width:200px;"readonly value="<?=$med['name']?>">
               </div>
 
               <div class="col">
               <label for="brand" class="form-label">Brand</label>
-                        <input type="text" class="form-control" id="brand" readonly placeholder="<?=$med['brand']?>">
+                        <input type="text"  class="form-control" name="brand" id="brand" readonly value="<?=$med['brand']?>">
                 </div>
 
                 <div class="col">
-              <label for="stocks" class="form-label">Stocks</label>
-                        <input type="text" class="form-control" id="stocks" readonly placeholder="<?=$med['num_stocks']?>">
+              <label for="num_stocks" class="form-label">Stocks</label>
+                        <input type="text" class="form-control" name="num_stocks" id="num_stocks" readonly value="<?=$med['num_stocks']?>">
                 </div>
 
                 <div class="col">
-                <label for="expdate" class="form-label">Expiration Date</label>
-                        <input type="date" class="form-control" id="expirationDate" readonly value="<?=$med['expirationDate']?>">
+                <label for="expirationDate" class="form-label">Expiration Date</label>
+                        <input type="date" class="form-control" name="expirationDate" id="expirationDate" readonly value="<?=$med['expirationDate']?>">
                 </div>
                 <!---->
             <div class="row">
             <div class="col">
-            <label for="genname" class="form-label">Generic Name</label>
-                        <input type="text" class="form-control" id="genname" style="width:200px;"readonly value="<?=$med['genericName']?>">
+            <label for="genericName" class="form-label">Generic Name</label>
+                        <input type="text" class="form-control" name="genericName" id="genericName" style="width:200px;"readonly value="<?=$med['genericName']?>">
             </div>
             <div class="col">
-            <label for="gendatemanu" class="form-label">Date Manufactured</label>
-                        <input type="date" class="form-control" id="datemanu" style="width:200px;"readonly value="<?=$med['date_manufactured']?>">
+            <label for="date_manufactured" class="form-label">Date Manufactured</label>
+                        <input type="date" class="form-control" name="date_manufactured" id="date_manufactured" style="width:200px;"readonly value="<?=$med['date_manufactured']?>">
             </div>
             <div class="col">
-            <label for="prod_con" class="form-label">Product Condition</label>
-                        <input type="text" class="form-control" id="prod_con" style="width:200px;"readonly value="<?=$med['prodCondition']?>">
+            <label for="prodCondition" class="form-label">Product Condition</label>
+                        <input type="text" class="form-control" name="prodCondition" id="prodCondition" style="width:200px;"readonly value="<?=$med['prodCondition']?>">
             </div>
             <div class="col">
             <label for="storage" class="form-label">Storage</label>
-                        <input type="text" class="form-control" id="storage" style="width:100px;"readonly value="<?=$med['storage']?>">
+                        <input type="text" class="form-control" name="storage" id="storage" style="width:100px;"readonly value="<?=$med['storage']?>">
             </div>
             <div class="col">
             <label for="box_id" class="form-label">Box ID</label>
-                        <input type="text" class="form-control" id="box_id" style="width:100px;"readonly value="<?=$med['box_id']?>">
+                        <input type="text" class="form-control" name="box_id" id="box_id" style="width:100px;"readonly value="<?=$med['box_id']?>">
             </div>
 
             <div class="row">
             <div class="col">
-            <label for="manu_comp" class="form-label">Manufacturer's Company</label>
-                        <input type="text" class="form-control" id="manu_comp" style="width:210px;"readonly value="<?=$med['manufacturerName']?>">
+            <label for="manufacturerName" class="form-label">Manufacturer Name</label>
+                        <input type="text" class="form-control" name="manufacturerName" id="manufacturerName" style="width:210px;"readonly value="<?=$med['manufacturerName']?>">
             </div>
             <div class="col">
-            <label for="email" class="form-label">Email Address</label>
-                        <input type="text" class="form-control" id="email" style="width:100px;"readonly value="<?=$med['prodCondition']?>">
+            <label for="contact_info" class="form-label">Contact Number</label>
+                        <input type="text" class="form-control" name="contact_info" id="contact_info" style="width:170px;"readonly value="<?=$med['contact_info']?>">
             </div>
             <div class="col">
-            <label for="contact_num" class="form-label">Contact Number</label>
-                        <input type="text" class="form-control" id="contact_num" style="width:100px;"readonly value="<?=$med['contact_info']?>">
+            <label for="prod_qrcode" class="form-label">Product QR Code</label>
+            <img class="form-control" name="prod_qrcode" id="prod_qrcode" style="width:100px;" src="./assets/<?=$med['prod_qrcode']?>">
             </div>
             </div>
             <div class="row">
@@ -2085,7 +2190,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
         </div>
         <style>
           .modal-footer{
-            width:100%;
+            max-width:100%;
           }
         </style>
       </form>
@@ -2093,9 +2198,6 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
   </div>
 </div>
 
-
-
-    
 
     <?php } } ?>
   </ul>
@@ -2111,7 +2213,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                 <div class="modal-content">
                   <form method="post" action="insert_medicine.php">
                     <div class="modal-header">						
-                      <h4 class="modal-title">ADD MEDICINE TO INVENTORY</h4>
+                      <h4 class="modal-title" style="color: black;">ADD MEDICINE TO INVENTORY</h4>
                       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
                     <div class="modal-body">	
@@ -2199,55 +2301,10 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
 <!--#################################################################################################################################################################################################################################-->
 
-        <!-- APPOINTMENT PAGE -->
-        <section id="appointment" class="appointment so_content" data-tab-content>
-          <div class="row1">
-            <div class="column1">
-
-            <h3 class="m-0">MESSAGES</h3>
-             <input type="text" class="msgsearch" placeholder="Search">
-             
-             <div class="stdmsg">
-              <img src="./assets/nurse.jpg" alt="" id="stdimage">
-              <p class="datetime">11/10/2022 - 5:06PM</p>
-              <p class="std-name">Clarissa Calubaquib (Student - 4th year)</p>
-              <p class="message-content">Good morning po, hindi po ako makakapasok.</p>
-             </div>
-
-             <div class="stdmsg">
-              <img src="./assets/nurse.jpg" alt="" id="stdimage">
-              <p class="datetime">11/10/2022 - 5:06PM</p>
-              <p class="std-name">Jessica Bulleque (Student - 4th year)</p>
-              <p class="message-content">Good morning po, hindi po ako makakapasok.</p>
-             </div>
-
-             <div class="stdmsg">
-              <img src="./assets/nurse.jpg" alt="" id="stdimage">
-              <p class="datetime">11/10/2022 - 5:06PM</p>
-              <p class="std-name">Kenneth Nunag (Student - 4th year)</p>
-              <p class="message-content">Di po ako papasok masama po kasi ako.</p>
-             </div>
-            </div>
-
-            <div class="column2">
-             <h5 class="stdname">Juan Dela Cruz (Student-4th year)</h5>
-             <div class="stdchat">
-              <img src="./assets/nurse.jpg" alt="" id="stdimg"> 
-              <input type="text" class="chatbg" value="Hi" readonly>
-             
-            </div>
-            <input type="text" class="msgreply" placeholder="Type Here">
-            </div>
-            
-          </div>
-      </section>
-
-
-<!--#################################################################################################################################################################################################################################-->
-
+      
       <!-- REPORTS PAGE -->
       <section id="reports" class="reports so_content" data-tab-content>
-        <h3 class="m-0">REPORTS</h3>
+        <h3 class="m-0" style="color: white;">REPORTS</h3>
         <div class="headerpatients">
           <span class="headerpatients1">NUMBER OF PATIENTS</span>
                 <select name="filter" class="reportfilter">
@@ -2302,8 +2359,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
 <!--#################################################################################################################################################################################################################################-->
 
-      <!-- ARCHIVE PAGE -->
-      <section id="archives" class="archives so_content" data-tab-content>  
+       <!-- ARCHIVE PAGE -->
+       <section id="archives" class="archives so_content" data-tab-content>  
         <div class="archives_header d-flex justify-content-between">
           <h3 class="m-0">ARCHIVE</h3>
         </div>
@@ -2312,14 +2369,14 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
             <div class="sort flex-grow-1">
               <span>Sort by</span>
               <select name="filter" id="filter">
-                <option value="">---Select---</option>
+                <option value="">All</option>
                 <option value="Type of User">Type of User</option>
                 <option value="Date of Archive">Date of Archive</option>
               </select>
             </div>
             <div class="r">
               <div class="search">
-                <input type="text" placeholder="Search" />
+                <input type="text" placeholder="&#xF002; Search Patients" class="searchicon" style="font-family:Poppins, FontAwesome">
               </div>
               <div class="scan">
                 <button>Scan QR</button>
@@ -2327,16 +2384,26 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
             </div>
           </div>
 
-          <h3 class="hh">Recent</h3>  
           <div class="archives-content table-responsive">
             <table class="archives-table">
                 <tr>
-                  <!--   -->
-                  <th>Unique ID</th>
-                  <th>Type of User</th>
+                  <th>Image</th>
+                  <th>ID No.</th>
+                  <th>Name</th>
+                  <th>Type</th>
                   <th>Date of Archive</th>
-                  <!-- <th>Reason</th>
-                  <th>Date</th> -->
+                  <th>Time</th>
+                  <th>Action</th>
+                </tr>
+
+                <tr class="archives-info">
+                  <td><img src="./assets/biogesic.jpg"></td>
+                  <td>15-2323</td>
+                  <td>Analos, Miguel Santos</td>
+                  <td>Student</td>
+                  <td>Graduated</td>
+                  <td>July 29, 2019</td>
+                  <td><i class="fa fa-rotate-right"></i></td>
                 </tr>
 
                 <tr class="archives-info">
@@ -2344,8 +2411,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                   <td>15-2323</td>
                   <td>Analos, Miguel Santos</td>
                   <td>Student</td>
-                  <td>Graudated</td>
-                  <td>July 29,2019</td>
+                  <td>Graduated</td>
+                  <td>July 29, 2019</td>
+                  <td><i class="fa fa-rotate-right"></i></td>
                 </tr>
 
                 <tr class="archives-info">
@@ -2353,8 +2421,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                   <td>15-2323</td>
                   <td>Analos, Miguel Santos</td>
                   <td>Student</td>
-                  <td>Graudated</td>
-                  <td>July 29,2019</td>
+                  <td>Graduated</td>
+                  <td>July 29, 2019</td>
+                  <td><i class="fa fa-rotate-right"></i></td>
                 </tr>
 
                 <tr class="archives-info">
@@ -2362,8 +2431,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                   <td>15-2323</td>
                   <td>Analos, Miguel Santos</td>
                   <td>Student</td>
-                  <td>Graudated</td>
-                  <td>July 29,2019</td>
+                  <td>Graduated</td>
+                  <td>July 29, 2019</td>
+                  <td><i class="fa fa-rotate-right"></i></td>
                 </tr>
 
                 <tr class="archives-info">
@@ -2371,8 +2441,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                   <td>15-2323</td>
                   <td>Analos, Miguel Santos</td>
                   <td>Student</td>
-                  <td>Graudated</td>
-                  <td>July 29,2019</td>
+                  <td>Graduated</td>
+                  <td>July 29, 2019</td>
+                  <td><i class="fa fa-rotate-right"></i></td>
                 </tr>
 
                 <tr class="archives-info">
@@ -2380,8 +2451,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                   <td>15-2323</td>
                   <td>Analos, Miguel Santos</td>
                   <td>Student</td>
-                  <td>Graudated</td>
-                  <td>July 29,2019</td>
+                  <td>Graduated</td>
+                  <td>July 29, 2019</td>
+                  <td><i class="fa fa-rotate-right"></i></td>
                 </tr>
 
                 <tr class="archives-info">
@@ -2389,8 +2461,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                   <td>15-2323</td>
                   <td>Analos, Miguel Santos</td>
                   <td>Student</td>
-                  <td>Graudated</td>
-                  <td>July 29,2019</td>
+                  <td>Graduated</td>
+                  <td>July 29, 2019</td>
+                  <td><i class="fa fa-rotate-right"></i></td>
                 </tr>
 
                 <tr class="archives-info">
@@ -2398,8 +2471,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                   <td>15-2323</td>
                   <td>Analos, Miguel Santos</td>
                   <td>Student</td>
-                  <td>Graudated</td>
-                  <td>July 29,2019</td>
+                  <td>Graduated</td>
+                  <td>July 29, 2019</td>
+                  <td><i class="fa fa-rotate-right"></i></td>
                 </tr>
                 
                 <tr class="archives-info">
@@ -2407,8 +2481,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                   <td>15-2323</td>
                   <td>Analos, Miguel Santos</td>
                   <td>Student</td>
-                  <td>Graudated</td>
-                  <td>July 29,2019</td>
+                  <td>Graduated</td>
+                  <td>July 29, 2019</td>
+                  <td><i class="fa fa-rotate-right"></i></td>
                 </tr>
 
                 <tr class="archives-info">
@@ -2416,8 +2491,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                   <td>15-2323</td>
                   <td>Analos, Miguel Santos</td>
                   <td>Student</td>
-                  <td>Graudated</td>
-                  <td>July 29,2019</td>
+                  <td>Graduated</td>
+                  <td>July 29, 2019</td>
+                  <td><i class="fa fa-rotate-right"></i></td>
                 </tr>
 
                 <tr class="archives-info">
@@ -2425,8 +2501,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                   <td>15-2323</td>
                   <td>Analos, Miguel Santos</td>
                   <td>Student</td>
-                  <td>Graudated</td>
-                  <td>July 29,2019</td>
+                  <td>Graduated</td>
+                  <td>July 29, 2019</td>
+                  <td><i class="fa fa-rotate-right"></i></td>
                 </tr>
             </table>
           </div>
@@ -2435,21 +2512,152 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 <!-- E N D  A R C H I V E -->
 
 
-<!-- #################################################################################################################################################################################################################################-->
+<!--#################################################################################################################################################################################################################################-->
 
       <!-- ENTRANCE LOG PAGE -->
 
-
-      <section id="entrancelog" class="entrancelog so_content" data-tab-content>
-          <div class="entrancelog_header d-flex justify-content-between">
-            <h3 class="m-0">ENTRANCE LOG</h3>
-              <!-- <button class="custom_btn">
-						    <a href="#addMedicineModal" class="custom_btn" data-toggle="modal"><i class="fa fa-user-md"></i>Add Medicine</a>
-              </button> -->
+      <section id="entrancelog" class="entrancelog so_content" data-tab-content>  
+        <div class="entrancelog_header d-flex justify-content-between">
+          <h3 class="m-0">ENTRANCE LOG</h3>
+        </div>
+        <div class="container">
+        <div class="filter_wrapper">
+            <div class="sort flex-grow-1">
+              <div class="sortspan">
+              <span style="padding-right: 5px">Sort by</span>
+              <select name="filter" id="filter">
+                <option value="">All</option>
+                <option value="Time">Time</option>
+                <option value="Type of User">Type of User</option>
+              </select>
+              </div>
+            </div>
+            <div class="dateselect">
+              <div class="date">
+              <input type="date" placeholder="Select a date" onchange="this.className=(this.value!=''?'has-value':'')">
+              </div>
+            </div>
           </div>
-
-        
+          <div class="filter_wrapper">
+            <div class="sort flex-grow-1">
+            <div class="sortspan">
+              <div class="span1">
+              <span class="show">Showing 25 out of 1000</span>
+              <span><i class="fa fa-print"></i>Print</span>
+              <span><i class="fa fa-download" aria-hidden="true"></i>Download</span>
+              </div>
+            </div>
+            </div>
+          </div>
+          
+          <div class="col-xs-8 col-xs-offset-2 well">
+            <table class="table table-scroll table-striped">
+              <thead>
+                  <tr>
+                      <th>User ID</th>
+                      <th>Image</th>
+                      <th>Status</th>
+                      <th>Name</th>
+                      <th>Section</th>
+                      <th>Yr Level</th>
+                      <th>Purpose</th>
+                      <th>Contact No.</th>
+                      <th>Time In</th>
+                      <th>Time Out</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td>15-2323</td>
+                      <td><img src="./assets/biogesic.jpg"></td>
+                      <td class="status">Verified</td>
+                      <td>Analos, Miguel Santos</td>
+                      <td>SBIT-4D</td>
+                      <td>4th</td>
+                      <td>-</td>
+                      <td>09123456789</td>
+                      <td>10:00am</td>
+                      <td>1:00pm</td>
+                  </tr>
+                  <tr>
+                      <td>15-2323</td>
+                      <td><img src="./assets/biogesic.jpg"></td>
+                      <td class="status">Verified</td>
+                      <td>Analos, Miguel Santos</td>
+                      <td>SBIT-4D</td>
+                      <td>4th</td>
+                      <td>-</td>
+                      <td>09123456789</td>
+                      <td>10:00am</td>
+                      <td>1:00pm</td>
+                  </tr>
+                  <tr>
+                      <td>15-2323</td>
+                      <td><img src="./assets/biogesic.jpg"></td>
+                      <td class="status">Visitor</td>
+                      <td>Analos, Miguel Santos</td>
+                      <td>SBIT-4D</td>
+                      <td>4th</td>
+                      <td>-</td>
+                      <td>09123456789</td>
+                      <td>10:00am</td>
+                      <td>1:00pm</td>
+                  </tr>
+                  <tr>
+                      <td>15-2323</td>
+                      <td><img src="./assets/biogesic.jpg"></td>
+                      <td class="status">Verified</td>
+                      <td>Analos, Miguel Santos</td>
+                      <td>SBIT-4D</td>
+                      <td>4th</td>
+                      <td>-</td>
+                      <td>09123456789</td>
+                      <td>10:00am</td>
+                      <td>1:00pm</td>
+                  </tr>
+                  <tr>
+                      <td>15-2323</td>
+                      <td><img src="./assets/biogesic.jpg"></td>
+                      <td class="status">Unverified</td>
+                      <td>Analos, Miguel Santos</td>
+                      <td>SBIT-4D</td>
+                      <td>4th</td>
+                      <td>-</td>
+                      <td>09123456789</td>
+                      <td>10:00am</td>
+                      <td>1:00pm</td>
+                  </tr>
+                  <tr>
+                      <td>15-2323</td>
+                      <td><img src="./assets/biogesic.jpg"></td>
+                      <td class="status">Invalid</td>
+                      <td>Analos, Miguel Santos</td>
+                      <td>SBIT-4D</td>
+                      <td>4th</td>
+                      <td>-</td>
+                      <td>09123456789</td>
+                      <td>10:00am</td>
+                      <td>1:00pm</td>
+                  </tr>
+                  <tr>
+                      <td>15-2323</td>
+                      <td><img src="./assets/biogesic.jpg"></td>
+                      <td class="status">Visitor</td>
+                      <td>Analos, Miguel Santos</td>
+                      <td>SBIT-4D</td>
+                      <td>4th</td>
+                      <td>-</td>
+                      <td>09123456789</td>
+                      <td>10:00am</td>
+                      <td>1:00pm</td>
+                  </tr>
+            </tbody>
+          </table>
+        </div> 
       </section>
+
+     
+<!-- E N D  E N T R A N C E L O G -->
 
 <!--#################################################################################################################################################################################################################################-->
 
@@ -2460,6 +2668,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
     <script src="./js/status_color.js"></script>
     <script src="./js/line_graph.js"></script>
     <script src="./js/circle_graph.js"></script>
+    <script src="./js/bar_graph.js"></script>
 
     <!-- bootstrap js -->
     <script src="./js/jquery.min.js"></script>
@@ -2538,6 +2747,37 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                 $('#lname').val(data[3]);
                 $('#contact_num').val(data[5]);
                 $('#img').val(data[6]);
+            });
+        });
+
+    </script>
+
+<!--#################################################################################################################################################################################################################################-->
+
+  <!-- EDIT HOSPITAL INFO JS -->
+  <script>
+        $(document).ready(function () {
+
+            $('.edithosbtn').on('click', function () {
+
+                $('#editHospitalInfo').modal('show');
+
+                $tr = $(this).closest('tr');
+
+                var data = $tr.children("td").map(function () {
+                    return $(this).text();
+                }).get();
+
+                console.log(data);
+
+
+                $('#update_id').val(data[5]);
+                $('#hospi_id').val(data[0]);
+                $('#hospital').val(data[1]);
+                $('#hospital_add').val(data[2]);
+                $('#email').val(data[3]);
+                $('#contact_num').val(data[4]);
+                
             });
         });
 
@@ -2744,8 +2984,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                 console.log(data);
 
 
-                $('#update_id').val(data[0]);
-                $('#emp_id').val(data[1]);
+                $('#update_id').val(data[8]);
+                $('#emp_id').val(data[0]);
                 $('#dept_name').val(data[3]);
                 $('#building_name').val(data[4]);
                 $('#room_num').val(data[5]);
@@ -2767,7 +3007,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
             $('.deletebtndepts').on('click', function () {
 
-                $('#delAdmin').modal('show');
+                $('#delDept').modal('show');
 
                 var tr = $(this).closest('tr');
 
@@ -2793,6 +3033,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 <!-- CUSTOM AJAX FILE -->
 <script src="./ajax/search_admin.js"> </script>
 <script src="./ajax/search_nurse.js"> </script>
+<script src="./ajax/search_hospital.js"> </script>
+<script src="./ajax/search_medicine.js"> </script>
 
 </html>
 

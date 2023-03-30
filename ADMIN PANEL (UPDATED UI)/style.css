@@ -160,6 +160,7 @@ background: #F2F2F2;
 .modal .modal-dialog {
     max-width: 500px;
     font-size: 14px;
+    color: black;
 }
 .modal .modal-dialog input[type=text]{
     max-width: 500px;

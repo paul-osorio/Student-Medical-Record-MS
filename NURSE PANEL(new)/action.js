@@ -1,21 +1,46 @@
 $(document).ready(function(){
     // console.log('nurse');
-
-    $('#view').on('click',function(){
-        let id = $(this).attr('data-id');
-        alert(id)
-
-        $.ajax({
-            url:'nurseDashboard.php',
-            method:'POST',
-            data:{student_info:1,id:id},
-            success:function(data){
-                $('#student').html('')
-                $('#student').html(data)
-            }
-        })
+    $(document).on('click','#view',function(){
+      let id = $(this).attr('data-id');
+      $.ajax({
+          url:'fetchData.php',
+          method:'POST',
+          data:{fetch_stud_data:1,id:id},
+          success:function(response){
+              $('#student').html(response)
+              // $('#student').html(data)
+              consultation(id);
+          }
+      })
+  })
+    $(document).on('click','#consultation',function(){
+      let id = $(this).attr('data-id');
+      $.ajax({
+          url:'fetchData.php',
+          method:'POST',
+          data:{new_consultation:1,id:id},
+          success:function(response){
+              $('#student').html(response)
+              // $('#student').html(data)
+              consultation(id);
+          }
+      })
+  })
+  function consultation(id) {
+    $.ajax({
+        url:'fetchData.php',
+        method:'POST',
+        data:{consultation:1,id:id},
+        success:function(response){
+            $('#cosultation_output').html(response)
+            // $('#student').html(data)
+        }
     })
+   }
+  
 })
+
+
 
 {/* <h2> Patient List > </h2>
   <hr>

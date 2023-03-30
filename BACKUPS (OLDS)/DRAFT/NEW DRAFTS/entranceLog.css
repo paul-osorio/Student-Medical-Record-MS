@@ -1,0 +1,206 @@
+.entrancelog-nav{
+    background-color: rgb(218, 214, 214);
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 7px;
+    display: flex;
+}
+
+.entrancelog-nav span{
+    font-weight: 500;
+}
+
+
+/*H E A D E R*/
+
+#entrancelog .entrancelog_header{
+    margin-left: 20px;
+}
+
+#entrancelog .entrancelog_header h3{
+    color: #5D8FD9;
+}
+
+#entrancelog .filter_wrapper{
+    margin-bottom: 10px;
+    padding: 10px;
+    /* height:50px; */
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 1fr;
+}
+
+#entrancelog .filter_wrapper .sort{
+    align-items: center;
+    text-align: center;
+}
+
+#entrancelog .filter_wrapper .sortspan{
+    float:right;
+    font-size: 16px;
+}
+
+#entrancelog .filter_wrapper .sortspan span{
+    font-weight: 500;
+    color: #D9D9D9;
+    white-space: nowrap;
+    align-items: center;
+}
+
+#entrancelog .filter_wrapper .sortspan .span1{
+    font-size: 14px;
+}
+
+#entrancelog .filter_wrapper .sortspan .span1 .show{
+    padding-right: 50px;
+}
+
+#entrancelog .filter_wrapper .sortspan span .fa-print{
+    font-weight: 500;
+    color: #347e1c;
+    white-space: nowrap;
+    font-size: 20px;
+    padding: 5px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+#entrancelog .filter_wrapper .sortspan span .fa-download{
+    font-weight: 500;
+    color: #5D8FD9;
+    white-space: nowrap;
+    font-size: 20px;
+    padding: 5px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+#entrancelog .filter_wrapper .sort #filter{/* filter */
+    width: 130px;
+    border-radius: 3px;
+    margin-top: 5px;
+    padding: 5px 20px;
+    background: #F2F2F2;
+    border: none;
+    outline: none;
+    margin-left: 0px;
+    text-align: center;
+}
+
+#entrancelog .filter_wrapper .dateselect{
+    align-items: center;
+    text-align: center;
+}
+
+#entrancelog .filter_wrapper .date{
+    margin-top: 5px;
+    float:right;
+}
+
+#entrancelog .filter_wrapper .date input[type="date"]{
+    width: 160px;
+    border-radius: 3px;
+    padding: 5px 10px;
+    background: #F2F2F2;
+    border: none;
+    outline: none;
+    margin-left: 25px;
+    text-align: center;
+}
+
+input[type="date"]:not(.has-value):before{
+    color: black;
+    content: attr(placeholder);
+    width: 0px;
+    white-space: nowrap;
+    text-align: center;
+    border-radius: 3px;
+    background: #F2F2F2;
+    text-align: center;
+}
+
+input[type="date"]:in-range::-webkit-datetime-edit-year-field, 
+input[type="date"]:in-range::-webkit-datetime-edit-month-field, 
+input[type="date"]:in-range::-webkit-datetime-edit-day-field, 
+input[type="date"]:in-range::-webkit-datetime-edit-text {
+ 	color: transparent;
+}
+
+
+/* table*/
+#entrancelog .well {
+    background: #D9D9D9;
+    height: 350px;
+    padding-top: 18px;
+    margin-left: 0px;
+    margin-right: 0px;
+    border-radius: 25px;
+    box-shadow: rgba(0,0,0,0.8) 0 0 10px;
+    
+}
+
+#entrancelog .table-scroll thead {
+    background-color: #D9D9D9;
+    border-bottom: 3px solid #ccc;
+    width: 90%;
+    white-space: nowrap;
+}
+
+#entrancelog .table-scroll thead tr {
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+    
+}
+
+#entrancelog .table-scroll tbody {
+    position: absolute;
+    overflow-y: scroll;
+    height: 270px;
+    margin-right: 32px;
+}
+#entrancelog .table-scroll tbody::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+#entrancelog .table-scroll tbody::-webkit-scrollbar-track {
+    background-color: #c2bfbf;
+    border-radius: 100px;
+  }
+  
+#entrancelog .table-scroll tbody::-webkit-scrollbar-thumb {
+    background-color: #979494;
+    border-radius: 100px;
+}
+
+#entrancelog .table-scroll tbody tr {
+    vertical-align: middle;
+    text-align: center;
+}
+
+#entrancelog .table-scroll tbody tr td img{
+    object-fit: cover;
+    width: 75px;
+    height: 75px;
+    padding: 15px;
+    align-items: center;
+}
+
+#entrancelog .table-scroll tbody td {
+    background-color: #dfdfdf;
+    font-size: 14px;
+    padding: 0px;
+    vertical-align: middle;
+    text-align: center;
+}
+
+#entrancelog .table-scroll tr {
+    width: 100%;
+    table-layout: fixed;
+    display: inline-table;
+    background-color: #dfdfdf;
+}
+
+#entrancelog .table-scroll thead > tr > th {
+    border: none;
+}

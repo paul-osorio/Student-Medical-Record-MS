@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 15, 2023 at 02:11 PM
+-- Generation Time: Mar 30, 2023 at 09:34 AM
 -- Server version: 10.1.24-MariaDB
 -- PHP Version: 7.1.6
 
@@ -21,23 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `clinicms_db`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `activity_log`
---
-
-CREATE TABLE `activity_log` (
-  `id` int(20) NOT NULL,
-  `firstname` varchar(50) NOT NULL,
-  `middlename` varchar(50) NOT NULL,
-  `lastname` varchar(50) NOT NULL,
-  `time_in` time NOT NULL,
-  `time_out` time NOT NULL,
-  `activity` varchar(150) NOT NULL,
-  `status` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -67,7 +50,21 @@ CREATE TABLE `admins` (
 
 INSERT INTO `admins` (`user_id`, `unique_id`, `email`, `password`, `fname`, `lname`, `img`, `contact_num`, `birthdate`, `birthplace`, `gender`, `address`, `status`) VALUES
 (28, '19-1234', 'hradmin@gmail.com', '0192023a7bbd73250516f069df18b500', 'HR', 'Admin', 'prof.jpg', '09123456789', '1999-03-09', 'Quezon City ', 'Female', 'QC, Metro Manila', ''),
-(29, '19-1290', 'sample@gmail.com', '4e91b1cbe42b5c884de47d4c7fda0555', 'Sample', 'Admin', 'profile1.jfif', '09987654322', '0000-00-00', '', '', '', '');
+(29, '19-1290', 'sample@gmail.com', '4e91b1cbe42b5c884de47d4c7fda0555', 'Sample', 'Admin', 'profile1.jfif', '09987654322', '0000-00-00', '', '', '', ''),
+(30, '19-0987', 'julianabalingasa@gmail.com', 'f007cd375b13bfa1c03652eabcf1f7cf', 'Juliana', 'Balingasa', 'id5.jpg', '09123456799', '0000-00-00', '', '', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin_archive`
+--
+
+CREATE TABLE `admin_archive` (
+  `id` int(20) NOT NULL,
+  `unique_id` varchar(50) NOT NULL,
+  `type_of_user` varchar(100) NOT NULL,
+  `date_of_archive` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -86,19 +83,6 @@ CREATE TABLE `appointments` (
   `attached_files` varchar(100) NOT NULL,
   `remarks` varchar(255) NOT NULL,
   `status` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `archive`
---
-
-CREATE TABLE `archive` (
-  `id` int(20) NOT NULL,
-  `unique_id` varchar(50) NOT NULL,
-  `type_of_user` varchar(100) NOT NULL,
-  `date_of_archive` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -160,7 +144,30 @@ CREATE TABLE `consultations` (
 --
 
 INSERT INTO `consultations` (`id`, `student_id`, `fullname`, `date_of_consultation`, `symptoms`, `othersymptoms`, `body_temp`, `suspected_covid`, `tested_covid`, `confined`, `how_long`, `medicine`, `referred`, `hospital`, `hospital_add`, `reason`, `status`) VALUES
+(0, 'dasdasd', '', '0000-00-00', 'Nausea or vomitting', 'Difficulty breathing', '32', 'Yes', 'Rapid Test', '', 1, 'Biogesic', 'Yes', 'Novaliches General Hospital', 'dsd', 'Shows covid-19 symptoms', ''),
 (5, '19-1234', '', '0000-00-00', 'Difficulty breathing<br> - Nausea or vomitting<br> - Fever or chills<br> - Cough<br> - Headache<br> - Congestion or runny nose<br> - Sore throat<br> - New loss of taste or smell<br> - Stomach Ache<br> - Fatigue<br> - Diarrhea', 'Difficulty breathing<br> - Nausea or vomitting', '45.9', 'Yes', 'Antigen Test', 'Yes', 2, 'Diatabs', 'Yes', 'Hope General Hospital', 'Novaliches, QC', 'Shows covid-19 symptoms', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `course`
+--
+
+CREATE TABLE `course` (
+  `id` int(11) NOT NULL,
+  `code` varchar(6) NOT NULL,
+  `degree` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `course`
+--
+
+INSERT INTO `course` (`id`, `code`, `degree`) VALUES
+(1, 'BSIT', 'Bachelor of Science in Information Technology'),
+(2, 'BSIE', 'Bachelor of Science in Industrial Engineering'),
+(3, 'BSA', 'Bachelor of Science in Accountancy'),
+(4, 'BSENT', 'Bachelor of Science in Entrepreneurship');
 
 -- --------------------------------------------------------
 
@@ -196,25 +203,6 @@ INSERT INTO `departments` (`id`, `emp_id`, `dept_name`, `building_name`, `room_n
 -- --------------------------------------------------------
 
 --
--- Table structure for table `entrancelog`
---
-
-CREATE TABLE `entrancelog` (
-  `id` int(20) NOT NULL,
-  `user_id` varchar(50) NOT NULL,
-  `firstname` varchar(50) NOT NULL,
-  `middlename` varchar(50) NOT NULL,
-  `lastname` varchar(50) NOT NULL,
-  `date_entrance_log` date NOT NULL,
-  `time_entrance_log` time NOT NULL,
-  `capture_image` varchar(100) NOT NULL,
-  `remarks` varchar(100) NOT NULL,
-  `status` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `entrance_log`
 --
 
@@ -230,36 +218,7 @@ CREATE TABLE `entrance_log` (
 --
 
 INSERT INTO `entrance_log` (`id`, `student_number`, `timein`, `logdate`) VALUES
-(78, '20-1444', '16:02:54', '2023-03-02'),
-(79, '20-1444', '11:51:54', '2023-03-05'),
-(80, '19-1405', '11:52:23', '2023-03-05'),
-(81, '19-1405', '12:02:06', '2023-03-05'),
-(82, '19-1375', '12:03:56', '2023-03-05'),
-(83, '19-1376', '12:04:12', '2023-03-05'),
-(84, '19-1735', '12:04:15', '2023-03-05'),
-(85, '19-1735', '14:34:33', '2023-03-05'),
-(86, '19-1376', '14:34:39', '2023-03-05'),
-(87, '19-1376', '14:34:47', '2023-03-05'),
-(88, '19-1405', '14:35:20', '2023-03-05'),
-(89, '20-1444', '15:04:57', '2023-03-05'),
-(90, '20-1444', '15:05:02', '2023-03-05'),
-(91, '20-1444', '15:10:23', '2023-03-05'),
-(92, '20-1444', '15:10:28', '2023-03-05'),
-(93, '20-1444', '15:10:33', '2023-03-05'),
-(94, '20-1444', '15:11:14', '2023-03-05'),
-(95, '19-1375', '15:11:49', '2023-03-05'),
-(96, '19-1376', '15:28:01', '2023-03-06'),
-(97, '19-1376', '15:28:10', '2023-03-06'),
-(98, '19-1735', '15:42:08', '2023-03-06'),
-(99, '19-1376', '15:42:11', '2023-03-06'),
-(100, '', '15:23:37', '2023-03-07'),
-(101, '19-1375', '20:52:00', '2023-03-07'),
-(102, '19-1405', '20:52:09', '2023-03-07'),
-(103, '20-1444', '20:52:18', '2023-03-07'),
-(104, '19-1376', '20:52:33', '2023-03-07'),
-(105, '19-1735', '20:52:37', '2023-03-07'),
-(106, '19-1735', '21:00:05', '2023-03-07'),
-(107, '19-1376', '21:00:08', '2023-03-07');
+(1, '19-1375', '08:28:08', '2023-03-16');
 
 -- --------------------------------------------------------
 
@@ -296,6 +255,30 @@ CREATE TABLE `guard_accs` (
   `password` varchar(20) NOT NULL,
   `status` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hospitals`
+--
+
+CREATE TABLE `hospitals` (
+  `id` int(20) NOT NULL,
+  `hospi_id` varchar(20) NOT NULL,
+  `hospital` varchar(150) NOT NULL,
+  `hospital_add` varchar(255) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `contact_num` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `hospitals`
+--
+
+INSERT INTO `hospitals` (`id`, `hospi_id`, `hospital`, `hospital_add`, `email`, `contact_num`) VALUES
+(1, 'A10-0982', 'Word of Hope General Hospital', '23 Buenamar St. Buenamar Subd Nova Proper Novaliches, Quezon City, Quezon City, Philippines', 'hghhospital@yahoo.com', '(02) 3417 9175'),
+(2, 'A10-0543', 'Bernardino General Hospital 1', '680 QUIRINO HIGHWAY, SAN BARTOLOME, Quezon City, Philippines', 'bghcorpone@yahoo.com', '0908 880 4870'),
+(3, 'A10-0234', 'Novaliches General Hospital', '793 Quirino Hwy, Novaliches, Quezon City, Metro Manila', 'info@novagen.com.ph', '(02) 8426 8888');
 
 -- --------------------------------------------------------
 
@@ -347,13 +330,13 @@ CREATE TABLE `medicine` (
 --
 
 INSERT INTO `medicine` (`id`, `box_id`, `prod_id`, `name`, `brand`, `genericName`, `image`, `prescribed_for`, `num_stocks`, `date_manufactured`, `expirationDate`, `prodCondition`, `manufacturerName`, `storage`, `establishment_of_procurement`, `source`, `contact_info`, `description`, `prod_barcode`, `prod_qrcode`, `remarks`, `status`) VALUES
-(0, 'ZFG-9876', 'M-010', 'Kremil S', 'Unilab', 'Aluminum Hydroxide', 'pills.jpg', '', 100, '2023-02-26', '2023-05-06', 'Good', 'UNILAB, Inc.', 'Box #19', '', '', '+639836473673', 'LOREM IPSUM', '', 'Sample-qr-code.png', '', ''),
+(0, 'ZFG-9876', 'M-010', 'Kremil-S', 'Kremil-S', 'Aluminum Hydroxide + Magnesium Hydroxide + Simethicone', 'pills.jpg', '', 100, '2023-02-26', '2023-05-06', 'Good', 'UNILAB, Inc.', 'Box #19', '', '', '+639836473673', 'A combination of antacids which effectively neutralizes the acid produced in the stomach. Also contains Simeticone to relieve bloating and gassiness associated with an upset stomach. Available as chewable tablet.', '', 'Sample-qr-code.png', '', ''),
 (1, 'ZKY-1048', 'M-001', '	\r\nBiogesic', 'Unilab', 'Paracetamol/Acetaminophen', 'biogesic.jpg', '', 100, '2022-11-12', '2023-01-01', 'Goods', 'Jose Manuel David Santos Jr.', 'Box #3', '', '', '+639728917462', 'Biogesic is used and trusted for headache and fever relief. It can be consumed on an empty stomach, and can be taken by pregnant women, breastfeeding moms and the elderly.', '', 'M-001.png', '', ''),
 (2, 'YHD-2542', 'M-002', 'Neozep', 'Neozep Forte', 'Paracetamol/Phenylephrine HCl', 'neozep.png', '', 90, '2022-11-07', '2024-09-10', 'Goods Naman', 'Jose Manuel David Santos Sr.', 'Box #4', '', '', '+639122343412', 'Neozep® Non-Drowsy is for the relief of colds, without the drowse. It is used for the relief of clogged nose, post nasal drip, headache, body aches, and fever associated with the common cold, sinusitis, flu and other minor respiratory tract infections.', '', 'M-002.png', '', ''),
 (3, 'GQW-1234', 'M-003', 'Bioflu', 'Unilab', 'Chlorphenamine Maleate', 'bioflu.png', '', 80, '2022-09-05', '2024-06-13', 'Good', 'Juan Dela Cruz', 'Box #2', '', '', '+639123456789', 'Bioflu is used for the relief of clogged nose, runny nose, postnasal drip, itchy and watery eyes, sneezing, headache, body aches and fever associated with the common cold, allergic rhinitis, sinusitis, flu and other minor respiratory tract infections.', '', 'M-003.png', '', ''),
 (4, 'KJS-3253', 'M-004', 'Diatabs', 'Unilab', 'Loperamide Hydrochloride', 'diatabs.png', '', 100, '2022-12-14', '2024-12-10', 'Goods', 'UNILAB, Inc.', 'Box #1', '', '', '+639457632822', 'Diatabs® is used for the control of acute non-specific diarrhea and/or chronic diarrhea associated with inflammatory bowel disease.', '', 'M-004.png', '', ''),
 (5, 'DSA-4321', 'M-005', 'Solmux', 'Unilab', 'Carbocisteine', 'solmux.png', '', 110, '2021-01-12', '2025-05-10', 'Good', 'UNILAB, Inc.', 'Box #6', '', '', '+639872737232', 'Solmux is a mucolytic agent used to relieve cough characterized by excessive or sticky sputum or phlegm to help treat respiratory tract disorders such as acute bronchitis.', '', 'M-005.png', '', ''),
-(6, 'ABC-9823', 'M-008', 'Alaxan', 'Unilab', 'Carbocisteine', 'pills.jpg', '', 100, '2022-01-05', '2022-12-15', 'Good', 'UNILAB, Inc.', 'Box #6', '', '', '+639872737232', 'Alaxan is .....', '', 'M-008.png', '', '');
+(6, 'ABC-9823', 'M-008', 'Alaxan FR', 'Unilab', 'Ibuprofen + Paracetamol', 'pills.jpg', '', 100, '2022-01-05', '2022-12-15', 'Good', 'UNILAB, Inc.', 'Box #6', '', '', '+639872737232', 'ALAXAN® FR is a pain reliever that can be used for different kinds of body and muscle pain including those that are caused by everyday activities. You don\'t have to wait for your body pain to be severe for you to take action.', '', 'M-008.png', '', '');
 
 -- --------------------------------------------------------
 
@@ -406,6 +389,23 @@ CREATE TABLE `nurses_schedules` (
   `thursday` varchar(150) NOT NULL,
   `friday` varchar(150) NOT NULL,
   `saturday` varchar(150) NOT NULL,
+  `status` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `nurse_activity_logs`
+--
+
+CREATE TABLE `nurse_activity_logs` (
+  `id` int(20) NOT NULL,
+  `firstname` varchar(50) NOT NULL,
+  `middlename` varchar(50) NOT NULL,
+  `lastname` varchar(50) NOT NULL,
+  `time_in` time NOT NULL,
+  `time_out` time NOT NULL,
+  `activity` varchar(150) NOT NULL,
   `status` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -600,25 +600,51 @@ CREATE TABLE `students` (
   `email` varchar(100) NOT NULL,
   `password` varchar(20) NOT NULL,
   `qr_code` varchar(150) NOT NULL,
-  `remarks` varchar(255) NOT NULL,
-  `status` varchar(20) NOT NULL
+  `remarks` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `students`
 --
 
-INSERT INTO `students` (`id`, `student_id`, `lastname`, `firstname`, `middlename`, `age`, `birthdate`, `birthplace`, `address`, `gender`, `contact_num`, `image`, `course`, `year_level`, `section`, `email`, `password`, `qr_code`, `remarks`, `status`) VALUES
-(1, '22-2222', 'Dela Cruz', 'Juan', 'Samson', 22, '2000-05-02', 'Novaliches, QC', 'Novaliches, QC', 'Male', '78994566', 'id7.jpg', 'BSIT', '3rd Year', 'SBIT-3G', 'juandelacruz@gmail.com', '12345', '22-2222', 'Complete', ''),
-(2, '22-2345', 'Del Valle', 'Maxpein Zin', 'Moon', 21, '2001-02-10', 'Novaliches, QC', 'Novaliches, QC', 'Female', '23154891', 'id1.jpg', 'BSA', '2nd Year', 'BAAC-2B', 'maxpeindelvalle@gmail.com', '123456', '22-2345', 'Incomplete', ''),
-(3, '20-1298', 'Reyes', 'Hazel', 'Cruz', 19, '2023-03-02', 'QC', 'QC', 'Female', '09123456789', 'id2.jpg', 'BSIE', '2nd Year', 'BSIE-2D', 'hazel.reyes@gmail.com', 'c5a4563b1753', '', 'Complete', ''),
-(4, '19-1206', 'Solomon', 'Jennica', 'Santos', 18, '2004-03-31', 'QC', 'QC', 'Female', '09123456788', 'id3.jpg', 'BSIE', '1st Year', 'SBIE-1A', 'jennicasolomon@gmail.com', 'b89a26094606', '', 'Pending', ''),
-(5, '20-1984', 'Dela Cruz', 'Maria', 'Reyes', 20, '2002-03-07', 'QC', 'QC', 'Female', '09123456789', 'id4.jpg', 'BSIT', '3rd Year', '', 'maria.delacruz@gmail.com', 'dagul123', '', 'Complete', ''),
-(6, '19-9999', 'Student', 'Sample', 'Account', 23, '2000-02-19', 'QC', 'QC', 'Male', '2147483647', 'id8.jpg', 'BSIT', '4th Year', 'SBIT-4G', 'sample.acc.patient@gmail.com', 'sample123', '', 'Complete', ''),
-(7, '23-9839', 'Student1', 'Sample1', 'Account1', 23, '2000-10-01', 'QC', 'QC', 'Male', '2147483647', 'id9.jpg', 'BSA', '4th Year', 'SBA-4K', 'sample1.account1@gmail.com', 'sample1234', '', 'Pending', ''),
-(8, '23-9839', 'Sanchez', 'Jerry Boy', 'Ordona', 21, '2002-09-03', 'QC', 'QC', 'Male', '2147483647', 'id10.jpg', 'BSECE', '3rd Year', 'SBECE-3H', 'jerry.sanchez@gmail.com', 'sample1234', '', 'Complete', ''),
-(9, '19-0000', 'Carganillo', 'Kiara Raye', 'Ponce', 22, '2000-06-15', 'QC', 'QC', 'Female', '13892839333', 'id5.jpg', 'BSENT', '4th Year', 'SBENT-4L', 'kiaracarganillo@gmail.com', 'kiara123', '', 'Complete', ''),
-(10, '20-1233', 'Dela Pena', 'Jose', 'Torres', 22, '2002-05-31', 'Novaliches, QC', 'Novaliches, QC', 'Male', '093978994566', 'id11.jpg', 'BSENT', '3rd Year', 'SBENT-3B', 'jose.delapena@gmail.com', 'jose12345', '', 'Complete', '');
+INSERT INTO `students` (`id`, `student_id`, `lastname`, `firstname`, `middlename`, `age`, `birthdate`, `birthplace`, `address`, `gender`, `contact_num`, `image`, `course`, `year_level`, `section`, `email`, `password`, `qr_code`, `remarks`) VALUES
+(1, '22-2222', 'Dela Cruz', 'Juan', 'Samson', 22, '2000-05-02', 'Novaliches, QC', 'Novaliches, QC', 'Male', '78994566', 'id7.jpg', 'BSIT', '3rd Year', 'SBIT-3G', 'juandelacruz@gmail.com', '12345', '22-2222', 'Complete'),
+(2, '22-2345', 'Del Valle', 'Maxpein Zin', 'Moon', 21, '2001-02-10', 'Novaliches, QC', 'Novaliches, QC', 'Female', '23154891', 'id1.jpg', 'BSA', '2nd Year', 'BAAC-2B', 'maxpeindelvalle@gmail.com', '123456', '22-2345', 'Incomplete'),
+(3, '20-1298', 'Reyes', 'Hazel', 'Cruz', 19, '2023-03-02', 'QC', 'QC', 'Female', '09123456789', 'id2.jpg', 'BSIE', '2nd Year', 'BSIE-2D', 'hazel.reyes@gmail.com', 'c5a4563b1753', '', 'Complete'),
+(4, '19-1206', 'Solomon', 'Jennica', 'Santos', 18, '2004-03-31', 'QC', 'QC', 'Female', '09123456788', 'id3.jpg', 'BSIE', '1st Year', 'SBIE-1A', 'jennicasolomon@gmail.com', 'b89a26094606', '', 'Pending'),
+(5, '20-1984', 'Dela Cruz', 'Maria', 'Reyes', 20, '2002-03-07', 'QC', 'QC', 'Female', '09123456789', 'id4.jpg', 'BSIT', '3rd Year', '', 'maria.delacruz@gmail.com', 'dagul123', '', 'Complete'),
+(6, '19-9999', 'Student', 'Sample', 'Account', 23, '2000-02-19', 'QC', 'QC', 'Male', '2147483647', 'id8.jpg', 'BSIT', '4th Year', 'SBIT-4G', 'sample.acc.patient@gmail.com', 'sample123', '', 'Complete'),
+(7, '23-9839', 'Student1', 'Sample1', 'Account1', 23, '2000-10-01', 'QC', 'QC', 'Male', '2147483647', 'id9.jpg', 'BSA', '4th Year', 'SBA-4K', 'sample1.account1@gmail.com', 'sample1234', '', 'Pending'),
+(8, '23-9839', 'Sanchez', 'Jerry Boy', 'Ordona', 21, '2002-09-03', 'QC', 'QC', 'Male', '2147483647', 'id10.jpg', 'BSECE', '3rd Year', 'SBECE-3H', 'jerry.sanchez@gmail.com', 'sample1234', '', 'Complete'),
+(9, '19-0000', 'Carganillo', 'Kiara Raye', 'Ponce', 22, '2000-06-15', 'QC', 'QC', 'Female', '13892839333', 'id5.jpg', 'BSENT', '4th Year', 'SBENT-4L', 'kiaracarganillo@gmail.com', 'kiara123', '', 'Complete'),
+(10, '20-1233', 'Dela Pena', 'Jose', 'Torres', 22, '2002-05-31', 'Novaliches, QC', 'Novaliches, QC', 'Male', '093978994566', 'id11.jpg', 'BSENT', '3rd Year', 'SBENT-3B', 'jose.delapena@gmail.com', 'jose12345', '', 'Complete');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `student_activity_logs`
+--
+
+CREATE TABLE `student_activity_logs` (
+  `id` int(20) NOT NULL,
+  `student_id` varchar(50) NOT NULL,
+  `activity_type` varchar(150) NOT NULL,
+  `activity_date` date NOT NULL,
+  `activity_time` time NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `student_appointment_status`
+--
+
+CREATE TABLE `student_appointment_status` (
+  `id` int(20) NOT NULL,
+  `student_id` varchar(50) NOT NULL,
+  `reference_num` varchar(150) NOT NULL,
+  `status` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -680,6 +706,18 @@ CREATE TABLE `student_medical_requirements` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `student_status`
+--
+
+CREATE TABLE `student_status` (
+  `id` int(20) NOT NULL,
+  `student_id` varchar(50) NOT NULL,
+  `status` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `student_vaccination`
 --
 
@@ -706,16 +744,23 @@ CREATE TABLE `student_vaccination` (
 CREATE TABLE `stud_appointment` (
   `id` int(11) NOT NULL,
   `student_id` varchar(10) NOT NULL,
+  `type_of_concern` varchar(150) NOT NULL,
+  `reason` varchar(255) NOT NULL,
   `appointment_date` date NOT NULL,
-  `appointment_time` time NOT NULL
+  `appointment_time` time NOT NULL,
+  `attached_files` varchar(255) NOT NULL,
+  `reference_num` varchar(150) NOT NULL,
+  `qrcode` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `stud_appointment`
 --
 
-INSERT INTO `stud_appointment` (`id`, `student_id`, `appointment_date`, `appointment_time`) VALUES
-(1, '19-1234', '2023-03-02', '15:30:00');
+INSERT INTO `stud_appointment` (`id`, `student_id`, `type_of_concern`, `reason`, `appointment_date`, `appointment_time`, `attached_files`, `reference_num`, `qrcode`) VALUES
+(1, '19-1234', '', '', '2023-03-02', '15:30:00', '', '', ''),
+(2, '19-1396', '', '', '2023-03-16', '12:00:00', '', '', ''),
+(3, '19-1234', '', '', '2023-03-16', '11:00:00', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -793,7 +838,28 @@ INSERT INTO `stud_archive` (`id`, `student_id`, `role`, `date_archive`, `time`) 
 (76, '19-1234', 'student', '2023-03-07', '08:52:28'),
 (77, 'WIFI:T:WPA', 'outsider', '2023-03-07', '20:52:40'),
 (78, '19-1206', 'outsider', '2023-03-07', '20:52:46'),
-(79, '19-1234', 'student', '2023-03-07', '09:00:13');
+(79, '19-1234', 'student', '2023-03-07', '09:00:13'),
+(0, '19-1269', 'student', '2023-03-16', '08:01:06'),
+(0, '19-1269', 'student', '2023-03-16', '08:01:25'),
+(0, '19-1396', 'outsider', '2023-03-16', '08:01:33'),
+(0, '19-1396', 'outsider', '2023-03-16', '08:02:24'),
+(0, '19-1276', 'outsider', '2023-03-16', '08:02:46'),
+(0, '19-1234', 'student', '2023-03-16', '08:02:48'),
+(0, '19-1269', 'student', '2023-03-16', '08:10:08'),
+(0, '19-1276', 'outsider', '2023-03-16', '08:28:04'),
+(0, '19-1396', 'outsider', '2023-03-16', '08:28:12'),
+(0, '19-1269', 'student', '2023-03-16', '08:28:17'),
+(0, '19-1276', 'outsider', '2023-03-16', '08:28:50'),
+(0, '19-1396', 'outsider', '2023-03-16', '08:28:56'),
+(0, '19-1269', 'student', '2023-03-16', '08:29:01'),
+(0, '19-1396', 'outsider', '2023-03-16', '08:30:27'),
+(0, '19-1276', 'outsider', '2023-03-16', '08:30:30'),
+(0, '19-1269', 'student', '2023-03-16', '08:30:34'),
+(0, '22-2222', 'outsider', '2023-03-16', '08:33:56'),
+(0, '19-1276', 'outsider', '2023-03-16', '08:40:30'),
+(0, '19-1276', 'outsider', '2023-03-16', '08:40:51'),
+(0, '19-1396', 'outsider', '2023-03-16', '08:40:58'),
+(0, '19-1396', 'outsider', '2023-03-16', '08:41:05');
 
 -- --------------------------------------------------------
 
@@ -933,18 +999,22 @@ CREATE TABLE `visitors` (
   `fullname` varchar(100) NOT NULL,
   `contact_num` varchar(12) NOT NULL,
   `purpose` varchar(100) NOT NULL,
-  `captured_image` varchar(100) NOT NULL
+  `captured_image` varchar(100) NOT NULL,
+  `date` date NOT NULL,
+  `timein` time NOT NULL,
+  `timeout` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `visitors`
+--
+
+INSERT INTO `visitors` (`id`, `fullname`, `contact_num`, `purpose`, `captured_image`, `date`, `timein`, `timeout`) VALUES
+(0, 'Juliana', '09123456789', 'Inquiries', '', '2023-03-16', '07:58:46', '00:00:00');
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `activity_log`
---
-ALTER TABLE `activity_log`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `admins`
@@ -953,15 +1023,15 @@ ALTER TABLE `admins`
   ADD PRIMARY KEY (`user_id`);
 
 --
--- Indexes for table `appointments`
+-- Indexes for table `admin_archive`
 --
-ALTER TABLE `appointments`
+ALTER TABLE `admin_archive`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `archive`
+-- Indexes for table `appointments`
 --
-ALTER TABLE `archive`
+ALTER TABLE `appointments`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -974,6 +1044,12 @@ ALTER TABLE `bookings`
 -- Indexes for table `consultations`
 --
 ALTER TABLE `consultations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `course`
+--
+ALTER TABLE `course`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1001,6 +1077,12 @@ ALTER TABLE `guard_accs`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `hospitals`
+--
+ALTER TABLE `hospitals`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `incase_of_emergency`
 --
 ALTER TABLE `incase_of_emergency`
@@ -1019,6 +1101,30 @@ ALTER TABLE `nurses_schedules`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `nurse_activity_logs`
+--
+ALTER TABLE `nurse_activity_logs`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `student_activity_logs`
+--
+ALTER TABLE `student_activity_logs`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `student_appointment_status`
+--
+ALTER TABLE `student_appointment_status`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `student_status`
+--
+ALTER TABLE `student_status`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -1026,7 +1132,32 @@ ALTER TABLE `nurses_schedules`
 -- AUTO_INCREMENT for table `bookings`
 --
 ALTER TABLE `bookings`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;COMMIT;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+--
+-- AUTO_INCREMENT for table `course`
+--
+ALTER TABLE `course`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `hospitals`
+--
+ALTER TABLE `hospitals`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `student_activity_logs`
+--
+ALTER TABLE `student_activity_logs`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `student_appointment_status`
+--
+ALTER TABLE `student_appointment_status`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `student_status`
+--
+ALTER TABLE `student_status`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

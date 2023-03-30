@@ -28,15 +28,15 @@
 
 /* filter */
 #nurses .action_header .filter_wrapper {
-  width: 85%;
-  padding: 10px 20px;
-  /* height:50px; */
-  border-radius: 10px;
-  background: #202444;
-  display: grid;
-  grid-auto-flow: column;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
+    width: 85%;
+    padding: 10px 20px;
+    /* height: 50px; */
+    border-radius: 10px;
+    background: #202444;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
 }
 #nurses .filter_wrapper .sort {
   display: flex;
@@ -47,8 +47,8 @@
   color: white;
   margin-right: 10px;
 }
-#nurses .filter_wrapper .sort #filter {
-  width: 110px;
+#nurses .filter_wrapper .sort #filter_nurse {
+  width: 50%;
   border-radius: 3px;
   padding: 5px 5px;
   background: #f2f2f2;

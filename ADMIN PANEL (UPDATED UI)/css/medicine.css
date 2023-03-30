@@ -5,9 +5,11 @@
 }
 #medicine .medicine_header h3{
     font-size: 26px;
+    color: white;
 }
+
 #medicine .medicine_header .custom_btn{
-    background-color: #5D8FD9;
+    background-color: #3e64ff;
     color: #fff;
     border: none;
     outline: none;
@@ -17,7 +19,23 @@
 }
 #medicine .medicine_header .custom_btn i{
     margin-right: 10px;
+
 }
+#medicine .medicine_header .custom_btn i #view{ 
+    height: 300px; 
+    width: 300px;
+}
+
+#medicine .medicine_header .custom_btn i #edit{ 
+    height: 300px; 
+    width: 300px;
+}
+
+#medicine .medicine_header .custom_btn i #delete{ 
+    height: 300px; 
+    width: 300px;
+}
+
 #medicine .medicine_header .custom_btn:hover{
     scale:1.1;
     box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.15);
@@ -30,21 +48,25 @@
     padding: 10px 20px;
     /* height:50px; */
     border-radius: 5px;
-    background: #D9D9D9;
+    background: #202444;
     display: grid;
     grid-auto-flow: column;
     grid-template-columns: 1fr 1fr;
     align-items: center;
+
 }
+
 #medicine .filter_wrapper .sort{
     display: flex;
     align-items: center;
 }
+
 #medicine .filter_wrapper .sort span{
     font-weight: 500;
-     color: rgb(26, 26, 26);
-     margin-right: 10px;
+    color: white;
+    margin-right: 10px;
 }
+
 #medicine .filter_wrapper .sort #filter{
     width: 50%;
     border-radius: 3px;
@@ -98,9 +120,13 @@
     /* box-shadow: 0 4px 2px -2px gray; */
     cursor: pointer;
     transition: .3s;
+    
+   
 }
 .table-mdc td{
 padding-right:10px;
+
+
 }
 .btn-mdcdetails{
     background-color:#5d8fd9;
@@ -137,9 +163,10 @@ padding-right:10px;
 } */
 .medicine-table{
     width: 100%;
+    
 }
 .mdc-brand{
-    color: rgb(43, 35, 35);
+    color: white;
     /* font-style: italic; */
     font-size: .7em;
 }
@@ -148,6 +175,8 @@ padding-right:10px;
 }
 .mdc-qty{
     font-weight: 300;
+    text-align:justify; 
+    text-justify:inter-word;
 }
 .mdc-qrcode{
     width: 100px;
@@ -178,15 +207,16 @@ padding-right:10px;
     width: 100%;
     margin: 0;
     padding: 0;
+    color: white;
 }
 .accordion li{
     list-style: none;
     width: 100%;
     padding: 0;
     border-radius: 8px;
-    background: white;
-    box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.15),
-                -6px -6px 10px -1px rgba(255,255,255,0.7);
+    background: #202444;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 
+                0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .accordion li label{
     display: flex;

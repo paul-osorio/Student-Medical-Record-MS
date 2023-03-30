@@ -15,7 +15,9 @@
   <link rel="stylesheet" href="custom-properties.css">
 
   <script src="javascript/action.js" defer></script>
-  <title>STUDENT | SEND OTP</title>
+  <link rel="icon" type="image/png" href="./assets/favcon.png"/>
+  <title>SMRMS | STUDENT | SEND OTP</title>
+
 </head>
 <body>
   
@@ -28,7 +30,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=.8">
-  <title>STUDENT | SEND OTP</title>
+  <link rel="icon" type="image/png" href="./assets/favcon.png"/>
+  <title>SMRMS | STUDENT | SEND OTP</title>
 
   <body>
     <nav class="navbar"

@@ -10,7 +10,9 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
 
   <link rel="stylesheet" href="custom-properties.css">
-  <title>STUDENT | VERIFY OTP</title>
+  <link rel="icon" type="image/png" href="./assets/favcon.png"/>
+  <title>SMRMS | STUDENT | VERIFY OTP</title>
+
 </head>
 <body>
   
@@ -23,7 +25,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=.8">
-  <title>STUDENT | VERIFY OTP</title>
+  <link rel="icon" type="image/png" href="./assets/favcon.png"/>
+  <title>SMRMS | STUDENT | VERIFY OTP</title>
 
   <body>
     <nav class="navbar"
