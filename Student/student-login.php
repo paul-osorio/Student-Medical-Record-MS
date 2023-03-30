@@ -16,7 +16,8 @@
   <link rel="stylesheet" href="mediaQueries.css">
 
   <script src="javascript/action.js" defer></script>
-  <title>Document</title>
+  <link rel="icon" type="image/png" href="./assets/favcon.png"/>
+  <title>SMRMS | STUDENT | LOGIN</title>
 </head>
 <body>
   

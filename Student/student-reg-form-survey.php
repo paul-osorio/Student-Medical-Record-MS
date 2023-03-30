@@ -16,7 +16,9 @@
   <link rel="stylesheet" href="mediaQueries.css">
 
   <script src="javascript/action.js" defer></script>
-  <title>Document</title>
+  <link rel="icon" type="image/png" href="./assets/favcon.png"/>
+  <title>SMRMS | STUDENT | Registration Form - Medical Information</title>
+
 </head>
 <body>
   
@@ -29,7 +31,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=.8">
-  <title>Document</title>
+  <link rel="icon" type="image/png" href="./assets/favcon.png"/>
+  <title>SMRMS | STUDENT | Registration Form - Medical Information</title>
 
   <body class="bg-body-secondary">
     <nav class="navbar"

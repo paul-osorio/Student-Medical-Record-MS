@@ -17,8 +17,9 @@
         <link rel="stylesheet" href="nav-layout.css">
 
         <script src="javascript/action.js" defer></script>
+        <link rel="icon" type="image/png" href="./assets/favcon.png"/>
+        <title>SMRMS | STUDENT | Appointment</title>
         
-        <title>Document</title>
     </head>
 <body>
 <?php include "./nav-layout.php"; ?>

@@ -33,8 +33,9 @@
     <link rel="stylesheet" href="nav-layout.css" />
 
     <script src="javascript/action.js" defer></script>
+    <link rel="icon" type="image/png" href="./assets/favcon.png"/>
+    <title>SMRMS | STUDENT | Medical Requirements</title>
 
-    <title>Document</title>
   </head>
   <body>
     <!-- Navigation -->
