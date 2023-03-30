@@ -3,8 +3,19 @@ session_start();
 
 if (isset($_SESSION['emp_id']) && isset($_SESSION['username'])) {
 
- ?>
+  ?>
 
+  <?php
+
+  include('db_conn.php');
+  $emp_id = $_SESSION['emp_id'];
+
+  // SELECT ALL ADMINS
+  $fetchNurseAccount = mysqli_query($conn, "SELECT * FROM `nurses` WHERE emp_id = '$emp_id'");
+  $nurse = mysqli_fetch_assoc($fetchNurseAccount);
+
+
+?>
 
 
 <!DOCTYPE html>
@@ -115,16 +126,16 @@ if (isset($_SESSION['emp_id']) && isset($_SESSION['username'])) {
                     <div class="px-3 rounded-3 d-flex align-items-center mt-3" style="background:#0C4079";>
 
                       <div class="position-relative" style="width:180px;height:150px;">
-                        <img src="./assets/nurse4.png" class="position-absolute w-100 h-100" style="top:-25%">
+                        <img src="./assets/<?=$nurse['profile_pic']?>" class="position-absolute w-100 h-100" style="top:-25%">
                       </div>
                       <div class="d-flex justify-content-between align-items-center w-100 mx-3">
 
 
             
                         <div class="text-light">
-                          <p><?php echo $_SESSION['emp_id'] ?></p>
-                          <p class="fw-bold"> <?php echo $_SESSION['firstname'].' '.$_SESSION['lastname']; ?></p>
-                          <p><?php echo $_SESSION['position'] ?></p>
+                          <p><?=$nurse['emp_id']?></p>
+                          <p class="fw-bold"> <?=$nurse['firstname']?> <?=$nurse['lastname']?></p>
+                          <p><?=$nurse['position']?></p>
                         </div>
                         <div class="text-light text-center">
                           <p class="fw-bold fs-2">20</p>
