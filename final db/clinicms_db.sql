@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 28, 2023 at 01:29 PM
+-- Generation Time: Mar 30, 2023 at 09:34 AM
 -- Server version: 10.1.24-MariaDB
 -- PHP Version: 7.1.6
 
@@ -51,7 +51,7 @@ CREATE TABLE `admins` (
 INSERT INTO `admins` (`user_id`, `unique_id`, `email`, `password`, `fname`, `lname`, `img`, `contact_num`, `birthdate`, `birthplace`, `gender`, `address`, `status`) VALUES
 (28, '19-1234', 'hradmin@gmail.com', '0192023a7bbd73250516f069df18b500', 'HR', 'Admin', 'prof.jpg', '09123456789', '1999-03-09', 'Quezon City ', 'Female', 'QC, Metro Manila', ''),
 (29, '19-1290', 'sample@gmail.com', '4e91b1cbe42b5c884de47d4c7fda0555', 'Sample', 'Admin', 'profile1.jfif', '09987654322', '0000-00-00', '', '', '', ''),
-(30, '19-0987', 'julianabalingasa@gmail.com', 'f007cd375b13bfa1c03652eabcf1f7cf', 'Juliana', 'Balingasa', 'id5.jpg', '09123456798', '0000-00-00', '', '', '', '');
+(30, '19-0987', 'julianabalingasa@gmail.com', 'f007cd375b13bfa1c03652eabcf1f7cf', 'Juliana', 'Balingasa', 'id5.jpg', '09123456799', '0000-00-00', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -150,6 +150,28 @@ INSERT INTO `consultations` (`id`, `student_id`, `fullname`, `date_of_consultati
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `course`
+--
+
+CREATE TABLE `course` (
+  `id` int(11) NOT NULL,
+  `code` varchar(6) NOT NULL,
+  `degree` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `course`
+--
+
+INSERT INTO `course` (`id`, `code`, `degree`) VALUES
+(1, 'BSIT', 'Bachelor of Science in Information Technology'),
+(2, 'BSIE', 'Bachelor of Science in Industrial Engineering'),
+(3, 'BSA', 'Bachelor of Science in Accountancy'),
+(4, 'BSENT', 'Bachelor of Science in Entrepreneurship');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `departments`
 --
 
@@ -242,6 +264,7 @@ CREATE TABLE `guard_accs` (
 
 CREATE TABLE `hospitals` (
   `id` int(20) NOT NULL,
+  `hospi_id` varchar(20) NOT NULL,
   `hospital` varchar(150) NOT NULL,
   `hospital_add` varchar(255) NOT NULL,
   `email` varchar(100) NOT NULL,
@@ -252,10 +275,10 @@ CREATE TABLE `hospitals` (
 -- Dumping data for table `hospitals`
 --
 
-INSERT INTO `hospitals` (`id`, `hospital`, `hospital_add`, `email`, `contact_num`) VALUES
-(1, 'Word of Hope General Hospital', '23 Buenamar St. Buenamar Subd Nova Proper Novaliches, Quezon City, Quezon City, Philippines', 'hghhospital@yahoo.com', '(02) 3417 9175'),
-(2, 'Bernardino General Hospital 1', '680 QUIRINO HIGHWAY, SAN BARTOLOME, Quezon City, Philippines', 'bghcorpone@yahoo.com', '0908 880 4870'),
-(3, 'Novaliches General Hospital', '793 Quirino Hwy, Novaliches, Quezon City, Metro Manila', 'info@novagen.com.ph', '(02) 8426 8888');
+INSERT INTO `hospitals` (`id`, `hospi_id`, `hospital`, `hospital_add`, `email`, `contact_num`) VALUES
+(1, 'A10-0982', 'Word of Hope General Hospital', '23 Buenamar St. Buenamar Subd Nova Proper Novaliches, Quezon City, Quezon City, Philippines', 'hghhospital@yahoo.com', '(02) 3417 9175'),
+(2, 'A10-0543', 'Bernardino General Hospital 1', '680 QUIRINO HIGHWAY, SAN BARTOLOME, Quezon City, Philippines', 'bghcorpone@yahoo.com', '0908 880 4870'),
+(3, 'A10-0234', 'Novaliches General Hospital', '793 Quirino Hwy, Novaliches, Quezon City, Metro Manila', 'info@novagen.com.ph', '(02) 8426 8888');
 
 -- --------------------------------------------------------
 
@@ -1024,6 +1047,12 @@ ALTER TABLE `consultations`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `course`
+--
+ALTER TABLE `course`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `departments`
 --
 ALTER TABLE `departments`
@@ -1104,6 +1133,11 @@ ALTER TABLE `student_status`
 --
 ALTER TABLE `bookings`
   MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+--
+-- AUTO_INCREMENT for table `course`
+--
+ALTER TABLE `course`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `hospitals`
 --
