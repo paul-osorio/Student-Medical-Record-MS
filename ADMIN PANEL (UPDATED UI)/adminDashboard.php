@@ -32,6 +32,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
      $fetchAllAdmins = mysqli_query($conn, "SELECT * FROM `admins` WHERE email = '$email'");
      $admins = mysqli_fetch_assoc($fetchAllAdmins);
 
+
      // SELECT ADD ADMINS
      $fetchAddAdmins = mysqli_query($conn, "SELECT * FROM `admins`");
      
@@ -148,7 +149,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
         <div class="logo navbar-brand px-3 m-0" href="#">
           <img src="./assets/QCUClinicLogo.png" alt="" />
-          <p>Student Medical <br> Record</p>
+          <center><p>Student Medical <br> Record</p></center>
         </div>
         
         
@@ -583,30 +584,6 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
               </button>
           </div>
 
-          <!-- old filter -->
-          <!-- <div class="filter_wrapper">
-            <div class="sort flex-grow-1">
-              <span>Sort by</span>
-                <select name="filter" id="filter_admin">
-                  <option value="lname">Surname</option>
-                  <option value="fname">Firstname</option>
-                </select>
-            </div>
-
-            <div class="r">
-              <div class="search">
-                <input type="text" placeholder="Search" id="search_admin"/>
-              </div>
-
-              <div class="grid">
-                <i class="fa fa-th-large" aria-hidden="true"></i>
-              </div>
-
-              <div class="bars">
-                <i class="fa fa-bars" aria-hidden="true"></i>
-              </div>
-            </div>
-          </div> -->
           
           <div class="admins_table_details table-dark table-responsive">
             <table>
@@ -834,9 +811,6 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                       </div>
 
                       <div class="modal-footer">
-
-                          <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                          <button type="submit" name="updatedata" class="btn btn-primary">Update Data</button> -->
                           
                           <input type="button" class="btn btn-danger" data-dismiss="modal" value="Cancel">
 
@@ -927,25 +901,6 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
             </button>
           </div>
 
-          <!-- <div class="filter_wrapper">
-            <div class="sort flex-grow-1">
-              <span>Sort by</span>
-              <select name="filter" id="filter">
-                <option value="departments">Type of Departments</option>
-              </select>
-            </div>
-            <div class="r">
-              <div class="search">
-                <input type="text" placeholder="Search" />
-              </div>
-              <div class="grid">
-                <i class="fa fa-th-large" aria-hidden="true"></i>
-              </div>
-              <div class="bars">
-                <i class="fa fa-bars" aria-hidden="true"></i>
-              </div>
-            </div>
-          </div> -->
 
           <div class="card_container">
 
@@ -1233,7 +1188,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
               <div class="modal-content">
                   
 
-                  <form action="delete_admin.php" method="POST">
+                  <form action="delete_department.php" method="POST">
 
                       <div class="modal-body delmodal">
 
@@ -1242,10 +1197,10 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                           <input type="hidden" name="delete_id" id="delete_id">
 
                           <h4 style=" font-weight:bold; padding-top:50px;"> Are you sure you want to remove this department? </h4>
-                          <h4 style="color:blue; font-weight:bold; font-size:20px;">BSIT Department</h4>
+                          <h4 style="color:blue; font-weight:bold; font-size:20px;">Name of Department</h4>
                           <div class="modal_btn">
                             <input type="button" class="btn" style="background-color:lightgrey; color:black; font-weight:700;" id="cancel-admin-modal" data-dismiss="modal" value="No">
-                            <input type="submit" class="btn btn-danger" style="font-weight:700;" name="delAdmin" value="Yes">
+                            <input type="submit" class="btn btn-danger" style="font-weight:700;" name="delDept" value="Yes">
                           </div>
 
                       </div>
@@ -1828,6 +1783,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
             <table>
               
               <tr id="table_header">
+                  <th>Hospital ID</th>
                   <th>Hospital Name</th>
                   <th>Address</th>
                   <th>Email Address</th>
@@ -1840,13 +1796,14 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                   while ($hospital = mysqli_fetch_assoc($fetchAllHospitals)) {  ?>
               
               <tr class="container">
+                  <td style="width:140px;" ><span class="hospitalname"><?=$hospital['hospi_id']?></span></td>
                   <td style="width:250px;" ><span class="hospitalname"><?=$hospital['hospital']?></span></td>
                   <td style="width:400px;"><span class="address"><?=$hospital['hospital_add']?></span></td>
                   <td><span class="email"><?=$hospital['email']?></span></td>
                   <td style="width:180px;"><span class="contact_num"><?=$hospital['contact_num']?></span></td>
                   <td>
 
-                  <td><a href="#editHospitalInfo" class="custom_btn editbtn" data-toggle="modal"><i class="fa fa-edit" aria-hidden="true" style="color: #3e64ff; font-size: 30px; margin-left: -95px;"></i></a></td>
+                  <td><a href="#editHospitalInfo" class="custom_btn edithosbtn" data-toggle="modal"><i class="fa fa-edit" aria-hidden="true" style="color: #3e64ff; font-size: 30px; margin-left: -95px;"></i></a></td>
 
                   <td><a href="#delHospital" class="custom_btn deletebtn" data-toggle="modal"><i class="fa fa-trash" aria-hidden="true" style="color: #ED1C24; font-size: 30px; margin-left: -75px;"></i></a></td>
                   
@@ -1879,8 +1836,13 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                   <div class="modal-body">	
 
                       <div class="form-group">
+                        <label>Hospital ID</label> 
+                        <input type="text" class="form-control" name="hospi_id" id="hospi_id" required>
+                      </div>	
+
+                      <div class="form-group">
                         <label>Hospital Name</label> 
-                        <input type="text" class="form-control" name="hospital" required>
+                        <input type="text" class="form-control" name="hospital" id="hospital" required>
                       </div>	
 
                       <div class="form-group">
@@ -1914,16 +1876,12 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
 <!--########################################################################################################################################################################-->
 
-    <!-- EDIT DATA ADMIN MODAL AT ADMINS PAGE-->
+    <!-- EDIT DATA HOSPITAL MODAL AT ADMINS PAGE-->
         <div class="modal fade" id="editHospitalInfo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
               <div class="modal-content">
                   <div class="modal-header">
                       <h5 class="modal-title" id="exampleModalLabel"> EDIT HOSPITAL DATA </h5>
-
-                      <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                      </button> -->
                       
                   </div>
 
@@ -1932,7 +1890,12 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                       <div class="modal-body">
                         
                         <input type="hidden" name="update_id" id="update_id">
-                        
+
+                            <div class="form-group">
+                              <label>Hospital ID</label> 
+                              <input type="text" name="hospi_id" id="hospi_id" class="form-control" placeholder="Hospital ID" readonly>
+                            </div>	
+
                             <div class="form-group">
                               <label>Hospital Name</label> 
                               <input type="text" name="hospital" id="hospital" class="form-control" placeholder="Hospital Name">
@@ -2808,7 +2771,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                 console.log(data);
 
 
-                $('#update_id').val(data[0]);
+                $('#update_id').val(data[5]);
+                $('#hospi_id').val(data[0]);
                 $('#hospital').val(data[1]);
                 $('#hospital_add').val(data[2]);
                 $('#email').val(data[3]);
@@ -3020,8 +2984,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                 console.log(data);
 
 
-                $('#update_id').val(data[0]);
-                $('#emp_id').val(data[1]);
+                $('#update_id').val(data[8]);
+                $('#emp_id').val(data[0]);
                 $('#dept_name').val(data[3]);
                 $('#building_name').val(data[4]);
                 $('#room_num').val(data[5]);
@@ -3043,7 +3007,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
             $('.deletebtndepts').on('click', function () {
 
-                $('#delAdmin').modal('show');
+                $('#delDept').modal('show');
 
                 var tr = $(this).closest('tr');
 
