@@ -2,13 +2,13 @@
 include_once 'db_conn.php';
 $success  = "";
 
-if(isset($_POST['delAdmin']))
+if(isset($_POST['delHospital']))
 {
     $id = $_POST['delete_id'];
 
     echo $id;
 
-    $query = "DELETE FROM admins WHERE `unique_id` = '$id'";
+    $query = "DELETE FROM hospitals WHERE `hospi_id` = '$id'";
     $query_run = mysqli_query($conn, $query);
 
     if($query_run)

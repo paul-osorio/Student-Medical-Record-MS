@@ -62,7 +62,7 @@
                   <a href="student.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-users mx-2"></i><span>Students</span></span></a>
                   </li>
                   <li  class="px-4 w-100 mb-1 nav-item active tab py-2">
-                  <a href="Mreport.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-plus-square mx-2"></i><span>Medical Reports</span></span></a>
+                  <a href="Mreport.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-plus-square mx-2"></i><span>Medical Requirements</span></span></a>
                   </li>
                   <li  class="px-4 w-100 mb-1 nav-item tab py-2">
                   <a href="department.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-building-o mx-2"></i><span>Departments</span></span></a>
@@ -87,7 +87,7 @@
                 <div class="container-fluid bg-secondary-subtle py-2 rounded-1">
                    
                     <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 bg-body-secondary p-2 rounded-2">
-                        <span class="fw-bold fs-5 text-uppercase">Medical Report list</span>
+                        <span class="fw-bold fs-5 text-uppercase">Medical Requirements list</span>
                         <div class="d-flex gap-2 ">
                                 <div class="d-flex align-items-center" style="flex-basis:300px">
                                   <span for="#sort" class="px-2 text-nowrap">Sort By</span>

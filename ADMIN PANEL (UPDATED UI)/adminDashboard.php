@@ -19,7 +19,10 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
     include('db_conn.php');
 
     include_once 'edit_admin.php';
+    include_once 'edit_hospital.php';
     include_once 'delete_admin.php';
+    include_once 'delete_hospital.php';
+    include_once 'delete_department.php';
 ?>
 
 
@@ -1272,12 +1275,6 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                 </div>
 
                 
-                <!-- <div class="grid">
-                  <i class="fa fa-th-large" aria-hidden="true"></i>
-                </div>
-                <div class="bars">
-                  <i class="fa fa-bars" aria-hidden="true"></i>
-                </div> -->
               </div>
             </div>
             <button class="custom_btn">
@@ -2700,7 +2697,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
             $('.deletebtn').on('click', function () {
 
-                $('#delAdminInfo').modal('show');
+                $('#delAdmin').modal('show');
 
                 var tr = $(this).closest('tr');
 
@@ -2771,11 +2768,11 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                 console.log(data);
 
 
-                $('#update_id').val(data[5]);
+                $('#update_id').val(data[1]);
                 $('#hospi_id').val(data[0]);
-                $('#hospital').val(data[1]);
+                $('#hospital').val(data[3]);
                 $('#hospital_add').val(data[2]);
-                $('#email').val(data[3]);
+                $('#email').val(data[5]);
                 $('#contact_num').val(data[4]);
                 
             });
@@ -2962,6 +2959,33 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
 </script>
 
+<!--#################################################################################################################################################################################################################################-->
+
+<!-- DELETE HOSPITAL RECORD JS -->
+<script>
+        $(document).ready(function () {
+
+            $('.deletebtn').on('click', function () {
+
+                $('#delHospital').modal('show');
+
+                var tr = $(this).closest('tr');
+
+                console.log(tr);
+
+                var data = tr.children("td").map(function () {
+
+                    return $(this).text();
+
+                }).get();
+
+                console.log(data);
+
+                $('#delete_id').val(data[1]);
+
+            });
+        });
+    </script>
 
 
 <!--#################################################################################################################################################################################################################################-->
@@ -3007,7 +3031,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
             $('.deletebtndepts').on('click', function () {
 
-                $('#delDept').modal('show');
+                $('#delDepartment').modal('show');
 
                 var tr = $(this).closest('tr');
 
