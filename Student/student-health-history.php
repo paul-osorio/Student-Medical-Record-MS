@@ -60,7 +60,7 @@
             alt="..."
           />
           <h5 class="fw-bold mb-0 text-light" style="pointer-events: none">
-            Quezon City University Clinics
+            Student Medical Record
           </h5>
         </nav>
         <!-- end: Navbar -->

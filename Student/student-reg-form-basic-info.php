@@ -41,7 +41,7 @@
         <div class="container-fluid">
           <a class="navbar-brand d-flex align-items-center" href="#">
             <img src="./clinic-logo.png" alt="" width="50" height="50" class="d-inline-block align-text-top mx-2">
-            <h3 class="fw-bold text-light w-100 text-wrap" style="font-size: var(--step-2);">Welcome to Quezon City University Clinic</h3>
+            <h3 class="fw-bold text-light w-100 text-wrap" style="font-size: var(--step-2);">Welcome to Student Medical Record</h3>
           </a>
         </div>
       </nav>

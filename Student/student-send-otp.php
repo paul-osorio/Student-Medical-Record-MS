@@ -39,7 +39,7 @@
         <div class="container-fluid">
           <a class="navbar-brand d-flex align-items-center" href="#">
             <img src="./clinic-logo.png" alt="" width="50" height="50" class="d-inline-block align-text-top mx-2">
-            <h5 class="fw-bold text-light w-100 text-wrap" style="font-size: 25px;">Welcome to Student Medical Record MS</h5>
+            <h5 class="fw-bold text-light w-100 text-wrap" style="font-size: 25px;">Welcome to Student Medical Record</h5>
           </a>
         </div>
       </nav>

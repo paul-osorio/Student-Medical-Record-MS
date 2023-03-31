@@ -33,7 +33,7 @@
             <nav class="px-3 py-2 d-flex justify-content-center" style="background: var(--primary-bg);">
                 <!-- <i class="ri-menu-line sidebar-toggle me-3 d-block d-md-none"></i> -->
                 <img src="./clinic-logo.png" class="img-thumbnail bg-transparent border-0" style="pointer-events: none;" width="50" height="50" alt="...">
-                <h5 class="fw-bold mb-0 text-light" style="pointer-events: none;" > Quezon City University Clinics</h5>
+                <h5 class="fw-bold mb-0 text-light" style="pointer-events: none;" > Student Medical Record</h5>
             </nav>
             <!-- end: Navbar -->
 
