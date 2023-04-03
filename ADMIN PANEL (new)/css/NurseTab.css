@@ -1,0 +1,462 @@
+/* header */
+#nurses .nurse_header {
+  margin-bottom: 10px;
+}
+#nurses .nurse_header h3 {
+  font-size: 26px;
+  color: white;
+}
+
+#nurses .action_header {
+  display: flex;
+  width: 100%;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+#nurses .action_header .custom_btn {
+  background: #3e64ff;
+  color: #fff;
+  border: none;
+  outline: none;
+  width: 15%;
+  border-radius: 10px;
+}
+#nurses .action_header .custom_btn i {
+  margin-right: 10px;
+}
+
+/* filter */
+#nurses .action_header .filter_wrapper {
+    width: 85%;
+    padding: 10px 20px;
+    /* height: 50px; */
+    border-radius: 10px;
+    background: white;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+#nurses .filter_wrapper .sort {
+  display: flex;
+  align-items: center;
+}
+#nurses .filter_wrapper .sort span {
+  font-weight: 500;
+  color: black;
+  margin-right: 10px;
+}
+#nurses .filter_wrapper .sort #filter_nurse {
+  width: 50%;
+  border-radius: 3px;
+  padding: 5px 5px;
+  background: #cbc9c9;
+  border: none;
+  outline: none;
+  height: 100%;
+}
+
+#nurses .filter_wrapper .r {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: 1fr 40px 40px;
+}
+#nurses .filter_wrapper .search {
+  width: 100%;
+}
+#nurses .filter_wrapper .search input {
+  padding: 5px 20px;
+  border-radius: 3px;
+  background: #e9e7e7;
+  width: 100%;
+  outline: none;
+  border: none;
+}
+
+#nurses .filter_wrapper .grid,
+#nurses .filter_wrapper .bars {
+  margin-left: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+#nurses .filter_wrapper .grid i {
+  color: #a0a0a0;
+  font-size: 23px;
+}
+#nurses .filter_wrapper .bars i {
+  color: #000;
+  font-size: 23px;
+}
+
+/* card */
+#nurses .card_container {
+  display: grid;
+  grid-template-columns: 19% 19% 19% 19% 19%;
+  gap: 20px;
+}
+#nurses .card_container .card {
+  padding: 7px;
+  padding-bottom: 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  color: black;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+#nurses .card_container .card:hover {
+  box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em,
+    rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+}
+#nurses .card_container .card img {
+  width: 100%;
+  height: 200px;
+  border-radius: 8px;
+  margin-bottom: 6px;
+}
+#nurses .card_container .card .card_content {
+  padding: 0 10px;
+  display: grid;
+}
+#nurses .card_container .card .card_content .stud_id {
+  font-weight: bold;
+}
+#nurses .card_container .card .card_content .name {
+  font-weight: 500;
+}
+#nurses .card_container .card .card_content .nurse {
+  color: #999;
+}
+#nurses .card_container .card .card_content .card_footer {
+  display: flex;
+  align-items: center;
+}
+#nurses .card_container .card .card_content .card_footer .date {
+  color: #5d8fd9;
+  font-size: 14px;
+  flex: 1;
+}
+#nurses .card_container .card .card_content .card_footer i {
+  margin-left: 8px;
+  font-size: 20px;
+}
+#nurses .card_container .card .card_content .card_footer i:nth-child(2) {
+  color: #999;
+}
+#nurses .card_container .card .card_content .card_footer i:nth-child(3) {
+  color: #5180c7;
+  transform: translate(0, -1px);
+}
+
+#nurses .modal {
+  padding-top: 50px;
+}
+
+/* add nurse modal */
+#nurses .modal .modal-header {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  color: white;
+  background-color: #13192d;
+  border: none;
+}
+
+#nurses .modal .modal-body {
+  color: white;
+  background-color: #13192d;
+}
+
+#nurses .modal .modal-footer {
+  color: white;
+  background-color: #13192d;
+  border: none;
+}
+
+#nurses .imgupload {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: end;
+  background-color: gray;
+}
+
+#nurses .imgupload #imgbox {
+  width: 100%;
+  font-size: 12px;
+  color: white;
+  background-color: #198754;
+  border: none;
+}
+
+#nurses .addnurse_row {
+  display: flex;
+  gap: 20px;
+}
+
+#nurses .addnurse_row .nurse_info {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+#nurses #addNurseModal input[type="text"] {
+  outline: white;
+  color: white;
+  background-color: #13192d;
+  width: 100%;
+}
+
+#nurses .nurse_details {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+#nurses .nurse_details_row_2 {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 20px;
+}
+
+#nurses .nurse_details_row_3 {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 20px;
+}
+
+#nurses .addnurse_actionbtn {
+  display: flex;
+  justify-content: end;
+  gap: 20px;
+  padding-top: 20px;
+}
+
+/* add nurse modal schedule */
+#nurses .schedule_row {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 20px;
+}
+
+#nurses input[type="checkbox"]:not(:checked),
+input[type="checkbox"]:checked {
+  position: absolute;
+  left: -9999%;
+}
+
+#nurses input[type="checkbox"] + label {
+  text-align: center;
+  display: inline-block;
+  padding: 10px;
+  cursor: pointer;
+  border: 1px solid white;
+  border-radius: 5px;
+  color: white;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+#nurses input[type="checkbox"]:checked + label {
+  border: 1px solid #13192d;
+  color: white;
+  background-color: #3e64ff;
+}
+
+/* delete nurse modal */
+
+#nurses #delNurse .modal-body {
+  background-color: white;
+  color: #000;
+}
+
+#nurses .delmodal {
+  text-align: center;
+  border-radius: 5px;
+}
+
+#nurses .delmodal .btn {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+#nurses .delmodal .modal_btn {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding-top: 50px;
+}
+
+#nurses .del_icon {
+  position: absolute;
+  margin-top: -55px;
+  margin-left: 180px;
+  font-size: 40px;
+  color: #ed1c24;
+  width: 70px;
+  height: 70px;
+  border-radius: 100px;
+  border: 5px solid grey;
+  background-color: white;
+}
+
+/* remove nurse success modal */
+#nurses #removesuccessModalNurse .modal-body {
+  background-color: white;
+  color: #000;
+}
+
+#nurses #removesuccessModal .empid {
+  color: #3e64ff;
+}
+
+#nurses .removesuccessmodal {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  border-radius: 5px;
+}
+
+#nurses .check_icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  color: white;
+  width: 70px;
+  height: 70px;
+  border-radius: 100px;
+  background-color: #198754;
+}
+
+/* nurse information */
+
+#nurses #viewNurseInfo {
+  color: white;
+}
+
+#nurses .nurse_info {
+  display: flex;
+  gap: 50px;
+}
+
+hr.divider {
+  border-top: 2px solid gray;
+}
+
+#nurses #viewNurseInfo input {
+  text-align: center;
+}
+
+#nurses .nurse_info .nurseimg {
+  display: flex;
+  flex-direction: column;
+}
+
+#nurses .nurseimg button {
+  color: white;
+  background-color: #3e64ff;
+  border-radius: 5px;
+  border: none;
+}
+
+#nurses img {
+  width: 250px;
+  height: 250px;
+  padding-bottom: 20px;
+}
+
+#nurses .infodetails {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  gap: 20px;
+}
+
+#nurses .infodetails .sched_day {
+  display: flex;
+  gap: 20px;
+}
+
+#nurses .infodetails .day {
+  color: white;
+  padding: 5px;
+  background-color: #3e64ff;
+  border-radius: 5px;
+}
+
+#nurses .basic_details {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+#nurses .row_4 {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  gap: 40px;
+  text-align: center;
+}
+
+#nurses .row_3 {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 40px;
+  text-align: center;
+}
+
+#nurses .row_1 {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 40px;
+  text-align: center;
+}
+
+#nurses .actionbtn {
+  display: flex;
+  justify-content: end;
+  padding-top: 20px;
+  gap: 20px;
+}
+
+#nurses .actionbtn button {
+  width: 120px;
+  border-radius: 5px;
+  color: white;
+  background-color: #3e64ff;
+  border: none;
+}
+
+@media screen and (max-width: 800px) {
+  /* section padding  */
+  .content_wrapper {
+    padding: 20px;
+  }
+
+  #nurses .filter_wrapper {
+    padding: 10px 20px;
+    /* height:50px; */
+    border-radius: 5px;
+    background: #d9d9d9;
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    align-items: center;
+    row-gap: 15px;
+  }
+  #nurses .filter_wrapper .sort {
+    display: flex;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 1366px) {
+  #nurses .card_container {
+    grid-template-columns: 18.5% 18.5% 18.5% 18.5% 18.5%;
+  }
+}
