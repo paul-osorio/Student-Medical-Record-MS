@@ -1,3 +1,16 @@
+<?php
+  error_reporting(0);
+  session_start(); 
+
+  $stud_id = $_SESSION['student_id'];
+
+  if(!empty($stud_id)){
+
+    header("location: ./redo/pages/personal-information.php");
+
+  }
+
+?>
 
 
 <!DOCTYPE html>
@@ -67,7 +80,9 @@
                       <button type="submit" name="submit_btn" class="btn btn-primary fw-semibold px-5 rounded-pill shadow"> LOG IN</button>
                     </div>
                     <div >
-                      <button class="btn btn-light fw-semibold px-5 rounded-pill"> register</button>
+
+                      <a href="./student-send-otp.php" class="btn btn-light fw-semibold px-5 rounded-pill"> register</a>
+                      
                     </div>
 
                   </form>

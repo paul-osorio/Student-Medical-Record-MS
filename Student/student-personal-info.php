@@ -22,9 +22,9 @@
 
       </head>
 <body>
-<?php include "./nav-layout.php"; ?>
 
-    <!-- end: Sidebar -->
+
+    <?php include "./nav-layout.php"; ?>
 
     <!-- start: Main -->
     <main class="bg-light">
@@ -40,17 +40,16 @@
             <!-- start: Content -->
             <div class="p-5">
                 <h5>PERSONAL INFORMATION</h5>
-
                 <div class="row" id="main_row">
                     <div class="col-xl-8" id="col-1">
-                        <h4 class="fw-bold" id="student_id">19-1220</h4>
-                        <p class="fw-semibold" id="student_name">Arnejo, Clifford Dle M.</p>
-                        <p class="text-secondary" id="student_course">Bachelor of Science in Information Technology (BSIT)</p>
-                        <p class="text-secondary" id="student_email">clifford.dle.arnejo@gmail.com</p>
-                        <p class="px-3 py-2 status success-status text-light rounded text-capitalize" id="student_status">Status : complete</p>
+                        <h4 class="fw-bold" id="student_id"> <?=$stud_logged['student_id']?> </h4>
+                        <p class="fw-semibold" id="student_name"> <?=$stud_logged['lastname']?>, <?=$stud_logged['firstname']?> <?=$stud_logged['m_ini']?>. </p>
+                        <p class="text-secondary" id="student_course"> <?=$stud_logged['degree']?> (<?=$stud_logged['code']?>) </p>
+                        <p class="text-secondary" id="student_email"> <?=$stud_logged['email']?> </p>
+                        <p class="px-3 py-2 status success-status text-light rounded text-capitalize" id="student_status">Status : <?=$stud_logged['remarks']?></p>
                     </div>
                     <div class="col-sm-4 py-3 d-grid justify-content-center align-items-center">
-                        <img src="https://images.unsplash.com/photo-1585919751768-dff94a989751?ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80" class="" width="300" height="200" alt="">
+                        <img src="../ADMIN PANEL (UPDATED UI)/assets/<?=$stud_logged['image']?>" class="" width="300" height="200" alt="">
                     </div>
                 </div>
 
@@ -62,7 +61,7 @@
                             <div class="child text-start">
                                 <span class="text-dark">Sex</span>
                                 <div class="input-group input-group-sm mb-3 my-2">
-                                    <input type="text" aria-label="First name" id="sex" class="form-control shadow-none"  disabled>
+                                    <input type="text" aria-label="First name" id="sex" class="form-control shadow-none" value="<?=$stud_logged['gender']?>" disabled>
                                 </div>
                             </div>
                     </div>
@@ -71,7 +70,7 @@
                         <div class="child text-start">
                             <span class="text-dark">Age</span>
                             <div class="input-group input-group-sm  mb-3 my-2">
-                                <input type="text" aria-label="First name" id="age" class="form-control shadow-none"  disabled>
+                                <input type="text" aria-label="First name" id="age" class="form-control shadow-none" value="<?=$stud_logged['age']?>" disabled>
                             </div>
                         </div>
                     </div>
@@ -80,7 +79,7 @@
                         <div class="child text-start">
                             <span class="text-dark">Birthdate</span>
                             <div class="input-group input-group-sm col-xxl-3 mb-3 my-2">
-                                <input type="date" id="Birthdate" aria-label="Birthdate"  class="form-control shadow-none" placeholder="Birthdate" disabled>
+                                <input type="date" id="Birthdate" aria-label="Birthdate"  class="form-control shadow-none" placeholder="Birthdate" value="<?=$stud_logged['birthdate']?>" disabled>
                             </div>
                         </div>
                     </div>
@@ -88,7 +87,7 @@
                         <div class="child text-start">
                             <span class="text-dark">Complete Address</span>
                             <div class="input-group input-group-sm col-xxl-3 mb-3 my-2">
-                                <input type="text" id="Birthdate" aria-label="Birthdate"  class="form-control shadow-none" placeholder="Complete Address" disabled>
+                                <input type="text" id="Birthdate" aria-label="Birthdate"  class="form-control shadow-none" placeholder="Complete Address" value="<?=$stud_logged['address']?>" disabled>
                             </div>
                         </div>
                     </div>

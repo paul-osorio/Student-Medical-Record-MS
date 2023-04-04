@@ -3,7 +3,7 @@
    session_start();
 
    // connection
-   include "../includes/db_con.php";
+   include "../redo/includes/db_con.php";
 
 
    if(isset($_POST['submit_btn'])){
@@ -13,20 +13,39 @@
       $password = $_POST['password'];
 
 
-      $sel_stud = "SELECT * FROM `students` WHERE `email` = '$email' AND `password` = '$password'";
+      $sel_stud = "SELECT * FROM `student_account` WHERE `email` = '$email' AND `password` = '$password'";
+
       $res_stud = mysqli_query($conn, $sel_stud);
 
-      if(mysqli_num_rows($res_stud) === 1) {
+      if(mysqli_num_rows($res_stud) === 1) {          //if exist in student_account
+         
 
          $stud = mysqli_fetch_assoc($res_stud);
 
          $_SESSION['student_id'] = $stud['student_id'];
+
+         if($stud['isVerified'] == 0) {
+
+            $_SESSION['is_verified'] = $stud['isVerified'];
+            header("location: ../redo/survey-form.php");
+
+         } else {
+
+            $_SESSION['is_verified'] = $stud['isVerified'];
+            header("location: ../redo/pages/personal-information.php");
+
+         }
+
          
-         header("location: ../student-personal-info.php");
+
+         
+        
+         
+
 
       } else {
 
-         echo "account doesn't exit";
+         header("location: ../student-login.php?wrong password");
 
       }
    }
