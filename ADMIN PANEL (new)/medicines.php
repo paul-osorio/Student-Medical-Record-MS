@@ -289,7 +289,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                         <span>Sort by</span>
                         <select name="filter" id="filter"> 
                         <option value="">Select</option> 
-                        <option value="date_manufactured">Date Manufactured</option>
+                        <!-- <option value="date_manufactured">Date Manufactured</option> -->
                         <option value="expirationDate">Expiration Date</option>
                         <option value="num_stocks">Stocks</option>
                         </select>
@@ -328,7 +328,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                                 <table>
                                 <td class="b1"><?=$med['name']?></td>
                                 <tr>
-                                <td class="mdc-brand">Brand: <?=$med['brand']?></td>
+                                <td class="mdc-brand"><b>Brand:</b> <?=$med['brand']?></td>
                                 <tr>
                                 <td><?=$med['prod_id']?></td>
                                 </table>
@@ -341,7 +341,16 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                                 
                     
                             
-                            <td style="width:370px;"><b>Expiration Date:</b> <?=$med['expirationDate']?></td>
+                            <td style="width:370px;">
+                            <!-- <b>Expiration Date:</b> <?=$med['expirationDate']?> -->
+                                <table>
+                                <td class="b1"><b>Expiration Date:</b> <?=$med['expirationDate']?></td>
+                                <tr>
+                                <td><b>Stocks:</b> <?=$med['num_stocks']?></td>
+                                </table>
+                            </td>
+
+                            
                             <td style="width:200px;"><img src="./assets/<?=$med['prod_qrcode']?>" width="150px" height="130px"> </td>
                             
 
@@ -357,14 +366,11 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                     </label>
                 
                 </li>
-<!-- 
 
-            </div>
-            </div> -->
 
 
                 <?php } } ?>
-            </ul>
+              </ul>
             </div>
 
         </section>
@@ -401,38 +407,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                         <label>Expiration Date</label>
                         <input type="date" class="form-control" name="expirationDate" required>
                       </div>		
-                      <div class="form-group">
-                        <label>Generic Name</label>
-                        <input type="text" class="form-control" name="genericName" required>
-                      </div>	
-                      <div class="form-group">
-                        <label>Date Manufactured</label>
-                        <input type="date" class="form-control" name="date_manufactured" required>
-                      </div>	
-                      <div class="form-group">
-                        <label>Product Condition</label>
-                        <input type="text" class="form-control" name="prodCondition" required>
-                      </div>	
-                      <div class="form-group">
-                        <label>Storage</label>
-                        <input type="text" class="form-control" name="storage" required>
-                      </div>	
-                      <div class="form-group">
-                        <label>Box ID</label>
-                        <input type="text" class="form-control" name="box_id" required>
-                      </div>	
-                      <div class="form-group">
-                        <label>Manufacturer's Company</label>
-                        <input type="text" class="form-control" name="manufacturerName" required>
-                      </div>	
-                      <!-- <div class="form-group"> -->
-                        <!-- <label>Email Address</label> -->
-                        <!-- <input type="text" class="form-control" name="phone" required> -->
-                      <!-- </div>	 -->
-                      <div class="form-group">
-                        <label>Contact Number</label>
-                        <input type="text" class="form-control" name="contact_info" required>
-                      </div>	
+                      
                       <div class="form-group">
                         <label>Description</label>
                         <textarea class="form-control" name="description" required></textarea>
