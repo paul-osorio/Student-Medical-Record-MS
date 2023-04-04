@@ -1,0 +1,139 @@
+#dashboard .dashboard_container {
+  display: grid;
+  grid-template-rows: 20% 37% 37%;
+  gap: 20px;
+  height: 85vh;
+}
+
+/*header*/
+#dashboard .dashboard_header {
+  margin-bottom: 10px;
+}
+#dashboard .dashboard_header h3 {
+  font-size: 24px;
+  color: #fff !important;
+}
+
+/*analytics layout*/
+#dashboard .card_container {
+  display: grid;
+  grid-template-columns: 19% 19% 19% 19% 19%;
+  gap: 13px;
+}
+
+#dashboard .card {
+  display: grid;
+  grid-template-rows: 30% auto;
+  border-radius: 10px;
+  overflow: hidden;
+  color: white;
+}
+
+#dashboard .card .card_content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.3rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  gap: 20px;
+}
+
+#dashboard .card .count {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 4rem;
+  font-weight: 600;
+}
+
+/*charts layout*/
+#dashboard .chart_container {
+  display: grid;
+  grid-template-columns: 74% auto;
+  gap: 20px;
+}
+
+#dashboard .chart {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+#dashboard .circle_chart {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+#dashboard .chart_container .card_content {
+  background-color: white;
+  border-radius: 10px;
+}
+
+#dashboard .chart_container .chart_header {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  font-weight: 700;
+  font-size: 1.3rem;
+}
+
+#dashboard .chart_container .chart_header select {
+  background-color: lightgray;
+  border: none;
+  border-radius: 5px;
+}
+
+#dashboard .chart_container #myChart {
+  width: 50%;
+}
+
+/* table */
+#dashboard .table_card {
+  overflow: auto;
+}
+
+#dashboard .chart_container table {
+  height: 100%;
+  padding-bottom: 10px;
+}
+
+#dashboard .chart_container table th {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+#dashboard .chart_container table td {
+  font-size: 0.7rem;
+}
+
+#dashboard .chart_container table td img {
+  height: 50px;
+  width: 50px;
+}
+
+@media screen and (max-width: 1280px) {
+  #dashboard .dashboard_container {
+    display: grid;
+    grid-template-rows: 20% 35% 35%;
+    gap: 15px;
+    height: 80vh;
+  }
+
+  /*analytics layout*/
+  #dashboard .card_container {
+    grid-template-columns: 18.8% 18.8% 18.8% 18.8% 18.8%;
+    gap: 15px;
+  }
+  #dashboard .card .card_content {
+    font-size: 1rem;
+  }
+
+  /*charts layout*/
+  #dashboard .chart_container {
+    grid-template-columns: 70% auto;
+    gap: 15px;
+  }
+}
+

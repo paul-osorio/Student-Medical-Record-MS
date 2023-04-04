@@ -84,7 +84,7 @@ if (isset($_SESSION['emp_id']) && isset($_SESSION['username'])) {
                   <a href="student.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-users mx-2"></i><span>Students</span></span></a>
                   </li>
                   <li  class="px-4 w-100 mb-1 nav-item tab py-2">
-                  <a href="Mreport.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-plus-square mx-2"></i><span>Medical Reports</span></span></a>
+                  <a href="Mreport.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-plus-square mx-2"></i><span>Medical Requirements</span></span></a>
                   </li>
                   <li  class="px-4 w-100 mb-1 nav-item tab py-2">
                   <a href="department.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-building-o mx-2"></i><span>Departments</span></span></a>

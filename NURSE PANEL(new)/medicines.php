@@ -68,7 +68,7 @@
                   <a href="student.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-users mx-2"></i><span>Students</span></span></a>
                   </li>
                   <li  class="px-4 w-100 mb-1 nav-item tab py-2">
-                  <a href="Mreport.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-plus-square mx-2"></i><span>Medical Reports</span></span></a>
+                  <a href="Mreport.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-plus-square mx-2"></i><span>Medical Requirements</span></span></a>
                   </li>
                   <li  class="px-4 w-100 mb-1 nav-item tab py-2">
                   <a href="department.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-building-o mx-2"></i><span>Departments</span></span></a>
@@ -114,146 +114,65 @@
                    
                       <ul class="accordion">
 
-                        <?php if(mysqli_num_rows($fetchAllMedicine) > 0) { 
-                                    while ($med = mysqli_fetch_assoc($fetchAllMedicine)) {  ?>
-                    
-                    
-                        <li>
-                            <input type="radio" name="accordion" id="first" checked>
-                            <label for="first">
+                          <?php if(mysqli_num_rows($fetchAllMedicine) > 0) { 
+                                      while ($med = mysqli_fetch_assoc($fetchAllMedicine)) {  ?>
+
+
+                          <li>
+                              <input type="radio" name="accordion" id="first" checked>
+                              <label for="first">
                               <div class="medicine-table">
-                                <table class="table-mdc">
+                                  <table class="table-mdc">
                                   <tbody>
-                                    <tr class="mdc-header">
+                                      <tr class="mdc-header">
                                       <td style="width:120px;"><img src="./assets/<?=$med['image']?>" width="150px" height="130px"> </td>
-                                      <td style="width:200px;" >
-                                        <table>
+                                      <td style="width:180px;" >
+                                          <table>
                                           <td class="b1"><?=$med['name']?></td>
                                           <tr>
-                                          <td class="mdc-brand">Brand: <?=$med['brand']?></td>
+                                          <td class="mdc-brand"><b>Brand:</b> <?=$med['brand']?></td>
                                           <tr>
                                           <td><?=$med['prod_id']?></td>
-                                        </table>
+                                          </table>
                                       </td>
-                                
-                                      <td style="text-align:justify;text-justify:inter-word;">
-                                        <span class="mdc-stock">Desctiption: </span>
-                                        <span class="mdc-qty"><?=$med['description']?></span>
+                                  
+                                      <td style="text-align:justify;text-justify:inter-word;width:420px;">
+                                          <span class="mdc-stock">Desctiption: </span>
+                                          <span class="mdc-qty"><?=$med['description']?></span>
                                       </td>
-                                        
+                                          
                               
                                       
-                                      <td style="width:280px;"><b>Expiration Date:</b> <?=$med['expirationDate']?></td>
-                                      <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#medModal">
-                                        View
-                                      </button>
+                                      <td style="width:370px;">
+                                      <!-- <b>Expiration Date:</b> <?=$med['expirationDate']?> -->
+                                          <table>
+                                          <td class="b1"><b>Expiration Date:</b> <?=$med['expirationDate']?></td>
+                                          <tr>
+                                          <td><b>Stocks:</b> <?=$med['num_stocks']?></td>
+                                          </table>
                                       </td>
-                           
-                                    </tr>
-                                    </tbody>
-                                    </table>
-                                    </div>
-                            </label>
-                          
-                        </li>
-                    
-                    
-                        <div class="modal fade" id="medModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" style="max-width: 1000px; margin-right:2.5rem;">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">MEDICINE INFORMATION</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                          </div>
-                          <form>
-                            <div class="modal-body">
-                                <div class="row">
-                                  <div class="col">
-                                            <label for="medname" class="form-label">Medicine Name</label>
-                                            <input type="text" class="form-control" id="medname" style="width:200px;"readonly placeholder="<?=$med['name']?>">
-                                  </div>
-                    
-                                  <div class="col">
-                                  <label for="brand" class="form-label">Brand</label>
-                                            <input type="text" class="form-control" id="brand" readonly placeholder="<?=$med['brand']?>">
-                                    </div>
-                    
-                                    <div class="col">
-                                  <label for="stocks" class="form-label">Stocks</label>
-                                            <input type="text" class="form-control" id="stocks" readonly placeholder="<?=$med['num_stocks']?>">
-                                    </div>
-                    
-                                    <div class="col">
-                                    <label for="expdate" class="form-label">Expiration Date</label>
-                                            <input type="date" class="form-control" id="expirationDate" readonly value="<?=$med['expirationDate']?>">
-                                    </div>
-                                    <!---->
-                                <div class="row">
-                                <div class="col">
-                                <label for="genname" class="form-label">Generic Name</label>
-                                            <input type="text" class="form-control" id="genname" style="width:200px;"readonly value="<?=$med['genericName']?>">
-                                </div>
-                                <div class="col">
-                                <label for="gendatemanu" class="form-label">Date Manufactured</label>
-                                            <input type="date" class="form-control" id="datemanu" style="width:200px;"readonly value="<?=$med['date_manufactured']?>">
-                                </div>
-                                <div class="col">
-                                <label for="prod_con" class="form-label">Product Condition</label>
-                                            <input type="text" class="form-control" id="prod_con" style="width:200px;"readonly value="<?=$med['prodCondition']?>">
-                                </div>
-                                <div class="col">
-                                <label for="storage" class="form-label">Storage</label>
-                                            <input type="text" class="form-control" id="storage" style="width:100px;"readonly value="<?=$med['storage']?>">
-                                </div>
-                                <div class="col">
-                                <label for="box_id" class="form-label">Box ID</label>
-                                            <input type="text" class="form-control" id="box_id" style="width:100px;"readonly value="<?=$med['box_id']?>">
-                                </div>
-                    
-                                <div class="row">
-                                <div class="col">
-                                <label for="manu_comp" class="form-label">Manufacturer's Company</label>
-                                            <input type="text" class="form-control" id="manu_comp" style="width:210px;"readonly value="<?=$med['manufacturerName']?>">
-                                </div>
-                                <div class="col">
-                                <label for="email" class="form-label">Email Address</label>
-                                            <input type="text" class="form-control" id="email" style="width:100px;"readonly value="<?=$med['prodCondition']?>">
-                                </div>
-                                <div class="col">
-                                <label for="contact_num" class="form-label">Contact Number</label>
-                                            <input type="text" class="form-control" id="contact_num" style="width:100px;"readonly value="<?=$med['contact_info']?>">
-                                </div>
-                                </div>
-                                <div class="row">
-                                  <div class="col"></div>
-                                </div>
-                    
-                                </div>
-                    
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                              
-                            </div>
-                            <style>
-                              .modal-footer{
-                                width:100%;
-                              }
-                            </style>
-                          </form>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    
-                    
-                        
-                    
-                        <?php } } ?>
-                      </ul>
+
+                                      
+                                      <td style="width:200px;"><img src="./assets/<?=$med['prod_qrcode']?>" width="150px" height="130px"> </td>
+                                      
+
+                                      <td><a href="#editMedInfo" class="custom_btn editmedbtn" data-bs-toggle="modal"><i class="fa fa-edit" id="edit" aria-hidden="true" style="color: #3e64ff; font-size: 30px"></i></a></td>
+
+                                      <td><a href="#delMed" class="custom_btn deletemedbtn" data-bs-toggle="modal"><i class="fa fa-trash" id="delete" aria-hidden="true" style="color: #ED1C24; font-size: 30px"></i></a></td>
+                                      
+
+                                      </tr>
+                                      </tbody>
+                                      </table>
+                                      </div>
+                              </label>
+
+                          </li>
+
+                          <?php } } ?>
+
+                        </ul>
             
-                      
                 </div>
           </div>
         </div>
