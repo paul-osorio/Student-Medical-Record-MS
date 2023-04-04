@@ -7,13 +7,22 @@
 
     $stud_id = $_SESSION['student_id'];
 
-    $sel_stud = "SELECT * FROM `students` stud
-    JOIN `course` c
-    ON stud.course = c.code
-    WHERE `student_id` = '$stud_id'";
-    $res_stud = mysqli_query($conn, $sel_stud);
+    if(empty($stud_id)){
 
-    $stud_logged = mysqli_fetch_assoc($res_stud);
+        header("location: student-login.php");
+        
+    } else {
+
+        $sel_stud = "SELECT *, LEFT(stud.middlename, 1) as `m_ini` FROM `students` stud
+        JOIN `course` c
+        ON stud.course = c.code
+        WHERE `student_id` = '$stud_id'";
+        $res_stud = mysqli_query($conn, $sel_stud);
+    
+        $stud_logged = mysqli_fetch_assoc($res_stud);
+        
+    }
+
 
 ?>
     
@@ -79,7 +88,7 @@
                 </a>
             </li>
             <li class="sidebar-menu-item">
-                <a href="./student-medical-history.php">
+                <a href="./logout.php">
                     <i class="ri-calendar-line sidebar-menu-item-icon"></i>
                     <span class="text-light fs-6">Log out</span>
                 </a>

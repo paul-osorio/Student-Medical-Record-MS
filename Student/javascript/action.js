@@ -1,4 +1,6 @@
 $(document).ready(function () {
+
+  
   $("#send_otp").on("click", function () {
     let email = $("#email").val();
     let otp_code = "";

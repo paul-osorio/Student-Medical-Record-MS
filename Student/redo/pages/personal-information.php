@@ -1,0 +1,238 @@
+<?php
+   include "../includes/header_process.php";
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="icon" type="image/png" href="../../assets/favcon.png"/> <!-- Icon -->
+   <link rel="stylesheet" href="../css/style.css">
+   <title> Personal Information | QCU MIS </title>
+</head>
+<body>
+
+   
+
+   <div class="side-panel">
+
+      <?php include "../includes/profile_nav.php" ?>
+        
+      <nav class="nav primary-nav">
+         
+         <div class="sub-header">
+         
+            <p> Main </p>
+         
+         </div>
+         
+         <ul>
+            <li class="selected"> 
+               <a href="./personal-information.php"> Personal Information </a>
+            </li>
+         
+            <li> 
+               <a href="./medical-requirements.php"> Medical Requirements</a>
+            </li>
+         
+            <li> 
+               <a href="./medical-history.php"> Medical History </a>
+            </li>
+
+            <li> 
+               <a href="./health-history.php"> Health History  </a>
+            </li>
+         
+         
+            <li> 
+               <a href="./appointment-list.php"> Appointment </a>
+            </li>
+         </ul>
+        
+      </nav>
+        
+      <nav class="nav secondary-nav">
+        
+         <div class="sub-header">
+         
+            <p> Settings </p>
+         
+         </div>
+        
+         <ul>
+            <li> 
+               <a href="./manage-account.php"> Manage Account </a>
+            </li>
+         
+            <li> 
+               <a href="../../process/logout.php"> Logout </a>
+            </li>
+         </ul>
+        
+      </nav>
+        
+   </div>
+
+   <main>
+
+      <header>
+
+         <div class="logo">
+            <img src="../../assets/favcon.png" alt="">
+         </div>
+
+         <div class="title">
+            <h1> Quezon City University Clinic</h1>
+         </div>
+
+      </header>
+
+      <div class="container">
+
+         <div class="personal-details">
+            
+            <div class="personal-info">
+
+               <div class="student-info">
+
+                  <div class="details">
+
+                     <h3 class="sub-header"> Personal Information </h3>
+
+                     <h2> <?=$stud_logged['student_id']?> </h2>
+
+                     <h3> <?=$stud_logged['lastname']?>, <?=$stud_logged['firstname']?> <?=$stud_logged['mi']?>. </h3>
+
+                     <p> <?=$stud_logged['program']?> (<?=$stud_logged['code']?>) </p>
+
+                     <p style="font-weight: 600;"> <?=$stud_logged['email']?></p>
+
+                     <div class="status">
+                        
+                        <p> Medical Requirements: <span style="color: var(--approve)"> Complete </span></p>
+                     
+                        <!-- <p> Status: 
+                           <?php if($stud_logged['remarks'] === "Incomplete") { ?>
+
+                              <span style="color: var(--decline)"> <?=$stud_logged['remarks']?> </span> 
+
+                           <?php } else { ?>
+                              
+                              <span style="color: var(--approve)"> <?=$stud_logged['remarks']?> </span>
+
+                           <?php } ?> 
+                        </p> -->
+
+
+                     </div>
+                     
+                  </div>
+
+                  <div class="image">
+
+                     <img src="../../assets/<?=$stud_logged['id_image']?>" alt="">
+
+                  </div>
+               </div>
+            </div>
+
+            <hr>
+
+            <div class="basic-information">
+
+               <h3> Basic Information </h3>
+
+               <div class="form-input">
+
+                  <div class="text-input sex">
+
+                     <input type="text" value="<?=$stud_logged['gender']?>" id="sex" readonly>
+
+                     <label for="sex"> Sex </label>
+
+                  </div>
+
+                  <div class="text-input age">
+
+                     <input type="text" value="<?=$stud_logged['age']?>" id="age" readonly>
+
+                     <label for="age"> Age </label>
+
+                  </div>
+
+                  <div class="text-input bdate">
+
+                     <input type="date" value="<?=$stud_logged['birthdate']?>" id="bdate" readonly>
+
+                     <label for="bdate"> Birthdate </label>
+
+                  </div>
+
+                  <div class="text-input address">
+
+                     <input type="text" value="<?=$stud_logged['house_no']?> <?=$stud_logged['street']?> st., brgy. <?=$stud_logged['brgy']?>, <?=$stud_logged['city']?>, <?=$stud_logged['province']?>, district <?=$stud_logged['district']?>, <?=$stud_logged['zip_code']?>" id="address" readonly>
+
+                     <label for="address"> Complete Address </label>
+
+                  </div>
+
+                  
+
+               </div>
+
+            </div>
+
+            <hr>
+
+            <div class="emergency-contact">
+
+               <h3> Emergency Contact </h3>
+
+               <div class="form-input">
+
+                  <div class="text-input">
+
+                     <input type="text" value="<?=$stud_logged['fullname']?>" id="address" readonly>
+
+                     <label for="address"> Fullname </label>
+
+                  </div>
+
+                  <div class="text-input">
+
+                     <input type="text" value="<?=$stud_logged['relation']?>" id="address" readonly>
+
+                     <label for="address"> Relationship </label>
+
+                  </div>
+
+                  <div class="text-input">
+
+                     <input type="text" value="<?=$stud_logged['contact_number']?>" id="address" readonly>
+
+                     <label for="address"> Contact Number </label>
+
+                  </div>
+
+                  <div class="text-input">
+
+                     <input type="text" value="<?=$stud_logged['rel_address']?>" id="address" readonly>
+
+                     <label for="address"> Complete Address </label>
+
+                  </div>
+
+               </div>
+
+            </div>
+         </div>
+
+      </div>
+
+   </main>
+
+</body>
+</html>
