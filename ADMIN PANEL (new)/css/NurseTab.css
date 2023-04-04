@@ -340,6 +340,12 @@ input[type="checkbox"]:checked {
   color: white;
 }
 
+/* nurse information */
+
+#nurses #editNurseInfo {
+  color: white;
+}
+
 #nurses .nurse_info {
   display: flex;
   gap: 50px;
