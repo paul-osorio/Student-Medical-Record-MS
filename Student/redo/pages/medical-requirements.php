@@ -11,7 +11,7 @@
    <link rel="icon" type="image/png" href="../../assets/favcon.png"/> <!-- Icon -->
    <link rel="stylesheet" href="../css/style.css">
    <link rel="stylesheet" href="../css/med_req.css">
-   <title>  </title>
+   <title> Medical Requirements | QCUCMS </title>
 </head>
 <body>
 

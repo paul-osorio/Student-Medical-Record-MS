@@ -11,7 +11,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="icon" type="image/png" href="../../assets/favcon.png"/> <!-- Icon -->
    <link rel="stylesheet" href="../css/style.css">
-   <title> Personal Information | QCU MIS </title>
+   <title> Personal Information | QCUCMS </title>
 </head>
 <body>
 
@@ -146,8 +146,43 @@
                <h3> Basic Information </h3>
 
                <div class="form-input">
+                  
 
-                  <div class="text-input sex">
+                  <div class="text-input">
+
+                     <input type="text" value="<?=$stud_logged['lastname']?>" id="sex" readonly>
+
+                     <label for="sex"> Lastname </label>
+
+                  </div>
+
+                  <div class="text-input">
+
+                     <input type="text" value="<?=$stud_logged['firstname']?>" id="sex" readonly>
+
+                     <label for="sex"> Firstname </label>
+
+                  </div>
+
+                  <div class="text-input">
+
+                     <input type="text" value="<?=$stud_logged['middlename']?>" id="sex" readonly>
+
+                     <label for="sex"> Middlename </label>
+
+                  </div>
+
+
+                  <div class="text-input">
+
+                     <input type="text" value="<?=$stud_logged['extension']?>" id="sex" readonly>
+
+                     <label for="sex"> Extension </label>
+
+                  </div>
+
+
+                  <div class="text-input">
 
                      <input type="text" value="<?=$stud_logged['gender']?>" id="sex" readonly>
 
@@ -155,7 +190,7 @@
 
                   </div>
 
-                  <div class="text-input age">
+                  <div class="text-input">
 
                      <input type="text" value="<?=$stud_logged['age']?>" id="age" readonly>
 
@@ -163,23 +198,86 @@
 
                   </div>
 
-                  <div class="text-input bdate">
+                  <div class="text-input">
 
-                     <input type="date" value="<?=$stud_logged['birthdate']?>" id="bdate" readonly>
+                     <input type="text" value="<?=$stud_logged['birthdate']?>" id="" readonly>
 
-                     <label for="bdate"> Birthdate </label>
-
-                  </div>
-
-                  <div class="text-input address">
-
-                     <input type="text" value="<?=$stud_logged['house_no']?> <?=$stud_logged['street']?> st., brgy. <?=$stud_logged['brgy']?>, <?=$stud_logged['city']?>, <?=$stud_logged['province']?>, district <?=$stud_logged['district']?>, <?=$stud_logged['zip_code']?>" id="address" readonly>
-
-                     <label for="address"> Complete Address </label>
+                     <label for=""> Birthdate </label>
 
                   </div>
 
-                  
+                  <div class="text-input">
+
+                     <input type="text" value="<?=$stud_logged['height']?>" id="" readonly>
+
+                     <label for=""> Height </label>
+
+                  </div>
+
+                  <div class="text-input">
+
+                     <input type="text" value="<?=$stud_logged['weight']?>" id="" readonly>
+
+                     <label for=""> Weight </label>
+
+                  </div>
+
+                  <div class="text-input">
+
+                     <input type="text" value="<?=$stud_logged['house_no']?>" id="" readonly>
+
+                     <label for=""> House No. </label>
+
+                  </div>
+
+                  <div class="text-input">
+
+                     <input type="text" value="<?=$stud_logged['street']?>" id="bdate" readonly>
+
+                     <label for="bdate"> Street </label>
+
+                  </div>
+
+                  <div class="text-input">
+
+                     <input type="text" value="<?=$stud_logged['brgy']?>" id="bdate" readonly>
+
+                     <label for="bdate"> Barangay </label>
+
+                  </div>
+
+                  <div class="text-input">
+
+                     <input type="text" value="<?=$stud_logged['city']?>" id="bdate" readonly>
+
+                     <label for="bdate"> City </label>
+
+                  </div>
+
+                  <div class="text-input">
+
+                     <input type="text" value="<?=$stud_logged['province']?>" id="bdate" readonly>
+
+                     <label for="bdate"> Province </label>
+
+                  </div>
+
+                  <div class="text-input">
+
+                     <input type="text" value="<?=$stud_logged['district']?>" id="" readonly>
+
+                     <label for=""> District </label>
+
+                  </div>
+
+                  <div class="text-input">
+
+                     <input type="text" value="<?=$stud_logged['zip_code']?>" id="" readonly>
+
+                     <label for=""> Zip Code </label>
+
+                  </div>
+
 
                </div>
 
@@ -201,19 +299,21 @@
 
                   </div>
 
-                  <div class="text-input">
-
-                     <input type="text" value="<?=$stud_logged['relation']?>" id="address" readonly>
-
-                     <label for="address"> Relationship </label>
-
-                  </div>
+                 
 
                   <div class="text-input">
 
                      <input type="text" value="<?=$stud_logged['contact_number']?>" id="address" readonly>
 
                      <label for="address"> Contact Number </label>
+
+                  </div>
+
+                   <div class="text-input">
+
+                     <input type="text" value="<?=$stud_logged['relation']?>" id="address" readonly>
+
+                     <label for="address"> Relationship </label>
 
                   </div>
 
