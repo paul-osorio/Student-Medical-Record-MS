@@ -114,6 +114,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
     <link rel="stylesheet" href="./css/reportchart.css?v=<?php echo time(); ?>"/>
     <link rel="stylesheet" href="./css/archivesTab.css"/>
     <link rel="stylesheet" href="./css/entrancelog.css"/>
+    <link rel="stylesheet" href="./css/AppointmentsTab.css"/>
+    <link rel="stylesheet" href="./css/toggle-switchy.css"/>
 
     <link rel="stylesheet" href="./css/Main.css" />
     <link rel="stylesheet" href="./css/adminPage.css" />
@@ -135,6 +137,10 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+    <!-- for date picker -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
     <link
       rel="stylesheet"
@@ -274,6 +280,213 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
 <!--#################################################################################################################################################################################################################################-->
 
+          <!-- APPOINTMENTS PAGE -->
+          <section id="appointments" class="appointments so_content so_active" data-tab-content>
+
+          <div class="appointments_header d-flex justify-content-between">
+            <h3 class="m-0 text-white">APPOINTMENTS</h3>
+              <button class="custom_btn">
+                <a href="#addAppointmentsModal" class="custom_btn" data-toggle="modal"><i class="fa fa-user-md"></i>Add New</a>
+              </button>
+          </div>
+
+          <div class="appointments_table_details table-dark table-responsive">
+            <table>
+              
+              <tr id="table_header">
+                  <th> ID No. </th>
+                  <th> Type of Appointment</th>
+                  <th> Status</th>
+                  <th> Date Created</th>
+                  <th><span>Action</span></th>
+              </tr>
+              
+
+                  <?php //if(mysqli_num_rows($fetchAddAdmins) > 0) { 
+                  //while ($addAdmins = mysqli_fetch_assoc($fetchAddAdmins)) {  ?>
+
+
+              <tr class="container">
+                  <td> A-00001 </td>
+                  <td><span class="medServices">Medical Services</span></td>
+                  <td style="color:green;"><span class="status">On</span></td>
+                  <td><span class="dateCreated">March 04, 2023</span></td>
+                  <td>
+                      <!-- <a href="#viewAdminInfo" class="custom_btn" data-toggle="modal"><i class="fa fa-info-circle" aria-hidden="true" style="color: #5D8FD9;"></i></a> -->
+
+                      <a href="#viewAppointmentsInfo" class="custom_btn editbtn" data-toggle="modal"><i class="fa fa-edit" aria-hidden="true" style="color: green;"></i></a>
+
+                      <a href="#delAppointments" class="custom_btn deletebtn" data-toggle="modal"><i class="fa fa-trash" aria-hidden="true" style="color: #ED1C24;"></i></a>
+                  </td>
+              </tr>
+              <tr class="spacing"></tr>
+              <tr class="container">
+                  <td> A-00001 </td>
+                  <td><span class="medServices">Medical Services</span></td>
+                  <td style="color:gray;"><span class="status">Disabled</span></td>
+                  <td><span class="dateCreated">March 04, 2023</span></td>
+                  <td>
+                      <!-- <a href="#viewAdminInfo" class="custom_btn" data-toggle="modal"><i class="fa fa-info-circle" aria-hidden="true" style="color: #5D8FD9;"></i></a> -->
+
+                      <a href="#viewAppointmentsInfo" class="custom_btn editbtn" data-toggle="modal"><i class="fa fa-edit" aria-hidden="true" style="color: green;"></i></a>
+
+                      <a href="#delAppointments" class="custom_btn deletebtn" data-toggle="modal"><i class="fa fa-trash" aria-hidden="true" style="color: #ED1C24;"></i></a>
+                  </td>
+              </tr>
+              
+                  <?php //} } ?>
+
+              
+            </table>
+          </div>
+          <div>
+
+          </div>
+
+          <!--########################################################################################################################################################################-->
+
+          <!-- ADD NEW APPOINTMENT MODAL AT APPOINTMENT PAGE-->
+
+          <div id="addAppointmentsModal" class="modal fade">
+            <div class="modal-dialog">
+
+              <div class="modal-content">
+                <form method="post" action="adminDashboard.php">
+
+                  <div class="modal-header">						
+                    <h4 class="modal-title">NEW APPOINTMENT</h4>
+                  </div>
+
+                  <div class="modal-body">	
+
+                      <div class="form-group textfield">
+                        <label>APPOINTMENT TYPE: </label>
+                        <input type="text" class="form-control" name="appointment_type" required>
+                      </div><br>
+
+                      <div class="form-group">
+                        <label>PICK AVAILABLE DATES </label>
+                          <input type="text" class="form-control" id="date-picker" hidden>
+                      </div>
+                    
+                  </div>
+                  
+                  <div class="modal-footer">
+                    <input type="button" class="btn btn-danger" data-dismiss="modal" value="Cancel">
+                    <input type="button" class="btn btn-success" data-dismiss="modal" id="addsuccess_btn" name="addAppointment" value="Save">
+                  </div>
+
+                </form>
+              </div>
+
+            </div>
+          </div>
+
+          <!--########################################################################################################################################################################-->
+
+          <!-- VIEW APPOINTMENT MODAL AT APPOINTMENTS PAGE-->
+
+          <div id="viewAppointmentsInfo" class="modal fade">
+          <div class="modal-dialog">
+              <div class="modal-content">
+                <form method="post" action="adminDashboard.php">
+
+                  <div class="modal-header">						
+                    <h4 class="modal-title">APPOINTMENT DETAILS</h4>
+                  </div>
+
+                  <div class="modal-body">	
+                      <div class="form-group switch">
+                        <span>ID No.: A-00001</span>
+                        <label class="toggle-switchy" data-size="sm" data-style="rounded">
+                          <input checked type="checkbox" disabled>
+                          <span class="toggle">
+                            <span class="switch"></span>
+                          </span>
+                        </label>
+                      </div>
+
+
+                      <div class="form-group textfield">
+                        <label>APPOINTMENT TYPE: </label>
+                        <input type="text" class="form-control" name="appointment_type" disabled>
+                      </div><br>
+
+                      <div class="form-group">
+                        <label>PICK AVAILABLE DATES </label>
+                          <input type="text" class="form-control" id="date-picker_view" hidden disabled>
+                      </div>
+                  </div>
+                  
+                  <div class="modal-footer">
+                    <input type="button" class="btn btn-danger" data-dismiss="modal" value="Cancel">
+                    <input type="button" class="btn btn-primary" data-dismiss="modal" id="edit_appointment_btn" name="editAppointment" value="Edit">
+                  </div>
+
+                </form>
+              </div>
+
+            </div>
+
+          </div>          
+
+          <!--########################################################################################################################################################################-->
+
+          <!-- EDIT APPOINTMENT MODAL AT APPOINTMENTS PAGE-->
+
+          <div id="editAppointmentsModal" class="modal fade">
+            <div class="modal-dialog">
+
+              <div class="modal-content">
+                <form method="post" action="adminDashboard.php">
+
+                  <div class="modal-header">						
+                    <h4 class="modal-title">APPOINTMENT DETAILS</h4>
+                  </div>
+
+                  <div class="modal-body">	
+
+                      <div class="form-group switch">
+                        <span>ID No.: A-00001</span>
+                        <label class="toggle-switchy" data-size="sm" data-style="rounded">
+                          <input checked type="checkbox">
+                          <span class="toggle">
+                            <span class="switch"></span>
+                          </span>
+                        </label>
+                      </div>
+
+                      <div class="form-group textfield">
+                        <label>APPOINTMENT TYPE: </label>
+                        <input type="text" class="form-control" name="appointment_type" required>
+                      </div><br>
+
+                      <div class="form-group">
+                        <label>PICK AVAILABLE DATES </label>
+                          <input type="text" class="form-control" id="date-picker_edit" hidden>
+                      </div>
+                    
+                  </div>
+                  
+                  <div class="modal-footer">
+                    <input type="button" class="btn btn-danger" data-bs-dismiss="modal" value="Cancel">
+                    <input type="button" class="btn btn-success" data-bs-dismiss="modal" id="addsuccess_btn" name="saveAppointment" value="Save">
+                  </div>
+
+                </form>
+              </div>
+
+            </div>
+          </div>              
+
+          </section>
+
+
+
+
+
+
+
 </div>
     </div>
     <!-- custom js -->
@@ -282,6 +495,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
     <script src="./js/line_graph.js"></script>
     <script src="./js/circle_graph.js"></script>
     <script src="./js/bar_graph.js"></script>
+    <script src="./js/date_picker.js"></script>
 
     <!-- bootstrap js -->
     <script src="./js/jquery.min.js"></script>
@@ -367,166 +581,6 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
 <!--#################################################################################################################################################################################################################################-->
 
-  <!-- EDIT HOSPITAL INFO JS -->
-  <script>
-        $(document).ready(function () {
-
-            $('.edithosbtn').on('click', function () {
-
-                $('#editHospitalInfo').modal('show');
-
-                $tr = $(this).closest('tr');
-
-                var data = $tr.children("td").map(function () {
-                    return $(this).text();
-                }).get();
-
-                console.log(data);
-
-
-                $('#update_id').val(data[1]);
-                $('#hospi_id').val(data[0]);
-                $('#hospital').val(data[3]);
-                $('#hospital_add').val(data[2]);
-                $('#email').val(data[5]);
-                $('#contact_num').val(data[4]);
-                
-            });
-        });
-
-    </script>
-
-<!--#################################################################################################################################################################################################################################-->
-
-<!-- VIEW NURSE JS -->
-<script>
-        $(document).ready(function () {
-
-            $('.nurseinfobtn').on('click', function () {
-
-                $tr = $(this).closest('tr');
-
-                var data = $tr.children("td").map(function () {
-                    return $(this).text();
-                }).get();
-
-                console.log(data);
-
-                $('#nurse_list').hide();
-                $('#viewNurseInfo').show();
-                $('#update_id').val(data[0]);
-                $('#unique_id').val(data[1]);
-                $('#email').val(data[4]);
-                $('#fname').val(data[2]);
-                $('#lname').val(data[3]);
-                $('#contact_num').val(data[5]);
-            });
-        });
-
-    </script>
-
-
-<!-- EDIT NURSE JS -->
-
-<script>
-        $(document).ready(function () {
-
-            $('.nurseeditbtn').on('click', function () {
-
-                $tr = $(this).closest('tr');
-
-                var data = $tr.children("td").map(function () {
-                    return $(this).text();
-                }).get();
-
-                console.log(data);
-
-                $('#nurse_list').hide();
-                $('#editNurseInfo').show();
-                $('#update_id').val(data[0]);
-                $('#unique_id').val(data[1]);
-                $('#email').val(data[4]);
-                $('#fname').val(data[2]);
-                $('#lname').val(data[3]);
-                $('#contact_num').val(data[5]);
-            });
-        });
-
-    </script>
-
-<!--#################################################################################################################################################################################################################################-->
-
-<script>
-        $(document).ready(function () {
-
-            $('#nextpage2').on('click', function () {
-
-                $('#addnurse_title1').hide()
-                $('#addnurse_page1').hide();
-                $('#addnurse_page2').show();
-                $('#addnurse_title2').show()
-                
-            });
-        });
-
-</script>
-
-<!--#################################################################################################################################################################################################################################-->
-
-<!-- ADD NURSE -->
-<script>
-        $(document).ready(function () {
-
-            $('#prevpage1').on('click', function () {
-
-                $('#addnurse_title2').hide()
-                $('#addnurse_page2').hide();
-                $('#addnurse_page1').show();
-                $('#addnurse_title1').show()
-                
-            });
-        });
-
-</script>
-
-<!--#################################################################################################################################################################################################################################-->
-
-<!-- ADD NURSE -->
-<script>
-        $(document).ready(function () {
-
-            $('#nextpage3').on('click', function () {
-
-                $('#addnurse_title2').hide()
-                $('#addnurse_page2').hide();
-                $('#addnurse_page3').show();
-                $('#addnurse_title3').show()
-                
-            });
-        });
-
-</script>
-
-<!--#################################################################################################################################################################################################################################-->
-
-<!-- ADD NURSE -->
-<script>
-        $(document).ready(function () {
-
-            $('#prevpage2').on('click', function () {
-
-                $('#addnurse_title3').hide()
-                $('#addnurse_page3').hide();
-                $('#addnurse_page2').show();
-                $('#addnurse_title2').show()
-                
-            });
-        });
-
-</script>
-
-<!--#################################################################################################################################################################################################################################-->
-
 <!-- ADD SUCCESS -->
 <script>
         $(document).ready(function() {
@@ -534,24 +588,6 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
             $("#addsuccess_btn").on('click', function () {
               
                 $("#addsuccessModal").modal("show");
-
-            });
-        });
-
-
-</script>
-
-<!--#################################################################################################################################################################################################################################-->
-
-<!-- DELETE NURSE -->
-<script>
-        $(document).ready(function() {
-  
-            $("#delNurse_btn").on('click', function () {
-              
-                $("#removesuccessModalNurse").modal("show");
-                $("#viewNurseInfo").hide();
-                $("#nurse_list").show();
 
             });
         });
@@ -575,97 +611,29 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
 </script>
 
-<!--#################################################################################################################################################################################################################################-->
-
-<!-- DELETE HOSPITAL RECORD JS -->
-<script>
-        $(document).ready(function () {
-
-            $('.deletebtn').on('click', function () {
-
-                $('#delHospital').modal('show');
-
-                var tr = $(this).closest('tr');
-
-                console.log(tr);
-
-                var data = tr.children("td").map(function () {
-
-                    return $(this).text();
-
-                }).get();
-
-                console.log(data);
-
-                $('#delete_id').val(data[1]);
-
-            });
-        });
-    </script>
 
 
 <!--#################################################################################################################################################################################################################################-->
 
-<!-- DRAFT -->
-  <!-- EDIT DEPARTMENT INFO JS -->
-    <script>
-        $(document).ready(function () {
+      <!-- toggle switch -->
 
-            $('.editbtndepts').on('click', function () {
+      <script>
+        var toggleSwitch = document.getElementById("toggle-switch");
+        var onText = document.querySelector(".on-text");
+        var offText = document.querySelector(".off-text");
 
-                $('#editDepartmentInfo').modal('show');
-
-                $tr = $(this).closest('tr');
-
-                var data = $tr.children("td").map(function () {
-                    return $(this).text();
-                }).get();
-
-                console.log(data);
-
-
-                $('#update_id').val(data[8]);
-                $('#emp_id').val(data[0]);
-                $('#dept_name').val(data[3]);
-                $('#building_name').val(data[4]);
-                $('#room_num').val(data[5]);
-                $('#firstname').val(data[6]);
-                $('#lastname').val(data[7]);
-                $('#email').val(data[8]);
-                $('#contact_num').val(data[9]);
-                $('#position').val(data[2]);
-                $('#image').val(data[10]);
-            });
+        toggleSwitch.addEventListener("change", function() {
+          if (this.checked) {
+            onText.style.display = "block";
+            offText.style.display = "none";
+          } else {
+            onText.style.display = "none";
+            offText.style.display = "block";
+          }
         });
+      </script>
+          
 
-    </script>
-
-
-<!-- DELETE DEPARTMENT RECORD JS -->
-<script>
-        $(document).ready(function () {
-
-            $('.deletebtndepts').on('click', function () {
-
-                $('#delDepartment').modal('show');
-
-                var tr = $(this).closest('tr');
-
-                console.log(tr);
-
-                var data = tr.children("td").map(function () {
-
-                    return $(this).text();
-
-                }).get();
-
-                console.log(data);
-
-                $('#delete_id').val(data[1]);
-
-            });
-        });
-    </script>
 
     
   </body>
