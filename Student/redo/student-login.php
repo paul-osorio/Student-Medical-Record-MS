@@ -102,7 +102,7 @@
                     </div>
                     <div >
 
-                      <a href="./register.php" class="btn btn-light fw-semibold px-5 rounded-pill"> register </a>
+                      <a href="./register.php" class="btn btn-light fw-semibold px-5 rounded-pill"> SIGN UP </a>
                       
                     </div>
 
