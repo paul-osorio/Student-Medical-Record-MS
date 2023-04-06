@@ -20,7 +20,7 @@
    <!-- Font awesome -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-   <title> View Medical History (<?=$stud_id?>) | QCUCMS </title>
+   <title> SMRMS | STUDENT | View Medical History (<?=$stud_id?>) </title>
 </head>
 <body>
 
@@ -93,7 +93,7 @@
          </div>
 
          <div class="title">
-            <h1> Quezon City University Clinic</h1>
+            <h1>Student Medical Record</h1>
          </div>
 
       </header>

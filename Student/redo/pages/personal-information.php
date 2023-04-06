@@ -11,7 +11,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="icon" type="image/png" href="../../assets/favcon.png"/> <!-- Icon -->
    <link rel="stylesheet" href="../css/style.css">
-   <title> Personal Information | QCUCMS </title>
+   <title> SMRMS | STUDENT | Personal Information </title>
 </head>
 <body>
 
@@ -85,7 +85,7 @@
          </div>
 
          <div class="title">
-            <h1> Quezon City University Clinic</h1>
+            <h1>Student Medical Record</h1>
          </div>
 
       </header>

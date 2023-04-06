@@ -20,7 +20,7 @@
    <!-- AJAX -->
    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 
-   <title>  Appointment List (Student) | QCUCMS </title>
+   <title>  SMRMS | STUDENT | Appointment List </title>
 </head>
 <body>
 
@@ -94,7 +94,7 @@
          </div>
 
          <div class="title">
-            <h1> Quezon City University Clinic</h1>
+            <h1> Student Medical Record </h1>
          </div>
 
       </header>
