@@ -11,7 +11,7 @@
    <link rel="icon" type="image/png" href="../../assets/favcon.png"/> <!-- Icon -->
    <link rel="stylesheet" href="../css/style.css">
    <link rel="stylesheet" href="../css/med_history.css">
-   <title>  Medical History | QCUCMS </title>
+   <title>  SMRMS | STUDENT | Medical History </title>
 </head>
 <body>
 
@@ -84,7 +84,7 @@
          </div>
 
          <div class="title">
-            <h1> Quezon City University Clinic</h1>
+            <h1>Student Medical Record</h1>
          </div>
 
       </header>

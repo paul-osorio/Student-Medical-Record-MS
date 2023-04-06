@@ -17,7 +17,7 @@
       </div>
 
       <div class="qcu-title">
-         <h1> Welcome to Quezon City University Clinic </h1>
+         <h1> Welcome to Student Medical Record </h1>
       </div>
 
    </header>
