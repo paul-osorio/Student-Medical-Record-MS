@@ -73,7 +73,7 @@ if (isset($_SESSION['emp_id']) && isset($_SESSION['username'])) {
             </div>
         </nav>
         <div class="row">
-          <div class="col-md-2 p-0 position-relative" style="min-height:100vh;box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;background: #05285c;">
+          <div class="col-md-2 p-0 position-relative" style="min-height: 100vh; box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px; background: #05285c;">
              <div class="w-100">
               <ul class="mt-4 list-unstyled navbar-nav ps-0 ">
 
@@ -126,7 +126,8 @@ if (isset($_SESSION['emp_id']) && isset($_SESSION['username'])) {
                     <div class="px-3 rounded-3 d-flex align-items-center mt-3" style="background:#0C4079";>
 
                       <div class="position-relative" style="width:180px;height:150px;">
-                        <img src="./assets/<?=$nurse['profile_pic']?>" class="position-absolute w-100 h-100" style="top:-25%">
+                        <img src="./assets/<?=$nurse['profile_pic']?>" class="position-absolute w-100 h-100">
+                        <!-- style="top:-25%" -->
                       </div>
                       <div class="d-flex justify-content-between align-items-center w-100 mx-3">
 

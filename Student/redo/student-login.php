@@ -43,12 +43,11 @@
   <title>SMRMS | STUDENT | LOGIN</title>
 
   <body class="bg-body-secondary">
-    <nav class="navbar"
-    style="background: var(--primary-bg);">
+    <nav class="navbar" style="background: var(--primary-bg);">
         <div class="container-fluid">
           <a class="navbar-brand d-flex align-items-center" href="#">
-            <img src="../clinic-logo.png" alt="" width="50" height="50" class="d-inline-block align-text-top mx-2">
-            <h3 class="fw-bold text-light w-100 text-wrap" style="font-size: var(--step-2);">Welcome to Student Medical Record</h3>
+            <img src="../clinic-logo.png" alt="" width="50" height="50" class="d-inline-block align-text-top mx-3">
+            <h4 class="fw-bold text-light w-100 text-wrap" style="font-size: 30px">Welcome to Student Medical Record</h4>
           </a>
         </div>
       </nav>
