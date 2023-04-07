@@ -109,7 +109,7 @@ if (isset($_SESSION['emp_id']) && isset($_SESSION['username'])) {
                   
                               <div class="input-group form-input-sm d-flex align-items-center gap-2 ">
                                   <input type="text" class="form-control w-50 shadow-none" placeholder="&#xF002; Search..." aria-label="Search..." aria-describedby="button-addon2" style="font-family:Poppins, FontAwesome">
-                                  <a href="#" class="text-secondary"> <i class="fa fa-th-large mx-1 fs-3" aria-hidden="true"></i></a>
+                                  <!-- <a href="#" class="text-secondary"> <i class="fa fa-th-large mx-1 fs-3" aria-hidden="true"></i></a> -->
                                   <a href="#" class="text-secondary"><i class="fa fa-bars mx-1 fs-3" aria-hidden="true"></i></a>
                               </div>
                             </div>

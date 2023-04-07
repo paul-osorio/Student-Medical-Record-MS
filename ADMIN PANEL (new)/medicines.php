@@ -288,20 +288,21 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                     <div class="sort flex-grow-1">
                         <span>Sort by</span>
                         <select name="filter" id="filter"> 
-                        <option value="">All</option> 
+                        <option value="id">All</option> 
                         <!-- <option value="date_manufactured">Date Manufactured</option> -->
+                        <!-- <option value="prod_id">Product ID</option>  -->
                         <option value="expirationDate">Expiration Date</option>
                         <option value="num_stocks">Stocks</option>
                         </select>
                     </div>
                     <div class="r">
                         <div class="search">
-                        <input type="text" name="search" id="search_meds" placeholder="&#xF002; Search Medicine" style="font-family:Poppins, FontAwesome">
+                        <input type="text" name="search" id="search_meds" placeholder="&#xF002; Search Medicine" style="font-family:Poppins, FontAwesome; margin-left: 50px;">
                         </div>
-                        <div class="grid">
+                        <!-- <div class="grid">
                         <i class="fa fa-th-large" aria-hidden="true"></i>
-                        </div>
-                        <div class="bars">
+                        </div> -->
+                        <div class="bars" style="margin-left: 70px;">
                         <i class="fa fa-bars" aria-hidden="true"></i>
                         </div>
                     </div>

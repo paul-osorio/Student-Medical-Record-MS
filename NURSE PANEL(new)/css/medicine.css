@@ -221,6 +221,9 @@ input[type="radio"]{
 /* .accordion input[type="radio"]:checked + label::before{
     content: '-';
 } */
+
+
+
 @media (max-width:500px){
     #medicine .medicine-table{
         overflow: scroll;

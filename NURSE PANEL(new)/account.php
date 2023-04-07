@@ -93,7 +93,7 @@ if (isset($_SESSION['emp_id']) && isset($_SESSION['username'])) {
                 </ul>
              </div>
           </div>
-              <div class="col-sm-10 p-5" id="student">
+             <div class="col-sm-10 p-5" id="student" style="width: 50%; margin-left: auto; margin-right: auto;">
                 <span class="fw-bold fs-5">MANAGE MY ACCOUNT</span>
                   <div class="container-fluid p-2 shadow rounded-2 mt-5">
                       <div class="container-fluid my-3 d-grid align-items-center justify-content-center">
@@ -102,7 +102,7 @@ if (isset($_SESSION['emp_id']) && isset($_SESSION['username'])) {
                       <div class="px-5 text-center">
                         <p class="fw-semibold mb-3 text-start">Change Password</p>
 
-                        <form method="post" action="update_password.php">
+                        <form method="post" action="update_password.php" >
     
 
 
@@ -123,7 +123,7 @@ if (isset($_SESSION['emp_id']) && isset($_SESSION['username'])) {
                         <div class="d-flex justify-content-end">
                           <button class="btn btn-primary rounded-0 fw-semibold">CHANGE</button>
                         </div>
-                        <span class="text-danger">Note: </span><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+                        <br>
                         </form>
                       </div>
                     </div>
