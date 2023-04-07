@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+if (isset($_SESSION['emp_id']) && isset($_SESSION['username'])) {
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -141,3 +149,6 @@
     </div>
 </body>
 </html>
+<?php 
+}
+?>

@@ -7,21 +7,40 @@
 
 
 body {
-	background: #05285c;
+	/* background-image: url("../assets/login_bg.jpg");
+	background-color: #05285c;
+	background-repeat: no-repeat, repeat;
+	background-size: 1100px; */
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: 100vh;
+	height: 95vh;
 	flex-direction: column;
 }
 
+.demo-bg {
+	opacity: 0.5;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: auto;
+  }
 
 form {
 	width: 500px;
-	border: 2px solid #ccc;
+	/* border: 2px solid #ccc; */
 	padding: 30px;
 	background: #fff;
 	border-radius: 15px;
+	opacity: 0.9;
+}
+
+form img{
+	height: 50px;
+	width: auto;
+	margin-right: 20px;
+	margin-bottom: -15px;
 }
 
 h2 {

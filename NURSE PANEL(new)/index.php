@@ -25,8 +25,14 @@
 	<link rel="stylesheet" type="text/css" href="./css/login.css">
 </head>
 <body>
+	<img
+    class="demo-bg"
+    src="./assets/login_bg.jpg"
+    alt=""
+  	>
      <form action="login.php" method="post">
-     	<h2>NURSE LOGIN</h2>
+	 	
+     	<h2><img src="./assets/QCUClinicLogo.png" alt="">NURSE LOGIN</h2>
      	<?php if (isset($_GET['error'])) { ?>
      		<p class="error"><?php echo $_GET['error']; ?></p>
      	<?php } ?>
