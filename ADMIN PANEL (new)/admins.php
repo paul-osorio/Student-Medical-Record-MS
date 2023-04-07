@@ -249,11 +249,11 @@ style="z-index: 1">
         class="dropdown-menu dropdown-menu-end dropdown-menu-dark"
         aria-labelledby="dropdownMenuButton1">
 
-        <li>
-          <a class="dropdown-item" href="#">Login As:<span id="email_span"></span></a>
-        </li>
-
         <li><a class="dropdown-item" href="account.php">Manage Account</a></li>
+
+        <li>
+            <a class="dropdown-item" href="activityLog.php">Activity Log<span id="email_span"></span></a>
+        </li>
 
         <li id="logout">
           <a class="dropdown-item" href="logout.php">Logout</a>

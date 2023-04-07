@@ -249,11 +249,11 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                         class="dropdown-menu dropdown-menu-end dropdown-menu-dark"
                         aria-labelledby="dropdownMenuButton1">
 
-                        <li>
-                        <a class="dropdown-item" href="#">Login As:<span id="email_span"></span></a>
-                        </li>
-
                         <li><a class="dropdown-item" href="account.php">Manage Account</a></li>
+
+                        <li>
+                          <a class="dropdown-item" href="activityLog.php">Activity Log<span id="email_span"></span></a>
+                        </li>
 
                         <li id="logout">
                         <a class="dropdown-item" href="logout.php">Logout</a>
@@ -282,7 +282,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
               <div class="sort flex-grow-1">
                 <span>Sort by</span>
                 <select name="filter" id="filter_nurse" style="width: 50%; border-radius: 3px; padding: 5px 5px; background: #f2f2f2; border: none; outline: none; height: 100%;">
-                  <option value="">Select</option>
+                  <option value="">All</option>
                   <option value="position">Position</option>
                   <option value="schedule">Schedule</option>
                   <option value="Department">Department</option>
@@ -302,7 +302,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                 
               </div>
             </div>
-            <button class="custom_btn">
+            <button class="custom_btn" style="height: 40px; margin-top: 7px;">
               <a href="#addNurseModal" class="custom_btn" data-toggle="modal"><i class="fa fa-plus"></i>Add Nurse</a>
             </button>
           </div>

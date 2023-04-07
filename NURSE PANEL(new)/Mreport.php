@@ -59,25 +59,28 @@
                     <a href="dashboard.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-area-chart mx-2"></i><span>Home</span></span></a>
                   </li>
                   <li  class="px-4 w-100 mb-1 nav-item tab py-2">
-                  <a href="student.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-users mx-2"></i><span>Students</span></span></a>
+                    <a href="student.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-users mx-2"></i><span>Students</span></span></a>
                   </li>
                   <li  class="px-4 w-100 mb-1 nav-item active tab py-2">
-                  <a href="Mreport.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-plus-square mx-2"></i><span>Medical Requirements</span></span></a>
+                    <a href="Mreport.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-plus-square mx-2"></i><span>Medical Requirements</span></span></a>
                   </li>
-                  <li  class="px-4 w-100 mb-1 nav-item tab py-2">
+                  <!-- <li  class="px-4 w-100 mb-1 nav-item tab py-2">
                   <a href="department.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-building-o mx-2"></i><span>Departments</span></span></a>
+                  </li> -->
+                  <li  class="px-4 w-100 mb-1 nav-item tab py-2">
+                    <a href="appointment.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-calendar mx-2" aria-hidden="true"></i><span>Appointments</span></span></a>
                   </li>
                   <li  class="px-4 w-100 mb-1 nav-item tab py-2">
-                  <a href="appointment.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-calendar mx-2" aria-hidden="true"></i><span>Appointments</span></span></a>
-                  </li>
-                  <li  class="px-4 w-100 mb-1 nav-item tab py-2">
-                   <a href="medicines.php" class="nav-link"><span class="fx-5 fw-800 text-light"> <i class="fa fa-medkit mx-2" aria-hidden="true"></i><span>Medicines</span></span></a>
+                    <a href="medicines.php" class="nav-link"><span class="fx-5 fw-800 text-light"> <i class="fa fa-medkit mx-2" aria-hidden="true"></i><span>Medicines</span></span></a>
                   </li>
                   <li  class="px-4 w-100 mb-1 nav-item tab py-2">
                     <a href="Report.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-book mx-2"></i><span>Reports</span></span></a>
                   </li>
+                  <li  class="px-4 w-100 mb-1 nav-item tab py-2">
+                    <a href="activityLog.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-history mx-2"></i><span>Activity Log</span></span></a>
+                  </li>
                   <li  id="account_btn" class="px-4 w-100 mb-1 nav-item tab py-2">
-                  <a href="account.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-user-o mx-2" aria-hidden="true"></i><span>Account</span></span></a>
+                    <a href="account.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-user-o mx-2" aria-hidden="true"></i><span>Account</span></span></a>
                   </li>
                 </ul>
              </div>

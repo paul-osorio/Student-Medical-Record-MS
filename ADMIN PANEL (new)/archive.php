@@ -249,11 +249,11 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                   class="dropdown-menu dropdown-menu-end dropdown-menu-dark"
                   aria-labelledby="dropdownMenuButton1">
 
-                  <li>
-                    <a class="dropdown-item" href="#">Login As:<span id="email_span"></span></a>
-                  </li>
-
                   <li><a class="dropdown-item" href="account.php">Manage Account</a></li>
+
+                  <li>
+                    <a class="dropdown-item" href="activityLog.php">Activity Log<span id="email_span"></span></a>
+                  </li>
 
                   <li id="logout">
                     <a class="dropdown-item" href="logout.php">Logout</a>
@@ -274,15 +274,15 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
        <!-- ARCHIVE PAGE -->
        <section id="archives" class="archives so_content so_active" data-tab-content>  
-        <div class="archives_header d-flex justify-content-between">
-          <h3 class="m-0">ARCHIVE</h3>
+        <div class="archives_header d-flex justify-content-between" style="margin-bottom: -50px;">
+          <h3 class="m-0" >ARCHIVE</h3>
         </div>
         <div class="container">
           <div class="filter_wrapper">
             <div class="sort flex-grow-1">
               <span>Sort by</span>
               <select name="filter" id="filter">
-                <option value="">All</option>
+                <option value="">Select</option>
                 <option value="Type of User">Type of User</option>
                 <option value="Date of Archive">Date of Archive</option>
               </select>

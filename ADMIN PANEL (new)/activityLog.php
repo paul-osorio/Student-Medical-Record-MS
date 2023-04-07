@@ -98,7 +98,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" href="./assets/favcon.png"/>
-    <title>SMRMS | ADMIN | Nurses</title>
+    <title>SMRMS | ADMIN | Activity Log</title>
 
     <!-- Fontfaces CSS-->
     <link rel="stylesheet" href="./style.css?v=<?php echo time(); ?>"/>
@@ -155,300 +155,142 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
           <center><p>Student Medical <br> Record</p></center>
         </div>
         
-        <div class="w-100">
-              <!-- <ul class="list-unstyled navbar-nav ps-0"> -->
-              <ul class="mt-4 list-unstyled navbar-nav ps-0 ">
+        
+        <!-- <ul class="list-unstyled navbar-nav ps-0"> -->
+          <ul class="mt-4 list-unstyled navbar-nav ps-0 ">
 
-                  <li  class="px-4 w-100 mb-1 nav-item tab py-1">
-                    <a href="adminDashboard.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-area-chart mx-2"></i><span>Dashboard</span></span></a>
-                  </li>
-                  <li  class="px-4 w-100 mb-1 nav-item tab py-1">
-                  <a href="admins.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-users mx-2"></i><span>Admins</span></span></a>
-                  </li>
-                  <li  class="px-4 w-100 mb-1 nav-item tab py-1">
-                  <a href="departments.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-building-o mx-2"></i><span>Departments</span></span></a>
-                  </li>
-                  <li  class="px-4 w-100 mb-1 nav-item active tab py-1">
-                  <a href="nurses.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-user-md mx-2"></i><span>Nurses</span></span></a>
-                  </li>
-                  <li  class="px-4 w-100 mb-1 nav-item tab py-1">
-                  <a href="hospitals.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-hospital-o mx-2" aria-hidden="true"></i><span>Hospitals</span></span></a>
-                  </li>
-                  <li  class="px-4 w-100 mb-1 nav-item tab py-1">
-                   <a href="medicines.php" class="nav-link"><span class="fx-5 fw-800 text-light"> <i class="fa fa-medkit mx-2" aria-hidden="true"></i><span>Medicines</span></span></a>
-                  </li>
-                  <li  class="px-4 w-100 mb-1 nav-item tab py-1">
-                  <a href="appointment.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-calendar mx-2" aria-hidden="true"></i><span>Appointments</span></span></a>
-                  </li>
-                  <li  class="px-4 w-100 mb-1 nav-item tab py-1">
-                    <a href="report.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-book mx-2"></i><span>Reports</span></span></a>
-                  </li>
-                  <li  class="px-4 w-100 mb-1 nav-item tab py-1">
-                  <a href="archive.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-folder-open-o mx-2" aria-hidden="true"></i><span>Archive</span></span></a>
-                  </li>
-                  <li  class="px-4 w-100 mb-1 nav-item tab py-1">
-                  <a href="entranceLog.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-address-book mx-2" aria-hidden="true"></i><span>Entrance Log</span></span></a>
-                  </li>
-                </ul>
-             </div>
-   
-             <div class="web_info">
+            <li  class="px-4 w-100 mb-1 nav-item tab py-1">
+              <a href="adminDashboard.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-area-chart mx-2"></i><span>Dashboard</span></span></a>
+            </li>
+            <li  class="px-4 w-100 mb-1 nav-item tab py-1">
+              <a href="admins.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-users mx-2"></i><span>Admins</span></span></a>
+            </li>
+            <li  class="px-4 w-100 mb-1 nav-item tab py-1">
+              <a href="departments.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-building-o mx-2"></i><span>Departments</span></span></a>
+            </li>
+            <li  class="px-4 w-100 mb-1 nav-item tab py-1">
+              <a href="nurses.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-user-md mx-2"></i><span>Nurses</span></span></a>
+            </li>
+            <li  class="px-4 w-100 mb-1 nav-item tab py-1">
+              <a href="hospitals.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-hospital-o mx-2" aria-hidden="true"></i><span>Hospitals</span></span></a>
+            </li>
+            <li  class="px-4 w-100 mb-1 nav-item tab py-1">
+              <a href="medicines.php" class="nav-link"><span class="fx-5 fw-800 text-light"> <i class="fa fa-medkit mx-2" aria-hidden="true"></i><span>Medicines</span></span></a>
+            </li>
+            <li  class="px-4 w-100 mb-1 nav-item tab py-1">
+              <a href="appointment.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-calendar mx-2" aria-hidden="true"></i><span>Appointments</span></span></a>
+            </li>
+            <li  class="px-4 w-100 mb-1 nav-item tab py-1">
+              <a href="report.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-book mx-2"></i><span>Reports</span></span></a>
+            </li>
+            <li  class="px-4 w-100 mb-1 nav-item tab py-1">
+              <a href="archive.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-folder-open-o mx-2" aria-hidden="true"></i><span>Archive</span></span></a>
+            </li>
+            <li  class="px-4 w-100 mb-1 nav-item tab py-1">
+              <a href="entranceLog.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-address-book mx-2" aria-hidden="true"></i><span>Entrance Log</span></span></a>
+            </li>
+            <!-- <li  class="px-4 w-100 mb-1 nav-item tab py-1">
+              <a href="activityLog.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-history mx-2" aria-hidden="true"></i><span>Activity Log</span></span></a>
+            </li> -->
 
-                <!-- <div class="admin_info"><br>
-                <img src="./assets/<?=$admins['img']?>" alt=""/>
-                <span><?=$admins['email']?></span>
-                <span><?=$admins['fname']?>&nbsp<?=$admins['lname']?></span>
-                </div> -->
+          <div class="web_info">
+
+          <!-- <div class="admin_info"><br>
+            <img src="./assets/<?=$admins['img']?>" alt=""/>
+            <span><?=$admins['email']?></span>
+            <span><?=$admins['fname']?>&nbsp<?=$admins['lname']?></span>
+          </div> -->
+
+          <!-- <div class="web_copyright">
+            <span>Quezon City University Clinic 2022</span>
+          </div> -->
+
+          </div>
+
+        </ul>
+      </nav>
+
+      <nav
+        id="navigation"
+        class="mynav px-3 navbar navbar-expand navbar-dark"
+        style="z-index: 1">
+
+        <div class="container-fluid d-flex justify-content-start">
+          <button
+            id="sidebarCollapse"
+            class="navbar-toggle border-0 bg-dark ms-0 ms-md-2 ms-lg-0 order-1 order-md-1">
+            <span class="navbar-toggler-icon"></span>
+          </button>
 
 
+          <div class="ms-auto order-sm-0" id="navbarNav">
+            <ul
+              class="navbar-nav ms-auto text-white d-flex align-items-left align-items-lg-center">
+              <span></span>
 
+              <li class="nav-item px-0 d-flex align-items-center">
+                <a
+                  class="nav-link modal-trigger text-dark"
+                  data-toggle="modal"
+                  data-target="#loginmodal"
+                  href="#"></a>
+              </li>
+
+              <div class="dropdown nav-item">
+
+                <div
+                  class="account background-none nav-link dropdown-toggle dropdown-toggle d-flex justify-content-center align-items-center"
+                  type="button"
+                  id="dropdownMenuButton1"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  style="background: none">
+                  <h5 style="margin-right: 30px; margin-top: 10px; color: white;">Hey, <?=$admins['fname']?>&nbsp<?=$admins['lname']?>!</h5> <img src="./assets/<?=$admins['img']?>" alt=""/>
                 </div>
 
-                </ul>
-                </nav>
-
-                <nav
-                id="navigation"
-                class="mynav px-3 navbar navbar-expand navbar-dark"
-                style="z-index: 1">
-
-                <div class="container-fluid d-flex justify-content-start">
-                <button
-                id="sidebarCollapse"
-                class="navbar-toggle border-0 bg-dark ms-0 ms-md-2 ms-lg-0 order-1 order-md-1">
-                <span class="navbar-toggler-icon"></span>
-                </button>
-
-
-                <div class="ms-auto order-sm-0" id="navbarNav">
                 <ul
-                    class="navbar-nav ms-auto text-white d-flex align-items-left align-items-lg-center">
-                    <span></span>
+                  class="dropdown-menu dropdown-menu-end dropdown-menu-dark"
+                  aria-labelledby="dropdownMenuButton1">
 
-                    <li class="nav-item px-0 d-flex align-items-center">
-                    <a
-                        class="nav-link modal-trigger text-dark"
-                        data-toggle="modal"
-                        data-target="#loginmodal"
-                        href="#"></a>
-                    </li>
 
-                    <div class="dropdown nav-item">
+                  <li><a class="dropdown-item" href="account.php">Manage Account</a></li>
 
-                    <div
-                        class="account background-none nav-link dropdown-toggle dropdown-toggle d-flex justify-content-center align-items-center"
-                        type="button"
-                        id="dropdownMenuButton1"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false"
-                        style="background: none">
-                        <h5 style="margin-right: 30px; margin-top: 10px; color: white;">Hey, <?=$admins['fname']?>&nbsp<?=$admins['lname']?>!</h5> <img src="./assets/<?=$admins['img']?>" alt=""/>
-                    </div>
+                  <li>
+                    <a class="dropdown-item nav-item active tab" href="activityLog.php">Activity Log<span id="email_span"></span></a>
+                  </li>
+                  <!-- <li><a class="dropdown-item active tab" href="account.php">Manage Account</a></li> -->
 
-                    <ul
-                        class="dropdown-menu dropdown-menu-end dropdown-menu-dark"
-                        aria-labelledby="dropdownMenuButton1">
+                  <li id="logout">
+                    <a class="dropdown-item" href="logout.php">Logout</a>
+                  </li>
 
-                        <li><a class="dropdown-item" href="account.php">Manage Account</a></li>
-
-                        <li>
-                            <a class="dropdown-item" href="activityLog.php">Activity Log<span id="email_span"></span></a>
-                        </li>
-
-                        <li id="logout">
-                        <a class="dropdown-item" href="logout.php">Logout</a>
-                        </li>
-
-                    </ul>
-                    </div>
                 </ul>
-                </div>
-                </div>
-                </nav>
-
-
-                <div class="content_wrapper">
-
-<!--#################################################################################################################################################################################################################################-->
-
-        <!-- NURSES PAGE -->
-        <section id="nurses" class="nurses so_content so_active" data-tab-content>
-            <div id="editNurseInfo">
-
-            <!-- <div id="editNurseInfo" style="display:none;"> -->
-                    <div class="nurse_header">
-                        <h3 class="m-0">EDIT NURSE INFORMATION</h3>
-                    </div>
-                    <hr class="divider">
-                    <div class="nurse_info">
-                        <div class="nurseimg">
-                            <img src="./assets/nurse.jpg">
-                            <button>upload image</button>
-                        </div>
-                        <div class="infolist">
-                            <div class="infodetails">
-                            <span>EMP ID: </span>
-                            <span>23-0003</span>
-                            </div>
-                            <div class="infodetails">
-                            <span>Email: </span>
-                            <input type="text" class="form-control" value="Sample.email@gmail.com">
-                            </div>
-                            <div class="infodetails">
-                            <span>Position: </span>
-                            <select class="form-select">
-                                <option>sample position</option>
-                            </select>
-                            </div>
-                            <div class="infodetails">
-                            <span>Campus Assigned: </span>
-                            <select class="form-select">
-                                <option>San Bartolome</option>
-                            </select>
-                            </div>
-                            <div class="infodetails">
-                            <span>Schedule </span>
-                            <div class="sched_day">
-                            <span class="day">Tuesday</span>
-                            <span class="day">Thursday</span>
-                            </div>
-                            </div>
-                        </div>
-                    </div>
-                    <hr class="divider">
-                    <span>Basic Information</span>
-                    <div class="nurse_basicinfo">
-                        <div class="row_4">
-                        <div class="basic_details">
-                            <input type="text" class="form-control" value="Sample.email@gmail.com">
-                            <span>Firstname</span>
-                        </div>
-                        <div class="basic_details">
-                            <input type="text" class="form-control" value="Sample.email@gmail.com">
-                            <span>Lastname</span>
-                        </div>
-                        <div class="basic_details">
-                            <input type="text" class="form-control" value="Sample.email@gmail.com">
-                            <span>Birthdate</span>
-                        </div>
-                        <div class="basic_details">
-                            <input type="text" class="form-control" value="Sample.email@gmail.com">
-                            <span>Age</span>
-                        </div>
-                        </div>
-                        <div class="row_3">
-                        <div class="basic_details">
-                            <select class="form-select">
-                                <option>Sample</option>
-                            </select>
-                            <span>Sex</span>
-                        </div>
-                        <div class="basic_details">
-                            <input type="text" class="form-control" value="Sample.email@gmail.com">
-                            <span>Phone Number</span>
-                        </div>
-                        <div class="basic_details">
-                            <input type="text" class="form-control" value="Sample.email@gmail.com">
-                            <span>Telephone No. (Optional)</span>
-                        </div>
-                        </div>
-                        <div class="row_1">
-                        <div class="basic_details">
-                            <input type="text" class="form-control" value="Sample.email@gmail.com">
-                            <span>Complete Address</span>
-                        </div>
-                        </div>
-                    </div>
-                    <hr class="divider">
-                    <span>In Case of Emergency</span>
-                    <div class="row_4">
-                        <div class="basic_details">
-                            <input type="text" class="form-control" value="Sample.email@gmail.com">
-                            <span>Fullname</span>
-                        </div>
-                        <div class="basic_details">
-                            <input type="text" class="form-control" value="Sample.email@gmail.com">
-                            <span>Contact Number</span>
-                        </div>
-                        <div class="basic_details">
-                            <input type="text" class="form-control" value="Sample.email@gmail.com">
-                            <span>Complete Address</span>
-                        </div>
-                        <div class="basic_details">
-                            <input type="text" class="form-control" value="Sample.email@gmail.com">
-                            <span>Relationship</span>
-                        </div>
-                    </div>
-                    <div class="actionbtn">
-                        <a href="nurses.php" class="custom_btn" data-toggle="modal"><button onclick="history.back()">CANCEL</button></a>
-                        <a href="nurses.php" class="custom_btn" data-toggle="modal"><button onclick="history.back()" style="background-color:green;">SAVE</button>
-                        <a href="#delNurse" class="custom_btn" data-toggle="modal"><button style="background-color:#ED1C24;">REMOVE</button></a>
-                    </div>
-                </div>
-
-<!--#################################################################################################################################################################################################################################-->
-        
-
-      <!-- DELETE DATA NURSE MODAL AT NURSE PAGE-->
-
-      <div class="modal fade" id="delNurse" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-          aria-hidden="true">
-
-          <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                  
-
-                  <form action="./crud/delete_admin.php" method="POST">
-
-                      <div class="modal-body delmodal">
-
-                          <div class="del_icon"><i class="fa fa-trash"></i></div>
-
-                          <input type="hidden" name="delete_id" id="delete_id">
-
-                          <h4 style=" font-weight:bold; padding-top:50px;"> Are you sure you want to remove this nurse? </h4>
-                          <h4 style="color:blue; font-weight:bold; font-size:20px;">23-0003</h4>
-                          <div class="modal_btn">
-                            <input type="button" class="btn" style="background-color:lightgrey; color:black; font-weight:700;" id="cancel-admin-modal" data-dismiss="modal" value="No">
-                            <input type="button" class="btn btn-danger" style="font-weight:700;" data-dismiss="modal" id="delNurse_btn" name="delNurse" value="Yes">
-                          </div>
-
-                      </div>
-                  </form>
-
               </div>
+            </ul>
           </div>
-      </div>
+        </div>
+      </nav>
+      
 
-<!--#################################################################################################################################################################################################################################-->
-        
+      <div class="content_wrapper">
 
-      <!--NURSE DELETED SUCCESSFULLY MODAL-->
 
-      <div class="modal fade" id="removesuccessModalNurse" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-          aria-hidden="true">
 
-          <div class="modal-dialog" role="document">
-              <div class="modal-content">
 
-                      <div class="modal-body removesuccessmodal">
+<!--########################################################################################################################################################################-->
 
-                          <h4 style=" font-weight:bold; padding-top:50px;"> NURSE <span class="empid">23-0003</span> REMOVED SUCCESSFULLY </h4>
-                          <div class="check_icon"><i class="fa fa-check"></i></div>
-                          <p style="color:#3e64ff; font-weight:bold;">Redirecting...</p>
 
-                      </div>
-
-              </div>
+      <!-- MANAGE ACCOUNT PAGE -->
+        <section class="account so_content so_active" data-tab-content>
+          <div class="account_header d-flex justify-content-between">
+            <h3 class="m-0">ANALYTICS</h3>
           </div>
+          <div class="account_container">
+          </div> 
+        </section>
+
+
       </div>
-
-                </section>
-                <br><br>
-
-<!--#################################################################################################################################################################################################################################-->
-
-</div>
     </div>
     <!-- custom js -->
     <script src="./js/app.js"></script>

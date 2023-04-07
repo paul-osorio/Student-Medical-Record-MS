@@ -256,11 +256,12 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                   class="dropdown-menu dropdown-menu-end dropdown-menu-dark"
                   aria-labelledby="dropdownMenuButton1">
 
-                  <li>
-                    <a class="dropdown-item" href="#">Login As:<span id="email_span"></span></a>
-                  </li>
-
+                  
                   <li><a class="dropdown-item" href="account.php">Manage Account</a></li>
+
+                  <li>
+                    <a class="dropdown-item" href="activityLog.php">Activity Log<span id="email_span"></span></a>
+                  </li>
 
                   <li id="logout">
                     <a class="dropdown-item" href="logout.php">Logout</a>
@@ -286,7 +287,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
           <div class="appointments_header d-flex justify-content-between">
             <h3 class="m-0 text-white">APPOINTMENTS</h3>
               <button class="custom_btn">
-                <a href="#addAppointmentsModal" class="custom_btn" data-toggle="modal"><i class="fa fa-user-md"></i>Add New</a>
+                <a href="#addAppointmentsModal" class="custom_btn" data-toggle="modal"><i class="fa fa-calendar"></i>Add New</a>
               </button>
           </div>
 

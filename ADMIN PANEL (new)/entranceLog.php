@@ -249,11 +249,11 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                   class="dropdown-menu dropdown-menu-end dropdown-menu-dark"
                   aria-labelledby="dropdownMenuButton1">
 
-                  <li>
-                    <a class="dropdown-item" href="#">Login As:<span id="email_span"></span></a>
-                  </li>
-
                   <li><a class="dropdown-item" href="account.php">Manage Account</a></li>
+
+                  <li>
+                    <a class="dropdown-item" href="activityLog.php">Activity Log<span id="email_span"></span></a>
+                  </li>
 
                   <li id="logout">
                     <a class="dropdown-item" href="logout.php">Logout</a>
@@ -275,7 +275,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
       <!-- ENTRANCE LOG PAGE -->
 
       <section id="entrancelog" class="entrancelog so_content so_active" data-tab-content>  
-        <div class="entrancelog_header d-flex justify-content-between">
+        <div class="entrancelog_header d-flex justify-content-between" style="margin-bottom: -50px;">
           <h3 class="m-0">ENTRANCE LOG</h3>
         </div>
         <div class="container">

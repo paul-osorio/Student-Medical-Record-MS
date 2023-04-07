@@ -250,11 +250,11 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                     class="dropdown-menu dropdown-menu-end dropdown-menu-dark"
                     aria-labelledby="dropdownMenuButton1">
 
-                    <li>
-                        <a class="dropdown-item" href="#">Login As:<span id="email_span"></span></a>
-                    </li>
-
                     <li><a class="dropdown-item" href="account.php">Manage Account</a></li>
+
+                    <li>
+                        <a class="dropdown-item" href="activityLog.php">Activity Log<span id="email_span"></span></a>
+                    </li>
 
                     <li id="logout">
                         <a class="dropdown-item" href="logout.php">Logout</a>
@@ -274,7 +274,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
   
 <!--#################################################################################################################################################################################################################################-->
 
-            <!-- MEDICINES -->
+        <!-- MEDICINES -->
             <section id="medicine" class="medicine so_content so_active" data-tab-content>
                     <div class="medicine_landing">
                         <div class="medicine_header d-flex justify-content-between">
@@ -288,7 +288,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                     <div class="sort flex-grow-1">
                         <span>Sort by</span>
                         <select name="filter" id="filter"> 
-                        <option value="">Select</option> 
+                        <option value="">All</option> 
                         <!-- <option value="date_manufactured">Date Manufactured</option> -->
                         <option value="expirationDate">Expiration Date</option>
                         <option value="num_stocks">Stocks</option>
