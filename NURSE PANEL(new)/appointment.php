@@ -6,6 +6,16 @@ if (isset($_SESSION['emp_id']) && isset($_SESSION['username'])) {
 
 
 ?>
+
+
+<?php
+     include('db_conn1.php');
+
+
+    // SELECT ALL STUDENTS 
+    $fetchAllAppointments = mysqli_query($conn1, "SELECT * FROM `stud_appointment` LIMIT 15");
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -126,20 +136,29 @@ if (isset($_SESSION['emp_id']) && isset($_SESSION['username'])) {
                                     <th scope="col">Time</th>
                                     <th scope="col">Reference No.</th>
                                     <th scope="col">Status</th>
+                                    <th scope="col">Action</th>
                                   </tr>
                                 </thead>
                                 <tbody>
                                     <a href="#" class="nav-link">
+
+                                        <?php if(mysqli_num_rows($fetchAllAppointments) > 0) { 
+                                          while ($appoint = mysqli_fetch_assoc($fetchAllAppointments)) {  ?>
+
                                         <tr>        
                                             <!-- <td colspan="2"><img src="./assets/badang.JPG"  width="65" height="65" alt=""></td> -->
-                                            <td>19-1234</td>
+                                            <td><?=$appoint['student_id']?></td>
                                             <td>Juan T. Dela Cruz</td>
-                                            <td>Medical Services</td>
-                                            <td>February 5, 2023</td>
-                                            <td>1:00 PM</td>
-                                            <td>asd357Ja </td>
-                                            <td><button class="btn btn-warning rounded-pill px-3">Pending</button></td>
+                                            <td><?=$appoint['app_type']?></td>
+                                            <td><?=$appoint['app_date']?></td>
+                                            <td><?=$appoint['app_time']?></td>
+                                            <td><?=$appoint['app_qr']?></td>
+                                            <td><button class="btn" style="text-decoration: none; color:Green;font-weight: bold;">Pending</button></td>
+                                            <td><a href="#delAdmin" class="custom_btn" style="text-decoration: none; color: Blue;font-weight: bold;" data-toggle="modal">View</a></td>
                                         </tr>
+
+                                        <?php } } ?>
+                                        
                                      </a>
                                 </tbody>
                               </table>

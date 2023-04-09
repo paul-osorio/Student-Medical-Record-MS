@@ -288,7 +288,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                     <div class="sort flex-grow-1">
                         <span>Sort by</span>
                         <select name="filter" id="filter"> 
-                        <option value="id">All</option> 
+                        <option value="prod_id">All</option> 
                         <!-- <option value="date_manufactured">Date Manufactured</option> -->
                         <!-- <option value="prod_id">Product ID</option>  -->
                         <option value="expirationDate">Expiration Date</option>
@@ -325,7 +325,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                         <tbody>
                             <tr class="mdc-header">
                             <td style="width:120px;"><img src="./assets/<?=$med['image']?>" width="150px" height="130px"> </td>
-                            <td style="width:200px;" >
+                            <td style="width:150px;" >
                                 <table>
                                 <td class="b1"><?=$med['name']?></td>
                                 <tr>
@@ -342,7 +342,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                                 
                     
                             
-                            <td style="width:370px;">
+                            <td style="width:370px; padding-left:20px;">
                             <!-- <b>Expiration Date:</b> <?=$med['expirationDate']?> -->
                                 <table>
                                 <td class="b1"><b>Expiration Date:</b> <?=$med['expirationDate']?></td>

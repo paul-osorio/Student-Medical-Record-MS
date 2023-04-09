@@ -11,9 +11,9 @@ $(document).ready(function(){
    });
 
 
-   $('#filter').change(function(){
+   $('#sort_meds').change(function(){
       
-      var sort = $('#filter').val();
+      var sort = $('#sort_meds').val();
 
       $('.accordion').load('./php_ajax/sort_medicine.php', {
          sort:sort

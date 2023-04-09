@@ -102,14 +102,14 @@
                          
                         <div class="d-flex align-items-center">
                         <span for="#sort" class="px-2 text-nowrap">Sort By</span>
-                          <select class="form-select shadow-none" style="flex-basis:500px" aria-label="Default select example" id="sort">
+                          <select class="form-select shadow-none" style="flex-basis:500px" aria-label="Default select example" name="sort" id="sort_meds">
                               <option value="id">All</option> 
                               <option value="expirationDate">Expiration Date</option>
                               <option value="num_stocks">Stocks</option>
                           </select>
                         </div>
                         <div class="input-group form-input-sm d-flex align-items-center gap-2" style="width: 30%; margin-left: 49%;">
-                            <input type="text" class="form-control w-50 shadow-none" placeholder="&#xF002; Search..." aria-label="Search..." aria-describedby="button-addon2" style="font-family:Poppins, FontAwesome">
+                            <input type="text" class="form-control w-50 shadow-none" name="search" id="search_meds" placeholder="&#xF002; Search..." aria-label="Search..." aria-describedby="button-addon2" style="font-family:Poppins, FontAwesome">
                             <!-- <a href="#" class="text-secondary"> <i class="fa fa-th-large mx-1 fs-3" aria-hidden="true"></i></a> -->
                             <a href="#" class="text-secondary"><i class="fa fa-bars mx-1 fs-3" aria-hidden="true"></i></a>
                         </div>
@@ -177,4 +177,11 @@
        
     </div>
 </body>
+
+    <!-- CUSTOM AJAX FILE -->
+    <!-- <script src="./ajax/search_appointments.js"> </script>
+    <script src="./ajax/search_medreq.js"> </script>
+    <script src="./ajax/search_students.js"> </script> -->
+    <script src="./ajax/search_medicine.js"> </script>
+
 </html>

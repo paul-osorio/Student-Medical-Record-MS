@@ -282,7 +282,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
               <div class="sort flex-grow-1">
                 <span>Sort by</span>
                 <select name="filter" id="filter_nurse" style="width: 50%; border-radius: 3px; padding: 5px 5px; background: #f2f2f2; border: none; outline: none; height: 100%;">
-                  <option value="">All</option>
+                  <option value="emp_id">All</option>
                   <option value="position">Position</option>
                   <option value="schedule">Schedule</option>
                   <option value="Department">Department</option>

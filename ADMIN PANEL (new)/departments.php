@@ -364,32 +364,32 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                                 <label>Department</label>
                                 <select name="dept_name" id="dept_name" class="form-control">
                                     <option value="">Select Department</option>
-                                    <option value="BSIT Department">BSIT Department</option>
-                                    <option value="BSIE Department">BSIE Department</option>
-                                    <option value="BSENT Department">BSENT Department</option>
-                                    <option value="BSA Department">BSA Department</option>
-                                    <option value="BSECE Department">BSECE Department</option>
+                                    <option name="dept_name" value="BSIT Department">BSIT Department</option>
+                                    <option name="dept_name" value="BSIE Department">BSIE Department</option>
+                                    <option name="dept_name" value="BSENT Department">BSENT Department</option>
+                                    <option name="dept_name" value="BSA Department">BSA Department</option>
+                                    <option name="dept_name" value="BSECE Department">BSECE Department</option>
                                 </select>
                             </div>
                             <div name="building_name">
                             <label>Building Name</label>
                                 <select name="building_name" id="building_name" class="form-control">
                                     <option value="">Select Building Name</option>
-                                    <option value="bautista">Bautista Building</option>
-                                    <option name="techvoc">TechVoc Building</option>
-                                    <option name="belmonte">Belmonte Building</option>
+                                    <option name="building_name" value="Bautista Building">Bautista Building</option>
+                                    <option name="building_name" value="TechVoc Building">TechVoc Building</option>
+                                    <option name="building_name" value="Belmonte Building">Belmonte Building</option>
                                 </select>
                             </div>
                             <div name="room_num">
                             <label>Room No.</label>
                                 <select name="room_num" id="room_num" class="form-control">
                                     <option value="">Select Room No.</option>
-                                    <option name="room1">IC301a</option>
-                                    <option name="room2">IC302a</option>
-                                    <option name="room3">IC304a</option>
-                                    <option name="room4">IC304a</option>
-                                    <option name="room5">IC305a</option>
-                                    <option name="room6">IC306a</option>
+                                    <option name="room_num" value="IC301a">IC301a</option>
+                                    <option name="room_num" value="IC302a">IC302a</option>
+                                    <option name="room_num" value="IC304a">IC304a</option>
+                                    <option name="room_num" value="IC304a">IC304a</option>
+                                    <option name="room_num" value="IC305a">IC305a</option>
+                                    <option name="room_num" value="IC306a">IC306a</option>
                                 </select>
                             </div>
                             </div>

@@ -638,9 +638,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                 console.log(data);
 
 
-                $('#update_id').val(data[0]);
-                $('#hospi_id').val(data[1]);
-                $('#hospital').val(data[1]);
+                $('#update_id').val(data[5]);
+                $('#hospi_id').val(data[6]);
+                $('#hospital').val(data[7]);
                 $('#hospital_add').val(data[2]);
                 $('#email').val(data[3]);
                 $('#contact_num').val(data[4]);

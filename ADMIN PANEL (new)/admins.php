@@ -207,67 +207,67 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 </ul>
 </nav>
 
-<nav
-id="navigation"
-class="mynav px-3 navbar navbar-expand navbar-dark"
-style="z-index: 1">
+        <nav
+        id="navigation"
+        class="mynav px-3 navbar navbar-expand navbar-dark"
+        style="z-index: 1">
 
-<div class="container-fluid d-flex justify-content-start">
-<button
-  id="sidebarCollapse"
-  class="navbar-toggle border-0 bg-dark ms-0 ms-md-2 ms-lg-0 order-1 order-md-1">
-  <span class="navbar-toggler-icon"></span>
-</button>
-
-
-<div class="ms-auto order-sm-0" id="navbarNav">
-  <ul
-    class="navbar-nav ms-auto text-white d-flex align-items-left align-items-lg-center">
-    <span></span>
-
-    <li class="nav-item px-0 d-flex align-items-center">
-      <a
-        class="nav-link modal-trigger text-dark"
-        data-toggle="modal"
-        data-target="#loginmodal"
-        href="#"></a>
-    </li>
-
-    <div class="dropdown nav-item">
-
-      <div
-        class="account background-none nav-link dropdown-toggle dropdown-toggle d-flex justify-content-center align-items-center"
-        type="button"
-        id="dropdownMenuButton1"
-        data-bs-toggle="dropdown"
-        aria-expanded="false"
-        style="background: none">
-        <h5 style="margin-right: 30px; margin-top: 10px; color: white;">Hey, <?=$admins['fname']?>&nbsp<?=$admins['lname']?>!</h5> <img src="./assets/<?=$admins['img']?>" alt=""/>
-      </div>
-
-      <ul
-        class="dropdown-menu dropdown-menu-end dropdown-menu-dark"
-        aria-labelledby="dropdownMenuButton1">
-
-        <li><a class="dropdown-item" href="account.php">Manage Account</a></li>
-
-        <li>
-            <a class="dropdown-item" href="activityLog.php">Activity Log<span id="email_span"></span></a>
-        </li>
-
-        <li id="logout">
-          <a class="dropdown-item" href="logout.php">Logout</a>
-        </li>
-
-      </ul>
-    </div>
-  </ul>
-</div>
-</div>
-</nav>
+        <div class="container-fluid d-flex justify-content-start">
+        <button
+          id="sidebarCollapse"
+          class="navbar-toggle border-0 bg-dark ms-0 ms-md-2 ms-lg-0 order-1 order-md-1">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
 
-<div class="content_wrapper">
+        <div class="ms-auto order-sm-0" id="navbarNav">
+          <ul
+            class="navbar-nav ms-auto text-white d-flex align-items-left align-items-lg-center">
+            <span></span>
+
+            <li class="nav-item px-0 d-flex align-items-center">
+              <a
+                class="nav-link modal-trigger text-dark"
+                data-toggle="modal"
+                data-target="#loginmodal"
+                href="#"></a>
+            </li>
+
+            <div class="dropdown nav-item">
+
+              <div
+                class="account background-none nav-link dropdown-toggle dropdown-toggle d-flex justify-content-center align-items-center"
+                type="button"
+                id="dropdownMenuButton1"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                style="background: none">
+                <h5 style="margin-right: 30px; margin-top: 10px; color: white;">Hey, <?=$admins['fname']?>&nbsp<?=$admins['lname']?>!</h5> <img src="./assets/<?=$admins['img']?>" alt=""/>
+              </div>
+
+              <ul
+                class="dropdown-menu dropdown-menu-end dropdown-menu-dark"
+                aria-labelledby="dropdownMenuButton1">
+
+                <li><a class="dropdown-item" href="account.php">Manage Account</a></li>
+
+                <li>
+                    <a class="dropdown-item" href="activityLog.php">Activity Log<span id="email_span"></span></a>
+                </li>
+
+                <li id="logout">
+                  <a class="dropdown-item" href="logout.php">Logout</a>
+                </li>
+
+              </ul>
+            </div>
+          </ul>
+        </div>
+        </div>
+        </nav>
+
+
+        <div class="content_wrapper">
     
 <!--########################################################################################################################################################################-->
 
@@ -470,10 +470,10 @@ style="z-index: 1">
                         
                         <input type="hidden" name="update_id" id="update_id">
                         
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <center><label>Upload Image</label>
                             <input type="file" class="form-control" name="img" id="img" required></center>
-                        </div>	
+                        </div>	 -->
                         
                         <div class="form-group">
                             <label> Admin ID </label>
