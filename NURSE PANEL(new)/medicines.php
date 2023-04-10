@@ -103,7 +103,7 @@
                         <div class="d-flex align-items-center">
                         <span for="#sort" class="px-2 text-nowrap">Sort By</span>
                           <select class="form-select shadow-none" style="flex-basis:500px" aria-label="Default select example" name="sort" id="sort_meds">
-                              <option value="id">All</option> 
+                              <option value="prod_id">All</option> 
                               <option value="expirationDate">Expiration Date</option>
                               <option value="num_stocks">Stocks</option>
                           </select>

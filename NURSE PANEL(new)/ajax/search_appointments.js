@@ -1,21 +1,21 @@
 $(document).ready(function(){
 
-   $('#search_admin').keyup(function(){
+   $('#search_app').keyup(function(){
       
-      var search = $('#search_admin').val();
+      var search = $('#search_app').val();
 
-      $('.admins_table_details').load('./php_ajax/search_appointments.php', {
+      $('.table').load('./php_ajax/search_appointments.php', {
          search:search
       });
 
    });
 
 
-   $('#filter_admin').change(function(){
+   $('#sort_app').change(function(){
       
-      var sort = $('#filter_admin').val();
+      var sort = $('#sort_app').val();
 
-      $('.admins_table_details').load('./php_ajax/sort_appointments.php', {
+      $('.table').load('./php_ajax/sort_appointments.php', {
          sort:sort
       });
 

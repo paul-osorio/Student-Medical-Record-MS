@@ -23,22 +23,23 @@
               <div class="row shadow rounded-3">
               <div class="col-md-4 d-grid text-center position-relative align-items-center justify-content-center p-4 m-auto border-end border-2">
                   <div class="mb-2">
-                    <img src="./assets/badang.jpg" width="150" height="150" class="rounded-circle">
+                    <img src="./assets/'.$row['image'].'" width="150" height="150" class="rounded-circle">
                   </div>
                 
                  <h5 class="mb-2">'.$firstname.', '.$lastname.' '.$middlename.'</h5>
                  <p class="mb-2">'.$row['Email'].'</p>
                  <p class="mb-2">'.$row['Section'].'</p>
                  <p class="mb-2">'.$row['student_id'].'</p>
-                 <p class="mb-2">Status : <span class="text-success">Complete</span></p>
+                 <p class="mb-2">Medical Requirements: <span class="text-success">Complete</span></p>
+                 <p class="mb-2">Status: <span class="text-success">Cleared</span></p>
                
               </div>
               <div class="col-md-8 px-5 py-4">
-                <div class="mb-2 d-flex flex-wrap justify-content-between"><span class="fw-semibold">Sex</span><span>Female</span></div>
-                <div class="mb-2 d-flex flex-wrap justify-content-between"><span class="fw-semibold">Age</span><span>21</span></div>
-                <div class="mb-2 d-flex flex-wrap justify-content-between"><span class="fw-semibold">Date of Birth</span><span>January 01, 2001</span></div>
-                <div class="mb-2 d-flex flex-wrap justify-content-between"><span class="fw-semibold">Contact Number</span><span>0987654321</span></div>
-                <div class="mb-2 d-flex justify-content-between"><span class="fw-semibold">Complete Address</span><span class="text-wrap">123 sample address, Quezon City</span></div>
+                <div class="mb-2 d-flex flex-wrap justify-content-between"><span class="fw-semibold">Sex</span><span>'.$row['Gender'].'</span></div>
+                <div class="mb-2 d-flex flex-wrap justify-content-between"><span class="fw-semibold">Age</span><span>'.$row['Age'].'</span></div>
+                <div class="mb-2 d-flex flex-wrap justify-content-between"><span class="fw-semibold">Date of Birth</span><span>'.$row['Birthday'].'</span></div>
+                <div class="mb-2 d-flex flex-wrap justify-content-between"><span class="fw-semibold">Contact Number</span><span>'.$row['Contact_number'].'</span></div>
+                <div class="mb-2 d-flex justify-content-between"><span class="fw-semibold">Complete Address</span><span class="text-wrap">'.$row['Address'].'</span></div>
                 <hr>
                 <p class="fw-bold mb-2 text-center">EMERGENCY</p>
                 <div class="mb-2 d-flex flex-wrap justify-content-between"><span>Contact Person</span><span>Mother</span></div>

@@ -40,7 +40,32 @@
      	<input type="text" name="uname" placeholder="Username"><br>
 
      	<label>Password:</label>
-     	<input type="password" name="password" placeholder="Password"><br>
+     	<input type="password" name="password" id="floatingPassword" placeholder="Password">
+		
+		 			  <div class="show-password" style="text-align: left;">
+                          <label for="show-pass" style="font-size: 15px;"> Show password  </label>
+                          <input type="checkbox" name="" id="show-pass" style="margin-top: -17px; margin-left: -80px" >
+                      </div>
+
+                      <script> 
+
+                        const pass = document.getElementById('floatingPassword');
+                        const showPass = document.getElementById('show-pass');
+                        
+                        showPass.addEventListener('change', (e)=> {
+
+                          if(showPass.checked === true) {
+                            
+                            pass.type = 'text';
+
+                          } else {
+                            
+                            pass.type = 'password';
+
+                          }
+                            
+                        });
+                      </script><br>
 
      	<button type="submit" name="login_btn">LOGIN</button>
      </form>

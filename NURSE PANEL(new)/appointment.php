@@ -112,13 +112,17 @@ if (isset($_SESSION['emp_id']) && isset($_SESSION['username'])) {
                         <div class="d-flex gap-2 ">
                                 <div class="d-flex align-items-center" style="flex-basis:300px">
                                   <span for="#sort" class="px-2 text-nowrap">Sort By</span>
-                                  <select class="form-select shadow-none" aria-label="Default select example" name="sort" id="sort">
+                                  <select class="form-select shadow-none" aria-label="Default select example" name="sort" id="sort_app">
+                                    <option name="sort" value="student_id">All</option>
                                     <option name="sort" value="Recent">Recent</option>
+                                    <option name="sort" value="app_type">Type</option>
+                                    <option name="sort" value="app_time">Time</option>
+                                    <option name="sort" value="app_date">Date</option>
                                   </select>
                                 </div>
                   
                               <div class="input-group form-input-sm d-flex align-items-center gap-2 ">
-                                  <input type="text" class="form-control w-50 shadow-none" placeholder="&#xF002; Search..." aria-label="Search..." aria-describedby="button-addon2" style="font-family:Poppins, FontAwesome">
+                                  <input type="text" class="form-control w-50 shadow-none" name="search" id="search_app" placeholder="&#xF002; Search..." aria-label="Search..." aria-describedby="button-addon2" style="font-family:Poppins, FontAwesome">
                                   <!-- <a href="#" class="text-secondary"> <i class="fa fa-th-large mx-1 fs-3" aria-hidden="true"></i></a> -->
                                   <a href="#" class="text-secondary"><i class="fa fa-bars mx-1 fs-3" aria-hidden="true"></i></a>
                               </div>
@@ -152,9 +156,9 @@ if (isset($_SESSION['emp_id']) && isset($_SESSION['username'])) {
                                             <td><?=$appoint['app_type']?></td>
                                             <td><?=$appoint['app_date']?></td>
                                             <td><?=$appoint['app_time']?></td>
-                                            <td><?=$appoint['app_qr']?></td>
-                                            <td><button class="btn" style="text-decoration: none; color:Green;font-weight: bold;">Pending</button></td>
-                                            <td><a href="#delAdmin" class="custom_btn" style="text-decoration: none; color: Blue;font-weight: bold;" data-toggle="modal">View</a></td>
+                                            <td><?=$appoint['reference_no']?></td>
+                                            <td><label style="color: Green; font-weight: bold;"><?=$appoint['app_status']?></label></td>
+                                            <td><a href="#view" class="custom_btn" style="text-decoration: none; color: Blue;font-weight: bold;" data-toggle="modal">View</a></td>
                                         </tr>
 
                                         <?php } } ?>
@@ -170,6 +174,11 @@ if (isset($_SESSION['emp_id']) && isset($_SESSION['username'])) {
        
     </div>
 </body>
+    <!-- CUSTOM AJAX FILE -->
+    <script src="./ajax/search_appointments.js"> </script>
+    <!-- <script src="./ajax/search_medreq.js"> </script>
+    <script src="./ajax/search_students.js"> </script>
+    <script src="./ajax/search_medicine.js"> </script> -->
 </html>
 <?php 
 }
