@@ -516,9 +516,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
     <!-- custom js -->
     <script src="./js/app.js"></script>
     <script src="./js/status_color.js"></script>
-    <script src="./js/line_graph.js"></script>
+    <!-- <script src="./js/line_graph.js"></script>
     <script src="./js/circle_graph.js"></script>
-    <script src="./js/bar_graph.js"></script>
+    <script src="./js/bar_graph.js"></script> -->
 
     <!-- bootstrap js -->
     <script src="./js/jquery.min.js"></script>
@@ -543,6 +543,105 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
 
 <!--#################################################################################################################################################################################################################################-->
+  
+  <!-- REPORT'S GRAPHS JS -->
+
+  <!-- bar graph js -->
+  <script>
+    var xValues = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+    var yValues = [200,100,170,270,250,290,240,210,280,320,450,200];
+
+    new Chart("myChart3", {
+        type: "bar",
+        data: {
+        labels: xValues,
+        datasets: [{
+        fill: false,
+        lineTension: 0,
+        backgroundColor: "rgba(0,0,255,1.0)",
+        borderColor: "#7B89AD",
+        data: yValues
+        }]
+    },
+        options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                aspectRatio: 5,
+                legend: {display: false},
+                scales: {
+                yAxes: [{ticks: {min: 0, max:700}}],
+            }
+        }
+    });
+  </script>
+
+
+  <!-- circle graph js -->
+
+  <script>
+    var xValues = ["Verified", "Unverified", "Visitor", "Invalid"];
+    var yValues = [55, 49, 44, 24];
+    var barColors = [
+      "#2D7538",
+      "#f5c71a",
+      "#5180C7",
+      "#FF4646",
+    ];
+
+    new Chart("myChart2", {
+      type: "doughnut",
+      data: {
+        labels: xValues,
+        datasets: [{
+          backgroundColor: barColors,
+          data: yValues
+        }]
+      },
+      options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          aspectRatio: 2,
+          legend: {
+            display: true,
+            position: 'left',
+            maxWidth: 60,
+          }
+      }
+    });
+  </script>
+
+
+  <!-- line graph js -->
+
+  <script>
+    var xValues = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov"];
+    var yValues = [0,100,170,270,250,290,240,210,280,320,450];
+
+    new Chart("myChart", {
+        type: "line",
+        data: {
+        labels: xValues,
+        datasets: [{
+        fill: false,
+        lineTension: 0,
+        backgroundColor: "rgba(0,0,255,1.0)",
+        borderColor: "#7B89AD",
+        data: yValues
+        }]
+    },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                aspectRatio: 5,
+                legend: {display: false},
+                scales: {
+                yAxes: [{ticks: {min: 0, max:700}}],
+            }
+        }
+    });
+  </script>
+
+
 
 <!--#################################################################################################################################################################################################################################-->
 
