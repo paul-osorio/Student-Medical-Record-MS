@@ -73,14 +73,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
      // COUNT ALL STUDENTS
      $fetchStudents = mysqli_query($conn, "SELECT COUNT(*) as totalStud FROM `students`");
      $countStudents = mysqli_fetch_assoc($fetchStudents);
-     
-     // COUNT ALL DEPARTMENTS
-     $fetchDepartments = mysqli_query($conn, "SELECT COUNT(*) as totalDepts FROM `departments`");
-     $countDepartments = mysqli_fetch_assoc($fetchDepartments);
 
-     // COUNT ALL ENTRANCE LOGS
-     $fetchEntrance = mysqli_query($conn, "SELECT COUNT(*) as totalEnt FROM `entrance_log`");
-     $countEntrance = mysqli_fetch_assoc($fetchEntrance);
 
 ?>
 
@@ -103,18 +96,16 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
     <link rel="stylesheet" href="./css/DepartmentTab.css" />
     <link rel="stylesheet" href="./css/HospitalTab.css"/> 
     <link rel="stylesheet" href="./css/NurseTab.css" />
-    <link rel="stylesheet" href="./css/AppointmentsTab.css" />
     <!-- <link rel="stylesheet" href="./css/DashboardTab.css"/> -->
     <link rel="stylesheet" href="./css/DashboardTab.css?v=<?php echo time(); ?>"/>
     <link rel="stylesheet" href="./css/medicine.css"/>
     <link rel="stylesheet" href="./css/messagetab.css"/>
     <link rel="stylesheet" href="./css/reportchart.css?v=<?php echo time(); ?>"/>
     <link rel="stylesheet" href="./css/archivesTab.css"/>
-    <link rel="stylesheet" href="./css/entrancelog.css"/>
-    <link rel="stylesheet" href="./css/toggle-switchy.css"/>
 
     <link rel="stylesheet" href="./css/Main.css" />
     <link rel="stylesheet" href="./css/adminPage.css" />
+    <link rel="stylesheet" href="./css/managePage.css" />
 
     
 
@@ -133,12 +124,6 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-
-    <!-- for date picker -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-
-
 
     <link
       rel="stylesheet"
@@ -248,21 +233,6 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
             </div>
           </li>
 
-          <li data-tab-target="#appointments" class="px-4 w-100 mb-1 nav-item tab">
-              
-              <i class="fa fa-calendar"></i>
-              <div
-                class="nav-link align-items-center"
-                data-bs-toggle="collapse"
-                data-bs-target="#home-collapse"
-                aria-expanded="true">
-
-                Appointments
-                
-              </div>
-
-          </li>
-
           <li data-tab-target="#reports" class="px-4 w-100 mb-1 nav-item tab">
               
               <i class="fa fa-book"></i>
@@ -310,7 +280,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
           <div class="web_info">
 
-          <div class="admin_info"><br>
+          <div class="admin_info"><br><br>
             <img src="./assets/<?=$admins['img']?>" alt=""/>
             <span><?=$admins['email']?></span>
             <span><?=$admins['fname']?>&nbsp<?=$admins['lname']?></span>
@@ -371,7 +341,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                     <a class="dropdown-item" href="#">Login As: <?=$admins['fname']?><span id="email_span"></span></a>
                   </li>
 
-                  <li><a class="dropdown-item" href="#">Manage Account</a></li>
+                  <li><a class="dropdown-item" data-tab-target="#manage">Manage Account</a></li>
 
                   <li id="logout">
                     <a class="dropdown-item" href="logout.php">Logout</a>
@@ -387,9 +357,26 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
       <div class="content_wrapper">
 
+
 <!--########################################################################################################################################################################-->
 
+        <!-- MANAGE ACCOUNT PAGE -->
+        <section id="manage" class="manage so_content" data-tab-content>
 
+          <div class="manage_header d-flex justify-content-between">
+            <h3 class="m-0 text-white">MANAGE MY ACCOUNT</h3>
+          </div>
+          
+          <div class="manage_content">
+            <div class="image_container">
+              <img src="./assets/<?=$admins['img']?>">
+            </div>
+          </div>
+
+
+      </section>
+<!--########################################################################################################################################################################-->
+      
       <!-- DASHBOARD PAGE -->
         <section id="dashboard" class="dashboard so_content so_active" data-tab-content>
           <div class="dashboard_header d-flex justify-content-between">
@@ -401,7 +388,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
               <div class="card" style="background-color:#E74C3C;">
 
                 <div class="card_content">
-                  <i class="fa fa-users" aria-hidden="true"></i>
+                  <i class="fa solid fa-user" aria-hidden="true"></i>
                   <span class="name">ADMINS</span>
                 </div>
 
@@ -414,12 +401,12 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
               <div class="card" style="background-color:#F3AF43;">
 
                 <div class="card_content">
-                  <i class="fa fa-user-md" aria-hidden="true"></i>
+                  <i class="fa solid fa-user" aria-hidden="true"></i>
                   <span class="name">NURSES</span>
                 </div>
 
                 <div class="count">
-                  <span class="number"> <?=$countNurses['totalNur']?> </span>
+                  <span class="number"> <?=$countAdmins['totalAd']?> </span>
                 </div>
 
               </div>
@@ -427,12 +414,12 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
               <div class="card" style="background-color:#84BF46;">
 
                   <div class="card_content">
-                    <i class="fa fa-users" aria-hidden="true"></i>
+                    <i class="fa solid fa-user" aria-hidden="true"></i>
                     <span class="name">STUDENTS</span>
                   </div>
 
                   <div class="count">
-                    <span class="number"> <?=$countStudents['totalStud']?> </span>
+                    <span class="number"> <?=$countAdmins['totalAd']?> </span>
                   </div>
 
               </div>
@@ -440,12 +427,12 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
               <div class="card" style="background-color:#2C6AC8;">
 
                 <div class="card_content">
-                  <i class="fa fa-hospital-o" aria-hidden="true"></i>
+                  <i class="fa solid fa-user" aria-hidden="true"></i>
                   <span class="name">DEPARTMENTS</span>
                 </div>
 
                 <div class="count">
-                  <span class="number"> <?=$countDepartments['totalDepts']?> </span>
+                  <span class="number"> <?=$countAdmins['totalAd']?> </span>
                 </div>
 
                 </div>
@@ -453,12 +440,12 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                 <div class="card" style="background-color:#999999;">
 
                   <div class="card_content">
-                    <i class="fa fa-address-book" aria-hidden="true"></i>
+                    <i class="fa solid fa-user" aria-hidden="true"></i>
                     <span class="name">ENTRANCE LOG</span>
                   </div>
 
                   <div class="count">
-                    <span class="number"> <?=$countEntrance['totalEnt']?> </span>
+                    <span class="number"> <?=$countAdmins['totalAd']?> </span>
                   </div>
 
                 </div>
@@ -466,16 +453,14 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
             </div>
 
-
 <!--########################################################################################################################################################################-->
 
-       
           <!-- SUMMARY REPORT AT DASHBOARD PAGE -->
 
-          <div class="chart_container">
+            <div class="chart_container">
 
               <div class="card_content">
-              <br><div class="chart_header">
+                <div class="chart_header">
                   <span>STUDENT COVID-19 CASES</span>
                   <div class="chart_filter">
                     <select name="filter" id="filter">
@@ -493,25 +478,24 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
               </div>
 
               <div class="card_content">
-              <br><div class="chart_header">
-                  <span>ENTRANCE LOG</span>
-                </div><br>
+                <div class="chart_header">
+                  <span>Entrance Logs</span>
+                </div>
                 <div class="chart1" style="display:flex; justify-content:center; align-items:center;">
                   <canvas id="myChart2" class="circle_chart"></canvas>
                 </div>
               </div>
 
-              </div>
+            </div>
 
-              <div class="chart_container">
+            <div class="chart_container">
 
               <div class="card_content">
-              <br><div class="chart_header">
-                  <span>APPOINTMENTS</span>
+                <div class="chart_header">
+                  <span>Appointments</span>
                   <div class="chart_filter">
                     <select name="filter" id="filter">
                       <option value="Medical">Medical</option>
-                      <option value="Dental">Dental</option>
                     </select>
                     <select name="filter" id="filter">
                       <option value="Monthly">Monthly</option>
@@ -526,18 +510,18 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
               <div class="card_content table_card">
                 <div class="chart_header">
-                  <span style="font-size: 17px;">ACTIVE NURSES TODAY</span>
+                  <span>Active Nurses Today</span>
                 </div>
                 <table>
                   <tr>
-                    <!-- <th>Image</th> -->
+                    <th>Image</th>
                     <th>Emp ID</th>
                     <th>Fullname</th>
                     <th>Campus</th>
                   </tr>
                   <?php for($i=0; $i<10; $i++){ ?>
                   <tr>
-                    <!-- <td><img src="./assets/nurse.jpg"></td> -->
+                    <td><img src="./assets/nurse.jpg"></td>
                     <td>23-0003</td>
                     <td>Juan Two T. Dela Cruz</td>
                     <td>San Francisco</td>
@@ -545,9 +529,10 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                   <?php } ?>
                 </table>
               </div>
-              </div>
+            </div>
 
-              </div>
+          </div>
+
 
 <!--########################################################################################################################################################################-->
           
@@ -1283,9 +1268,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
             <div class="filter_wrapper">
               <div class="sort flex-grow-1">
                 <span>Sort by</span>
-                <select name="filter" id="filter_nurse" style="width: 50%; border-radius: 3px; padding: 5px 5px; background: #f2f2f2; border: none; outline: none; height: 100%;">
+                <select name="filter" id="filter" style="width: 50%;">
                   <option value="">Select</option>
-                  <option value="Department">Department</option>
+                  <option name="filter" value="departments">Campus</option>
                   <!-- <option value="departments">Campus</option>
                   <option value="departments">Campus</option> -->
                 </select>
@@ -1321,7 +1306,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
               <div>
                   <div class="search">
-                    <input type="text" name="search" id="search_nurse" placeholder="&#xF002; Search Nurse" style="font-family:Poppins, FontAwesome">
+                    <input type="text" name="search" id="search_nurse" placeholder="&#xF002; Search Nurse" style="font-family:Arial, FontAwesome">
                 </div>
 
                 
@@ -1824,9 +1809,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
             <h3 class="m-0">HOSPITAL</h3>
           </div>
           <div class="action_header">   
-              <!-- <div class="search" style="width: 55%; border-radius: 30px; border: none; color: gray; background: white;"> -->
-                <input type="text" name="search" id="search_hospital" placeholder="&#xF002; Search Hospital" style="font-family:Poppins, FontAwesome">
-              <!-- </div>  -->
+             <input type="text" name="search" placeholder="&#xF002; Search Hospital" style="font-family:Arial, FontAwesome">
             <button class="custom_btn">
               <a href="#addHospitalModal" class="custom_btn" data-toggle="modal"><i class="fa fa-plus"></i>Add Hospital</a>
             </button>
@@ -1842,6 +1825,26 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                   <th>Contact No.</th>
                   <th><span>Action</span></th>
               </tr>
+              
+
+                  <!-- <?php if(mysqli_num_rows($fetchAddAdmins) > 0) { 
+                  while ($addAdmins = mysqli_fetch_assoc($fetchAddAdmins)) {  ?> -->
+
+                  <tr class="container">
+                      <td><span class="hospitalname"><?=$addAdmins['unique_id']?></span></td>
+                      <td><span class="address"><?=$addAdmins['fname']?></span></td>
+                      <td><span class="email"><?=$addAdmins['lname']?></span></td>
+                      <td><span class="contact_num"><?=$addAdmins['contact_num']?></span></td>
+                      <td>
+                          <!-- <a href="#viewAdminInfo" class="custom_btn" data-toggle="modal"><i class="fa fa-info-circle" aria-hidden="true" style="color: #5D8FD9;"></i></a> -->
+
+                          <a href="#editHospitalInfo" class="custom_btn edithosbtn" data-toggle="modal"><i class="fa fa-edit" aria-hidden="true" style="color: #3e64ff;"></i></a>
+
+                          <a href="#delHospital" class="custom_btn deletehosbtn" data-toggle="modal"><i class="fa fa-trash" aria-hidden="true" style="color: #ED1C24;"></i></a>
+                      </td>
+                  </tr>
+
+                  <!-- <?php } } ?> -->
 
 
                 <?php if(mysqli_num_rows($fetchAllHospitals) > 0) { 
@@ -2082,14 +2085,14 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
             <span>Sort by</span>
             <select name="filter" id="filter"> 
               <option value="">Select</option> 
-              <option value="date_manufactured">Date Manufactured</option>
-              <option value="expirationDate">Expiration Date</option>
-              <option value="num_stocks">Stocks</option>
+              <option name="filter" value="Date Manufactured">Date Manufactured</option>
+              <option name="filter" value="Date Expiration">Expiration Date</option>
+              <option name="filter" value="Quantity">Quantity</option>
             </select>
           </div>
           <div class="r">
             <div class="search">
-              <input type="text" name="search" id="search_meds" placeholder="&#xF002; Search Medicine" style="font-family:Poppins, FontAwesome">
+              <input type="text" name="search" placeholder="&#xF002; Search Medicine" style="font-family:Arial, FontAwesome">
             </div>
             <div class="grid">
               <i class="fa fa-th-large" aria-hidden="true"></i>
@@ -2166,59 +2169,59 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
         <div class="modal-body">
             <div class="row">
               <div class="col">
-                        <label for="name" class="form-label">Medicine Name</label>
-                        <input type="text" class="form-control" name="name" id="name" style="width:200px;"readonly value="<?=$med['name']?>">
+                        <label for="medname" class="form-label">Medicine Name</label>
+                        <input type="text" class="form-control" id="medname" style="width:200px;"readonly placeholder="<?=$med['name']?>">
               </div>
 
               <div class="col">
-              <label for="brand" class="form-label">Brand</label>
-                        <input type="text"  class="form-control" name="brand" id="brand" readonly value="<?=$med['brand']?>">
+              <label style="color: white;" for="brand" class="form-label">Brand</label>
+                        <input type="text" style="color: white;" class="form-control" id="brand" readonly placeholder="<?=$med['brand']?>">
                 </div>
 
                 <div class="col">
-              <label for="num_stocks" class="form-label">Stocks</label>
-                        <input type="text" class="form-control" name="num_stocks" id="num_stocks" readonly value="<?=$med['num_stocks']?>">
+              <label for="stocks" class="form-label">Stocks</label>
+                        <input type="text" class="form-control" id="stocks" readonly placeholder="<?=$med['num_stocks']?>">
                 </div>
 
                 <div class="col">
-                <label for="expirationDate" class="form-label">Expiration Date</label>
-                        <input type="date" class="form-control" name="expirationDate" id="expirationDate" readonly value="<?=$med['expirationDate']?>">
+                <label for="expdate" class="form-label">Expiration Date</label>
+                        <input type="date" class="form-control" id="expirationDate" readonly value="<?=$med['expirationDate']?>">
                 </div>
                 <!---->
             <div class="row">
             <div class="col">
-            <label for="genericName" class="form-label">Generic Name</label>
-                        <input type="text" class="form-control" name="genericName" id="genericName" style="width:200px;"readonly value="<?=$med['genericName']?>">
+            <label for="genname" class="form-label">Generic Name</label>
+                        <input type="text" class="form-control" id="genname" style="width:200px;"readonly value="<?=$med['genericName']?>">
             </div>
             <div class="col">
-            <label for="date_manufactured" class="form-label">Date Manufactured</label>
-                        <input type="date" class="form-control" name="date_manufactured" id="date_manufactured" style="width:200px;"readonly value="<?=$med['date_manufactured']?>">
+            <label for="gendatemanu" class="form-label">Date Manufactured</label>
+                        <input type="date" class="form-control" id="datemanu" style="width:200px;"readonly value="<?=$med['date_manufactured']?>">
             </div>
             <div class="col">
-            <label for="prodCondition" class="form-label">Product Condition</label>
-                        <input type="text" class="form-control" name="prodCondition" id="prodCondition" style="width:200px;"readonly value="<?=$med['prodCondition']?>">
+            <label for="prod_con" class="form-label">Product Condition</label>
+                        <input type="text" class="form-control" id="prod_con" style="width:200px;"readonly value="<?=$med['prodCondition']?>">
             </div>
             <div class="col">
             <label for="storage" class="form-label">Storage</label>
-                        <input type="text" class="form-control" name="storage" id="storage" style="width:100px;"readonly value="<?=$med['storage']?>">
+                        <input type="text" class="form-control" id="storage" style="width:100px;"readonly value="<?=$med['storage']?>">
             </div>
             <div class="col">
             <label for="box_id" class="form-label">Box ID</label>
-                        <input type="text" class="form-control" name="box_id" id="box_id" style="width:100px;"readonly value="<?=$med['box_id']?>">
+                        <input type="text" class="form-control" id="box_id" style="width:100px;"readonly value="<?=$med['box_id']?>">
             </div>
 
             <div class="row">
             <div class="col">
-            <label for="manufacturerName" class="form-label">Manufacturer Name</label>
-                        <input type="text" class="form-control" name="manufacturerName" id="manufacturerName" style="width:210px;"readonly value="<?=$med['manufacturerName']?>">
+            <label for="manu_comp" class="form-label">Manufacturer's Company</label>
+                        <input type="text" class="form-control" id="manu_comp" style="width:210px;"readonly value="<?=$med['manufacturerName']?>">
             </div>
             <div class="col">
-            <label for="contact_info" class="form-label">Contact Number</label>
-                        <input type="text" class="form-control" name="contact_info" id="contact_info" style="width:170px;"readonly value="<?=$med['contact_info']?>">
+            <label for="email" class="form-label">Email Address</label>
+                        <input type="text" class="form-control" id="email" style="width:100px;"readonly value="<?=$med['prodCondition']?>">
             </div>
             <div class="col">
-            <label for="prod_qrcode" class="form-label">Product QR Code</label>
-            <img class="form-control" name="prod_qrcode" id="prod_qrcode" style="width:100px;" src="./assets/<?=$med['prod_qrcode']?>">
+            <label for="contact_num" class="form-label">Contact Number</label>
+                        <input type="text" class="form-control" id="contact_num" style="width:170px;"readonly value="<?=$med['contact_info']?>">
             </div>
             </div>
             <div class="row">
@@ -2243,6 +2246,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
   </div>
 </div>
 
+
+
+    
 
     <?php } } ?>
   </ul>
@@ -2339,208 +2345,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
               </div>
             </div>
 
-<!--########################################################################################################################################################################-->
-
-        <!-- APPOINTMENTS PAGE -->
-        <section id="appointments" class="appointments so_content" data-tab-content>
-
-          <div class="appointments_header d-flex justify-content-between">
-            <h3 class="m-0 text-white">APPOINTMENTS</h3>
-              <button class="custom_btn">
-                <a href="#addAppointmentsModal" class="custom_btn" data-toggle="modal"><i class="fa fa-user-md"></i>Add New</a>
-              </button>
-          </div>
-          
-          <div class="appointments_table_details table-dark table-responsive">
-            <table>
-              
-              <tr id="table_header">
-                  <th> ID No. </th>
-                  <th> Type of Appointment</th>
-                  <th> Status</th>
-                  <th> Date Created</th>
-                  <th><span>Action</span></th>
-              </tr>
-              
-
-                  <?php //if(mysqli_num_rows($fetchAddAdmins) > 0) { 
-                  //while ($addAdmins = mysqli_fetch_assoc($fetchAddAdmins)) {  ?>
-
-
-              <tr class="container">
-                  <td> A-00001 </td>
-                  <td><span class="medServices">Medical Services</span></td>
-                  <td style="color:green;"><span class="status">On</span></td>
-                  <td><span class="dateCreated">March 04, 2023</span></td>
-                  <td>
-                      <!-- <a href="#viewAdminInfo" class="custom_btn" data-toggle="modal"><i class="fa fa-info-circle" aria-hidden="true" style="color: #5D8FD9;"></i></a> -->
-
-                      <a href="#viewAppointmentsInfo" class="custom_btn editbtn" data-toggle="modal"><i class="fa fa-edit" aria-hidden="true" style="color: green;"></i></a>
-
-                      <a href="#delAppointments" class="custom_btn deletebtn" data-toggle="modal"><i class="fa fa-trash" aria-hidden="true" style="color: #ED1C24;"></i></a>
-                  </td>
-              </tr>
-              <tr class="spacing"></tr>
-              <tr class="container">
-                  <td> A-00001 </td>
-                  <td><span class="medServices">Medical Services</span></td>
-                  <td style="color:gray;"><span class="status">Disabled</span></td>
-                  <td><span class="dateCreated">March 04, 2023</span></td>
-                  <td>
-                      <!-- <a href="#viewAdminInfo" class="custom_btn" data-toggle="modal"><i class="fa fa-info-circle" aria-hidden="true" style="color: #5D8FD9;"></i></a> -->
-
-                      <a href="#viewAppointmentsInfo" class="custom_btn editbtn" data-toggle="modal"><i class="fa fa-edit" aria-hidden="true" style="color: green;"></i></a>
-
-                      <a href="#delAppointments" class="custom_btn deletebtn" data-toggle="modal"><i class="fa fa-trash" aria-hidden="true" style="color: #ED1C24;"></i></a>
-                  </td>
-              </tr>
-              
-                  <?php //} } ?>
-
-              
-            </table>
-          </div>
-        <div>
-
-      </div>
-
-<!--########################################################################################################################################################################-->
-
-      <!-- ADD NEW APPOINTMENT MODAL AT APPOINTMENT PAGE-->
-
-      <div id="addAppointmentsModal" class="modal fade">
-            <div class="modal-dialog">
-
-              <div class="modal-content">
-                <form method="post" action="adminDashboard.php">
-
-                  <div class="modal-header">						
-                    <h4 class="modal-title">NEW APPOINTMENT</h4>
-                  </div>
-
-                  <div class="modal-body">	
-
-                      <div class="form-group textfield">
-                        <label>APPOINTMENT TYPE: </label>
-                        <input type="text" class="form-control" name="appointment_type" required>
-                      </div><br>
-
-                      <div class="form-group">
-                        <label>PICK AVAILABLE DATES </label>
-                          <input type="text" class="form-control" id="date-picker" hidden>
-                      </div>
-                    
-                  </div>
-                  
-                  <div class="modal-footer">
-                    <input type="button" class="btn btn-danger" data-dismiss="modal" value="Cancel">
-                    <input type="button" class="btn btn-success" data-dismiss="modal" id="addsuccess_btn" name="addAppointment" value="Save">
-                  </div>
-
-                </form>
-              </div>
-
-            </div>
-          </div>
-
-<!--########################################################################################################################################################################-->
-
-      <!-- VIEW APPOINTMENT MODAL AT APPOINTMENTS PAGE-->
-
-      <div id="viewAppointmentsInfo" class="modal fade">
-          <div class="modal-dialog">
-              <div class="modal-content">
-                <form method="post" action="adminDashboard.php">
-
-                  <div class="modal-header">						
-                    <h4 class="modal-title">APPOINTMENT DETAILS</h4>
-                  </div>
-
-                  <div class="modal-body">	
-                      <div class="form-group switch">
-                        <span>ID No.: A-00001</span>
-                        <label class="toggle-switchy" data-size="sm" data-style="rounded">
-                          <input checked type="checkbox" disabled>
-                          <span class="toggle">
-                            <span class="switch"></span>
-                          </span>
-                        </label>
-                      </div>
-
-
-                      <div class="form-group textfield">
-                        <label>APPOINTMENT TYPE: </label>
-                        <input type="text" class="form-control" name="appointment_type" disabled>
-                      </div><br>
-
-                      <div class="form-group">
-                        <label>PICK AVAILABLE DATES </label>
-                          <input type="text" class="form-control" id="date-picker_view" hidden disabled>
-                      </div>
-                  </div>
-                  
-                  <div class="modal-footer">
-                    <input type="button" class="btn btn-danger" data-dismiss="modal" value="Cancel">
-                    <input type="button" class="btn btn-primary" data-dismiss="modal" id="edit_appointment_btn" name="editAppointment" value="Edit">
-                  </div>
-
-                </form>
-              </div>
-
-            </div>
-      
-      </div>          
-
-<!--########################################################################################################################################################################-->
-
-      <!-- EDIT APPOINTMENT MODAL AT APPOINTMENTS PAGE-->
-
-      <div id="editAppointmentsModal" class="modal fade">
-            <div class="modal-dialog">
-
-              <div class="modal-content">
-                <form method="post" action="adminDashboard.php">
-
-                  <div class="modal-header">						
-                    <h4 class="modal-title">APPOINTMENT DETAILS</h4>
-                  </div>
-
-                  <div class="modal-body">	
-
-                      <div class="form-group switch">
-                        <span>ID No.: A-00001</span>
-                        <label class="toggle-switchy" data-size="sm" data-style="rounded">
-                          <input checked type="checkbox">
-                          <span class="toggle">
-                            <span class="switch"></span>
-                          </span>
-                        </label>
-                      </div>
-
-                      <div class="form-group textfield">
-                        <label>APPOINTMENT TYPE: </label>
-                        <input type="text" class="form-control" name="appointment_type" required>
-                      </div><br>
-
-                      <div class="form-group">
-                        <label>PICK AVAILABLE DATES </label>
-                          <input type="text" class="form-control" id="date-picker_edit" hidden>
-                      </div>
-                    
-                  </div>
-                  
-                  <div class="modal-footer">
-                    <input type="button" class="btn btn-danger" data-bs-dismiss="modal" value="Cancel">
-                    <input type="button" class="btn btn-success" data-bs-dismiss="modal" id="addsuccess_btn" name="saveAppointment" value="Save">
-                  </div>
-
-                </form>
-              </div>
-
-            </div>
-          </div>              
-
-      </section>
+<!-- ############################################################################################################################################################################################################## -->
 
 
 
@@ -2605,24 +2410,24 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
 <!--#################################################################################################################################################################################################################################-->
 
-       <!-- ARCHIVE PAGE -->
-       <section id="archives" class="archives so_content" data-tab-content>  
+      <!-- ARCHIVE PAGE -->
+      <section id="archives" class="archives so_content" data-tab-content>  
         <div class="archives_header d-flex justify-content-between">
-          <h3 class="m-0">ARCHIVE</h3>
+          <h3 class="m-0" style="color: white;">ARCHIVE</h3>
         </div>
-        <div class="container">
+        <div class="container" style="color: white;">
           <div class="filter_wrapper">
             <div class="sort flex-grow-1">
               <span>Sort by</span>
               <select name="filter" id="filter">
-                <option value="">All</option>
-                <option value="Type of User">Type of User</option>
-                <option value="Date of Archive">Date of Archive</option>
+                <option value="">Select</option>
+                <option name="filter" value="Type of User">Type of User</option>
+                <option name="filter" value="Date of Archive">Date of Archive</option>
               </select>
             </div>
             <div class="r">
               <div class="search">
-                <input type="text" placeholder="&#xF002; Search Patients" class="searchicon" style="font-family:Poppins, FontAwesome">
+              <input type="text" name="search" placeholder="&#xF002; Search Archive" style="font-family:Arial, FontAwesome">
               </div>
               <div class="scan">
                 <button>Scan QR</button>
@@ -2630,26 +2435,16 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
             </div>
           </div>
 
+          <h3 class="hh">Recent</h3>  
           <div class="archives-content table-responsive">
             <table class="archives-table">
                 <tr>
-                  <th>Image</th>
-                  <th>ID No.</th>
-                  <th>Name</th>
-                  <th>Type</th>
+                  <!--   -->
+                  <th>Unique ID</th>
+                  <th>Type of User</th>
                   <th>Date of Archive</th>
-                  <th>Time</th>
-                  <th>Action</th>
-                </tr>
-
-                <tr class="archives-info">
-                  <td><img src="./assets/biogesic.jpg"></td>
-                  <td>15-2323</td>
-                  <td>Analos, Miguel Santos</td>
-                  <td>Student</td>
-                  <td>Graduated</td>
-                  <td>July 29, 2019</td>
-                  <td><i class="fa fa-rotate-right"></i></td>
+                  <!-- <th>Reason</th>
+                  <th>Date</th> -->
                 </tr>
 
                 <tr class="archives-info">
@@ -2657,9 +2452,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                   <td>15-2323</td>
                   <td>Analos, Miguel Santos</td>
                   <td>Student</td>
-                  <td>Graduated</td>
-                  <td>July 29, 2019</td>
-                  <td><i class="fa fa-rotate-right"></i></td>
+                  <td>Graudated</td>
+                  <td>July 29,2019</td>
                 </tr>
 
                 <tr class="archives-info">
@@ -2667,9 +2461,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                   <td>15-2323</td>
                   <td>Analos, Miguel Santos</td>
                   <td>Student</td>
-                  <td>Graduated</td>
-                  <td>July 29, 2019</td>
-                  <td><i class="fa fa-rotate-right"></i></td>
+                  <td>Graudated</td>
+                  <td>July 29,2019</td>
                 </tr>
 
                 <tr class="archives-info">
@@ -2677,9 +2470,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                   <td>15-2323</td>
                   <td>Analos, Miguel Santos</td>
                   <td>Student</td>
-                  <td>Graduated</td>
-                  <td>July 29, 2019</td>
-                  <td><i class="fa fa-rotate-right"></i></td>
+                  <td>Graudated</td>
+                  <td>July 29,2019</td>
                 </tr>
 
                 <tr class="archives-info">
@@ -2687,9 +2479,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                   <td>15-2323</td>
                   <td>Analos, Miguel Santos</td>
                   <td>Student</td>
-                  <td>Graduated</td>
-                  <td>July 29, 2019</td>
-                  <td><i class="fa fa-rotate-right"></i></td>
+                  <td>Graudated</td>
+                  <td>July 29,2019</td>
                 </tr>
 
                 <tr class="archives-info">
@@ -2697,9 +2488,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                   <td>15-2323</td>
                   <td>Analos, Miguel Santos</td>
                   <td>Student</td>
-                  <td>Graduated</td>
-                  <td>July 29, 2019</td>
-                  <td><i class="fa fa-rotate-right"></i></td>
+                  <td>Graudated</td>
+                  <td>July 29,2019</td>
                 </tr>
 
                 <tr class="archives-info">
@@ -2707,9 +2497,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                   <td>15-2323</td>
                   <td>Analos, Miguel Santos</td>
                   <td>Student</td>
-                  <td>Graduated</td>
-                  <td>July 29, 2019</td>
-                  <td><i class="fa fa-rotate-right"></i></td>
+                  <td>Graudated</td>
+                  <td>July 29,2019</td>
                 </tr>
 
                 <tr class="archives-info">
@@ -2717,9 +2506,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                   <td>15-2323</td>
                   <td>Analos, Miguel Santos</td>
                   <td>Student</td>
-                  <td>Graduated</td>
-                  <td>July 29, 2019</td>
-                  <td><i class="fa fa-rotate-right"></i></td>
+                  <td>Graudated</td>
+                  <td>July 29,2019</td>
                 </tr>
                 
                 <tr class="archives-info">
@@ -2727,9 +2515,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                   <td>15-2323</td>
                   <td>Analos, Miguel Santos</td>
                   <td>Student</td>
-                  <td>Graduated</td>
-                  <td>July 29, 2019</td>
-                  <td><i class="fa fa-rotate-right"></i></td>
+                  <td>Graudated</td>
+                  <td>July 29,2019</td>
                 </tr>
 
                 <tr class="archives-info">
@@ -2737,9 +2524,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                   <td>15-2323</td>
                   <td>Analos, Miguel Santos</td>
                   <td>Student</td>
-                  <td>Graduated</td>
-                  <td>July 29, 2019</td>
-                  <td><i class="fa fa-rotate-right"></i></td>
+                  <td>Graudated</td>
+                  <td>July 29,2019</td>
                 </tr>
 
                 <tr class="archives-info">
@@ -2747,9 +2533,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                   <td>15-2323</td>
                   <td>Analos, Miguel Santos</td>
                   <td>Student</td>
-                  <td>Graduated</td>
-                  <td>July 29, 2019</td>
-                  <td><i class="fa fa-rotate-right"></i></td>
+                  <td>Graudated</td>
+                  <td>July 29,2019</td>
                 </tr>
             </table>
           </div>
@@ -2758,152 +2543,21 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 <!-- E N D  A R C H I V E -->
 
 
-<!--#################################################################################################################################################################################################################################-->
+<!-- #################################################################################################################################################################################################################################-->
 
       <!-- ENTRANCE LOG PAGE -->
 
-      <section id="entrancelog" class="entrancelog so_content" data-tab-content>  
-        <div class="entrancelog_header d-flex justify-content-between">
-          <h3 class="m-0">ENTRANCE LOG</h3>
-        </div>
-        <div class="container">
-        <div class="filter_wrapper">
-            <div class="sort flex-grow-1">
-              <div class="sortspan">
-              <span style="padding-right: 5px">Sort by</span>
-              <select name="filter" id="filter">
-                <option value="">All</option>
-                <option value="Time">Time</option>
-                <option value="Type of User">Type of User</option>
-              </select>
-              </div>
-            </div>
-            <div class="dateselect">
-              <div class="date">
-              <input type="date" placeholder="Select a date" onchange="this.className=(this.value!=''?'has-value':'')">
-              </div>
-            </div>
-          </div>
-          <div class="filter_wrapper">
-            <div class="sort flex-grow-1">
-            <div class="sortspan">
-              <div class="span1">
-              <span class="show">Showing 25 out of 1000</span>
-              <span><i class="fa fa-print"></i>Print</span>
-              <span><i class="fa fa-download" aria-hidden="true"></i>Download</span>
-              </div>
-            </div>
-            </div>
-          </div>
-          
-          <div class="col-xs-8 col-xs-offset-2 well">
-            <table class="table table-scroll table-striped">
-              <thead>
-                  <tr>
-                      <th>User ID</th>
-                      <th>Image</th>
-                      <th>Status</th>
-                      <th>Name</th>
-                      <th>Section</th>
-                      <th>Yr Level</th>
-                      <th>Purpose</th>
-                      <th>Contact No.</th>
-                      <th>Time In</th>
-                      <th>Time Out</th>
-                  </tr>
-              </thead>
-              <tbody>
-                  <tr>
-                      <td>15-2323</td>
-                      <td><img src="./assets/biogesic.jpg"></td>
-                      <td class="status">Verified</td>
-                      <td>Analos, Miguel Santos</td>
-                      <td>SBIT-4D</td>
-                      <td>4th</td>
-                      <td>-</td>
-                      <td>09123456789</td>
-                      <td>10:00am</td>
-                      <td>1:00pm</td>
-                  </tr>
-                  <tr>
-                      <td>15-2323</td>
-                      <td><img src="./assets/biogesic.jpg"></td>
-                      <td class="status">Verified</td>
-                      <td>Analos, Miguel Santos</td>
-                      <td>SBIT-4D</td>
-                      <td>4th</td>
-                      <td>-</td>
-                      <td>09123456789</td>
-                      <td>10:00am</td>
-                      <td>1:00pm</td>
-                  </tr>
-                  <tr>
-                      <td>15-2323</td>
-                      <td><img src="./assets/biogesic.jpg"></td>
-                      <td class="status">Visitor</td>
-                      <td>Analos, Miguel Santos</td>
-                      <td>SBIT-4D</td>
-                      <td>4th</td>
-                      <td>-</td>
-                      <td>09123456789</td>
-                      <td>10:00am</td>
-                      <td>1:00pm</td>
-                  </tr>
-                  <tr>
-                      <td>15-2323</td>
-                      <td><img src="./assets/biogesic.jpg"></td>
-                      <td class="status">Verified</td>
-                      <td>Analos, Miguel Santos</td>
-                      <td>SBIT-4D</td>
-                      <td>4th</td>
-                      <td>-</td>
-                      <td>09123456789</td>
-                      <td>10:00am</td>
-                      <td>1:00pm</td>
-                  </tr>
-                  <tr>
-                      <td>15-2323</td>
-                      <td><img src="./assets/biogesic.jpg"></td>
-                      <td class="status">Unverified</td>
-                      <td>Analos, Miguel Santos</td>
-                      <td>SBIT-4D</td>
-                      <td>4th</td>
-                      <td>-</td>
-                      <td>09123456789</td>
-                      <td>10:00am</td>
-                      <td>1:00pm</td>
-                  </tr>
-                  <tr>
-                      <td>15-2323</td>
-                      <td><img src="./assets/biogesic.jpg"></td>
-                      <td class="status">Invalid</td>
-                      <td>Analos, Miguel Santos</td>
-                      <td>SBIT-4D</td>
-                      <td>4th</td>
-                      <td>-</td>
-                      <td>09123456789</td>
-                      <td>10:00am</td>
-                      <td>1:00pm</td>
-                  </tr>
-                  <tr>
-                      <td>15-2323</td>
-                      <td><img src="./assets/biogesic.jpg"></td>
-                      <td class="status">Visitor</td>
-                      <td>Analos, Miguel Santos</td>
-                      <td>SBIT-4D</td>
-                      <td>4th</td>
-                      <td>-</td>
-                      <td>09123456789</td>
-                      <td>10:00am</td>
-                      <td>1:00pm</td>
-                  </tr>
-            </tbody>
-          </table>
-        </div> 
-      </section>
 
-     
-<!-- E N D  E N T R A N C E L O G -->
+      <section id="entrancelog" class="entrancelog so_content" data-tab-content>
+          <div class="entrancelog_header d-flex justify-content-between">
+            <h3 class="m-0">ENTRANCE LOG</h3>
+              <!-- <button class="custom_btn">
+						    <a href="#addMedicineModal" class="custom_btn" data-toggle="modal"><i class="fa fa-user-md"></i>Add Medicine</a>
+              </button> -->
+          </div>
+
+        
+      </section>
 
 <!--#################################################################################################################################################################################################################################-->
 
@@ -2915,8 +2569,6 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
     <script src="./js/line_graph.js"></script>
     <script src="./js/circle_graph.js"></script>
     <script src="./js/bar_graph.js"></script>
-    <script src="./js/date_picker.js"></script>
-    
 
     <!-- bootstrap js -->
     <script src="./js/jquery.min.js"></script>
@@ -3210,24 +2862,6 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 </script>
 
 
-<!--#################################################################################################################################################################################################################################-->
-
-<!-- EDIT APPOINTMENT -->
-<script>
-        $(document).ready(function() {
-  
-            $("#edit_appointment_btn").on('click', function () {
-              
-                $("#viewAppointmentsInfo").modal("hide");
-                $("#editAppointmentsModal").modal("show");
-
-
-            });
-        });
-
-
-</script>
-
 
 <!--#################################################################################################################################################################################################################################-->
 
@@ -3292,31 +2926,12 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
         });
     </script>
 
-<!-- toggle switch -->
-
-<script>
-  var toggleSwitch = document.getElementById("toggle-switch");
-  var onText = document.querySelector(".on-text");
-  var offText = document.querySelector(".off-text");
-
-  toggleSwitch.addEventListener("change", function() {
-    if (this.checked) {
-      onText.style.display = "block";
-      offText.style.display = "none";
-    } else {
-      onText.style.display = "none";
-      offText.style.display = "block";
-    }
-  });
-</script>
     
   </body>
 
 <!-- CUSTOM AJAX FILE -->
 <script src="./ajax/search_admin.js"> </script>
 <script src="./ajax/search_nurse.js"> </script>
-<script src="./ajax/search_hospital.js"> </script>
-<script src="./ajax/search_medicine.js"> </script>
 
 </html>
 
