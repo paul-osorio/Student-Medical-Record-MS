@@ -283,9 +283,40 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
       <!-- MANAGE ACCOUNT PAGE -->
         <section class="account so_content so_active" data-tab-content>
           <div class="account_header d-flex justify-content-between">
-            <h3 class="m-0">ANALYTICS</h3>
+            <h3 class="m-0" style="color: white;">MANAGE ACCOUNT</h3>
           </div>
           <div class="account_container">
+          <div class="col-sm-10 p-5" id="student" style="width: 50%; margin-left: auto; margin-right: auto;">
+                  <div class="container-fluid p-2 shadow rounded-2 mt-5"  style="background: white;">
+                      <div class="container-fluid my-3 d-grid align-items-center justify-content-center">
+                          <div class="position-relative" style="width: 120px;height: 120px;"><img src="./assets/badang.JPG" class="w-100 rounded-circle position-absolute start-50 translate-middle" alt="" style="top:-10%; width: 120px;height: 120px;"></div>
+                      </div> 
+                      <div class="px-5 text-center">
+                        <p class="fw-semibold mb-3 text-start">Change Password</p>
+
+                        <form method="post" action="update_password.php" >
+    
+                        <div class="form-floating mb-3">
+                          <input type="password" class="form-control" id="floatingInput" name="old_password" placeholder="Password">
+                          <label for="floatingInput">Old Password</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                          <input type="password" class="form-control" id="floatingPassword" name="new_password" placeholder="Password">
+                          <label for="floatingPassword">New Password</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                          <input type="password" class="form-control" id="floatingPassword" name="confirm_password" placeholder="Password">
+                          <label for="floatingPassword">Confirm Password</label>
+                        </div>
+                        <div class="d-flex justify-content-end">
+                          <button class="btn btn-primary rounded-0 fw-semibold">CHANGE</button>
+                        </div>
+                        <br>
+                        </form>
+                      </div>
+                    </div>
+                  </div> 
+              </div>
           </div> 
         </section>
 
