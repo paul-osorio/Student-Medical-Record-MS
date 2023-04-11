@@ -114,6 +114,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
     <link rel="stylesheet" href="./css/reportchart.css?v=<?php echo time(); ?>"/>
     <link rel="stylesheet" href="./css/archivesTab.css"/>
     <link rel="stylesheet" href="./css/entrancelog.css"/>
+    <link rel="stylesheet" href="./css/ReportsTab.css"/>
 
     <link rel="stylesheet" href="./css/Main.css" />
     <link rel="stylesheet" href="./css/adminPage.css" />
@@ -274,59 +275,239 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 <!-- ############################################################################################################################################################################################################## -->
 
       
-      <!-- REPORTS PAGE -->
-      <section id="reports" class="reports so_content so_active" data-tab-content>
-        <h3 class="m-0" style="color: white;">REPORTS</h3>
-        <div class="headerpatients">
-          <span class="headerpatients1">NUMBER OF PATIENTS</span>
-                <select name="filter" class="reportfilter">
-                  <option value="Monthly">Monthly</option>
-                  <option value="Yearly">Yearly</option>
-                </select>
-              <div class="reportchart">
-                <canvas id="lineChart" style="width:800px; height: 300px; padding-top: 15px;"></canvas>
-              </div>
-        </div>
-      
-        <div class="tbl_report table-responsive">
-          <table class="report-tbl">
+           <!-- REPORTS PAGE -->
+           <section id="reports" class="reports so_content so_active" data-tab-content>
 
-            <tr>
-              <th>ID</th>
-              <th>Nurse Name</th>
-              <th>Consultation</th>
-              <th>Patients</th>
-              <th>Status</th>
-              <th>Date & Time</th>
-            <tr><td colspan="6"></td></tr>
-            </tr>
-
-            <?php if(mysqli_num_rows($fetchAllReports) > 0) { 
-                while ($reports = mysqli_fetch_assoc($fetchAllReports)) {  ?>
+                <div class="reports_header d-flex justify-content-between">
+                  <h3 class="m-0 text-white">REPORTS</h3>
+                  <div class="filter">
+                    <select id="report_filter">
+                      <option id="student_filter">Students</option>
+                      <option id="appointment_filter">Appointments</option>
+                      <option id="medicine_filter">Medicine</option>
+                    </select>
+                    <select>
+                      <option>Campus</option>
+                    </select>
+                    <select>
+                      <option>Select a date</option>
+                    </select>
+                  </div>
+                </div>
 
 
-            <tr style="padding-bottom:1em;"> 
-              <td><?=$reports['data_id']?></td>
-              <td><?=$reports['nurse_name']?></td>
-              <td><?=$reports['consultation']?></td>
-              <td><?=$reports['patient_name']?></td>
-              <td class="complete"><?=$reports['status']?></td>
-              <td><?=$reports['date']?> - <?=$reports['time']?></td>
-            <tr><td class="colsp" colspan="6"></td></tr>
-            </tr>
+                <div class="reports_table_details table-dark table-responsive" id="student_report">
+                  <h1 class="container-title">STUDENTS CONSULTATION REPORT</h1>
+                  <div class="charts-row">
+                    <div class="bar-col">
+                      <p class="chart-title">TOTAL NUMBER OF CONSULTATIONS</p>
+                      <canvas id="report_student_chart" class="chart"></canvas>
+                    </div>
+                    <div class="pie-col">
+                      <p class="chart-title">5 MOST COMMON SYMPTOMS</p>
+                      <canvas id="report_student_pie" class="circle_chart"></canvas>
+                    </div>
+                  </div>
+                  <div class="table-container">
+                  <table class="table table-striped">
+                    <tr id="table_header">
+                        <th> Student No. </th>
+                        <th> Student Name </th>
+                        <th> Section </th>
+                        <th> Consultation Date </th>
+                        <th> Temperature </th>
+                        <th> Symptoms </th>
+                        <th> Medicine Given </th>
+                        <th> Duration </th>
+                        <th> Nurse Assisted </th>
+                        <th> Remarks </th>
+                    </tr>
+                    <tr class="container">
+                        <td> 19-0249 </td>
+                        <td> Dela Cruz, Juan </td>
+                        <td> SBIT-3A </td>
+                        <td> March 3, 2023 </td>
+                        <td> 35 </td>
+                        <td> Headache </td>
+                        <td> Biogesic </td>
+                        <td> 1 Hour </td>
+                        <td> Nr. John Nicole Ablhay </td>
+                        <td style="color:lightgreen"> Cleared </td>
+                    </tr>
 
-            <?php } } ?>
+                    <tr class="container">
+                        <td> 19-0249 </td>
+                        <td> Dela Cruz, Juan </td>
+                        <td> SBIT-3A </td>
+                        <td> March 3, 2023 </td>
+                        <td> 35 </td>
+                        <td> Headache </td>
+                        <td> Biogesic </td>
+                        <td> 1 Hour </td>
+                        <td> Nr. John Nicole Ablhay </td>
+                        <td style="color:lightgreen"> Cleared </td>
+                    </tr>
 
-           
-          
-          </table>
-      </div>
-          <div class="button_container">
-            <button onClick="window.print()" class="reportbtn">Print</button>
+                    <tr class="container">
+                        <td> 19-0249 </td>
+                        <td> Dela Cruz, Juan </td>
+                        <td> SBIT-3A </td>
+                        <td> March 3, 2023 </td>
+                        <td> 35 </td>
+                        <td> Headache </td>
+                        <td> Biogesic </td>
+                        <td> 1 Hour </td>
+                        <td> Nr. John Nicole Ablhay </td>
+                        <td style="color:lightgreen"> Cleared </td>
+                    </tr>
 
-          </div>
-          <br><br>
-      </section>
+                    <tr class="container">
+                        <td> 19-0249 </td>
+                        <td> Dela Cruz, Juan </td>
+                        <td> SBIT-3A </td>
+                        <td> March 3, 2023 </td>
+                        <td> 35 </td>
+                        <td> Headache </td>
+                        <td> Biogesic </td>
+                        <td> 1 Hour </td>
+                        <td> Nr. John Nicole Ablhay </td>
+                        <td style="color:lightgreen"> Cleared </td>
+                    </tr>
+
+                    <tr class="container">
+                        <td> 19-0249 </td>
+                        <td> Dela Cruz, Juan </td>
+                        <td> SBIT-3A </td>
+                        <td> March 3, 2023 </td>
+                        <td> 35 </td>
+                        <td> Headache </td>
+                        <td> Biogesic </td>
+                        <td> 1 Hour </td>
+                        <td> Nr. John Nicole Ablhay </td>
+                        <td style="color:lightgreen"> Cleared </td>
+                    </tr>
+
+                    <tr class="container">
+                        <td> 19-0249 </td>
+                        <td> Dela Cruz, Juan </td>
+                        <td> SBIT-3A </td>
+                        <td> March 3, 2023 </td>
+                        <td> 35 </td>
+                        <td> Headache </td>
+                        <td> Biogesic </td>
+                        <td> 1 Hour </td>
+                        <td> Nr. John Nicole Ablhay </td>
+                        <td style="color:lightgreen"> Cleared </td>
+                    </tr>
+                    
+                  </table>
+                  </div>
+                </div>
+                <div>
+
+                <div class="reports_table_details table-dark table-responsive" id="appointment_report">
+                  <h1 class="container-title">APPOINTMENTS REPORT</h1>
+                  <div class="charts-row">
+                    <div class="bar-col">
+                      <p class="chart-title">TOTAL NUMBER OF APPOINTMENTS</p>
+                      <canvas id="report_appointment_chart" class="chart"></canvas>
+                    </div>
+                    <div class="pie-col">
+                      <p class="chart-title">SERVICES</p>
+                      <canvas id="report_appointment_pie" class="circle_chart"></canvas>
+                    </div>
+                  </div>
+                  <div class="table-container">
+                  <table class="table table-striped">
+                  <tr id="table_header">
+                        <th> Student No. </th>
+                        <th> Student Name </th>
+                        <th> Section </th>
+                        <th> Appointment Type </th>
+                        <th> Reason </th>
+                        <th> Date </th>
+                        <th> Time </th>
+                        <th> Reference No. </th>
+                        <th> Nurse Assisted </th>
+                        <th> Remarks </th>
+                    </tr>
+
+                    <tr class="container">
+                        <td> 19-0249 </td>
+                        <td> Dela Cruz, Juan </td>
+                        <td> SBIT-3A </td>
+                        <td> Medical Services </td>
+                        <td> Follow-up medical requirements </td>
+                        <td> March 3, 2023 </td>
+                        <td> 1:00 PM </td>
+                        <td> asd3ja </td>
+                        <td> Nr. John Nicole Ablhay </td>
+                        <td style="color:lightgreen"> Completed </td>
+                    </tr>
+
+                  </table>
+                  </div>
+                </div>
+                <div>
+
+                <div class="reports_table_details table-dark table-responsive" id="medicine_report">
+                  <h1 class="container-title">MEDICINE INVENTORY REPORT</h1>
+                  <div class="charts-row">
+                    <div class="bar-col">
+                      <p class="chart-title">TOTAL NUMBER OF MEDICINES</p>
+                      <canvas id="report_medicine_chart" class="chart"></canvas>
+                    </div>
+                    <div class="pie-col">
+                      <p class="chart-title">MOSTLY USED MEDICINES</p>
+                      <canvas id="report_medicine_pie" class="circle_chart"></canvas>
+                    </div>
+                  </div>
+                  <div class="table-container">
+                  <table class="table table-striped">
+                  <tr id="table_header">
+                        <th> Medicine Name </th>
+                        <th> Stocks </th>
+                        <th> Expiration Date </th>
+                        <th> Description </th>
+                    </tr>
+
+                    <tr class="container">
+                        <td> Biogesic </td>
+                        <td> 1,000 </td>
+                        <td> April 2025 </td>
+                        <td> Lorem Ipsum Dolor Iset </td>
+                    </tr>
+                    
+                  </table>
+                  </div>
+                </div>
+                <div>
+
+                <div class="nav-row">
+                <div></div>
+                <div class="pagination">
+                  <div class="paginate-btn">
+                    <i class="fa fa-backward"></i>
+                  </div>
+                  <div class="paginate-btn">
+                    1
+                  </div>
+                  <div class="paginate-btn">
+                    2
+                  </div>
+                  <div class="paginate-btn">
+                    3
+                  </div>
+                  <div class="paginate-btn">
+                    <i class="fa fa-forward"></i>
+                  </div>
+                </div>
+                <span class="export"><p>Print or </p><a href="#"> Download</a></span>
+                </div>
+
+                </div>
+
+
 
 <!--#################################################################################################################################################################################################################################-->
 
@@ -363,365 +544,39 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
 <!--#################################################################################################################################################################################################################################-->
 
-<!-- DELETE ADMIN RECORD JS -->
-    <script>
-        $(document).ready(function () {
-
-            $('.deletebtn').on('click', function () {
-
-                $('#delAdmin').modal('show');
-
-                var tr = $(this).closest('tr');
-
-                console.log(tr);
-
-                var data = tr.children("td").map(function () {
-
-                    return $(this).text();
-
-                }).get();
-
-                console.log(data);
-
-                $('#delete_id').val(data[1]);
-
-            });
-        });
-    </script>
-
-
 <!--#################################################################################################################################################################################################################################-->
 
-  <!-- EDIT ADMIN INFO JS -->
-    <script>
-        $(document).ready(function () {
+<!-- REPORT FILTER JS -->
+<script>
+      $(document).ready(function() {
+        // Show the student report div by default
+        $('#student_report').show();
+        $('#appointment_report').hide();
+        $('#medicine_report').hide();
 
-            $('.editbtn').on('click', function () {
+        // Trigger the change event for the select element
+        $('#report_filter').trigger('change');
 
-                $('#editAdminInfo').modal('show');
-
-                $tr = $(this).closest('tr');
-
-                var data = $tr.children("td").map(function () {
-                    return $(this).text();
-                }).get();
-
-                console.log(data);
-
-
-                $('#update_id').val(data[0]);
-                $('#unique_id').val(data[1]);
-                $('#email').val(data[4]);
-                $('#fname').val(data[2]);
-                $('#lname').val(data[3]);
-                $('#contact_num').val(data[5]);
-                $('#img').val(data[6]);
-            });
+        // Call the function when the select element changes
+        $('#report_filter').on('change', function() {
+          if ($('#student_filter').is(':selected')) {
+            $('#student_report').show();
+            $('#appointment_report').hide();
+            $('#medicine_report').hide();
+          } else if ($('#appointment_filter').is(':selected')) {
+            $('#student_report').hide();
+            $('#appointment_report').show();
+            $('#medicine_report').hide();
+          } else if ($('#medicine_filter').is(':selected')) {
+            $('#student_report').hide();
+            $('#appointment_report').hide();
+            $('#medicine_report').show();
+          }
         });
+      });
 
     </script>
 
-<!--#################################################################################################################################################################################################################################-->
-
-  <!-- EDIT HOSPITAL INFO JS -->
-  <script>
-        $(document).ready(function () {
-
-            $('.edithosbtn').on('click', function () {
-
-                $('#editHospitalInfo').modal('show');
-
-                $tr = $(this).closest('tr');
-
-                var data = $tr.children("td").map(function () {
-                    return $(this).text();
-                }).get();
-
-                console.log(data);
-
-
-                $('#update_id').val(data[1]);
-                $('#hospi_id').val(data[0]);
-                $('#hospital').val(data[3]);
-                $('#hospital_add').val(data[2]);
-                $('#email').val(data[5]);
-                $('#contact_num').val(data[4]);
-                
-            });
-        });
-
-    </script>
-
-<!--#################################################################################################################################################################################################################################-->
-
-<!-- VIEW NURSE JS -->
-<script>
-        $(document).ready(function () {
-
-            $('.nurseinfobtn').on('click', function () {
-
-                $tr = $(this).closest('tr');
-
-                var data = $tr.children("td").map(function () {
-                    return $(this).text();
-                }).get();
-
-                console.log(data);
-
-                $('#nurse_list').hide();
-                $('#viewNurseInfo').show();
-                $('#update_id').val(data[0]);
-                $('#unique_id').val(data[1]);
-                $('#email').val(data[4]);
-                $('#fname').val(data[2]);
-                $('#lname').val(data[3]);
-                $('#contact_num').val(data[5]);
-            });
-        });
-
-    </script>
-
-
-<!-- EDIT NURSE JS -->
-
-<script>
-        $(document).ready(function () {
-
-            $('.nurseeditbtn').on('click', function () {
-
-                $tr = $(this).closest('tr');
-
-                var data = $tr.children("td").map(function () {
-                    return $(this).text();
-                }).get();
-
-                console.log(data);
-
-                $('#nurse_list').hide();
-                $('#editNurseInfo').show();
-                $('#update_id').val(data[0]);
-                $('#unique_id').val(data[1]);
-                $('#email').val(data[4]);
-                $('#fname').val(data[2]);
-                $('#lname').val(data[3]);
-                $('#contact_num').val(data[5]);
-            });
-        });
-
-    </script>
-
-<!--#################################################################################################################################################################################################################################-->
-
-<script>
-        $(document).ready(function () {
-
-            $('#nextpage2').on('click', function () {
-
-                $('#addnurse_title1').hide()
-                $('#addnurse_page1').hide();
-                $('#addnurse_page2').show();
-                $('#addnurse_title2').show()
-                
-            });
-        });
-
-</script>
-
-<!--#################################################################################################################################################################################################################################-->
-
-<!-- ADD NURSE -->
-<script>
-        $(document).ready(function () {
-
-            $('#prevpage1').on('click', function () {
-
-                $('#addnurse_title2').hide()
-                $('#addnurse_page2').hide();
-                $('#addnurse_page1').show();
-                $('#addnurse_title1').show()
-                
-            });
-        });
-
-</script>
-
-<!--#################################################################################################################################################################################################################################-->
-
-<!-- ADD NURSE -->
-<script>
-        $(document).ready(function () {
-
-            $('#nextpage3').on('click', function () {
-
-                $('#addnurse_title2').hide()
-                $('#addnurse_page2').hide();
-                $('#addnurse_page3').show();
-                $('#addnurse_title3').show()
-                
-            });
-        });
-
-</script>
-
-<!--#################################################################################################################################################################################################################################-->
-
-<!-- ADD NURSE -->
-<script>
-        $(document).ready(function () {
-
-            $('#prevpage2').on('click', function () {
-
-                $('#addnurse_title3').hide()
-                $('#addnurse_page3').hide();
-                $('#addnurse_page2').show();
-                $('#addnurse_title2').show()
-                
-            });
-        });
-
-</script>
-
-<!--#################################################################################################################################################################################################################################-->
-
-<!-- ADD SUCCESS -->
-<script>
-        $(document).ready(function() {
-  
-            $("#addsuccess_btn").on('click', function () {
-              
-                $("#addsuccessModal").modal("show");
-
-            });
-        });
-
-
-</script>
-
-<!--#################################################################################################################################################################################################################################-->
-
-<!-- DELETE NURSE -->
-<script>
-        $(document).ready(function() {
-  
-            $("#delNurse_btn").on('click', function () {
-              
-                $("#removesuccessModalNurse").modal("show");
-                $("#viewNurseInfo").hide();
-                $("#nurse_list").show();
-
-            });
-        });
-
-
-</script>
-
-<!--#################################################################################################################################################################################################################################-->
-
-<!-- DELETE ADMIN -->
-<script>
-        $(document).ready(function() {
-  
-            $("#delAdmin_btn").on('click', function () {
-              
-                $("#removesuccessModal").modal("show");
-
-            });
-        });
-
-
-</script>
-
-<!--#################################################################################################################################################################################################################################-->
-
-<!-- DELETE HOSPITAL RECORD JS -->
-<script>
-        $(document).ready(function () {
-
-            $('.deletebtn').on('click', function () {
-
-                $('#delHospital').modal('show');
-
-                var tr = $(this).closest('tr');
-
-                console.log(tr);
-
-                var data = tr.children("td").map(function () {
-
-                    return $(this).text();
-
-                }).get();
-
-                console.log(data);
-
-                $('#delete_id').val(data[1]);
-
-            });
-        });
-    </script>
-
-
-<!--#################################################################################################################################################################################################################################-->
-
-<!-- DRAFT -->
-  <!-- EDIT DEPARTMENT INFO JS -->
-    <script>
-        $(document).ready(function () {
-
-            $('.editbtndepts').on('click', function () {
-
-                $('#editDepartmentInfo').modal('show');
-
-                $tr = $(this).closest('tr');
-
-                var data = $tr.children("td").map(function () {
-                    return $(this).text();
-                }).get();
-
-                console.log(data);
-
-
-                $('#update_id').val(data[8]);
-                $('#emp_id').val(data[0]);
-                $('#dept_name').val(data[3]);
-                $('#building_name').val(data[4]);
-                $('#room_num').val(data[5]);
-                $('#firstname').val(data[6]);
-                $('#lastname').val(data[7]);
-                $('#email').val(data[8]);
-                $('#contact_num').val(data[9]);
-                $('#position').val(data[2]);
-                $('#image').val(data[10]);
-            });
-        });
-
-    </script>
-
-
-<!-- DELETE DEPARTMENT RECORD JS -->
-<script>
-        $(document).ready(function () {
-
-            $('.deletebtndepts').on('click', function () {
-
-                $('#delDepartment').modal('show');
-
-                var tr = $(this).closest('tr');
-
-                console.log(tr);
-
-                var data = tr.children("td").map(function () {
-
-                    return $(this).text();
-
-                }).get();
-
-                console.log(data);
-
-                $('#delete_id').val(data[1]);
-
-            });
-        });
-    </script>
 
     
   </body>
