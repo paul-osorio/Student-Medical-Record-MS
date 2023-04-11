@@ -153,6 +153,49 @@ if (isset($_SESSION['emp_id']) && isset($_SESSION['username'])) {
                     </div>
 
                     <div class="d-flex justify-content-between mt-3">
+                      <p class="fw-bold">LIST OF CONSULTED STUDENTS</p>
+                      <a href="#"> View All</a>
+                    </div>
+                    <table class="table table-borderless">
+                    <thead>
+                        <tr class="text-light" style="background: #2D6DB2;">
+                          <th scope="col">Student No.</th>
+                          <th scope="col">Name</th>
+                          <th scope="col">Course</th>
+                          <th scope="col">Year</th>
+                          <th scope="col">Status</th>
+                        </tr>
+                      </thead>
+
+                      <tbody class="table-group-divider">
+                        <?php
+                        include "db_conn.php";
+                        $sql = "SELECT * FROM students LIMIT 4";
+                        $run_sql = mysqli_query($conn,$sql) or die(mysqli_error($conn));
+                        if(mysqli_num_rows($run_sql) > 0){
+                          while ($row = mysqli_fetch_array($run_sql)) {
+                        ?>
+                        <tr class="border-bottom">
+                          <td><?php echo $row['student_id'] ?></td>
+                          <td><?php echo $row['firstname'] ." ". $row['lastname'] ?></td>
+                          <td><?php echo $row['course'] ?></td>
+                          <td><?php echo $row['year_level'] ?></td>
+                          <td><?php echo $row['remarks'] ?></td>
+                        </tr>
+                        <?php }
+                        }
+                        
+                        ?>
+                      
+                      
+                   
+                      </tbody>
+                    </table>
+
+
+
+                    
+                    <div class="d-flex justify-content-between mt-3">
                       <p class="fw-bold">RECENT APPOINTMENTS</p>
                       <a href="#"> View All</a>
                     </div>
@@ -163,7 +206,7 @@ if (isset($_SESSION['emp_id']) && isset($_SESSION['username'])) {
                           <th scope="col">Name</th>
                           <th scope="col">Course</th>
                           <th scope="col">Year</th>
-                          <th scope="col">status</th>
+                          <th scope="col">Status</th>
                         </tr>
                       </thead>
                       <tbody class="table-group-divider">
@@ -189,47 +232,7 @@ if (isset($_SESSION['emp_id']) && isset($_SESSION['username'])) {
                        
                       </tbody>
                     </table>
-
                     
-                    <div class="d-flex justify-content-between mt-3">
-                      <p class="fw-bold">LIST OF CONSULTED STUDENTS</p>
-                      <a href="#"> View All</a>
-                    </div>
-                    <table class="table table-borderless">
-                    <thead>
-                        <tr class="text-light" style="background: #2D6DB2;">
-                          <th scope="col">Student No.</th>
-                          <th scope="col">Name</th>
-                          <th scope="col">Course</th>
-                          <th scope="col">Year</th>
-                          <th scope="col">status</th>
-                        </tr>
-                      </thead>
-
-                      <tbody class="table-group-divider">
-                        <?php
-                        include "db_conn.php";
-                        $sql = "SELECT * FROM students LIMIT 4";
-                        $run_sql = mysqli_query($conn,$sql) or die(mysqli_error($conn));
-                        if(mysqli_num_rows($run_sql) > 0){
-                          while ($row = mysqli_fetch_array($run_sql)) {
-  ?>
-     <tr class="border-bottom">
-                          <td><?php echo $row['student_id'] ?></td>
-                          <td><?php echo $row['firstname'] ." ". $row['lastname'] ?></td>
-                          <td><?php echo $row['course'] ?></td>
-                          <td><?php echo $row['year_level'] ?></td>
-                          <td><?php echo $row['remarks'] ?></td>
-                        </tr>
- <?php }
-                        }
-                        
-                        ?>
-                      
-                      
-                   
-                      </tbody>
-                    </table>
                   </div>
 
                   

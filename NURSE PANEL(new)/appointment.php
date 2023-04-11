@@ -115,9 +115,12 @@ if (isset($_SESSION['emp_id']) && isset($_SESSION['username'])) {
                                   <select class="form-select shadow-none" aria-label="Default select example" name="sort" id="sort_app">
                                     <option name="sort" value="student_id">All</option>
                                     <option name="sort" value="Recent">Recent</option>
-                                    <option name="sort" value="app_type">Type</option>
+                                    <!-- <option name="sort" value="app_type">Type</option>
                                     <option name="sort" value="app_time">Time</option>
-                                    <option name="sort" value="app_date">Date</option>
+                                    <option name="sort" value="app_date">Date</option> -->
+                                    <option name="sort" value="scheduled">Scheduled</option>
+                                    <option name="sort" value="cancelled">Cancelled</option>
+                                    <!-- <option name="sort" value="pending">Pending</option> -->
                                   </select>
                                 </div>
                   

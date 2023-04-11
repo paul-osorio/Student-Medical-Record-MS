@@ -548,31 +548,109 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
   <!-- bar graph js -->
   <script>
-    var xValues = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-    var yValues = [200,100,170,270,250,290,240,210,280,320,450,200];
+      var xValues = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+          var yValues = [200,100,170,270,250,290,240,210,280,320,450,200];
 
-    new Chart("myChart3", {
-        type: "bar",
-        data: {
-        labels: xValues,
-        datasets: [{
-        fill: false,
-        lineTension: 0,
-        backgroundColor: "rgba(0,0,255,1.0)",
-        borderColor: "#7B89AD",
-        data: yValues
-        }]
-    },
-        options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                aspectRatio: 5,
-                legend: {display: false},
-                scales: {
-                yAxes: [{ticks: {min: 0, max:700}}],
-            }
-        }
-    });
+          new Chart("myChart3", {
+              type: "bar",
+              data: {
+              labels: xValues,
+              datasets: [{
+              fill: false,
+              lineTension: 0,
+              backgroundColor: "rgba(0,0,255,1.0)",
+              borderColor: "#7B89AD",
+              data: yValues
+              }]
+          },
+              options: {
+                  responsive: true,
+                  maintainAspectRatio: false,
+                  aspectRatio: 5,
+                  legend: {display: false},
+                  scales: {
+                  yAxes: [{ticks: {min: 0, max:700}}],
+              }
+          }
+      });
+
+      var xValues = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+          var yValues = [200,100,170,270,250,290,240,210,280,320,450,200];
+
+          new Chart("report_student_chart", {
+              type: "bar",
+              data: {
+              labels: xValues,
+              datasets: [{
+              fill: false,
+              lineTension: 0,
+              backgroundColor: "rgba(0,0,255,1.0)",
+              borderColor: "#7B89AD",
+              data: yValues
+              }]
+          },
+              options: {
+                  responsive: true,
+                  maintainAspectRatio: true,
+                  aspectRatio: 3,
+                  legend: {display: false},
+                  scales: {
+                  yAxes: [{ticks: {min: 0, max:700}}],
+              }
+          }
+      });
+
+        var xValues = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+          var yValues = [200,100,170,270,250,290,240,210,280,320,450,200];
+
+          new Chart("report_appointment_chart", {
+              type: "bar",
+              data: {
+              labels: xValues,
+              datasets: [{
+              fill: false,
+              lineTension: 0,
+              backgroundColor: "rgba(0,0,255,1.0)",
+              borderColor: "#7B89AD",
+              data: yValues
+              }]
+          },
+              options: {
+                  responsive: true,
+                  maintainAspectRatio: true,
+                  aspectRatio: 3,
+                  legend: {display: false},
+                  scales: {
+                  yAxes: [{ticks: {min: 0, max:700}}],
+              }
+          }
+      });
+
+      var xValues = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+          var yValues = [200,100,170,270,250,290,240,210,280,320,450,200];
+
+          new Chart("report_medicine_chart", {
+              type: "bar",
+              data: {
+              labels: xValues,
+              datasets: [{
+              fill: false,
+              lineTension: 0,
+              backgroundColor: "rgba(0,0,255,1.0)",
+              borderColor: "#7B89AD",
+              data: yValues
+              }]
+          },
+              options: {
+                  responsive: true,
+                  maintainAspectRatio: true,
+                  aspectRatio: 3,
+                  legend: {display: false},
+                  scales: {
+                  yAxes: [{ticks: {min: 0, max:700}}],
+              }
+          }
+      });
   </script>
 
 
@@ -580,34 +658,124 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
   <script>
     var xValues = ["Verified", "Unverified", "Visitor", "Invalid"];
-    var yValues = [55, 49, 44, 24];
-    var barColors = [
-      "#2D7538",
-      "#f5c71a",
-      "#5180C7",
-      "#FF4646",
-    ];
+var yValues = [55, 49, 44, 24];
+var barColors = [
+  "#2D7538",
+  "#f5c71a",
+  "#5180C7",
+  "#FF4646",
+];
 
-    new Chart("myChart2", {
-      type: "doughnut",
-      data: {
-        labels: xValues,
-        datasets: [{
-          backgroundColor: barColors,
-          data: yValues
-        }]
-      },
-      options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          aspectRatio: 2,
-          legend: {
-            display: true,
-            position: 'left',
-            maxWidth: 60,
-          }
+new Chart("myChart2", {
+  type: "doughnut",
+  data: {
+    labels: xValues,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  },
+   options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      aspectRatio: 2,
+      legend: {
+        display: true,
+        position: 'left',
+        maxWidth: 60,
       }
-    });
+   }
+});
+
+var xValues = ["Difficulty Breathing", "Fever or Chills", "Headache", "Diarrhea", "Dizziness"];
+var yValues = [55, 49, 44, 24, 35];
+var barColors = [
+  "#255B98",
+  "#5CE1E6",
+  "#2BB4D4",
+  "#255B98",
+  "2D306D",
+];
+
+new Chart("report_student_pie", {
+  type: "pie",
+  data: {
+    labels: xValues,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  },
+   options: {
+      responsive: true,
+      maintainAspectRatio: true,
+      aspectRatio: 0,
+      legend: {
+        display: true,
+        position: 'left',
+        maxWidth: 60,
+      }
+   }
+});
+
+var xValues = ["Medical", "Dental",];
+var yValues = [55, 49,];
+var barColors = [
+  "#5CE1E6",
+  "#2BB4D4",
+];
+
+new Chart("report_appointment_pie", {
+  type: "pie",
+  data: {
+    labels: xValues,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  },
+   options: {
+      responsive: true,
+      maintainAspectRatio: true,
+      aspectRatio: 0,
+      legend: {
+        display: true,
+        position: 'left',
+        maxWidth: 60,
+      }
+   }
+});
+
+var xValues = ["Difficulty Breathing", "Fever or Chills", "Headache", "Diarrhea", "Dizziness"];
+var yValues = [55, 49, 44, 24, 35];
+var barColors = [
+  "#255B98",
+  "#5CE1E6",
+  "#2BB4D4",
+  "#255B98",
+  "2D306D",
+];
+
+new Chart("report_medicine_pie", {
+  type: "pie",
+  data: {
+    labels: xValues,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  },
+   options: {
+      responsive: true,
+      maintainAspectRatio: true,
+      aspectRatio: 0,
+      legend: {
+        display: true,
+        position: 'left',
+        maxWidth: 60,
+      }
+   }
+});
   </script>
 
 
