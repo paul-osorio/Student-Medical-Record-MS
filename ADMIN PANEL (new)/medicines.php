@@ -160,44 +160,44 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
             <!-- <ul class="list-unstyled navbar-nav ps-0"> -->
             <ul class="mt-4 list-unstyled navbar-nav ps-0 ">
 
-                  <li  class="px-4 w-100 mb-1 nav-item tab">
+                  <li  class="px-4 w-100 mb-1 nav-item tab py-1">
                     <a href="adminDashboard.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-area-chart mx-2"></i><span>Dashboard</span></span></a>
                   </li>
-                  <li  class="px-4 w-100 mb-1 nav-item tab">
+                  <li  class="px-4 w-100 mb-1 nav-item tab py-1">
                     <a href="admins.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-users mx-2"></i><span>Admins</span></span></a>
                   </li>
-                  <li  class="px-4 w-100 mb-1 nav-item tab">
+                  <li  class="px-4 w-100 mb-1 nav-item tab py-1">
                     <a href="departments.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-building-o mx-2"></i><span>Departments</span></span></a>
                   </li>
-                  <li  class="px-4 w-100 mb-1 nav-item tab">
+                  <li  class="px-4 w-100 mb-1 nav-item tab py-1">
                     <a href="nurses.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-user-md mx-2"></i><span>Nurses</span></span></a>
                   </li>
-                  <li  class="px-4 w-100 mb-1 nav-item tab">
+                  <li  class="px-4 w-100 mb-1 nav-item tab py-1">
                     <a href="hospitals.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-hospital-o mx-2" aria-hidden="true"></i><span>Hospitals</span></span></a>
                   </li>
-                  <li  class="px-4 w-100 mb-1 nav-item active tab">
+                  <li  class="px-4 w-100 mb-1 nav-item active tab py-1">
                    <a href="medicines.php" class="nav-link"><span class="fx-5 fw-800 text-light"> <i class="fa fa-medkit mx-2" aria-hidden="true"></i><span>Medicines</span></span></a>
                   </li>
-                  <li  class="px-4 w-100 mb-1 nav-item tab">
+                  <li  class="px-4 w-100 mb-1 nav-item tab py-1">
                     <a href="appointment.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-calendar mx-2" aria-hidden="true"></i><span>Appointments</span></span></a>
                   </li>
-                  <li  class="px-4 w-100 mb-1 nav-item tab">
+                  <li  class="px-4 w-100 mb-1 nav-item tab py-1">
                     <a href="report.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-book mx-2"></i><span>Reports</span></span></a>
                   </li>
-                  <li  class="px-4 w-100 mb-1 nav-item tab">
+                  <li  class="px-4 w-100 mb-1 nav-item tab py-1">
                     <a href="archive.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-folder-open-o mx-2" aria-hidden="true"></i><span>Archive</span></span></a>
                   </li>
-                  <li  class="px-4 w-100 mb-1 nav-item tab">
+                  <li  class="px-4 w-100 mb-1 nav-item tab py-1">
                     <a href="entranceLog.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-address-book mx-2" aria-hidden="true"></i><span>Entrance Log</span></span></a>
                   </li>
 
             <div class="web_info">
 
-            <div class="admin_info"><br>
+            <!-- <div class="admin_info"><br>
                 <img src="./assets/<?=$admins['img']?>" alt=""/>
                 <span><?=$admins['email']?></span>
                 <span><?=$admins['fname']?>&nbsp<?=$admins['lname']?></span>
-            </div>
+            </div> -->
 
             <!-- <div class="web_copyright">
                 <span>Quezon City University Clinic 2022</span>
@@ -243,18 +243,18 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                     style="background: none">
-                    <img src="./assets/<?=$admins['img']?>" alt=""/>
+                    <h5 style="margin-right: 30px; margin-top: 10px; color: white;">Hey, <?=$admins['fname']?>&nbsp<?=$admins['lname']?>!</h5> <img src="./assets/<?=$admins['img']?>" alt=""/>
                     </div>
 
                     <ul
                     class="dropdown-menu dropdown-menu-end dropdown-menu-dark"
                     aria-labelledby="dropdownMenuButton1">
 
-                    <li>
-                        <a class="dropdown-item" href="#">Login As: <?=$admins['fname']?><span id="email_span"></span></a>
-                    </li>
-
                     <li><a class="dropdown-item" href="account.php">Manage Account</a></li>
+
+                    <li>
+                        <a class="dropdown-item" href="activityLog.php">Activity Log<span id="email_span"></span></a>
+                    </li>
 
                     <li id="logout">
                         <a class="dropdown-item" href="logout.php">Logout</a>
@@ -274,7 +274,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
   
 <!--#################################################################################################################################################################################################################################-->
 
-            <!-- MEDICINES -->
+        <!-- MEDICINES -->
             <section id="medicine" class="medicine so_content so_active" data-tab-content>
                     <div class="medicine_landing">
                         <div class="medicine_header d-flex justify-content-between">
@@ -288,20 +288,21 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                     <div class="sort flex-grow-1">
                         <span>Sort by</span>
                         <select name="filter" id="filter"> 
-                        <option value="">Select</option> 
+                        <option value="prod_id">All</option> 
                         <!-- <option value="date_manufactured">Date Manufactured</option> -->
+                        <!-- <option value="prod_id">Product ID</option>  -->
                         <option value="expirationDate">Expiration Date</option>
                         <option value="num_stocks">Stocks</option>
                         </select>
                     </div>
                     <div class="r">
                         <div class="search">
-                        <input type="text" name="search" id="search_meds" placeholder="&#xF002; Search Medicine" style="font-family:Poppins, FontAwesome">
+                        <input type="text" name="search" id="search_meds" placeholder="&#xF002; Search Medicine" style="font-family:Poppins, FontAwesome; margin-left: 50px;">
                         </div>
-                        <div class="grid">
+                        <!-- <div class="grid">
                         <i class="fa fa-th-large" aria-hidden="true"></i>
-                        </div>
-                        <div class="bars">
+                        </div> -->
+                        <div class="bars" style="margin-left: 70px;">
                         <i class="fa fa-bars" aria-hidden="true"></i>
                         </div>
                     </div>
@@ -324,7 +325,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                         <tbody>
                             <tr class="mdc-header">
                             <td style="width:120px;"><img src="./assets/<?=$med['image']?>" width="150px" height="130px"> </td>
-                            <td style="width:200px;" >
+                            <td style="width:150px;" >
                                 <table>
                                 <td class="b1"><?=$med['name']?></td>
                                 <tr>
@@ -341,7 +342,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                                 
                     
                             
-                            <td style="width:370px;">
+                            <td style="width:370px; padding-left:20px;">
                             <!-- <b>Expiration Date:</b> <?=$med['expirationDate']?> -->
                                 <table>
                                 <td class="b1"><b>Expiration Date:</b> <?=$med['expirationDate']?></td>

@@ -73,7 +73,7 @@ if (isset($_SESSION['emp_id']) && isset($_SESSION['username'])) {
             </div>
         </nav>
         <div class="row">
-          <div class="col-md-2 p-0 position-relative" style="min-height:100vh;box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;background: #05285c;">
+          <div class="col-md-2 p-0 position-relative" style="min-height: 100vh; box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px; background: #05285c;">
              <div class="w-100">
               <ul class="mt-4 list-unstyled navbar-nav ps-0 ">
 
@@ -86,9 +86,9 @@ if (isset($_SESSION['emp_id']) && isset($_SESSION['username'])) {
                   <li  class="px-4 w-100 mb-1 nav-item tab py-2">
                   <a href="Mreport.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-plus-square mx-2"></i><span>Medical Requirements</span></span></a>
                   </li>
-                  <li  class="px-4 w-100 mb-1 nav-item tab py-2">
+                  <!-- <li  class="px-4 w-100 mb-1 nav-item tab py-2">
                   <a href="department.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-building-o mx-2"></i><span>Departments</span></span></a>
-                  </li>
+                  </li> -->
                   <li  class="px-4 w-100 mb-1 nav-item tab py-2">
                   <a href="appointment.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-calendar mx-2" aria-hidden="true"></i><span>Appointments</span></span></a>
                   </li>
@@ -97,6 +97,9 @@ if (isset($_SESSION['emp_id']) && isset($_SESSION['username'])) {
                   </li>
                   <li  class="px-4 w-100 mb-1 nav-item tab py-2">
                     <a href="report.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-book mx-2"></i><span>Reports</span></span></a>
+                  </li>
+                  <li  class="px-4 w-100 mb-1 nav-item tab py-2">
+                    <a href="activityLog.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-history mx-2"></i><span>Activity Log</span></span></a>
                   </li>
                   <li  id="account_btn" class="px-4 w-100 mb-1 nav-item tab py-2">
                   <a href="account.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-user-o mx-2" aria-hidden="true"></i><span>Account</span></span></a>
@@ -126,7 +129,8 @@ if (isset($_SESSION['emp_id']) && isset($_SESSION['username'])) {
                     <div class="px-3 rounded-3 d-flex align-items-center mt-3" style="background:#0C4079";>
 
                       <div class="position-relative" style="width:180px;height:150px;">
-                        <img src="./assets/<?=$nurse['profile_pic']?>" class="position-absolute w-100 h-100" style="top:-25%">
+                        <img src="./assets/<?=$nurse['profile_pic']?>" class="position-absolute w-100 h-100">
+                        <!-- style="top:-25%" -->
                       </div>
                       <div class="d-flex justify-content-between align-items-center w-100 mx-3">
 
@@ -149,6 +153,49 @@ if (isset($_SESSION['emp_id']) && isset($_SESSION['username'])) {
                     </div>
 
                     <div class="d-flex justify-content-between mt-3">
+                      <p class="fw-bold">LIST OF CONSULTED STUDENTS</p>
+                      <a href="#"> View All</a>
+                    </div>
+                    <table class="table table-borderless">
+                    <thead>
+                        <tr class="text-light" style="background: #2D6DB2;">
+                          <th scope="col">Student No.</th>
+                          <th scope="col">Name</th>
+                          <th scope="col">Course</th>
+                          <th scope="col">Year</th>
+                          <th scope="col">Status</th>
+                        </tr>
+                      </thead>
+
+                      <tbody class="table-group-divider">
+                        <?php
+                        include "db_conn.php";
+                        $sql = "SELECT * FROM students LIMIT 4";
+                        $run_sql = mysqli_query($conn,$sql) or die(mysqli_error($conn));
+                        if(mysqli_num_rows($run_sql) > 0){
+                          while ($row = mysqli_fetch_array($run_sql)) {
+                        ?>
+                        <tr class="border-bottom">
+                          <td><?php echo $row['student_id'] ?></td>
+                          <td><?php echo $row['firstname'] ." ". $row['lastname'] ?></td>
+                          <td><?php echo $row['course'] ?></td>
+                          <td><?php echo $row['year_level'] ?></td>
+                          <td><?php echo $row['remarks'] ?></td>
+                        </tr>
+                        <?php }
+                        }
+                        
+                        ?>
+                      
+                      
+                   
+                      </tbody>
+                    </table>
+
+
+
+                    
+                    <div class="d-flex justify-content-between mt-3">
                       <p class="fw-bold">RECENT APPOINTMENTS</p>
                       <a href="#"> View All</a>
                     </div>
@@ -159,7 +206,7 @@ if (isset($_SESSION['emp_id']) && isset($_SESSION['username'])) {
                           <th scope="col">Name</th>
                           <th scope="col">Course</th>
                           <th scope="col">Year</th>
-                          <th scope="col">status</th>
+                          <th scope="col">Status</th>
                         </tr>
                       </thead>
                       <tbody class="table-group-divider">
@@ -185,47 +232,7 @@ if (isset($_SESSION['emp_id']) && isset($_SESSION['username'])) {
                        
                       </tbody>
                     </table>
-
                     
-                    <div class="d-flex justify-content-between mt-3">
-                      <p class="fw-bold">LIST OF CONSULTED STUDENTS</p>
-                      <a href="#"> View All</a>
-                    </div>
-                    <table class="table table-borderless">
-                    <thead>
-                        <tr class="text-light" style="background: #2D6DB2;">
-                          <th scope="col">Student No.</th>
-                          <th scope="col">Name</th>
-                          <th scope="col">Course</th>
-                          <th scope="col">Year</th>
-                          <th scope="col">status</th>
-                        </tr>
-                      </thead>
-
-                      <tbody class="table-group-divider">
-                        <?php
-                        include "db_conn.php";
-                        $sql = "SELECT * FROM students LIMIT 4";
-                        $run_sql = mysqli_query($conn,$sql) or die(mysqli_error($conn));
-                        if(mysqli_num_rows($run_sql) > 0){
-                          while ($row = mysqli_fetch_array($run_sql)) {
-  ?>
-     <tr class="border-bottom">
-                          <td><?php echo $row['student_id'] ?></td>
-                          <td><?php echo $row['firstname'] ." ". $row['lastname'] ?></td>
-                          <td><?php echo $row['course'] ?></td>
-                          <td><?php echo $row['year_level'] ?></td>
-                          <td><?php echo $row['remarks'] ?></td>
-                        </tr>
- <?php }
-                        }
-                        
-                        ?>
-                      
-                      
-                   
-                      </tbody>
-                    </table>
                   </div>
 
                   

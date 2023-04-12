@@ -98,7 +98,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" href="./assets/favcon.png"/>
-    <title>SMRMS | ADMIN | Dashboard</title>
+    <title>SMRMS | ADMIN | Manage Account</title>
 
     <!-- Fontfaces CSS-->
     <link rel="stylesheet" href="./style.css?v=<?php echo time(); ?>"/>
@@ -159,44 +159,47 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
         <!-- <ul class="list-unstyled navbar-nav ps-0"> -->
           <ul class="mt-4 list-unstyled navbar-nav ps-0 ">
 
-            <li  class="px-4 w-100 mb-1 nav-item tab">
+            <li  class="px-4 w-100 mb-1 nav-item tab py-1">
               <a href="adminDashboard.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-area-chart mx-2"></i><span>Dashboard</span></span></a>
             </li>
-            <li  class="px-4 w-100 mb-1 nav-item tab">
-            <a href="admins.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-users mx-2"></i><span>Admins</span></span></a>
+            <li  class="px-4 w-100 mb-1 nav-item tab py-1">
+              <a href="admins.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-users mx-2"></i><span>Admins</span></span></a>
             </li>
-            <li  class="px-4 w-100 mb-1 nav-item tab">
-            <a href="departments.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-building-o mx-2"></i><span>Departments</span></span></a>
+            <li  class="px-4 w-100 mb-1 nav-item tab py-1">
+              <a href="departments.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-building-o mx-2"></i><span>Departments</span></span></a>
             </li>
-            <li  class="px-4 w-100 mb-1 nav-item tab">
-            <a href="nurses.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-user-md mx-2"></i><span>Nurses</span></span></a>
+            <li  class="px-4 w-100 mb-1 nav-item tab py-1">
+              <a href="nurses.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-user-md mx-2"></i><span>Nurses</span></span></a>
             </li>
-            <li  class="px-4 w-100 mb-1 nav-item tab">
-            <a href="hospitals.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-hospital-o mx-2" aria-hidden="true"></i><span>Hospitals</span></span></a>
+            <li  class="px-4 w-100 mb-1 nav-item tab py-1">
+              <a href="hospitals.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-hospital-o mx-2" aria-hidden="true"></i><span>Hospitals</span></span></a>
             </li>
-            <li  class="px-4 w-100 mb-1 nav-item tab">
-            <a href="medicines.php" class="nav-link"><span class="fx-5 fw-800 text-light"> <i class="fa fa-medkit mx-2" aria-hidden="true"></i><span>Medicines</span></span></a>
+            <li  class="px-4 w-100 mb-1 nav-item tab py-1">
+              <a href="medicines.php" class="nav-link"><span class="fx-5 fw-800 text-light"> <i class="fa fa-medkit mx-2" aria-hidden="true"></i><span>Medicines</span></span></a>
             </li>
-            <li  class="px-4 w-100 mb-1 nav-item tab">
-            <a href="appointment.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-calendar mx-2" aria-hidden="true"></i><span>Appointments</span></span></a>
+            <li  class="px-4 w-100 mb-1 nav-item tab py-1">
+              <a href="appointment.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-calendar mx-2" aria-hidden="true"></i><span>Appointments</span></span></a>
             </li>
-            <li  class="px-4 w-100 mb-1 nav-item tab">
+            <li  class="px-4 w-100 mb-1 nav-item tab py-1">
               <a href="report.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-book mx-2"></i><span>Reports</span></span></a>
             </li>
-            <li  class="px-4 w-100 mb-1 nav-item tab">
-            <a href="archive.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-folder-open-o mx-2" aria-hidden="true"></i><span>Archive</span></span></a>
+            <li  class="px-4 w-100 mb-1 nav-item tab py-1">
+              <a href="archive.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-folder-open-o mx-2" aria-hidden="true"></i><span>Archive</span></span></a>
             </li>
-            <li  class="px-4 w-100 mb-1 nav-item tab">
-            <a href="entranceLog.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-address-book mx-2" aria-hidden="true"></i><span>Entrance Log</span></span></a>
+            <li  class="px-4 w-100 mb-1 nav-item tab py-1">
+              <a href="entranceLog.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-address-book mx-2" aria-hidden="true"></i><span>Entrance Log</span></span></a>
             </li>
+            <!-- <li  class="px-4 w-100 mb-1 nav-item tab py-1">
+              <a href="activityLog.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-history mx-2" aria-hidden="true"></i><span>Activity Log</span></span></a>
+            </li> -->
 
           <div class="web_info">
 
-          <div class="admin_info"><br>
+          <!-- <div class="admin_info"><br>
             <img src="./assets/<?=$admins['img']?>" alt=""/>
             <span><?=$admins['email']?></span>
             <span><?=$admins['fname']?>&nbsp<?=$admins['lname']?></span>
-          </div>
+          </div> -->
 
           <!-- <div class="web_copyright">
             <span>Quezon City University Clinic 2022</span>
@@ -242,18 +245,19 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                   style="background: none">
-                  <img src="./assets/<?=$admins['img']?>" alt=""/>
+                  <h5 style="margin-right: 30px; margin-top: 10px; color: white;">Hey, <?=$admins['fname']?>&nbsp<?=$admins['lname']?>!</h5> <img src="./assets/<?=$admins['img']?>" alt=""/>
                 </div>
 
                 <ul
                   class="dropdown-menu dropdown-menu-end dropdown-menu-dark"
                   aria-labelledby="dropdownMenuButton1">
 
-                  <li>
-                    <a class="dropdown-item" href="#">Login As: <?=$admins['fname']?><span id="email_span"></span></a>
-                  </li>
 
-                  <li><a class="dropdown-item" href="account.php">Manage Account</a></li>
+                  <li><a class="dropdown-item nav-item active tab" href="account.php">Manage Account</a></li>
+
+                  <li>
+                    <a class="dropdown-item" href="activityLog.php">Activity Log<span id="email_span"></span></a>
+                  </li>
                   <!-- <li><a class="dropdown-item active tab" href="account.php">Manage Account</a></li> -->
 
                   <li id="logout">
@@ -279,9 +283,40 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
       <!-- MANAGE ACCOUNT PAGE -->
         <section class="account so_content so_active" data-tab-content>
           <div class="account_header d-flex justify-content-between">
-            <h3 class="m-0">ANALYTICS</h3>
+            <h3 class="m-0" style="color: white;">MANAGE ACCOUNT</h3>
           </div>
           <div class="account_container">
+          <div class="col-sm-10 p-5" id="student" style="width: 50%; margin-left: auto; margin-right: auto;">
+                  <div class="container-fluid p-2 shadow rounded-2 mt-5"  style="background: white;">
+                      <div class="container-fluid my-3 d-grid align-items-center justify-content-center">
+                          <div class="position-relative" style="width: 120px;height: 120px;"><img src="./assets/badang.JPG" class="w-100 rounded-circle position-absolute start-50 translate-middle" alt="" style="top:-10%; width: 120px;height: 120px;"></div>
+                      </div> 
+                      <div class="px-5 text-center">
+                        <p class="fw-semibold mb-3 text-start">Change Password</p>
+
+                        <form method="post" action="update_password.php" >
+    
+                        <div class="form-floating mb-3">
+                          <input type="password" class="form-control" id="floatingInput" name="old_password" placeholder="Password">
+                          <label for="floatingInput">Old Password</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                          <input type="password" class="form-control" id="floatingPassword" name="new_password" placeholder="Password">
+                          <label for="floatingPassword">New Password</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                          <input type="password" class="form-control" id="floatingPassword" name="confirm_password" placeholder="Password">
+                          <label for="floatingPassword">Confirm Password</label>
+                        </div>
+                        <div class="d-flex justify-content-end">
+                          <button class="btn btn-primary rounded-0 fw-semibold">CHANGE</button>
+                        </div>
+                        <br>
+                        </form>
+                      </div>
+                    </div>
+                  </div> 
+              </div>
           </div> 
         </section>
 

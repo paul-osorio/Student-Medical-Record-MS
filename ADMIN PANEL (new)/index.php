@@ -36,9 +36,33 @@
 				<span></span>
 			<div class="input">
 				<i class="fa fa-lock" aria-hidden="true"></i>
-				<input type="password" name="password" placeholder="Password">
+				<input type="password" name="password" id="floatingPassword" placeholder="Password">
 			</div>
+					 <div class="show-password" style="text-align: left;">
+                          <label for="show-pass" style="color: white; font-size: 15px;"> Show password  </label>
+                          <input type="checkbox" name="" id="show-pass" style="margin-top: -17px; margin-left: -20px" >
+                      </div>
 
+                      <script> 
+
+                        const pass = document.getElementById('floatingPassword');
+                        const showPass = document.getElementById('show-pass');
+                        
+                        showPass.addEventListener('change', (e)=> {
+
+                          if(showPass.checked === true) {
+                            
+                            pass.type = 'text';
+
+                          } else {
+                            
+                            pass.type = 'password';
+
+                          }
+                            
+                        });
+                      </script>
+				<br>
 		</div>
 
      	<button type="submit">LOGIN</button>

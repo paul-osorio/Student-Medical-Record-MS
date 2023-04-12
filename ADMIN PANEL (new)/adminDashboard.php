@@ -155,48 +155,48 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
           <center><p>Student Medical <br> Record</p></center>
         </div>
         
-        
+
         <!-- <ul class="list-unstyled navbar-nav ps-0"> -->
           <ul class="mt-4 list-unstyled navbar-nav ps-0 ">
 
-            <li  class="px-4 w-100 mb-1 nav-item active tab">
+            <li  class="px-4 w-100 mb-1 nav-item active tab py-1">
               <a href="adminDashboard.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-area-chart mx-2"></i><span>Dashboard</span></span></a>
             </li>
-            <li  class="px-4 w-100 mb-1 nav-item tab">
+            <li  class="px-4 w-100 mb-1 nav-item tab py-1">
             <a href="admins.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-users mx-2"></i><span>Admins</span></span></a>
             </li>
-            <li  class="px-4 w-100 mb-1 nav-item tab">
+            <li  class="px-4 w-100 mb-1 nav-item tab py-1">
             <a href="departments.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-building-o mx-2"></i><span>Departments</span></span></a>
             </li>
-            <li  class="px-4 w-100 mb-1 nav-item tab">
+            <li  class="px-4 w-100 mb-1 nav-item tab py-1">
             <a href="nurses.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-user-md mx-2"></i><span>Nurses</span></span></a>
             </li>
-            <li  class="px-4 w-100 mb-1 nav-item tab">
+            <li  class="px-4 w-100 mb-1 nav-item tab py-1">
             <a href="hospitals.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-hospital-o mx-2" aria-hidden="true"></i><span>Hospitals</span></span></a>
             </li>
-            <li  class="px-4 w-100 mb-1 nav-item tab">
+            <li  class="px-4 w-100 mb-1 nav-item tab py-1">
             <a href="medicines.php" class="nav-link"><span class="fx-5 fw-800 text-light"> <i class="fa fa-medkit mx-2" aria-hidden="true"></i><span>Medicines</span></span></a>
             </li>
-            <li  class="px-4 w-100 mb-1 nav-item tab">
+            <li  class="px-4 w-100 mb-1 nav-item tab py-1">
             <a href="appointment.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-calendar mx-2" aria-hidden="true"></i><span>Appointments</span></span></a>
             </li>
-            <li  class="px-4 w-100 mb-1 nav-item tab">
+            <li  class="px-4 w-100 mb-1 nav-item tab py-1">
               <a href="report.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-book mx-2"></i><span>Reports</span></span></a>
             </li>
-            <li  class="px-4 w-100 mb-1 nav-item tab">
+            <li  class="px-4 w-100 mb-1 nav-item tab py-1">
             <a href="archive.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-folder-open-o mx-2" aria-hidden="true"></i><span>Archive</span></span></a>
             </li>
-            <li  class="px-4 w-100 mb-1 nav-item tab">
+            <li  class="px-4 w-100 mb-1 nav-item tab py-1">
             <a href="entranceLog.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-address-book mx-2" aria-hidden="true"></i><span>Entrance Log</span></span></a>
             </li>
 
           <div class="web_info">
 
-          <div class="admin_info"><br>
+          <!-- <div class="admin_info"><br>
             <img src="./assets/<?=$admins['img']?>" alt=""/>
             <span><?=$admins['email']?></span>
             <span><?=$admins['fname']?>&nbsp<?=$admins['lname']?></span>
-          </div>
+          </div> -->
 
           <!-- <div class="web_copyright">
             <span>Quezon City University Clinic 2022</span>
@@ -234,7 +234,6 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
               </li>
 
               <div class="dropdown nav-item">
-
                 <div
                   class="account background-none nav-link dropdown-toggle dropdown-toggle d-flex justify-content-center align-items-center"
                   type="button"
@@ -242,18 +241,19 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                   style="background: none">
-                  <img src="./assets/<?=$admins['img']?>" alt=""/>
+                  <h5 style="margin-right: 30px; margin-top: 10px; color: white;">Hey, <?=$admins['fname']?>&nbsp<?=$admins['lname']?>!</h5> <img src="./assets/<?=$admins['img']?>" alt=""/>
                 </div>
 
                 <ul
                   class="dropdown-menu dropdown-menu-end dropdown-menu-dark"
                   aria-labelledby="dropdownMenuButton1">
 
-                  <li>
-                    <a class="dropdown-item" href="#">Login As: <?=$admins['fname']?><span id="email_span"></span></a>
-                  </li>
-
+                  
                   <li><a class="dropdown-item" href="account.php">Manage Account</a></li>
+
+                  <li>
+                    <a class="dropdown-item" href="activityLog.php">Activity Log<span id="email_span"></span></a>
+                  </li>
 
                   <li id="logout">
                     <a class="dropdown-item" href="logout.php">Logout</a>
@@ -360,7 +360,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
           <div class="chart_container">
 
               <div class="card_content">
-              <br><div class="chart_header">
+              <div class="chart_header">
                   <span>STUDENT COVID-19 CASES</span>
                   <div class="chart_filter">
                     <select name="filter" id="filter">
@@ -376,9 +376,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                   <canvas id="myChart" class="chart"></canvas>
                 </div>
               </div>
-
+            
               <div class="card_content">
-              <br><div class="chart_header">
+              <div class="chart_header">
                   <span>ENTRANCE LOG</span>
                 </div><br>
                 <div class="chart1" style="display:flex; justify-content:center; align-items:center;">
@@ -391,7 +391,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
               <div class="chart_container">
 
               <div class="card_content">
-              <br><div class="chart_header">
+              <div class="chart_header">
                   <span>APPOINTMENTS</span>
                   <div class="chart_filter">
                     <select name="filter" id="filter">
@@ -468,376 +468,10 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
     </script>
 
 
-<!--#################################################################################################################################################################################################################################-->
-
-<!-- DELETE ADMIN RECORD JS -->
-    <script>
-        $(document).ready(function () {
-
-            $('.deletebtn').on('click', function () {
-
-                $('#delAdmin').modal('show');
-
-                var tr = $(this).closest('tr');
-
-                console.log(tr);
-
-                var data = tr.children("td").map(function () {
-
-                    return $(this).text();
-
-                }).get();
-
-                console.log(data);
-
-                $('#delete_id').val(data[1]);
-
-            });
-        });
-    </script>
-
-
-<!--#################################################################################################################################################################################################################################-->
-
-  <!-- EDIT ADMIN INFO JS -->
-    <script>
-        $(document).ready(function () {
-
-            $('.editbtn').on('click', function () {
-
-                $('#editAdminInfo').modal('show');
-
-                $tr = $(this).closest('tr');
-
-                var data = $tr.children("td").map(function () {
-                    return $(this).text();
-                }).get();
-
-                console.log(data);
-
-
-                $('#update_id').val(data[0]);
-                $('#unique_id').val(data[1]);
-                $('#email').val(data[4]);
-                $('#fname').val(data[2]);
-                $('#lname').val(data[3]);
-                $('#contact_num').val(data[5]);
-                $('#img').val(data[6]);
-            });
-        });
-
-    </script>
-
-<!--#################################################################################################################################################################################################################################-->
-
-  <!-- EDIT HOSPITAL INFO JS -->
-  <script>
-        $(document).ready(function () {
-
-            $('.edithosbtn').on('click', function () {
-
-                $('#editHospitalInfo').modal('show');
-
-                $tr = $(this).closest('tr');
-
-                var data = $tr.children("td").map(function () {
-                    return $(this).text();
-                }).get();
-
-                console.log(data);
-
-
-                $('#update_id').val(data[1]);
-                $('#hospi_id').val(data[0]);
-                $('#hospital').val(data[3]);
-                $('#hospital_add').val(data[2]);
-                $('#email').val(data[5]);
-                $('#contact_num').val(data[4]);
-                
-            });
-        });
-
-    </script>
-
-<!--#################################################################################################################################################################################################################################-->
-
-<!-- VIEW NURSE JS -->
-<script>
-        $(document).ready(function () {
-
-            $('.nurseinfobtn').on('click', function () {
-
-                $tr = $(this).closest('tr');
-
-                var data = $tr.children("td").map(function () {
-                    return $(this).text();
-                }).get();
-
-                console.log(data);
-
-                $('#nurse_list').hide();
-                $('#viewNurseInfo').show();
-                $('#update_id').val(data[0]);
-                $('#unique_id').val(data[1]);
-                $('#email').val(data[4]);
-                $('#fname').val(data[2]);
-                $('#lname').val(data[3]);
-                $('#contact_num').val(data[5]);
-            });
-        });
-
-    </script>
-
-
-<!-- EDIT NURSE JS -->
-
-<script>
-        $(document).ready(function () {
-
-            $('.nurseeditbtn').on('click', function () {
-
-                $tr = $(this).closest('tr');
-
-                var data = $tr.children("td").map(function () {
-                    return $(this).text();
-                }).get();
-
-                console.log(data);
-
-                $('#nurse_list').hide();
-                $('#editNurseInfo').show();
-                $('#update_id').val(data[0]);
-                $('#unique_id').val(data[1]);
-                $('#email').val(data[4]);
-                $('#fname').val(data[2]);
-                $('#lname').val(data[3]);
-                $('#contact_num').val(data[5]);
-            });
-        });
-
-    </script>
-
-<!--#################################################################################################################################################################################################################################-->
-
-<script>
-        $(document).ready(function () {
-
-            $('#nextpage2').on('click', function () {
-
-                $('#addnurse_title1').hide()
-                $('#addnurse_page1').hide();
-                $('#addnurse_page2').show();
-                $('#addnurse_title2').show()
-                
-            });
-        });
-
-</script>
-
-<!--#################################################################################################################################################################################################################################-->
-
-<!-- ADD NURSE -->
-<script>
-        $(document).ready(function () {
-
-            $('#prevpage1').on('click', function () {
-
-                $('#addnurse_title2').hide()
-                $('#addnurse_page2').hide();
-                $('#addnurse_page1').show();
-                $('#addnurse_title1').show()
-                
-            });
-        });
-
-</script>
-
-<!--#################################################################################################################################################################################################################################-->
-
-<!-- ADD NURSE -->
-<script>
-        $(document).ready(function () {
-
-            $('#nextpage3').on('click', function () {
-
-                $('#addnurse_title2').hide()
-                $('#addnurse_page2').hide();
-                $('#addnurse_page3').show();
-                $('#addnurse_title3').show()
-                
-            });
-        });
-
-</script>
-
-<!--#################################################################################################################################################################################################################################-->
-
-<!-- ADD NURSE -->
-<script>
-        $(document).ready(function () {
-
-            $('#prevpage2').on('click', function () {
-
-                $('#addnurse_title3').hide()
-                $('#addnurse_page3').hide();
-                $('#addnurse_page2').show();
-                $('#addnurse_title2').show()
-                
-            });
-        });
-
-</script>
-
-<!--#################################################################################################################################################################################################################################-->
-
-<!-- ADD SUCCESS -->
-<script>
-        $(document).ready(function() {
-  
-            $("#addsuccess_btn").on('click', function () {
-              
-                $("#addsuccessModal").modal("show");
-
-            });
-        });
-
-
-</script>
-
-<!--#################################################################################################################################################################################################################################-->
-
-<!-- DELETE NURSE -->
-<script>
-        $(document).ready(function() {
-  
-            $("#delNurse_btn").on('click', function () {
-              
-                $("#removesuccessModalNurse").modal("show");
-                $("#viewNurseInfo").hide();
-                $("#nurse_list").show();
-
-            });
-        });
-
-
-</script>
-
-<!--#################################################################################################################################################################################################################################-->
-
-<!-- DELETE ADMIN -->
-<script>
-        $(document).ready(function() {
-  
-            $("#delAdmin_btn").on('click', function () {
-              
-                $("#removesuccessModal").modal("show");
-
-            });
-        });
-
-
-</script>
-
-<!--#################################################################################################################################################################################################################################-->
-
-<!-- DELETE HOSPITAL RECORD JS -->
-<script>
-        $(document).ready(function () {
-
-            $('.deletebtn').on('click', function () {
-
-                $('#delHospital').modal('show');
-
-                var tr = $(this).closest('tr');
-
-                console.log(tr);
-
-                var data = tr.children("td").map(function () {
-
-                    return $(this).text();
-
-                }).get();
-
-                console.log(data);
-
-                $('#delete_id').val(data[1]);
-
-            });
-        });
-    </script>
-
-
-<!--#################################################################################################################################################################################################################################-->
-
-<!-- DRAFT -->
-  <!-- EDIT DEPARTMENT INFO JS -->
-    <script>
-        $(document).ready(function () {
-
-            $('.editbtndepts').on('click', function () {
-
-                $('#editDepartmentInfo').modal('show');
-
-                $tr = $(this).closest('tr');
-
-                var data = $tr.children("td").map(function () {
-                    return $(this).text();
-                }).get();
-
-                console.log(data);
-
-
-                $('#update_id').val(data[8]);
-                $('#emp_id').val(data[0]);
-                $('#dept_name').val(data[3]);
-                $('#building_name').val(data[4]);
-                $('#room_num').val(data[5]);
-                $('#firstname').val(data[6]);
-                $('#lastname').val(data[7]);
-                $('#email').val(data[8]);
-                $('#contact_num').val(data[9]);
-                $('#position').val(data[2]);
-                $('#image').val(data[10]);
-            });
-        });
-
-    </script>
-
-
-<!-- DELETE DEPARTMENT RECORD JS -->
-<script>
-        $(document).ready(function () {
-
-            $('.deletebtndepts').on('click', function () {
-
-                $('#delDepartment').modal('show');
-
-                var tr = $(this).closest('tr');
-
-                console.log(tr);
-
-                var data = tr.children("td").map(function () {
-
-                    return $(this).text();
-
-                }).get();
-
-                console.log(data);
-
-                $('#delete_id').val(data[1]);
-
-            });
-        });
-    </script>
 
     
   </body>
 
-<!-- CUSTOM AJAX FILE -->
-<script src="./ajax/search_admin.js"> </script>
-<script src="./ajax/search_nurse.js"> </script>
-<script src="./ajax/search_hospital.js"> </script>
-<script src="./ajax/search_medicine.js"> </script>
 
 </html>
 

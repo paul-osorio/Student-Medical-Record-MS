@@ -1,7 +1,7 @@
 <?php
-      include('db_conn.php');
+    include('db_conn.php');
 
-     $fetchAllMedicine = mysqli_query($conn, "SELECT * FROM `medicine`");
+    $fetchAllMedicine = mysqli_query($conn, "SELECT * FROM `medicine`");
      
 ?>
 <!DOCTYPE html>
@@ -65,25 +65,28 @@
                     <a href="dashboard.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-area-chart mx-2"></i><span>Home</span></span></a>
                   </li>
                   <li  class="px-4 w-100 mb-1 nav-item tab py-2">
-                  <a href="student.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-users mx-2"></i><span>Students</span></span></a>
+                    <a href="student.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-users mx-2"></i><span>Students</span></span></a>
                   </li>
                   <li  class="px-4 w-100 mb-1 nav-item tab py-2">
-                  <a href="Mreport.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-plus-square mx-2"></i><span>Medical Requirements</span></span></a>
+                    <a href="Mreport.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-plus-square mx-2"></i><span>Medical Requirements</span></span></a>
                   </li>
-                  <li  class="px-4 w-100 mb-1 nav-item tab py-2">
+                  <!-- <li  class="px-4 w-100 mb-1 nav-item tab py-2">
                   <a href="department.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-building-o mx-2"></i><span>Departments</span></span></a>
-                  </li>
+                  </li> -->
                   <li  class="px-4 w-100 mb-1 nav-item tab py-2">
-                  <a href="appointment.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-calendar mx-2" aria-hidden="true"></i><span>Appointments</span></span></a>
+                    <a href="appointment.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-calendar mx-2" aria-hidden="true"></i><span>Appointments</span></span></a>
                   </li>
                   <li  class="px-4 w-100 mb-1 nav-item active tab py-2">
-                   <a href="medicines.php" class="nav-link"><span class="fx-5 fw-800 text-light"> <i class="fa fa-medkit mx-2" aria-hidden="true"></i><span>Medicines</span></span></a>
+                    <a href="medicines.php" class="nav-link"><span class="fx-5 fw-800 text-light"> <i class="fa fa-medkit mx-2" aria-hidden="true"></i><span>Medicines</span></span></a>
                   </li>
                   <li  class="px-4 w-100 mb-1 nav-item tab py-2">
                     <a href="Report.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-book mx-2"></i><span>Reports</span></span></a>
                   </li>
+                  <li  class="px-4 w-100 mb-1 nav-item tab py-2">
+                    <a href="activityLog.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-history mx-2"></i><span>Activity Log</span></span></a>
+                  </li>
                   <li  id="account_btn" class="px-4 w-100 mb-1 nav-item tab py-2">
-                  <a href="account.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-user-o mx-2" aria-hidden="true"></i><span>Account</span></span></a>
+                    <a href="account.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-user-o mx-2" aria-hidden="true"></i><span>Account</span></span></a>
                   </li>
                 </ul>
              </div>
@@ -99,15 +102,15 @@
                          
                         <div class="d-flex align-items-center">
                         <span for="#sort" class="px-2 text-nowrap">Sort By</span>
-                          <select class="form-select shadow-none" style="flex-basis:500px" aria-label="Default select example" id="sort">
-                            <option value="Date Manufactured">Date Manufactured</option>
-                            <option value="Date Expiration">Date Expiration</option>
-                            <option value="Quantity">Quantity</option>
+                          <select class="form-select shadow-none" style="flex-basis:500px" aria-label="Default select example" name="sort" id="sort_meds">
+                              <option value="prod_id">All</option> 
+                              <option value="expirationDate">Expiration Date</option>
+                              <option value="num_stocks">Stocks</option>
                           </select>
                         </div>
-                        <div class="input-group form-input-sm d-flex align-items-center gap-2 ">
-                            <input type="text" class="form-control w-50 shadow-none" placeholder="&#xF002; Search..." aria-label="Search..." aria-describedby="button-addon2" style="font-family:Poppins, FontAwesome">
-                            <a href="#" class="text-secondary"> <i class="fa fa-th-large mx-1 fs-3" aria-hidden="true"></i></a>
+                        <div class="input-group form-input-sm d-flex align-items-center gap-2" style="width: 30%; margin-left: 49%;">
+                            <input type="text" class="form-control w-50 shadow-none" name="search" id="search_meds" placeholder="&#xF002; Search..." aria-label="Search..." aria-describedby="button-addon2" style="font-family:Poppins, FontAwesome">
+                            <!-- <a href="#" class="text-secondary"> <i class="fa fa-th-large mx-1 fs-3" aria-hidden="true"></i></a> -->
                             <a href="#" class="text-secondary"><i class="fa fa-bars mx-1 fs-3" aria-hidden="true"></i></a>
                         </div>
                       </div>
@@ -125,8 +128,8 @@
                                   <table class="table-mdc">
                                   <tbody>
                                       <tr class="mdc-header">
-                                      <td style="width:120px;"><img src="./assets/<?=$med['image']?>" width="150px" height="130px"> </td>
-                                      <td style="width:180px;" >
+                                      <td style="width:120px; padding-left: 20px;"><img src="./assets/<?=$med['image']?>" width="150px" height="130px"> </td>
+                                      <td style="width:180px; padding-left: 20px;" >
                                           <table>
                                           <td class="b1"><?=$med['name']?></td>
                                           <tr>
@@ -143,7 +146,7 @@
                                           
                               
                                       
-                                      <td style="width:370px;">
+                                      <td style="width:370px; padding-left: 30px;">
                                       <!-- <b>Expiration Date:</b> <?=$med['expirationDate']?> -->
                                           <table>
                                           <td class="b1"><b>Expiration Date:</b> <?=$med['expirationDate']?></td>
@@ -153,12 +156,7 @@
                                       </td>
 
                                       
-                                      <td style="width:200px;"><img src="./assets/<?=$med['prod_qrcode']?>" width="150px" height="130px"> </td>
-                                      
-
-                                      <td><a href="#editMedInfo" class="custom_btn editmedbtn" data-bs-toggle="modal"><i class="fa fa-edit" id="edit" aria-hidden="true" style="color: #3e64ff; font-size: 30px"></i></a></td>
-
-                                      <td><a href="#delMed" class="custom_btn deletemedbtn" data-bs-toggle="modal"><i class="fa fa-trash" id="delete" aria-hidden="true" style="color: #ED1C24; font-size: 30px"></i></a></td>
+                                      <td style="width:160px;"><img src="./assets/<?=$med['prod_qrcode']?>" width="150px" height="130px"> </td>
                                       
 
                                       </tr>
@@ -179,4 +177,11 @@
        
     </div>
 </body>
+
+    <!-- CUSTOM AJAX FILE -->
+    <!-- <script src="./ajax/search_appointments.js"> </script>
+    <script src="./ajax/search_medreq.js"> </script>
+    <script src="./ajax/search_students.js"> </script> -->
+    <script src="./ajax/search_medicine.js"> </script>
+
 </html>

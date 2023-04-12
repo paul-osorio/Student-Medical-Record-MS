@@ -151,15 +151,15 @@
                         <td> <?=$row['app_time']?></td>
                         <td> 
                            <div class="status"> 
-                              <?php if($row['app_status'] === 'scheduled') { ?>
+                              <?php if($row['app_status'] === 'Scheduled') { ?>
 
                                  <p style="color: var(--primary)"> <?=$row['app_status']?> </p>
                                  
-                              <?php } else if($row['app_status'] === 'completed') { ?>
+                              <?php } else if($row['app_status'] === 'Completed') { ?>
 
                                  <p style="color: var(--approve)"> <?=$row['app_status']?> </p>
 
-                              <?php } else if($row['app_status'] === 'cancelled') { ?>
+                              <?php } else if($row['app_status'] === 'Cancelled') { ?>
 
                                  <p style="color: #878787"> <?=$row['app_status']?> </p>
 
@@ -180,7 +180,7 @@
 
                               <div class="form-button">
                                  <button id="appoint_cancel" data-role="cancel-appoint" data-ref_no="<?=$row['reference_no']?>"
-                                 <?php if($row['app_status'] === 'scheduled') {
+                                 <?php if($row['app_status'] === 'Scheduled') {
 
                                  } else { ?>
 

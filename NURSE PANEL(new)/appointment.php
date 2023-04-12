@@ -1,3 +1,21 @@
+<?php
+session_start();
+
+if (isset($_SESSION['emp_id']) && isset($_SESSION['username'])) {
+
+
+
+?>
+
+
+<?php
+     include('db_conn1.php');
+
+
+    // SELECT ALL STUDENTS 
+    $fetchAllAppointments = mysqli_query($conn1, "SELECT * FROM `stud_appointment` LIMIT 15");
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,25 +77,28 @@
                     <a href="dashboard.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-area-chart mx-2"></i><span>Home</span></span></a>
                   </li>
                   <li  class="px-4 w-100 mb-1 nav-item tab py-2">
-                  <a href="student.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-users mx-2"></i><span>Students</span></span></a>
+                    <a href="student.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-users mx-2"></i><span>Students</span></span></a>
                   </li>
                   <li  class="px-4 w-100 mb-1 nav-item tab py-2">
-                  <a href="Mreport.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-plus-square mx-2"></i><span>Medical Requirements</span></span></a>
+                    <a href="Mreport.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-plus-square mx-2"></i><span>Medical Requirements</span></span></a>
                   </li>
-                  <li  class="px-4 w-100 mb-1 nav-item tab py-2">
+                  <!-- <li  class="px-4 w-100 mb-1 nav-item tab py-2">
                   <a href="department.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-building-o mx-2"></i><span>Departments</span></span></a>
-                  </li>
+                  </li> -->
                   <li  class="px-4 w-100 mb-1 nav-item active tab py-2">
-                  <a href="appointment.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-calendar mx-2" aria-hidden="true"></i><span>Appointments</span></span></a>
+                    <a href="appointment.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-calendar mx-2" aria-hidden="true"></i><span>Appointments</span></span></a>
                   </li>
                   <li  class="px-4 w-100 mb-1 nav-item tab py-2">
-                   <a href="medicines.php" class="nav-link"><span class="fx-5 fw-800 text-light"> <i class="fa fa-medkit mx-2" aria-hidden="true"></i><span>Medicines</span></span></a>
+                    <a href="medicines.php" class="nav-link"><span class="fx-5 fw-800 text-light"> <i class="fa fa-medkit mx-2" aria-hidden="true"></i><span>Medicines</span></span></a>
                   </li>
                   <li  class="px-4 w-100 mb-1 nav-item tab py-2">
                     <a href="Report.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-book mx-2"></i><span>Reports</span></span></a>
                   </li>
+                  <li  class="px-4 w-100 mb-1 nav-item tab py-2">
+                    <a href="activityLog.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-history mx-2"></i><span>Activity Log</span></span></a>
+                  </li>
                   <li  id="account_btn" class="px-4 w-100 mb-1 nav-item tab py-2">
-                  <a href="account.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-user-o mx-2" aria-hidden="true"></i><span>Account</span></span></a>
+                    <a href="account.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-user-o mx-2" aria-hidden="true"></i><span>Account</span></span></a>
                   </li>
                 </ul>
              </div>
@@ -91,14 +112,21 @@
                         <div class="d-flex gap-2 ">
                                 <div class="d-flex align-items-center" style="flex-basis:300px">
                                   <span for="#sort" class="px-2 text-nowrap">Sort By</span>
-                                  <select class="form-select shadow-none" aria-label="Default select example" name="sort" id="sort">
+                                  <select class="form-select shadow-none" aria-label="Default select example" name="sort" id="sort_app">
+                                    <option name="sort" value="student_id">All</option>
                                     <option name="sort" value="Recent">Recent</option>
+                                    <!-- <option name="sort" value="app_type">Type</option>
+                                    <option name="sort" value="app_time">Time</option>
+                                    <option name="sort" value="app_date">Date</option> -->
+                                    <option name="sort" value="scheduled">Scheduled</option>
+                                    <option name="sort" value="cancelled">Cancelled</option>
+                                    <!-- <option name="sort" value="pending">Pending</option> -->
                                   </select>
                                 </div>
                   
                               <div class="input-group form-input-sm d-flex align-items-center gap-2 ">
-                                  <input type="text" class="form-control w-50 shadow-none" placeholder="&#xF002; Search..." aria-label="Search..." aria-describedby="button-addon2" style="font-family:Poppins, FontAwesome">
-                                  <a href="#" class="text-secondary"> <i class="fa fa-th-large mx-1 fs-3" aria-hidden="true"></i></a>
+                                  <input type="text" class="form-control w-50 shadow-none" name="search" id="search_app" placeholder="&#xF002; Search..." aria-label="Search..." aria-describedby="button-addon2" style="font-family:Poppins, FontAwesome">
+                                  <!-- <a href="#" class="text-secondary"> <i class="fa fa-th-large mx-1 fs-3" aria-hidden="true"></i></a> -->
                                   <a href="#" class="text-secondary"><i class="fa fa-bars mx-1 fs-3" aria-hidden="true"></i></a>
                               </div>
                             </div>
@@ -115,20 +143,29 @@
                                     <th scope="col">Time</th>
                                     <th scope="col">Reference No.</th>
                                     <th scope="col">Status</th>
+                                    <th scope="col">Action</th>
                                   </tr>
                                 </thead>
                                 <tbody>
                                     <a href="#" class="nav-link">
+
+                                        <?php if(mysqli_num_rows($fetchAllAppointments) > 0) { 
+                                          while ($appoint = mysqli_fetch_assoc($fetchAllAppointments)) {  ?>
+
                                         <tr>        
                                             <!-- <td colspan="2"><img src="./assets/badang.JPG"  width="65" height="65" alt=""></td> -->
-                                            <td>19-1234</td>
+                                            <td><?=$appoint['student_id']?></td>
                                             <td>Juan T. Dela Cruz</td>
-                                            <td>Medical Services</td>
-                                            <td>February 5, 2023</td>
-                                            <td>1:00 PM</td>
-                                            <td>asd357Ja </td>
-                                            <td><button class="btn btn-warning rounded-pill px-3">Pending</button></td>
+                                            <td><?=$appoint['app_type']?></td>
+                                            <td><?=$appoint['app_date']?></td>
+                                            <td><?=$appoint['app_time']?></td>
+                                            <td><?=$appoint['reference_no']?></td>
+                                            <td><label style="color: Green; font-weight: bold;"><?=$appoint['app_status']?></label></td>
+                                            <td><a href="#view" class="custom_btn" style="text-decoration: none; color: Blue;font-weight: bold;" data-toggle="modal">View</a></td>
                                         </tr>
+
+                                        <?php } } ?>
+                                        
                                      </a>
                                 </tbody>
                               </table>
@@ -140,4 +177,12 @@
        
     </div>
 </body>
+    <!-- CUSTOM AJAX FILE -->
+    <script src="./ajax/search_appointments.js"> </script>
+    <!-- <script src="./ajax/search_medreq.js"> </script>
+    <script src="./ajax/search_students.js"> </script>
+    <script src="./ajax/search_medicine.js"> </script> -->
 </html>
+<?php 
+}
+?>

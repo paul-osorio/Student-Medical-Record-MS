@@ -25,8 +25,14 @@
 	<link rel="stylesheet" type="text/css" href="./css/login.css">
 </head>
 <body>
+	<img
+    class="demo-bg"
+    src="./assets/login_bg.jpg"
+    alt=""
+  	>
      <form action="login.php" method="post">
-     	<h2>NURSE LOGIN</h2>
+	 	
+     	<h2><img src="./assets/QCUClinicLogo.png" alt="">NURSE LOGIN</h2>
      	<?php if (isset($_GET['error'])) { ?>
      		<p class="error"><?php echo $_GET['error']; ?></p>
      	<?php } ?>
@@ -34,7 +40,32 @@
      	<input type="text" name="uname" placeholder="Username"><br>
 
      	<label>Password:</label>
-     	<input type="password" name="password" placeholder="Password"><br>
+     	<input type="password" name="password" id="floatingPassword" placeholder="Password">
+		
+		 			  <div class="show-password" style="text-align: left;">
+                          <label for="show-pass" style="font-size: 15px;"> Show password  </label>
+                          <input type="checkbox" name="" id="show-pass" style="margin-top: -17px; margin-left: -80px" >
+                      </div>
+
+                      <script> 
+
+                        const pass = document.getElementById('floatingPassword');
+                        const showPass = document.getElementById('show-pass');
+                        
+                        showPass.addEventListener('change', (e)=> {
+
+                          if(showPass.checked === true) {
+                            
+                            pass.type = 'text';
+
+                          } else {
+                            
+                            pass.type = 'password';
+
+                          }
+                            
+                        });
+                      </script><br>
 
      	<button type="submit" name="login_btn">LOGIN</button>
      </form>

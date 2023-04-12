@@ -40,23 +40,22 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=.8">
-  <title>Document</title>
+  <title>SMRMS | STUDENT | LOGIN</title>
 
   <body class="bg-body-secondary">
-    <nav class="navbar"
-    style="background: var(--primary-bg);">
+    <nav class="navbar" style="background: var(--primary-bg);">
         <div class="container-fluid">
           <a class="navbar-brand d-flex align-items-center" href="#">
-            <img src="../clinic-logo.png" alt="" width="50" height="50" class="d-inline-block align-text-top mx-2">
-            <h3 class="fw-bold text-light w-100 text-wrap" style="font-size: var(--step-2);">Welcome to Student Medical Record</h3>
+            <img src="../clinic-logo.png" alt="" width="50" height="50" class="d-inline-block align-text-top mx-3">
+            <h4 class="fw-bold text-light w-100 text-wrap" style="font-size: 30px">Welcome to Student Medical Record</h4>
           </a>
         </div>
       </nav>
       <main class="p-4" style="height:80vh;">
-        <div class="row border mt-5 border-3 text-center align-self-center justify-content-center">
+        <div class="row mt-4 text-center align-self-center justify-content-center">
           <div class="col-sm-5">
               <div class="container rounded py-5 px-4 bg-secondary-subtle shadow">
-
+                    <h3 style="margin-top: -15px;"><b>STUDENT LOGIN</b></h3><br>
                   <form action="../process/login_auth.php" method="POST">
                     
                     <div class="form-floating mb-3">
@@ -110,10 +109,10 @@
               </div>
           </div>
 
-          <div class="col-md-6 position-relative px-4 border border-3 border-danger">
-            <div class="container bg-primary position-relative"
+          <div class="col-md-6 position-relative px-4">
+            <div class="container position-relative"
             style="height: 100%;">
-             
+            <center><img style="margin-left: -40px; margin-top: 20px;" src="../assets/qcupic.png" alt="" width="530" height="390"></center>
             </div>
           </div>
 

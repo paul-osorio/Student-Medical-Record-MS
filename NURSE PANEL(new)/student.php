@@ -1,3 +1,12 @@
+<?php
+     include('db_conn.php');
+
+
+    // SELECT ALL STUDENTS 
+     $fetchAllStudents = mysqli_query($conn, "SELECT * FROM `stud_data` LIMIT 10");
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,25 +68,28 @@
                     <a href="dashboard.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-area-chart mx-2"></i><span>Home</span></span></a>
                   </li>
                   <li  class="px-4 w-100 mb-1 nav-item active tab py-2">
-                  <a href="student.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-users mx-2"></i><span>Students</span></span></a>
+                    <a href="student.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-users mx-2"></i><span>Students</span></span></a>
                   </li>
                   <li  class="px-4 w-100 mb-1 nav-item tab py-2">
-                  <a href="Mreport.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-plus-square mx-2"></i><span>Medical Requirements</span></span></a>
+                    <a href="Mreport.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-plus-square mx-2"></i><span>Medical Requirements</span></span></a>
                   </li>
-                  <li  class="px-4 w-100 mb-1 nav-item tab py-2">
+                  <!-- <li  class="px-4 w-100 mb-1 nav-item tab py-2">
                   <a href="department.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-building-o mx-2"></i><span>Departments</span></span></a>
+                  </li> -->
+                  <li  class="px-4 w-100 mb-1 nav-item tab py-2">
+                    <a href="appointment.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-calendar mx-2" aria-hidden="true"></i><span>Appointments</span></span></a>
                   </li>
                   <li  class="px-4 w-100 mb-1 nav-item tab py-2">
-                  <a href="appointment.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-calendar mx-2" aria-hidden="true"></i><span>Appointments</span></span></a>
-                  </li>
-                  <li  class="px-4 w-100 mb-1 nav-item tab py-2">
-                   <a href="medicines.php" class="nav-link"><span class="fx-5 fw-800 text-light"> <i class="fa fa-medkit mx-2" aria-hidden="true"></i><span>Medicines</span></span></a>
+                    <a href="medicines.php" class="nav-link"><span class="fx-5 fw-800 text-light"> <i class="fa fa-medkit mx-2" aria-hidden="true"></i><span>Medicines</span></span></a>
                   </li>
                   <li  class="px-4 w-100 mb-1 nav-item tab py-2">
                     <a href="Report.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-book mx-2"></i><span>Reports</span></span></a>
                   </li>
+                  <li  class="px-4 w-100 mb-1 nav-item tab py-2">
+                    <a href="activityLog.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-history mx-2"></i><span>Activity Log</span></span></a>
+                  </li>
                   <li  id="account_btn" class="px-4 w-100 mb-1 nav-item tab py-2">
-                  <a href="account.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-user-o mx-2" aria-hidden="true"></i><span>Account</span></span></a>
+                    <a href="account.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-user-o mx-2" aria-hidden="true"></i><span>Account</span></span></a>
                   </li>
                 </ul>
              </div>
@@ -91,12 +103,17 @@
                           <div class="d-flex gap-2 ">
                                 <div class="d-flex align-items-center" style="flex-basis:300px">
                                   <span for="#sort" class="px-2 text-nowrap">Sort By</span>
-                                  <select class="form-select shadow-none" aria-label="Default select example" name="sort" id="sort">
+                                  <select class="form-select shadow-none" aria-label="Default select example" name="sort" id="sort_stud">
+                                    <option name="sort" value="id">All</option>
                                     <option name="sort" value="Recent">Recent</option>
+                                    <option name="sort" value="year_level">Year Level</option>
+                                    <option name="sort" value="Section">Section</option>
+                                    <!-- <option name="sort" value="Degree Program/ Course">Degree Program/Course</option> -->
+                                    
                                   </select>
                                 </div>
                               <div class="input-group form-input-sma">
-                                  <input type="text" class="form-control" placeholder="Search..." aria-label="Search..." aria-describedby="button-addon2">
+                                  <input type="text" class="form-control" name="search" id="search_stud" placeholder="Search..." aria-label="Search..." aria-describedby="button-addon2">
                                   <button class="btn bg-secondary fw-bold text-light" type="button" id="button-addon2"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
                                 </div>
                             </div>
@@ -104,25 +121,23 @@
 
                        
                         
-
+                        <div class="students">
                       <!-- <div class="patient_table_details table-responsive mt-3" >
                           <table class="table table-hover table-striped text-center fw-semibold">   -->
-                              <?php 
-                                include 'db_conn.php';
-                                $sql = "SELECT * FROM stud_data LIMIT 5";
-                                $run_sql = mysqli_query($conn,$sql) or die(mysqli_error($conn));
-                                if(mysqli_num_rows($run_sql) > 0){
-                                  while ($row = mysqli_fetch_array($run_sql)) {
-                                    echo '
-                                    
-                                    <table class="table table-borderless shadow mt-3 text-center">
+                         
+
+                                <?php if(mysqli_num_rows($fetchAllStudents) > 0) { 
+                                  while ($studs = mysqli_fetch_assoc($fetchAllStudents)) {  ?>
+
+
+                                  <table class="table table-borderless shadow mt-3 text-center">
                                     <tbody>
                                       <tr class="">
-                                        <td class="col-2 text-light fw-bold" style="background:#5D8FD9"><span>'.$row['student_id'].'</span></td>
-                                        <td class="col-3"><span class="name">'.$row['firstname'].' '.$row['lastname'].'</span></td>
-                                        <td class="col-1"><span class="course">'.$row['Section'].'</span></td>
-                                        <td class="col-5 "><span class="email">'.$row['Email'].'</span></td>
-                                        <td class="col-1"><button class="addpatient-btn px-2" style="background-color: #163666;" id="view"  data-id="'.$row['student_id'].'">View</button></td>
+                                        <td class="col-2 text-light fw-bold" style="background:#5D8FD9"><span><?=$studs['student_id']?></span></td>
+                                        <td class="col-3"><span class="name"><?=$studs['firstname']?> <?=$studs['middlename']?> <?=$studs['lastname']?></span></td>
+                                        <td class="col-1"><span class="course"><?=$studs['Section']?></span></td>
+                                        <td class="col-5 "><span class="email"><?=$studs['Email']?></span></td>
+                                        <td class="col-1"><button class="addpatient-btn px-2" style="background-color: #163666;" id="view" data-id="<?=$studs['student_id']?>">View</button></td>
                                         <td class="col"><span class="name position-relative d-flex align-items-center justify-content-center">
                                         <a href="#" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-ellipsis-vertical " style="color: #163666"></i></a>
                                         <ul class="dropdown-menu" data-popper-placement="left-start" style="position: absolute; inset: 0px 0px auto auto; margin: 0px; transform: translate3d(-106.667px, 0px, 0px);width:max-content;">
@@ -133,13 +148,9 @@
                                       </tr>
                                     </tbody>
                                   </table>
-                                
-                                    ';
-                                  }
-                                }
-
-                              ?>
-                            
+                                  <?php } } ?>
+                  
+                            <div>
                           <!-- </table>
                       </div> -->
                   </div> 
@@ -150,6 +161,14 @@
         </div>
     </div>
 </body>
+
+
+    <!-- CUSTOM AJAX FILE -->
+    <script src="./ajax/search_appointments.js"> </script>
+    <script src="./ajax/search_medreq.js"> </script>
+    <script src="./ajax/search_students.js"> </script>
+    <script src="./ajax/search_medicine.js"> </script>
+
 </html>
 
 <!-- <tr>
@@ -163,3 +182,37 @@
 <a href="#addAdminModal" class="custom_btn" data-toggle="modal"><i class="fa fa-trash fs-4 mx-2" aria-hidden="true" style="color: #163666"></i></a>
 </span></td>
 </tr> -->
+
+
+<!-- <?php 
+                                // include 'db_conn.php';
+                                // $sql = "SELECT * FROM stud_data LIMIT 10";
+                                // $run_sql = mysqli_query($conn,$sql) or die(mysqli_error($conn));
+                                // if(mysqli_num_rows($run_sql) > 0){
+                                //   while ($row = mysqli_fetch_array($run_sql)) {
+                                //     echo '
+                                    
+                                  //   <table class="table table-borderless shadow mt-3 text-center">
+                                  //   <tbody>
+                                  //     <tr class="">
+                                  //       <td class="col-2 text-light fw-bold" style="background:#5D8FD9"><span>'.$row['student_id'].'</span></td>
+                                  //       <td class="col-3"><span class="name">'.$row['firstname'].' '.$row['middlename'].' '.$row['lastname'].'</span></td>
+                                  //       <td class="col-1"><span class="course">'.$row['Section'].'</span></td>
+                                  //       <td class="col-5 "><span class="email">'.$row['Email'].'</span></td>
+                                  //       <td class="col-1"><button class="addpatient-btn px-2" style="background-color: #163666;" id="view"  data-id="'.$row['student_id'].'">View</button></td>
+                                  //       <td class="col"><span class="name position-relative d-flex align-items-center justify-content-center">
+                                  //       <a href="#" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-ellipsis-vertical " style="color: #163666"></i></a>
+                                  //       <ul class="dropdown-menu" data-popper-placement="left-start" style="position: absolute; inset: 0px 0px auto auto; margin: 0px; transform: translate3d(-106.667px, 0px, 0px);width:max-content;">
+                                  //       <li><a class="dropdown-item" href="#"><i class="fa-solid fa-edit mx-2"></i>Edit</a></li>
+                                  //       </ul>
+                                  //       </span>
+                                  //       </td>
+                                  //     </tr>
+                                  //   </tbody>
+                                  // </table>
+                                
+                                //     ';
+                                //   }
+                                // }
+
+                              ?> -->

@@ -159,46 +159,46 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
               <!-- <ul class="list-unstyled navbar-nav ps-0"> -->
               <ul class="mt-4 list-unstyled navbar-nav ps-0 ">
 
-                  <li  class="px-4 w-100 mb-1 nav-item tab">
+                  <li  class="px-4 w-100 mb-1 nav-item tab py-1">
                     <a href="adminDashboard.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-area-chart mx-2"></i><span>Dashboard</span></span></a>
                   </li>
-                  <li  class="px-4 w-100 mb-1 nav-item tab">
+                  <li  class="px-4 w-100 mb-1 nav-item tab py-1">
                   <a href="admins.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-users mx-2"></i><span>Admins</span></span></a>
                   </li>
-                  <li  class="px-4 w-100 mb-1 nav-item active tab">
+                  <li  class="px-4 w-100 mb-1 nav-item active tab py-1">
                   <a href="departments.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-building-o mx-2"></i><span>Departments</span></span></a>
                   </li>
-                  <li  class="px-4 w-100 mb-1 nav-item tab">
+                  <li  class="px-4 w-100 mb-1 nav-item tab py-1">
                   <a href="nurses.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-user-md mx-2"></i><span>Nurses</span></span></a>
                   </li>
-                  <li  class="px-4 w-100 mb-1 nav-item tab">
+                  <li  class="px-4 w-100 mb-1 nav-item tab py-1">
                   <a href="hospitals.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-hospital-o mx-2" aria-hidden="true"></i><span>Hospitals</span></span></a>
                   </li>
-                  <li  class="px-4 w-100 mb-1 nav-item tab">
+                  <li  class="px-4 w-100 mb-1 nav-item tab py-1">
                    <a href="medicines.php" class="nav-link"><span class="fx-5 fw-800 text-light"> <i class="fa fa-medkit mx-2" aria-hidden="true"></i><span>Medicines</span></span></a>
                   </li>
-                  <li  class="px-4 w-100 mb-1 nav-item tab">
+                  <li  class="px-4 w-100 mb-1 nav-item tab py-1">
                   <a href="appointment.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-calendar mx-2" aria-hidden="true"></i><span>Appointments</span></span></a>
                   </li>
-                  <li  class="px-4 w-100 mb-1 nav-item tab">
+                  <li  class="px-4 w-100 mb-1 nav-item tab py-1">
                     <a href="report.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-book mx-2"></i><span>Reports</span></span></a>
                   </li>
-                  <li  class="px-4 w-100 mb-1 nav-item tab">
+                  <li  class="px-4 w-100 mb-1 nav-item tab py-1">
                   <a href="archive.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-folder-open-o mx-2" aria-hidden="true"></i><span>Archive</span></span></a>
                   </li>
-                  <li  class="px-4 w-100 mb-1 nav-item tab">
+                  <li  class="px-4 w-100 mb-1 nav-item tab py-1">
                   <a href="entranceLog.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-address-book mx-2" aria-hidden="true"></i><span>Entrance Log</span></span></a>
                   </li>
                 </ul>
              </div>
              <div class="web_info">
 
-                <div class="admin_info"><br>
+                <!-- <div class="admin_info"><br>
                 <img src="./assets/<?=$admins['img']?>" alt=""/>
                 <span><?=$admins['email']?></span>
                 <span><?=$admins['fname']?>&nbsp<?=$admins['lname']?></span>
                 </div>
-
+ -->
 
 
                 </div>
@@ -241,18 +241,18 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                         data-bs-toggle="dropdown"
                         aria-expanded="false"
                         style="background: none">
-                        <img src="./assets/<?=$admins['img']?>" alt=""/>
+                        <h5 style="margin-right: 30px; margin-top: 10px; color: white;">Hey, <?=$admins['fname']?>&nbsp<?=$admins['lname']?>!</h5> <img src="./assets/<?=$admins['img']?>" alt=""/>
                     </div>
 
                     <ul
                         class="dropdown-menu dropdown-menu-end dropdown-menu-dark"
                         aria-labelledby="dropdownMenuButton1">
 
-                        <li>
-                        <a class="dropdown-item" href="#">Login As: <?=$admins['fname']?><span id="email_span"></span></a>
-                        </li>
-
                         <li><a class="dropdown-item" href="account.php">Manage Account</a></li>
+
+                        <li>
+                            <a class="dropdown-item" href="activityLog.php">Activity Log<span id="email_span"></span></a>
+                        </li>
 
                         <li id="logout">
                         <a class="dropdown-item" href="logout.php">Logout</a>
@@ -364,32 +364,32 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
                                 <label>Department</label>
                                 <select name="dept_name" id="dept_name" class="form-control">
                                     <option value="">Select Department</option>
-                                    <option value="BSIT Department">BSIT Department</option>
-                                    <option value="BSIE Department">BSIE Department</option>
-                                    <option value="BSENT Department">BSENT Department</option>
-                                    <option value="BSA Department">BSA Department</option>
-                                    <option value="BSECE Department">BSECE Department</option>
+                                    <option name="dept_name" value="BSIT Department">BSIT Department</option>
+                                    <option name="dept_name" value="BSIE Department">BSIE Department</option>
+                                    <option name="dept_name" value="BSENT Department">BSENT Department</option>
+                                    <option name="dept_name" value="BSA Department">BSA Department</option>
+                                    <option name="dept_name" value="BSECE Department">BSECE Department</option>
                                 </select>
                             </div>
                             <div name="building_name">
                             <label>Building Name</label>
                                 <select name="building_name" id="building_name" class="form-control">
                                     <option value="">Select Building Name</option>
-                                    <option value="bautista">Bautista Building</option>
-                                    <option name="techvoc">TechVoc Building</option>
-                                    <option name="belmonte">Belmonte Building</option>
+                                    <option name="building_name" value="Bautista Building">Bautista Building</option>
+                                    <option name="building_name" value="TechVoc Building">TechVoc Building</option>
+                                    <option name="building_name" value="Belmonte Building">Belmonte Building</option>
                                 </select>
                             </div>
                             <div name="room_num">
                             <label>Room No.</label>
                                 <select name="room_num" id="room_num" class="form-control">
                                     <option value="">Select Room No.</option>
-                                    <option name="room1">IC301a</option>
-                                    <option name="room2">IC302a</option>
-                                    <option name="room3">IC304a</option>
-                                    <option name="room4">IC304a</option>
-                                    <option name="room5">IC305a</option>
-                                    <option name="room6">IC306a</option>
+                                    <option name="room_num" value="IC301a">IC301a</option>
+                                    <option name="room_num" value="IC302a">IC302a</option>
+                                    <option name="room_num" value="IC304a">IC304a</option>
+                                    <option name="room_num" value="IC304a">IC304a</option>
+                                    <option name="room_num" value="IC305a">IC305a</option>
+                                    <option name="room_num" value="IC306a">IC306a</option>
                                 </select>
                             </div>
                             </div>

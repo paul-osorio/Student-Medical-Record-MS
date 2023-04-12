@@ -94,7 +94,7 @@
     border: none;
     
 }
-#medicine .filter_wrapper .grid,
+/* #medicine .filter_wrapper .grid, */
 #medicine .filter_wrapper .bars{
     margin-left: 15px;
     display: flex;
@@ -102,10 +102,10 @@
     align-items: center;
     cursor: pointer;
 }
-#medicine .filter_wrapper .grid i{
+/* #medicine .filter_wrapper .grid i{
     color: #a0a0a0;
     font-size: 23px;
-}
+} */
 #medicine .filter_wrapper .bars i{
     color: #000;
     font-size: 23px;
