@@ -32,7 +32,7 @@ include './queries.php';
       
       <div class="header">
           <div class="header-name">
-              <img src="../Assets/QCU_Logo.png" alt="">
+              <img src="../BACKUPS (OLDS)/Assets/QCU_Logo.png" alt="QCU Logo">
               <h3>Welcome to Quezon City University</h3>
           </div>
           <div id="date">

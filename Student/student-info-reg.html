@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="student-info-reg.css">
+    <title>Student Registration</title>
+</head>
+<body>
+    <div class="container">
+        <h3>New Student Information</h3>
+        <div class="add-row">
+            <button id="add-row-btn">+ Add new row</button>
+        </div>
+        <div class="content">
+            <p>1</p>
+            <form action="upload.php" enctype="multipart/form-data">
+                <div id="form-container">
+                    <div class="form-row">
+                      <img class="imgPreview" src="#" alt="Preview" style="display: none; max-width: 100px; max-height: 100px;">
+                      <input type="file" name="fileUpload" onchange="previewImage(this);" accept="image/*">
+                        <div class="inputs">
+                            <!-- <fieldset>
+                              <legend>Lastname</legend> -->
+                              <input type="text" name="lastname" placeholder="Lastname" required>
+                            <!-- </fieldset> -->
+
+                            <input type="text" name="firstname" placeholder="Firstname" required>
+                            <input type="text" name="middlename" placeholder="Middlename" required>
+                            <input type="email" name="email" placeholder="Email" required>
+                            <input type="text" name="age" placeholder="Age" required>
+                            <input type="date" name="birthDate" placeholder="Birthdate" required>
+                            <input type="text" name="address" placeholder="Address" required>
+                        
+                            <select name="Gender" id="">
+                                <option value="">Male</option>
+                                <option value="">Female</option>
+                            </select>
+
+                            <input type="text" name="contact_num" placeholder="Contact Number">
+
+                            <input type="text" name="year_lvl" placeholder="Year Level">
+                            <input type="text" name="section" placeholder="Section">
+                        </div>
+                    </div>
+                  </div>
+                              <input type="submit" value="Add Students">
+                </form>
+            </div>
+    </div>
+
+    <script>
+      const formContainer = document.getElementById("form-container");
+      const addRowBtn = document.getElementById("add-row-btn");
+    
+      addRowBtn.addEventListener("click", () => {
+        const newRow = document.createElement("div");
+        newRow.classList.add("form-row");
+        newRow.innerHTML = `
+          <img class="imgPreview" src="#" alt="Preview" style="display: none; max-width: 100px; max-height: 100px;">
+          <input type="file" name="fileUpload" onchange="previewImage(this);" accept="image/*">
+          <div class="inputs">
+            <input type="text" name="lastname" placeholder="Lastname" required>
+            <input type="text" name="firstname" placeholder="Firstname" required>
+            <input type="text" name="middlename" placeholder="Middlename" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="text" name="age" placeholder="Age" required>
+            <input type="date" name="birthDate" placeholder="Birthdate" required>
+            <input type="text" name="address" placeholder="Address" required>
+    
+            <select name="Gender" id="">
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+    
+            <input type="text" name="contact_num" placeholder="Contact Number">
+    
+            <input type="text" name="year_lvl" placeholder="Year Level">
+            <input type="text" name="section" placeholder="Section">
+          </div>
+        `;
+        formContainer.appendChild(newRow);
+      });
+    
+      // Preview the selected image
+      function previewImage(input) {
+        const imgPreview = input.previousElementSibling;
+        if (input.files && input.files[0]) {
+          const reader = new FileReader();
+          reader.onload = function(e) {
+            imgPreview.src = e.target.result;
+            imgPreview.style.display = 'block';
+          }
+          reader.readAsDataURL(input.files[0]);
+        }
+      }
+    </script>
+    
+</body>
+</html>
