@@ -72,9 +72,7 @@ if (isset($_SESSION['emp_id']) && isset($_SESSION['username'])) {
                   <li  class="px-4 w-100 mb-1 nav-item tab py-2">
                   <a href="report.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-plus-square mx-2"></i><span>Medical Reports</span></span></a>
                   </li>
-                  <li  class="px-4 w-100 mb-1 nav-item tab py-2">
-                  <a href="department.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-building-o mx-2"></i><span>Departments</span></span></a>
-                  </li>
+                
                   <li  class="px-4 w-100 mb-1 nav-item tab py-2">
                   <a href="appointment.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-calendar mx-2" aria-hidden="true"></i><span>Appointments</span></span></a>
                   </li>

@@ -75,9 +75,7 @@ if (isset($_SESSION['emp_id']) && isset($_SESSION['username'])) {
                   <li  class="px-4 w-100 mb-1 nav-item tab py-2">
                   <a href="Mreport.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-plus-square mx-2"></i><span>Medical Reports</span></span></a>
                   </li>
-                  <li  class="px-4 w-100 mb-1 nav-item tab py-2">
-                  <a href="department.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-building-o mx-2"></i><span>Departments</span></span></a>
-                  </li>
+                 
                   <li  class="px-4 w-100 mb-1 nav-item tab py-2">
                   <a href="appointment.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-calendar mx-2" aria-hidden="true"></i><span>Appointments</span></span></a>
                   </li>
@@ -111,7 +109,14 @@ if (isset($_SESSION['emp_id']) && isset($_SESSION['username'])) {
   
                       </div>
                        </div> -->
-
+                       <?php
+$emp_id = $_SESSION['emp_id'];
+include "db_conn.php";
+  $result = mysqli_query($conn,"SELECT * FROM nurses WHERE emp_id='$emp_id'");
+  while($row = mysqli_fetch_assoc($result)) {
+   
+  
+    ?>
                     <div class="px-3 rounded-3 d-flex align-items-center mt-3" style="background:#0C4079";>
 
                       <div class="position-relative" style="width:180px;height:150px;">
@@ -124,14 +129,18 @@ if (isset($_SESSION['emp_id']) && isset($_SESSION['username'])) {
                         <div class="text-light">
                           <p><?php echo $_SESSION['emp_id'] ?></p>
                           <p class="fw-bold"> <?php echo $_SESSION['firstname'].' '.$_SESSION['lastname']; ?></p>
-                          <p><?php echo $_SESSION['position'] ?></p>
+
+
+                    <p><?php echo $row["position"];?></p>
                         </div>
                         <div class="text-light text-center">
                           <p class="fw-bold fs-2">20</p>
                           <p class="p-0">Consult Today</p>
                         </div>
                       </div>
-                      
+      <?php 
+      }
+      ?>                
     
 
 
@@ -139,7 +148,7 @@ if (isset($_SESSION['emp_id']) && isset($_SESSION['username'])) {
 
                     <div class="d-flex justify-content-between mt-3">
                       <p class="fw-bold">RECENT APPOINTMENTS</p>
-                      <a href="#"> View All</a>
+                      <a href="appointment.php"> View All</a>
                     </div>
                     <table class="table table-borderless">
                       <thead>
@@ -178,7 +187,7 @@ if (isset($_SESSION['emp_id']) && isset($_SESSION['username'])) {
                     
                     <div class="d-flex justify-content-between mt-3">
                       <p class="fw-bold">LIST OF CONSULTED STUDENTS</p>
-                      <a href="#"> View All</a>
+                      <a href="student.php"> View All</a>
                     </div>
                     <table class="table table-borderless">
                     <thead>
@@ -192,7 +201,7 @@ if (isset($_SESSION['emp_id']) && isset($_SESSION['username'])) {
                       </thead>
 
                       <tbody class="table-group-divider">
-                        <?php
+                     <?php
                         include "db_conn.php";
                         $sql = "SELECT * FROM students LIMIT 4";
                         $run_sql = mysqli_query($conn,$sql) or die(mysqli_error($conn));

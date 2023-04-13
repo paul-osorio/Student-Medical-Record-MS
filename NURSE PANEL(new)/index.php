@@ -20,8 +20,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="icon" type="image/png" href="./assets/favcon.png"/>
-	<title>SMRMS | NURSE | LOGIN</title>
+	<title>LOGIN | NURSE PANEL</title>
 	<link rel="stylesheet" type="text/css" href="./css/login.css">
 </head>
 <body>

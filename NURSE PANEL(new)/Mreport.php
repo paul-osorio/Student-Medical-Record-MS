@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="./assets/favcon.png"/>
-    <title>SMRMS | NURSE | Medical Report</title>
+    <title>Medical Report | SMRMS | NURSE</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
@@ -64,9 +64,7 @@
                   <li  class="px-4 w-100 mb-1 nav-item active tab py-2">
                   <a href="Mreport.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-plus-square mx-2"></i><span>Medical Reports</span></span></a>
                   </li>
-                  <li  class="px-4 w-100 mb-1 nav-item tab py-2">
-                  <a href="department.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-building-o mx-2"></i><span>Departments</span></span></a>
-                  </li>
+                
                   <li  class="px-4 w-100 mb-1 nav-item tab py-2">
                   <a href="appointment.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-calendar mx-2" aria-hidden="true"></i><span>Appointments</span></span></a>
                   </li>
@@ -91,13 +89,13 @@
                         <div class="d-flex gap-2 ">
                                 <div class="d-flex align-items-center" style="flex-basis:300px">
                                   <span for="#sort" class="px-2 text-nowrap">Sort By</span>
-                                  <select class="form-select shadow-none" aria-label="Default select example" name="sort" id="sort">
-                                    <option name="sort" value="Recent">Recent</option>
+                                  <select class="form-select shadow-none" aria-label="Default select example" id="sort">
+                                    <option value="Recent">recent</option>
                                   </select>
                                 </div>
                   
                               <div class="input-group form-input-sm d-flex align-items-center gap-2 ">
-                                  <input type="text" class="form-control w-50 shadow-none" placeholder="&#xF002; Search..." aria-label="Search..." aria-describedby="button-addon2" style="font-family:Poppins, FontAwesome">
+                                  <input type="text" class="form-control w-50 shadow-none" placeholder="Search..." aria-label="Search..." aria-describedby="button-addon2">
                                   <a href="#" class="text-secondary"> <i class="fa fa-th-large mx-1 fs-3" aria-hidden="true"></i></a>
                                   <a href="#" class="text-secondary"><i class="fa fa-bars mx-1 fs-3" aria-hidden="true"></i></a>
                               </div>

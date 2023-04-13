@@ -1,3 +1,19 @@
+<?php 
+      include "db_conn.php";
+      $result = mysqli_query($conn, "SELECT * FROM consultations");
+      $row_count = mysqli_num_rows($result);
+      
+
+      
+      $result = mysqli_query($conn, "SELECT * FROM appointments");
+      $row_count1 = mysqli_num_rows($result);
+
+
+      $result = mysqli_query($conn, "SELECT * FROM stud_medical_requirements");
+      $row_count2 = mysqli_num_rows($result);
+    ?>
+      
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +21,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="./assets/favcon.png"/>
-    <title>SMRMS | NURSE | Report</title>
+    
+    <title>Report | SMRMS | NURSE</title>
 
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
@@ -69,9 +86,7 @@
                   <li  class="px-4 w-100 mb-1 nav-item tab py-2">
                   <a href="Mreport.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-plus-square mx-2"></i><span>Medical Reports</span></span></a>
                   </li>
-                  <li  class="px-4 w-100 mb-1 nav-item tab py-2">
-                  <a href="department.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-building-o mx-2"></i><span>Departments</span></span></a>
-                  </li>
+                 
                   <li  class="px-4 w-100 mb-1 nav-item tab py-2">
                   <a href="appointment.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-calendar mx-2" aria-hidden="true"></i><span>Appointments</span></span></a>
                   </li>
@@ -92,26 +107,29 @@
                 <div class="container-fluid bg-secondary-subtle py-2 rounded-1">
                     <span class="fw-bold fs-5 mx-3 text-uppercase">Summart Report</span>
                     <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 bg-body-secondary p-2 rounded-2 mt-3">
-                        
-                        <div class="d-flex position-relative justify-content-evenly gap-4 fw-bold p-1">
+                      
+                 
+                    <div class="d-flex position-relative justify-content-evenly gap-4 fw-bold p-1">
                             <div class="d-flex px-2 py-1 text-center align-items-center justify-content-center bg-light rounded-2 ">
                                 <div class="d-grid">
-                                <span>556</span>
+                                <span><?php echo $row_count; ?></span>
                                 <span>Consultations</span>
                                 </div>
                             </div>
+
+
                             <div class="d-flex px-2 py-1 text-center align-items-center justify-content-center bg-light rounded-2 ">
                                 
                               <div class="d-grid">
-                              <span>556</span>
+                              <span><?php echo $row_count1; ?></span>
                               <span>Appoinment</span>
                               </div>
                           </div>
                           <div class="d-flex px-2 py-1 text-center align-items-center justify-content-center bg-light rounded-2 " style="flex-basis:200px">
                                 
                             <div class="d-grid">
-                            <span>556</span>
-                            <span>pending medical 
+                            <span><?php echo $row_count2; ?></span>
+                            <span>Pending medical 
                               requirements</span>
                             </div>
                         </div>
@@ -155,20 +173,29 @@
                                     <th scope="col">Status</th>
                                   </tr>
                                 </thead>
+                                <?php
+                        include "db_conn.php";
+                        $sql = "SELECT * FROM stud_appointment";
+                        $run_sql = mysqli_query($conn,$sql) or die(mysqli_error($conn));
+                        if(mysqli_num_rows($run_sql) > 0){
+                          while ($row = mysqli_fetch_array($run_sql)) {
+  ?>
                                 <tbody>
-                                  
-                                       
-                                        <tr>        
+                                        <tr>     
+                                          
                                             <!-- <td colspan="2"><img src="./assets/badang.JPG"  width="65" height="65" alt=""></td> -->
-                                            <td>19-1234</td>
-                                            <td>Juan T. Dela Cruz</td>
-                                            <td>Medical Services</td>
-                                            <td>February 5, 2023</td>
-                                            <td>1:00 PM</td>
-                                            <td>asd357Ja </td>
-                                            <td class="text-danger">Declined</td>
+                                            <td><?php echo $row['student_id'] ?></td>
+                                            <td>no data in db</td>
+                                            <td><?php echo $row['app_reason'] ?></td>
+                                            <td><?php echo $row['app_date'] ?></td>
+                                            <td><?php echo $row['app_time'] ?></td>
+                                            <td><?php echo $row['reference_no'] ?></td>
+                                            <td class="text-danger"><?php echo $row['app_status'] ?></td>
                                         </tr>
-                                       
+                                        <?php }
+                        }
+                        
+                        ?>                                   
                                      
                                 </tbody>
                               </table>
@@ -177,8 +204,9 @@
                   </div>
     </div>
     <script>
-        var ctx = document.getElementById('myChart').getContext('2d');
-var myChart = new Chart(ctx, {
+     const ctx = document.getElementById('myChart');
+
+new Chart(ctx, {
     type: 'line',
     data: {
         labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'July','Aug','Sept','Oct','Nov','Dec'],

@@ -11,7 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="./assets/favcon.png"/>
-    <title>SMRMS | NURSE | Medicines</title>
+    <title>Medicines | SMRMS | NURSE</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
@@ -70,9 +70,7 @@
                   <li  class="px-4 w-100 mb-1 nav-item tab py-2">
                   <a href="Mreport.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-plus-square mx-2"></i><span>Medical Reports</span></span></a>
                   </li>
-                  <li  class="px-4 w-100 mb-1 nav-item tab py-2">
-                  <a href="department.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-building-o mx-2"></i><span>Departments</span></span></a>
-                  </li>
+               
                   <li  class="px-4 w-100 mb-1 nav-item tab py-2">
                   <a href="appointment.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-calendar mx-2" aria-hidden="true"></i><span>Appointments</span></span></a>
                   </li>
@@ -96,6 +94,7 @@
                 <div class="container-fluid bg-secondary-subtle py-2 rounded-1">
                    
                     <div class="d-flex align-items-center gap-2 bg-body-secondary p-2 rounded-2">
+                       
                          
                         <div class="d-flex align-items-center">
                         <span for="#sort" class="px-2 text-nowrap">Sort By</span>
@@ -106,7 +105,7 @@
                           </select>
                         </div>
                         <div class="input-group form-input-sm d-flex align-items-center gap-2 ">
-                            <input type="text" class="form-control w-50 shadow-none" placeholder="&#xF002; Search..." aria-label="Search..." aria-describedby="button-addon2" style="font-family:Poppins, FontAwesome">
+                            <input type="text" class="form-control w-50 shadow-none" placeholder="Search..." aria-label="Search..." aria-describedby="button-addon2">
                             <a href="#" class="text-secondary"> <i class="fa fa-th-large mx-1 fs-3" aria-hidden="true"></i></a>
                             <a href="#" class="text-secondary"><i class="fa fa-bars mx-1 fs-3" aria-hidden="true"></i></a>
                         </div>
@@ -136,7 +135,7 @@
                                         </table>
                                       </td>
                                 
-                                      <td style="text-align:justify;text-justify:inter-word;">
+                                      <td>
                                         <span class="mdc-stock">Desctiption: </span>
                                         <span class="mdc-qty"><?=$med['description']?></span>
                                       </td>
@@ -195,7 +194,7 @@
                                 </div>
                                 <div class="col">
                                 <label for="gendatemanu" class="form-label">Date Manufactured</label>
-                                            <input type="date" class="form-control" id="datemanu" style="width:200px;"readonly value="<?=$med['date_manufactured']?>">
+                                            <input type="date" class="form-control" id="datemanu" style="width:125px;"readonly value="<?=$med['date_manufactured']?>">
                                 </div>
                                 <div class="col">
                                 <label for="prod_con" class="form-label">Product Condition</label>
@@ -221,11 +220,15 @@
                                 </div>
                                 <div class="col">
                                 <label for="contact_num" class="form-label">Contact Number</label>
-                                            <input type="text" class="form-control" id="contact_num" style="width:100px;"readonly value="<?=$med['contact_info']?>">
+                                            <input type="text" class="form-control" id="contact_num" style="width:150px;"readonly value="<?=$med['contact_info']?>">
                                 </div>
                                 </div>
                                 <div class="row">
-                                  <div class="col"></div>
+                                  <div class="col">
+                                  <label for="contact_num" class="form-label">Contact Number</label>
+                                  <input type="text" class="form-control" id="contact_num" style="height:200px;"readonly value="<?=$med['description']?>">
+
+                                  </div>
                                 </div>
                     
                                 </div>
