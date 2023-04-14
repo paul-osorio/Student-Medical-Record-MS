@@ -53,6 +53,7 @@
                   <div class="d-flex">
                     <input type="button" class="btn btn-light px-2 mx-2" style="color:#0C4079";  value="Medical History">
                     <input type="button" class="btn btn-light px-2" style="color:#0C4079";  value="Medical Requirements">
+                    <input type="button" class="btn btn-light px-2" style="color:#0C4079";  value="Health History">
                   </div>
                   <input type="button" class="btn px-2 text-light" style="background: #0C4079;" id="consultation" value="New Consultation" data-id="'.$student_id .'" >
                 </div>

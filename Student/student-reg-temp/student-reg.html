@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration</title>
+    <link rel="stylesheet" href="student-reg.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>Student Registration</h2>
+        </div>
+        <div class="btn">
+            <button id="add-row-btn">Add new row</button>
+        </div>
+        <div id="form-container">
+            <div class="form-row">
+                <div class="basic-info">
+                    <form action="">
+                        <img id="imgPreview" src="#" alt="Preview" style="display: none; max-width: 100px; max-height: 100px;">
+                        <input type="file" id="fileUpload" name="fileUpload" onchange="previewImage();" accept="image/*">
+                        <div class="inputs">
+                            <input type="text" name="lastname" placeholder="Lastname" required>
+                            <input type="text" name="firstname" placeholder="Firstname" required>
+                            <input type="text" name="middlename" placeholder="Middlename" required>
+                            <input type="text" name="extension" placeholder="Extension" required>
+                            <input type="text" name="age" placeholder="Age" required>
+                            <input type="date" name="birthDate" placeholder="Birthdate" required>
+                            <select name="Gender" id="">
+                                <option value="">Male</option>
+                                <option value="">Female</option>
+                            </select>
+                            <input type="text" name="height" placeholder="Height" required>
+                            <input type="text" name="weight" placeholder="Weight" required>
+                            <input type="text" name="contact_num" placeholder="Contact Number">
+                            <input type="email" name="email" placeholder="Email" required>
+                            <input type="text" name="address" placeholder="Address" required>
+
+                            <input type="text" name="year_lvl" placeholder="Year Level">
+                            <input type="text" name="section" placeholder="Section">
+                    </div>
+                <div class="student-address">
+                    dsdsd
+                </div>
+              </div>
+            </div> 
+          </div>
+                <div class="btn-submit">
+                    <input type="submit" name="btn-submit" >
+                </div>
+            </form>
+    </div>
+
+    <script>
+        const formContainer = document.getElementById("form-container");
+        const addRowBtn = document.getElementById("add-row-btn");
+      
+        addRowBtn.addEventListener("click", () => {
+          const newRow = document.createElement("div");
+          newRow.classList.add("form-row");
+          newRow.innerHTML = `
+            <img class="imgPreview" src="#" alt="Preview" style="display: none; max-width: 100px; max-height: 100px;">
+            <input type="file" name="fileUpload" onchange="previewImage(this);" accept="image/*">
+            <div class="inputs">
+                <input type="text" name="lastname" placeholder="Lastname" required>
+                <input type="text" name="firstname" placeholder="Firstname" required>
+                <input type="text" name="middlename" placeholder="Middlename" required>
+                <input type="text" name="extension" placeholder="Extension" required>
+                <input type="text" name="age" placeholder="Age" required>
+                <input type="date" name="birthDate" placeholder="Birthdate" required>
+                <select name="Gender" id="">
+                    <option value="">Male</option>
+                    <option value="">Female</option>
+                </select>
+                <input type="text" name="height" placeholder="Height" required>
+                <input type="text" name="weight" placeholder="Weight" required>
+                <input type="text" name="contact_num" placeholder="Contact Number">
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="text" name="address" placeholder="Address" required>
+
+                <input type="text" name="year_lvl" placeholder="Year Level">
+                <input type="text" name="section" placeholder="Section">
+            </div>
+          `;
+          formContainer.appendChild(newRow);
+        });
+      
+        // Preview the selected image
+        function previewImage(input) {
+          const imgPreview = input.previousElementSibling;
+          if (input.files && input.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+              imgPreview.src = e.target.result;
+              imgPreview.style.display = 'block';
+            }
+            reader.readAsDataURL(input.files[0]);
+          }
+        }
+      </script>
+      
+</body>
+</html>

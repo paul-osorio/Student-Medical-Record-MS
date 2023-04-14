@@ -7,7 +7,7 @@
       <thead>
 
          <tr>
-            <td>Name.</td>
+            <td>Name</td>
             <td>Purpose</td>
             <td>Contact Number</td>
             <td>Time-In</td>

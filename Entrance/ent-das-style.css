@@ -109,6 +109,7 @@
   height: 100%;
   object-fit: cover;
   border-radius: 6px;
+  border: 1px solid #dedede;
 }
 
 .main-container .container .subcontainer .form-scan{

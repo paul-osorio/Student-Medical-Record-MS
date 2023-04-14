@@ -5,7 +5,7 @@
 
    $stud_id = $_POST['stud_id'];
 
-   $sel_stud = "SELECT * FROM `stud_data` WHERE `student_id` = '$stud_id' ";
+   $sel_stud = "SELECT * FROM `mis.student_info` WHERE `student_id` = '$stud_id' ";
 
    $res_stud = mysqli_query($conn, $sel_stud);
    $student = mysqli_fetch_assoc($res_stud);

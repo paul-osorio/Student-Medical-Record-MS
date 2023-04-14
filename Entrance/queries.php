@@ -56,7 +56,7 @@ $archive_total = $count_archive['count'];
 
 
 $sel_entrance_log_query ="SELECT *, LEFT(b.middlename, 1) AS `middle_initial` FROM `entrance_log` a
-JOIN `stud_data` b
+JOIN `mis.student_info` b
 ON a.student_number = b.student_id
 JOIN `sample_stud_data` c
 ON a.student_number = c.student_id
