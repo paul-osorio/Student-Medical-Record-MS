@@ -145,10 +145,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
   <body>
 
     <div class="main">
-      <nav
-        id="sidebar"
-        class="sidebar navbar-dark active"
-        style="width: 225px; box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;">
+
+      <nav id="sidebar" class="sidebar navbar-dark active" style="width: 225px; box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;">
 
         <div class="logo navbar-brand px-3 m-0" href="#">
           <img src="./assets/QCUClinicLogo.png" alt="" />
@@ -156,120 +154,118 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
         </div>
         
         <div class="w-100">
-              <!-- <ul class="list-unstyled navbar-nav ps-0"> -->
-              <ul class="mt-4 list-unstyled navbar-nav ps-0 ">
 
-                  <li  class="px-4 w-100 mb-1 nav-item tab py-1">
-                    <a href="adminDashboard.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-area-chart mx-2"></i><span>Dashboard</span></span></a>
-                  </li>
-                  <li  class="px-4 w-100 mb-1 nav-item active tab py-1">
-                  <a href="admins.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-users mx-2"></i><span>Admins</span></span></a>
-                  </li>
-                  <li  class="px-4 w-100 mb-1 nav-item tab py-1">
-                  <a href="departments.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-building-o mx-2"></i><span>Departments</span></span></a>
-                  </li>
-                  <li  class="px-4 w-100 mb-1 nav-item tab py-1">
-                  <a href="nurses.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-user-md mx-2"></i><span>Nurses</span></span></a>
-                  </li>
-                  <li  class="px-4 w-100 mb-1 nav-item tab py-1">
-                  <a href="hospitals.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-hospital-o mx-2" aria-hidden="true"></i><span>Hospitals</span></span></a>
-                  </li>
-                  <li  class="px-4 w-100 mb-1 nav-item tab py-1">
-                   <a href="medicines.php" class="nav-link"><span class="fx-5 fw-800 text-light"> <i class="fa fa-medkit mx-2" aria-hidden="true"></i><span>Medicines</span></span></a>
-                  </li>
-                  <li  class="px-4 w-100 mb-1 nav-item tab py-1">
-                  <a href="appointment.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-calendar mx-2" aria-hidden="true"></i><span>Appointments</span></span></a>
-                  </li>
-                  <li  class="px-4 w-100 mb-1 nav-item tab py-1">
-                    <a href="report.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-book mx-2"></i><span>Reports</span></span></a>
-                  </li>
-                  <li  class="px-4 w-100 mb-1 nav-item tab py-1">
-                  <a href="archive.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-folder-open-o mx-2" aria-hidden="true"></i><span>Archive</span></span></a>
-                  </li>
-                  <li  class="px-4 w-100 mb-1 nav-item tab py-1">
-                  <a href="entranceLog.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-address-book mx-2" aria-hidden="true"></i><span>Entrance Log</span></span></a>
-                  </li>
-                </ul>
-             </div>
-   
-             <div class="web_info">
+          <ul class="mt-4 list-unstyled navbar-nav ps-0 ">
 
-<!-- <div class="admin_info"><br>
-  <img src="./assets/<?=$admins['img']?>" alt=""/>
-  <span><?=$admins['email']?></span>
-  <span><?=$admins['fname']?>&nbsp<?=$admins['lname']?></span>
-</div> -->
-
-
-
-</div>
-
-</ul>
-</nav>
-
-        <nav
-        id="navigation"
-        class="mynav px-3 navbar navbar-expand navbar-dark"
-        style="z-index: 1">
-
-        <div class="container-fluid d-flex justify-content-start">
-        <button
-          id="sidebarCollapse"
-          class="navbar-toggle border-0 bg-dark ms-0 ms-md-2 ms-lg-0 order-1 order-md-1">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-
-        <div class="ms-auto order-sm-0" id="navbarNav">
-          <ul
-            class="navbar-nav ms-auto text-white d-flex align-items-left align-items-lg-center">
-            <span></span>
-
-            <li class="nav-item px-0 d-flex align-items-center">
-              <a
-                class="nav-link modal-trigger text-dark"
-                data-toggle="modal"
-                data-target="#loginmodal"
-                href="#"></a>
+            <li  class="px-4 w-100 mb-1 nav-item tab py-1">
+              <a href="adminDashboard.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-area-chart mx-2"></i><span>Dashboard</span></span></a>
             </li>
 
-            <div class="dropdown nav-item">
+            <li  class="px-4 w-100 mb-1 nav-item active tab py-1">
+              <a href="admins.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-users mx-2"></i><span>Admins</span></span></a>
+            </li>
 
-              <div
-                class="account background-none nav-link dropdown-toggle dropdown-toggle d-flex justify-content-center align-items-center"
-                type="button"
-                id="dropdownMenuButton1"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-                style="background: none">
-                <h5 style="margin-right: 30px; margin-top: 10px; color: white;">Hey, <?=$admins['fname']?>&nbsp<?=$admins['lname']?>!</h5> <img src="./assets/<?=$admins['img']?>" alt=""/>
-              </div>
+            <li  class="px-4 w-100 mb-1 nav-item tab py-1">
+              <a href="departments.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-building-o mx-2"></i><span>Departments</span></span></a>
+            </li>
 
-              <ul
-                class="dropdown-menu dropdown-menu-end dropdown-menu-dark"
-                aria-labelledby="dropdownMenuButton1">
+            <li  class="px-4 w-100 mb-1 nav-item tab py-1">
+              <a href="nurses.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-user-md mx-2"></i><span>Nurses</span></span></a>
+            </li>
 
-                <li><a class="dropdown-item" href="account.php">Manage Account</a></li>
+            <li  class="px-4 w-100 mb-1 nav-item tab py-1">
+              <a href="hospitals.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-hospital-o mx-2" aria-hidden="true"></i><span>Hospitals</span></span></a>
+            </li>
 
-                <li>
-                    <a class="dropdown-item" href="activityLog.php">Activity Log<span id="email_span"></span></a>
-                </li>
+            <li  class="px-4 w-100 mb-1 nav-item tab py-1">
+              <a href="medicines.php" class="nav-link"><span class="fx-5 fw-800 text-light"> <i class="fa fa-medkit mx-2" aria-hidden="true"></i><span>Medicines</span></span></a>
+            </li>
 
-                <li id="logout">
-                  <a class="dropdown-item" href="logout.php">Logout</a>
-                </li>
+            <li  class="px-4 w-100 mb-1 nav-item tab py-1">
+              <a href="appointment.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-calendar mx-2" aria-hidden="true"></i><span>Appointments</span></span></a>
+            </li>
 
-              </ul>
-            </div>
+            <li  class="px-4 w-100 mb-1 nav-item tab py-1">
+              <a href="report.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-book mx-2"></i><span>Reports</span></span></a>
+            </li>
+
+            <li  class="px-4 w-100 mb-1 nav-item tab py-1">
+              <a href="archive.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-folder-open-o mx-2" aria-hidden="true"></i><span>Archive</span></span></a>
+            </li>
+
+            <li  class="px-4 w-100 mb-1 nav-item tab py-1">
+              <a href="entranceLog.php" class="nav-link"><span class="fx-5 fw-800 text-light"><i class="fa fa-address-book mx-2" aria-hidden="true"></i><span>Entrance Log</span></span></a>
+            </li>
           </ul>
         </div>
+
+      </nav>
+
+      <nav id="navigation" class="mynav px-3 navbar navbar-expand navbar-dark" style="z-index: 1">
+        
+        <div class="container-fluid d-flex justify-content-start">
+
+          <button id="sidebarCollapse" class="navbar-toggle border-0 bg-dark ms-0 ms-md-2 ms-lg-0 order-1 order-md-1">
+
+            <span class="navbar-toggler-icon"></span>
+
+          </button>
+
+          <div class="ms-auto order-sm-0" id="navbarNav">
+  
+            <ul class="navbar-nav ms-auto text-white d-flex align-items-left align-items-lg-center">
+              
+              <span></span>
+  
+              <li class="nav-item px-0 d-flex align-items-center">
+                <a
+                  class="nav-link modal-trigger text-dark"
+                  data-toggle="modal"
+                  data-target="#loginmodal"
+                  href="#"></a>
+              </li>
+  
+              <div class="dropdown nav-item">
+  
+                <div
+                  class="account background-none nav-link dropdown-toggle dropdown-toggle d-flex justify-content-center align-items-center"
+                  type="button"
+                  id="dropdownMenuButton1"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  style="background: none">
+                  <h5 style="margin-right: 30px; margin-top: 10px; color: white;">Hey, <?=$admins['fname']?>&nbsp<?=$admins['lname']?>!</h5> <img src="./assets/<?=$admins['img']?>" alt=""/>
+                </div>
+  
+                <ul
+                  class="dropdown-menu dropdown-menu-end dropdown-menu-dark"
+                  aria-labelledby="dropdownMenuButton1">
+  
+                  <li><a class="dropdown-item" href="account.php">Manage Account</a></li>
+  
+                  <li>
+                      <a class="dropdown-item" href="activityLog.php">Activity Log<span id="email_span"></span></a>
+                  </li>
+  
+                  <li id="logout">
+                    <a class="dropdown-item" href="logout.php">Logout</a>
+                  </li>
+  
+                </ul>
+  
+              </div>
+  
+            </ul>
+            
+          </div>
+          
         </div>
-        </nav>
+      </nav>
+
+
 
 
         <div class="content_wrapper">
-    
-<!--########################################################################################################################################################################-->
 
         <!-- ADMINS PAGE -->
         <section id="admins" class="admins so_content so_active" data-tab-content>

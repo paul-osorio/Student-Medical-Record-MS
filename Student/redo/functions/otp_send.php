@@ -56,7 +56,7 @@
       $mail->Host = 'smtp.gmail.com';
       $mail->SMTPAuth = true;
       $mail->Username = 'studmed.recordms.2023@gmail.com';
-      $mail->Password = 'wemzznitphaijzqd';
+      $mail->Password = 'qmgdqhrozvdbypdb';
 
       $mail->SMTPSecure = 'ssl';
       $mail->Port = 465;
