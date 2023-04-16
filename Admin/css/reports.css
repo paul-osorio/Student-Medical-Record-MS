@@ -1,0 +1,28 @@
+@import url("./main.css");
+
+.report-container{
+   display: flex;
+   flex-direction: column;
+}
+
+.report-container .content-header{
+   height: 10%;
+}
+
+.report-container .content-header .form-button select{
+   padding: 5px 10px;
+   outline: none;
+   font-size: 1em;
+   border: none;
+   background-color: #f9f9f9;
+   border-radius: 4px;
+   margin-left: 5px;
+   /* width: 20%; */
+}
+
+.report-container .report-content-container{
+   /* display: flex; */
+   background-color: #fff;
+   width: 100%;
+   height: 90%;
+}

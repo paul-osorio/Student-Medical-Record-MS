@@ -306,6 +306,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
               <a href="#addNurseModal" class="custom_btn" data-toggle="modal"><i class="fa fa-plus"></i>Add Nurse</a>
             </button>
           </div>
+
+          
           <div class="card_container">
 
                 <?php if(mysqli_num_rows($fetchAllNurses) > 0) { 
