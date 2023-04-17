@@ -1,5 +1,5 @@
 <?php
-     include('db_conn.php');
+     include('./includes/db_conn.php');
 
 
     // SELECT ALL STUDENTS 
@@ -122,7 +122,7 @@
                        
                         
                         <div class="students">
-                      <h1>Student</h1>
+                      <!-- <h1>Student</h1> -->
                          
 
                                 <?php if(mysqli_num_rows($fetchAllStudents) > 0) { 

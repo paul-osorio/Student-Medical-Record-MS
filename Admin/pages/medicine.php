@@ -121,21 +121,21 @@
             <div class="filter">
                <div class="sort sort-med">
                   <label for="med-sort"> Sort by: </label>
-                  <select name="med-sort" id="med-sort">
-                     <option value="All"> All </option>
-                     <option value="Expiration Date"> Expiration Date </option>
-                     <option value="Stocks"> Stocks </option>
+                  <select name="sort" id="med-sort">
+                     <option value="prod_id"> All </option>
+                     <option value="expirationDate"> Expiration Date </option>
+                     <option value="num_stocks"> Stocks </option>
                   </select>
                </div>
 
                <div class="search search-med">
-                  <input type="search" name="med-search" id="med-search" placeholder="Search Medicine">
+                  <input type="search" name="search" id="med-search" placeholder="Search Medicine">
                </div>
             </div>
 
 
             <div class="medicine-list-container">
-               <table border="0">
+               <table class="medicine-list" border="0">
                   <tbody>
 
                   <?php 
@@ -250,6 +250,9 @@
 </body>
 <!-- ajax -->
 <script src="../ajax/medicine.js"></script>
+
+<!-- sort/search -->
+<script src="../ajax/sort-search_medicine.js"></script>
 
 <!-- custom script -->
 </html>

@@ -113,7 +113,7 @@
             <div class="filter">
 
                <div class="search search-hospital">
-                  <input type="search" name="" id="" placeholder="Search hospital">
+                  <input type="search" name="search" id="search_hospital" placeholder="Search Hospital">
                </div>
 
 
@@ -125,7 +125,7 @@
 
 
             <div class="hospital-list-container">
-               <table border="0">
+               <table class="hospital-list" border="0">
                   <thead>
                      <tr>
                         <th width="10%" style="text-align:center"> Hospital ID </th>
@@ -229,6 +229,9 @@
 </body>
 <!-- ajax -->
 <script src="../ajax/hospital.js"> </script>
+
+<!-- sort/search -->
+<script src="../ajax/sort-search_hospital.js"></script>
 
 <!-- custom script -->
 </html>

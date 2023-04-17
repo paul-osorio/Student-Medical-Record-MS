@@ -7,7 +7,7 @@ if (isset($_SESSION['emp_id']) && isset($_SESSION['username'])) {
 
   <?php
 
-  include('db_conn.php');
+  include('./includes/db_conn.php');
   $emp_id = $_SESSION['emp_id'];
 
   // SELECT ALL ADMINS
@@ -141,7 +141,7 @@ if (isset($_SESSION['emp_id']) && isset($_SESSION['username'])) {
                     <p class="fw-bold">CONSULTED STUDENTS</p>
                    <div>
                    <select class="form-select" aria-label="Default select example">
-                      <option selected>Open this select menu</option>
+                      <option selected>Select Year</option>
                       <option value="2023">2023</option>
                       <option value="2022">2022</option>
                       <option value="2021">2021</option>
@@ -152,7 +152,8 @@ if (isset($_SESSION['emp_id']) && isset($_SESSION['username'])) {
                         <canvas id="myChart" class="w-100"></canvas>
                     </div>
                     </div>
-                    <div class="d-flex justify-content-between mt-3">
+
+                    <!-- <div class="d-flex justify-content-between mt-3">
                       <p class="fw-bold">RECENT CONSULTED STUDENTS</p>
                       <a href="#"> View All</a>
                     </div>
@@ -165,9 +166,9 @@ if (isset($_SESSION['emp_id']) && isset($_SESSION['username'])) {
                           <th scope="col">Year</th>
                           <th scope="col">Status</th>
                         </tr>
-                      </thead>
+                      </thead> -->
 
-                      <tbody class="table-group-divider">
+                      <!-- <tbody class="table-group-divider">
                         <?php
                         include "db_conn.php";
                         $sql = "SELECT * FROM students LIMIT 4";
@@ -190,7 +191,7 @@ if (isset($_SESSION['emp_id']) && isset($_SESSION['username'])) {
                       
                    
                       </tbody>
-                    </table>
+                    </table> -->
 
 
 
