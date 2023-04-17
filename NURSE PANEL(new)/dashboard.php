@@ -42,6 +42,9 @@ if (isset($_SESSION['emp_id']) && isset($_SESSION['username'])) {
   <script src="./js/calendar.js"></script>
   <script src="./js/time.js"></script>
 
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="./js/report.js" defer></script>
+
 </head>
 <body>
     <div class="container-fluid bg-light-subtle">
@@ -112,20 +115,6 @@ if (isset($_SESSION['emp_id']) && isset($_SESSION['username'])) {
                 <div class="row d-flex">
                   <div class="col-md-8">
 
-                    <!-- <div class="d-flex ">
-
-                     
-                      <div class="mx-2 fw-bold text-light d-flex justify-content-between w-100">
-                        
-                        
-                        <div class="d-grid  justify-content-center text-center">
-                          <p class="fs-2 p-0 m-0">20</p>
-                          <p class="p-0 m-0">Consult Today</p>
-                        </div>
-  
-                      </div>
-                       </div> -->
-
                     <div class="px-3 rounded-3 d-flex align-items-center mt-3" style="background:#0C4079";>
 
                       <div class="position-relative" style="width:180px;height:150px;">
@@ -146,14 +135,25 @@ if (isset($_SESSION['emp_id']) && isset($_SESSION['username'])) {
                           <p class="p-0">Consult Today</p>
                         </div>
                       </div>
-                      
-    
-
-
                     </div>
-
+                    <div class="px-2 py-1 mt-3">
+                    <div class="d-flex justify-content-between">
+                    <p class="fw-bold">CONSULTED STUDENTS</p>
+                   <div>
+                   <select class="form-select" aria-label="Default select example">
+                      <option selected>Open this select menu</option>
+                      <option value="2023">2023</option>
+                      <option value="2022">2022</option>
+                      <option value="2021">2021</option>
+                    </select>
+                   </div>
+                    </div>
+                    <div class="container-fluid" style="max-height: 500px;">
+                        <canvas id="myChart" class="w-100"></canvas>
+                    </div>
+                    </div>
                     <div class="d-flex justify-content-between mt-3">
-                      <p class="fw-bold">LIST OF CONSULTED STUDENTS</p>
+                      <p class="fw-bold">RECENT CONSULTED STUDENTS</p>
                       <a href="#"> View All</a>
                     </div>
                     <table class="table table-borderless">
