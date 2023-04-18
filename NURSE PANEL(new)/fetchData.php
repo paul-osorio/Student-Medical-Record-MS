@@ -11,6 +11,7 @@
     $Nfirstname = $srow['firstname'];
     $Nlastname = $srow['lastname'];
     $Nmiddlename = $srow['middlename'];
+    $Nemail = $srow['email'];
 
     if (isset($_POST["fetch_stud_data"])){
       $student_id = $_POST['id'];
@@ -393,7 +394,7 @@
           $lastname = $row['lastname'];
           $middlename = $row['middlename'];
           
-           echo ' <div class="container-fluid shadow p-4 d-grid">
+           echo ' <div class="container-fluid shadow p-4 d-grid" id="certificate">
             <div class="d-flex justify-content-center align-items-center mb-4">
               <div style="width: 500px">
                 <img src="./assets/cert_logo.png" class="w-100 h-100" alt="" />
@@ -410,7 +411,7 @@
               <tbody>
                 <tr>
                   <td>
-                    <span class="fw-semibold">Name : </span> '.$firstname.', '.$lastname.' '.$middlename.'
+                    <span class="fw-semibold" id="student-name">Name : </span> '.$firstname.', '.$lastname.' '.$middlename.'
                   </td>
                   <td><span class="fw-semibold">Course : </span> '.$row['Degree Program/ Course'].'</td>
                   <td><span class="fw-semibold">Year Level : </span> '.$row['year_level'].'</td>
@@ -459,7 +460,7 @@
           <div class="d-flex gap-2 mt-3 justify-content-end">
             <button
               class="btn rounded-0 text-light px-5 fw-semibold"
-              style="background-color: #134e8e"
+              style="background-color: #134e8e" data-email="'.$Nemail.'" data-bs-toggle="modal" data-bs-target="#email"
             >
               Send
             </button>

@@ -22,12 +22,15 @@
     
     <link rel="stylesheet" href="./style.css" />
     <link rel="stylesheet" href="./css/patients.css"/>
-  <link
+    <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-  />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script> 
-  <script src="./ajax/action.js" defer></script>
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+
+    <script defer  src="./ajax/action.js" ></script>
 
 </head>
 <body>
@@ -122,6 +125,7 @@
                        
                         
                         <div class="students">
+                          <button class="btn btn-primary" id="cmd">Generate PDf</button>
                       <h1>Student</h1>
                          
 
@@ -154,11 +158,32 @@
                       </div> -->
                   </div> 
 
-
+                            
               </div>
          
         </div>
     </div>
+    <!-- PRINT OR DOWNLOAD MODAL -->
+    <div class="modal fade" id="email" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog  modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body d-grid justify-content-center">
+                <h4 class="fw-semibold text-center">SUCCESSFULLY SENT TO THE EMAIL OF BSIT DEPARTMENT!</h4>
+                <div class="container-fluid d-flex justify-content-center align-items-center">
+                  <img src="assets/email-success.svg" class="w-50 h-50" alt="">
+                </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary">Download</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Print</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
 </body>
 
 
@@ -167,5 +192,7 @@
     <script src="./ajax/search_medreq.js"> </script>
     <script src="./ajax/search_students.js"> </script>
     <script src="./ajax/search_medicine.js"> </script>
-
+    
 </html>
+
+
