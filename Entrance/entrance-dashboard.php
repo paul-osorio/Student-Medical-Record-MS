@@ -7,7 +7,9 @@ include './queries.php';
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Entrance Page</title>
+        <link rel="icon" type="image/png" href="./assets/favcon.png"/>
+        <title>SMRMS | Entrance Page</title>
+        
         <link rel="stylesheet" href="./style.css" />
         <link rel="stylesheet" href="./ent-das-style.css" />
         <link rel="stylesheet" href="table.css">
@@ -36,7 +38,7 @@ include './queries.php';
       <div class="header">
 
           <div class="header-name">
-              <img src="../Assets/QCU_Logo.png" alt="">
+              <img src="./assets/QCULogo.png" alt="">
               <h3>Welcome to Quezon City University</h3>
           </div>
 
