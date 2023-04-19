@@ -118,16 +118,16 @@
             <div class="filter">
                <div class="sort sort-nurse">
                   <label for="nurse-sort"> Sort by: </label>
-                  <select name="nurse-sort" id="nurse-sort">
-                     <option value="All"> All </option>
-                     <option value="Position"> Position </option>
-                     <option value="Schedule"> Schedule </option>
+                  <select name="sort" id="nurse-sort">
+                     <option value="id"> All </option>
+                     <option value="position"> Position </option>
+                     <!-- <option value="Schedule"> Schedule </option> -->
                      <option value="Department"> Department </option>
                   </select>
                </div>
 
                <div class="search search-nurse">
-                  <input type="search" name="nurse-search" id="nurse-search" placeholder="Search Nurse">
+                  <input type="search" name="search" id="nurse-search" placeholder="Search Nurse">
                </div>
             </div>
 
@@ -246,6 +246,9 @@
 
 <!-- ajax -->
 <script src="../ajax/nurse.js"></script>
+
+<!-- sort/search -->
+<script src="../ajax/sort-search_nurse.js"></script>
 
 <!-- custom script -->
 </html>

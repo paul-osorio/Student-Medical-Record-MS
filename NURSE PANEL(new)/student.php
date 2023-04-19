@@ -1,5 +1,5 @@
 <?php
-     include('db_conn.php');
+     include('./includes/db_conn.php');
 
 
     // SELECT ALL STUDENTS 
@@ -26,8 +26,8 @@
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
   />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-  <script src="action.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script> 
+  <script src="./ajax/action.js" defer></script>
 
 </head>
 <body>
@@ -122,8 +122,7 @@
                        
                         
                         <div class="students">
-                      <!-- <div class="patient_table_details table-responsive mt-3" >
-                          <table class="table table-hover table-striped text-center fw-semibold">   -->
+                      <!-- <h1>Student</h1> -->
                          
 
                                 <?php if(mysqli_num_rows($fetchAllStudents) > 0) { 
@@ -170,49 +169,3 @@
     <script src="./ajax/search_medicine.js"> </script>
 
 </html>
-
-<!-- <tr>
-<td class="py-2 text-light" style="background-color: #163666;"><span>'.$row['student_id'].'</span></td>
-<td class="py-2"><span class="name">'.$row['firstname'].'</span></td>
-<td class="py-2"><span class="course">'.$row['Section'].'</span></td>
-<td class="py-2"><span class="email">'.$row['Email'].'</span></td>
-<td class="py-2"><button class="addpatient-btn px-2" style="background-color: #163666;" id="view"  data-id="'.$row['student_id'].'">View</button></td>
-<td class="py-2"><span class="name d-flex align-items-center justify-content-center">
-<a href="#"><i class="fa fa-edit fs-4 mx-2" aria-hidden="true" style="color: #163666"></i></a>
-<a href="#addAdminModal" class="custom_btn" data-toggle="modal"><i class="fa fa-trash fs-4 mx-2" aria-hidden="true" style="color: #163666"></i></a>
-</span></td>
-</tr> -->
-
-
-<!-- <?php 
-                                // include 'db_conn.php';
-                                // $sql = "SELECT * FROM stud_data LIMIT 10";
-                                // $run_sql = mysqli_query($conn,$sql) or die(mysqli_error($conn));
-                                // if(mysqli_num_rows($run_sql) > 0){
-                                //   while ($row = mysqli_fetch_array($run_sql)) {
-                                //     echo '
-                                    
-                                  //   <table class="table table-borderless shadow mt-3 text-center">
-                                  //   <tbody>
-                                  //     <tr class="">
-                                  //       <td class="col-2 text-light fw-bold" style="background:#5D8FD9"><span>'.$row['student_id'].'</span></td>
-                                  //       <td class="col-3"><span class="name">'.$row['firstname'].' '.$row['middlename'].' '.$row['lastname'].'</span></td>
-                                  //       <td class="col-1"><span class="course">'.$row['Section'].'</span></td>
-                                  //       <td class="col-5 "><span class="email">'.$row['Email'].'</span></td>
-                                  //       <td class="col-1"><button class="addpatient-btn px-2" style="background-color: #163666;" id="view"  data-id="'.$row['student_id'].'">View</button></td>
-                                  //       <td class="col"><span class="name position-relative d-flex align-items-center justify-content-center">
-                                  //       <a href="#" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-ellipsis-vertical " style="color: #163666"></i></a>
-                                  //       <ul class="dropdown-menu" data-popper-placement="left-start" style="position: absolute; inset: 0px 0px auto auto; margin: 0px; transform: translate3d(-106.667px, 0px, 0px);width:max-content;">
-                                  //       <li><a class="dropdown-item" href="#"><i class="fa-solid fa-edit mx-2"></i>Edit</a></li>
-                                  //       </ul>
-                                  //       </span>
-                                  //       </td>
-                                  //     </tr>
-                                  //   </tbody>
-                                  // </table>
-                                
-                                //     ';
-                                //   }
-                                // }
-
-                              ?> -->

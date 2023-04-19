@@ -1,5 +1,16 @@
 <?php
-    include('db_conn.php');
+     session_start();
+     include('./includes/db_conn.php');
+
+    $emp_id = $_SESSION['emp_id'];
+
+    $sql =   "SELECT * FROM `nurses` WHERE emp_id = '$emp_id'";
+    $squery = $conn->query($sql);	
+		$srow = $squery->fetch_assoc();
+
+    $Nfirstname = $srow['firstname'];
+    $Nlastname = $srow['lastname'];
+    $Nmiddlename = $srow['middlename'];
 
     if (isset($_POST["fetch_stud_data"])){
       $student_id = $_POST['id'];
@@ -90,7 +101,6 @@
               }
           }
      
-     
       }
 
 
@@ -99,230 +109,372 @@
         $info = "SELECT * FROM consultations WHERE student_id = '$student_id'";
         $run_query = mysqli_query($conn,$info) or die(mysqli_error($conn));
         if(mysqli_num_rows($run_query) > 0){
-            while($row = mysqli_fetch_array($run_query)){
-  
+          while($row = mysqli_fetch_array($run_query)){
+            
             echo'<div class="mb-3">
-            <span class="float-end"><span id="data">March 03, 2023 - </span>00:00:00 AM</span>
+            <span class="float-end"><span id="data">'.$row['date_of_consultation'].'</span>
             </div>
-            <div class="mb-2 d-flex"><span class="fw-semibold">Symptoms : </span><span class="mx-3">Diarrhea</span></div>
-            <div class="mb-2 d-flex"><span class="fw-semibold">Medicine Given : </span><span class="mx-3">Diatabs</span></div>
+            <div class="mb-2 d-flex flex-wrap"><span class="fw-semibold">Symptoms : </span><span class="mx-3">'.$row['symptoms'].'</span></div>
+            <div class="mb-2 d-flex"><span class="fw-semibold">Medicine Given : </span><span class="mx-3">'.$row['medicine'].'</span></div>
             <div class="mb-2 d-flex"><span class="fw-semibold">Quantity : </span><span class="mx-3">2</span></div>
-            <div class="mb-2 d-flex"><span class="fw-semibold">Confined : </span><span class="mx-3">No</span></div>
-            <div class="mb-2 d-flex"><span class="fw-semibold">Sex : </span><span class="mx-3">Female</span></div>
+            <div class="mb-2 d-flex"><span class="fw-semibold">Confined : </span><span class="mx-3">'.$row['confined'].'</span></div>
+
             <hr class="border-2">';
-  
-                }
-            }else{
-              echo'<h4 class="fw-bold text-center mt-5">No Consultation Data Yet</h4>';
-            }
-       
-       
+            
+          }
+        }else{
+          echo'<h4 class="fw-bold text-center mt-5">No Consultation Data Yet</h4>';
         }
+        
+        
+      }
       if (isset($_POST["new_consultation"])){
         $student_id = $_POST['id'];
         $info = "SELECT * FROM stud_data WHERE student_id = '$student_id'";
         $run_query = mysqli_query($conn,$info) or die(mysqli_error($conn));
         if(mysqli_num_rows($run_query) > 0){
-            while($row = mysqli_fetch_array($run_query)){
-              $student_id = $row["student_id"];
-              $firstname = $row['firstname'];
-              $lastname = $row['lastname'];
-              $middlename = $row['middlename'];
-              $section = $row['Section'];
-              
-                echo'
-                <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="student.php"><i class="fa-solid fa-arrow-left mx-2"></i>Student List</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">'.$firstname.', '.$lastname.'</li>
-                  <li class="breadcrumb-item active" aria-current="page">New Consultation</li>
-                </ol>
-              </nav>
-                <div class="container-fluid py-3 shadow bg-light overflow-y-scroll" style="height:75vh">
-                <div class="d-flex  justify-content-evenly align-items-center mb-3">
-                <div><span class="fw-semibold">Name: </span><span class="mx-2">'.$firstname.', '.$lastname.' '.$middlename.'</span></div>
-                  <div><span class="fw-semibold">Section & Year Level:</span><span class="mx-2">'.$section.'</span></div>
-                  <div><span class="fw-semibold">March 6, 2023 - 1:00 PM</span></div> 
-                </div>
-                <form action="" method="">
+          while($row = mysqli_fetch_array($run_query)){
+            $student_id = $row["student_id"];
+            $firstname = $row['firstname'];
+            $lastname = $row['lastname'];
+            $middlename = $row['middlename'];
+            $section = $row['Section'];
+            
+            echo'
+            <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="student.php"><i class="fa-solid fa-arrow-left mx-2"></i>Student List</a></li>
+            <li class="breadcrumb-item active" aria-current="page">'.$firstname.', '.$lastname.'</li>
+            <li class="breadcrumb-item active" aria-current="page">New Consultation</li>
+            </ol>
+            </nav>
+            <div class="container-fluid py-3 shadow bg-light overflow-y-scroll" style="height:75vh">
+            <div class="d-flex  justify-content-evenly align-items-center mb-3">
+            <div><span class="fw-semibold">Name: </span><span class="mx-2">'.$firstname.', '.$lastname.' '.$middlename.'</span></div>
+            <div><span class="fw-semibold">Section & Year Level:</span><span class="mx-2">'.$section.'</span></div>
+            <div><span class="fw-semibold">March 6, 2023 - 1:00 PM</span></div> 
+            </div>
+            
+            
                 <div class="row px-5 py-4 ">
-                  
                   <div class="col-md-6" >
-                    <h6 class="fw-bold mb-3">Symptoms</h6>
-                    <div>
-                      <div class="input-group input-group-sm mb-3 d-flex align-items-center">
-                        <input class="form-check-input  rounded-0 my-2 mx-2" id="checkbox" type="checkbox" name="symptoms[]" value="Difficulty breathing" >
-                        <label for="checkbox">Difficulty breathing</label>
-                      </div>
-                      <div class="input-group input-group-sm mb-3 d-flex align-items-center">
-                        <input class="form-check-input  rounded-0 my-2 mx-2" id="vommitting" type="checkbox" name="symptoms[]" value="Nausea or vomitting" >
-                        <label for="vommitting">Nausea or vomitting</label>
-                      </div>
-                      <div class="input-group input-group-sm mb-3 d-flex align-items-center">
-                        <input class="form-check-input  rounded-0 my-2 mx-2" id="fever" type="checkbox" name="symptoms[]" value="Fever or chills" >
-                        <label for="fever">Fever or chills</label>
-                      </div>
-                      <div class="input-group input-group-sm mb-3 d-flex align-items-center">
-                        <input class="form-check-input  rounded-0 my-2 mx-2" id="cough" type="checkbox" name="symptoms[]" value="Cough" >
-                        <label for="cough">Cough</label>
-                      </div>
-                      <div class="input-group input-group-sm mb-3 d-flex align-items-center">
-                        <input class="form-check-input  rounded-0 my-2 mx-2" id="Headache" type="checkbox" name="symptoms[]" value="Headache" >
-                        <label for="Headache">Headache</label>
-                      </div>
-                      <div class="input-group input-group-sm mb-3 d-flex align-items-center">
-                        <input class="form-check-input  rounded-0 my-2 mx-2" id="congestion" type="checkbox" name="symptoms[]" value="Congestion or runny nose" >
-                        <label for="congestion">Congestion or runny nose</label>
-                      </div>
-                      <div class="input-group input-group-sm mb-3 d-flex align-items-center">
-                        <input class="form-check-input  rounded-0 my-2 mx-2" id="sore" type="checkbox" name="symptoms[]" value="Sore throat" >
-                        <label for="sore">Sore throat</label>
-                      </div>
-                      <div class="input-group input-group-sm mb-3 d-flex align-items-center">
-                        <input class="form-check-input  rounded-0 my-2 mx-2" id="taste" type="checkbox" name="symptoms[]" value="New loss of taste or smell" >
-                        <label for="taste">New loss of taste or smell</label>
-                      </div>
-                      <div class="input-group input-group-sm mb-3 d-flex align-items-center">
-                        <input class="form-check-input  rounded-0 my-2 mx-2" id="ache" type="checkbox" name="symptoms[]" value="Stomach Ache" >
-                        <label for="ache">Stomach Ache</label>
-                      </div>
-                      <div class="input-group input-group-sm mb-3 d-flex align-items-center">
-                        <input class="form-check-input  rounded-0 my-2 mx-2" id="fatigue" type="checkbox" name="symptoms[]" value="Fatigue" >
-                        <label for="fatigue">Fatigue</label>
-                      </div>
-                      <div class="input-group input-group-sm mb-3 d-flex align-items-center">
-                        <input class="form-check-input  rounded-0 my-2 mx-2" id="diarrhea" type="checkbox" name="symptoms[]" value="Diarrhea" >
-                        <label for="diarrhea">Diarrhea</label>
-                      </div>
-                    
-                    </div>
+                  <h6 class="fw-bold mb-3">Symptoms</h6>
+                  <div>
+                  <div class="input-group input-group-sm mb-3 d-flex align-items-center">
+                  <input class="form-check-input  rounded-0 my-2 mx-2" id="breathing" type="checkbox" name="symptoms[]" value="Difficulty breathing" >
+                  <label for="checkbox">Difficulty breathing</label>
+                  </div>
+                  <div class="input-group input-group-sm mb-3 d-flex align-items-center">
+                  <input class="form-check-input  rounded-0 my-2 mx-2" id="vommitting" type="checkbox" name="symptoms[]" value="Nausea or vomitting" >
+                  <label for="vommitting">Nausea or vomitting</label>
+                  </div>
+                  <div class="input-group input-group-sm mb-3 d-flex align-items-center">
+                  <input class="form-check-input  rounded-0 my-2 mx-2" id="fever" type="checkbox" name="symptoms[]" value="Fever or chills" >
+                  <label for="fever">Fever or chills</label>
+                  </div>
+                  <div class="input-group input-group-sm mb-3 d-flex align-items-center">
+                  <input class="form-check-input  rounded-0 my-2 mx-2" id="cough" type="checkbox" name="symptoms[]" value="Cough" >
+                  <label for="cough">Cough</label>
+                  </div>
+                  <div class="input-group input-group-sm mb-3 d-flex align-items-center">
+                  <input class="form-check-input  rounded-0 my-2 mx-2" id="Headache" type="checkbox" name="symptoms[]" value="Headache" >
+                  <label for="Headache">Headache</label>
+                  </div>
+                  <div class="input-group input-group-sm mb-3 d-flex align-items-center">
+                  <input class="form-check-input  rounded-0 my-2 mx-2" id="congestion" type="checkbox" name="symptoms[]" value="Congestion or runny nose" >
+                  <label for="congestion">Congestion or runny nose</label>
+                  </div>
+                  <div class="input-group input-group-sm mb-3 d-flex align-items-center">
+                  <input class="form-check-input  rounded-0 my-2 mx-2" id="sore" type="checkbox" name="symptoms[]" value="Sore throat" >
+                  <label for="sore">Sore throat</label>
+                  </div>
+                  <div class="input-group input-group-sm mb-3 d-flex align-items-center">
+                  <input class="form-check-input  rounded-0 my-2 mx-2" id="taste" type="checkbox" name="symptoms[]" value="New loss of taste or smell" >
+                  <label for="taste">New loss of taste or smell</label>
+                  </div>
+                  <div class="input-group input-group-sm mb-3 d-flex align-items-center">
+                  <input class="form-check-input  rounded-0 my-2 mx-2" id="ache" type="checkbox" name="symptoms[]" value="Stomach Ache" >
+                  <label for="ache">Stomach Ache</label>
+                  </div>
+                  <div class="input-group input-group-sm mb-3 d-flex align-items-center">
+                  <input class="form-check-input  rounded-0 my-2 mx-2" id="fatigue" type="checkbox" name="symptoms[]" value="Fatigue" >
+                  <label for="fatigue">Fatigue</label>
+                  </div>
+                  <div class="input-group input-group-sm mb-3 d-flex align-items-center">
+                  <input class="form-check-input  rounded-0 my-2 mx-2" id="diarrhea" type="checkbox" name="symptoms[]" value="Diarrhea" >
+                  <label for="diarrhea">Diarrhea</label>
+                  </div>
+                  
+                  </div>
                   </div>
                   <div class="col-md-6">
-                    <h6 class="fw-bold mb-3">Body Temperature</h6>
-                    <div class="input-group input-group-sm mb-3">
-                      <input type="text" class="form-control" id="body_temp" name="body_temp" required maxlength="2" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))">
+                  <h6 class="fw-bold mb-3">Body Temperature</h6>
+                  <div class="input-group input-group-sm mb-3">
+                  <input type="text" class="form-control" id="body_temp" name="body_temp" required maxlength="2" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))">
                     </div>
 
                     <h6 class="fw-bold mb-3 text-wrap">Have you been in close contact to suspected or confirmed covid case for the past 14 days?</h6>
+                    
+                    
                     <div class="d-flex mb-3">
-                      <div class="form-check mx-2">
-                          <input class="form-check-input" type="radio" name="flexRadioDefault" id="close_contacy_yes" value="no">
-                          <label class="form-check-label" for="close_contacy_yes">
-                            Yes
-                          </label>
-                        </div>
-                        <div class="form-check mx-2">
-                          <input class="form-check-input" type="radio" name="flexRadioDefault" id="close_contacy_no" value="yes">
-                          <label class="form-check-label" for="close_contacy_no">
-                            No
-                          </label>
-                        </div>
-                      </div>
+                    <div class="form-check mx-2">
+                    <input class="form-check-input" type="radio" name="close_contact[]" id="close_contact_yes" value="yes">
+                    <label class="form-check-label" for="close_contact_yes">
+                    Yes
+                    </label>
+                    </div>
+                    <div class="form-check mx-2">
+                    <input class="form-check-input" type="radio" name="close_contact[]" id="close_contact_yes" value="no">
+                    <label class="form-check-label" for="close_contact_yes">
+                    No
+                    </label>
+                    </div>
+                    
+                    </div>
                     <h6 class="fw-bold mb-3 text-wrap">Have you been tested for covid in the past 10 days?</h6>
-                      <div class="form-check mx-2 mt-3">
-                          <input class="form-check-input" type="radio" name="flexRadioDefault" id="Antigen Test" value="Antigen Test">
-                          <label class="form-check-label" for="Antigen Test">
-                            Antigen Test
-                          </label>
-                        </div>
-                        <div class="form-check mx-2 mt-3">
-                          <input class="form-check-input" type="radio" name="flexRadioDefault" id="Rapid Test" value="Rapid Test">
-                          <label class="form-check-label" for="Rapid Test">
-                            Rapid Test
-                          </label>
-                        </div>
-                        <div class="form-check mx-2 mt-3">
-                          <input class="form-check-input" type="radio" name="flexRadioDefault" id="RT PCR" value="RT PCR">
-                          <label class="form-check-label" for="RT PCR">
-                            RT PCR
-                          </label>
-                        </div>
-                        <div class="form-check mx-2 mt-3">
-                          <input class="form-check-input" type="radio" name="flexRadioDefault" id="No" value="No">
-                          <label class="form-check-label" for="No">
-                            No
-                          </label>
-                        </div>
-                  </div>
-
-                </div>
-                <div class="row px-5 py-4">
-                  <div class="col-md-6">
+                    <div class="form-check mx-2 mt-3">
+                    <input class="form-check-input" type="radio" id="Antigen Test" value="Antigen Test" name="covid_test">
+                    <label class="form-check-label" for="Antigen Test">
+                    Antigen Test
+                    </label>
+                    </div>
+                    <div class="form-check mx-2 mt-3">
+                    <input class="form-check-input" type="radio" id="Rapid Test" value="Rapid Test" name="covid_test">
+                    <label class="form-check-label" for="Rapid Test">
+                    Rapid Test
+                    </label>
+                    </div>
+                    <div class="form-check mx-2 mt-3">
+                    <input class="form-check-input" type="radio"  id="RT PCR" value="RT PCR" name="covid_test">
+                    <label class="form-check-label" for="RT PCR">
+                    RT PCR
+                    </label>
+                    </div>
+                    <div class="form-check mx-2 mt-3">
+                    <input class="form-check-input" type="radio"  id="No" value="No" name="covid_test">
+                    <label class="form-check-label" for="No">
+                    No
+                    </label>
+                    </div>
+                    </div>
+                    
+                    </div>
+                    <div class="row px-5 py-4">
+                    <div class="col-md-4">
                     <h6 class="fw-bold mb-3">Other Symptoms and illness</h6>
                     <div class="input-group input-group-sm mb-3 d-flex align-items-center">
-                      <input class="form-check-input  rounded-0 my-2 mx-2" id="toothache" type="checkbox" name="othersymptoms[]" value="Toothache" >
-                      <label for="toothache">Toothache</label>
+                    <input class="form-check-input  rounded-0 my-2 mx-2" id="toothache" type="checkbox" name="othersymptoms[]" value="Toothache" >
+                    <label for="toothache">Toothache</label>
                     </div>
                     <div class="input-group input-group-sm mb-3 d-flex align-items-center">
                       <input class="form-check-input  rounded-0 my-2 mx-2" id="Dizziness" type="checkbox" name="othersymptoms[]" value="Dizziness" >
                       <label for="Dizziness">Dizziness</label>
-                    </div>
-                  </div>
-                  <div class="col-md-3">
+                      </div>
+                      </div>
+                      <div class="col-md-3">
                       <h6 class="fw-bold mb-3">Confined?</h6>
                       <div class="d-flex mb-3">
-                        <div class="form-check mx-2">
-                            <input class="form-check-input" type="radio" name="confined" id="confined_yes" value="no">
-                            <label class="form-check-label" for="confined_yes">
-                              Yes
-                            </label>
-                          </div>
-                          <div class="form-check mx-2">
-                            <input class="form-check-input" type="radio" name="confined" id="confined_no" value="yes">
-                            <label class="form-check-label" for="confined_no">
-                              No
-                            </label>
-                          </div>
-                        </div>
-                  </div>
-                  <div class="col-md-3">
-                    <h6 class="fw-bold mb-3">How long?</h6>
-                    <input type="text" class="form-control" id="quantity" name="how_long" placeholder="per Hr" maxlength="2" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))">
-                  </div>
-                </div>
-                <div class="row px-5 py-4">
-                  <div class="col-md-6">
-                    <h6 class="fw-bold mb-3">Referred to hospital ?</h6>
+                      <div class="form-check mx-2">
+                      <input class="form-check-input" type="radio" name="confined[]" id="confined_yes" value="no">
+                      <label class="form-check-label" for="confined_yes">
+                      Yes
+                      </label>
+                      </div>
+                      <div class="form-check mx-2">
+                      <input class="form-check-input" type="radio" name="confined[]" id="confined_no" value="yes">
+                      <label class="form-check-label" for="confined_no">
+                      No
+                      </label>
+                      </div>
+                      </div>
+                      </div>
+                      <div class="col-md-3">
+                      <h6 class="fw-bold mb-3">How long?</h6>
+                      <input type="text" class="form-control" id="how_long" name="how_long" placeholder="per Hr" maxlength="2" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))">
+                      </div>
+                      </div>
+                      <div class="row px-5 py-4">
+                      <div class="col-md-4">
+                      <h6 class="fw-bold mb-3">Referred to hospital ?</h6>
                       <div class="d-flex mb-3">
-                        <div class="form-check mx-2">
-                            <input class="form-check-input" type="radio" name="referred" id="referred_yes" value="no">
-                            <label class="form-check-label" for="referred_yes">
-                              Yes
-                            </label>
-                          </div>
-                          <div class="form-check mx-2">
-                            <input class="form-check-input" type="radio" name="referred" id="referred_no" value="yes">
-                            <label class="form-check-label" for="referred_no">
-                              No
-                            </label>
-                          </div>
-                        </div>
+                      <div class="form-check mx-2">
+                      <input class="form-check-input" type="radio" name="referred[]" id="referred_yes" value="no">
+                      <label class="form-check-label" for="referred_yes">
+                      Yes
+                      </label>
+                      </div>
+                      <div class="form-check mx-2">
+                      <input class="form-check-input" type="radio" name="referred[]" id="referred_no" value="yes">
+                      <label class="form-check-label" for="referred_no">
+                      No
+                      </label>
+                      </div>
+                      </div>
                   </div>
                   <div class="col-md-3">
-                    <h6 class="fw-bold mb-3">Medicine Given</h6>
-                    
+                  <h6 class="fw-bold mb-3">Medicine Given</h6>
+                  
                   </div>
+
                   <div class="col-md-3">
-                    <h6 class="fw-bold mb-3">Quantity</h6>
-                    <input type="text" class="form-control" id="quantity" name="how_long" placeholder="Quantity.." maxlength="2" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))">
+                  <h6 class="fw-bold mb-3">Quantity</h6>
+                  <input type="text" class="form-control" id="quantity" name="quantity" placeholder="Quantity.." maxlength="2" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))">
                   </div>
+
+                   <div class="col-md-2">
+                      <h6 class="fw-bold mb-3">Cleared ?</h6>
+                      <div class="d-flex mb-3">
+                      <div class="form-check mx-2">
+                      <input class="form-check-input" type="radio" name="cleared[]" id="cleared_yes" value="Verified">
+                      <label class="form-check-label" for="cleared_yes">
+                      Yes
+                      </label>
+                      </div>
+                      <div class="form-check mx-2">
+                      <input class="form-check-input" type="radio" name="cleared[]" id="cleared_no" value="Not Verified">
+                      <label class="form-check-label" for="cleared_no">
+                      No
+                      </label>
+                      </div>
+                      </div>
+                      </div>
                   <div class="d-flex gap-3 justify-content-end mt-5">
-                    <button class="btn btn-danger">Cancel</button>
-                    <button class="btn btn-primary">Confirm</button>
+                  <button type="button" class="btn btn-primary" data-id="'.$student_id.'" id="consultation_submit" name="confirm">Confirm</button>
+                  
                   </div>
-                </div>
-              </form>
-              </div>';
-  
+                  </div>
+                  
+                  </div>';
+                  
                 }
-            }else{
-              echo'<h4 class="fw-bold text-center mt-5">No Consultation Data Yet</h4>';
+              }else{
+                echo'<h4 class="fw-bold text-center mt-5">No Consultation Data Yet</h4>';
+              }
+              
             }
-       
-       
+            
+            
+            if(isset($_POST['confirm'])){
+              
+              $student_id = $_POST['student_id'];
+              $date_now = $_POST['date_now'];
+              $symptoms = $_POST['symptoms'];
+              $other_symptoms = $_POST['othersymptoms'];
+              $body_temp = $_POST['body_temp'];
+              $close_contact = $_POST['close_contact'];
+              $covid_test = $_POST['covid_test'];
+              $confined = $_POST['confined'];
+              $how_long = $_POST['how_long'];
+              $referred = $_POST['referred'];
+              $quantity = $_POST['quantity'];
+              $cleared = $_POST['cleared'];
+              
+
+        $sql = "INSERT INTO consultations (student_id, date_of_consultation ,symptoms, othersymptoms,body_temp,suspected_covid,tested_covid,confined,how_long,medicine,referred) 
+            VALUES ('$student_id',NOW(),'$symptoms', '$other_symptoms','$body_temp','$close_contact','$covid_test','$confined','$how_long','','$referred')";
+        $run_query = mysqli_query($conn,$sql) or die(mysqli_error($conn));
+
+        $sample_data = "INSERT INTO sample_stud_data (student_id, Status) VALUE ('$student_id','$cleared')";
+        $run_query = mysqli_query($conn,$sample_data) or die(mysqli_error($conn));
+
+        $info = "SELECT * FROM stud_data WHERE student_id = '$student_id'";
+        $run_query = mysqli_query($conn,$info) or die(mysqli_error($conn));
+
+         
+
+
+    if(mysqli_num_rows($run_query) > 0){
+          
+        while($row = mysqli_fetch_array($run_query)){
+          $date_now = date("Y");
+          $date_past = date("Y") - 1;
+          $S_Y =  $date_past . " - " .  $date_now;
+          $firstname = $row['firstname'];
+          $lastname = $row['lastname'];
+          $middlename = $row['middlename'];
+          
+           echo ' <div class="container-fluid shadow p-4 d-grid">
+            <div class="d-flex justify-content-center align-items-center mb-4">
+              <div style="width: 500px">
+                <img src="./assets/cert_logo.png" class="w-100 h-100" alt="" />
+              </div>
+            </div>
+            <div class="text-center">
+              <h3 class="fw-bold">Medical Clearance</h3>
+              <span class="fw-regular">SY: '.$S_Y.'</span>
+            </div>
+            <table
+              class="table table-borderless mt-5"
+              style="min-height: 250px"
+            >
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="fw-semibold">Name : </span> '.$firstname.', '.$lastname.' '.$middlename.'
+                  </td>
+                  <td><span class="fw-semibold">Course : </span> '.$row['Degree Program/ Course'].'</td>
+                  <td><span class="fw-semibold">Year Level : </span> '.$row['year_level'].'</td>
+
+                  <td>
+                    <span class="fw-semibold">Campus : </span> San Bartolome
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="fw-semibold">Contact No.: </span> '.$row['Contact_number'].'
+                  </td>
+                  <td colspan="4" style="min-width: 300px">
+                    <span class="fw-semibold">Complete Address : </span>
+                   '.$row['Address'].'
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="4" class="text-center">
+                    <div class="d-grid">
+                      <p>
+                        I certify that the mentioned name above is medically
+                        qualified to enroll for the 1st semester of
+                      </p>
+                      <span>SY: '.$S_Y.'</span>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="row">
+              <div class="col">
+                <span class="fw-semibold">Remarks : </span>
+                Cleared
+              </div>
+              <div class="col text-center">
+                <div class="d-grid">
+                  <span class="fw-semibold">'.$Nfirstname.' '.$Nlastname.' '.$Nmiddlename.'</span>
+                  <hr class="border border-1 border-dark" />
+                  <span class="fw-semibold">University Nurse</span>
+                </div>
+              </div>
+              <div class="col text-center">qr</div>
+            </div>
+          </div>
+          <div class="d-flex gap-2 mt-3 justify-content-end">
+            <button
+              class="btn rounded-0 text-light px-5 fw-semibold"
+              style="background-color: #134e8e"
+            >
+              Send
+            </button>
+            <button
+              class="btn rounded-0 text-light px-5 fw-semibold"
+              style="background-color: #134e8e"
+            >
+              Close
+            </button>
+          </div>';
+          }
         }
-
-
-
+      
+         }
+        
   ?>
-    <!--  -->
+   
+          
