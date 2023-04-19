@@ -164,25 +164,7 @@
         </div>
     </div>
     <!-- PRINT OR DOWNLOAD MODAL -->
-    <div class="modal fade" id="email" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-      <div class="modal-dialog  modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body d-grid justify-content-center">
-                <h4 class="fw-semibold text-center">SUCCESSFULLY SENT TO THE EMAIL OF BSIT DEPARTMENT!</h4>
-                <div class="container-fluid d-flex justify-content-center align-items-center">
-                  <img src="assets/email-success.svg" class="w-50 h-50" alt="">
-                </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary" id="donwload-cert">Download</button>
-            <button type="button" class="btn btn-success" id="print-cert">Print</button>
-          </div>
-        </div>
-      </div>
-    </div>
+ 
 
 </body>
 
