@@ -151,7 +151,7 @@
             </nav>
             <div class="container-fluid py-3 shadow bg-light overflow-y-scroll" style="height:75vh">
             <div class="d-flex  justify-content-evenly align-items-center mb-3">
-            <div><span class="fw-semibold">Name: </span><span class="mx-2">'.$firstname.', '.$lastname.' '.$middlename.'</span></div>
+            <div><span class="fw-semibold">Name: </span><span class="mx-2">'.$lastname.', '.$firstname.' '.$middlename.'</span></div>
             <div><span class="fw-semibold">Section & Year Level:</span><span class="mx-2">'.$section.'</span></div>
             <div><span class="fw-semibold">March 6, 2023 - 1:00 PM</span></div> 
             </div>
@@ -449,7 +449,7 @@
               </div>
               <div class="col text-center">
                 <div class="d-grid">
-                  <span class="fw-semibold text-nowrap" id="nurse">'.$Nfirstname.' '.$Nlastname.' '.$Nmiddlename.'</span>
+                  <span class="fw-semibold text-nowrap" id="nurse">'.$Nfirstname.' '.$Nmiddlename.' '.$Nlastname.'</span>
                   <hr class="border border-1 border-dark" />
                   <span class="fw-semibold text-nowrap">University Nurse</span>
                 </div>
