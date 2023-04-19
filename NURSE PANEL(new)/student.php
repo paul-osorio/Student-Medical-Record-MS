@@ -22,12 +22,15 @@
     
     <link rel="stylesheet" href="./style.css" />
     <link rel="stylesheet" href="./css/patients.css"/>
-  <link
+    <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-  />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script> 
-  <script src="./ajax/action.js" defer></script>
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+
+    <script defer  src="./ajax/action.js" ></script>
 
 </head>
 <body>
@@ -121,8 +124,14 @@
 
                        
                         
+
+                    <div class="students">
+   
+                      <h1>Student</h1>
+
                         <div class="students">
                       <!-- <h1>Student</h1> -->
+
                          
 
                                 <?php if(mysqli_num_rows($fetchAllStudents) > 0) { 
@@ -154,11 +163,14 @@
                       </div> -->
                   </div> 
 
-
+                            
               </div>
          
         </div>
     </div>
+    <!-- PRINT OR DOWNLOAD MODAL -->
+ 
+
 </body>
 
 
@@ -167,5 +179,7 @@
     <script src="./ajax/search_medreq.js"> </script>
     <script src="./ajax/search_students.js"> </script>
     <script src="./ajax/search_medicine.js"> </script>
-
+    
 </html>
+
+

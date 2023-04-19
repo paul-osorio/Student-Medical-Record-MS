@@ -11,6 +11,7 @@
     $Nfirstname = $srow['firstname'];
     $Nlastname = $srow['lastname'];
     $Nmiddlename = $srow['middlename'];
+    $Nemail = $srow['email'];
 
     if (isset($_POST["fetch_stud_data"])){
       $student_id = $_POST['id'];
@@ -393,7 +394,7 @@
           $lastname = $row['lastname'];
           $middlename = $row['middlename'];
           
-           echo ' <div class="container-fluid shadow p-4 d-grid">
+           echo ' <div class="container-fluid shadow p-4 d-grid" id="certificate">
             <div class="d-flex justify-content-center align-items-center mb-4">
               <div style="width: 500px">
                 <img src="./assets/cert_logo.png" class="w-100 h-100" alt="" />
@@ -410,22 +411,22 @@
               <tbody>
                 <tr>
                   <td>
-                    <span class="fw-semibold">Name : </span> '.$firstname.', '.$lastname.' '.$middlename.'
+                    <span class="fw-semibold text-nowrap" >Name :  </span><span id="student_name">'.$firstname.', '.$lastname.' '.$middlename.'</span>
                   </td>
-                  <td><span class="fw-semibold">Course : </span> '.$row['Degree Program/ Course'].'</td>
-                  <td><span class="fw-semibold">Year Level : </span> '.$row['year_level'].'</td>
+                  <td><span class="fw-semibold text-nowrap">Course : </span> <span id="degree">'.$row['Degree Program/ Course'].'</span></td>
+                  <td><span class="fw-semibold text-nowrap">Year Level : </span></span> <span id="yrLvl">'.$row['year_level'].'</span></td>
 
                   <td>
-                    <span class="fw-semibold">Campus : </span> San Bartolome
+                    <span class="fw-semibold text-nowrap">Campus : </span> <span id="campus">San Bartolome</span>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <span class="fw-semibold">Contact No.: </span> '.$row['Contact_number'].'
+                    <span class="fw-semibold text-nowrap">Contact No.: </span> <span id="contact">'.$row['Contact_number'].'</span>
                   </td>
                   <td colspan="4" style="min-width: 300px">
-                    <span class="fw-semibold">Complete Address : </span>
-                   '.$row['Address'].'
+                    <span class="fw-semibold text-nowrap">Complete Address : </span>
+                  <span id="address"> '.$row['Address'].'</span>
                   </td>
                 </tr>
                 <tr>
@@ -435,7 +436,7 @@
                         I certify that the mentioned name above is medically
                         qualified to enroll for the 1st semester of
                       </p>
-                      <span>SY: '.$S_Y.'</span>
+                     SY: <span id="yr">'.$S_Y.'</span>
                     </div>
                   </td>
                 </tr>
@@ -443,14 +444,14 @@
             </table>
             <div class="row">
               <div class="col">
-                <span class="fw-semibold">Remarks : </span>
-                Cleared
+                <span class="fw-semibold text-nowrap">Remarks : </span>
+                <span id="remark">Cleared</span>
               </div>
               <div class="col text-center">
                 <div class="d-grid">
-                  <span class="fw-semibold">'.$Nfirstname.' '.$Nlastname.' '.$Nmiddlename.'</span>
+                  <span class="fw-semibold text-nowrap" id="nurse">'.$Nfirstname.' '.$Nlastname.' '.$Nmiddlename.'</span>
                   <hr class="border border-1 border-dark" />
-                  <span class="fw-semibold">University Nurse</span>
+                  <span class="fw-semibold text-nowrap">University Nurse</span>
                 </div>
               </div>
               <div class="col text-center">qr</div>
@@ -459,7 +460,7 @@
           <div class="d-flex gap-2 mt-3 justify-content-end">
             <button
               class="btn rounded-0 text-light px-5 fw-semibold"
-              style="background-color: #134e8e"
+              style="background-color: #134e8e" data-email="'.$Nemail.'" data-bs-toggle="modal" data-bs-target="#email" id="send-email"
             >
               Send
             </button>
