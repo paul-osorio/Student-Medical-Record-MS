@@ -112,15 +112,15 @@
                <div class="filter">
                   <div class="sort">
                      <label for=""> Sort by: </label>
-                     <select name="" id="">
-                        <option value="All"> All </option>
-                        <option value="Type"> Type of archive </option>
-                        <option value="Date"> Date </option>
+                     <select name="sort" id="arc-sort">
+                        <option value="archive_id"> All </option>
+                        <option value="archive_type"> Type of Archive </option>
+                        <option value="archive_datetime"> Date/Time </option>
                      </select>
                   </div>
 
                   <div class="search">
-                     <input type="search" name="" id="" placeholder="Search archive">
+                     <input type="search" name="search" id="arc-search" placeholder="Search Archive">
                   </div>
                </div>
             </div>
@@ -215,6 +215,8 @@
    </main>
    
 </body>
+<!-- sort/search -->
+<script src="../ajax/sort-search_archive.js"></script>
 
 <!-- custom script -->
 </html>

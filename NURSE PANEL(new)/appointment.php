@@ -9,7 +9,7 @@ if (isset($_SESSION['emp_id']) && isset($_SESSION['username'])) {
 
 
 <?php
-     include('db_conn1.php');
+     include('./includes/db_conn.php');
 
 
     // SELECT ALL STUDENTS 

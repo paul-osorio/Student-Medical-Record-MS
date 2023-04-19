@@ -1,5 +1,5 @@
 <?php
-    include('db_conn.php');
+    include('./includes/db_conn.php');
 
     $fetchAllMedicine = mysqli_query($conn, "SELECT * FROM `medicine`");
      

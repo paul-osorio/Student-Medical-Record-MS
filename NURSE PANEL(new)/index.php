@@ -3,7 +3,7 @@
 	session_start();
 	include_once 'insert_data.php';
 	include_once 'insert_new_patient.php';
-	include('db_conn.php');
+	include('./includes/db_conn.php');
 	
 
   $emp_id = $_SESSION['emp_id'];
