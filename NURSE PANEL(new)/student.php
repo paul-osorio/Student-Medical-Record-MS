@@ -177,8 +177,8 @@
                 </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary">Download</button>
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Print</button>
+            <button type="button" class="btn btn-primary" id="donwload-cert">Download</button>
+            <button type="button" class="btn btn-success" id="print-cert">Print</button>
           </div>
         </div>
       </div>
