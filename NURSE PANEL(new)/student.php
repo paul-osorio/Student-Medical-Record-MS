@@ -124,8 +124,8 @@
 
                        
                         
-                        <div class="students">
-                          <button class="btn btn-primary" id="cmd">Generate PDf</button>
+                    <div class="students">
+   
                       <h1>Student</h1>
                          
 
