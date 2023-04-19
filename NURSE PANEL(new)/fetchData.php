@@ -28,7 +28,7 @@
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="student.php"><i class="fa-solid fa-arrow-left mx-2"></i>Student List</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">'.$firstname.', '.$lastname.'</li>
+                  <li class="breadcrumb-item active" aria-current="page">'.$lastname.', '.$firstname.'</li>
                 </ol>
               </nav>
               <hr class="border-2">
@@ -38,7 +38,7 @@
                     <img src="./assets/'.$row['image'].'" width="150" height="150" class="rounded-circle">
                   </div>
                 
-                 <h5 class="mb-2">'.$firstname.', '.$lastname.' '.$middlename.'</h5>
+                 <h5 class="mb-2">'.$lastname.', '.$firstname.' '.$middlename.'</h5>
                  <p class="mb-2">'.$row['Email'].'</p>
                  <p class="mb-2">'.$row['Section'].'</p>
                  <p class="mb-2">'.$row['student_id'].'</p>
@@ -145,7 +145,7 @@
             <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="student.php"><i class="fa-solid fa-arrow-left mx-2"></i>Student List</a></li>
-            <li class="breadcrumb-item active" aria-current="page">'.$firstname.', '.$lastname.'</li>
+            <li class="breadcrumb-item active" aria-current="page">'.$lastname.', '.$firstname.'</li>
             <li class="breadcrumb-item active" aria-current="page">New Consultation</li>
             </ol>
             </nav>
