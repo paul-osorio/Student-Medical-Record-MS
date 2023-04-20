@@ -3,6 +3,7 @@
    
    include "../includes/db_conn.php";
    include "../functions/function.php";
+   include "../includes/date.php";
 
    include "../functions/admin.php";
    include "../functions/dept.php";
@@ -10,6 +11,8 @@
    include "../functions/hospital.php";
    include "../functions/medicine.php";
    include "../functions/archive.php";
+   include "../functions/appointment.php";
+
    
    $id = $_SESSION['user_id'];
 
@@ -43,6 +46,9 @@
 
    // select all archive
    $archive_res = fetchArchive($conn);
+
+   // select all appointments
+   $app_res = selAllApp($conn);
 
 
 ?>

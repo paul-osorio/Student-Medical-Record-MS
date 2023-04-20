@@ -430,7 +430,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['email'])) {
 
                       <div class="form-group">
                         <label>PICK AVAILABLE DATES </label>
-                          <input type="text" class="form-control" id="date-picker" hidden>
+                        <input type="text" class="form-control" id="date-picker" hidden>
                       </div>
                     
                   </div>

@@ -11,6 +11,12 @@
 
       $isSet = setAppointmentStatus($conn, $stud_id, $ref_no, $status);
 
+      ?>
+      <script>
+         window.location.href = "../pages/appointment-list.php";
+      </script>
+      <?php 
+
    }
 
    
