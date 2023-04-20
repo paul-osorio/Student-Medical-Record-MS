@@ -312,11 +312,23 @@
                       </div>
                       </div>
                   </div>
-                  <div class="col-md-3">
+                  <div class="col-md-3 position-relative">
                   <h6 class="fw-bold mb-3">Medicine Given</h6>
-                  
-                  </div>
+                    <select class="form-select" aria-label="Default select example" id="medicine">
+                    <option selected>Select Medicine</option>';
 
+                $info = "SELECT * FROM medicine";
+                $run_query = mysqli_query($conn,$info) or die(mysqli_error($conn));
+                if(mysqli_num_rows($run_query) > 0){
+                  while($row = mysqli_fetch_array($run_query)){
+                    echo  '<option value="'.$row['name'].'">'.$row['name'].'</option>';
+                  }
+                }
+
+                  echo '
+                     </select>
+                        <ul id="list" class="mt-3 py-2 position-absolute start-0"></ul>
+                  </div>
                   <div class="col-md-3">
                   <h6 class="fw-bold mb-3">Quantity</h6>
                   <input type="text" class="form-control" id="quantity" name="quantity" placeholder="Quantity.." maxlength="2" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))">
@@ -367,28 +379,45 @@
               $confined = $_POST['confined'];
               $how_long = $_POST['how_long'];
               $referred = $_POST['referred'];
+              $medicines = $_POST['medicines'];
               $quantity = $_POST['quantity'];
               $cleared = $_POST['cleared'];
               
 
         $sql = "INSERT INTO consultations (student_id, date_of_consultation ,symptoms, othersymptoms,body_temp,suspected_covid,tested_covid,confined,how_long,medicine,referred) 
-            VALUES ('$student_id',NOW(),'$symptoms', '$other_symptoms','$body_temp','$close_contact','$covid_test','$confined','$how_long','','$referred')";
+                VALUES ('$student_id',NOW(),'$symptoms', '$other_symptoms','$body_temp','$close_contact','$covid_test','$confined','$how_long','$medicines','$referred')";
         $run_query = mysqli_query($conn,$sql) or die(mysqli_error($conn));
 
         $sample_data = "INSERT INTO sample_stud_data (student_id, Status) VALUE ('$student_id','$cleared')";
         $run_query = mysqli_query($conn,$sample_data) or die(mysqli_error($conn));
 
-        $info = "SELECT * FROM stud_data WHERE student_id = '$student_id'";
-        $run_query = mysqli_query($conn,$info) or die(mysqli_error($conn));
+        $enrollment = "SELECT * FROM `mis.enrollment_status` WHERE student_id = '$student_id'";
+        $dquery = $conn1->query($enrollment);
+       
+        if($dquery->num_rows > 0){
 
-         
-
-
-    if(mysqli_num_rows($run_query) > 0){
+          $drow = $dquery->fetch_assoc();
+          $dept_name = $drow['code'];
           
-        while($row = mysqli_fetch_array($run_query)){
+          $department = "SELECT * FROM departments WHERE  dept_name =  '$dept_name'";
+          $pquery = $conn1->query($department);
+
+          if($conn1->query($department)){
+
+          $prow = $pquery->fetch_assoc();
+          $dept_email = $prow['email'];
+
+          $info = "SELECT * FROM stud_data WHERE student_id = '$student_id'";
+          $run_query = mysqli_query($conn,$info) or die(mysqli_error($conn));
+
+          $query = $conn->query($info);
+          $row = $query->fetch_assoc();
+        
+			if($conn->query($sql)){
+
           $date_now = date("Y");
           $date_past = date("Y") - 1;
+
           $S_Y =  $date_past . " - " .  $date_now;
           $firstname = $row['firstname'];
           $lastname = $row['lastname'];
@@ -460,22 +489,144 @@
           <div class="d-flex gap-2 mt-3 justify-content-end">
             <button
               class="btn rounded-0 text-light px-5 fw-semibold"
-              style="background-color: #134e8e" data-email="'.$Nemail.'" data-bs-toggle="modal" data-bs-target="#email" id="send-email"
+              style="background-color: #134e8e" data-email="'.$dept_email.'" data-bs-toggle="modal" data-bs-target="#email" id="send-email"
             >
               Send
             </button>
             <button
               class="btn rounded-0 text-light px-5 fw-semibold"
               style="background-color: #134e8e"
+              id="close-cert"
             >
               Close
             </button>
+          </div>
+          
+          <div class="modal fade"  id="email" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                      <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body d-grid justify-content-center">
+                          <h4 class="fw-semibold text-center">SUCCESSFULLY SENT TO THE EMAIL OF BSIT DEPARTMENT!</h4>
+                          <div class="container-fluid d-flex justify-content-center align-items-center">
+                            <img src="assets/email-success.svg" class="w-50 h-50" alt="">
+                          </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-primary" id="donwload-cert">Download</button>
+                      <button type="button" class="btn btn-success" id="print-cert">Print</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
           </div>';
-          }
         }
+
+          }
+          
+
+        }else{
+          echo 'Please check if the student is officially enrolled. Thank You';
+        }
+      }
+
+      function get_data(){
+        class Data_file {
+            private $student_id;
+            private $docu_type;
+            private $file_name;
+            private $submitted_date;
+            private $status;
+            private $status_column;
+
+            public function __construct($student_id,$docu_type,$file_name,$submitted_date,$status,$status_column){
+              $this->student_id = $student_id;
+              $this->docu_type = $docu_type;
+              $this->file_name = $file_name;
+              $this->submitted_date = $submitted_date;
+              $this->status = $status;
+              $this->status_column = $status_column;
+            }
+
+          function __destruct(){
+
+           echo "              
+                <tr class='p-3'>
+                <td class='col-2 py-3'>{$this->docu_type}</td>
+                <td class='col-3 py-3'>{$this->submitted_date}</td>
+                <td class='col-4 py-3'>{$this->file_name}</td>";
+
+              
+                 if($this->status == "approved" ){           
+                    echo"<td class='text-success fw-semibold text-center py-3' colspan='2'>Approved</td>";
+                  }elseif($this->status == "declined"){
+                    echo"<td class='text-danger fw-semibold text-center py-3'>Declined</td>";
+                  }
+                  else{
+                    echo "<td class='p-0 text-center py-3'><button class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#declined_modal' id='declined'>Decline</button></td>
+                    <td class='p-0 text-center py-3'><button class='btn btn-success' id='approved'  data-column='{$this->status_column}' data-student_id='{$this->student_id}' >Approve</button></td>";
+                              
+                  };
+         
+
+            echo"</tr>";
+            }
+        }
+      }
+
+      if(isset($_POST['view'])){
+
+        $student_id = $_POST['student_id'];
+        $id = $_POST['id'];
+
+        $sql = "SELECT * FROM stud_medical_requirements WHERE student_id  = '$student_id' ";
+        // $run_query = mysqli_query($conn1,$sql) or die(mysqli_error($conn1));
+        $query = $conn1->query($sql);
+
+        $row = $query->fetch_assoc();
+        
+        $cbc_file = $row['cbc_file'];
+        $cbc_date_submitted = $row['cbc_date_submitted'];
+        $cbc_status = $row['cbc_status'];
+        
+        $uri_file = $row['uri_file'];
+        $uri_date_submitted = $row['uri_date_submitted'];
+        $uri_status = $row['uri_status'];
+
+        $xRay_file = $row['xray_file'];
+        $xRay_date_submitted = $row['xray_date_submitted'];
+        $xRay_status = $row['xray_status'];
+
+        $med_cert_file = $row['med_cert_file'];
+        $med_cert_date_submitted = $row['med_cert_date_submitted'];
+        $med_cert_status = $row['med_cert_status'];
+
+        get_data();
+        
+        $med_cert_file = new Data_file( $student_id,"Medical Certificate",$med_cert_file,$med_cert_date_submitted,$med_cert_status,'med_cert_status');
+        $xRay_file = new Data_file( $student_id,"Chest X-ray",$xRay_file,$xRay_date_submitted,$xRay_status,'xray_status');
+        $uri_file = new Data_file( $student_id,"Urinalysis",$uri_file,$uri_date_submitted,$uri_status,'uri_status');
+        $cbc_file = new Data_file( $student_id,"Complete Blood Count (CBC)",$cbc_file,$cbc_date_submitted,$cbc_status,'cbc_status');
+
+      }
+
+      if(isset($_POST['update_status'])){
+        $student_id = $_POST['student_id'];
+        $column = $_POST['column'];
+
+        $sql = "UPDATE stud_medical_requirements SET $column = 'approved' WHERE student_id = '$student_id'";
+        $run_query = mysqli_query($conn1,$sql) or die(mysqli_error($conn1));
+
+        get_data();
+
+        $med_cert_file = new Data_file( $student_id,"Medical Certificate",$med_cert_file,$med_cert_date_submitted,$med_cert_status,'med_cert_status');
+        $xRay_file = new Data_file( $student_id,"Chest X-ray",$xRay_file,$xRay_date_submitted,$xRay_status,'xray_status');
+        $uri_file = new Data_file( $student_id,"Urinalysis",$uri_file,$uri_date_submitted,$uri_status,'uri_status');
+        $cbc_file = new Data_file( $student_id,"Complete Blood Count (CBC)",$cbc_file,$cbc_date_submitted,$cbc_status,'cbc_status');
+      }
       
-         }
         
   ?>
    
-          

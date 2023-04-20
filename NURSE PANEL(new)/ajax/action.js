@@ -4,9 +4,28 @@ $(document).ready(function () {
     console.log("testing");
   }
 
-  // const pdfBlob = doc.output("blob");
+  $(document).on("click", "#close-cert", function () {
+    window.location.href = "student.php";
+    console.log("click");
+  });
 
-  // return pdfBlob;
+  const medicine = (() => {
+    const medicine_arr = [];
+
+    $(document).on("change", "#medicine", function () {
+      var select = document.getElementById("medicine");
+      var selectedOption = select.options[select.selectedIndex];
+
+      var listItem = document.createElement("li");
+      listItem.textContent = selectedOption.textContent;
+
+      list.appendChild(listItem);
+      select.remove(select.selectedIndex);
+
+      medicine_arr.push(listItem.textContent);
+    });
+    return medicine_arr;
+  })();
 
   $(document).on("click", "#consultation_submit", function () {
     const date = new Date();
@@ -25,7 +44,8 @@ $(document).ready(function () {
       temperature,
       how_long,
       quantity,
-      student_id;
+      student_id,
+      medicines = medicine.join(", ");
 
     student_id = $(this).attr("data-id");
 
@@ -75,6 +95,7 @@ $(document).ready(function () {
           cleared: cleared.join(", "),
           confined: confined.join(", "),
           how_long: how_long,
+          medicines: medicines,
           referred: referred.join(", "),
           quantity: quantity,
         },
@@ -90,6 +111,7 @@ $(document).ready(function () {
           data: { fetch_stud_data: 1, id: student_id },
           success: function (response) {
             $("#student").html(response);
+
             // $('#student').html(data)
             consultation(student_id, student);
           },
@@ -111,6 +133,7 @@ $(document).ready(function () {
       },
     });
   });
+
   $(document).on("click", "#consultation", function () {
     let id = $(this).attr("data-id");
     $.ajax({
@@ -124,6 +147,7 @@ $(document).ready(function () {
       },
     });
   });
+
   function consultation(id) {
     $.ajax({
       url: "fetchData.php",
@@ -178,7 +202,7 @@ $(document).ready(function () {
         method: "POST",
         data: { email: email, attachment: data },
         success: function (response) {
-          console.log(response);
+          // console.log(response);
         },
       });
     });
@@ -194,6 +218,33 @@ $(document).ready(function () {
     // console.log(cert_data);
     const certificate = get_data();
     return certificate.print();
+  });
+
+  //meadical Requirement function
+
+  $(document).on("click", "#view-requirement", function () {
+    const student_id = $(this).attr("data-student_id");
+    const id = $(this).attr("data-id");
+
+    $.ajax({
+      url: "fetchData.php",
+      method: "POST",
+      data: { view: 1, student_id: student_id, id: id },
+      success: function (data) {
+        $(`#requirement${id}`).html(data);
+      },
+    });
+  });
+
+  $(document).on("click", "#approved", function () {
+    const student_id = $(this).attr("data-student_id");
+    const column = $(this).attr("data-column");
+    $.ajax({
+      url: "fetchData.php",
+      method: "POST",
+      data: { update_status: 1, student_id: student_id, column: column },
+      success: function (data) {},
+    });
   });
 });
 

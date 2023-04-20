@@ -138,13 +138,13 @@
                                   while ($studs = mysqli_fetch_assoc($fetchAllStudents)) {  ?>
 
 
-                                  <table class="table table-borderless shadow mt-3 text-center">
+                                  <table class="table table-borderless shadow mt-3 text-center align-middle">
                                     <tbody>
                                       <tr class="">
-                                        <td class="col-2 text-light fw-bold" style="background:#5D8FD9"><span><?=$studs['student_id']?></span></td>
-                                        <td class="col-3"><span class="name"><?=$studs['firstname']?> <?=$studs['middlename']?> <?=$studs['lastname']?></span></td>
+                                        <td class="col-2  text-light fw-bold" style="background:#5D8FD9;width:max-content"><span><?=$studs['student_id']?></span></td>
+                                        <td class="col-3 text-start"><span class="name"><?=$studs['firstname']?> <?=$studs['middlename']?> <?=$studs['lastname']?></span></td>
                                         <td class="col-1"><span class="course"><?=$studs['Section']?></span></td>
-                                        <td class="col-5 "><span class="email"><?=$studs['Email']?></span></td>
+                                        <td class="col-5 text-start"><span class="email"><?=$studs['Email']?></span></td>
                                         <td class="col-1"><button class="addpatient-btn px-2" style="background-color: #163666;" id="view" data-id="<?=$studs['student_id']?>">View</button></td>
                                         <td class="col"><span class="name position-relative d-flex align-items-center justify-content-center">
                                         <a href="#" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-ellipsis-vertical " style="color: #163666"></i></a>
@@ -167,18 +167,19 @@
               </div>
          
         </div>
-    </div>
-    <!-- PRINT OR DOWNLOAD MODAL -->
- 
+
+  
+          <!-- PRINT OR DOWNLOAD MODAL -->
+
 
 </body>
+<script src="./ajax/search_appointments.js"> </script>
+<script src="./ajax/search_medreq.js"> </script>
+<script src="./ajax/search_students.js"> </script>
+<script src="./ajax/search_medicine.js"> </script>
 
 
     <!-- CUSTOM AJAX FILE -->
-    <script src="./ajax/search_appointments.js"> </script>
-    <script src="./ajax/search_medreq.js"> </script>
-    <script src="./ajax/search_students.js"> </script>
-    <script src="./ajax/search_medicine.js"> </script>
     
 </html>
 

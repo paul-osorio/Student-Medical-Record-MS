@@ -1,5 +1,5 @@
 <?php
-   include "../db_conn1.php";
+  include "../includes/db_conn.php";
 
    if(isset($_POST['search'])){
       $search = $_POST['search'];
