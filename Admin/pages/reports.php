@@ -1,8 +1,5 @@
 <?php
-
    include "../includes/function-header.php";
- 
-
 ?>
 
 <!DOCTYPE html>
@@ -120,22 +117,18 @@
                   </select>
 
                   <select name="" id="">
-                     <option value="Students"> Students </option>
-                     <option value="Appointments"> Appointments </option>
-                     <option value="Medicine"> Medicine </option>
+                     <option value=""> Campus </option>
+                     <option value="San Fransisco"> San Bartolome </option>
+                     <option value="Batasan"> Batasan </option>
+                     <option value="San Fransisco"> San Fransisco </option>
                   </select>
 
-                  <select name="" id="">
-                     <option value="Students"> Students </option>
-                     <option value="Appointments"> Appointments </option>
-                     <option value="Medicine"> Medicine </option>
-                  </select>
+                  <input type="date" name="" id="">
 
                </div>
               
             </div>
-
-
+            
             <div class="report-content-container">
 
                <div class="report-box">

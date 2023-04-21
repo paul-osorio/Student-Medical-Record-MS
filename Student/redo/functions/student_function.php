@@ -33,7 +33,7 @@
    function fetchAllStudAppointment($conn, $StudId){
 
       $SelQuerry = "SELECT * FROM `stud_appointment`
-      WHERE `student_id` = '$StudId' ORDER BY id DESC";
+      WHERE `student_id` = '$StudId' ORDER BY `id` DESC";
 
       $result = mysqli_query($conn, $SelQuerry);
 

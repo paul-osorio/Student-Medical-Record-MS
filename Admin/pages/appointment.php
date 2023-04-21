@@ -13,7 +13,13 @@
 
    <!-- custom css -->
    <link rel="stylesheet" href="../css/appointment.css">
+
+   <!-- for date picker -->
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
    
+    
    
 </head>
 <body>
@@ -119,7 +125,7 @@
                      <p> Add Holiday/Suspension </p>
                   </button>
 
-                  <button class="add-admin">
+                  <button class="add-appointment">
                      <i class="fas fa-calendar-plus"></i>
                      <p> Add Appointment </p>
                   </button>
@@ -131,45 +137,96 @@
 
             <div class="appointment-list-container">
 
-               <table>
+               <!-- <table>
                    <thead>
                      <tr> 
                         <th width="10%"> ID No. </th>
                         <th width="20%"> Type of appointment </th>
-                        <th width="10%"> Status </th>
+                       
                         <th width="10%"> Date Created	</th>
                         <th width="5%" style="text-align:center"> Action </th>
                      </tr>
                   </thead>
-               </table>
+               </table> -->
 
                <table border="0"> 
+
+                  <thead>
+                     <tr> 
+                        <th> Date Created	</th>
+                        <th> Application ID </th>
+                        <th> Type of appointment </th>
+                        <th> Date scheduled </th>
+                        <!-- <th width="10%"> Status </th> -->
+                        <th style="text-align:center"> Action </th>
+                     </tr>
+                  </thead>
                  
 
                   <tbody>
-                     <tr>
-                        <td width="10%"> A-0001 </td>
-                        <td width="20%"> Medical Services	 </td>
-                        <td width="10%"> 
-                           
-                           <div class="app-status">
-                              <p> On </p>
-                           </div>
-                        </td>
-                        <td width="10%"> March 04, 2023 </td>
+                     <?php 
+                        if(mysqli_num_rows($app_res) > 0) {
 
-                        <td width="5%">
-                           <div class="action-button">
-                              <button id="app-edit">
-                                 <i class="fas fa-edit    "></i>
-                              </button>
+                           while($row = mysqli_fetch_assoc($app_res)){ 
+                              
+                              $date = $row['date_filed'];
+                              $date = new DateTime($date);
+                              $date = $date->format("F d, Y h:i A");
 
-                              <button id="app-del">
-                                <i class="fas fa-trash-alt    "></i>
-                              </button>
-                           </div>   
-                        </td>
-                     </tr>
+                              
+                           ?>
+
+<tr>
+                              <td> <?=$date?> </td>
+                              <td> <?=$row['app_id']?> </td>
+                              <td> <?=$row['app_type']?> Services	 </td>
+                              <td class="sched"> 
+                                 <?php 
+
+                                    $sel = selAppSched($conn, $row['app_id']);
+
+                                    if(mysqli_num_rows($sel) > 0) {
+
+                                       while($rowSched = mysqli_fetch_assoc($sel)){
+
+                                          $dateSched = $rowSched['app_dates'];
+                                          $dateSched = new DateTime($dateSched);
+                                          $dateSched = $dateSched->format("m/d");
+
+                                          ?>
+
+                                             <div class="sched-date">
+                                                <?=$dateSched?>
+                                             </div>
+                                          <?php 
+
+                                       }
+                                    }
+                                 
+                                 ?>
+
+                              </td>     
+
+                              <td>
+                                 <div class="action-button">
+                                    <button id="app-edit" data-role="app-edit" data-id="<?=$row['app_id']?>">
+                                       <i class="fas fa-edit    "></i>
+                                    </button>
+
+                                    <button id="app-del" data-role="app-del" data-id="<?=$row['app_id']?>">
+                                    <i class="fas fa-trash-alt    "></i>
+                                    </button>
+                                 </div>   
+                              </td>
+                           </tr>
+
+
+                           <?php }
+                        } else {
+                           echo "<tr> <td colspan='5' style='text-align:center;'> No appointment </td> </tr>";
+                        }
+                     ?>
+                     
 
                      
                   </tbody>
@@ -177,15 +234,23 @@
 
             </div>
 
+      </div>
 
-            
-         </div>
+
+      <!-- Modal -->
+      <div id="modal-overlay-container" class="modal-overlay-container">
+
+         <!-- Add new appointment -->
+
+         <!-- Appointment Details -->
 
       </div>
+
 
    </main>
    
 </body>
 
-<!-- custom script -->
+<script src="../ajax/appointment-modal.js"> </script>
+
 </html>

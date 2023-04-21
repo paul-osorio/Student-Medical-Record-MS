@@ -179,7 +179,7 @@
 
          });
 
-         window.location.href = "../pages/appointment-list.php";
+         
 
       });
    });
