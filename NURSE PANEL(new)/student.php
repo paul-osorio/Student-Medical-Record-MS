@@ -127,7 +127,7 @@
 
                     <div class="students">
    
-                      <h1>Student</h1>
+                      <!-- <h1>Student</h1> -->
 
                         <div class="students">
                       <!-- <h1>Student</h1> -->
