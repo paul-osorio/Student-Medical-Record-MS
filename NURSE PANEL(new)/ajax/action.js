@@ -142,7 +142,7 @@ $(document).ready(function () {
       data: { new_consultation: 1, id: id },
       success: function (response) {
         $("#student").html(response);
-
+        console.log(data);
         consultation(id);
       },
     });

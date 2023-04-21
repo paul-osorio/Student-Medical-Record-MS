@@ -1,12 +1,12 @@
 <?php
-   include "../db_conn.php";
+    include "../includes/db_conn.php";
 
    if(isset($_POST['sort'])){
       $sort = $_POST['sort'];
 
       $sort_by_query = "SELECT * FROM `nurses` ORDER BY `$sort`"; 
       
-      $fetchAllNurses = mysqli_query($conn, $sort_by_query);
+      $fetchAllNurses = mysqli_query($conn1, $sort_by_query);
       
       ?>
 

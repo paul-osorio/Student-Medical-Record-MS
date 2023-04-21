@@ -1,15 +1,3 @@
-<?php
-    include('./includes/db_conn.php');
-
-    $fetchAllMedicine = mysqli_query($conn1, "SELECT * FROM `medicine`");
-
-    $fetchAllConsultations = mysqli_query($conn, "SELECT * FROM `consultations`");
-
-    $fetchAllAppointments = mysqli_query($conn1, "SELECT * FROM `stud_appointment`"); 
-
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,6 +17,7 @@
     <link rel="stylesheet" href="./css/reportchart.css"/>
     <link rel="stylesheet" href="./css/ReportsTab.css"/>
      
+
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
@@ -38,9 +27,6 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-
-  
-  
   <script src="action.js" defer></script>
   <script src="./js/report.js" defer></script>
 
@@ -109,43 +95,42 @@
                 </ul>
              </div>
           </div>
-            <div class="col-sm-10 p-3">    
-              <div class="container-fluid">
-                <div class="container-fluid bg-secondary-subtle py-2 rounded-1">
-                    <!-- <span class="fw-bold fs-5 mx-3 text-uppercase">Summary Report</span> -->
-                <div class="reports so_content so_active">
-                  <div class="reports_header d-flex justify-content-between" style=" margin-bottom: 10px;">
-                  <h3 class="m-0 text-black">SUMMARY REPORTS</h3>
+
+
+
+
+               <!-- REPORTS PAGE -->
+       
+
+                <div class="reports_header d-flex justify-content-between">
+                  <h3 class="m-0 text-white">REPORTS</h3>
                   <div class="filter">
-                    <select id="report_filter" name="report_filter"style="border-radius: 5px; font-size: 18px;">
-                      <option id="student_filter" value="student_filter">Students</option>
-                      <option id="appointment_filter" value="appointment_filter">Appointments</option>
-                      <option id="medicine_filter" value="medicine_filter">Medicine</option>
+                    <select id="report_filter">
+                      <option id="student_filter">Students</option>
+                      <option id="appointment_filter">Appointments</option>
+                      <option id="medicine_filter">Medicine</option>
                     </select>
-                    <select style="border-radius: 5px; font-size: 18px;">
-                      <option value="">-Select Campus-</option>
-                      <option value="batasan">Batasan</option>
-                      <option value="sanbartolome">San Bartolome</option>
-                      <option value="sanfrancisco">San Francisco</option>
+                    <select>
+                      <option>Campus</option>
                     </select>
-                    <select style="border-radius: 5px; font-size: 18px;">
+                    <select>
                       <option>Select a date</option>
                     </select>
                   </div>
                 </div>
-                <br>
+
 
                 <div class="reports_table_details table-dark table-responsive" id="student_report">
-                  <h1 class="container-title" style="color:blue; text-align:center;">STUDENTS CONSULTATION REPORT</h1>
+                  <h1 class="container-title">STUDENTS CONSULTATION REPORT</h1>
                   <div class="charts-row">
                     <div class="bar-col">
-                      <p class="chart-title text-black">TOTAL NUMBER OF CONSULTATIONS</p>
+                      <p class="chart-title">TOTAL NUMBER OF CONSULTATIONS</p>
                       <canvas id="report_student_chart" class="chart"></canvas>
                     </div>
-                    <!-- <div class="pie-col">
-                      <p class="chart-title text-black">5 MOST COMMON SYMPTOMS</p>
+                    <div class="pie-col">
+                      <p class="chart-title">5 MOST COMMON SYMPTOMS</p>
                       <canvas id="report_student_pie" class="circle_chart"></canvas>
-                    </div> -->
+                    </div>
                   </div>
                   <div class="table-container">
                   <table class="table table-striped">
@@ -161,97 +146,145 @@
                         <th> Nurse Assisted </th>
                         <th> Remarks </th>
                     </tr>
-
-                    <?php if(mysqli_num_rows( $fetchAllConsultations) > 0) { 
-                        while ($con = mysqli_fetch_assoc( $fetchAllConsultations)) { 
-
-                        $conDate = convertDate($con['date_of_consultation']);
-
-                    ?>
-
                     <tr class="container">
-                        <td> <?=$con['student_id']?> </td>
-                        <td> <?=$con['fullname']?> </td>
+                        <td> 19-0249 </td>
+                        <td> Dela Cruz, Juan </td>
                         <td> SBIT-3A </td>
-                        <td> <?=$conDate?> </td>
-                        <td> <?=$con['body_temp']?> </td>
-                        <td> <?=$con['symptoms']?> </td>
-                        <td> <?=$con['medicine']?> </td>
-                        <td> <?=$con['how_long']?> Hour/s </td>
+                        <td> March 3, 2023 </td>
+                        <td> 35 </td>
+                        <td> Headache </td>
+                        <td> Biogesic </td>
+                        <td> 1 Hour </td>
                         <td> Nr. John Nicole Ablhay </td>
-                        <td style="color:green"> <b> Cleared </b></td>
+                        <td style="color:lightgreen"> Cleared </td>
                     </tr>
 
-                     <?php } } ?>
+                    <tr class="container">
+                        <td> 19-0249 </td>
+                        <td> Dela Cruz, Juan </td>
+                        <td> SBIT-3A </td>
+                        <td> March 3, 2023 </td>
+                        <td> 35 </td>
+                        <td> Headache </td>
+                        <td> Biogesic </td>
+                        <td> 1 Hour </td>
+                        <td> Nr. John Nicole Ablhay </td>
+                        <td style="color:lightgreen"> Cleared </td>
+                    </tr>
 
+                    <tr class="container">
+                        <td> 19-0249 </td>
+                        <td> Dela Cruz, Juan </td>
+                        <td> SBIT-3A </td>
+                        <td> March 3, 2023 </td>
+                        <td> 35 </td>
+                        <td> Headache </td>
+                        <td> Biogesic </td>
+                        <td> 1 Hour </td>
+                        <td> Nr. John Nicole Ablhay </td>
+                        <td style="color:lightgreen"> Cleared </td>
+                    </tr>
+
+                    <tr class="container">
+                        <td> 19-0249 </td>
+                        <td> Dela Cruz, Juan </td>
+                        <td> SBIT-3A </td>
+                        <td> March 3, 2023 </td>
+                        <td> 35 </td>
+                        <td> Headache </td>
+                        <td> Biogesic </td>
+                        <td> 1 Hour </td>
+                        <td> Nr. John Nicole Ablhay </td>
+                        <td style="color:lightgreen"> Cleared </td>
+                    </tr>
+
+                    <tr class="container">
+                        <td> 19-0249 </td>
+                        <td> Dela Cruz, Juan </td>
+                        <td> SBIT-3A </td>
+                        <td> March 3, 2023 </td>
+                        <td> 35 </td>
+                        <td> Headache </td>
+                        <td> Biogesic </td>
+                        <td> 1 Hour </td>
+                        <td> Nr. John Nicole Ablhay </td>
+                        <td style="color:lightgreen"> Cleared </td>
+                    </tr>
+
+                    <tr class="container">
+                        <td> 19-0249 </td>
+                        <td> Dela Cruz, Juan </td>
+                        <td> SBIT-3A </td>
+                        <td> March 3, 2023 </td>
+                        <td> 35 </td>
+                        <td> Headache </td>
+                        <td> Biogesic </td>
+                        <td> 1 Hour </td>
+                        <td> Nr. John Nicole Ablhay </td>
+                        <td style="color:lightgreen"> Cleared </td>
+                    </tr>
+                    
                   </table>
                   </div>
                 </div>
                 <div>
 
                 <div class="reports_table_details table-dark table-responsive" id="appointment_report">
-                  <h1 class="container-title" style="color:blue; text-align:center;">APPOINTMENTS REPORT</h1>
+                  <h1 class="container-title">APPOINTMENTS REPORT</h1>
                   <div class="charts-row">
                     <div class="bar-col">
-                      <p class="chart-title text-black">TOTAL NUMBER OF APPOINTMENTS</p>
+                      <p class="chart-title">TOTAL NUMBER OF APPOINTMENTS</p>
                       <canvas id="report_appointment_chart" class="chart"></canvas>
                     </div>
-                    <!-- <div class="pie-col">
-                      <p class="chart-title text-black">SERVICES</p>
+                    <div class="pie-col">
+                      <p class="chart-title">SERVICES</p>
                       <canvas id="report_appointment_pie" class="circle_chart"></canvas>
-                    </div> -->
+                    </div>
                   </div>
                   <div class="table-container">
                   <table class="table table-striped">
                   <tr id="table_header">
                         <th> Student No. </th>
-                        <!-- <th> Student Name </th>
-                        <th> Section </th> -->
+                        <th> Student Name </th>
+                        <th> Section </th>
                         <th> Appointment Type </th>
                         <th> Reason </th>
                         <th> Date </th>
                         <th> Time </th>
                         <th> Reference No. </th>
-                        <!-- <th> Nurse Assisted </th> -->
+                        <th> Nurse Assisted </th>
                         <th> Remarks </th>
                     </tr>
-                     <?php if(mysqli_num_rows($fetchAllAppointments) > 0) { 
-                          while ($app = mysqli_fetch_assoc($fetchAllAppointments)) { 
-
-                            $appDate = convertDate($app['app_date']);
-
-                      ?>
 
                     <tr class="container">
-                        <td> <?=$app['student_id']?> </td>
-                        <!-- <td> Dela Cruz, Juan </td>
-                        <td> SBIT-3A </td> -->
-                        <td> <?=$app['app_type']?> Services </td>
-                        <td> <?=$app['app_reason']?> </td>
-                        <td> <?=$appDate?> </td>
-                        <td> <?=$app['app_time']?> </td>
-                        <td> <?=$app['reference_no']?> </td>
-                        <!-- <td> Nr. John Nicole Ablhay </td> -->
-                        <td style="color:green"><b> <?=$app['app_status']?> </b></td>
+                        <td> 19-0249 </td>
+                        <td> Dela Cruz, Juan </td>
+                        <td> SBIT-3A </td>
+                        <td> Medical Services </td>
+                        <td> Follow-up medical requirements </td>
+                        <td> March 3, 2023 </td>
+                        <td> 1:00 PM </td>
+                        <td> asd3ja </td>
+                        <td> Nr. John Nicole Ablhay </td>
+                        <td style="color:lightgreen"> Completed </td>
                     </tr>
 
-                     <?php } } ?>
                   </table>
                   </div>
                 </div>
                 <div>
 
                 <div class="reports_table_details table-dark table-responsive" id="medicine_report">
-                  <h1 class="container-title" style="color:blue; text-align:center;">MEDICINE INVENTORY REPORT</h1>
+                  <h1 class="container-title">MEDICINE INVENTORY REPORT</h1>
                   <div class="charts-row">
                     <div class="bar-col">
-                      <p class="chart-title text-black">TOTAL NUMBER OF MEDICINES</p>
+                      <p class="chart-title">TOTAL NUMBER OF MEDICINES</p>
                       <canvas id="report_medicine_chart" class="chart"></canvas>
                     </div>
-                    <!-- <div class="pie-col">
-                      <p class="chart-title text-black">MOSTLY USED MEDICINES</p>
+                    <div class="pie-col">
+                      <p class="chart-title">MOSTLY USED MEDICINES</p>
                       <canvas id="report_medicine_pie" class="circle_chart"></canvas>
-                    </div> -->
+                    </div>
                   </div>
                   <div class="table-container">
                   <table class="table table-striped">
@@ -260,92 +293,48 @@
                         <th> Stocks </th>
                         <th> Expiration Date </th>
                         <th> Description </th>
-                        <th> Campus </th>
                     </tr>
-
-                      <?php if(mysqli_num_rows($fetchAllMedicine) > 0) { 
-                          while ($med = mysqli_fetch_assoc($fetchAllMedicine)) {  
-                                        
-                          $expDate = convertDate($med['expirationDate']);
-
-                          $description = substr($med['description'], 0, 120);
-                                        
-                      ?>
 
                     <tr class="container">
-                        <td> <?=$med['name']?> </td>
-                        <td> <?=$med['num_stocks']?> </td>
-                        <td> <?=$expDate?> </td>
-                        <td> <?=$description?>... </td>
-                        <td> <?=$med['campus']?> </td>
+                        <td> Biogesic </td>
+                        <td> 1,000 </td>
+                        <td> April 2025 </td>
+                        <td> Lorem Ipsum Dolor Iset </td>
                     </tr>
                     
-                      <?php } } ?>
-
                   </table>
                   </div>
                 </div>
                 <div>
 
-                <div class="nav-row" style="display: flex; justify-content: space-between; margin-top: 30px;">
+                <div class="nav-row">
                 <div></div>
-                <div class="pagination" style=" display:flex; gap:5px;">
-                  <div class="paginate-btn" style="background-color: rgb(214, 214, 214); height: 30px; width: 30px; display: flex; justify-content: center; align-items: center;">
+                <div class="pagination">
+                  <div class="paginate-btn">
                     <i class="fa fa-backward"></i>
                   </div>
-                  <div class="paginate-btn"  style="background-color: rgb(214, 214, 214); height: 30px; width: 30px; display: flex; justify-content: center; align-items: center;">
+                  <div class="paginate-btn">
                     1
                   </div>
-                  <div class="paginate-btn"  style="background-color: rgb(214, 214, 214); height: 30px; width: 30px; display: flex; justify-content: center; align-items: center;">
+                  <div class="paginate-btn">
                     2
                   </div>
-                  <div class="paginate-btn"  style="background-color: rgb(214, 214, 214); height: 30px; width: 30px; display: flex; justify-content: center; align-items: center;">
+                  <div class="paginate-btn">
                     3
                   </div>
-                  <div class="paginate-btn"  style="background-color: rgb(214, 214, 214); height: 30px; width: 30px; display: flex; justify-content: center; align-items: center;">
+                  <div class="paginate-btn">
                     <i class="fa fa-forward"></i>
                   </div>
                 </div>
-                <span class="export" style="  color: rgb(21, 21, 21); display: flex; gap: 5px;"><button style="width: 80px; background-color: rgb(175, 171, 171);" type="submit" id="print" onclick="printPage()"><b>Print</b></button> or </p><a href="Report.php?path=smrms-report.pdf"> Download</a></span>
+                <span class="export"><p>Print or </p><a href="#"> Download</a></span>
                 </div>
 
                 </div>
-                <br>
 
 
-<script>
-    function printPage() {
-        window.print();
-    }
-</script>
-
-    </div>
-   
 </body>
-        <?php
-            function convertDate($date){
 
-              $date = new DateTime("$date");
-              $date = $date->format('F d, Y');
-
-              return $date;
-            }
-
-            function convertTime($time){
-
-              $time = new DateTime("$time");
-              $time = $time->format('h:i A');
-
-              return $time;
-            }
-
-        ?>
-
-
-   <script src="./js/reportchart.js"></script>
-
-
-<!-- REPORT'S GRAPHS JS -->
+ <!-- REPORT'S GRAPHS JS -->
 
   <!-- bar graph js -->
   <script>
@@ -455,7 +444,129 @@
   </script>
 
 
-  
+  <!-- circle graph js -->
+
+  <script>
+    var xValues = ["Verified", "Unverified", "Visitor", "Invalid"];
+var yValues = [55, 49, 44, 24];
+var barColors = [
+  "#2D7538",
+  "#f5c71a",
+  "#5180C7",
+  "#FF4646",
+];
+
+new Chart("myChart2", {
+  type: "doughnut",
+  data: {
+    labels: xValues,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  },
+   options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      aspectRatio: 2,
+      legend: {
+        display: true,
+        position: 'left',
+        maxWidth: 60,
+      }
+   }
+});
+
+var xValues = ["Difficulty Breathing", "Fever or Chills", "Headache", "Diarrhea", "Dizziness"];
+var yValues = [55, 49, 44, 24, 35];
+var barColors = [
+  "#255B98",
+  "#5CE1E6",
+  "#2BB4D4",
+  "#255B98",
+  "2D306D",
+];
+
+new Chart("report_student_pie", {
+  type: "pie",
+  data: {
+    labels: xValues,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  },
+   options: {
+      responsive: true,
+      maintainAspectRatio: true,
+      aspectRatio: 0,
+      legend: {
+        display: true,
+        position: 'left',
+        maxWidth: 60,
+      }
+   }
+});
+
+var xValues = ["Medical", "Dental",];
+var yValues = [55, 49,];
+var barColors = [
+  "#5CE1E6",
+  "#2BB4D4",
+];
+
+new Chart("report_appointment_pie", {
+  type: "pie",
+  data: {
+    labels: xValues,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  },
+   options: {
+      responsive: true,
+      maintainAspectRatio: true,
+      aspectRatio: 0,
+      legend: {
+        display: true,
+        position: 'left',
+        maxWidth: 60,
+      }
+   }
+});
+
+var xValues = ["Difficulty Breathing", "Fever or Chills", "Headache", "Diarrhea", "Dizziness"];
+var yValues = [55, 49, 44, 24, 35];
+var barColors = [
+  "#255B98",
+  "#5CE1E6",
+  "#2BB4D4",
+  "#255B98",
+  "2D306D",
+];
+
+new Chart("report_medicine_pie", {
+  type: "pie",
+  data: {
+    labels: xValues,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  },
+   options: {
+      responsive: true,
+      maintainAspectRatio: true,
+      aspectRatio: 0,
+      legend: {
+        display: true,
+        position: 'left',
+        maxWidth: 60,
+      }
+   }
+});
+  </script>
 
 
   <!-- line graph js -->

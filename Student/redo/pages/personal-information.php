@@ -128,6 +128,25 @@
 
 
                      </div>
+
+                     <div class="status">
+                        
+                        <p> Status: <span style="color: var(--approve)"> Cleared </span></p>
+                     
+                        <!-- <p> Status: 
+                           <?php if($stud_logged['remarks'] === "Incomplete") { ?>
+
+                              <span style="color: var(--decline)"> <?=$stud_logged['remarks']?> </span> 
+
+                           <?php } else { ?>
+                              
+                              <span style="color: var(--approve)"> <?=$stud_logged['remarks']?> </span>
+
+                           <?php } ?> 
+                        </p> -->
+
+
+                     </div>
                      
                   </div>
 
@@ -303,7 +322,7 @@
 
                   <div class="text-input">
 
-                     <input type="text" value="<?=$stud_logged['contact_number']?>" id="address" readonly>
+                     <input type="text" value="<?=$stud_logged['emergency_contact']?>" id="address" readonly>
 
                      <label for="address"> Contact Number </label>
 

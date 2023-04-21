@@ -15,14 +15,30 @@
 
     if (isset($_POST["fetch_stud_data"])){
       $student_id = $_POST['id'];
-      $info = "SELECT * FROM stud_data WHERE student_id = '$student_id'";
-      $run_query = mysqli_query($conn,$info) or die(mysqli_error($conn));
-      if(mysqli_num_rows($run_query) > 0){
-          while($row = mysqli_fetch_array($run_query)){
+      $info = mysqli_query($conn1,"SELECT * FROM `student_account`
+            JOIN `mis.student_info` ON `student_account`.`student_id` = `mis.student_info`.`student_id`
+            JOIN `mis.enrollment_status` ON `mis.student_info`.`student_id` = `mis.enrollment_status`.`student_id` 
+            JOIN `mis.student_address` ON `mis.enrollment_status`.`student_id` = `mis.student_address`.`student_id` 
+            JOIN `mis.emergency_contact` ON `mis.student_address`.`student_id` = `mis.emergency_contact`.`student_id` WHERE `student_account`.`student_id` = '$student_id'");
+      // $run_query = mysqli_query($conn1,$info) or die(mysqli_error($conn1));
+        if(mysqli_num_rows($info) > 0){
+          while($row = mysqli_fetch_array($info)){
               $student_id = $row["student_id"];
               $firstname = $row['firstname'];
               $lastname = $row['lastname'];
               $middlename = $row['middlename'];
+
+      
+    //  if (isset($_POST["fetch_stud_data"])){
+    //   $student_id = $_POST['id'];
+    //   $info = "SELECT * FROM `student_account` WHERE student_id = '$student_id'";
+    //   $run_query = mysqli_query($conn1,$info) or die(mysqli_error($conn1));
+    //   if(mysqli_num_rows($run_query) > 0){
+    //       while($row = mysqli_fetch_array($run_query)){
+    //           $student_id = $row["student_id"];
+    //           $firstname = $row['firstname'];
+    //           $lastname = $row['lastname'];
+    //           $middlename = $row['middlename'];
 
               echo '
               <nav aria-label="breadcrumb">
@@ -35,29 +51,29 @@
               <div class="row shadow rounded-3">
               <div class="col-md-4 d-grid text-center position-relative align-items-center justify-content-center p-4 m-auto border-end border-2">
                   <div class="mb-2">
-                    <img src="./assets/'.$row['image'].'" width="150" height="150" class="rounded-circle">
+                    <img src="./assets/'.$row['id_image'].'" width="150" height="150" class="rounded-circle">
                   </div>
                 
                  <h5 class="mb-2">'.$lastname.', '.$firstname.' '.$middlename.'</h5>
-                 <p class="mb-2">'.$row['Email'].'</p>
-                 <p class="mb-2">'.$row['Section'].'</p>
+                 <p class="mb-2">'.$row['email'].'</p>
+                 <p class="mb-2">'.$row['section'].'</p>
                  <p class="mb-2">'.$row['student_id'].'</p>
                  <p class="mb-2">Medical Requirements: <span class="text-success">Complete</span></p>
                  <p class="mb-2">Status: <span class="text-success">Cleared</span></p>
                
               </div>
               <div class="col-md-8 px-5 py-4">
-                <div class="mb-2 d-flex flex-wrap justify-content-between"><span class="fw-semibold">Sex</span><span>'.$row['Gender'].'</span></div>
-                <div class="mb-2 d-flex flex-wrap justify-content-between"><span class="fw-semibold">Age</span><span>'.$row['Age'].'</span></div>
-                <div class="mb-2 d-flex flex-wrap justify-content-between"><span class="fw-semibold">Date of Birth</span><span>'.$row['Birthday'].'</span></div>
-                <div class="mb-2 d-flex flex-wrap justify-content-between"><span class="fw-semibold">Contact Number</span><span>'.$row['Contact_number'].'</span></div>
-                <div class="mb-2 d-flex justify-content-between"><span class="fw-semibold">Complete Address</span><span class="text-wrap">'.$row['Address'].'</span></div>
+                <div class="mb-2 d-flex flex-wrap justify-content-between"><span class="fw-semibold">Sex</span><span>'.$row['gender'].'</span></div>
+                <div class="mb-2 d-flex flex-wrap justify-content-between"><span class="fw-semibold">Age</span><span>'.$row['age'].'</span></div>
+                <div class="mb-2 d-flex flex-wrap justify-content-between"><span class="fw-semibold">Date of Birth</span><span>'.$row['birthdate'].'</span></div>
+                <div class="mb-2 d-flex flex-wrap justify-content-between"><span class="fw-semibold">Contact Number</span><span>'.$row['contact_number'].'</span></div>
+                <div class="mb-2 d-flex justify-content-between"><span class="fw-semibold">Complete Address</span><span class="text-wrap">'.$row['house_no'].', '.$row['street'].','.$row['brgy'].', '.$row['city'].', '.$row['province'].'</span></div>
                 <hr>
                 <p class="fw-bold mb-2 text-center">EMERGENCY</p>
-                <div class="mb-2 d-flex flex-wrap justify-content-between"><span>Contact Person</span><span>Mother</span></div>
-                <div class="mb-2 d-flex flex-wrap justify-content-between"><span>Contact Number</span><span>0987654321</span></div>
-                <div class="mb-2 d-flex flex-wrap justify-content-between"><span>Relationship</span><span>Parent</span></div>
-                <div class="mb-2 d-flex flex-wrap justify-content-between"><span>Complete Address</span><span>123 sample address, Quezon City</span></div>
+                <div class="mb-2 d-flex flex-wrap justify-content-between"><span>Contact Person</span><span>'.$row['fullname'].'</span></div>
+                <div class="mb-2 d-flex flex-wrap justify-content-between"><span>Contact Number</span><span>'.$row['emergency_contact'].'</span></div>
+                <div class="mb-2 d-flex flex-wrap justify-content-between"><span>Relationship</span><span>'.$row['relation'].'</span></div>
+                <div class="mb-2 d-flex flex-wrap justify-content-between"><span>Complete Address</span><span>'.$row['address'].'</span></div>
               </div>
             </div>
             <div class="row mt-4 justify-content-between gap-4">
@@ -108,17 +124,21 @@
       if (isset($_POST["consultation"])){
         $student_id = $_POST['id'];
         $info = "SELECT * FROM consultations WHERE student_id = '$student_id'";
-        $run_query = mysqli_query($conn,$info) or die(mysqli_error($conn));
+        $run_query = mysqli_query($conn1,$info) or die(mysqli_error($conn1));
         if(mysqli_num_rows($run_query) > 0){
           while($row = mysqli_fetch_array($run_query)){
+             $conDate = convertDate($row['date_of_consultation']);
             
             echo'<div class="mb-3">
-            <span class="float-end"><span id="data">'.$row['date_of_consultation'].'</span>
+            <span class="float-end"><b>Date:</b> <span id="data">'.$conDate.'</span>
             </div>
-            <div class="mb-2 d-flex flex-wrap"><span class="fw-semibold">Symptoms : </span><span class="mx-3">'.$row['symptoms'].'</span></div>
-            <div class="mb-2 d-flex"><span class="fw-semibold">Medicine Given : </span><span class="mx-3">'.$row['medicine'].'</span></div>
-            <div class="mb-2 d-flex"><span class="fw-semibold">Quantity : </span><span class="mx-3">2</span></div>
-            <div class="mb-2 d-flex"><span class="fw-semibold">Confined : </span><span class="mx-3">'.$row['confined'].'</span></div>
+            <div class="mb-2 d-flex flex-wrap"><span class="fw-semibold">Symptoms: </span><span class="mx-3">'.$row['symptoms'].'</span></div>
+            <div class="mb-2 d-flex"><span class="fw-semibold">Body Temperature: </span><span class="mx-3">'.$row['body_temp'].'</span></div>
+            <div class="mb-2 d-flex"><span class="fw-semibold">Suspected for Covid-19: </span><span class="mx-3">'.$row['suspected_covid'].'</span></div>
+            <div class="mb-2 d-flex"><span class="fw-semibold">Been tested for Covid-19 in the past 10 days: </span><span class="mx-3">'.$row['tested_covid'].'</span></div>
+            <div class="mb-2 d-flex"><span class="fw-semibold">Medicine Given: </span><span class="mx-3">'.$row['medicine'].'</span></div>
+            <div class="mb-2 d-flex"><span class="fw-semibold">Quantity: </span><span class="mx-3">2</span></div>
+            <div class="mb-2 d-flex"><span class="fw-semibold">Confined: </span><span class="mx-3">'.$row['confined'].'</span></div>
 
             <hr class="border-2">';
             
@@ -131,15 +151,19 @@
       }
       if (isset($_POST["new_consultation"])){
         $student_id = $_POST['id'];
-        $info = "SELECT * FROM stud_data WHERE student_id = '$student_id'";
-        $run_query = mysqli_query($conn,$info) or die(mysqli_error($conn));
+        $select = "SELECT * FROM `student_account`
+            JOIN `mis.student_info` ON `student_account`.`student_id` = `mis.student_info`.`student_id`
+            JOIN `mis.enrollment_status` ON `mis.student_info`.`student_id` = `mis.enrollment_status`.`student_id` 
+            JOIN `mis.student_address` ON `mis.enrollment_status`.`student_id` = `mis.student_address`.`student_id` 
+            JOIN `mis.emergency_contact` ON `mis.student_address`.`student_id` = `mis.emergency_contact`.`student_id` WHERE `student_account`.`student_id` = '$student_id'";
+        $run_query = mysqli_query($conn1,$select) or die(mysqli_error($conn1));
         if(mysqli_num_rows($run_query) > 0){
           while($row = mysqli_fetch_array($run_query)){
             $student_id = $row["student_id"];
             $firstname = $row['firstname'];
             $lastname = $row['lastname'];
             $middlename = $row['middlename'];
-            $section = $row['Section'];
+            $section = $row['section'];
             
             echo'
             <nav aria-label="breadcrumb">
@@ -276,13 +300,13 @@
                       <h6 class="fw-bold mb-3">Confined?</h6>
                       <div class="d-flex mb-3">
                       <div class="form-check mx-2">
-                      <input class="form-check-input" type="radio" name="confined[]" id="confined_yes" value="no">
+                      <input class="form-check-input" type="radio" name="confined[]" id="confined_yes" value="Yes">
                       <label class="form-check-label" for="confined_yes">
                       Yes
                       </label>
                       </div>
                       <div class="form-check mx-2">
-                      <input class="form-check-input" type="radio" name="confined[]" id="confined_no" value="yes">
+                      <input class="form-check-input" type="radio" name="confined[]" id="confined_no" value="No">
                       <label class="form-check-label" for="confined_no">
                       No
                       </label>
@@ -384,12 +408,13 @@
               $cleared = $_POST['cleared'];
               
 
-        $sql = "INSERT INTO consultations (student_id, date_of_consultation ,symptoms, othersymptoms,body_temp,suspected_covid,tested_covid,confined,how_long,medicine,referred) 
+        $sql = "INSERT INTO consultations (student_id, date_of_consultation, symptoms, othersymptoms, body_temp,suspected_covid, tested_covid, confined, how_long, medicine, referred) 
                 VALUES ('$student_id',NOW(),'$symptoms', '$other_symptoms','$body_temp','$close_contact','$covid_test','$confined','$how_long','$medicines','$referred')";
-        $run_query = mysqli_query($conn,$sql) or die(mysqli_error($conn));
+        $run_query = mysqli_query($conn1,$sql) or die(mysqli_error($conn1));
 
         $sample_data = "INSERT INTO sample_stud_data (student_id, Status) VALUE ('$student_id','$cleared')";
-        $run_query = mysqli_query($conn,$sample_data) or die(mysqli_error($conn));
+        // $sample_data = "UPDATE sample_stud_data SET(student_id, Status) VALUE ('$student_id','$cleared')";
+        $run_query = mysqli_query($conn1,$sample_data) or die(mysqli_error($conn1));
 
         $enrollment = "SELECT * FROM `mis.enrollment_status` WHERE student_id = '$student_id'";
         $dquery = $conn1->query($enrollment);
@@ -399,7 +424,7 @@
           $drow = $dquery->fetch_assoc();
           $dept_name = $drow['code'];
           
-          $department = "SELECT * FROM departments WHERE  dept_name =  '$dept_name'";
+          $department = "SELECT * FROM departments WHERE dept_name = '$dept_name'";
           $pquery = $conn1->query($department);
 
           if($conn1->query($department)){
@@ -407,10 +432,13 @@
           $prow = $pquery->fetch_assoc();
           $dept_email = $prow['email'];
 
-          $info = "SELECT * FROM stud_data WHERE student_id = '$student_id'";
-          $run_query = mysqli_query($conn,$info) or die(mysqli_error($conn));
+          $info = "SELECT * FROM `mis.student_info`
+            JOIN `mis.enrollment_status` ON `mis.student_info`.`student_id` = `mis.enrollment_status`.`student_id` 
+            JOIN `mis.student_address` ON `mis.enrollment_status`.`student_id` = `mis.student_address`.`student_id` WHERE `mis.student_info`.`student_id` = '$student_id'";
+          $run_query = mysqli_query($conn1,$info) or die(mysqli_error($conn1));
+ 
 
-          $query = $conn->query($info);
+          $query = $conn1->query($info);
           $row = $query->fetch_assoc();
         
 			if($conn->query($sql)){
@@ -430,7 +458,7 @@
               </div>
             </div>
             <div class="text-center">
-              <h3 class="fw-bold">Medical Clearance</h3>
+              <h3 class="fw-bold">Medical Certificate</h3>
               <span class="fw-regular">SY: '.$S_Y.'</span>
             </div>
             <table
@@ -440,22 +468,22 @@
               <tbody>
                 <tr>
                   <td>
-                    <span class="fw-semibold text-nowrap" >Name :  </span><span id="student_name">'.$firstname.', '.$lastname.' '.$middlename.'</span>
+                    <span class="fw-semibold text-nowrap" >Name:  </span><span id="student_name">'.$lastname.', '.$firstname.' '.$middlename.'</span>
                   </td>
-                  <td><span class="fw-semibold text-nowrap">Course : </span> <span id="degree">'.$row['Degree Program/ Course'].'</span></td>
-                  <td><span class="fw-semibold text-nowrap">Year Level : </span></span> <span id="yrLvl">'.$row['year_level'].'</span></td>
+                  <td><span class="fw-semibold text-nowrap">Course:  </span> <span id="degree">'.$row['program'].'</span></td>
+                  <td><span class="fw-semibold text-nowrap">Year Level: </span></span> <span id="yrLvl">'.$row['year_level'].'</span></td>
 
                   <td>
-                    <span class="fw-semibold text-nowrap">Campus : </span> <span id="campus">San Bartolome</span>
+                    <span class="fw-semibold text-nowrap">Campus: </span> <span id="campus">San Bartolome</span>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <span class="fw-semibold text-nowrap">Contact No.: </span> <span id="contact">'.$row['Contact_number'].'</span>
+                    <span class="fw-semibold text-nowrap">Contact No.: </span> <span id="contact">'.$row['contact_number'].'</span>
                   </td>
                   <td colspan="4" style="min-width: 300px">
                     <span class="fw-semibold text-nowrap">Complete Address : </span>
-                  <span id="address"> '.$row['Address'].'</span>
+                  <span id="address"> '.$row['house_no'].', '.$row['street'].','.$row['brgy'].', '.$row['city'].', '.$row['province'].'</span>
                   </td>
                 </tr>
                 <tr>
@@ -556,7 +584,10 @@
                 <tr class='p-3'>
                 <td class='col-2 py-3'>{$this->docu_type}</td>
                 <td class='col-3 py-3'>{$this->submitted_date}</td>
-                <td class='col-4 py-3'>{$this->file_name}</td>";
+                <td class='col-4 py-3'>
+                <a target='_blank' href='./medical-requirements/{$this->file_name}'>
+                                    {$this->file_name} </a></td>";
+
 
               
                  if($this->status == "approved" ){           
@@ -630,3 +661,23 @@
         
   ?>
    
+   <?php
+
+
+                              function convertDate($date){
+
+                                $date = new DateTime("$date");
+                                $date = $date->format('F d, Y');
+
+                                return $date;
+                              }
+
+                              function convertTime($time){
+
+                                $time = new DateTime("$time");
+                                $time = $time->format('h:i A');
+
+                                return $time;
+                              }
+
+                      ?>
