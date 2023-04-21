@@ -53,13 +53,19 @@
 
          } else {
 
-            echo "this email is already registered";
+         echo '<script>';
+         echo "alert('This email is already registered');";
+         echo 'window.location.href = "../redo/register.php";';
+         echo '</script>';
 
          } 
 
       } else {
 
-         echo "not existed";
+         echo '<script>';
+         echo "alert('This Email is not Registered!');";
+         echo 'window.location.href = "../redo/register.php";';
+         echo '</script>';
       }
 
    }
