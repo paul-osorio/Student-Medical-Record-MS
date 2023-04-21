@@ -1,5 +1,5 @@
 <?php
-   include "../db_conn.php";
+   include "../includes/db_conn.php";
 
    if(isset($_POST['search'])){
       $search = $_POST['search'];
@@ -19,7 +19,7 @@
                                   while ($studs = mysqli_fetch_assoc($fetchAllStudents)) {  ?>
 
 
-                                  <table class="table table-borderless shadow mt-3 text-center">
+                                  <table class="table table-borderless shadow mt-3 text-center align-middle">
                                     <tbody>
                                       <tr class="">
                                         <td class="col-2 text-light fw-bold" style="background:#5D8FD9"><span><?=$studs['student_id']?></span></td>

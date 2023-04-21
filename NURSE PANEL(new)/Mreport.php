@@ -1,3 +1,7 @@
+<?php 
+     include('./includes/db_conn.php');
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +22,7 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
   />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-  <script src="action.js" defer></script>
+  <script src="./ajax/action.js" defer></script>
 
 </head>
 <body>
@@ -106,99 +110,109 @@
                               </div>
                             </div>
                         </div>
-                        <!-- <a href="" class="nav-link"><div class="d-flex justify-content-evenly p-2 rounded-2 shadow mt-4">
-                          <div><span></span></div>
-                          <div><span></span></div>
-                          <div><span></span></div>
-                          <div><span></span></div>
-                          <div><span>jessica.bulleque@gmail.com</span></div>
-                          <div><span>Pending</span></div>
-                          <div><span>Close</span></div>
-                        </div></a> -->
-                        <!-- header -->
+                          <?php
+                          
+                           $info = "SELECT * FROM stud_medical_requirements JOIN `mis.student_info` ON stud_medical_requirements.student_id = `mis.student_info`.student_id JOIN `mis.enrollment_status` ON `mis.student_info`.student_id = `mis.enrollment_status`.student_id";
+                           $run_query = mysqli_query($conn1,$info) or die(mysqli_error($conn1));
 
-                        <!-- header -->
-                       
-                          <table class="table table-borderless shadow mt-3">
+                          
+
+                          if(mysqli_num_rows($run_query) > 0){
+                              while($row = mysqli_fetch_array($run_query)){
+
+                                
+                                $cbc_status = $row['cbc_status'];
+                                $xray_status = $row['xray_status'];
+                                $uri_status = $row['uri_status'];
+                                $med_cert_status = $row['med_cert_status'];
+                                                            
+                                
+
+
+                                echo ' <table class="table table-borderless shadow mt-3 align-middle">
                             <tbody>
                               <tr class="p-3 text-center">
-                                <th scope="row" class="text-light" style="background:#5D8FD9;">19-1220</th>
-                                <!-- <td colspan="2"><img src="./assets/badang.JPG"  width="65" height="65" alt=""></td> -->
-                                <td colspan="2">img</td>
-                                <td >Jessica Bulleque</td>
-                                <td>Section</td>
-                                <td colspan="2">jessica.bulleque@gmail.com</td>
-                                <td class="text-success fw-semibold">Pending</td>
-                                <td class="text-primart fw-semibold"> <a href="#collapseExample" class="nav-link" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">View</a></td>
+                                <th scope="row" class="text-light col-1" style="background:#5D8FD9;">'.$row['student_id'].'</th>
+
+                               <td class="col-1">img</td>
+                                <td class="col-3 text-start" >'.$row['lastname'].', '.$row['firstname'].'</td>
+                                <td class="col-1 text-start">'.$row['section'].'</td>
+                                <td class="col-5 text-start">'.$row['email'].'</td>';
+
+                                if($cbc_status == "pending" || $xray_status == "pending" || $uri_status == "pending" || $med_cert_status == "pending"){
+                                    
+                                    echo'<td class="text-danger fw-semibold  text-start">Pending</td>';
+                                }else{
+                              
+                                     echo'<td class="text-success fw-semibold  text-start">Complete</td>';
+                                }
+
+                                echo '
+                                <td class="text-primart fw-semibold"> <a id="view-requirement" data-id="'.$row['id'].'" data-student_id="'.$row['student_id'].'" href="#'.$row['id'].'" class="nav-link" data-bs-toggle="collapse" href="#'.$row['id'].'" role="button" aria-expanded="false" aria-controls="'.$row['id'].'">View</a></td>
                               </tr>
                             </tbody>
                           </table>
-                        <div class="collapse" id="collapseExample">
-                          <div class="card card-body">
-                            <table class="table table-borderless text-center">
-                              <thead>
-                                <tr>
-                                  <th scope="col">Type of Document</th>
-                                  <th scope="col">Date Submitted</th>
-                                  <th scope="col">File</th>
-                                  <th colspan="2">Action</th>
-                                </tr>
+
+                        <div class="collapse" id="'.$row['id'].'" >
+                          <div class="card card-body" >
+                           <table class="table table-borderless align-middle ">
+                            <thead>
+                              <tr>
+                                <th scope="col">Type Of Document</th>
+                                <th scope="col">Date Submitted</th>
+                                <th scope="col">File</th>
+                                <th colspan="2" class="text-center">Action</th>
+                              </tr>
                               </thead>
-                              <tbody class="py-2">
-                                <tr class="p-3">
-                                  <td>Complete Blood Count (CBC)</td>
-                                  <td>August 5, 2022</td>
-                                  <td>CBC.pdf</td>
-                                  <td class="p-0"><button class="btn btn-danger">Decline</button></td>
-                                  <td class="p-0"><button class="btn btn-success">Approve</button></td>
-                                </tr>
-                              </tbody>
-                            </table>
+                                <tbody class="py-2" id="requirement'.$row['id'].'">
+                                </tbody>
+                              </table>
                           </div>
-                        </div>
+                        </div>';
+                              }
+                            }
+                          ?>
 
-                          <table class="table table-borderless shadow mt-3">
-                            <tbody>
-                              <tr class="p-3 text-center">
-                                <th scope="row" class="text-light" style="background:#5D8FD9";>19-1220</th>
-                                <!-- <td colspan="2"><img src="./assets/badang.JPG"  width="65" height="65" alt=""></td> -->
-                                <td colspan="2">img</td>
-                                <td >Jessica Bulleque</td>
-                                <td>Section</td>
-                                <td colspan="2">jessica.bulleque@gmail.com</td>
-                                <td class="text-success fw-semibold">Pending</td>
-                                <td class="text-primart fw-semibold"> <a href="#item_2" class="nav-link" data-bs-toggle="collapse" href="#item_2" role="button" aria-expanded="false" aria-controls="item_2">View</a></td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        <div class="collapse" id="item_2">
-                          <div class="card card-body">
-                            <table class="table table-borderless text-center">
-                              <thead>
-                                <tr>
-                                  <th scope="col">Type of Document</th>
-                                  <th scope="col">Date Submitted</th>
-                                  <th scope="col">File</th>
-                                  <th colspan="2">Action</th>
-                                </tr>
-                              </thead>
-                              <tbody class="py-2">
-                                <tr class="p-3">
-                                  <td>Complete Blood Count (CBC)</td>
-                                  <td>August 5, 2022</td>
-                                  <td>CBC.pdf</td>
-                                  <td class="p-0"><button class="btn btn-danger">Decline</button></td>
-                                  <td class="p-0"><button class="btn btn-success">Approve</button></td>
-                                </tr>
-                              </tbody>
-                            </table>
+                         <div class="modal fade" id="declined_modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                             
+                              <div class="modal-body">
+                                <span>State your reason for declining</span>
+                                <div class="form-floating mt-2">
+                                  <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px;resize:none;"></textarea>
+                                  <label for="floatingTextarea2">Reason...</label>
+                                </div>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-primary">Send</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                              </div>
+                            </div>
                           </div>
                         </div>
 
                   </div>
 
                  
-       
+   
     </div>
 </body>
 </html>
+<thead>
+                                <!-- <tr>
+                                  <th scope="col">Type of Document</th>
+                                  <th scope="col">Date Submitted</th>
+                                  <th scope="col">File</th>
+                                  <th colspan="2">Action</th>
+                                </tr>
+                              </thead>
+                              <tbody class="py-2">
+                                <tr class="p-3">
+                                  <td>Complete Blood Count (CBC)</td>
+                                  <td>August 5, 2022</td>
+                                  <td>CBC.pdf</td>
+                                  <td class="p-0"><button class="btn btn-danger">Decline</button></td>
+                                  <td class="p-0"><button class="btn btn-success">Approve</button></td>
+                                </tr>
+                              </tbody> -->
