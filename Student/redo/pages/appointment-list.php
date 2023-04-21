@@ -115,6 +115,7 @@
                <table>
                   <thead>
                      <tr>
+                        <th> Date Appointed </th>
                         <th> Appointment Type </th>
                         <th> Reference Number </th>
                         <th> Appointment Date </th>
@@ -139,6 +140,12 @@
                         ?>
 
                      <tr>
+                        <td> 
+                           <div>
+
+                              <?=$row['date_apply']?>
+                              
+                           </div>
                         <td> 
                            <div class="type">
 

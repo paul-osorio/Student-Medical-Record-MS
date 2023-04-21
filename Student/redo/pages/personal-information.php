@@ -128,6 +128,25 @@
 
 
                      </div>
+
+                     <div class="status">
+                        
+                        <p> Health Status: <span style="color: var(--approve)"> Cleared </span></p>
+                     
+                        <!-- <p> Status: 
+                           <?php if($stud_logged['remarks'] === "Not Cleared") { ?>
+
+                              <span style="color: var(--decline)"> <?=$stud_logged['remarks']?> </span> 
+
+                           <?php } else { ?>
+                              
+                              <span style="color: var(--approve)"> <?=$stud_logged['remarks']?> </span>
+
+                           <?php } ?> 
+                        </p> -->
+
+
+                     </div>
                      
                   </div>
 

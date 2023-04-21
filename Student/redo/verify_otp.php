@@ -21,7 +21,7 @@
    <link rel="stylesheet" href="./css/register.css">
    
    <link rel="shortcut icon" href="../assets/favcon.png" type="image/x-icon">
-   <title> Regiter your Email | QCU CMS </title>
+   <title> Register your Email | QCU CMS </title>
 </head>
 <body>
 

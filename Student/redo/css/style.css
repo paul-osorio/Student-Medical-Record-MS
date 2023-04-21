@@ -96,6 +96,7 @@ a{
 .side-panel .stud-profile .stud-info p{
    font-size: 1em;
    color: #ffffffa8;
+   word-break: break-all;
 }
 
 

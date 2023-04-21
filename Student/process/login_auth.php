@@ -44,8 +44,10 @@
 
 
       } else {
-
-         header("location: ../student-login.php?wrong password");
+      echo '<script>';
+      echo "alert('Wrong Email and Password!');";
+      echo 'window.location.href = "../redo/student-login.php";';
+      echo '</script>';
 
       }
    }
