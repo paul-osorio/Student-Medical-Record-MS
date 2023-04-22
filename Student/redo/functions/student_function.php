@@ -33,11 +33,9 @@
    function fetchAllStudAppointment($conn, $StudId){
 
       $SelQuerry = "SELECT * FROM `stud_appointment`
-<<<<<<< Updated upstream
-      WHERE `student_id` = '$StudId' ORDER BY `id` DESC";
-=======
+      WHERE `student_id` = '$StudId' ORDER BY `id` DESC
       WHERE `student_id` = '$StudId' ORDER BY `date_apply` DESC";
->>>>>>> Stashed changes
+
 
       $result = mysqli_query($conn, $SelQuerry);
 

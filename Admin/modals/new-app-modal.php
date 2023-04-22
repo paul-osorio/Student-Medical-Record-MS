@@ -2,7 +2,7 @@
 <div class="modal-container new-appointment-container" id="new-appointment-container">
     
     <div class="modal-header">
-       <h3> New Appointment <span id="app-mess"></span> </h3>
+       <h3> New Service/Type of Appointment <span id="app-mess"></span> </h3>
     </div>
 
     <div class="modal-content">
@@ -40,7 +40,7 @@
 
           <div class="form-button">
              <button type="button" id="new-app-cancel"> Cancel </button>
-             <button type="submit" id="new-app-add"> Add Appointment </button>
+             <button type="submit" id="new-app-add"> Add Services </button>
           </div>
        </form>
 
