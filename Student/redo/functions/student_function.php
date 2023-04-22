@@ -18,6 +18,17 @@
       return $student_logged;
    }
 
+   function fetchStudHealthStatus($conn, $stud_id){
+
+      $SelQuerry = "SELECT * FROM `sample_stud_data` WHERE `student_id` = '$stud_id'";
+
+      $result = mysqli_query($conn, $SelQuerry);
+
+      $fetch = mysqli_fetch_assoc($result);
+
+      return $fetch;
+   }
+
    function fetchStudMedReq($conn, $StudId){
 
       $SelQuerry = "SELECT * FROM `stud_medical_requirements` WHERE `student_id` = '$StudId'";
@@ -33,11 +44,7 @@
    function fetchAllStudAppointment($conn, $StudId){
 
       $SelQuerry = "SELECT * FROM `stud_appointment`
-<<<<<<< Updated upstream
-      WHERE `student_id` = '$StudId' ORDER BY `id` DESC";
-=======
       WHERE `student_id` = '$StudId' ORDER BY `date_apply` DESC";
->>>>>>> Stashed changes
 
       $result = mysqli_query($conn, $SelQuerry);
 
@@ -71,17 +78,15 @@
 
    }
 
-   // function fetchStudMedHistory($conn, $stud_id){
+   function fetchStudMedHistory($conn, $stud_id){
 
-   //    $sel = "SELECT *, LEFT(b.middlename, 1) as `nurse_mi` FROM `consultations` a 
-   //    JOIN `nurses` b 
-   //    ON a.emp_id = b.emp_id 
-   //    WHERE a.student_id = '$stud_id';";
+      $sel = "SELECT * FROM consultations
+      WHERE student_id = '$stud_id';";
 
-   //    $res_query = mysqli_query($conn, $sel);
+      $res_query = mysqli_query($conn, $sel);
 
-   //    return $res_query;
-   // }
+      return $res_query;
+   }
 
    function fetchStudMedHistoryRef($conn, $ref_no, $stud_id) {
 
