@@ -11,7 +11,7 @@ if (isset($_SESSION['emp_id']) && isset($_SESSION['username'])) {
   $emp_id = $_SESSION['emp_id'];
 
   // SELECT ALL ADMINS
-  $fetchNurseAccount = mysqli_query($conn, "SELECT * FROM `nurses` WHERE emp_id = '$emp_id'");
+  $fetchNurseAccount = mysqli_query($conn1, "SELECT * FROM `nurses` WHERE emp_id = '$emp_id'");
   $nurse = mysqli_fetch_assoc($fetchNurseAccount);
 
 
