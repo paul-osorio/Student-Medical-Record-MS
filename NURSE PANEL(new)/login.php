@@ -36,7 +36,7 @@ if (isset($_POST['login_btn'])) {
 
 		$sql = "SELECT * FROM `nurses` WHERE `username` = '$uname' AND `password` ='$pass'";
 
-		$result = mysqli_query($conn, $sql);
+		$result = mysqli_query($conn1, $sql);
 
 		if (mysqli_num_rows($result) === 1) {
 

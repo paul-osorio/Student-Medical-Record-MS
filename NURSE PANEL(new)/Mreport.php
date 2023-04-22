@@ -134,7 +134,7 @@
                               <tr class="p-3 text-center">
                                 <th scope="row" class="text-light col-1" style="background:#5D8FD9;">'.$row['student_id'].'</th>
 
-                               <td class="col-1">img</td>
+                               <td class="col-1"><img src="./assets/'.$row['id_image'].'" width="50" height="50" class="rounded-circle"></td>
                                 <td class="col-3 text-start" >'.$row['lastname'].', '.$row['firstname'].'</td>
                                 <td class="col-1 text-start">'.$row['section'].'</td>
                                 <td class="col-5 text-start">'.$row['email'].'</td>';

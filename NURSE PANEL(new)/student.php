@@ -3,7 +3,14 @@
 
 
     // SELECT ALL STUDENTS 
-     $fetchAllStudents = mysqli_query($conn, "SELECT * FROM `stud_data` LIMIT 10");
+    //  $fetchAllStudents = mysqli_query($conn, "SELECT * FROM `stud_data` LIMIT 10");
+ 
+
+     $fetchStudsAccount = mysqli_query($conn1,"SELECT * FROM `student_account`
+            JOIN `mis.student_info` ON `student_account`.`student_id` = `mis.student_info`.`student_id`
+            JOIN `mis.enrollment_status` ON `mis.student_info`.`student_id` = `mis.enrollment_status`.`student_id` 
+            JOIN `mis.student_address` ON `mis.enrollment_status`.`student_id` = `mis.student_address`.`student_id` 
+            JOIN `mis.emergency_contact` ON `mis.student_address`.`student_id` = `mis.emergency_contact`.`student_id` LIMIT 10");
 
 ?>
 
@@ -134,8 +141,8 @@
 
                          
 
-                                <?php if(mysqli_num_rows($fetchAllStudents) > 0) { 
-                                  while ($studs = mysqli_fetch_assoc($fetchAllStudents)) {  ?>
+                                <?php if(mysqli_num_rows($fetchStudsAccount) > 0) { 
+                                  while ($studs = mysqli_fetch_assoc($fetchStudsAccount)) {  ?>
 
 
                                   <table class="table table-borderless shadow mt-3 text-center align-middle">
@@ -143,8 +150,8 @@
                                       <tr class="">
                                         <td class="col-2  text-light fw-bold" style="background:#5D8FD9;width:max-content"><span><?=$studs['student_id']?></span></td>
                                         <td class="col-3 text-start"><span class="name"><?=$studs['firstname']?> <?=$studs['middlename']?> <?=$studs['lastname']?></span></td>
-                                        <td class="col-1"><span class="course"><?=$studs['Section']?></span></td>
-                                        <td class="col-5 text-start"><span class="email"><?=$studs['Email']?></span></td>
+                                        <td class="col-1"><span class="course"><?=$studs['section']?></span></td>
+                                        <td class="col-5 text-start"><span class="email"><?=$studs['email']?></span></td>
                                         <td class="col-1"><button class="addpatient-btn px-2" style="background-color: #163666;" id="view" data-id="<?=$studs['student_id']?>">View</button></td>
                                         <td class="col"><span class="name position-relative d-flex align-items-center justify-content-center">
                                         <a href="#" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-ellipsis-vertical " style="color: #163666"></i></a>

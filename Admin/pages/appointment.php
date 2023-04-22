@@ -113,21 +113,22 @@
          <div class="appointment-container">
 
             <div class="content-header">
-               <select name="" id="">
+               <!-- <select name="" id="">
                   <option value="Appointments"> Appointments </option>
-                  <option value="Appointments"> Holiday/Suspension </option>
+                  <option value="Appointments"> Holiday/Suspension </option> -->
+                  <h3> SERVICES LIST </h3>
                </select>
 
 
                <div class="form-button">
-                  <button class="add-admin">
+                  <!-- <button class="add-admin">
                      <i class="fas fa-tree    "></i>
                      <p> Add Holiday/Suspension </p>
-                  </button>
+                  </button> -->
 
                   <button class="add-appointment">
                      <i class="fas fa-calendar-plus"></i>
-                     <p> Add Appointment </p>
+                     <p> Add New Services </p>
                   </button>
 
                </div>
@@ -154,9 +155,9 @@
                   <thead>
                      <tr> 
                         <th> Date Created	</th>
-                        <th> Application ID </th>
-                        <th> Type of appointment </th>
-                        <th> Date scheduled </th>
+                        <th> Services ID </th>
+                        <th> Type of Appointment </th>
+                        <th> Date Scheduled </th>
                         <!-- <th width="10%"> Status </th> -->
                         <th style="text-align:center"> Action </th>
                      </tr>

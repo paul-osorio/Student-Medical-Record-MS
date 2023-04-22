@@ -1,5 +1,5 @@
 <?php
-   include "../includes/db_conn.php";
+    include "../includes/db_conn.php";
 
    if(isset($_POST['sort'])){
       $sort = $_POST['sort'];

@@ -125,6 +125,7 @@
                      <option value="prod_id"> All </option>
                      <option value="expirationDate"> Expiration Date </option>
                      <option value="num_stocks"> Stocks </option>
+                     <option value="campus"> Campus </option>
                   </select>
                </div>
 
@@ -177,7 +178,7 @@
                                  </td>
          
                                  <td>
-                                    <p> Expiration Date: <br> <?=$expDate?> </p>
+                                    <p> Expiration Date: <br> <em><?=$expDate?></em> </p>
          
                                     <p> Stocks: <span> <?=$med_row['num_stocks']?> </span></p>
                                  </td>
