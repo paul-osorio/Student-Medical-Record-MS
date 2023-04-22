@@ -63,17 +63,17 @@
                
               </div>
               <div class="col-md-8 px-5 py-4">
-                <div class="mb-2 d-flex flex-wrap justify-content-between"><span class="fw-semibold">Sex</span><span>'.$row['gender'].'</span></div>
-                <div class="mb-2 d-flex flex-wrap justify-content-between"><span class="fw-semibold">Age</span><span>'.$row['age'].'</span></div>
-                <div class="mb-2 d-flex flex-wrap justify-content-between"><span class="fw-semibold">Date of Birth</span><span>'.$row['birthdate'].'</span></div>
-                <div class="mb-2 d-flex flex-wrap justify-content-between"><span class="fw-semibold">Contact Number</span><span>'.$row['contact_number'].'</span></div>
-                <div class="mb-2 d-flex justify-content-between"><span class="fw-semibold">Complete Address</span><span class="text-wrap">'.$row['house_no'].', '.$row['street'].','.$row['brgy'].', '.$row['city'].', '.$row['province'].'</span></div>
+                <div class="mb-2 d-flex flex-wrap justify-content-between"><span class="fw-semibold">Sex:</span><span>'.$row['gender'].'</span></div>
+                <div class="mb-2 d-flex flex-wrap justify-content-between"><span class="fw-semibold">Age:</span><span>'.$row['age'].'</span></div>
+                <div class="mb-2 d-flex flex-wrap justify-content-between"><span class="fw-semibold">Date of Birth:</span><span>'.$row['birthdate'].'</span></div>
+                <div class="mb-2 d-flex flex-wrap justify-content-between"><span class="fw-semibold">Contact Number:</span><span>'.$row['contact_number'].'</span></div>
+                <div class="mb-2 d-flex justify-content-between"><span class="fw-semibold">Complete Address:</span><span class="text-wrap">'.$row['house_no'].', '.$row['street'].','.$row['brgy'].', '.$row['city'].', '.$row['province'].'</span></div>
                 <hr>
                 <p class="fw-bold mb-2 text-center">EMERGENCY</p>
-                <div class="mb-2 d-flex flex-wrap justify-content-between"><span>Contact Person</span><span>'.$row['fullname'].'</span></div>
-                <div class="mb-2 d-flex flex-wrap justify-content-between"><span>Contact Number</span><span>'.$row['emergency_contact'].'</span></div>
-                <div class="mb-2 d-flex flex-wrap justify-content-between"><span>Relationship</span><span>'.$row['relation'].'</span></div>
-                <div class="mb-2 d-flex flex-wrap justify-content-between"><span>Complete Address</span><span>'.$row['address'].'</span></div>
+                <div class="mb-2 d-flex flex-wrap justify-content-between"><span class="fw-semibold">Contact: Person</span><span>'.$row['fullname'].'</span></div>
+                <div class="mb-2 d-flex flex-wrap justify-content-between"><span class="fw-semibold">Contact Number:</span><span>'.$row['emergency_contact'].'</span></div>
+                <div class="mb-2 d-flex flex-wrap justify-content-between"><span class="fw-semibold">Relationship:</span><span>'.$row['relation'].'</span></div>
+                <div class="mb-2 d-flex flex-wrap justify-content-between"><span class="fw-semibold">Complete Address:</span><span>'.$row['address'].'</span></div>
               </div>
             </div>
             <div class="row mt-4 justify-content-between gap-4">
@@ -286,7 +286,7 @@
                     </div>
                     <div class="row px-5 py-4">
                     <div class="col-md-4">
-                    <h6 class="fw-bold mb-3">Other Symptoms and illness</h6>
+                    <h6 class="fw-bold mb-3">Other Symptoms and Illness</h6>
                     <div class="input-group input-group-sm mb-3 d-flex align-items-center">
                     <input class="form-check-input  rounded-0 my-2 mx-2" id="toothache" type="checkbox" name="othersymptoms[]" value="Toothache" >
                     <label for="toothache">Toothache</label>
@@ -355,7 +355,7 @@
                   </div>
                   <div class="col-md-3">
                   <h6 class="fw-bold mb-3">Quantity</h6>
-                  <input type="text" class="form-control" id="quantity" name="quantity" placeholder="Quantity.." maxlength="2" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))">
+                  <input type="text" class="form-control" id="quantity" name="quantity" placeholder="Quantity" maxlength="2" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))">
                   </div>
 
                    <div class="col-md-2">
