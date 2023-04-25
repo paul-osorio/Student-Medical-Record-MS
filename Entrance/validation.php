@@ -7,8 +7,8 @@ if(isset($_POST['text'])){
     $query = "SELECT * FROM sample_stud_data WHERE student_id='$uname'";
     $result = mysqli_query($conn,$query);
     $row = mysqli_fetch_array($result);
-    $verified = 'Verified';
-    $notverified = 'Not Verified';
+    $verified = 'Cleared';
+    $notverified = 'Not Cleared';
 
         $text = $_POST['text'];
         $date = date('m-d-Y');

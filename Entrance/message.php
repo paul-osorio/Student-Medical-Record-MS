@@ -3,6 +3,7 @@
    date_default_timezone_set("Asia/Manila");
    include "./connection.php";
    include "./function.php";
+   // include "./validation_test.php";
 
    $status = $_POST['status'];
    $fullname = $_POST['fullname'];
@@ -29,32 +30,34 @@
 
    <?php } else {
 
-      if($total == '1' && $status == 'Not Verified') { ?>
+      if($total == '1' && $status == 'Not Cleared') { ?>
 
          <div class="modal-message">
             <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
-            <p> This student <b> <?=$stud_id?> <?=$fullname?> <b> has an issue in clinic. <?=$total?></p>
+            <p> This student <b> <?=$stud_id?> <?=$fullname?> <b> has an issue in clinic. 
+               <!-- <?=$total?> -->
+            </p>
    
             <div class="message-appointment">
                
                <div style="color: green;"> <?=$message?>  </div>
    
-               <ul>
+               <!-- <ul>
                   <li> document </li>
                   <li> document </li>
                   <li> document </li>
                   <li> document </li>
-               </ul>
+               </ul> -->
             </div>
    
             <div class="form-button">
-               <button id="validated-btn" data-stud_id="<?=$stud_id?>"> validated </button>
-               <button id="not-validated-btn" data-stud_id="<?=$stud_id?>"> not validated </button>
+               <button id="validated-btn" data-stud_id="<?=$stud_id?>"> Cleared </button>
+               <button id="not-validated-btn" data-stud_id="<?=$stud_id?>"> Not Cleared </button>
                <button id="close"> close </button>
             </div>
          </div>
    
-      <?php } else if ($total == '0' && $status == 'Not Verified') { 
+      <?php } else if ($total == '0' && $status == 'Not Cleared') { 
    
          $role = 'student';
          $date = date('Y-m-d');
@@ -104,7 +107,7 @@
 setTimeout(function(){
   var notification = document.getElementById('notification');
   notification.style.display = 'none';
-}, 2000);
+}, 3000);
 
    $(document).ready(function(){
 

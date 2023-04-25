@@ -37,7 +37,10 @@
                <td> <?=$visitor['purpose']?> </td>
                <td> <?=$visitor['contact_num']?> </td>
                <td> <?=$time_in?> </td>
-               <td> <?php if($visitor['timeout'] = '00:00:00') { echo "-";} else{ echo $time_out; }?> </td>
+               <td> <?php if($visitor['timeout'] = '00:00:00') { 
+                  echo "<button>Time-out</button>";
+                  }else{ echo $time_out; }?> 
+               </td>
             </tr>
 
       <?php    }
@@ -50,3 +53,7 @@
         
       </tbody>
    </table>
+
+   <script>
+
+   </script>

@@ -8,7 +8,7 @@ if(isset($_POST['toverify'])){
     $result = mysqli_query($conn,$query);
     $row = mysqli_fetch_array($result);
     // $abc = $row['student_number'];
-    $changestatus = "UPDATE entrance_log SET status='Verified' WHERE student_number = $abc";
+    $changestatus = "UPDATE entrance_log SET status='Cleared' WHERE student_number = $abc";
     echo '<script type = "text/javascript">';
     echo 'alert("The Student is verify!");';
     // echo 'window.location.href = "entrance-dashboard.php"';

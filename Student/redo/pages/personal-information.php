@@ -128,6 +128,25 @@
 
 
                      </div>
+
+                     <div class="status">
+                        
+                        <p> Health Status:
+                     
+                        
+                           <?php if($res_stud_health_status['Status'] === "Not Cleared") { ?>
+
+                              <span style="color: var(--decline)"> <?=$res_stud_health_status['Status']?> </span> 
+
+                           <?php } else { ?>
+                              
+                              <span style="color: var(--approve)"> <?=$res_stud_health_status['Status']?> </span>
+
+                           <?php } ?> 
+                        </p>
+
+
+                     </div>
                      
                   </div>
 
@@ -303,7 +322,7 @@
 
                   <div class="text-input">
 
-                     <input type="text" value="<?=$stud_logged['emergency_contact']?>" id="address" readonly>
+                     <input type="text" value="<?=$stud_logged['contact_number']?>" id="address" readonly>
 
                      <label for="address"> Contact Number </label>
 

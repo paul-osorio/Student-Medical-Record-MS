@@ -59,6 +59,10 @@
             <li class="selected"> 
                <a href="./appointment-list.php"> Appointment </a>
             </li>
+
+            <li > 
+               <a href="./entrancelog.php"> Entrace Log </a>
+            </li>
          </ul>
         
       </nav>
@@ -137,13 +141,15 @@
                            $appointment_date = new DateTime("$appointment_date");
                            $appointment_date = $appointment_date->format("l, F d, Y");
                            
+                           $conDate = strtotime($row['date_apply']); 
+                           $formattedDate = date('F d, Y g:i A', $conDate);
                         ?>
 
                      <tr>
                         <td> 
                            <div>
 
-                              <?=$row['date_apply']?>
+                              <?=$formattedDate?>
                               
                            </div>
                         <td> 

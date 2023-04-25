@@ -153,13 +153,13 @@
                                         <td class="col-1"><span class="course"><?=$studs['section']?></span></td>
                                         <td class="col-5 text-start"><span class="email"><?=$studs['email']?></span></td>
                                         <td class="col-1"><button class="addpatient-btn px-2" style="background-color: #163666;" id="view" data-id="<?=$studs['student_id']?>">View</button></td>
-                                        <td class="col"><span class="name position-relative d-flex align-items-center justify-content-center">
+                                        <!-- <td class="col"><span class="name position-relative d-flex align-items-center justify-content-center">
                                         <a href="#" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-ellipsis-vertical " style="color: #163666"></i></a>
                                         <ul class="dropdown-menu" data-popper-placement="left-start" style="position: absolute; inset: 0px 0px auto auto; margin: 0px; transform: translate3d(-106.667px, 0px, 0px);width:max-content;">
                                         <li><a class="dropdown-item" href="#"><i class="fa-solid fa-edit mx-2"></i>Edit</a></li>
                                         </ul>
                                         </span>
-                                        </td>
+                                        </td> -->
                                       </tr>
                                     </tbody>
                                   </table>

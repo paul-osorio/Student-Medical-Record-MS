@@ -71,28 +71,31 @@
                 <hr>
                 <p class="fw-bold mb-2 text-center">EMERGENCY</p>
                 <div class="mb-2 d-flex flex-wrap justify-content-between"><span class="fw-semibold">Contact: Person</span><span>'.$row['fullname'].'</span></div>
-                <div class="mb-2 d-flex flex-wrap justify-content-between"><span class="fw-semibold">Contact Number:</span><span>'.$row['emergency_contact'].'</span></div>
+                <div class="mb-2 d-flex flex-wrap justify-content-between"><span class="fw-semibold">Contact Number:</span><span>'.$row['contact_number'].'</span></div>
                 <div class="mb-2 d-flex flex-wrap justify-content-between"><span class="fw-semibold">Relationship:</span><span>'.$row['relation'].'</span></div>
                 <div class="mb-2 d-flex flex-wrap justify-content-between"><span class="fw-semibold">Complete Address:</span><span>'.$row['address'].'</span></div>
               </div>
             </div>
             <div class="row mt-4 justify-content-between gap-4">
-              <div class="col-sm-7 shadow rounded-3" >
+              <div class="shadow rounded-3" >
                 <div class="d-flex justify-content-between align-items-center my-3">
                   <div class="d-flex">
-                    <input type="button" class="btn btn-light px-2 mx-2" style="color:#0C4079";  value="Medical History">
-                    <input type="button" class="btn btn-light px-2" style="color:#0C4079";  value="Medical Requirements">
+                    <input type="button" class="btn btn-light px-2 mx-2" id="med-his" style="color:#0C4079";  value="Medical History">
+                    <input type="button" class="btn btn-light px-2" id="med-req" style="color:#0C4079";  value="Medical Requirements">
+                    <input type="button" class="btn btn-light px-2" id="health-his" style="color:#0C4079";  value="Health History">
+                    <input type="button" class="btn btn-light px-2" id="family-his" style="color:#0C4079";  value="Family History">
+                    <input type="button" class="btn btn-light px-2" id="covac-info" style="color:#0C4079";  value="COVID-19 Vaccine Information">
                   </div>
-                  <input type="button" class="btn px-2 text-light" style="background: #0C4079;" id="consultation" value="New Consultation" data-id="'.$student_id .'" >
+                  <input type="button" class="btn px-2 text-light" style="background: #0C4079;" id="consultation" value="New Consultation" data-id="'.$student_id .'">
                 </div>
 
-                <div class="p-3 overflow-y-scroll bg-body-secondary rounded-3 mb-3" style="max-height: 20rem; height:100%" id="cosultation_output">
+                <div class="p-3 overflow-y-scroll bg-body-secondary rounded-3 mb-3" style="max-height: 20rem; height:100%" id="cosultation_output" id="medical-content">
                   
                 </div>
                
               </div>
-
-              <div class="col-sm-4 flex-grow-1 p-3 shadow rounded-3">
+              
+              <div class="col-sm-4 flex-grow-1 p-3 shadow rounded-3" style="display:none">
                 <p class="text-center fw-bold" style="color:#0C4079;">COVID-19 Vaccine Information</p>
                 <div class="p-3 overflow-y-scroll bg-body-secondary rounded-3 mb-3" style="max-height: 20rem;height:100%;">
               
@@ -119,25 +122,29 @@
           }
      
       }
-
+      
+// Medical History starts
 
       if (isset($_POST["consultation"])){
         $student_id = $_POST['id'];
-        $info = "SELECT * FROM consultations WHERE student_id = '$student_id'";
+        $info = "SELECT * FROM consultations WHERE student_id = '$student_id' ORDER BY `date_of_consultation` DESC";
         $run_query = mysqli_query($conn1,$info) or die(mysqli_error($conn1));
         if(mysqli_num_rows($run_query) > 0){
           while($row = mysqli_fetch_array($run_query)){
-             $conDate = convertDate($row['date_of_consultation']);
+            //  $conDate = ($row['date_of_consultation']);
+            $conDate = strtotime($row['date_of_consultation']); 
+            $formattedDate = date('F d, Y g:i A', $conDate);
+
+
             
             echo'<div class="mb-3">
-            <span class="float-end"><b>Date:</b> <span id="data">'.$conDate.'</span>
+            <span class="float-end"><b>Date:</b> <span id="data">'.$formattedDate.'</span>
             </div>
             <div class="mb-2 d-flex flex-wrap"><span class="fw-semibold">Symptoms: </span><span class="mx-3">'.$row['symptoms'].'</span></div>
             <div class="mb-2 d-flex"><span class="fw-semibold">Body Temperature: </span><span class="mx-3">'.$row['body_temp'].'</span></div>
             <div class="mb-2 d-flex"><span class="fw-semibold">Suspected for Covid-19: </span><span class="mx-3">'.$row['suspected_covid'].'</span></div>
             <div class="mb-2 d-flex"><span class="fw-semibold">Been tested for Covid-19 in the past 10 days: </span><span class="mx-3">'.$row['tested_covid'].'</span></div>
-            <div class="mb-2 d-flex"><span class="fw-semibold">Medicine Given: </span><span class="mx-3">'.$row['medicine'].'</span></div>
-            <div class="mb-2 d-flex"><span class="fw-semibold">Quantity: </span><span class="mx-3">2</span></div>
+            <div class="mb-2 d-flex"><span class="fw-semibold">Medicine Given: </span><span class="mx-3">'.$row['quantity'].' '.$row['medicine'].'</span></div>
             <div class="mb-2 d-flex"><span class="fw-semibold">Confined: </span><span class="mx-3">'.$row['confined'].'</span></div>
 
             <hr class="border-2">';
@@ -173,11 +180,11 @@
             <li class="breadcrumb-item active" aria-current="page">New Consultation</li>
             </ol>
             </nav>
-            <div class="container-fluid py-3 shadow bg-light overflow-y-scroll" style="height:75vh">
-            <div class="d-flex  justify-content-evenly align-items-center mb-3">
+            <div class="container-fluid py-3 shadow bg-light overflow-y-scroll" style="height:98%">
+            <div class="d-flex  justify-content-between align-items-center mb-10">
             <div><span class="fw-semibold">Name: </span><span class="mx-2">'.$lastname.', '.$firstname.' '.$middlename.'</span></div>
             <div><span class="fw-semibold">Section & Year Level:</span><span class="mx-2">'.$section.'</span></div>
-            <div><span class="fw-semibold">March 6, 2023 - 1:00 PM</span></div> 
+            
             </div>
             
             
@@ -229,13 +236,22 @@
                   <input class="form-check-input  rounded-0 my-2 mx-2" id="diarrhea" type="checkbox" name="symptoms[]" value="Diarrhea" >
                   <label for="diarrhea">Diarrhea</label>
                   </div>
+                  <div class="input-group input-group-sm mb-3 d-flex align-items-center">
+                  <input class="form-check-input  rounded-0 my-2 mx-2" id="toothache" type="checkbox" name="symptoms[]" value="toothache" >
+                  <label for="toothache">Toothache</label>
+                  </div>
+                  <div class="input-group input-group-sm mb-3 d-flex align-items-center">
+                  <input class="form-check-input  rounded-0 my-2 mx-2" id="dizziness" type="checkbox" name="symptoms[]" value="Dizziness" >
+                  <label for="dizziness">Dizziness</label>
+                  </div>
                   
                   </div>
                   </div>
                   <div class="col-md-6">
                   <h6 class="fw-bold mb-3">Body Temperature</h6>
                   <div class="input-group input-group-sm mb-3">
-                  <input type="text" class="form-control" id="body_temp" name="body_temp" required maxlength="2" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))">
+                  <input type="text" class="form-control" id="body_temp" name="body_temp" required maxlength="4" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57) || event.charCode == 46)">
+
                     </div>
 
                     <h6 class="fw-bold mb-3 text-wrap">Have you been in close contact to suspected or confirmed covid case for the past 14 days?</h6>
@@ -249,8 +265,8 @@
                     </label>
                     </div>
                     <div class="form-check mx-2">
-                    <input class="form-check-input" type="radio" name="close_contact[]" id="close_contact_yes" value="no">
-                    <label class="form-check-label" for="close_contact_yes">
+                    <input class="form-check-input" type="radio" name="close_contact[]" id="close_contact_no" value="no">
+                    <label class="form-check-label" for="close_contact_no">
                     No
                     </label>
                     </div>
@@ -258,25 +274,25 @@
                     </div>
                     <h6 class="fw-bold mb-3 text-wrap">Have you been tested for covid in the past 10 days?</h6>
                     <div class="form-check mx-2 mt-3">
-                    <input class="form-check-input" type="radio" id="Antigen Test" value="Antigen Test" name="covid_test">
-                    <label class="form-check-label" for="Antigen Test">
+                    <input class="form-check-input" type="radio" id="AntigenTest" value="Antigen Test" name="covid_test[]">
+                    <label class="form-check-label" for="AntigenTest">
                     Antigen Test
                     </label>
                     </div>
                     <div class="form-check mx-2 mt-3">
-                    <input class="form-check-input" type="radio" id="Rapid Test" value="Rapid Test" name="covid_test">
-                    <label class="form-check-label" for="Rapid Test">
+                    <input class="form-check-input" type="radio" id="RapidTest" value="Rapid Test" name="covid_test[]">
+                    <label class="form-check-label" for="RapidTest">
                     Rapid Test
                     </label>
                     </div>
                     <div class="form-check mx-2 mt-3">
-                    <input class="form-check-input" type="radio"  id="RT PCR" value="RT PCR" name="covid_test">
-                    <label class="form-check-label" for="RT PCR">
+                    <input class="form-check-input" type="radio"  id="RTPCR" value="RT PCR" name="covid_test[]">
+                    <label class="form-check-label" for="RTPCR">
                     RT PCR
                     </label>
                     </div>
                     <div class="form-check mx-2 mt-3">
-                    <input class="form-check-input" type="radio"  id="No" value="No" name="covid_test">
+                    <input class="form-check-input" type="radio"  id="No" value="No" name="covid_test[]">
                     <label class="form-check-label" for="No">
                     No
                     </label>
@@ -286,15 +302,28 @@
                     </div>
                     <div class="row px-5 py-4">
                     <div class="col-md-4">
-                    <h6 class="fw-bold mb-3">Other Symptoms and Illness</h6>
+                    <h6 class="fw-bold mb-3">Injuries</h6>
                     <div class="input-group input-group-sm mb-3 d-flex align-items-center">
-                    <input class="form-check-input  rounded-0 my-2 mx-2" id="toothache" type="checkbox" name="othersymptoms[]" value="Toothache" >
-                    <label for="toothache">Toothache</label>
+                    <input class="form-check-input  rounded-0 my-2 mx-2" id="fractures" type="checkbox" name="othersymptoms[]" value="fractures" >
+                    <label for="fractures">Fractures</label>
                     </div>
                     <div class="input-group input-group-sm mb-3 d-flex align-items-center">
-                      <input class="form-check-input  rounded-0 my-2 mx-2" id="Dizziness" type="checkbox" name="othersymptoms[]" value="Dizziness" >
-                      <label for="Dizziness">Dizziness</label>
+                    <input class="form-check-input  rounded-0 my-2 mx-2" id="sprains/strains" type="checkbox" name="othersymptoms[]" value="sprains/strains" >
+                    <label for="sprains/strains">Sprains/Strains</label>
+                    </div>
+                    <div class="input-group input-group-sm mb-3 d-flex align-items-center">
+                      <input class="form-check-input  rounded-0 my-2 mx-2" id="contusions" type="checkbox" name="othersymptoms[]" value="contusions" >
+                      <label for="contusions">Contusions</label>
                       </div>
+                    <div class="input-group input-group-sm mb-3 d-flex align-items-center">
+                      <input class="form-check-input  rounded-0 my-2 mx-2" id="lacerations" type="checkbox" name="othersymptoms[]" value="lacerations" >
+                      <label for="lacerations">Lacerations</label>
+                      </div>
+                    <div class="input-group input-group-sm mb-3 d-flex align-items-center">
+                      <input class="form-check-input  rounded-0 my-2 mx-2" id="burns" type="checkbox" name="othersymptoms[]" value="burns" >
+                      <label for="burns">Burns</label>
+                      </div>
+
                       </div>
                       <div class="col-md-3">
                       <h6 class="fw-bold mb-3">Confined?</h6>
@@ -362,13 +391,13 @@
                       <h6 class="fw-bold mb-3">Cleared ?</h6>
                       <div class="d-flex mb-3">
                       <div class="form-check mx-2">
-                      <input class="form-check-input" type="radio" name="cleared[]" id="cleared_yes" value="Verified">
+                      <input class="form-check-input" type="radio" name="cleared[]" id="cleared_yes" value="Cleared">
                       <label class="form-check-label" for="cleared_yes">
                       Yes
                       </label>
                       </div>
                       <div class="form-check mx-2">
-                      <input class="form-check-input" type="radio" name="cleared[]" id="cleared_no" value="Not Verified">
+                      <input class="form-check-input not-cleared-no" type="radio" name="cleared[]" id="cleared_no" value="Not CLeared">
                       <label class="form-check-label" for="cleared_no">
                       No
                       </label>
@@ -407,9 +436,10 @@
               $quantity = $_POST['quantity'];
               $cleared = $_POST['cleared'];
               
+              
 
-        $sql = "INSERT INTO consultations (student_id, date_of_consultation, symptoms, othersymptoms, body_temp,suspected_covid, tested_covid, confined, how_long, medicine, referred) 
-                VALUES ('$student_id',NOW(),'$symptoms', '$other_symptoms','$body_temp','$close_contact','$covid_test','$confined','$how_long','$medicines','$referred')";
+        $sql = "INSERT INTO consultations (student_id, date_of_consultation, symptoms, othersymptoms, body_temp,suspected_covid, tested_covid, confined, how_long, medicine, quantity, referred) 
+                VALUES ('$student_id',NOW(),'$symptoms', '$other_symptoms','$body_temp','$close_contact','$covid_test','$confined','$how_long','$medicines','$quantity','$referred')";
         $run_query = mysqli_query($conn1,$sql) or die(mysqli_error($conn1));
 
         $sample_data = "INSERT INTO sample_stud_data (student_id, Status) VALUE ('$student_id','$cleared')";
@@ -681,3 +711,69 @@
                               }
 
                       ?>
+<script>
+  
+  $(document).ready(function(){
+    
+    $('#med-his').click(function(){
+  
+      $('#med-his').css('background', '#d3d4d5');
+      $('#med-req').css('background', 'none');
+      $('#health-his').css('background', 'none');
+      $('#family-his').css('background', 'none');
+      $('#covac-info').css('background', 'none');
+  
+      $('#medical-content').load('#');
+        
+    });
+
+    $('#med-req').click(function(){
+  
+      $('#med-his').css('background', 'none');
+      $('#med-req').css('background', '#d3d4d5');
+      $('#health-his').css('background', 'none');
+      $('#family-his').css('background', 'none');
+      $('#covac-info').css('background', 'none');
+  
+      $('#medical-content').load('#');
+        
+    });
+
+    $('#health-his').click(function(){
+  
+      $('#med-his').css('background', 'none');
+      $('#med-req').css('background', 'none');
+      $('#health-his').css('background', '#d3d4d5');
+      $('#family-his').css('background', 'none');
+      $('#covac-info').css('background', 'none');
+  
+      $('#medical-content').load('#');
+        
+    });
+
+    $('#family-his').click(function(){
+  
+      $('#med-his').css('background', 'none');
+      $('#med-req').css('background', 'none');
+      $('#health-his').css('background', 'none');
+      $('#family-his').css('background', '#d3d4d5');
+      $('#covac-info').css('background', 'none');
+  
+      $('#medical-content').load('#');
+        
+    });
+
+    $('#covac-info').click(function(){
+  
+      $('#med-his').css('background', 'none');
+      $('#med-req').css('background', 'none');
+      $('#health-his').css('background', 'none');
+      $('#family-his').css('background', 'none');
+      $('#covac-info').css('background', '#d3d4d5');
+  
+      $('#medical-content').load('#');
+        
+    });
+
+  });
+</script>

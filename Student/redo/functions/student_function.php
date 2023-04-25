@@ -135,6 +135,19 @@
       return $res_stud;
    }
 
+   function fetchentrancelog($conn, $stud_id){
+      $select ="SELECT * FROM `entrance_log` a
+      JOIN `stud_archive` b
+      ON a.student_number = b.student_id
+      WHERE a.student_number = '$stud_id'";
+
+      // $result = mysqli_query($conn, $select);
+      $query = $conn->query($select);
+
+      // $res_stud = mysqli_fetch_assoc($query);
+
+      return $query;
+   }
 
 
    // Insert student's data
@@ -292,8 +305,8 @@
 
 
 
-
   
+
 
 
 ?>
