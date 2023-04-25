@@ -115,9 +115,8 @@
                                   <span for="#sort" class="px-2 text-nowrap">Sort By</span>
                                   <select class="form-select shadow-none" aria-label="Default select example" name="sort" id="sort_stud">
                                     <option name="sort" value="id">All</option>
-                                    <option name="sort" value="Recent">Recent</option>
-                                    <option name="sort" value="year_level">Year Level</option>
-                                    <option name="sort" value="Section">Section</option>
+                                    <!-- <option name="sort" value="year_level">Year Level</option> -->
+                                    <option name="sort" value="section">Section</option>
                                     <!-- <option name="sort" value="Degree Program/ Course">Degree Program/Course</option> -->
                                     
                                   </select>

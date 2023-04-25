@@ -155,7 +155,7 @@
                   <thead>
                      <tr> 
                         <th> Date Created	</th>
-                        <th> Services ID </th>
+                        <th> Service ID </th>
                         <th> Type of Appointment </th>
                         <th> Date Scheduled </th>
                         <!-- <th width="10%"> Status </th> -->

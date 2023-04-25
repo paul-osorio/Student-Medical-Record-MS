@@ -103,10 +103,13 @@
                         <div class="d-flex align-items-center">
                         <span for="#sort" class="px-2 text-nowrap">Sort By</span>
                           <select class="form-select shadow-none" style="flex-basis:500px" aria-label="Default select example" name="sort" id="sort_meds">
-                              <option value="prod_id">All</option> 
-                              <option value="expirationDate">Expiration Date</option>
-                              <option value="num_stocks">Stocks</option>
-                              <option value="campus"> Campus </option>
+                              <option value="id"> All </option>
+                              <option value="expirationDate"> Expiration Date </option>
+                              <option value="num_stocks"> Stocks </option>
+                              <!-- <option value="campus"> Campus </option> -->
+                              <option value="San Bartolome"> San Bartolome Campus </option>
+                              <option value="San Francisco"> San Francisco Campus </option>
+                              <option value="Batasan"> Batasan Campus </option>
                           </select>
                         </div>
                         <div class="input-group form-input-sm d-flex align-items-center gap-2" style="width: 30%; margin-left: 49%;">
@@ -140,8 +143,8 @@
                                   <table class="table-mdc">
                                   <tbody>
                                       <tr class="mdc-header">
-                                      <td style="width:120px; padding-left: 20px;"><img src="./assets/<?=$med['image']?>" width="150px" height="130px"> </td>
-                                      <td style="width:180px; padding-left: 20px;" >
+                                      <td style="width:120px; padding-left: 30px;"><img src="./assets/<?=$med['image']?>" width="150px" height="130px"> </td>
+                                      <td style="width:200px; padding-left: 20px;" >
                                           <table>
                                           <td class="b1"><?=$med['name']?></td>
                                           <tr>
@@ -151,24 +154,24 @@
                                           </table>
                                       </td>
                                   
-                                      <td style="text-align:justify;text-justify:inter-word;width:420px;">
+                                      <td style="text-align:justify;text-justify:inter-word;width:450px;padding-left: 30px;">
                                           <span class="mdc-stock">Desctiption: </span>
                                           <span class="mdc-qty"><?=$description?>...</span>
                                       </td>
                                           
                               
                                       
-                                      <td style="width:370px; padding-left: 30px;">
+                                      <td style="width:370px; padding-left: 50px;">
                                       <!-- <b>Expiration Date:</b> <?=$med['expirationDate']?> -->
                                           <table>
-                                          <td class="b1"><b>Expiration Date:</b> <br><em><?=$expDate?></em></td>
+                                          <td class="b1"><b>Expiration Date:</b> <em><?=$expDate?></em></td>
                                           <tr>
                                           <td><b>Stocks:</b> <?=$med['num_stocks']?></td>
                                           </table>
                                       </td>
 
                                       
-                                      <td style="width:160px;"><img src="./qr_images/<?=$med['qr_code']?>" width="150px" height="130px"> </td>
+                                      <!-- <td style="width:160px;"><img src="./qr_images/<?=$med['qr_code']?>" width="150px" height="130px"> </td> -->
                                       <!-- <td style="width:160px;">
                                         <div class="qr-image">
                                         <img src="./qr_images/<?=$med['qr_code']?>" alt="">

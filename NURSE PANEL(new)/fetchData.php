@@ -79,6 +79,7 @@
             <div class="row mt-4 justify-content-between gap-4">
               <div class="col-sm-7 shadow rounded-3" >
                 <div class="d-flex justify-content-between align-items-center my-3">
+                <div class="d-flex justify-content-between align-items-center my-3">
                   <div class="d-flex">
                     <input type="button" class="btn btn-light px-2 mx-2" style="color:#0C4079";  value="Medical History">
                     <input type="button" class="btn btn-light px-2" style="color:#0C4079";  value="Medical Requirements">
@@ -568,14 +569,16 @@
             private $submitted_date;
             private $status;
             private $status_column;
+            private $reason_column;
 
-            public function __construct($student_id,$docu_type,$file_name,$submitted_date,$status,$status_column){
+            public function __construct($student_id,$docu_type,$file_name,$submitted_date,$status,$status_column,$reason_column){
               $this->student_id = $student_id;
               $this->docu_type = $docu_type;
               $this->file_name = $file_name;
               $this->submitted_date = $submitted_date;
               $this->status = $status;
               $this->status_column = $status_column;
+              $this->reason_column = $reason_column;
             }
 
           function __destruct(){
@@ -596,7 +599,8 @@
                     echo"<td class='text-danger fw-semibold text-center py-3'>Declined</td>";
                   }
                   else{
-                    echo "<td class='p-0 text-center py-3'><button class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#declined_modal' id='declined'>Decline</button></td>
+                    echo "<td class='p-0 text-center py-3'><button class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#declined_modal'  id='declined' reason-column='{$this->reason_column}'
+                    status-column='{$this->status_column}'  data-student_id='{$this->student_id}'>Decline</button></td>
                     <td class='p-0 text-center py-3'><button class='btn btn-success' id='approved'  data-column='{$this->status_column}' data-student_id='{$this->student_id}' >Approve</button></td>";
                               
                   };
@@ -622,24 +626,27 @@
         $cbc_date_submitted = $row['cbc_date_submitted'];
         $cbc_status = $row['cbc_status'];
         
+        
         $uri_file = $row['uri_file'];
         $uri_date_submitted = $row['uri_date_submitted'];
         $uri_status = $row['uri_status'];
+       
 
         $xRay_file = $row['xray_file'];
         $xRay_date_submitted = $row['xray_date_submitted'];
         $xRay_status = $row['xray_status'];
-
+       
         $med_cert_file = $row['med_cert_file'];
         $med_cert_date_submitted = $row['med_cert_date_submitted'];
         $med_cert_status = $row['med_cert_status'];
+        
 
         get_data();
         
-        $med_cert_file = new Data_file( $student_id,"Medical Certificate",$med_cert_file,$med_cert_date_submitted,$med_cert_status,'med_cert_status');
-        $xRay_file = new Data_file( $student_id,"Chest X-ray",$xRay_file,$xRay_date_submitted,$xRay_status,'xray_status');
-        $uri_file = new Data_file( $student_id,"Urinalysis",$uri_file,$uri_date_submitted,$uri_status,'uri_status');
-        $cbc_file = new Data_file( $student_id,"Complete Blood Count (CBC)",$cbc_file,$cbc_date_submitted,$cbc_status,'cbc_status');
+        $med_cert_file = new Data_file( $student_id,"Medical Certificate",$med_cert_file,$med_cert_date_submitted,$med_cert_status,'med_cert_status','med_cert_reason');
+        $xRay_file = new Data_file( $student_id,"Chest X-ray",$xRay_file,$xRay_date_submitted,$xRay_status,'xray_status','xray_reason');
+        $uri_file = new Data_file( $student_id,"Urinalysis",$uri_file,$uri_date_submitted,$uri_status,'uri_status','uri_reason');
+        $cbc_file = new Data_file( $student_id,"Complete Blood Count (CBC)",$cbc_file,$cbc_date_submitted,$cbc_status,'cbc_status','cbc_reason');
 
       }
 
@@ -658,7 +665,18 @@
         $cbc_file = new Data_file( $student_id,"Complete Blood Count (CBC)",$cbc_file,$cbc_date_submitted,$cbc_status,'cbc_status');
       }
       
-        
+    if(isset($_POST['send_reason'])){
+    $student_id = $_POST['student_id'];
+    $reason_column = $_POST['reason_column'];
+    $status_column = $_POST['status_column'];
+    $reason_content = $_POST['reason_content'];
+
+    $sql = "UPDATE stud_medical_requirements SET $status_column = 'declined', $reason_column = '$reason_content' WHERE student_id = '$student_id'";
+    $run_query = mysqli_query($conn1,$sql) or die(mysqli_error($conn1));
+
+         get_data();
+
+  } 
   ?>
    
    <?php

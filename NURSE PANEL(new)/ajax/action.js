@@ -246,6 +246,32 @@ $(document).ready(function () {
       success: function (data) {},
     });
   });
+
+  $(document).on("click", "#send_reason", function () {
+    const student_id = $("#declined").attr("data-student_id");
+    const reason_column = $("#declined").attr("reason-column");
+    const status_column = $("#declined").attr("status-column");
+    const reason_content = $("#reason_input").val();
+    $.ajax({
+      url: "fetchData.php",
+      method: "POST",
+      data: {
+        send_reason: 1,
+        student_id: student_id,
+        reason_column: reason_column,
+        status_column: status_column,
+        reason_content: reason_content,
+      },
+      success: function (data) {
+
+        chat ko na lng kung ano yung iphapahase dito.. ito na lang muna 
+        tinatawag ako ng kalikasan sige isge sayonara hahaha
+        // if (reason_content !== ) {
+        //   $(this).attr("data-bs-dismiss", "modal");
+        // }
+      },
+    });
+  });
 });
 
 //still open function

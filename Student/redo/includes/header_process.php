@@ -36,7 +36,7 @@
    $res_stud_appointment = fetchAllStudAppointment($conn, $stud_id);
 
    // Student's medical history
-   // $res_stud_med_history = fetchStudMedHistory($conn, $stud_id);
+   $res_stud_med_history = fetchStudMedHistory($conn, $stud_id);
 
    // Student's health history
    $res_stud_hh = selStudentsHealthHistory($conn, $stud_id);

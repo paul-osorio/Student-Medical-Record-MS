@@ -63,7 +63,7 @@
       } else {
 
          echo '<script>';
-         echo "alert('This Email is not Registered!');";
+         echo "alert('$email');";
          echo 'window.location.href = "../redo/register.php";';
          echo '</script>';
       }

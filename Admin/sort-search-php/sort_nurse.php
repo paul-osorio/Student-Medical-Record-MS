@@ -1,10 +1,17 @@
 <?php
     include "../includes/function-header.php";
 
+
    if(isset($_POST['sort'])){
       $sort = $_POST['sort'];
 
-      $sort_by_query = "SELECT * FROM `nurses` ORDER BY `$sort`"; 
+      if($sort == 'id'){
+          $sort_by_query = "SELECT * FROM `nurses` ORDER BY id DESC";
+      }
+      else{
+         $sort_by_query = "SELECT * FROM `nurses` WHERE campus = '$sort' ORDER BY id DESC"; 
+      }
+
       
       $total_nurse = mysqli_query($conn, $sort_by_query);
       
@@ -12,19 +19,15 @@
 
 
 
- 
 
-   
-    <div class="nurse-list-container">
 
-               <div class="card_container">
-
+  
                   <!-- loop here -->
 
                   <?php 
-                     if($total_nurse > 0) {
+                     if(mysqli_num_rows($total_nurse) > 0) {
 
-                        while($nurse_row = mysqli_fetch_assoc($nurse_result)) {
+                        while($nurse_row = mysqli_fetch_assoc($total_nurse)) {
                            
                            $nurseSched_res = fetchScheduleByNurse($conn, $nurse_row['emp_id']);
 
@@ -35,8 +38,8 @@
                            <!-- <a href="./veiw-nurse.php?emp_id=<?=$nurse_row['emp_id']?>" class="card-holder"> -->
 
                               <div class="card">
-
-                                 <img src="../assets/<?=$nurse_row['profile_pic']?>" alt="" />
+                                 <div class="image-holder"><img src="../assets/<?=$nurse_row['profile_pic']?>" alt="" /></div>
+                                 
 
                                  <div class="card_content">
 
@@ -95,13 +98,7 @@
                      }
                   
                   ?>
-         
-                 
-                  
-                  <!-- loop here -->
-               </div>
-            </div>
-
+    
 
       
    <?php }

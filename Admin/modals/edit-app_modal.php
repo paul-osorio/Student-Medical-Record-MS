@@ -12,14 +12,14 @@
 <div class="modal-container edit-appointment-container" id="edit-appointment-container">
     
     <div class="modal-header">
-       <h3> Edit Appointment Details <span id="app-mess"></span> </h3>
+       <h3> Edit Service Details <span id="app-mess"></span> </h3>
     </div>
 
      <div class="modal-content">
 
        <form id="edit-appointment-form">
           <div class="form-input">
-             <label for="app-slot"> Appointment ID: </label>
+             <label for="app-slot"> Service ID: </label>
              <input type="text" name="app_id" value="<?=$appRes['app_id']?>" readonly> 
           </div>
 

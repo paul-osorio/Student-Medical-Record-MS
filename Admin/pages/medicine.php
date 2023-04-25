@@ -122,12 +122,17 @@
                <div class="sort sort-med">
                   <label for="med-sort"> Sort by: </label>
                   <select name="sort" id="med-sort">
-                     <option value="prod_id"> All </option>
+                     <option value="id"> All </option>
                      <option value="expirationDate"> Expiration Date </option>
                      <option value="num_stocks"> Stocks </option>
-                     <option value="campus"> Campus </option>
+                     <!-- <option value="campus"> Campus </option> -->
+                     <option value="San Bartolome"> San Bartolome Campus </option>
+                     <option value="San Francisco"> San Francisco Campus </option>
+                     <option value="Batasan"> Batasan Campus </option>
+                     <!-- <option value="San Francisco"> San Francisco </option> -->
                   </select>
                </div>
+               
 
                <div class="search search-med">
                   <input type="search" name="search" id="med-search" placeholder="Search Medicine">
@@ -153,22 +158,22 @@
                            ?>
                               <tr>
                                  <td>
-                                    <div class="med-img">
+                                    <div class="med-img" style="padding-left:10px;">
                                        <img src="../assets/<?=$med_row['image']?>" alt="<?=$med_row['image']?>">
                                     </div>
                                  </td>
          
-                                 <td>
+                                 <td width="17%">
                                     <h3 style="text-transform:capitalize;"> <?=$med_row['name']?> </h3>
                                     
                                     <p class="med-id"> <?=$med_row['prod_id']?> </p>
 
-                                    <p class="brand"> Campus: <br> <span> <?=$med_row['campus']?> </span> </p>
+                                    <p class="brand"> Campus: <span> <?=$med_row['campus']?> </span> </p>
          
                                     
                                  </td>
          
-                                 <td width="30%">
+                                 <td width="40%">
                                     <div class="med-desc">
                                        
                                        <p>  Description:  <span><?=$description?>...</span> </p>
@@ -177,19 +182,19 @@
                                     
                                  </td>
          
-                                 <td>
-                                    <p> Expiration Date: <br> <em><?=$expDate?></em> </p>
+                                 <td style="padding-left:40px;">
+                                    <p> Expiration Date: <em><?=$expDate?></em> </p>
          
                                     <p> Stocks: <span> <?=$med_row['num_stocks']?> </span></p>
                                  </td>
          
-                                 <td>
+                                 <!-- <td>
                                     <div class="qr-image">
                                        <img src="../qr_images/<?=$med_row['qr_code']?>" alt="">
                                     </div>
-                                 </td>
+                                 </td> -->
          
-                                 <td width="10%">
+                                 <td width="8%">
                                     <div class="action-button">
          
                                        <button id="med-edit" data-role="med-edit" data-id="<?=$med_row['prod_id']?>">

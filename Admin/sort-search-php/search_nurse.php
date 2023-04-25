@@ -4,25 +4,20 @@
    if(isset($_POST['search'])){
       $search = $_POST['search'];
 
-      $search_nurse_query = "SELECT * FROM `nurses` WHERE  `emp_id` LIKE '%$search%' OR `email` LIKE '%$search%' OR `firstname` LIKE '%$search%' OR `midllename` LIKE '%$search%' OR `lastname` LIKE '%$search%';"; 
+      $search_nurse_query = "SELECT * FROM `nurses` WHERE  `emp_id` LIKE '%$search%' OR `username` LIKE '%$search%' ORDER BY id DESC;"; 
       
-      $total_nurse = mysqli_query($conn, $search_nurse_query);
+      $searchNurse = mysqli_query($conn, $search_nurse_query);
       
-      ?>
+?>
 
 
 
-            
-      <div class="nurse-list-container">
-
-               <div class="card_container">
-
-                  <!-- loop here -->
+      <!-- loop here -->
 
                   <?php 
-                     if($total_nurse > 0) {
+                     if(mysqli_num_rows($searchNurse) > 0) {
 
-                        while($nurse_row = mysqli_fetch_assoc($nurse_result)) {
+                        while($nurse_row = mysqli_fetch_assoc($searchNurse)) {
                            
                            $nurseSched_res = fetchScheduleByNurse($conn, $nurse_row['emp_id']);
 
@@ -33,8 +28,8 @@
                            <!-- <a href="./veiw-nurse.php?emp_id=<?=$nurse_row['emp_id']?>" class="card-holder"> -->
 
                               <div class="card">
-
-                                 <img src="../assets/<?=$nurse_row['profile_pic']?>" alt="" />
+                                 <div class="image-holder"><img src="../assets/<?=$nurse_row['profile_pic']?>" alt="" /></div>
+                                 
 
                                  <div class="card_content">
 
@@ -85,22 +80,24 @@
 
                            <!-- </a> -->
 
-                           <?php
-
+                           <?php 
 
                         }
 
-                     }
-                  
-                  ?>
-         
-                 
-                  
-                  <!-- loop here -->
-               </div>
-            </div>
 
-      
+                     } else { ?>
+                     <center><div class="card" style="margin-left: 370px;width:500px;">
+
+                        <div class="card_content">
+                           <h2 style="text-align:center;margin-top:170px;"> No data found </h2>
+                        </div>
+
+                     </div></center>
+
+
+                     <?php }
+                  ?>
+        
    <?php }
 
 ?>
