@@ -534,6 +534,7 @@
 
       function get_data(){
         class Data_file {
+            private $id;
             private $student_id;
             private $docu_type;
             private $file_name;
@@ -541,7 +542,12 @@
             private $status;
             private $status_column;
 
+<<<<<<< Updated upstream
             public function __construct($student_id,$docu_type,$file_name,$submitted_date,$status,$status_column){
+=======
+            public function __construct($id,$student_id,$docu_type,$file_name,$submitted_date,$status,$status_column,$reason_column){
+              $this->id = $id;
+>>>>>>> Stashed changes
               $this->student_id = $student_id;
               $this->docu_type = $docu_type;
               $this->file_name = $file_name;
@@ -565,8 +571,14 @@
                     echo"<td class='text-danger fw-semibold text-center py-3'>Declined</td>";
                   }
                   else{
+<<<<<<< Updated upstream
                     echo "<td class='p-0 text-center py-3'><button class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#declined_modal' id='declined'>Decline</button></td>
                     <td class='p-0 text-center py-3'><button class='btn btn-success' id='approved'  data-column='{$this->status_column}' data-student_id='{$this->student_id}' >Approve</button></td>";
+=======
+                    echo "<td class='p-0 text-center py-3'><button class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#declined_modal'  id='declined' reason-column='{$this->reason_column}'
+                    status-column='{$this->status_column}'  data-student_id='{$this->student_id}'>Decline</button></td>
+                    <td class='p-0 text-center py-3'><button class='btn btn-success' id='approved' data-id='{$this->id}'  data-column='{$this->status_column}' data-student_id='{$this->student_id}' >Approve</button></td>";
+>>>>>>> Stashed changes
                               
                   };
          
@@ -574,42 +586,67 @@
             echo"</tr>";
             }
         }
+
       }
 
-      if(isset($_POST['view'])){
-
-        $student_id = $_POST['student_id'];
-        $id = $_POST['id'];
-
+      function select_requirement($conn1,$student_id){
         $sql = "SELECT * FROM stud_medical_requirements WHERE student_id  = '$student_id' ";
-        // $run_query = mysqli_query($conn1,$sql) or die(mysqli_error($conn1));
-        $query = $conn1->query($sql);
+         $query = $conn1->query($sql);
+           $row = $query->fetch_assoc();
+         return $row;
+      }
 
-        $row = $query->fetch_assoc();
+      function requirement_row($conn1,$student_id){
+        get_data();
+        $row = select_requirement($conn1,$student_id);
         
+        $cbc_id = $row['id'];
         $cbc_file = $row['cbc_file'];
         $cbc_date_submitted = $row['cbc_date_submitted'];
         $cbc_status = $row['cbc_status'];
         
+<<<<<<< Updated upstream
+=======
+        
+        $uri_id = $row['id'];
+>>>>>>> Stashed changes
         $uri_file = $row['uri_file'];
         $uri_date_submitted = $row['uri_date_submitted'];
         $uri_status = $row['uri_status'];
 
+        $xRay_id = $row['id'];
         $xRay_file = $row['xray_file'];
         $xRay_date_submitted = $row['xray_date_submitted'];
         $xRay_status = $row['xray_status'];
+<<<<<<< Updated upstream
 
+=======
+       
+        $med_cert_id = $row['id'];
+>>>>>>> Stashed changes
         $med_cert_file = $row['med_cert_file'];
         $med_cert_date_submitted = $row['med_cert_date_submitted'];
         $med_cert_status = $row['med_cert_status'];
 
+<<<<<<< Updated upstream
         get_data();
         
         $med_cert_file = new Data_file( $student_id,"Medical Certificate",$med_cert_file,$med_cert_date_submitted,$med_cert_status,'med_cert_status');
         $xRay_file = new Data_file( $student_id,"Chest X-ray",$xRay_file,$xRay_date_submitted,$xRay_status,'xray_status');
         $uri_file = new Data_file( $student_id,"Urinalysis",$uri_file,$uri_date_submitted,$uri_status,'uri_status');
         $cbc_file = new Data_file( $student_id,"Complete Blood Count (CBC)",$cbc_file,$cbc_date_submitted,$cbc_status,'cbc_status');
+=======
+        $med_cert_file = new Data_file($med_cert_id,$student_id,"Medical Certificate",$med_cert_file,$med_cert_date_submitted,$med_cert_status,'med_cert_status','med_cert_reason');
+        $xRay_file = new Data_file( $xRay_id,$student_id,"Chest X-ray",$xRay_file,$xRay_date_submitted,$xRay_status,'xray_status','xray_reason');
+        $uri_file = new Data_file( $uri_id,$student_id,"Urinalysis",$uri_file,$uri_date_submitted,$uri_status,'uri_status','uri_reason');
+        $cbc_file = new Data_file( $cbc_id,$student_id,"Complete Blood Count (CBC)",$cbc_file,$cbc_date_submitted,$cbc_status,'cbc_status','cbc_reason');
+      }
+>>>>>>> Stashed changes
 
+  
+      if(isset($_POST['view'])){
+        $student_id = $_POST['student_id'];
+        requirement_row($conn1,$student_id);
       }
 
       if(isset($_POST['update_status'])){
@@ -619,14 +656,35 @@
         $sql = "UPDATE stud_medical_requirements SET $column = 'approved' WHERE student_id = '$student_id'";
         $run_query = mysqli_query($conn1,$sql) or die(mysqli_error($conn1));
 
-        get_data();
-
-        $med_cert_file = new Data_file( $student_id,"Medical Certificate",$med_cert_file,$med_cert_date_submitted,$med_cert_status,'med_cert_status');
-        $xRay_file = new Data_file( $student_id,"Chest X-ray",$xRay_file,$xRay_date_submitted,$xRay_status,'xray_status');
-        $uri_file = new Data_file( $student_id,"Urinalysis",$uri_file,$uri_date_submitted,$uri_status,'uri_status');
-        $cbc_file = new Data_file( $student_id,"Complete Blood Count (CBC)",$cbc_file,$cbc_date_submitted,$cbc_status,'cbc_status');
+       
+        if(mysqli_num_rows($run_query) > 0){
+             requirement_row($conn1,$student_id);
+          }
+ 
+        
+    
+     
       }
       
+<<<<<<< Updated upstream
         
+=======
+    if(isset($_POST['send_reason'])){
+
+    $student_id = $_POST['student_id'];
+    $reason_column = $_POST['reason_column'];
+    $status_column = $_POST['status_column'];
+    $reason_content = $_POST['reason_content'];
+
+    $sql = "UPDATE stud_medical_requirements SET $status_column = 'declined', $reason_column = '$reason_content' WHERE student_id = '$student_id'";
+    $run_query = mysqli_query($conn1,$sql) or die(mysqli_error($conn1));
+
+    if(mysqli_num_rows($run_query) > 0){
+       requirement_row($conn1,$student_id);
+    }
+   
+
+  } 
+>>>>>>> Stashed changes
   ?>
    

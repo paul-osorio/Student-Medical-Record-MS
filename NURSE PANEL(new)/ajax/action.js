@@ -237,15 +237,59 @@ $(document).ready(function () {
   });
 
   $(document).on("click", "#approved", function () {
+    const id = $(this).attr("data-id");
     const student_id = $(this).attr("data-student_id");
     const column = $(this).attr("data-column");
     $.ajax({
       url: "fetchData.php",
       method: "POST",
-      data: { update_status: 1, student_id: student_id, column: column },
-      success: function (data) {},
+      data: {
+        update_status: 1,
+        student_id: student_id,
+        column: column,
+        id: id,
+      },
+      success: function (data) {
+        $(`#requirement${id}`).html(data);
+      },
     });
   });
+<<<<<<< Updated upstream
+=======
+
+  $(document).on("click", "#send_reason", function () {
+    const student_id = $("#declined").attr("data-student_id");
+    const reason_column = $("#declined").attr("reason-column");
+    const status_column = $("#declined").attr("status-column");
+    const reason_content = $("#reason_input").val();
+    $.ajax({
+      url: "fetchData.php",
+      method: "POST",
+      data: {
+        send_reason: 1,
+        student_id: student_id,
+        reason_column: reason_column,
+        status_column: status_column,
+        reason_content: reason_content,
+      },
+      success: function (response) {
+        if (response.error) {
+          const html = ` <h4>Email Failed</h4>
+                        <div class="container-fluid d-flex justify-content-center align-items-center">
+                        <img src="assets/email-success.svg" class="w-50 h-50" alt="">
+                      </div>`;
+          $("#msg_result").html(html);
+        } else {
+          const html = `<h4>Email Send Successfully</h4>
+                        <div class="container-fluid d-flex justify-content-center align-items-center">
+                        <img src="assets/email-success.svg" class="w-50 h-50" alt="">
+                      </div>`;
+          $("#msg_result").html(html);
+        }
+      },
+    });
+  });
+>>>>>>> Stashed changes
 });
 
 //still open function

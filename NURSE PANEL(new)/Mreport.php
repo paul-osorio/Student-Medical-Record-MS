@@ -115,8 +115,6 @@
                            $info = "SELECT * FROM stud_medical_requirements JOIN `mis.student_info` ON stud_medical_requirements.student_id = `mis.student_info`.student_id JOIN `mis.enrollment_status` ON `mis.student_info`.student_id = `mis.enrollment_status`.student_id";
                            $run_query = mysqli_query($conn1,$info) or die(mysqli_error($conn1));
 
-                          
-
                           if(mysqli_num_rows($run_query) > 0){
                               while($row = mysqli_fetch_array($run_query)){
 
@@ -139,11 +137,9 @@
                                 <td class="col-1 text-start">'.$row['section'].'</td>
                                 <td class="col-5 text-start">'.$row['email'].'</td>';
 
-                                if($cbc_status == "pending" || $xray_status == "pending" || $uri_status == "pending" || $med_cert_status == "pending"){
-                                    
+                                if($cbc_status === "pending" || $xray_status === "pending" || $uri_status === "pending" || $med_cert_status === "pending"){
                                     echo'<td class="text-danger fw-semibold  text-start">Pending</td>';
                                 }else{
-                              
                                      echo'<td class="text-success fw-semibold  text-start">Complete</td>';
                                 }
 
@@ -185,9 +181,29 @@
                                 </div>
                               </div>
                               <div class="modal-footer">
+<<<<<<< Updated upstream
                                 <button type="button" class="btn btn-primary">Send</button>
+=======
+                                <button type="button" class="btn btn-primary" data-bs-target="#email_result" data-bs-toggle="modal" id="send_reason">Send</button>
+>>>>>>> Stashed changes
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                               </div>
+                            </div>
+                          </div>
+                        </div>
+
+                      <div class="modal fade" id="email_result" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+                          <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Modal 2</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body text-center" id="msg_result">
+                              
+
+                              </div>
+                             
                             </div>
                           </div>
                         </div>
