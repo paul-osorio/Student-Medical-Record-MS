@@ -66,11 +66,11 @@
                </a>
             </li>
 
-            <li>
+            <!-- <li>
                <a href="./department.php" >
                   <i class="fas fa-building    "></i> Departments
                </a>
-            </li>
+            </li> -->
 
             <li>
                <a href="./nurses.php" class="isSelected">

@@ -55,7 +55,7 @@
             </div>
         </nav>
         <div class="row bg-light">
-          <div class="col-md-2 p-0 position-relative" style="min-height:100vh;box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;background: #05285c;">
+          <div class="col-md-2 p-0 position-relative" style="min-height:100vh;box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;background: #134E8E;">
              <div class="w-100">
               <ul class="mt-4 list-unstyled navbar-nav ps-0 ">
 
@@ -142,6 +142,8 @@
                                 if($cbc_status == "pending" || $xray_status == "pending" || $uri_status == "pending" || $med_cert_status == "pending"){
                                     
                                     echo'<td class="text-danger fw-semibold  text-start">Pending</td>';
+                                }elseif ($cbc_status == "declined" || $xray_status == "declined" || $uri_status == "declined" || $med_cert_status == "declined") {
+                                  echo'<td class="text-danger fw-semibold  text-start">Failed</td>';
                                 }else{
                               
                                      echo'<td class="text-success fw-semibold  text-start">Complete</td>';
@@ -180,12 +182,12 @@
                               <div class="modal-body">
                                 <span>State your reason for declining</span>
                                 <div class="form-floating mt-2">
-                                  <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px;resize:none;"></textarea>
-                                  <label for="floatingTextarea2">Reason...</label>
+                                  <textarea class="form-control" placeholder="Leave a comment here" id="reason_input"  style="height: 100px;resize:none;"></textarea>
+                                  <label for="reason_input">Reason...</label>
                                 </div>
                               </div>
                               <div class="modal-footer">
-                                <button type="button" class="btn btn-primary">Send</button>
+                                <button type="button" class="btn btn-primary" id="send_reason">Send</button>
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                               </div>
                             </div>

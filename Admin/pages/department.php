@@ -186,7 +186,7 @@
 
                                     <span style="font-weight: bold;"> Position: </span>
                                     
-                                    <span class="nurse"> <?=$dept_rows['position']?> </span>
+                                    <span class="nurse" style="text-transform: capitalize;"> <?=$dept_rows['position']?> </span>
                                  </div>
                               </div>
                            </div>

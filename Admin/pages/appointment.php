@@ -53,11 +53,11 @@
                </a>
             </li>
 
-            <li>
+            <!-- <li>
                <a href="./department.php" >
                   <i class="fas fa-building    "></i> Departments
                </a>
-            </li>
+            </li> -->
 
             <li>
                <a href="./nurses.php">
@@ -155,7 +155,7 @@
                   <thead>
                      <tr> 
                         <th> Date Created	</th>
-                        <th> Services ID </th>
+                        <th> Service ID </th>
                         <th> Type of Appointment </th>
                         <th> Date Scheduled </th>
                         <!-- <th width="10%"> Status </th> -->

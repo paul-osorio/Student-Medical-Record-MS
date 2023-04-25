@@ -142,14 +142,14 @@
 
                            <td> 
                               <?php
-                                 if($med_reqs_files['cbc_status'] === 'approve') { ?>
+                                 if($med_reqs_files['cbc_status'] == 'approved') { ?>
                                  
                                     <div class="status" style="background-color: var(--approve); ">
                                        <?=$med_reqs_files['cbc_status']?> 
                                     </div>
                                  <?php } 
-                                 
-                                 else if($med_reqs_files['cbc_status'] === 're-submit') { ?> 
+                                    
+                                 else if($med_reqs_files['cbc_status'] == 'declined') { ?> 
 
                                     <div class="status" style="background-color: var(--decline); ">
                                        <?=$med_reqs_files['cbc_status']?>  
@@ -185,14 +185,14 @@
 
                            <td> 
                               <?php
-                                 if($med_reqs_files['uri_status'] === 'approve') { ?>
+                                 if($med_reqs_files['uri_status'] == 'approved') { ?>
                                  
                                     <div class="status" style="background-color: var(--approve); ">
                                        <?=$med_reqs_files['uri_status']?>
                                     </div>
                                  <?php } 
                                  
-                                 else if($med_reqs_files['uri_status'] === 're-submit') { ?> 
+                                 else if($med_reqs_files['uri_status'] == 'declined') { ?> 
 
                                     <div class="status" style="background-color: var(--decline); ">
                                        <?=$med_reqs_files['uri_status']?>
@@ -227,14 +227,14 @@
 
                            <td> 
                               <?php
-                                 if($med_reqs_files['xray_status'] === 'approve') { ?>
+                                 if($med_reqs_files['xray_status'] == 'approved') { ?>
                                  
                                     <div class="status" style="background-color: var(--approve); ">
                                        <?=$med_reqs_files['xray_status']?>
                                     </div>
                                  <?php } 
                                  
-                                 else if($med_reqs_files['xray_status'] === 're-submit') { ?> 
+                                 else if($med_reqs_files['xray_status'] == 'declined') { ?> 
 
                                     <div class="status" style="background-color: var(--decline); ">
                                        <?=$med_reqs_files['xray_status']?>
@@ -270,14 +270,14 @@
 
                            <td> 
                               <?php
-                                 if($med_reqs_files['med_cert_status'] === 'approve') { ?>
+                                 if($med_reqs_files['med_cert_status'] == 'approved') { ?>
                                  
                                     <div class="status" style="background-color: var(--approve); ">
                                        <?=$med_reqs_files['med_cert_status']?>
                                     </div>
                                  <?php } 
                                  
-                                 else if($med_reqs_files['med_cert_status'] === 're-submit') { ?> 
+                                 else if($med_reqs_files['med_cert_status'] == 'declined') { ?> 
 
                                     <div class="status" style="background-color: var(--decline); ">
                                        <?=$med_reqs_files['med_cert_status']?> 

@@ -4,15 +4,25 @@
    if(isset($_POST['sort'])){
       $sort = $_POST['sort'];
 
-      $sort_by_query = "SELECT * FROM `medicine` ORDER BY `$sort`"; 
+       if($sort == 'id'){
+          $sort_by_query = "SELECT * FROM `medicine` ORDER BY id ASC";
+      }
+      elseif($sort == 'expirationDate'){
+         $sort_by_query = "SELECT * FROM `medicine` ORDER BY expirationDate ASC"; 
+      }
+      elseif($sort == 'num_stocks'){
+         $sort_by_query = "SELECT * FROM `medicine` ORDER BY num_stocks ASC"; 
+      }
+      else{
+         $sort_by_query = "SELECT * FROM `medicine` WHERE campus = '$sort' ORDER BY id DESC"; 
+      }
       
       $fetchAllMedicine = mysqli_query($conn1, $sort_by_query);
       
       ?>
 
 
-
-                       <ul class="accordion">
+ <ul class="accordion">
  
 
                           <?php if(mysqli_num_rows($fetchAllMedicine) > 0) { 
@@ -36,8 +46,8 @@
                                   <table class="table-mdc">
                                   <tbody>
                                       <tr class="mdc-header">
-                                      <td style="width:120px; padding-left: 20px;"><img src="./assets/<?=$med['image']?>" width="150px" height="130px"> </td>
-                                      <td style="width:180px; padding-left: 20px;" >
+                                      <td style="width:120px; padding-left: 30px;"><img src="./assets/<?=$med['image']?>" width="150px" height="130px"> </td>
+                                      <td style="width:200px; padding-left: 20px;" >
                                           <table>
                                           <td class="b1"><?=$med['name']?></td>
                                           <tr>
@@ -47,24 +57,24 @@
                                           </table>
                                       </td>
                                   
-                                      <td style="text-align:justify;text-justify:inter-word;width:420px;">
+                                      <td style="text-align:justify;text-justify:inter-word;width:450px;padding-left: 30px;">
                                           <span class="mdc-stock">Desctiption: </span>
                                           <span class="mdc-qty"><?=$description?>...</span>
                                       </td>
                                           
                               
                                       
-                                      <td style="width:370px; padding-left: 30px;">
+                                      <td style="width:370px; padding-left: 50px;">
                                       <!-- <b>Expiration Date:</b> <?=$med['expirationDate']?> -->
                                           <table>
-                                          <td class="b1"><b>Expiration Date:</b> <br><em><?=$expDate?></em></td>
+                                          <td class="b1"><b>Expiration Date:</b> <em><?=$expDate?></em></td>
                                           <tr>
                                           <td><b>Stocks:</b> <?=$med['num_stocks']?></td>
                                           </table>
                                       </td>
 
                                       
-                                      <td style="width:160px;"><img src="./qr_images/<?=$med['qr_code']?>" width="150px" height="130px"> </td>
+                                      <!-- <td style="width:160px;"><img src="./qr_images/<?=$med['qr_code']?>" width="150px" height="130px"> </td> -->
                                       <!-- <td style="width:160px;">
                                         <div class="qr-image">
                                         <img src="./qr_images/<?=$med['qr_code']?>" alt="">
@@ -79,9 +89,29 @@
 
                           </li>
 
-                          <?php } } ?>
+                              <?php }} else { ?>
 
-                        </ul>
+                        <li>
+                              <input type="radio" name="accordion" id="first" checked>
+                              <label for="first">
+                              <div class="medicine-table">
+                                  <table class="table-mdc">
+                                  <tbody>
+                                      <tr class="mdc-header">
+                                        <td colspan="6" style="text-align:center;"> No Medicine </colspan=>
+                                        </td>
+                                      </tr>
+                                  </tbody>
+                                  </table>
+                              </div>
+                              </label>
+
+                        </li>
+
+                      <?php }
+                      ?>
+
+                  </ul>
 
       
    <?php }

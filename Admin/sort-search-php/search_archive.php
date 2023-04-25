@@ -4,7 +4,7 @@
    if(isset($_POST['search'])){
       $search = $_POST['search'];
 
-      $search_medicine_query = "SELECT * FROM `archive` WHERE  `archive_id` LIKE '%$search%' OR `archive_name` LIKE '%$search%';"; 
+      $search_medicine_query = "SELECT * FROM `archive` WHERE  `archive_id` LIKE '%$search%' OR `archive_name` LIKE '%$search%' ORDER BY id DESC;"; 
       
       $archive_res = mysqli_query($conn, $search_medicine_query);
       

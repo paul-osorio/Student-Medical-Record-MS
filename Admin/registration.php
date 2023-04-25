@@ -45,7 +45,9 @@
                <?php if (isset($_GET['success'])) { ?>
                     <p class="success"><?php echo $_GET['success']; ?></p>
                <?php } ?>
-               
+
+
+
                <?php if (isset($_GET['fname'])) { ?>
                     <input type="text" 
                            name="fname" 
@@ -55,6 +57,18 @@
                     <input type="text" 
                            name="fname" 
                            placeholder="First Name"><br>
+               <?php }?>
+
+               
+               <?php if (isset($_GET['img'])) { ?>
+                    <input type="file" 
+                           name="img" 
+                           placeholder="Upload Image"
+                           value="<?php echo $_GET['img']; ?>"><br>
+               <?php }else{ ?>
+                    <input type="file" 
+                           name="img" 
+                           placeholder="Upload Image"><br>
                <?php }?>
              
                <?php if (isset($_GET['lname'])) { ?>
@@ -66,6 +80,17 @@
                     <input type="text" 
                            name="lname" 
                            placeholder="Last Name"><br>
+               <?php }?>
+
+                <?php if (isset($_GET['contact_num'])) { ?>
+                    <input type="text" 
+                           name="contact_num" 
+                           placeholder="Contact Number"
+                           value="<?php echo $_GET['contact_num']; ?>"><br>
+               <?php }else{ ?>
+                    <input type="text" 
+                           name="contact_num" 
+                           placeholder="Contact Number"><br>
                <?php }?>
      
                <?php if (isset($_GET['uname'])) { ?>

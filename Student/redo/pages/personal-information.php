@@ -112,7 +112,7 @@
 
                      <div class="status">
                         
-                        <p> Medical Requirements: <span style="color: var(--approve)"> Complete </span></p>
+                        <p> <b>Medical Requirements:</b> <span style="color: var(--approve)"> Complete </span></p>
                      
                         <!-- <p> Status: 
                            <?php if($stud_logged['remarks'] === "Incomplete") { ?>
@@ -125,6 +125,9 @@
 
                            <?php } ?> 
                         </p> -->
+
+
+                        <p> <b>Status:</b> <span style="color: var(--approve)"> Cleared </span></p>
 
 
                      </div>

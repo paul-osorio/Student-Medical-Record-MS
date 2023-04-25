@@ -3,11 +3,11 @@
    error_reporting(0);
    include "../includes/db_conn.php";
    include "../includes/date.php";
-   include "../functions/hospital.php";
+   include "../functions/medicine.php";
 
-   $hospi_id = $_POST['hospi_id'];
+   $med_id = $_POST['med_id'];
 
-   $res = archiveHospital($conn, $hospi_id, $date_today);
+   $res = archiveMedicine($conn, $med_id, $date_today);
 
    if($res){ ?>
 
@@ -20,7 +20,7 @@
       </div>
 
       <script>
-         window.location.href = "../pages/hospital.php";
+         window.location.href = "../pages/medicine.php";
       </script>
 
    <?php } else { ?> 
@@ -35,7 +35,7 @@
          </div>
 
          <script>
-            window.location.href = "../pages/hospital.php";
+            window.location.href = "../pages/medicine.php";
          </script>
       </div>
    
