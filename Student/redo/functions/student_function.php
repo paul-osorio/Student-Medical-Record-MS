@@ -143,7 +143,7 @@
 
       // $result = mysqli_query($conn, $select);
       // $query = $conn->query($select);
-      $run_query = mysqli_query($conn,$select) or die(mysqli_error($conn1))
+      $run_query = mysqli_query($conn,$select) or die(mysqli_error($conn1));
 
       // $res_stud = mysqli_fetch_assoc($query);
 

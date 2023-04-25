@@ -129,10 +129,33 @@
                      <?php 
                            if(mysqli_num_rows($sel_ent_log_stud) > 0){
                               while($row = mysqli_fetch_array($sel_ent_log_stud)){
-                                 echo $row['Status'];
-                              }
-                           }
+                                 
                      ?>
+                     <tr>
+                        <td> 
+                           <div>
+
+                              <?=$row['timein']?>
+                              
+                           </div>
+                        <td> 
+                           campus
+                        </td>
+                        <td>
+                           <div class="type">
+
+                              <?=$row['Status']?> 
+                              
+                           </div>
+                        </td>
+                     </tr>
+                     <?php
+                           }
+                        }else { ?>
+                        <tr> 
+                           <td colspan="7"> No Entrance Log Found</td>
+                        </tr>
+                     <?php }  ?>
                      
                   </tbody>
                </table>

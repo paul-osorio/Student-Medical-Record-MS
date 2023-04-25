@@ -48,6 +48,10 @@
             <li> 
                <a href="./appointment-list.php"> Appointment </a>
             </li>
+
+             <li> 
+               <a href="./entrancelog.php"> Entrace Log </a>
+            </li>
          </ul>
         
       </nav>

@@ -78,7 +78,7 @@
             </div>
             <div class="row mt-4 justify-content-between gap-4">
               <div class="shadow rounded-3" >
-                <div class="d-flex justify-content-between align-items-center my-3">
+                
                 <div class="d-flex justify-content-between align-items-center my-3">
                   <div class="d-flex">
                     <input type="button" class="btn btn-light px-2 mx-2" id="med-his" style="color:#0C4079";  value="Medical History">

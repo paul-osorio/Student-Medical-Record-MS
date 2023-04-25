@@ -264,8 +264,8 @@ $(document).ready(function () {
       },
       success: function (data) {
 
-        chat ko na lng kung ano yung iphapahase dito.. ito na lang muna 
-        tinatawag ako ng kalikasan sige isge sayonara hahaha
+        // chat ko na lng kung ano yung iphapahase dito.. ito na lang muna 
+        // tinatawag ako ng kalikasan sige isge sayonara hahaha
         // if (reason_content !== ) {
         //   $(this).attr("data-bs-dismiss", "modal");
         // }

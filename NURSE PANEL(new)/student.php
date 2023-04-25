@@ -5,12 +5,12 @@
     // SELECT ALL STUDENTS 
     //  $fetchAllStudents = mysqli_query($conn, "SELECT * FROM `stud_data` LIMIT 10");
  
-
-     $fetchStudsAccount = mysqli_query($conn1,"SELECT * FROM `student_account`
+     $fetchStudents ="SELECT * FROM `student_account`
             JOIN `mis.student_info` ON `student_account`.`student_id` = `mis.student_info`.`student_id`
             JOIN `mis.enrollment_status` ON `mis.student_info`.`student_id` = `mis.enrollment_status`.`student_id` 
             JOIN `mis.student_address` ON `mis.enrollment_status`.`student_id` = `mis.student_address`.`student_id` 
-            JOIN `mis.emergency_contact` ON `mis.student_address`.`student_id` = `mis.emergency_contact`.`student_id` LIMIT 10");
+            JOIN `mis.emergency_contact` ON `mis.student_address`.`student_id` = `mis.emergency_contact`.`student_id` LIMIT 10";
+     $fetchStudsAccount = mysqli_query($conn1,$fetchStudents);
 
 ?>
 
@@ -158,7 +158,7 @@
                                         <li><a class="dropdown-item" href="#"><i class="fa-solid fa-edit mx-2"></i>Edit</a></li> -->
                                         </ul>
                                         </span>
-                                        </td> -->
+                                        </td>
                                       </tr>
                                     </tbody>
                                   </table>
