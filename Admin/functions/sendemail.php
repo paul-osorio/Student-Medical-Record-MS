@@ -17,8 +17,8 @@
       $mail->isSMTP();
       $mail->Host = 'smtp.gmail.com';
       $mail->SMTPAuth = true;
-      $mail->Username = 'studmed.recordms.2023@gmail.com';
-      $mail->Password = 'qmgdqhrozvdbypdb';
+      $mail->Username = 'qcu.clinic.smrms@gmail.com';
+      $mail->Password = 'vptkkshttnjvnhde';
       $mail->SMTPSecure = 'ssl';
       $mail->Port = 465;
   
@@ -71,8 +71,8 @@
       $mail->isSMTP();
       $mail->Host = 'smtp.gmail.com';
       $mail->SMTPAuth = true;
-      $mail->Username = 'studmed.recordms.2023@gmail.com';
-      $mail->Password = 'qmgdqhrozvdbypdb';
+      $mail->Username = 'qcu.clinic.smrms@gmail.com';
+      $mail->Password = 'vptkkshttnjvnhde';
 
       $mail->SMTPSecure = 'ssl';
       $mail->Port = 465;
