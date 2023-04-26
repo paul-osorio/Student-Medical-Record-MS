@@ -3,7 +3,14 @@
 
 
     // SELECT ALL STUDENTS 
-     $fetchAllStudents = mysqli_query($conn, "SELECT * FROM `stud_data` LIMIT 10");
+    //  $fetchAllStudents = mysqli_query($conn, "SELECT * FROM `stud_data` LIMIT 10");
+ 
+     $fetchStudents ="SELECT * FROM `student_account`
+            JOIN `mis.student_info` ON `student_account`.`student_id` = `mis.student_info`.`student_id`
+            JOIN `mis.enrollment_status` ON `mis.student_info`.`student_id` = `mis.enrollment_status`.`student_id` 
+            JOIN `mis.student_address` ON `mis.enrollment_status`.`student_id` = `mis.student_address`.`student_id` 
+            JOIN `mis.emergency_contact` ON `mis.student_address`.`student_id` = `mis.emergency_contact`.`student_id` LIMIT 10";
+     $fetchStudsAccount = mysqli_query($conn1,$fetchStudents);
 
 ?>
 
@@ -22,12 +29,15 @@
     
     <link rel="stylesheet" href="./style.css" />
     <link rel="stylesheet" href="./css/patients.css"/>
-  <link
+    <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-  />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script> 
-  <script src="./ajax/action.js" defer></script>
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+
+    <script defer  src="./ajax/action.js" ></script>
 
 </head>
 <body>
@@ -60,7 +70,7 @@
             </div>
         </nav>
         <div class="row bg-secondary-subtle">
-          <div class="col-md-2 p-0 position-relative" style="min-height:100vh;box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;background: #05285c;">
+          <div class="col-md-2 p-0 position-relative" style="min-height:100vh;box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;background: #134E8E;">
              <div class="w-100">
               <ul class="mt-4 list-unstyled navbar-nav ps-0 ">
 
@@ -105,9 +115,8 @@
                                   <span for="#sort" class="px-2 text-nowrap">Sort By</span>
                                   <select class="form-select shadow-none" aria-label="Default select example" name="sort" id="sort_stud">
                                     <option name="sort" value="id">All</option>
-                                    <option name="sort" value="Recent">Recent</option>
-                                    <option name="sort" value="year_level">Year Level</option>
-                                    <option name="sort" value="Section">Section</option>
+                                    <!-- <option name="sort" value="year_level">Year Level</option> -->
+                                    <option name="sort" value="section">Section</option>
                                     <!-- <option name="sort" value="Degree Program/ Course">Degree Program/Course</option> -->
                                     
                                   </select>
@@ -121,26 +130,32 @@
 
                        
                         
+
+                    <div class="students">
+   
+                      <!-- <h1>Student</h1> -->
+
                         <div class="students">
                       <!-- <h1>Student</h1> -->
+
                          
 
-                                <?php if(mysqli_num_rows($fetchAllStudents) > 0) { 
-                                  while ($studs = mysqli_fetch_assoc($fetchAllStudents)) {  ?>
+                                <?php if(mysqli_num_rows($fetchStudsAccount) > 0) { 
+                                  while ($studs = mysqli_fetch_assoc($fetchStudsAccount)) {  ?>
 
 
-                                  <table class="table table-borderless shadow mt-3 text-center">
+                                  <table class="table table-borderless shadow mt-3 text-center align-middle">
                                     <tbody>
                                       <tr class="">
-                                        <td class="col-2 text-light fw-bold" style="background:#5D8FD9"><span><?=$studs['student_id']?></span></td>
-                                        <td class="col-3"><span class="name"><?=$studs['firstname']?> <?=$studs['middlename']?> <?=$studs['lastname']?></span></td>
-                                        <td class="col-1"><span class="course"><?=$studs['Section']?></span></td>
-                                        <td class="col-5 "><span class="email"><?=$studs['Email']?></span></td>
+                                        <td class="col-2  text-light fw-bold" style="background:#5D8FD9;width:max-content"><span><?=$studs['student_id']?></span></td>
+                                        <td class="col-3 text-start"><span class="name"><?=$studs['firstname']?> <?=$studs['middlename']?> <?=$studs['lastname']?></span></td>
+                                        <td class="col-1"><span class="course"><?=$studs['section']?></span></td>
+                                        <td class="col-5 text-start"><span class="email"><?=$studs['email']?></span></td>
                                         <td class="col-1"><button class="addpatient-btn px-2" style="background-color: #163666;" id="view" data-id="<?=$studs['student_id']?>">View</button></td>
-                                        <td class="col"><span class="name position-relative d-flex align-items-center justify-content-center">
+                                        <!-- <td class="col"><span class="name position-relative d-flex align-items-center justify-content-center">
                                         <a href="#" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-ellipsis-vertical " style="color: #163666"></i></a>
                                         <ul class="dropdown-menu" data-popper-placement="left-start" style="position: absolute; inset: 0px 0px auto auto; margin: 0px; transform: translate3d(-106.667px, 0px, 0px);width:max-content;">
-                                        <li><a class="dropdown-item" href="#"><i class="fa-solid fa-edit mx-2"></i>Edit</a></li>
+                                        <li><a class="dropdown-item" href="#"><i class="fa-solid fa-edit mx-2"></i>Edit</a></li> -->
                                         </ul>
                                         </span>
                                         </td>
@@ -154,18 +169,24 @@
                       </div> -->
                   </div> 
 
-
+                            
               </div>
          
         </div>
-    </div>
+
+  
+          <!-- PRINT OR DOWNLOAD MODAL -->
+
+
 </body>
+<script src="./ajax/search_appointments.js"> </script>
+<script src="./ajax/search_medreq.js"> </script>
+<script src="./ajax/search_students.js"> </script>
+<script src="./ajax/search_medicine.js"> </script>
 
 
     <!-- CUSTOM AJAX FILE -->
-    <script src="./ajax/search_appointments.js"> </script>
-    <script src="./ajax/search_medreq.js"> </script>
-    <script src="./ajax/search_students.js"> </script>
-    <script src="./ajax/search_medicine.js"> </script>
-
+    
 </html>
+
+

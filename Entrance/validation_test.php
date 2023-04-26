@@ -12,7 +12,7 @@
    $qr_val = $_POST['stud_id'];
    
    // checks if scanned student id exists in `stud_data` table
-   $sel_stud_query = "SELECT * FROM `stud_data` a
+   $sel_stud_query = "SELECT * FROM `mis.student_info` a
    JOIN `sample_stud_data` b
    ON a.student_id = b.student_id WHERE a.student_id = '$stud_id'";
    
@@ -37,15 +37,15 @@
       // echo "$student_id: $role, $timein, $date, $status";
 
       $sel_appointment_today = "SELECT * FROM `stud_appointment` a
-      JOIN `stud_data` b
+      JOIN `mis.student_info` b
       ON a.student_id = b.student_id
       JOIN `sample_stud_data` c
       ON a.student_id = c.student_id
-      WHERE  a.student_id = '$student_id' AND a.`appointment_date` = CURRENT_DATE();";
+      WHERE  a.student_id = '$student_id' AND a.`app_date` = CURRENT_DATE();";
 
       $res_appointment_today = mysqli_query($conn, $sel_appointment_today);
 
-      if($status === 'Not Verified') { 
+      if($status === 'Not Cleared') { 
          
          if(mysqli_num_rows($res_appointment_today) == 1) {
 
@@ -142,7 +142,7 @@
                <script>
                   $(document).ready(function(){
                   
-                     var mess = 'verified';
+                     var mess = 'Cleared';
                      var fullname = "<?=$fullname?>";
 
                      // $('.message p').css("background-color", 'red');

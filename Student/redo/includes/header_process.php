@@ -41,4 +41,10 @@
    // Student's health history
    $res_stud_hh = selStudentsHealthHistory($conn, $stud_id);
 
+   //Student's health status
+   $res_stud_health_status = fetchStudHealthStatus($conn, $stud_id);
+
+   // Student's Entrance log
+   $sel_ent_log_stud = fetchentrancelog($conn, $stud_id);
+
 ?>

@@ -47,11 +47,11 @@
                </a>
             </li>
 
-            <li>
+            <!-- <li>
                <a href="./department.php" >
                   <i class="fas fa-building    "></i> Departments
                </a>
-            </li>
+            </li> -->
 
             <li>
                <a href="./nurses.php" class="isSelected">
@@ -120,9 +120,9 @@
                   <label for="nurse-sort"> Sort by: </label>
                   <select name="sort" id="nurse-sort">
                      <option value="id"> All </option>
-                     <option value="position"> Position </option>
-                     <!-- <option value="Schedule"> Schedule </option> -->
-                     <option value="Department"> Department </option>
+                     <option value="San Bartolome"> San Bartolome </option>
+                     <option value="Batasan"> Batasan </option>
+                     <option value="San Francisco"> San Francisco </option>
                   </select>
                </div>
 
@@ -134,7 +134,7 @@
 
             <div class="nurse-list-container">
 
-               <div class="card_container">
+               <div class="card_container" id="nurse-container">
 
                   <!-- loop here -->
 
@@ -152,8 +152,8 @@
                            <!-- <a href="./veiw-nurse.php?emp_id=<?=$nurse_row['emp_id']?>" class="card-holder"> -->
 
                               <div class="card">
-
-                                 <img src="../assets/<?=$nurse_row['profile_pic']?>" alt="" />
+                                 <div class="image-holder"><img src="../assets/<?=$nurse_row['profile_pic']?>" alt="" /></div>
+                                 
 
                                  <div class="card_content">
 

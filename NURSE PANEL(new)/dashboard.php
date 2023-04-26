@@ -11,7 +11,7 @@ if (isset($_SESSION['emp_id']) && isset($_SESSION['username'])) {
   $emp_id = $_SESSION['emp_id'];
 
   // SELECT ALL ADMINS
-  $fetchNurseAccount = mysqli_query($conn, "SELECT * FROM `nurses` WHERE emp_id = '$emp_id'");
+  $fetchNurseAccount = mysqli_query($conn1, "SELECT * FROM `nurses` WHERE emp_id = '$emp_id'");
   $nurse = mysqli_fetch_assoc($fetchNurseAccount);
 
 
@@ -76,7 +76,7 @@ if (isset($_SESSION['emp_id']) && isset($_SESSION['username'])) {
             </div>
         </nav>
         <div class="row">
-          <div class="col-md-2 p-0 position-relative" style="min-height: 100vh; box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px; background: #05285c;">
+          <div class="col-md-2 p-0 position-relative" style="min-height: 100vh; box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px; background: #134E8E;">
              <div class="w-100">
               <ul class="mt-4 list-unstyled navbar-nav ps-0 ">
 

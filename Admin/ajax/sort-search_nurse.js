@@ -4,8 +4,8 @@ $(document).ready(function(){
       
       var search = $('#nurse-search').val();
 
-      $('.card_container').load('../sort-search-php/search_nurse.php', {
-         search:search
+      $("#nurse-container").load("../sort-search-php/search_nurse.php", {
+        search: search,
       });
 
    });
@@ -15,8 +15,8 @@ $(document).ready(function(){
       
       var sort = $('#nurse-sort').val();
 
-      $('.card_container').load('../sort-search-php/sort_nurse.php', {
-         sort:sort
+      $("#nurse-container").load("../sort-search-php/sort_nurse.php", {
+        sort: sort,
       });
 
    });

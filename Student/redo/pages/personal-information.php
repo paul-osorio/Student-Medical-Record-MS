@@ -50,6 +50,10 @@
             <li> 
                <a href="./appointment-list.php"> Appointment </a>
             </li>
+
+            <li> 
+               <a href="./entrancelog.php"> Entrace Log </a>
+            </li>
          </ul>
         
       </nav>
@@ -112,7 +116,7 @@
 
                      <div class="status">
                         
-                        <p> Medical Requirements: <span style="color: var(--approve)"> Complete </span></p>
+                        <p> <b>Medical Requirements:</b> <span style="color: var(--approve)"> Complete </span></p>
                      
                         <!-- <p> Status: 
                            <?php if($stud_logged['remarks'] === "Incomplete") { ?>
@@ -125,6 +129,28 @@
 
                            <?php } ?> 
                         </p> -->
+
+
+                        <p> <b>Status:</b> <span style="color: var(--approve)"> Cleared </span></p>
+
+
+                     </div>
+
+                     <div class="status">
+                        
+                        <p> Health Status:
+                     
+                        
+                           <?php if($res_stud_health_status['Status'] === "Not Cleared") { ?>
+
+                              <span style="color: var(--decline)"> <?=$res_stud_health_status['Status']?> </span> 
+
+                           <?php } else { ?>
+                              
+                              <span style="color: var(--approve)"> <?=$res_stud_health_status['Status']?> </span>
+
+                           <?php } ?> 
+                        </p>
 
 
                      </div>

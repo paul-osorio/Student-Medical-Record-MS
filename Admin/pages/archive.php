@@ -47,11 +47,11 @@
                </a>
             </li>
 
-            <li>
+            <!-- <li>
                <a href="./department.php" >
                   <i class="fas fa-building    "></i> Departments
                </a>
-            </li>
+            </li> -->
 
             <li>
                <a href="./nurses.php">
@@ -113,7 +113,7 @@
                   <div class="sort">
                      <label for=""> Sort by: </label>
                      <select name="sort" id="arc-sort">
-                        <option value="archive_id"> All </option>
+                        <option value="id"> All </option>
                         <option value="archive_type"> Type of Archive </option>
                         <option value="archive_datetime"> Date/Time </option>
                      </select>

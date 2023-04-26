@@ -12,7 +12,7 @@
             <option value=""> --Select Campus-- </option>
             <option value="San Bartolome"> San Bartolome </option>
             <option value="Batasan"> Batasan </option>
-            <option value="San Fransisco"> San Fransisco </option>
+            <option value="San Francisco"> San Francisco </option>
          </select>
       </div>
 

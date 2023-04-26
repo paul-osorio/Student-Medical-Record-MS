@@ -20,7 +20,7 @@
       </div>
 
       <script>
-         window.location.href = "../pages/department.php";
+         window.location.href = "../pages/hospital.php";
       </script>
 
    <?php } else { ?> 
@@ -35,7 +35,7 @@
          </div>
 
          <script>
-            window.location.href = "../pages/department.php";
+            window.location.href = "../pages/hospital.php";
          </script>
       </div>
    

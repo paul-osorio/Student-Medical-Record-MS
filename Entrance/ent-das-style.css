@@ -70,7 +70,7 @@
     font-weight: 600;
 }
 .main-container .container .subcontainer .numerical ul #problem{
-    background-color: #F0A202;
+    background-color: #DCED31;
     color: #fff;
     font-weight: 600;
 }
@@ -98,10 +98,10 @@
 }
 
 
-.main-container .container .subcontainer .video #canvas{
-    /* display: none; */
+/* .main-container .container .subcontainer .video #canvas{
+    display: none;
 
-}
+} */
 
 .main-container .container .subcontainer .video video{
   /* background-color: #3f633c; */
@@ -213,7 +213,7 @@
     display: flex;
     /* background-color: #4EC745; */
     height: max-content;
-    margin-bottom: 5px;
+    margin: 5.2em 0 0 0 ;
     
 }
 
@@ -260,6 +260,7 @@
 
 
 .main-container .container .table-container .table-contents table{
+    margin: 30px 0 0 0;
     width: 100%;
     border-collapse: collapse;
     /* background-color: #4EC745; */
@@ -268,10 +269,12 @@
 
 
 .main-container .container .table-container .table-contents table thead tr td{
-    padding: 10px 0;
+    padding: 10px;
     text-align: center;
     border: 1px solid #000000;
     background-color: white;
+    word-break: break-word;
+    width: 20px;
     
 }
 .main-container .container .table-container .table-contents table tbody tr td{
@@ -280,6 +283,8 @@
     text-align: center;
     border: 1px solid #000000;
     background-color: #dedede;
+    word-break: break-word;
+    width: 20px;
 }
 
 
@@ -296,7 +301,7 @@
 
 .pop-up-modal{
     position: fixed;
-    top: 0;
+    top: 50;
     left: 0;
     /* background-color: rgba(0, 0, 0, 0.76); */
     width: 100vw;
@@ -329,6 +334,7 @@
 .pop-up-modal .modal-message p{
     margin-top: 20px;
     font-size: 1.1em;
+    word-break: break-all;
     text-transform:uppercase;
 }
 

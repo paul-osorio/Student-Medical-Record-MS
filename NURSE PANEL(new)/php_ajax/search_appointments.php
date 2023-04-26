@@ -1,10 +1,10 @@
 <?php
-   include "../db_conn1.php";
+  include "../includes/db_conn.php";
 
    if(isset($_POST['search'])){
       $search = $_POST['search'];
 
-      $search_app_query = "SELECT * FROM `stud_appointment` WHERE  `reference_no` LIKE '%$search%' OR `student_id` LIKE '%$search%' ;"; 
+      $search_app_query = "SELECT * FROM `stud_appointment` WHERE  `reference_no` LIKE '%$search%' OR `student_id` LIKE '%$search%';"; 
       
       $fetchAllAppointments = mysqli_query($conn1, $search_app_query);
       

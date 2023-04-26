@@ -69,7 +69,7 @@ if (isset($_SESSION['emp_id']) && isset($_SESSION['username'])) {
             </div>
         </nav>
         <div class="row bg-light">
-          <div class="col-md-2 p-0 position-relative" style="min-height:100vh;box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;background: #05285c;">
+          <div class="col-md-2 p-0 position-relative" style="min-height:100vh;box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;background: #134E8E;">
              <div class="w-100">
               <ul class="mt-4 list-unstyled navbar-nav ps-0 ">
 
@@ -113,13 +113,13 @@ if (isset($_SESSION['emp_id']) && isset($_SESSION['username'])) {
                                 <div class="d-flex align-items-center" style="flex-basis:300px">
                                   <span for="#sort" class="px-2 text-nowrap">Sort By</span>
                                   <select class="form-select shadow-none" aria-label="Default select example" name="sort" id="sort_app">
-                                    <option name="sort" value="student_id">All</option>
-                                    <option name="sort" value="Recent">Recent</option>
+                                    <option name="sort" value="id">All</option>
+                                    <option name="sort" value="app_type">Type of Appointment</option>
                                     <!-- <option name="sort" value="app_type">Type</option>
                                     <option name="sort" value="app_time">Time</option>
                                     <option name="sort" value="app_date">Date</option> -->
-                                    <option name="sort" value="scheduled">Scheduled</option>
-                                    <option name="sort" value="cancelled">Cancelled</option>
+                                    <!-- <option name="sort" value="scheduled">Scheduled</option>
+                                    <option name="sort" value="cancelled">Cancelled</option> -->
                                     <!-- <option name="sort" value="pending">Pending</option> -->
                                   </select>
                                 </div>

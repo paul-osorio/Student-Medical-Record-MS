@@ -107,7 +107,7 @@
          <div class="dept-container">
 
             <div class="content-header">
-               <h3> department list </h3>
+               <h3> Department List </h3>
 
                <button class="add-dept">
                   <i class="fas fa-building"></i>
@@ -186,7 +186,7 @@
 
                                     <span style="font-weight: bold;"> Position: </span>
                                     
-                                    <span class="nurse"> <?=$dept_rows['position']?> </span>
+                                    <span class="nurse" style="text-transform: capitalize;"> <?=$dept_rows['position']?> </span>
                                  </div>
                               </div>
                            </div>

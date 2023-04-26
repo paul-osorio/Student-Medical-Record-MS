@@ -29,13 +29,13 @@
             $time_in = $time_in->format("h:i A"); 
             
             
-            if($entered_student['Status'] == 'Verified') { ?>
+            if($entered_student['Status'] == 'Cleared') { ?>
 
                <tr>
                   <td style="background-color:#4EC745 "><?=$entered_student['student_number']?></td>
                   <td><?=$student_name?> </td>
                   <td><?=$entered_student['year_level']?></td>
-                  <td><?=$entered_student['Section']?></td>
+                  <td><?=$entered_student['section']?>
                   <td><?=$time_in?></td>
                </tr>
 
@@ -44,7 +44,7 @@
                   <td style="background-color: rgb(232, 214, 110)" ><?=$entered_student['student_number']?></td>
                   <td><?=$student_name?> </td>
                   <td><?=$entered_student['year_level']?></td>
-                  <td><?=$entered_student['Section']?></td>
+                  <td><?=$entered_student['section']?></td>
                   <td><?=$time_in?></td>
                </tr>
                

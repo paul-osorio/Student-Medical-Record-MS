@@ -30,22 +30,22 @@
                            ?>
                               <tr>
                                  <td>
-                                    <div class="med-img">
+                                    <div class="med-img" style="padding-left:10px;">
                                        <img src="../assets/<?=$med_row['image']?>" alt="<?=$med_row['image']?>">
                                     </div>
                                  </td>
          
-                                 <td>
+                                 <td width="17%">
                                     <h3 style="text-transform:capitalize;"> <?=$med_row['name']?> </h3>
                                     
                                     <p class="med-id"> <?=$med_row['prod_id']?> </p>
 
-                                    <p class="brand"> Campus: <br> <span> <?=$med_row['campus']?> </span> </p>
+                                    <p class="brand"> Campus: <span> <?=$med_row['campus']?> </span> </p>
          
                                     
                                  </td>
          
-                                 <td width="30%">
+                                 <td width="40%">
                                     <div class="med-desc">
                                        
                                        <p>  Description:  <span><?=$description?>...</span> </p>
@@ -54,19 +54,19 @@
                                     
                                  </td>
          
-                                 <td>
-                                    <p> Expiration Date: <br> <?=$expDate?> </p>
+                                 <td style="padding-left:40px;">
+                                    <p> Expiration Date: <em><?=$expDate?></em> </p>
          
                                     <p> Stocks: <span> <?=$med_row['num_stocks']?> </span></p>
                                  </td>
          
-                                 <td>
+                                 <!-- <td>
                                     <div class="qr-image">
                                        <img src="../qr_images/<?=$med_row['qr_code']?>" alt="">
                                     </div>
-                                 </td>
+                                 </td> -->
          
-                                 <td width="10%">
+                                 <td width="8%">
                                     <div class="action-button">
          
                                        <button id="med-edit" data-role="med-edit" data-id="<?=$med_row['prod_id']?>">

@@ -1,8 +1,8 @@
 <?php
     include('./includes/db_conn.php');
 
-    $fetchAllMedicine = mysqli_query($conn, "SELECT * FROM `medicine`");
-     
+    $fetchAllMedicine = mysqli_query($conn1, "SELECT * FROM `medicine`");
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -57,7 +57,7 @@
             </div>
         </nav>
         <div class="row bg-light">
-          <div class="col-md-2 p-0 position-relative" style="min-height:100vh;box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;background: #05285c;">
+          <div class="col-md-2 p-0 position-relative" style="min-height:100vh;box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;background: #134E8E;">
              <div class="w-100">
               <ul class="mt-4 list-unstyled navbar-nav ps-0 ">
 
@@ -103,22 +103,37 @@
                         <div class="d-flex align-items-center">
                         <span for="#sort" class="px-2 text-nowrap">Sort By</span>
                           <select class="form-select shadow-none" style="flex-basis:500px" aria-label="Default select example" name="sort" id="sort_meds">
-                              <option value="prod_id">All</option> 
-                              <option value="expirationDate">Expiration Date</option>
-                              <option value="num_stocks">Stocks</option>
+                              <option value="id"> All </option>
+                              <option value="expirationDate"> Expiration Date </option>
+                              <option value="num_stocks"> Stocks </option>
+                              <!-- <option value="campus"> Campus </option> -->
+                              <option value="San Bartolome"> San Bartolome Campus </option>
+                              <option value="San Francisco"> San Francisco Campus </option>
+                              <option value="Batasan"> Batasan Campus </option>
                           </select>
                         </div>
                         <div class="input-group form-input-sm d-flex align-items-center gap-2" style="width: 30%; margin-left: 49%;">
-                            <input type="text" class="form-control w-50 shadow-none" name="search" id="search_meds" placeholder="&#xF002; Search..." aria-label="Search..." aria-describedby="button-addon2" style="font-family:Poppins, FontAwesome">
+                            <input type="text" class="form-control w-50 shadow-none" name="search" id="search_meds" placeholder="&#xF002; Search Medicine" aria-label="Search Medicine" aria-describedby="button-addon2" style="font-family:Poppins, FontAwesome">
                             <!-- <a href="#" class="text-secondary"> <i class="fa fa-th-large mx-1 fs-3" aria-hidden="true"></i></a> -->
                             <a href="#" class="text-secondary"><i class="fa fa-bars mx-1 fs-3" aria-hidden="true"></i></a>
                         </div>
                       </div>
                    
                       <ul class="accordion">
+ 
 
                           <?php if(mysqli_num_rows($fetchAllMedicine) > 0) { 
-                                      while ($med = mysqli_fetch_assoc($fetchAllMedicine)) {  ?>
+                                      while ($med = mysqli_fetch_assoc($fetchAllMedicine)) {  
+                                        
+                                        
+                                        $expDate = convertDate($med['expirationDate']);
+
+                                        $description = substr($med['description'], 0, 120);
+                                        
+                                        
+                                        ?>
+
+                                      
 
 
                           <li>
@@ -128,36 +143,40 @@
                                   <table class="table-mdc">
                                   <tbody>
                                       <tr class="mdc-header">
-                                      <td style="width:120px; padding-left: 20px;"><img src="./assets/<?=$med['image']?>" width="150px" height="130px"> </td>
-                                      <td style="width:180px; padding-left: 20px;" >
+                                      <td style="width:120px; padding-left: 30px;"><img src="./assets/<?=$med['image']?>" width="150px" height="130px"> </td>
+                                      <td style="width:200px; padding-left: 20px;" >
                                           <table>
                                           <td class="b1"><?=$med['name']?></td>
                                           <tr>
-                                          <td class="mdc-brand"><b>Brand:</b> <?=$med['brand']?></td>
+                                          <td><?=$med['prod_id']?>
                                           <tr>
-                                          <td><?=$med['prod_id']?></td>
+                                          </td><td class="mdc-brand"><b>Campus:</b> <?=$med['campus']?></td>
                                           </table>
                                       </td>
                                   
-                                      <td style="text-align:justify;text-justify:inter-word;width:420px;">
+                                      <td style="text-align:justify;text-justify:inter-word;width:450px;padding-left: 30px;">
                                           <span class="mdc-stock">Desctiption: </span>
-                                          <span class="mdc-qty"><?=$med['description']?></span>
+                                          <span class="mdc-qty"><?=$description?>...</span>
                                       </td>
                                           
                               
                                       
-                                      <td style="width:370px; padding-left: 30px;">
+                                      <td style="width:370px; padding-left: 50px;">
                                       <!-- <b>Expiration Date:</b> <?=$med['expirationDate']?> -->
                                           <table>
-                                          <td class="b1"><b>Expiration Date:</b> <?=$med['expirationDate']?></td>
+                                          <td class="b1"><b>Expiration Date:</b> <em><?=$expDate?></em></td>
                                           <tr>
                                           <td><b>Stocks:</b> <?=$med['num_stocks']?></td>
                                           </table>
                                       </td>
 
                                       
-                                      <td style="width:160px;"><img src="./assets/<?=$med['prod_qrcode']?>" width="150px" height="130px"> </td>
-                                      
+                                      <!-- <td style="width:160px;"><img src="./qr_images/<?=$med['qr_code']?>" width="150px" height="130px"> </td> -->
+                                      <!-- <td style="width:160px;">
+                                        <div class="qr-image">
+                                        <img src="./qr_images/<?=$med['qr_code']?>" alt="">
+                                        </div>
+                                      </td> -->
 
                                       </tr>
                                       </tbody>
@@ -176,12 +195,33 @@
         </div>
        
     </div>
+
+                      <?php
+
+
+                              function convertDate($date){
+
+                                $date = new DateTime("$date");
+                                $date = $date->format('F d, Y');
+
+                                return $date;
+                              }
+
+                              function convertTime($time){
+
+                                $time = new DateTime("$time");
+                                $time = $time->format('h:i A');
+
+                                return $time;
+                              }
+
+                      ?>
+    
 </body>
 
+
     <!-- CUSTOM AJAX FILE -->
-    <!-- <script src="./ajax/search_appointments.js"> </script>
-    <script src="./ajax/search_medreq.js"> </script>
-    <script src="./ajax/search_students.js"> </script> -->
     <script src="./ajax/search_medicine.js"> </script>
+    <!-- <script src="../ajax/sort-search_medicine.js"></script> -->
 
 </html>

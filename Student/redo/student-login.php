@@ -1,6 +1,7 @@
 <?php
   error_reporting(0);
   session_start(); 
+  
 
   $stud_id = $_SESSION['student_id'];
 

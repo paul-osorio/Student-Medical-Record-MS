@@ -93,7 +93,8 @@ main .container .appointment-list-container .appointment-list table tbody tr td 
 
 main .container .appointment-list-container .appointment-list table tbody tr td .action .form-button button{
    font-size: 1em;
-   padding: 5px 10px;
+   padding: 5px 5px;
+   margin: 0 5px 0 0;
    border-radius: 4px;
    color: #fff;
    border: none;
