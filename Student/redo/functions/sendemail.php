@@ -1,9 +1,13 @@
 <?php
    
-   require "../../vendor/autoload.php";
-        
    use PHPMailer\PHPMailer\PHPMailer;
+   use PHPMailer\PHPMailer\Exception;
    use PHPMailer\PHPMailer\SMTP;
+   
+   require '../../../PHPMailer/src/Exception.php';
+   require '../../../PHPMailer/src/PHPMailer.php';
+   require '../../../PHPMailer/src/SMTP.php';
+
 
    function sendEmail($email, $subject, $mess, $title) {
 
@@ -12,8 +16,8 @@
       $mail->isSMTP();
       $mail->Host = 'smtp.gmail.com';
       $mail->SMTPAuth = true;
-      $mail->Username = 'studmed.recordms.2023@gmail.com';
-      $mail->Password = 'qmgdqhrozvdbypdb';
+      $mail->Username = 'qcu.clinic.smrms@gmail.com';
+      $mail->Password = 'vptkkshttnjvnhde';
       $mail->SMTPSecure = 'ssl';
       $mail->Port = 465;
   
